@@ -99,7 +99,7 @@ export default function Home() {
                 value={phone}
                 onChange={handleInputChange}
                 placeholder="Introduce tu número de teléfono"
-                className="flex-grow h-[60px] sm:h-[70px] lg:h-[80px] text-lg sm:text-xl lg:text-2xl px-4 bg-cgreen text-white placeholder-white text-center focus:outline-none"
+                className="appearance-none rounded-none flex-grow h-[60px] sm:h-[70px] lg:h-[80px] text-lg sm:text-xl lg:text-2xl px-4 bg-cgreen text-white placeholder-white text-center focus:outline-none"
                 maxLength={9}
               />
               {/* Botón cuadrado dorado */}
