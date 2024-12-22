@@ -10,6 +10,11 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        cgold: "#C29B49", // Color dorado personalizado
+        cgreen: "#01833D", // Color verde personalizado
+      },
+      fontFamily: {
+        acumin: ['Acumin Pro', 'sans-serif'], // Fuente personalizada
       },
     },
   },

@@ -3,19 +3,27 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #ffffff; /* Fondo blanco en modo claro */
+  --foreground: #000000; /* Texto negro en modo claro */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0a0a0a; /* Fondo negro en modo oscuro */
+    --foreground: #ffffff; /* Texto blanco puro en modo oscuro */
   }
 }
 
+@font-face {
+  font-family: 'Acumin Pro';
+  src: url('/fonts/acumin.ttf') format('truetype');
+  font-weight: normal; /* Cambia si tienes diferentes pesos */
+  font-style: normal;  /* Cambia si tienes estilos como cursiva */
+}
+
+
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--foreground); /* Aplica el color del texto */
+  background: var(--background); /* Aplica el fondo */
+  font-family: Arial, Helvetica, sans-serif; /* Fuente general */
 }
