@@ -91,15 +91,15 @@ export default function Home() {
           </p>
 
           {/* Input con botón */}
-          <div className="mt-10 flex justify-center w-full px-4">
-            <div className="flex w-full max-w-[700px]">
+          <div className="mt-10 flex justify-center w-full px-4 appearance-none rounded-none">
+            <div className="flex w-full max-w-[700px] appearance-none rounded-none">
               {/* Input de texto */}
               <input
                 type="text"
                 value={phone}
                 onChange={handleInputChange}
                 placeholder="Introduce tu número de teléfono"
-                className="appearance-none rounded-none flex-grow h-[60px] sm:h-[70px] lg:h-[80px] text-lg sm:text-xl lg:text-2xl px-4 bg-cgreen text-white placeholder-white text-center focus:outline-none"
+                className="flex-grow h-[60px] sm:h-[70px] lg:h-[80px] text-lg sm:text-xl lg:text-2xl px-4 bg-cgreen text-white placeholder-white text-center focus:outline-none"
                 maxLength={9}
               />
               {/* Botón cuadrado dorado */}
