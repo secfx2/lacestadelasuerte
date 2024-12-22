@@ -105,7 +105,7 @@ export default function Home() {
               {/* Botón cuadrado dorado */}
               <button
                 onClick={handleSendNumber}
-                className="bg-cgold w-[80px] h-[60px] sm:w-[80px] sm:h-[70px] lg:w-[80px] lg:h-[80px] flex items-center justify-center hover:bg-opacity-90 transition"
+                className="appearance-none rounded-none bg-cgold w-[80px] h-[60px] sm:w-[80px] sm:h-[70px] lg:w-[80px] lg:h-[80px] flex items-center justify-center hover:bg-opacity-90 transition"
               >
                 <FaPaperPlane className="text-white text-xl sm:text-2xl lg:text-3xl" />
               </button>
