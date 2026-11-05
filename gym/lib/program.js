@@ -209,7 +209,7 @@ export const SUPPLEMENTS = [
 ];
 
 export const NO_SUPPLEMENTS = [
-  'Zinc extra o ZMA: con la carne, el marisco, los huevos y el multi ya llegas (~12-15 mg/día). Más de 25 mg/día durante meses baja el cobre, y no sube la testosterona si no tienes déficit.',
+  'Zinc extra o ZMA: con la carne, el marisco, los huevos y el multi ya llegas (~12-15 mg/día). Más de 25 mg/día durante meses baja el cobre, y no sube la testosterona ni la libido si no tienes déficit (solo ayuda a quien le falta).',
   'Quemagrasas / "fat burners": cafeína cara + riesgo. El déficit es el quemagrasas.',
   'BCAAs / EAAs: inútiles si llegas a tu proteína (y vas a llegar).',
   'Potenciadores de testosterona (tribulus, etc.): no funcionan.',

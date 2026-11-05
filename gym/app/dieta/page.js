@@ -318,7 +318,7 @@ function Rules() {
             <b>Tomate rallado</b> en tostadas y bocadillos.
           </li>
           <li>
-            <b>Sin fruta suelta:</b> como no te gusta, las vitaminas vienen del gazpacho, el salmorejo, las cremas y la espinaca escondida. La fibra, de la avena, las legumbres, el cacao puro y el pan integral. Si un día te apetece, un zumo de naranja natural o fruta dentro de un batido también vale.
+            <b>Sin fruta suelta:</b> como no te gusta, las vitaminas vienen del gazpacho, el salmorejo, las cremas y la espinaca escondida. La fibra, de la avena, las legumbres, el cacao puro y el pan integral. No hace falta forzarte. Si algún día te apetece: un vaso pequeño (200 ml) de zumo de naranja o piña natural sin pulpa, una manzana o melocotón en su jugo (no en almíbar).
           </li>
           <li>
             <b>Seguro:</b> multivitamínico + psyllium si vas mal al baño (ver Suplementos).
