@@ -4,11 +4,13 @@ import Link from 'next/link';
 import { Suspense, useMemo, useState } from 'react';
 import Icon from '../components/Icon';
 import FoodImg from '../components/FoodImg';
-import { Bar, Check, PageSkeleton, Ring, Stepper, useToast } from '../components/ui';
+import { Bar, Check, PageSkeleton, Ring, Sheet, useToast } from '../components/ui';
 import Sparkline from '../components/Sparkline';
 import { useAppState, useHydrated, useNow, update, updateDay } from '../lib/store';
 import { dayContext, setProgress, nextMeal, eatenMacros, weightStats, streak, dayCompleted, sortedWeights, workoutForDay } from '../lib/coach';
-import { SLOTS, WEEK_MENU, getRecipe, recipeMacros } from '../lib/recipes';
+import { SLOTS } from '../lib/recipes';
+import { mealFor, recipeMacrosFor, mealChange } from '../lib/plan';
+import { slotsFor, pendingNight, nightOf, bedtimeFor, sleepAdvice, wakeDayForBed, sleepHours, fmtHours, clockOf, isTime, usualWake, sleepAverage } from '../lib/sleep';
 import { SUPPLEMENTS, DAILY_TARGETS, TIPS, WEIGH_HOWTO, WEIGH_DAYS } from '../lib/program';
 import { prettyDate, DAY_SHORT, DAY_NAMES, mondayOf, addDays, weekdayIdx, todayISO, minutesNow } from '../lib/dates';
 import DateNav, { useViewDate, relLabel } from '../components/DateNav';
@@ -91,7 +93,7 @@ function Home() {
         <MacrosTile s={s} iso={ctx.iso} />
         <SuppsTile ctx={ctx} day={day} />
         <StepsTile ctx={ctx} day={day} />
-        <SleepTile day={day} iso={ctx.iso} />
+        <SleepTile s={s} iso={ctx.iso} isToday={isToday} now={now} showToast={showToast} />
         <ProgressTile s={s} />
         {ctx.isMeasure && <MeasureTile />}
         <WeekTile s={s} iso={ctx.iso} today={today} />
@@ -108,6 +110,8 @@ function Home() {
         <LinkTile href="/plan#mandibula" icon="face" color="pink" label="Mandíbula" title="Guía de cara y cuello" />
         <LinkTile href="/asesor" icon="sparkle" color="lime" label="Asesor IA" title="Pregúntale lo que quieras" />
         <LinkTile href="/plan#suplementos" icon="pill" color="cyan" label="Suplementos" title="Qué tomar y qué no" />
+        <LinkTile href="/plan#cuello" icon="info" color="cyan" label="Cuello" title="Tensión de oficina y mareos" />
+        <LinkTile href="/progreso#fotos" icon="camera" color="violet" label="Fotos" title="Tus fotos de progreso" />
       </div>
     </>
   );
@@ -135,6 +139,7 @@ function WorkoutTile({ s, ctx, day, isToday }) {
       </Link>
     );
   }
+  const adv = isToday ? sleepAdvice(s, ctx.iso) : null;
   const prog = setProgress(s, ctx.iso, items);
   const mins = Math.round(8 + items.reduce((a, it) => a + it.sets * (0.75 + it.rest / 60), 0) + ctx.cardio.minutes);
   const cta = day.done ? 'Entreno completado' : prog.done > 0 ? 'Continuar entreno' : 'Empezar entreno';
@@ -157,7 +162,13 @@ function WorkoutTile({ s, ctx, day, isToday }) {
         <span className="pill">{items.length} ejercicios</span>
         <span className="pill">~{mins} min</span>
         <span className="pill lime">RIR {ctx.phase.rir}</span>
+        {workout.customized && <span className="pill">✨ cambiado por tu asesor</span>}
       </div>
+      {adv && adv.level !== 'ok' && (
+        <div className={`small ${adv.level === 'alert' ? '' : 'muted'}`} style={{ color: adv.level === 'alert' ? 'var(--amber)' : undefined }}>
+          😴 {adv.title}: {adv.level === 'alert' ? 'hoy sin series al fallo' : 'hoy sin buscar récords'}.
+        </div>
+      )}
       <div className="tile-foot">
         <span className={`btn ${day.done ? '' : 'primary'} sm`}>
           {day.done ? <Icon name="check" size={16} /> : <Icon name="play" size={14} fill="currentColor" />} {cta}
@@ -170,7 +181,8 @@ function WorkoutTile({ s, ctx, day, isToday }) {
 
 function MealTile({ s, now, iso, showToast }) {
   const nm = nextMeal(s, now, iso);
-  const m = recipeMacros(nm.recipe);
+  const m = recipeMacrosFor(nm.recipe);
+  const changed = !nm.tomorrow && mealChange(s, nm.iso, nm.slot.key);
   const href = `/receta/${nm.recipe.id}?pasos=1&slot=${nm.slot.key}&d=${nm.iso}`;
   const markEaten = () => {
     updateDay(nm.iso, (d) => {
@@ -188,6 +200,13 @@ function MealTile({ s, now, iso, showToast }) {
           <span className="dot" /> {nm.otherDay ? (nm.allDone ? `${relLabel(iso)} · todo comido ✓` : `${relLabel(iso)} · pendiente`) : nm.tomorrow ? 'Mañana' : nm.now ? 'Ahora toca' : 'Próxima comida'} · {nm.slot.label} · {nm.slot.time}
         </span>
         <Link href={href} className="tile-title" style={{ fontSize: 22 }}>{nm.recipe.name}</Link>
+        {(changed || nm.slot.dayShifted || nm.slot.shifted || nm.slot.note) && (
+          <div className="tiny" style={{ color: 'rgba(255,255,255,0.72)' }}>
+            {changed ? '✨ Cambiada por tu asesor' : ''}
+            {changed && (nm.slot.shifted || nm.slot.note) ? ' · ' : ''}
+            {nm.slot.note || (nm.slot.shifted ? 'Hora ajustada a cuando te has levantado' : '')}
+          </div>
+        )}
         <div className="small" style={{ color: 'rgba(255,255,255,0.78)' }}>
           <b className="num">{m.kcal}</b> kcal · <b style={{ color: 'var(--lime)' }}>{m.p} g</b> proteína · {nm.recipe.time} min
         </div>
@@ -358,7 +377,7 @@ function StreakTile({ s, iso }) {
 function MacrosTile({ s, iso }) {
   const { eaten, target } = eatenMacros(s, iso);
   const meals = s.days[iso]?.meals || {};
-  const menu = WEEK_MENU[weekdayIdx(iso)];
+  const slots = slotsFor(s, iso);
   const toggle = (k) =>
     updateDay(iso, (d) => {
       d.meals = { ...(d.meals || {}), [k]: !d.meals?.[k] };
@@ -394,8 +413,8 @@ function MacrosTile({ s, iso }) {
         </div>
       </div>
       <div className="row" style={{ gap: 6, marginTop: 'auto', justifyContent: 'space-between' }}>
-        {SLOTS.map((sl) => (
-          <div key={sl.key} className="center" style={{ flex: 1 }} title={getRecipe(menu[sl.key]).name}>
+        {slots.map((sl) => (
+          <div key={sl.key} className="center" style={{ flex: 1 }} title={mealFor(s, iso, sl.key)?.name}>
             <button
               className={`check${meals[sl.key] ? ' on' : ''}`}
               style={{ margin: '0 auto', width: 36, height: 36, borderRadius: 12 }}
@@ -487,20 +506,210 @@ function StepsTile({ ctx, day }) {
   );
 }
 
-function SleepTile({ day, iso }) {
-  const v = day.sleep ?? 7.5;
-  const set = (n) => updateDay(iso, (d) => (d.sleep = n));
+function SleepTile({ s, iso, isToday, now, showToast }) {
+  const [edit, setEdit] = useState(null); // { iso, bed, wake, planned }
+  const pending = isToday ? pendingNight(s, now) : null;
+  const night = nightOf(s, iso);
+  const tomorrow = addDays(iso, 1);
+  const plan = bedtimeFor(s, tomorrow);
+  const today = todayISO(now);
+  const late = isToday && minutesNow(now) >= 12 * 60;
+
+  const bedNow = () => {
+    const t = clockOf(now);
+    const w = wakeDayForBed(now, t);
+    updateDay(w, (d) => {
+      d.bed = t;
+      delete d.wake;
+      delete d.sleep;
+    });
+    showToast(`Buenas noches 🌙 Mañana a las ${bedtimeFor(s, w).wake}`);
+  };
+  const wakeNow = () => {
+    const t = clockOf(now);
+    const d0 = s.days[today] || {};
+    if (!isTime(d0.bed)) {
+      // No le diste a "Me acuesto": pregunta a qué hora fue
+      setEdit({ iso: today, bed: '', wake: t, planned: null, ask: true });
+      return;
+    }
+    updateDay(today, (d) => {
+      d.wake = t;
+      const h = sleepHours(d.bed, t);
+      if (h != null) d.sleep = h;
+    });
+    const h = sleepHours(d0.bed, t);
+    showToast(h != null ? `Buenos días ☀️ Has dormido ${fmtHours(h)} h` : 'Buenos días ☀️');
+  };
+  const cancelBed = () => {
+    updateDay(pending.iso, (d) => {
+      delete d.bed;
+    });
+  };
+  const open = (forIso) => {
+    const d = s.days[forIso] || {};
+    setEdit({ iso: forIso, bed: d.bed || '', wake: d.wake || '', planned: forIso > today ? d.plannedWake || '' : null });
+  };
+  const save = () => {
+    const { iso: w, bed, wake, planned } = edit;
+    updateDay(w, (d) => {
+      if (isTime(bed)) d.bed = bed;
+      else delete d.bed;
+      if (isTime(wake)) d.wake = wake;
+      else delete d.wake;
+      const h = sleepHours(d.bed, d.wake);
+      if (h != null) d.sleep = h;
+      else if (isTime(d.bed) || isTime(d.wake)) delete d.sleep;
+      if (planned !== null) {
+        if (isTime(planned)) d.plannedWake = planned;
+        else delete d.plannedWake;
+      }
+    });
+    setEdit(null);
+    showToast('Sueño guardado ✓');
+  };
+  const clear = () => {
+    updateDay(edit.iso, (d) => {
+      delete d.bed;
+      delete d.wake;
+      delete d.sleep;
+    });
+    setEdit(null);
+  };
+
+  const h = night.hours;
+  const color = h == null ? 'var(--muted)' : h >= 7.5 ? 'var(--lime)' : h >= 6 ? 'var(--amber)' : 'var(--red)';
+  const editH = edit ? sleepHours(edit.bed, edit.wake) : null;
+
+  let body;
+  if (pending) {
+    const tonight = pending.iso !== today;
+    body = (
+      <>
+        <div className="tile-big num" style={{ fontSize: 26 }}>
+          {tonight ? 'Buenas noches' : 'Durmiendo'} <span className="muted" style={{ fontWeight: 500, fontSize: 18 }}>desde las {pending.bed}</span>
+        </div>
+        <p className="small muted">
+          {tonight
+            ? `Mañana a las ${bedtimeFor(s, pending.iso).wake} tendrías ${fmtHours(sleepHours(pending.bed, bedtimeFor(s, pending.iso).wake))} h. Por la mañana dale a "Me levanto".`
+            : 'Cuando te levantes, dale al botón: el horario de comidas y el consejo del día se ajustan solos.'}
+        </p>
+        <div className="row wrap" style={{ gap: 8, marginTop: 'auto' }}>
+          {tonight ? (
+            <button className="btn sm" onClick={cancelBed}>
+              Deshacer
+            </button>
+          ) : (
+            <button className="btn primary sm" onClick={wakeNow}>
+              ☀️ Me levanto
+            </button>
+          )}
+          <button className="btn sm" onClick={() => open(pending.iso)}>
+            Editar horas
+          </button>
+        </div>
+      </>
+    );
+  } else {
+    body = (
+      <>
+        <div className="row" style={{ gap: 12, alignItems: 'baseline' }}>
+          <div className="tile-big num" style={{ fontSize: 28, color }}>{h == null ? '—' : `${fmtHours(h)} h`}</div>
+          <div className="small muted">
+            {night.bed || night.wake ? `${night.bed || '¿?'} → ${night.wake || '¿?'}` : isToday ? 'Sin apuntar' : 'No apuntado'}
+            {isToday && sleepAverage(s, iso) != null ? ` · media 7 días ${fmtHours(sleepAverage(s, iso))} h` : ''}
+          </div>
+        </div>
+        {h != null && <Bar pct={h / 8} color={h >= 7.5 ? undefined : 'amber'} />}
+        {isToday && (
+          <p className="small muted">
+            {late ? 'Esta noche' : 'Hoy'}: para dormir 8 h y levantarte a las {plan.wake}, a la cama a las <b style={{ color: 'var(--text)' }}>{plan.bed}</b>.
+          </p>
+        )}
+        <div className="row wrap" style={{ gap: 8, marginTop: 'auto' }}>
+          {isToday && !night.wake && !late && (
+            <button className="btn primary sm" onClick={wakeNow}>
+              ☀️ Me levanto
+            </button>
+          )}
+          {isToday && (
+            <button className={`btn sm${late ? ' primary' : ''}`} onClick={bedNow}>
+              🌙 Me acuesto
+            </button>
+          )}
+          <button className="btn sm" onClick={() => open(iso)}>
+            {night.bed || night.wake ? 'Editar' : 'Apuntar a mano'}
+          </button>
+          {isToday && (
+            <button className="btn sm" onClick={() => open(tomorrow)} title="Hora a la que te levantas mañana">
+              Mañana me levanto a…
+            </button>
+          )}
+        </div>
+      </>
+    );
+  }
+
   return (
-    <div className="tile">
+    <div className="tile w2">
       <span className="tile-label">
-        <Icon name="moon" size={14} /> Sueño anoche
+        <Icon name="moon" size={14} /> Sueño {pending ? '' : isToday ? '· anoche' : '· esa noche'}
       </span>
-      <div className="tile-big num" style={{ fontSize: 28, color: v >= 7.5 ? 'var(--text)' : 'var(--amber)' }}>
-        {String(v).replace('.', ',')} h
-      </div>
-      <div className="tile-foot">
-        <Stepper value={v} onChange={set} step={0.5} min={3} max={12} format={() => ''} />
-      </div>
+      {body}
+      <Sheet open={!!edit} onClose={() => setEdit(null)} title={edit && edit.iso > today ? 'Esta noche' : 'Tu noche'}>
+        {edit && (
+          <div className="stack">
+            {edit.ask && <div className="hint">¿A qué hora te acostaste? Apúntalo para calcular lo que has dormido (si no te acuerdas, pon una aproximada).</div>}
+            <p className="small muted">
+              Noche del {prettyDate(addDays(edit.iso, -1)).toLowerCase()} al {prettyDate(edit.iso).toLowerCase()}.
+            </p>
+            {(edit.iso <= today || s.days[edit.iso]?.bed) && (
+              <div className="row" style={{ gap: 10 }}>
+                <label className="grow stack" style={{ gap: 4 }}>
+                  <span className="tiny muted">Me acosté</span>
+                  <input className="input" type="time" value={edit.bed} onChange={(e) => setEdit({ ...edit, bed: e.target.value })} />
+                </label>
+                {edit.iso <= today && (
+                  <label className="grow stack" style={{ gap: 4 }}>
+                    <span className="tiny muted">Me levanté</span>
+                    <input className="input" type="time" value={edit.wake} onChange={(e) => setEdit({ ...edit, wake: e.target.value })} />
+                  </label>
+                )}
+              </div>
+            )}
+            {edit.planned !== null && (
+              <label className="stack" style={{ gap: 4 }}>
+                <span className="tiny muted">Pienso levantarme a las (para calcular a qué hora acostarme)</span>
+                <input className="input" type="time" value={edit.planned} placeholder={usualWake(s, edit.iso)} onChange={(e) => setEdit({ ...edit, planned: e.target.value })} />
+              </label>
+            )}
+            <div className="small">
+              {edit.iso > today ? (
+                <span className="muted">
+                  Para dormir 8 h, acuéstate a las <b style={{ color: 'var(--text)' }}>{bedtimeFor({ ...s, days: { ...s.days, [edit.iso]: { ...(s.days[edit.iso] || {}), plannedWake: edit.planned } } }, edit.iso).bed}</b>.
+                </span>
+              ) : editH != null ? (
+                <>
+                  Has dormido <b className="num">{fmtHours(editH)} h</b>
+                  {editH < 7 ? ' · intenta llegar a 7,5-8 h' : ' · bien'}
+                </>
+              ) : (
+                <span className="muted">Pon las dos horas para calcular lo que has dormido.</span>
+              )}
+            </div>
+            <div className="row" style={{ gap: 8 }}>
+              <button className="btn primary grow" onClick={save}>
+                Guardar
+              </button>
+              {(s.days[edit.iso]?.bed || s.days[edit.iso]?.wake) && (
+                <button className="btn" onClick={clear}>
+                  Borrar
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+      </Sheet>
     </div>
   );
 }
@@ -583,8 +792,8 @@ function WeekTile({ s, iso, today }) {
 }
 
 function ShoppingTile({ s, iso, showToast }) {
-  const groups = useMemo(() => buildShoppingList(), []);
   const week = mondayOf(iso);
+  const groups = useMemo(() => buildShoppingList(s, week), [s.custom, week]);
   const checked = s.shopping[week] || {};
   const all = groups.flatMap((g) => g.items.map((it) => ({ ...it, cat: g.cat })));
   const pending = all.filter((it) => !checked[it.k]);

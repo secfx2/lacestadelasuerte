@@ -452,7 +452,7 @@ export const EXERCISES = [
     ],
     mistakes: [
       'Bajar moviendo la cadera (como una reverencia) en vez de enrollar la columna.',
-      'Tirar con los brazos.',
+      'Tirar con los brazos o de la cabeza: la cuerda va junto a la frente y el cuello acompaña, quieto.',
       'Usar tanto peso que el abdomen no se entere.',
     ],
     tip: 'Al abdomen se le trata como a cualquier músculo: con carga y progresión. Se verá cuando bajes de grasa.',
@@ -665,6 +665,50 @@ export const EXERCISES = [
     ],
     tip: 'Equilibra la parte trasera del cuello y mejora la postura (adiós cabeza adelantada).',
     alt: { id: null, text: 'Isométricos de cuello con la mano en la nuca (5 × 10 s)' },
+  },
+  {
+    id: 'cuello-isometricos', name: 'Cuello: isométricos con la mano (suave)', img: 'Isometric_Neck_Exercise_-_Front_And_Back', anim: 'neckIso', primary: ['neck'], secondary: ['traps'], equip: 'Nada (solo tus manos)', timed: true,
+    zone: 'En cualquier sitio: sentado en un banco o de pie. También vale en casa o en la oficina.',
+    setup: [
+      'Sentado o de pie, espalda recta, hombros abajo y relajados.',
+      'Cabeza en posición neutra: barbilla ligeramente metida, mirada al frente.',
+      'Sin peso. La resistencia la pones tú con la mano: suave, al 30-50 % de tu fuerza.',
+    ],
+    steps: [
+      'Mano en la frente: empuja la cabeza contra la mano SIN moverla. Aguanta 10 s respirando normal.',
+      'Manos en la nuca: empuja la cabeza hacia atrás contra las manos, 10 s.',
+      'Mano en el lateral de la cabeza: empuja hacia el lado, 10 s. Luego el otro lado.',
+      'Esa es 1 vuelta. Haz 3 vueltas con 30 s de descanso. Marca cada vuelta como una serie.',
+    ],
+    mistakes: [
+      'Aguantar la respiración (sube la tensión y puede marearte).',
+      'Empujar fuerte o a tirones: es un ejercicio suave.',
+      'Encoger los hombros hacia las orejas.',
+      'Seguir si notas mareo, hormigueo o que se te "mueve todo": para y respira.',
+    ],
+    tip: 'Fortalece el cuello sin cargarlo y lo hace más resistente a la tensión de estar sentado. Además enmarca la mandíbula.',
+    alt: { id: 'estiramiento-cuello', text: 'Si hoy notas el cuello cargado, haz solo los estiramientos suaves.' },
+  },
+  {
+    id: 'estiramiento-cuello', name: 'Estiramiento de trapecio y cuello', img: 'Side_Neck_Stretch', anim: 'neckStretch', primary: ['neck'], secondary: ['traps'], equip: 'Nada', timed: true,
+    zone: 'En cualquier sitio. Ideal en el trabajo cada 1-2 horas y al acabar de entrenar.',
+    setup: [
+      'Sentado con la espalda recta. Sujeta el borde de la silla con la mano derecha: así el hombro no sube.',
+      'Hombros abajo y relajados.',
+    ],
+    steps: [
+      'Inclina despacio la oreja izquierda hacia el hombro izquierdo, sin girar la cara.',
+      'Apoya la mano izquierda encima de la cabeza, solo su peso, sin tirar. Aguanta 20-30 s respirando lento.',
+      'Variante para el elevador de la escápula: gira la nariz hacia la axila izquierda y deja caer la cabeza. 20-30 s.',
+      'Vuelve al centro muy despacio y repite al otro lado. 2 veces por lado.',
+    ],
+    mistakes: [
+      'Tirar fuerte de la cabeza con la mano.',
+      'Dejar que el hombro del lado estirado suba.',
+      'Movimientos bruscos o círculos rápidos con el cuello.',
+    ],
+    tip: 'Es lo más útil contra la tensión de oficina. Si se te carga el cuello en el trabajo, hazlo ahí mismo: 2 minutos.',
+    alt: { id: null, text: 'Chin tucks: barbilla hacia atrás 3 s, 10 veces.' },
   },
 
   // ───────────── ESPALDA + PECHO ─────────────

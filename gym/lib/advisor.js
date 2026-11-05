@@ -3,6 +3,9 @@
 import { dayContext, weightStats, sortedWeights, weeklyAverages, navyBodyFat, adonis, personalRecords, sessionVolume, workoutForDay, eatenMacros, fmtKg } from './coach.js';
 import { getExercise } from './exercises.js';
 import { SLOTS, WEEK_MENU, getRecipe } from './recipes.js';
+import { customOf, mealFor, mealChange, recipeMacrosFor, foodFor, workoutsFor, notesOf } from './plan.js';
+import { nightOf, pendingNight, bedtimeFor, usualWake, slotsFor, sleepAverage, fmtHours } from './sleep.js';
+import { WORKOUT_BY_KEY } from './program.js';
 import { SUPPLEMENTS, DAILY_TARGETS } from './program.js';
 import { addDays, prettyDate, todayISO, weekdayIdx } from './dates.js';
 
@@ -63,7 +66,10 @@ export function buildAdvisorContext(s, now = new Date()) {
       `comidas ${meals}/5`,
       `agua ${day.water || 0}/${Math.ceil(DAILY_TARGETS.waterMl / DAILY_TARGETS.glassMl)} vasos`,
       day.steps ? `${day.steps} pasos` : null,
-      day.sleep != null ? `sueño ${n1(day.sleep)} h` : null,
+      (() => {
+        const nt = nightOf(s, d);
+        return nt.hours != null || nt.bed ? `sueño ${nt.hours != null ? `${fmtHours(nt.hours)} h` : '?'}${nt.bed || nt.wake ? ` (${nt.bed || '?'}→${nt.wake || '?'})` : ''}` : null;
+      })(),
       day.cardio ? 'cardio ✓' : null,
       supps.length ? `suplementos: ${supps.join(', ')}` : null,
     ].filter(Boolean);
@@ -71,13 +77,56 @@ export function buildAdvisorContext(s, now = new Date()) {
   }
   lines.push(`ÚLTIMOS 7 DÍAS:\n${week.join('\n')}`);
 
-  // Hoy comido
+  // Sueño
+  const pend = pendingNight(s, now);
+  const tonight = bedtimeFor(s, addDays(iso, 1));
+  const avg = sleepAverage(s, iso);
+  lines.push(
+    `SUEÑO: ${pend ? `ahora mismo está acostado desde las ${pend.bed}` : `anoche ${(() => { const nt = nightOf(s, iso); return nt.hours != null ? `${fmtHours(nt.hours)} h (${nt.bed || '?'}→${nt.wake || '?'})` : 'sin apuntar'; })()}`} · media 7 días ${avg != null ? `${fmtHours(avg)} h` : 'sin datos'} · suele levantarse a las ${usualWake(s, iso)}${s.profile.wakeTime ? ' (dato del perfil)' : ''} · para dormir 8 h esta noche: a la cama a las ${tonight.bed} (levantarse ${tonight.wake}). Usa los botones "Me acuesto / Me levanto" de la pantalla Hoy.`
+  );
+
+  // Hoy comido (menú real, con cambios y horario ajustado a cuando se levantó)
   const em = eatenMacros(s, iso);
-  const menu = WEEK_MENU[weekdayIdx(iso)];
   const eaten = s.days[iso]?.meals || {};
   lines.push(
-    `COMIDAS DE HOY (menú): ${SLOTS.map((sl) => `${sl.label}: ${getRecipe(menu[sl.key]).name}${eaten[sl.key] ? ' ✓' : ''}`).join(' | ')} · llevado ${em.eaten.kcal}/${em.target.kcal} kcal y ${em.eaten.p}/${em.target.p} g proteína`
+    `COMIDAS DE HOY: ${slotsFor(s, iso)
+      .map((sl) => {
+        const r = mealFor(s, iso, sl.key);
+        const ch = mealChange(s, iso, sl.key);
+        return `${sl.label} ${sl.time}: ${r?.name} [${r?.id}]${ch ? ` (cambiada${ch === 'dia' ? ' solo hoy' : ''})` : ''}${eaten[sl.key] ? ' ✓' : ''}`;
+      })
+      .join(' | ')} · llevado ${em.eaten.kcal}/${em.target.kcal} kcal y ${em.eaten.p}/${em.target.p} g proteína`
   );
+  const tIso = addDays(iso, 1);
+  lines.push(`COMIDAS DE MAÑANA (${prettyDate(tIso)}): ${SLOTS.map((sl) => `${sl.label}: ${mealFor(s, tIso, sl.key)?.name}`).join(' | ')}`);
+
+  // Personalizaciones del plan
+  const c = customOf(s);
+  const ch = [];
+  const DAYS = ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'];
+  for (const [k, id] of Object.entries(c.menu || {})) {
+    const [d, slot] = k.split('.');
+    const r = getRecipe(id) || c.recipes?.[id];
+    if (r) ch.push(`- Menú fijo: ${SLOTS.find((x) => x.key === slot)?.label} de los ${DAYS[Number(d)]} → ${r.name} [${id}] (original: ${getRecipe(WEEK_MENU[Number(d)][slot])?.name})`);
+  }
+  for (const [k, id] of Object.entries(c.dayMenu || {})) {
+    const date = k.slice(0, 10);
+    if (date < addDays(iso, -3)) continue;
+    const slot = k.slice(11);
+    const r = getRecipe(id) || c.recipes?.[id];
+    if (r) ch.push(`- Solo el ${date}: ${SLOTS.find((x) => x.key === slot)?.label} → ${r.name} [${id}]`);
+  }
+  for (const r of Object.values(c.recipes || {})) {
+    const m = recipeMacrosFor(r);
+    const ing = r.ingredients.map(([k, g]) => `${foodFor(r, k)?.name || k} ${g} g`).join(', ');
+    ch.push(`- Receta suya [${r.id}] "${r.name}" (${r.slot}): ${m.kcal} kcal, P${m.p} C${m.c} G${m.f}. ${ing}.`);
+  }
+  for (const w of workoutsFor(s).filter((x) => x.customized)) {
+    ch.push(`- Rutina cambiada ${w.name} [${w.key}]: ${w.items.map(([id, st, lo, hi, rest, note]) => `${getExercise(id)?.name} [${id}] ${st}×${lo}-${hi} ${rest}s${note ? ` (${note})` : ''}`).join('; ')}`);
+  }
+  lines.push(ch.length ? `CAMBIOS QUE HA HECHO SOBRE EL PLAN BASE:\n${ch.join('\n')}` : 'CAMBIOS SOBRE EL PLAN BASE: ninguno todavía.');
+  const notes = notesOf(s);
+  lines.push(notes.length ? `NOTAS QUE TE HA PEDIDO RECORDAR:\n${notes.map((n) => `- [${n.id}] ${n.text}`).join('\n')}` : 'NOTAS GUARDADAS: ninguna.');
 
   // Entrenos recientes con detalle
   const sessions = Object.entries(s.days)

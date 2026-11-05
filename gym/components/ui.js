@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import Icon from './Icon';
 
@@ -65,8 +66,9 @@ export function Sheet({ open, onClose, children, title }) {
       document.body.style.overflow = prev;
     };
   }, [open, onClose]);
-  if (!open) return null;
-  return (
+  if (!open || typeof document === 'undefined') return null;
+  // En un portal: así ninguna tarjeta (con su propio contexto de apilado) la tapa
+  return createPortal(
     <>
       <div className="sheet-backdrop" onClick={onClose} />
       <div className="sheet" role="dialog" aria-modal="true" aria-label={title}>
@@ -79,7 +81,8 @@ export function Sheet({ open, onClose, children, title }) {
         </div>
         {children}
       </div>
-    </>
+    </>,
+    document.body
   );
 }
 

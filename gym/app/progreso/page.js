@@ -9,6 +9,7 @@ import { weightStats, sortedWeights, weeklyAverages, navyBodyFat, targetWeightFo
 import { getExercise } from '../../lib/exercises';
 import { todayISO, shortDate, daysBetween, addDays, prettyDate } from '../../lib/dates';
 import { MEASURE_HOWTO, WEIGH_HOWTO } from '../../lib/program';
+import ProgressPhotos from '../../components/ProgressPhotos';
 
 export default function ProgresoPage() {
   const hydrated = useHydrated();
@@ -43,6 +44,7 @@ export default function ProgresoPage() {
 
       <WeightCard s={s} showToast={showToast} />
       <MeasuresCard s={s} showToast={showToast} />
+      <ProgressPhotos />
       <HistoryCard s={s} />
     </>
   );

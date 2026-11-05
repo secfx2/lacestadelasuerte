@@ -338,6 +338,8 @@ a.tile:hover { border-color: var(--line-2); }
 .set-row.head { color: var(--faint); font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
 .set-row.done .input { border-color: rgba(200, 255, 61, 0.35); color: var(--lime); }
 .set-row .check { width: 40px; height: 38px; border-radius: 12px; }
+.set-row.timed { grid-template-columns: 28px 1fr 40px; }
+.set-row.timed.done .small { color: var(--lime); }
 .hint { display: flex; gap: 8px; align-items: flex-start; padding: 10px 12px; border-radius: 12px; background: var(--card-2); font-size: 13px; }
 .hint.up { background: rgba(200, 255, 61, 0.08); color: #e2ffa1; }
 .hint.warn { background: rgba(255, 181, 71, 0.1); color: #ffd79a; }
@@ -421,6 +423,7 @@ a.tile:hover { border-color: var(--line-2); }
 .bubble { max-width: 92%; padding: 11px 14px; border-radius: 18px; font-size: 15px; line-height: 1.5; word-wrap: break-word; }
 .bubble.me { align-self: flex-end; background: var(--lime); color: var(--lime-ink); border-bottom-right-radius: 6px; font-weight: 500; }
 .bubble.ai { align-self: flex-start; background: var(--card); border: 1px solid var(--line); border-bottom-left-radius: 6px; }
+.bubble .changes { margin-top: 10px; padding: 10px 12px; border-radius: 12px; background: rgba(200, 255, 61, 0.06); border: 1px solid rgba(200, 255, 61, 0.22); }
 .md p + p, .md p + ul, .md p + ol, .md ul + p, .md ol + p, .md h4 + p, .md ul + h4, .md p + h4 { margin-top: 8px; }
 .md h4 { font-size: 15.5px; margin: 6px 0 2px; }
 .md ul, .md ol { margin: 4px 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }

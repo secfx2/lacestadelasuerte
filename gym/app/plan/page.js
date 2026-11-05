@@ -5,8 +5,9 @@ import Icon from '../../components/Icon';
 import { PageSkeleton, useHashScroll } from '../../components/ui';
 import { useAppState, useHydrated } from '../../lib/store';
 import { dayContext, projection, weeksToGoal, fmtKg } from '../../lib/coach';
-import { WORKOUTS, PHASES, SUPPLEMENTS, NO_SUPPLEMENTS, JAWLINE, LOVE_HANDLES, RULES, DOUBLE_SESSION } from '../../lib/program';
+import { WORKOUTS, PHASES, SUPPLEMENTS, NO_SUPPLEMENTS, JAWLINE, LOVE_HANDLES, NECK_CARE, RULES, DOUBLE_SESSION } from '../../lib/program';
 import { getExercise } from '../../lib/exercises';
+import { workoutsFor } from '../../lib/plan';
 import { DAY_NAMES, addDays, mondayOf, shortDate } from '../../lib/dates';
 
 const MILESTONES = [
@@ -75,6 +76,7 @@ export default function PlanPage() {
           ['#suplementos', 'Suplementos'],
           ['#michelines', 'Michelines'],
           ['#mandibula', 'Mandíbula'],
+          ['#cuello', 'Cuello'],
           ['#reglas', 'Reglas'],
         ].map(([h, l]) => (
           <a key={h} href={h} className="chip">
@@ -158,7 +160,7 @@ export default function PlanPage() {
       <section id="semana" className="section" style={{ scrollMarginTop: 16 }}>
         <div className="section-title">Semana tipo (Fitness Park)</div>
         <div className="stack">
-          {WORKOUTS.map((w, i) => (
+          {workoutsFor(s).map((w, i) => (
             <details key={w.key} className="card" open={i === ctx.dayIdx}>
               <summary className="row" style={{ cursor: 'pointer', listStyle: 'none' }}>
                 <span style={{ fontSize: 26 }}>{w.emoji}</span>
@@ -166,6 +168,7 @@ export default function PlanPage() {
                   <div className="tiny muted" style={{ fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{DAY_NAMES[i]}</div>
                   <div style={{ fontWeight: 650 }}>
                     {w.name} <span className="muted" style={{ fontWeight: 500 }}>· {w.subtitle}</span>
+                    {w.customized && <span className="pill" style={{ marginLeft: 6 }}>✨ cambiado</span>}
                   </div>
                 </div>
                 <Icon name="chevron" size={18} className="muted" />
@@ -262,7 +265,7 @@ export default function PlanPage() {
               ))}
             </ul>
           </div>
-          <p className="tiny faint">Presupuesto: creatina + whey + vitamina D + multi + magnesio ≈ 40-50 €/mes. Si tomas medicación o tienes algún problema de salud, coméntalo con tu médico.</p>
+          <p className="tiny faint">Presupuesto: creatina + whey + vitamina D + multi + magnesio + psyllium ≈ 45-55 €/mes. Si tomas medicación o tienes algún problema de salud, coméntalo con tu médico.</p>
         </div>
       </section>
 
@@ -306,6 +309,33 @@ export default function PlanPage() {
               <p className="small muted" style={{ marginTop: 4 }}>{it.d}</p>
             </div>
           ))}
+        </div>
+      </section>
+
+      {/* ───── Cuello ───── */}
+      <section id="cuello" className="section" style={{ scrollMarginTop: 16 }}>
+        <div className="section-title">Cuello y tensión de oficina</div>
+        <div className="card" style={{ background: 'linear-gradient(150deg,#10202b 0%,var(--card) 60%)', borderColor: 'rgba(96,165,250,0.18)' }}>
+          <p>{NECK_CARE.intro}</p>
+        </div>
+        <div className="stack" style={{ marginTop: 12 }}>
+          {NECK_CARE.items.map((it) => (
+            <div key={it.t} className="card">
+              <h3 style={{ fontSize: 16 }}>{it.t}</h3>
+              <p className="small muted" style={{ marginTop: 4 }}>{it.d}</p>
+            </div>
+          ))}
+          <div className="row wrap">
+            <Link href="/ejercicio/estiramiento-cuello" className="btn sm">
+              <Icon name="cube" size={15} /> Estiramiento de trapecio
+            </Link>
+            <Link href="/ejercicio/cuello-isometricos" className="btn sm">
+              <Icon name="cube" size={15} /> Isométricos suaves
+            </Link>
+            <Link href="/ejercicio/face-pull" className="btn sm">
+              <Icon name="cube" size={15} /> Face pull
+            </Link>
+          </div>
         </div>
       </section>
 

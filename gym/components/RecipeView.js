@@ -5,19 +5,38 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import Icon from './Icon';
 import FoodImg from './FoodImg';
-import { BackLink, Check, useToast } from './ui';
-import { getRecipe, recipeMacros, SLOT_BY_KEY, SLOTS, WEEK_MENU } from '../lib/recipes';
-import { qtyLabel, FOODS } from '../lib/foods';
+import { BackLink, Check, PageSkeleton, useToast } from './ui';
+import { SLOT_BY_KEY, SLOTS } from '../lib/recipes';
+import { recipeFor, recipeMacrosFor, foodFor, mealIdFor } from '../lib/plan';
+import { slotsFor } from '../lib/sleep';
+import { qtyLabel } from '../lib/foods';
 import { useAppState, useHydrated, updateDay } from '../lib/store';
-import { todayISO, weekdayIdx, fmtClock } from '../lib/dates';
+import { todayISO, fmtClock } from '../lib/dates';
 import { beep, unlockAudio } from '../lib/sound';
 
 export default function RecipeView({ id }) {
-  const r = getRecipe(id);
-  const params = useSearchParams();
-  const router = useRouter();
   const hydrated = useHydrated();
   const s = useAppState();
+  const r = recipeFor(s, id);
+  if (!r) {
+    if (!hydrated) return <PageSkeleton />;
+    return (
+      <>
+        <BackLink href="/dieta" label="Dieta" />
+        <div className="card stack" style={{ marginTop: 16 }}>
+          <h3>Receta no encontrada</h3>
+          <p className="small muted">Puede que se haya borrado o que aún no se haya sincronizado en este dispositivo.</p>
+          <Link href="/dieta" className="btn primary">Ver el menú</Link>
+        </div>
+      </>
+    );
+  }
+  return <RecipeBody id={id} r={r} s={s} hydrated={hydrated} />;
+}
+
+function RecipeBody({ id, r, s, hydrated }) {
+  const params = useSearchParams();
+  const router = useRouter();
   const [toast, showToast] = useToast();
   const [mult, setMult] = useState(1);
   const [have, setHave] = useState({});
@@ -26,13 +45,10 @@ export default function RecipeView({ id }) {
   // ¿A qué comida (día/slot) corresponde? Por la URL o porque está en el menú de hoy
   const iso = params.get('d') || todayISO();
   let slotKey = params.get('slot');
-  if (!slotKey) {
-    const menu = WEEK_MENU[weekdayIdx(iso)];
-    slotKey = SLOTS.find((sl) => menu[sl.key] === id)?.key || null;
-  }
-  const slot = slotKey ? SLOT_BY_KEY[slotKey] : null;
+  if (!slotKey) slotKey = SLOTS.find((sl) => mealIdFor(s, iso, sl.key) === id)?.key || null;
+  const slot = slotKey ? slotsFor(s, iso).find((sl) => sl.key === slotKey) || SLOT_BY_KEY[slotKey] : null;
   const eaten = hydrated && slot ? !!s.days[iso]?.meals?.[slot.key] : false;
-  const m = recipeMacros(r);
+  const m = recipeMacrosFor(r);
 
   const markEaten = (val = true) => {
     if (!slot) return;
@@ -55,7 +71,7 @@ export default function RecipeView({ id }) {
           </div>
           <h1 style={{ fontSize: 28 }}>{r.name}</h1>
           <div className="row wrap" style={{ gap: 6, marginTop: 10 }}>
-            {r.tags.map((t) => (
+            {(r.tags || []).map((t) => (
               <span key={t} className="pill">{t}</span>
             ))}
           </div>
@@ -99,7 +115,7 @@ export default function RecipeView({ id }) {
               <div key={k + i} className="list-item" style={{ padding: '10px 0' }}>
                 <Check on={have[i]} round onClick={() => setHave((h) => ({ ...h, [i]: !h[i] }))} label="Lo tengo" />
                 <div className="grow" style={{ opacity: have[i] ? 0.5 : 1 }}>
-                  <div style={{ fontWeight: 550 }}>{FOODS[k]?.name || k}</div>
+                  <div style={{ fontWeight: 550 }}>{foodFor(r, k)?.name || k}</div>
                   {note && <div className="tiny muted">{note}</div>}
                 </div>
                 <span className="num muted small" style={{ textAlign: 'right' }}>{k === 'especias' ? 'al gusto' : qtyLabel(k, g * mult)}</span>
@@ -217,7 +233,7 @@ function StepMode({ recipe, onClose, onFinish, canMark, mult }) {
               {recipe.ingredients.map(([k, g, note], n) => (
                 <div key={n} className="spread" style={{ padding: '7px 0', borderBottom: '1px solid var(--line)' }}>
                   <span>
-                    {FOODS[k]?.name || k}
+                    {foodFor(recipe, k)?.name || k}
                     {note ? <span className="tiny muted"> · {note}</span> : null}
                   </span>
                   <span className="num muted small">{k === 'especias' ? 'al gusto' : qtyLabel(k, g * mult)}</span>

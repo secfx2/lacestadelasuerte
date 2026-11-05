@@ -1,6 +1,8 @@
 // Fotos de referencia de cada producto de la compra (generadas con IA, envase genérico sin marcas).
 // Se sirven desde el CDN de Higgsfield y Next/Image las optimiza.
 export const PRODUCT_IMAGES = {
+  cacao: 'https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261105_112949_1745b0bc-c6f0-4c45-8fa4-40b528221efe.png',
+  chocolate85: 'https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261105_112950_318b415b-d28a-4d4b-9b2b-8cca29533b34.png',
   pollo: 'https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261105_110256_4c3e4f56-8c09-4738-ab79-80adc9102030.png',
   pavo: 'https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261105_110251_f90908df-4b10-4f97-807e-b1db9f104d7f.png',
   ternera5: 'https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261105_110251_7c6c1759-df82-4bf0-a4bb-41b7b060efff.png',

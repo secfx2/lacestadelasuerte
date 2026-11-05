@@ -65,6 +65,8 @@ export const FOODS = {
   aove: { name: 'Aceite de oliva virgen extra', kcal: 884, p: 0, c: 0, f: 100, fib: 0, cat: 'Despensa', unit: 'ml' },
   crCacahuete: { name: 'Crema de cacahuete 100%', kcal: 600, p: 25, c: 14, f: 50, fib: 6, cat: 'Despensa' },
   leCoco: { name: 'Leche de coco light (lata)', kcal: 75, p: 0.7, c: 1.5, f: 7, fib: 0, cat: 'Despensa', unit: 'ml' },
+  cacao: { name: 'Cacao puro en polvo (desgrasado, sin azúcar)', kcal: 340, p: 20, c: 14, f: 11, fib: 33, cat: 'Despensa' },
+  chocolate85: { name: 'Chocolate negro 85%', kcal: 600, p: 11, c: 19, f: 50, fib: 12, cat: 'Despensa' },
   miel: { name: 'Miel', kcal: 304, p: 0.3, c: 82, f: 0, fib: 0, cat: 'Despensa' },
   soja: { name: 'Salsa de soja baja en sal', kcal: 60, p: 8, c: 6, f: 0, fib: 0, cat: 'Despensa', unit: 'ml' },
   sesamo: { name: 'Sésamo tostado', kcal: 570, p: 18, c: 12, f: 50, fib: 12, cat: 'Despensa' },

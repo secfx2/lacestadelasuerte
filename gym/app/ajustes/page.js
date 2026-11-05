@@ -8,6 +8,11 @@ import { BackLink, PageSkeleton, useToast } from '../../components/ui';
 import { getState, replaceState, resetState, update, useAppState, useHydrated } from '../../lib/store';
 import { todayISO } from '../../lib/dates';
 import { weeksToGoal } from '../../lib/coach';
+import { customOf, notesOf, recipeFor } from '../../lib/plan';
+import { WORKOUT_BY_KEY } from '../../lib/program';
+import { SLOTS } from '../../lib/recipes';
+import { DAY_NAMES } from '../../lib/dates';
+import Link from 'next/link';
 
 export default function AjustesPage() {
   const hydrated = useHydrated();
@@ -75,6 +80,10 @@ export default function AjustesPage() {
             <input id="a-gym" className="input" type="time" value={p.gymTime || ''} onChange={setP('gymTime')} />
           </div>
           <div className="field">
+            <label htmlFor="a-wake">Me suelo levantar a las</label>
+            <input id="a-wake" className="input" type="time" value={p.wakeTime || ''} onChange={setP('wakeTime')} />
+          </div>
+          <div className="field">
             <label htmlFor="a-kg">Peso inicial (kg)</label>
             <input id="a-kg" className="input" inputMode="decimal" defaultValue={p.startKg} onBlur={setP('startKg', true)} />
           </div>
@@ -101,6 +110,8 @@ export default function AjustesPage() {
       </div>
 
       <SyncCard showToast={showToast} />
+
+      <CustomCard s={s} showToast={showToast} />
 
       <AdvisorKeyCard showToast={showToast} />
 
@@ -145,6 +156,112 @@ export default function AjustesPage() {
         </div>
       </div>
     </>
+  );
+}
+
+// Lo que has cambiado del plan (normalmente a través del asesor)
+function CustomCard({ s, showToast }) {
+  const c = customOf(s);
+  const slotLabel = (k) => SLOTS.find((x) => x.key === k)?.label || k;
+  const menu = Object.entries(c.menu || {}).map(([k, id]) => {
+    const [d, slot] = k.split('.');
+    return { k, text: `${DAY_NAMES[Number(d)]} · ${slotLabel(slot)} → ${recipeFor(s, id)?.name || id}` };
+  });
+  const today = todayISO();
+  const dayMenu = Object.entries(c.dayMenu || {})
+    .filter(([k]) => k.slice(0, 10) >= today)
+    .map(([k, id]) => ({ k, text: `${k.slice(8, 10)}/${k.slice(5, 7)} · ${slotLabel(k.slice(11))} → ${recipeFor(s, id)?.name || id}` }));
+  const recipes = Object.values(c.recipes || {});
+  const workouts = Object.keys(c.workouts || {}).filter((k) => WORKOUT_BY_KEY[k]);
+  const notes = notesOf(s);
+  const empty = !menu.length && !dayMenu.length && !recipes.length && !workouts.length && !notes.length;
+
+  const remove = (bucket, key) =>
+    update((d) => {
+      const cc = { ...(d.custom || {}) };
+      cc[bucket] = { ...(cc[bucket] || {}) };
+      delete cc[bucket][key];
+      d.custom = cc;
+    });
+  const resetAll = () => {
+    if (!window.confirm('¿Volver al plan original? Se borran todos los cambios del menú, tus recetas, la rutina cambiada y las notas del asesor.')) return;
+    update((d) => {
+      d.custom = { menu: {}, dayMenu: {}, recipes: {}, workouts: {}, notes: {} };
+    });
+    showToast('Plan original restaurado');
+  };
+  const Row = ({ text, onRemove }) => (
+    <div className="spread" style={{ gap: 8, padding: '6px 0', borderBottom: '1px solid var(--line)' }}>
+      <span className="small">{text}</span>
+      <button className="icon-btn sm" onClick={onRemove} aria-label="Quitar">
+        <Icon name="x" size={14} />
+      </button>
+    </div>
+  );
+
+  return (
+    <div className="card stack">
+      <h3>Tus cambios del plan</h3>
+      {empty ? (
+        <p className="small muted">
+          Aún no has cambiado nada. Pídeselo al <Link href="/asesor" style={{ textDecoration: 'underline' }}>asesor</Link>: "cámbiame la cena del martes", "quita este ejercicio", "recuerda que no me gusta X"…
+        </p>
+      ) : (
+        <>
+          {menu.length > 0 && (
+            <div>
+              <div className="tiny muted" style={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Menú (todas las semanas)</div>
+              {menu.map((m) => (
+                <Row key={m.k} text={m.text} onRemove={() => remove('menu', m.k)} />
+              ))}
+            </div>
+          )}
+          {dayMenu.length > 0 && (
+            <div>
+              <div className="tiny muted" style={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Menú (días sueltos)</div>
+              {dayMenu.map((m) => (
+                <Row key={m.k} text={m.text} onRemove={() => remove('dayMenu', m.k)} />
+              ))}
+            </div>
+          )}
+          {recipes.length > 0 && (
+            <div>
+              <div className="tiny muted" style={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Tus recetas</div>
+              {recipes.map((r) => (
+                <div key={r.id} className="spread" style={{ gap: 8, padding: '6px 0', borderBottom: '1px solid var(--line)' }}>
+                  <Link href={`/receta/${r.id}`} className="small" style={{ textDecoration: 'underline' }}>
+                    {r.emoji ? `${r.emoji} ` : ''}
+                    {r.name}
+                  </Link>
+                  <button className="icon-btn sm" onClick={() => remove('recipes', r.id)} aria-label="Borrar receta">
+                    <Icon name="x" size={14} />
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+          {workouts.length > 0 && (
+            <div>
+              <div className="tiny muted" style={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Rutina cambiada</div>
+              {workouts.map((k) => (
+                <Row key={k} text={`${WORKOUT_BY_KEY[k].emoji} ${WORKOUT_BY_KEY[k].name} (pulsa × para volver a la original)`} onRemove={() => remove('workouts', k)} />
+              ))}
+            </div>
+          )}
+          {notes.length > 0 && (
+            <div>
+              <div className="tiny muted" style={{ fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Lo que el asesor recuerda de ti</div>
+              {notes.map((n) => (
+                <Row key={n.id} text={n.text} onRemove={() => remove('notes', n.id)} />
+              ))}
+            </div>
+          )}
+          <button className="btn danger sm" onClick={resetAll} style={{ alignSelf: 'flex-start' }}>
+            Volver al plan original
+          </button>
+        </>
+      )}
+    </div>
   );
 }
 

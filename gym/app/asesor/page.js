@@ -5,19 +5,49 @@ import { useEffect, useRef, useState } from 'react';
 import Icon from '../../components/Icon';
 import Markdown from '../../components/Markdown';
 import { PageSkeleton } from '../../components/ui';
-import { getState, useHydrated } from '../../lib/store';
+import { getState, update, useHydrated } from '../../lib/store';
+import { applyOps } from '../../lib/planOps';
+import { todayISO } from '../../lib/dates';
 import { buildAdvisorContext } from '../../lib/advisor';
 import { getChat, getLocalKey, getModelPref, saveChat, setLocalKey, setModelPref } from '../../lib/advisorStore';
 
+const TRAILER = '\u001e';
+
+// Aplica en tus datos los cambios que ha hecho el asesor y devuelve lo necesario para deshacerlos
+function applyChanges(ops) {
+  const prev = getState();
+  const undo = { custom: JSON.parse(JSON.stringify(prev.custom || {})), profile: {} };
+  for (const o of ops) if (o.op === 'profile') for (const k of Object.keys(o.patch || {})) undo.profile[k] = prev.profile[k] ?? null;
+  update((s) => {
+    const r = applyOps(s.custom || {}, s.profile, ops, todayISO());
+    s.custom = r.custom;
+    s.profile = r.profile;
+  });
+  return undo;
+}
+
+function undoChanges(undo) {
+  update((s) => {
+    s.custom = undo.custom;
+    for (const [k, v] of Object.entries(undo.profile || {})) {
+      if (v === null) delete s.profile[k];
+      else s.profile[k] = v;
+    }
+  });
+}
+
 const SUGGESTIONS = [
   '¿Cómo voy? Analiza mi progreso de estas semanas',
-  'Hoy no me apetece la cena del menú, ¿qué hago en su lugar?',
+  'Hoy no me apetece la cena del menú, cámbiamela por otra cosa',
+  'Quítame el aguacate y la fruta de todo el menú y recuérdalo',
+  'El press francés me molesta en el codo, cámbialo por otro',
   'El press de hombro está ocupado, ¿qué hago?',
   'Esta noche ceno fuera con amigos, ¿qué pido?',
   'Me noto estancado en el peso, ¿qué ajusto?',
   '¿Qué ejercicios me ayudan más con los michelines y el culo?',
   'Hoy solo tengo 45 minutos, adáptame el entreno',
   '¿Qué creatina y proteína compro y cómo las tomo?',
+  'Anoche dormí 5 horas, ¿cómo adapto el entreno de hoy?',
 ];
 
 const MODELS = [
@@ -73,7 +103,14 @@ export default function AsesorPage() {
       const res = await fetch('/api/coach', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', ...(!serverKey && localKey ? { 'x-anthropic-key': localKey } : {}) },
-        body: JSON.stringify({ model, messages: history.slice(-24), context: buildAdvisorContext(getState()) }),
+        body: JSON.stringify({
+          model,
+          messages: history.slice(-24).map((m) => ({ role: m.role, content: m.content })),
+          context: buildAdvisorContext(getState()),
+          custom: getState().custom || {},
+          profile: getState().profile,
+          today: todayISO(),
+        }),
         signal: ctrl.signal,
       });
       if (!res.ok) {
@@ -86,14 +123,25 @@ export default function AsesorPage() {
         const { value, done } = await reader.read();
         if (done) break;
         reply += dec.decode(value, { stream: true });
-        setMsgs([...history, { role: 'assistant', content: reply }]);
+        setMsgs([...history, { role: 'assistant', content: reply.split(TRAILER)[0] }]);
       }
-      const final = [...history, { role: 'assistant', content: reply || '…' }];
+      // Cambios del plan que ha hecho el asesor (van al final de la respuesta)
+      const [text, trailer] = reply.split(TRAILER);
+      let extra = {};
+      if (trailer) {
+        try {
+          const { ops, changes } = JSON.parse(trailer);
+          if (Array.isArray(ops) && ops.length) extra = { changes: changes || [], undo: applyChanges(ops) };
+        } catch {
+          /* resumen ilegible: no se aplica nada */
+        }
+      }
+      const final = [...history, { role: 'assistant', content: text || (extra.changes ? 'Hecho.' : '…'), ...extra }];
       setMsgs(final);
       saveChat(final);
     } catch (e) {
       if (e.name === 'AbortError') {
-        const final = reply ? [...history, { role: 'assistant', content: reply + '\n\n_(parado)_' }] : history;
+        const final = reply ? [...history, { role: 'assistant', content: reply.split(TRAILER)[0] + '\n\n_(parado)_' }] : history;
         setMsgs(final);
         saveChat(final);
       } else {
@@ -105,6 +153,17 @@ export default function AsesorPage() {
       setBusy(false);
       abortRef.current = null;
     }
+  };
+
+  // Solo se puede deshacer el último bloque de cambios (deshacer uno antiguo pisaría los posteriores)
+  const lastChangeIdx = msgs.reduce((acc, m, i) => (m.changes?.length && !m.undone ? i : acc), -1);
+  const undo = (i) => {
+    const m = msgs[i];
+    if (!m?.undo) return;
+    undoChanges(m.undo);
+    const next = msgs.map((x, j) => (j === i ? { ...x, undone: true } : x));
+    setMsgs(next);
+    saveChat(next);
   };
 
   const clear = () => {
@@ -182,7 +241,7 @@ export default function AsesorPage() {
                 <div className="hint up">
                   <Icon name="sparkle" size={18} />
                   <span>
-                    Pregúntame lo que quieras. Veo tu plan, tu peso, tus medidas, tus entrenos con kilos y repeticiones, lo que has comido, el agua y el sueño.
+                    Pregúntame lo que quieras. Veo tu plan, tu peso, tus medidas, tus entrenos con kilos y repeticiones, lo que has comido, el agua y el sueño. Y si me lo pides, <b>cambio tu menú, tus recetas o tu rutina</b> directamente en la app.
                   </span>
                 </div>
                 <div className="row wrap" style={{ gap: 8 }}>
@@ -199,7 +258,26 @@ export default function AsesorPage() {
                 {m.role === 'user' ? (
                   <p style={{ whiteSpace: 'pre-wrap' }}>{m.content}</p>
                 ) : m.content ? (
-                  <Markdown text={m.content} />
+                  <>
+                    <Markdown text={m.content} />
+                    {m.changes?.length > 0 && (
+                      <div className="changes">
+                        <div className="tiny" style={{ fontWeight: 700, color: m.undone ? 'var(--muted)' : 'var(--lime)', marginBottom: 4 }}>
+                          {m.undone ? '↩︎ Cambios deshechos' : '✓ Cambios aplicados en tu plan'}
+                        </div>
+                        <ul className="tiny" style={{ margin: 0, paddingLeft: 16, textDecoration: m.undone ? 'line-through' : 'none' }}>
+                          {m.changes.map((c, j) => (
+                            <li key={j}>{c}</li>
+                          ))}
+                        </ul>
+                        {!m.undone && i === lastChangeIdx && (
+                          <button className="btn xs" style={{ marginTop: 8 }} onClick={() => undo(i)}>
+                            Deshacer
+                          </button>
+                        )}
+                      </div>
+                    )}
+                  </>
                 ) : (
                   <span className="typing" aria-label="Pensando">
                     <i />

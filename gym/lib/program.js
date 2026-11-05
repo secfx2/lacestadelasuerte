@@ -62,7 +62,7 @@ export const WORKOUTS = [
     name: 'Hombro + Brazo',
     subtitle: 'El día "aesthetic": deltoides 3D y brazos',
     emoji: '💎',
-    focus: 'Deltoides redondos y brazos que llenan la camiseta. Cuello opcional para la mandíbula.',
+    focus: 'Deltoides redondos y brazos que llenan la camiseta. Al final, cuello suave (sin peso) para la mandíbula y la tensión de oficina.',
     items: [
       ['press-hombro-mancuernas', 3, 8, 10, 120],
       ['elevacion-lateral-maquina', 4, 12, 15, 60, 'Última serie: myo-reps (fallo, 5 respiraciones, +3-5 reps, repetir 3 veces).'],
@@ -71,8 +71,7 @@ export const WORKOUTS = [
       ['press-frances', 3, 10, 12, 75],
       ['curl-predicador', 2, 12, 15, 60],
       ['fondos-maquina', 2, 10, 12, 60],
-      ['cuello-flexion', 2, 15, 20, 45, 'Opcional. Muy ligero, controlado.'],
-      ['cuello-extension', 2, 15, 20, 45, 'Opcional. Muy ligero, controlado.'],
+      ['cuello-isometricos', 3, 1, 1, 30, 'Opcional y suave: 1 serie = 1 vuelta (delante, atrás y lados, 10 s cada uno). Sin aguantar la respiración. Si notas mareo, para.'],
     ],
   },
   {
@@ -206,7 +205,7 @@ export const SUPPLEMENTS = [
   { key: 'multi', name: 'Multivitamínico básico', dose: '1 comprimido', when: 'Con el desayuno.', daily: true, evidence: 'B', why: 'Como comes poca verdura entera, es un seguro barato para micronutrientes. Ya suele llevar ~10 mg de zinc: con eso y la carne vas sobrado (mira que no pase de 15 mg).' },
   { key: 'omega3', name: 'Omega-3 (EPA+DHA)', dose: '1-2 g de EPA+DHA', when: 'Con la comida.', daily: true, evidence: 'B', why: 'Si comes pescado azul menos de 2 veces/semana. Salud cardiovascular y articular.' },
   { key: 'magnesio', name: 'Magnesio (bisglicinato o citrato)', dose: '200-250 mg de magnesio elemental', when: 'Por la noche, antes de dormir.', daily: true, evidence: 'B', why: 'Recomendado en tu caso: sin verdura de hoja ni frutos secos te quedas algo corto de los ~400 mg diarios, y entrenando 2 h al día pierdes más con el sudor. Ayuda al sueño y a los calambres cuando vas justo. Evita el óxido de magnesio (se absorbe mal y suelta el estómago) y no pases de 250 mg en suplemento.' },
-  { key: 'psyllium', name: 'Psyllium (fibra)', dose: '5 g en un vaso grande de agua', when: 'Opcional, si vas mal al baño.', daily: false, optional: true, evidence: 'B', why: 'Te cuesta llegar a 30 g de fibra sin verdura entera. Esto lo soluciona.' },
+  { key: 'psyllium', name: 'Psyllium (fibra)', dose: '5 g en un vaso grande de agua', when: 'Con la cena o antes de dormir. Recomendado.', daily: true, evidence: 'B', why: 'Sin fruta ni verdura entera te quedas en 23-29 g de fibra al día. 5 g de psyllium te llevan a ~30 g: mejor digestión, más saciedad y ayuda con el colesterol. Bebe agua de sobra con él.' },
 ];
 
 export const NO_SUPPLEMENTS = [
@@ -241,11 +240,25 @@ export const JAWLINE = {
   items: [
     { t: 'Grasa corporal', d: 'Lo principal. Todo este plan va de esto: al bajar de 94 a ~80 kg la cara cambia muchísimo.' },
     { t: 'Sodio, alcohol y sueño', d: 'Mucha sal procesada, alcohol y dormir poco = cara hinchada por retención. Bebe tus 3,5 L de agua.' },
-    { t: 'Cuello fuerte', d: 'Un cuello más grueso enmarca la mandíbula. 2 ejercicios ligeros los jueves (opcionales). Nunca pesado ni rápido.' },
+    { t: 'Cuello fuerte (sin peso)', d: 'Un cuello más fuerte enmarca la mandíbula. Como se te carga con el trabajo, nada de discos: isométricos suaves con la mano el jueves y estiramientos a diario. Mira la guía de cuello.' },
     { t: 'Postura', d: 'La cabeza adelantada crea papada visual. Haz 2 × 10 chin tucks al día (meter barbilla hacia atrás, como haciendo papada, 3 s) y face pulls en el gym.' },
     { t: 'Masticar', d: 'El chicle duro (tipo mastic) puede hipertrofiar un poco el masetero. Máx. 20-30 min al día y para si te duele la articulación (ATM).' },
     { t: 'Barba y corte de pelo', d: 'Una barba corta perfilada en la línea mandibular y laterales cortos visualmente marcan más el ángulo. Efecto inmediato.' },
     { t: 'Mewing', d: 'Poner la lengua en el paladar ayuda a la postura, pero en adultos no cambia el hueso. No esperes milagros.' },
+  ],
+};
+
+// Cuello: tensión por trabajo sentado (a veces con náuseas o sensación de que todo se mueve)
+export const NECK_CARE = {
+  intro:
+    'Lo que describes (cuello tenso por estar sentado y a veces náuseas o la sensación de que todo se mueve) es bastante común y suele estar relacionado con la tensión de la musculatura del cuello y de la parte alta de la espalda; a veces se llama mareo cervicogénico. Aquí no se puede diagnosticar: coméntalo con tu médico o un fisio, sobre todo si se repite. Mientras, el plan está adaptado para no cargarte el cuello.',
+  items: [
+    { t: 'En el gym', d: 'Nada de cuello con disco ni encogimientos pesados. El jueves, isométricos suaves con la mano (opcionales). Respira en cada repetición: aguantar el aire en esfuerzos fuertes sube la tensión. Cabeza neutra: no mires al espejo girando el cuello ni al techo en el hip thrust, y no tires de la cabeza en los abdominales.' },
+    { t: 'Si te da en mitad del entreno', d: 'Para, siéntate, respira lento y bebe agua. No sigas con ejercicios pesados ese día: termina con algo suave o vete a casa. Levántate despacio de los bancos y de la prensa.' },
+    { t: 'En el trabajo', d: 'Pantalla a la altura de los ojos y a un brazo de distancia; codos apoyados; los pies en el suelo. Cada 45-60 min levántate 2 minutos: 10 chin tucks, hombros atrás y el estiramiento de trapecio (30 s por lado).' },
+    { t: 'Cada día (3 minutos)', d: 'Chin tucks 2 × 10, estiramiento de trapecio y del elevador de la escápula 2 × 30 s por lado y face pulls / remos en el gym para la espalda alta. Calor local (ducha caliente) por la noche si lo notas cargado.' },
+    { t: 'Ayuda también', d: 'Dormir bien (almohada que deje el cuello recto, no dos almohadas), beber tus 3,5 L, no estar muchas horas sin comer y ir con la cafeína con calma (máx. 1-2 cafés).' },
+    { t: 'Ve al médico ya si…', d: 'el mareo es fuerte o dura, o aparece con dolor de cabeza muy intenso y brusco, visión doble, dificultad para hablar o tragar, hormigueo o debilidad en brazos o cara, o tras un golpe. Eso no es tensión: es urgencia.' },
   ],
 };
 
@@ -267,7 +280,7 @@ export const TIPS = [
   'Las elevaciones laterales son el ejercicio nº1 para verte ancho. Peso ligero, técnica perfecta, sin balanceo.',
   'Hoy bebe un vaso de agua nada más levantarte. Llevas 8 h sin beber.',
   'La báscula sube y baja por agua, sal y glucógeno. Mira la media semanal, no el número de hoy.',
-  'Si tienes hambre: más volumen con menos calorías → gazpacho, cremas, fruta, queso batido.',
+  'Si tienes hambre: más volumen con menos calorías → gazpacho, cremas, gelatina 0%, queso batido.',
   'Haz meal prep el domingo: curry o boloñesa para 3 días y la semana se hace sola.',
   'Apunta los pesos de cada serie. Lo que no se mide no progresa.',
   'Cardio en cinta inclinada sin agarrarte. Si necesitas agarrarte, baja la inclinación.',

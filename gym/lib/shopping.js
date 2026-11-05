@@ -2,6 +2,7 @@
 
 import { FOODS } from './foods.js';
 import { SLOTS, WEEK_MENU, getRecipe } from './recipes.js';
+import { mealFor, foodFor, weekDates } from './plan.js';
 
 export const CATEGORY_ORDER = ['Carne y pescado', 'Huevos y lácteos', 'Fruta y verdura', 'Congelados', 'Refrigerados', 'Panadería', 'Despensa', 'Suplementos', 'Otros'];
 
@@ -20,14 +21,14 @@ export const CATEGORY_EMOJI = {
 // Dónde comprarlo. La idea: TODO en Mercadona en un solo viaje; la proteína en polvo, online.
 export const STORE_PLAN = {
   main: 'Mercadona',
-  why: 'Tiene todo el menú en un solo viaje: yogures +Proteínas, queso fresco batido 0%, claras en brick, pavo 90%, gazpacho y salmorejo de nevera, legumbre cocida en bote y crema de cacahuete 100%.',
+  why: 'Tiene todo el menú en un solo viaje: yogures +Proteínas, queso fresco batido 0%, claras en brick, pavo 90%, gazpacho y salmorejo de nevera, legumbre cocida en bote, cacao puro y chocolate 85%.',
   alternatives: [
     { name: 'Lidl', text: 'Vale casi para todo (gama High Protein de Milbona, claras, pavo). El queso batido 0% y las cremas de verdura van por temporadas.' },
     { name: 'Carrefour', text: 'Lo tiene todo, algo más caro de media. Útil si te pilla al lado.' },
     { name: 'Online (HSN, MyProtein, Prozis)', text: 'Para la whey y la creatina: sale bastante más barato por kilo que en el súper. Compra creatina monohidrato normal (sin "HCL" ni mezclas).' },
   ],
   tips: [
-    'Haz una compra grande el domingo y una pequeña el miércoles (fruta, pan y pescado fresco).',
+    'Haz una compra grande el domingo y una pequeña el miércoles (pan, huevos y pescado fresco).',
     'Pechuga y carne picada en bandejas grandes: divide en raciones y congela lo del jueves en adelante.',
     'El pescado (merluza, salmón) congelado sale más barato y vale igual.',
   ],
@@ -51,12 +52,12 @@ export const STORE_HINTS = {
   salmorejo: 'Nevera: salmorejo Hacendado o Alvalle',
   gazpacho: 'Nevera: gazpacho Hacendado o Alvalle',
   cremaCalabaza: 'Nevera: crema de calabaza Hacendado (o haz la tuya y congela)',
-  crCacahuete: 'Crema de cacahuete 100% (solo cacahuete, sin azúcar)',
+  cacao: 'Cacao puro en polvo desgrasado 0% azúcar (Hacendado, junto al Cola Cao)',
+  chocolate85: 'Chocolate negro 85% (tableta; 1-2 onzas por toma)',
   tortitaArroz: 'Tortitas de maíz o arroz (las de maíz con sal tienen más sabor)',
   wrap: 'Tortillas de trigo integral (paquete de 8)',
   lentejas: 'Bote de cristal de lentejas cocidas',
   frijoles: 'Bote de alubias negras cocidas (o rojas)',
-  frutosRojos: 'Congelados: frutos rojos / frutas del bosque',
   espinacaCong: 'Congelados: espinacas en porciones (bolitas)',
   whey: 'Online (HSN Evowhey, MyProtein Impact Whey…): sabor chocolate o vainilla',
   leCoco: 'Lata de leche de coco (si no la hay light, pon la mitad)',
@@ -82,20 +83,29 @@ export function niceQty(key, grams) {
 }
 
 // [{ cat, items: [{ k, g, name, qty, hint }] }]
-export function buildShoppingList() {
+// Con `state` y el lunes de la semana usa tu menú real (con los cambios del asesor); sin ellos, el menú base.
+export function buildShoppingList(state = null, mondayIso = null) {
   const tot = {};
-  for (const day of WEEK_MENU) {
-    for (const sl of SLOTS) {
-      for (const [k, g] of getRecipe(day[sl.key]).ingredients) {
-        if (k === 'especias') continue;
-        tot[k] = (tot[k] || 0) + g;
-      }
+  const info = {};
+  const add = (recipe) => {
+    for (const [k, g] of recipe?.ingredients || []) {
+      if (k === 'especias') continue;
+      const f = foodFor(recipe, k);
+      // Los alimentos propios de una receta nueva se agrupan por nombre
+      const key = FOODS[k] ? k : `x:${(f?.name || k).toLowerCase()}`;
+      tot[key] = (tot[key] || 0) + g;
+      if (!info[key]) info[key] = { name: f?.name || k, cat: f?.cat || 'Otros' };
     }
+  };
+  if (state && mondayIso) {
+    for (const iso of weekDates(mondayIso)) for (const sl of SLOTS) add(mealFor(state, iso, sl.key));
+  } else {
+    for (const day of WEEK_MENU) for (const sl of SLOTS) add(getRecipe(day[sl.key]));
   }
   const by = {};
   for (const [k, g] of Object.entries(tot)) {
-    const cat = FOODS[k]?.cat || 'Otros';
-    (by[cat] = by[cat] || []).push({ k, g, name: FOODS[k]?.name || k, qty: niceQty(k, g), hint: STORE_HINTS[k] || null, store: storeFor(k) });
+    const cat = info[k].cat;
+    (by[cat] = by[cat] || []).push({ k, g, name: info[k].name, qty: niceQty(k, g), hint: STORE_HINTS[k] || null, store: storeFor(k) });
   }
   return CATEGORY_ORDER.filter((c) => by[c]).map((c) => ({ cat: c, items: by[c].sort((a, b) => b.g - a.g) }));
 }

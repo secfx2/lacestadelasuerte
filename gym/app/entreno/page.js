@@ -11,6 +11,8 @@ import { dayContext, planItems, setProgress, lastPerformance, overloadHint, fmtK
 import { WORKOUTS, WORKOUT_BY_KEY, WARMUP, cardioForDay, DOUBLE_SESSION } from '../../lib/program';
 import { getExercise } from '../../lib/exercises';
 import { DAY_SHORT, fmtClock, fmtRest, todayISO, prettyDate } from '../../lib/dates';
+import { workoutWithCustom } from '../../lib/plan';
+import { sleepAdvice } from '../../lib/sleep';
 import DateNav, { useViewDate, relLabel } from '../../components/DateNav';
 import { beep, unlockAudio } from '../../lib/sound';
 
@@ -21,6 +23,7 @@ const MOBILITY = [
   '10 dislocaciones de hombro con toalla o banda (brazos rectos por encima de la cabeza).',
   '1 min por lado estiramiento de flexor de cadera (rodilla en el suelo, glúteo apretado).',
   '2 × 10 chin tucks (barbilla atrás 3 s) para la postura y la mandíbula.',
+  '30 s por lado estiramiento de trapecio (oreja al hombro) y 30 s por lado de elevador de la escápula (nariz a la axila). Suave, sin tirar.',
   '3 × 20-30 s de vacío abdominal (mejor en ayunas): cintura más recogida.',
 ];
 
@@ -48,7 +51,7 @@ function Entreno() {
   const isToday = viewIso === todayISO();
   const ctx = useMemo(() => (hydrated ? dayContext(s, new Date(), viewIso) : null), [hydrated, s, viewIso]);
   const viewKey = params.get('d');
-  const workout = ctx ? (viewKey && WORKOUT_BY_KEY[viewKey]) || ctx.workout : null;
+  const workout = ctx ? (viewKey && workoutWithCustom(s, WORKOUT_BY_KEY[viewKey])) || ctx.workout : null;
   const items = useMemo(() => (ctx && workout ? planItems(workout, ctx.phase) : []), [ctx, workout]);
   const iso = ctx?.iso;
   const day = (iso && s.days[iso]) || {};
@@ -166,6 +169,22 @@ function Entreno() {
             <span className="pill lime">RIR {ctx.phase.rir}</span>
             <span className="pill">{items.reduce((a, it) => a + it.sets, 0)} series</span>
           </div>
+          {isToday && sleepAdvice(s, iso)?.level !== 'ok' && sleepAdvice(s, iso) && (
+            <div className={`hint ${sleepAdvice(s, iso).level === 'alert' ? 'warn' : ''}`} style={{ marginBottom: 10 }}>
+              <Icon name="moon" size={18} />
+              <span>
+                <b>{sleepAdvice(s, iso).title}.</b> {sleepAdvice(s, iso).text}
+              </span>
+            </div>
+          )}
+          {workout.customized && (
+            <div className="hint up" style={{ marginBottom: 10 }}>
+              <Icon name="sparkle" size={18} />
+              <span>
+                Rutina cambiada por tu asesor. Para volver a la original, pídeselo en <Link href="/asesor" style={{ textDecoration: 'underline' }}>Asesor</Link>.
+              </span>
+            </div>
+          )}
           <div className="hint" style={{ marginBottom: 14 }}>
             <Icon name="info" size={18} />
             <span>
@@ -280,7 +299,8 @@ function ExerciseCard({ idx, item, s, iso, open, onToggle, onTech, onSetDone, en
   const doneCount = sets.filter((x) => x?.done).length;
   const complete = doneCount >= item.sets;
   const last = useMemo(() => lastPerformance(s, item.id, iso), [s, item.id, iso]);
-  const hint = overloadHint(last, item);
+  const timed = !!ex?.timed; // por tiempo (isométricos/estiramientos): solo se marca cada vuelta
+  const hint = timed ? null : overloadHint(last, item);
 
   const setField = (i, field, value) =>
     updateDay(iso, (d) => {
@@ -308,8 +328,7 @@ function ExerciseCard({ idx, item, s, iso, open, onToggle, onTech, onSetDone, en
       const arr = [...(d.sets[item.id] || [])];
       arr[i] = {
         ...(arr[i] || {}),
-        kg: arr[i]?.kg ?? ph.kg,
-        reps: arr[i]?.reps ?? ph.reps,
+        ...(timed ? {} : { kg: arr[i]?.kg ?? ph.kg, reps: arr[i]?.reps ?? ph.reps }),
         done: !wasDone,
       };
       d.sets[item.id] = arr;
@@ -331,7 +350,7 @@ function ExerciseCard({ idx, item, s, iso, open, onToggle, onTech, onSetDone, en
         <div className="grow">
           <div style={{ fontWeight: 650, lineHeight: 1.25 }}>{ex?.name}</div>
           <div className="small muted" style={{ marginTop: 3 }}>
-            {item.sets} × {item.lo}-{item.hi} · descanso {fmtRest(item.rest)}
+            {timed ? `${item.sets} vueltas · sin peso` : `${item.sets} × ${item.lo}-${item.hi}`} · descanso {fmtRest(item.rest)}
           </div>
           <div className="bar thin" style={{ marginTop: 7, maxWidth: 160 }}>
             <i style={{ width: `${(doneCount / item.sets) * 100}%` }} />
@@ -348,7 +367,7 @@ function ExerciseCard({ idx, item, s, iso, open, onToggle, onTech, onSetDone, en
               <span>{item.note}</span>
             </div>
           )}
-          {hint ? (
+          {timed ? null : hint ? (
             <div className={`hint ${hint.type === 'up' ? 'up' : ''}`} style={{ marginBottom: 8 }}>
               <Icon name={hint.type === 'up' ? 'bolt' : 'info'} size={16} />
               <span>
@@ -363,6 +382,21 @@ function ExerciseCard({ idx, item, s, iso, open, onToggle, onTech, onSetDone, en
               <span>Primera vez: elige un peso con el que llegues a {item.hi} reps dejando 2-3 en recámara. Apunta lo que hagas.</span>
             </div>
           )}
+          {timed ? (
+            <div className="stack" style={{ gap: 6 }}>
+              {Array.from({ length: item.sets }).map((_, i) => {
+                const v = sets[i] || {};
+                return (
+                  <div key={i} className={`set-row timed${v.done ? ' done' : ''}`}>
+                    <span className="n">{i + 1}</span>
+                    <span className="small">Vuelta {i + 1}{v.done ? ' · hecha' : ''}</span>
+                    <Check on={v.done} onClick={() => toggleDone(i)} label={`Vuelta ${i + 1} hecha`} />
+                  </div>
+                );
+              })}
+            </div>
+          ) : (
+          <>
           <div className="set-row head">
             <span className="center">#</span>
             <span>kg</span>
@@ -395,6 +429,8 @@ function ExerciseCard({ idx, item, s, iso, open, onToggle, onTech, onSetDone, en
               </div>
             );
           })}
+          </>
+          )}
           <div className="row" style={{ marginTop: 10, justifyContent: 'space-between' }}>
             <button className="btn sm" onClick={onTech}>
               <Icon name="cube" size={15} /> Técnica · 3D

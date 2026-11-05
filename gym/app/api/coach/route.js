@@ -1,7 +1,9 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { ADVISOR_SYSTEM } from '../../../lib/advisorPrompt.js';
+import { TOOLS, TOOLS_LOOSE, runTool } from '../../../lib/advisorTools.js';
 
-// Asesor IA: chat en streaming con Claude. Protegido por el middleware (cookie de sesión).
+// Asesor IA: chat en streaming con Claude, con herramientas para cambiar el plan (menú, recetas, rutina, perfil, notas).
+// Protegido por el middleware (cookie de sesión). Los cambios se devuelven al final de la respuesta y los aplica el móvil.
 // API key: ANTHROPIC_API_KEY en Vercel (recomendado) o la que el usuario guarda en su móvil (cabecera x-anthropic-key).
 
 export const runtime = 'nodejs';
@@ -55,6 +57,10 @@ function errorResponse(err) {
   return Response.json({ error: message }, { status });
 }
 
+// Señal que separa la respuesta del resumen de cambios (el móvil la quita al mostrar el texto)
+const TRAILER = '\u001e';
+const MAX_TOOL_ROUNDS = 6;
+
 export async function POST(req) {
   let body;
   try {
@@ -65,49 +71,68 @@ export async function POST(req) {
   const apiKey = process.env.ANTHROPIC_API_KEY || req.headers.get('x-anthropic-key') || '';
   if (!apiKey) return Response.json({ error: 'NO_KEY' }, { status: 400 });
 
-  const messages = cleanMessages(body.messages);
-  if (!messages.length || messages[messages.length - 1].role !== 'user') {
+  const history = cleanMessages(body.messages);
+  if (!history.length || history[history.length - 1].role !== 'user') {
     return Response.json({ error: 'Falta tu pregunta' }, { status: 400 });
   }
   const model = MODELS[body.model] || MODELS.opus;
-  const context = typeof body.context === 'string' ? body.context.slice(0, 60000) : '';
+  const context = typeof body.context === 'string' ? body.context.slice(0, 80000) : '';
+  const isObj = (v) => v && typeof v === 'object' && !Array.isArray(v);
+  // Copia de trabajo: las herramientas simulan los cambios aquí y el móvil los aplica al final
+  const work = {
+    custom: isObj(body.custom) ? body.custom : {},
+    profile: isObj(body.profile) ? body.profile : {},
+    today: typeof body.today === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(body.today) ? body.today : null,
+    ops: [],
+    changes: [],
+  };
 
   const client = new Anthropic({ apiKey, maxRetries: 1 });
-  const params = {
-    model,
-    max_tokens: 16000,
-    thinking: { type: 'adaptive' },
-    output_config: { effort: 'medium' },
-    system: [
-      // Bloque fijo (plan completo) cacheado; los datos del usuario van detrás y cambian en cada mensaje
-      { type: 'text', text: ADVISOR_SYSTEM, cache_control: { type: 'ephemeral' } },
-      { type: 'text', text: `DATOS ACTUALES DEL USUARIO (generados por la app ahora mismo):\n${context || 'No disponibles.'}` },
-    ],
-    messages,
-  };
-  // Con fallback de servidor: si el modelo rechaza una petición legítima, la API la reintenta sola con el modelo recomendado
-  const open = (withFallback) =>
-    withFallback
+  const system = [
+    // Bloque fijo (plan completo) cacheado; los datos del usuario van detrás y cambian en cada mensaje
+    { type: 'text', text: ADVISOR_SYSTEM, cache_control: { type: 'ephemeral' } },
+    { type: 'text', text: `DATOS ACTUALES DEL USUARIO (generados por la app ahora mismo):\n${context || 'No disponibles.'}` },
+  ];
+  const messages = history.map((m) => ({ role: m.role, content: m.content }));
+
+  // Si la cuenta no admite el fallback de servidor o las herramientas estrictas, se repite sin ellos
+  let useFallback = true;
+  let useStrict = true;
+  const open = () => {
+    const params = {
+      model,
+      max_tokens: 32000,
+      thinking: { type: 'adaptive' },
+      output_config: { effort: 'medium' },
+      system,
+      tools: useStrict ? TOOLS : TOOLS_LOOSE,
+      tool_choice: { type: 'auto' },
+      messages,
+    };
+    return useFallback
       ? client.beta.messages.stream({ ...params, betas: ['server-side-fallback-2026-07-01'], fallbacks: 'default' }, { signal: req.signal })
       : client.beta.messages.stream(params, { signal: req.signal });
+  };
+  const downgrade = (err) => {
+    if (!(err instanceof Anthropic.BadRequestError)) return false;
+    const msg = err.message || '';
+    if (useFallback && /fallback/i.test(msg)) return !(useFallback = false);
+    if (useStrict && /strict|schema|eager_input_streaming/i.test(msg)) return !(useStrict = false);
+    return false;
+  };
 
   // Esperamos al primer evento para poder devolver errores (key inválida, sin saldo…) con su código HTTP
-  let stream = open(true);
-  let iter = stream[Symbol.asyncIterator]();
+  let stream;
+  let iter;
   let first;
-  try {
-    first = await iter.next();
-  } catch (err) {
-    // Si la cuenta no admite el parámetro de fallback, repetimos sin él
-    if (err instanceof Anthropic.BadRequestError && /fallback/i.test(err.message || '')) {
-      try {
-        stream = open(false);
-        iter = stream[Symbol.asyncIterator]();
-        first = await iter.next();
-      } catch (err2) {
-        return errorResponse(err2);
-      }
-    } else {
+  for (;;) {
+    try {
+      stream = open();
+      iter = stream[Symbol.asyncIterator]();
+      first = await iter.next();
+      break;
+    } catch (err) {
+      if (downgrade(err)) continue;
       return errorResponse(err);
     }
   }
@@ -115,30 +140,64 @@ export async function POST(req) {
   const encoder = new TextEncoder();
   const body$ = new ReadableStream({
     async start(controller) {
+      let lastChar = '\n';
+      const write = (t) => {
+        if (!t) return;
+        controller.enqueue(encoder.encode(t));
+        lastChar = t[t.length - 1];
+      };
       const push = (ev) => {
-        if (ev?.type === 'content_block_delta' && ev.delta?.type === 'text_delta') controller.enqueue(encoder.encode(ev.delta.text));
+        if (ev?.type === 'content_block_delta' && ev.delta?.type === 'text_delta') write(ev.delta.text);
       };
       try {
-        if (!first.done) push(first.value);
-        for (;;) {
-          const { value, done } = await iter.next();
-          if (done) break;
-          push(value);
-        }
-        const final = await stream.finalMessage();
-        if (final.stop_reason === 'refusal') {
-          controller.enqueue(encoder.encode('\n\n_No puedo ayudarte con eso tal y como está planteado. Prueba a reformular la pregunta._'));
-        } else if (final.stop_reason === 'max_tokens') {
-          controller.enqueue(encoder.encode('\n\n_(Respuesta cortada por longitud. Pídeme que continúe.)_'));
+        for (let round = 0; ; round++) {
+          if (round > 0) {
+            stream = open();
+            iter = stream[Symbol.asyncIterator]();
+            first = await iter.next();
+          }
+          if (!first.done) push(first.value);
+          for (;;) {
+            const { value, done } = await iter.next();
+            if (done) break;
+            push(value);
+          }
+          const final = await stream.finalMessage();
+          const toolUses = final.content.filter((b) => b.type === 'tool_use');
+
+          if (final.stop_reason === 'refusal') {
+            write('\n\n_No puedo ayudarte con eso tal y como está planteado. Prueba a reformular la pregunta._');
+            break;
+          }
+          if (final.stop_reason === 'max_tokens') {
+            write(toolUses.length ? '\n\n_(Me he quedado sin espacio antes de aplicar el cambio. Pídemelo otra vez.)_' : '\n\n_(Respuesta cortada por longitud. Pídeme que continúe.)_');
+            break;
+          }
+          if (final.stop_reason !== 'tool_use' || !toolUses.length) break;
+          if (round >= MAX_TOOL_ROUNDS) {
+            write('\n\n_(He parado: demasiados cambios seguidos. Revisa lo aplicado.)_');
+            break;
+          }
+
+          // Todas las respuestas a herramientas van juntas en un único mensaje
+          const results = toolUses.map((tu) => {
+            const r = runTool(tu.name, tu.input, work);
+            return { type: 'tool_result', tool_use_id: tu.id, content: r.content, ...(r.isError ? { is_error: true } : {}) };
+          });
+          // El historial solo crece por el final: el turno del asistente tal cual (con su razonamiento) y los resultados
+          messages.push({ role: 'assistant', content: final.content });
+          messages.push({ role: 'user', content: results });
+          if (lastChar !== '\n') write('\n\n');
         }
       } catch (err) {
-        if (!req.signal?.aborted) controller.enqueue(encoder.encode('\n\n⚠️ Se cortó la respuesta. Vuelve a intentarlo.'));
+        if (!req.signal?.aborted) write('\n\n⚠️ Se cortó la respuesta. Vuelve a intentarlo.');
       } finally {
+        if (work.ops.length) write(TRAILER + JSON.stringify({ ops: work.ops, changes: work.changes }));
         controller.close();
       }
     },
     cancel() {
-      stream.abort();
+      stream?.abort();
     },
   });
 

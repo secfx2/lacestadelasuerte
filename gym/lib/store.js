@@ -26,6 +26,7 @@ export const DEFAULT_STATE = {
   measures: [], // { date, waist, neck, shoulders, chest, arm, ts }
   shopping: {}, // 'YYYY-MM-DD(lunes)' → { [foodKey]: true, _ts }
   deletedWeights: {}, // fecha → ts del borrado
+  custom: {}, // tus cambios del plan (ver lib/plan.js)
 };
 
 let state = null;
@@ -57,6 +58,7 @@ export function normalize(parsed) {
     measures: Array.isArray(parsed.measures) ? parsed.measures : [],
     shopping: parsed.shopping && typeof parsed.shopping === 'object' ? parsed.shopping : {},
     deletedWeights: parsed.deletedWeights && typeof parsed.deletedWeights === 'object' ? parsed.deletedWeights : {},
+    custom: parsed.custom && typeof parsed.custom === 'object' && !Array.isArray(parsed.custom) ? parsed.custom : {},
   };
 }
 

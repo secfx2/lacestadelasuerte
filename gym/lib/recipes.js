@@ -2,27 +2,28 @@ import { foodMacros, sumMacros, roundMacros } from './foods.js';
 
 // Recetas. Las cantidades son por 1 ración (para ti). Los macros se calculan solos a partir de lib/foods.js.
 // Regla de la casa: nada de verdura "slimy" ni crujiente. La verdura va TRITURADA en salsas,
-// en crema/gazpacho/salmorejo o escondida en batidos. La fibra y vitaminas vienen sobre todo de fruta, avena y legumbre.
+// en crema/gazpacho/salmorejo o escondida en batidos. Sin fruta suelta, aguacate ni crema de cacahuete: la fibra viene de
+// avena, legumbre, pan integral, patata y cremas; las vitaminas, de tomate/sofrito, cremas y el multivitamínico.
 // steps[].timer = segundos (sale un botón de temporizador en el modo paso a paso).
 
 export const RECIPES = [
   // ───────────── DESAYUNOS ─────────────
   {
-    id: 'tortitas-avena',
-    name: 'Tortitas de avena y proteína con frutos rojos',
+    id: 'tortitas-avena-cacao',
+    name: 'Tortitas de avena y proteína con crema de cacao',
     slot: 'desayuno',
     time: 12,
     tags: ['dulce', 'alto en proteína'],
     ingredients: [
-      ['avena', 50], ['huevo', 60], ['claras', 150], ['whey', 15], ['platano', 60],
-      ['frutosRojos', 100], ['miel', 5], ['especias', 0, 'canela + 1/2 sobre de levadura química'],
+      ['avena', 60], ['huevo', 60], ['claras', 150], ['whey', 20], ['batido0', 80], ['cacao', 6], ['miel', 6], ['chocolate85', 8],
+      ['especias', 0, 'canela + 1/2 sobre de levadura química + vainilla'],
     ],
     steps: [
-      { t: 'Mete en el vaso de la batidora la avena, el huevo, las claras, la whey, medio plátano, canela y la levadura.' },
+      { t: 'Mete en el vaso de la batidora la avena, el huevo, las claras, la whey, canela, vainilla y la levadura.' },
       { t: 'Tritura 30-40 segundos hasta tener una masa lisa. Déjala reposar 2 minutos (espesa un poco).', timer: 120 },
       { t: 'Calienta una sartén antiadherente a fuego medio con unas gotas de aceite (o spray) y extiéndelo con papel.' },
       { t: 'Echa un cucharón por tortita. Cuando salgan burbujas arriba (≈2 min), dale la vuelta y 1 min más.', timer: 180 },
-      { t: 'Emplata con los frutos rojos (descongelados en el micro 40 s) y un hilo de miel.' },
+      { t: 'Crema de cacao: mezcla el queso batido con el cacao y la mitad de la miel. Ponla por encima con el resto de miel y el chocolate rallado.' },
     ],
     tip: 'Haz doble de masa y guárdala en un bote en la nevera: mañana solo tienes que hacer las tortitas.',
   },
@@ -33,60 +34,60 @@ export const RECIPES = [
     time: 10,
     tags: ['salado', 'clásico español'],
     ingredients: [
-      ['pan', 80], ['tomate', 80], ['aove', 5], ['huevo', 120], ['claras', 100], ['pavo', 50], ['kiwi', 75],
+      ['pan', 90], ['tomate', 80], ['aove', 5], ['huevo', 120], ['claras', 100], ['pavo', 50],
     ],
     steps: [
       { t: 'Tuesta el pan. Mientras, ralla el tomate (queda en crema lisa, sin trozos) con una pizca de sal.' },
       { t: 'Bate los 2 huevos con las claras y una pizca de sal.' },
       { t: 'Sartén a fuego medio-bajo con 2-3 gotas de aceite. Echa el huevo y remueve despacio con espátula 2-3 min hasta que cuaje cremoso.', timer: 150 },
       { t: 'Unta el tomate en el pan, el resto del aceite por encima, pon el pavo y el revuelto encima.' },
-      { t: 'De postre, el kiwi (cortado por la mitad y a cucharadas).' },
     ],
-    tip: 'Si te sobra hambre por la mañana, sube a 3 huevos y quita el kiwi.',
+    tip: 'Si te sobra hambre por la mañana, sube a 3 huevos.',
   },
   {
-    id: 'bol-batido-avena',
-    name: 'Bol de queso batido con avena, frutos rojos y cacahuete',
+    id: 'bol-batido-cacao',
+    name: 'Bol de queso batido con avena, cacao y chocolate negro',
     slot: 'desayuno',
     time: 4,
     tags: ['sin cocinar', 'dulce'],
     ingredients: [
-      ['batido0', 300], ['whey', 15], ['avena', 40], ['frutosRojos', 100], ['crCacahuete', 15], ['miel', 8], ['especias', 0, 'canela'],
+      ['batido0', 300], ['whey', 15], ['avena', 50], ['cacao', 8], ['chocolate85', 12], ['miel', 6], ['especias', 0, 'canela'],
     ],
     steps: [
-      { t: 'Mezcla en un bol el queso batido con la whey hasta que no queden grumos (queda tipo mousse).' },
+      { t: 'Mezcla en un bol el queso batido con la whey y el cacao hasta que no queden grumos (queda tipo mousse de chocolate).' },
       { t: 'Añade la avena por encima (si la quieres más blanda, mézclala y deja 5 min).' },
-      { t: 'Pon los frutos rojos, la crema de cacahuete y la miel. Canela al gusto.' },
+      { t: 'Ralla o pica el chocolate negro por encima y termina con la miel. Canela al gusto.' },
     ],
     tip: 'Versión "overnight": déjalo montado la noche anterior en un tupper y desayunas en 1 minuto.',
   },
   {
-    id: 'batido-verde',
-    name: 'Batido "verde" que no sabe a verde',
+    id: 'batido-choco-avena',
+    name: 'Batido de chocolate y avena (con espinaca escondida)',
     slot: 'desayuno',
     time: 3,
     tags: ['para llevar', 'verdura escondida'],
     ingredients: [
-      ['leche', 250], ['whey', 30], ['platano', 120], ['espinacaCong', 50], ['avena', 30], ['crCacahuete', 10],
+      ['leche', 300], ['whey', 30], ['avena', 55], ['espinacaCong', 50], ['cacao', 6], ['miel', 12],
     ],
     steps: [
-      { t: 'Mete todo en la batidora (las espinacas congeladas tal cual, hacen de hielo). Si quieres más frío, añade 3-4 cubitos.' },
+      { t: 'Mete todo en la batidora (las espinacas congeladas tal cual, hacen de hielo). Usa whey de chocolate. Si lo quieres más frío, añade 3-4 cubitos.' },
       { t: 'Tritura 45-60 segundos a tope hasta que quede totalmente liso.', timer: 60 },
-      { t: 'Listo. Sabe a plátano y cacahuete: la espinaca solo le da color.' },
+      { t: 'Listo. Sabe a batido de chocolate: la espinaca no se nota ni en el color.' },
     ],
-    tip: 'Es la forma más fácil de meter verdura sin notarla. Con whey de chocolate queda marrón y ni la ves.',
+    tip: 'Es la forma más fácil de meter verdura sin notarla. Si lo quieres más espeso, avena en harina.',
   },
 
   // ───────────── MEDIA MAÑANA ─────────────
   {
-    id: 'yogur-platano',
-    name: 'Yogures proteicos + plátano',
+    id: 'yogur-cacao-tortitas',
+    name: 'Yogures proteicos con cacao y miel + tortitas',
     slot: 'media',
-    time: 1,
-    tags: ['sin cocinar'],
-    ingredients: [['yogurPro', 240], ['platano', 120]],
+    time: 2,
+    tags: ['sin cocinar', 'para llevar'],
+    ingredients: [['yogurPro', 240], ['cacao', 5], ['miel', 5], ['tortitaArroz', 16]],
     steps: [
-      { t: 'Abre los 2 yogures +proteínas, corta el plátano en rodajas encima. Canela si quieres.' },
+      { t: 'Mezcla los 2 yogures +proteínas con el cacao y la miel (queda tipo natillas de chocolate).' },
+      { t: 'Acompáñalo con 2 tortitas de arroz o maíz (puedes mojarlas).' },
     ],
     tip: 'Perfecto para llevar en la mochila del trabajo o la uni.',
   },
@@ -105,28 +106,27 @@ export const RECIPES = [
     tip: 'Si te gusta, una loncha de queso light le va genial (+50 kcal).',
   },
   {
-    id: 'batido-whey-fruta',
-    name: 'Batido de whey con leche y plátano',
+    id: 'batido-whey-avena',
+    name: 'Batido de whey con leche y avena',
     slot: 'media',
     time: 2,
     tags: ['para llevar'],
-    ingredients: [['whey', 30], ['leche', 150], ['platano', 100]],
+    ingredients: [['whey', 30], ['leche', 200], ['avena', 25], ['cacao', 4]],
     steps: [
-      { t: 'Shaker o batidora: leche fría + whey + plátano. 30 segundos.', timer: 30 },
+      { t: 'Batidora (o shaker fuerte): leche fría + whey + avena + cacao. 30 segundos.', timer: 30 },
     ],
-    tip: 'Si vas con prisa: whey en el shaker con agua + el plátano entero aparte.',
+    tip: 'Si vas con prisa: whey en el shaker con la leche y la avena en harina, agitar y listo.',
   },
   {
-    id: 'tortitas-pavo',
-    name: 'Tortitas de arroz con pavo y queso batido + naranja',
+    id: 'tortitas-pavo-queso',
+    name: 'Tortitas de arroz con pavo, queso batido y queso light',
     slot: 'media',
     time: 3,
     tags: ['sin cocinar', 'salado'],
-    ingredients: [['tortitaArroz', 24], ['batido0', 60], ['pavo', 80], ['naranja', 180]],
+    ingredients: [['tortitaArroz', 32], ['batido0', 60], ['pavo', 80], ['quesoLight', 20]],
     steps: [
-      { t: 'Unta las 3 tortitas con el queso batido (hace de "crema de queso"), pimienta u orégano.' },
-      { t: 'Reparte el pavo encima.' },
-      { t: 'La naranja de postre.' },
+      { t: 'Unta las 4 tortitas con el queso batido (hace de "crema de queso"), pimienta u orégano.' },
+      { t: 'Reparte el pavo y la loncha de queso light en tiras por encima.' },
     ],
     tip: 'Las tortitas de maíz con sal marina tienen más sabor que las de arroz.',
   },
@@ -193,20 +193,20 @@ export const RECIPES = [
   },
   {
     id: 'burrito-bowl',
-    name: 'Burrito bowl de pollo con guacamole',
+    name: 'Burrito bowl de pollo con salsa de yogur y lima',
     slot: 'comida',
     time: 20,
     tags: ['estilo mexicano'],
     ingredients: [
-      ['arroz', 65], ['pollo', 170], ['frijoles', 80], ['aguacate', 50], ['tomateTriturado', 50], ['quesoRallado', 20],
+      ['arroz', 65], ['pollo', 170], ['frijoles', 100], ['yogurNat', 60], ['aove', 8], ['tomateTriturado', 60], ['quesoRallado', 20],
       ['especias', 0, 'especias fajita (comino, pimentón, ajo) + lima + sal'],
     ],
     steps: [
       { t: 'Cuece el arroz 11-12 min (o usa arroz de vasito para ir rápido).', timer: 720 },
-      { t: 'Corta el pollo en tiras, mézclalo con las especias y hazlo a la plancha 6-7 min.', timer: 420 },
-      { t: 'Guacamole: aplasta el aguacate con un tenedor, sal y unas gotas de lima. Queda cremoso (sin cebolla cruda).' },
+      { t: 'Corta el pollo en tiras, mézclalo con las especias y el aceite y hazlo a la plancha 6-7 min.', timer: 420 },
+      { t: 'Salsa: yogur + unas gotas de lima + comino + sal. Queda cremosa y fresquita.' },
       { t: 'Calienta las alubias 1 min en el micro con el tomate triturado y una pizca de comino (salsa suave).', timer: 60 },
-      { t: 'Monta el bowl: arroz, pollo, alubias con salsa, guacamole y el queso rallado.' },
+      { t: 'Monta el bowl: arroz, pollo, alubias con salsa, el queso rallado y la salsa de yogur por encima.' },
     ],
     tip: 'Si las alubias te dan textura rara, pásalas por la batidora con el tomate: queda tipo "frijoles refritos".',
   },
@@ -231,19 +231,19 @@ export const RECIPES = [
   },
   {
     id: 'ternera-teriyaki',
-    name: 'Ternera teriyaki con arroz y piña',
+    name: 'Ternera teriyaki con arroz',
     slot: 'comida',
     time: 20,
     tags: ['estilo asiático'],
     ingredients: [
-      ['ternera', 170], ['arroz', 80], ['soja', 20], ['miel', 10], ['maicena', 5], ['pina', 80], ['sesamo', 3], ['aove', 5],
+      ['ternera', 170], ['arroz', 80], ['soja', 20], ['miel', 10], ['maicena', 5], ['sesamo', 3], ['aove', 5],
       ['especias', 0, 'ajo + jengibre en polvo'],
     ],
     steps: [
       { t: 'Cuece el arroz 11-12 min.', timer: 720 },
       { t: 'Salsa teriyaki: mezcla la soja, la miel, la maicena, ajo, jengibre y 40 ml de agua.' },
       { t: 'Corta la ternera en tiras finas. Sartén muy caliente con el aceite, 2-3 min vuelta y vuelta.', timer: 150 },
-      { t: 'Echa la salsa y la piña en dados; 1-2 min hasta que espese y brille.', timer: 90 },
+      { t: 'Echa la salsa y deja 1-2 min hasta que espese y brille.', timer: 90 },
       { t: 'Sirve sobre el arroz con el sésamo por encima.' },
     ],
     tip: 'Con pollo en vez de ternera también queda de 10.',
@@ -289,14 +289,14 @@ export const RECIPES = [
 
   // ───────────── MERIENDA / PRE-ENTRENO ─────────────
   {
-    id: 'pre-tortitas-cacahuete',
-    name: 'Pre-entreno: tortitas con cacahuete y plátano + whey',
+    id: 'pre-tortitas-miel',
+    name: 'Pre-entreno: tortitas con miel y chocolate negro + whey',
     slot: 'merienda',
     time: 3,
     tags: ['pre-entreno', 'energía'],
-    ingredients: [['tortitaArroz', 24], ['crCacahuete', 10], ['platano', 80], ['whey', 30]],
+    ingredients: [['tortitaArroz', 32], ['miel', 15], ['chocolate85', 8], ['whey', 30]],
     steps: [
-      { t: 'Unta las 3 tortitas con la crema de cacahuete y pon rodajas de plátano encima.' },
+      { t: 'Unta las 4 tortitas con la miel y ralla el chocolate negro por encima.' },
       { t: 'Whey en el shaker con 250-300 ml de agua.' },
       { t: 'Tómatelo 60-90 min antes de entrenar.' },
     ],
@@ -304,16 +304,16 @@ export const RECIPES = [
   },
   {
     id: 'pre-bocadillo-pavo',
-    name: 'Pre-entreno: bocadillo de pavo + manzana',
+    name: 'Pre-entreno: bocadillo de pavo y queso',
     slot: 'merienda',
     time: 3,
     tags: ['pre-entreno', 'para llevar'],
-    ingredients: [['pan', 70], ['pavo', 80], ['batido0', 30], ['manzana', 170]],
+    ingredients: [['pan', 70], ['pavo', 80], ['batido0', 30], ['quesoLight', 20]],
     steps: [
-      { t: 'Unta el pan con el queso batido (o tomate rallado) y rellena con el pavo.' },
-      { t: 'La manzana para el camino al gym.' },
+      { t: 'Unta el pan con el queso batido (o tomate rallado) y rellena con el pavo y la loncha de queso.' },
+      { t: 'Envuélvelo y cómetelo 60-90 min antes de entrenar.' },
     ],
-    tip: 'Si entrenas justo al salir del curro, cómete el bocadillo a media tarde y la manzana 30 min antes.',
+    tip: 'Si entrenas justo al salir del curro, cómetelo a media tarde y bebe agua de camino al gym.',
   },
   {
     id: 'pre-yogur-avena',
@@ -329,14 +329,15 @@ export const RECIPES = [
     tip: 'Ligero de estómago: ideal si entrenas pronto después.',
   },
   {
-    id: 'merienda-descanso',
-    name: 'Merienda de descanso: queso batido con frutos rojos',
+    id: 'merienda-descanso-cacao',
+    name: 'Merienda de descanso: mousse de queso batido y cacao',
     slot: 'merienda',
     time: 2,
     tags: ['día de descanso'],
-    ingredients: [['batido0', 250], ['frutosRojos', 100], ['miel', 5]],
+    ingredients: [['batido0', 250], ['cacao', 8], ['miel', 10], ['chocolate85', 8]],
     steps: [
-      { t: 'Queso batido en un bol, frutos rojos (descongelados 40 s en el micro) y un hilo de miel.' },
+      { t: 'Bate el queso batido con el cacao y la miel con unas varillas o un tenedor 30 s (queda tipo mousse).', timer: 30 },
+      { t: 'Ralla el chocolate negro por encima.' },
     ],
     tip: 'Los días que no entrenas bajamos hidratos: mismo volumen de comida, menos calorías.',
   },
@@ -413,18 +414,18 @@ export const RECIPES = [
   },
   {
     id: 'wrap-pollo',
-    name: 'Wraps de pollo con guacamole y salsa de yogur',
+    name: 'Wraps de pollo con salsa de yogur y queso',
     slot: 'cena',
     time: 15,
     tags: ['rápida'],
     ingredients: [
-      ['wrap', 80], ['pollo', 150], ['aguacate', 40], ['yogurNat', 50], ['quesoRallado', 20], ['especias', 0, 'pimentón, ajo, comino, sal, lima'],
+      ['wrap', 80], ['pollo', 160], ['yogurNat', 60], ['quesoRallado', 25], ['aove', 5], ['especias', 0, 'pimentón, ajo, comino, sal, lima'],
     ],
     steps: [
-      { t: 'Pollo en tiras con las especias a la plancha 6-7 min.', timer: 420 },
-      { t: 'Guacamole: aguacate aplastado con sal y lima. Salsa: yogur con ajo en polvo y sal.' },
+      { t: 'Pollo en tiras con las especias y el aceite a la plancha 6-7 min.', timer: 420 },
+      { t: 'Salsa: yogur con ajo en polvo, unas gotas de lima y sal.' },
       { t: 'Calienta las tortillas 20 s en la sartén.', timer: 20 },
-      { t: 'Rellena: guacamole, pollo, queso y salsa de yogur. Enrolla bien apretado.' },
+      { t: 'Rellena: pollo, queso rallado y salsa de yogur. Enrolla bien apretado y, si quieres, 1 min en la sartén para que se funda el queso.' },
     ],
     tip: 'Si las tortillas se rompen, caliéntalas antes: se vuelven flexibles.',
   },
@@ -465,13 +466,13 @@ export const SLOT_BY_KEY = Object.fromEntries(SLOTS.map((s) => [s.key, s]));
 
 // Menú semanal: índice 0 = lunes … 6 = domingo
 export const WEEK_MENU = [
-  { desayuno: 'tortitas-avena', media: 'yogur-platano', comida: 'pollo-curry', merienda: 'pre-tortitas-cacahuete', cena: 'merluza-salmorejo' },
+  { desayuno: 'tortitas-avena-cacao', media: 'yogur-cacao-tortitas', comida: 'pollo-curry', merienda: 'pre-tortitas-miel', cena: 'merluza-salmorejo' },
   { desayuno: 'tostadas-pavo-huevo', media: 'bocadillo-atun', comida: 'lentejas-pollo', merienda: 'pre-yogur-avena', cena: 'pizza-wrap' },
-  { desayuno: 'bol-batido-avena', media: 'batido-whey-fruta', comida: 'bolonesa', merienda: 'pre-bocadillo-pavo', cena: 'tortilla-pavo-gazpacho' },
-  { desayuno: 'batido-verde', media: 'tortitas-pavo', comida: 'burrito-bowl', merienda: 'pre-tortitas-cacahuete', cena: 'pechuga-pure' },
-  { desayuno: 'tortitas-avena', media: 'yogur-platano', comida: 'salmon-patatas', merienda: 'pre-yogur-avena', cena: 'revuelto-gambas' },
-  { desayuno: 'tostadas-pavo-huevo', media: 'batido-whey-fruta', comida: 'ternera-teriyaki', merienda: 'pre-bocadillo-pavo', cena: 'hamburguesa-casera' },
-  { desayuno: 'bol-batido-avena', media: 'bocadillo-atun', comida: 'arroz-pollo', merienda: 'merienda-descanso', cena: 'wrap-pollo' },
+  { desayuno: 'bol-batido-cacao', media: 'batido-whey-avena', comida: 'bolonesa', merienda: 'pre-bocadillo-pavo', cena: 'tortilla-pavo-gazpacho' },
+  { desayuno: 'batido-choco-avena', media: 'tortitas-pavo-queso', comida: 'burrito-bowl', merienda: 'pre-tortitas-miel', cena: 'pechuga-pure' },
+  { desayuno: 'tortitas-avena-cacao', media: 'yogur-cacao-tortitas', comida: 'salmon-patatas', merienda: 'pre-yogur-avena', cena: 'revuelto-gambas' },
+  { desayuno: 'tostadas-pavo-huevo', media: 'batido-whey-avena', comida: 'ternera-teriyaki', merienda: 'pre-bocadillo-pavo', cena: 'hamburguesa-casera' },
+  { desayuno: 'bol-batido-cacao', media: 'bocadillo-atun', comida: 'arroz-pollo', merienda: 'merienda-descanso-cacao', cena: 'wrap-pollo' },
 ];
 
 export function dayMacros(dayIdx) {

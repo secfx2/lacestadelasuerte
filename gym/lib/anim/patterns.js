@@ -726,6 +726,33 @@ export const PATTERNS = {
     lock: 'feet',
     view: [0.9, 0.3, 0.6],
   },
+  neckIso: {
+    a: { arms: { ik: { rel: 'head', offset: [0.05, 0.05, 0.12], frame: 'local' }, pole: [0.9, -0.2, 0.2] }, legs: STAND },
+    b: { neck: [-5, 0, 0], arms: { ik: { rel: 'head', offset: [0.05, 0.05, 0.12], frame: 'local' }, pole: [0.9, -0.2, 0.2] }, legs: STAND },
+    tempo: [2, 6, 1.5, 1.5],
+    labels: ['Empuja suave', 'Aguanta 10 s', 'Suelta', 'Respira'],
+    props: [],
+    lock: 'feet',
+    view: [0.8, 0.25, 1],
+  },
+  neckStretch: {
+    a: {
+      armL: { up: [0.2, -1, 0.05], fore: [0.15, -1, 0.2] },
+      armR: { ik: { rel: 'head', offset: [0.1, 0.06, 0.0], frame: 'local' }, pole: [-0.9, 0.4, 0.2] },
+      legs: STAND,
+    },
+    b: {
+      neck: [0, 0, 30],
+      armL: { up: [0.2, -1, 0.05], fore: [0.15, -1, 0.2] },
+      armR: { ik: { rel: 'head', offset: [0.1, 0.06, 0.0], frame: 'local' }, pole: [-0.9, 0.4, 0.2] },
+      legs: STAND,
+    },
+    tempo: [2.5, 4, 2, 1],
+    labels: ['Inclina', 'Aguanta 20-30 s', 'Vuelve', 'Respira'],
+    props: [],
+    lock: 'feet',
+    view: [0.3, 0.2, 1],
+  },
   plank: {
     a: {
       root: { rot: [80, 0, 0] },

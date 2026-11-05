@@ -8,9 +8,11 @@ import FoodImg from '../../components/FoodImg';
 import { Bar, Check, PageSkeleton, MacroLine, Sheet, useToast } from '../../components/ui';
 import ProductImg, { StoreChip } from '../../components/ProductImg';
 import { useAppState, useHydrated, update } from '../../lib/store';
-import { SLOTS, WEEK_MENU, getRecipe, recipeMacros, dayMacros, NIGHT_SNACK } from '../../lib/recipes';
+import { NIGHT_SNACK } from '../../lib/recipes';
+import { mealFor, recipeMacrosFor, dayMacrosFor, mealChange } from '../../lib/plan';
+import { slotsFor } from '../../lib/sleep';
 import { buildShoppingList, shoppingText, STORE_PLAN, CATEGORY_EMOJI, PANTRY_NOTE } from '../../lib/shopping';
-import { DAY_NAMES, DAY_SHORT, todayISO, weekdayIdx, mondayOf } from '../../lib/dates';
+import { DAY_NAMES, DAY_SHORT, todayISO, weekdayIdx, mondayOf, addDays } from '../../lib/dates';
 import { DAILY_TARGETS } from '../../lib/program';
 
 export default function DietaPage() {
@@ -63,11 +65,12 @@ function Dieta() {
 
 function Menu({ dayIdx, todayIdx, onDay }) {
   const s = useAppState();
-  const menu = WEEK_MENU[dayIdx];
-  const tot = dayMacros(dayIdx);
-  const iso = todayISO();
+  // El día de ESTA semana que estás mirando (así salen los cambios de tu asesor y las horas ajustadas)
+  const iso = addDays(mondayOf(todayISO()), dayIdx);
+  const tot = dayMacrosFor(s, iso);
   const isToday = dayIdx === todayIdx;
-  const eaten = isToday ? s.days[iso]?.meals || {} : {};
+  const eaten = s.days[iso]?.meals || {};
+  const slots = slotsFor(s, iso);
   return (
     <>
       <div className="chips" style={{ marginBottom: 14 }}>
@@ -98,11 +101,12 @@ function Menu({ dayIdx, todayIdx, onDay }) {
       </div>
 
       <div className="stack">
-        {SLOTS.map((sl) => {
-          const r = getRecipe(menu[sl.key]);
-          const m = recipeMacros(r);
+        {slots.map((sl) => {
+          const r = mealFor(s, iso, sl.key);
+          const m = recipeMacrosFor(r);
+          const changed = mealChange(s, iso, sl.key);
           return (
-            <Link key={sl.key} href={`/receta/${r.id}?slot=${sl.key}${isToday ? `&d=${iso}` : ''}`} className="card flush row" style={{ gap: 0, alignItems: 'stretch' }}>
+            <Link key={sl.key} href={`/receta/${r.id}?slot=${sl.key}&d=${iso}`} className="card flush row" style={{ gap: 0, alignItems: 'stretch' }}>
               <FoodImg recipe={r} style={{ width: 108, minHeight: 108, flex: 'none' }} sizes="120px" />
               <div className="grow" style={{ padding: '12px 14px' }}>
                 <div className="spread">
@@ -112,6 +116,7 @@ function Menu({ dayIdx, todayIdx, onDay }) {
                   {eaten[sl.key] && <span className="pill lime">✓</span>}
                 </div>
                 <div style={{ fontWeight: 650, marginTop: 4, lineHeight: 1.25 }}>{r.name}</div>
+                {changed && <div className="tiny" style={{ color: 'var(--lime)', marginTop: 2 }}>✨ {changed === 'dia' ? 'Cambiada solo este día' : 'Cambiada por tu asesor'}</div>}
                 <div style={{ marginTop: 6 }}>
                   <MacroLine m={m} compact />
                 </div>
@@ -154,7 +159,7 @@ function Shopping() {
   const [view, setView] = useState(null); // producto ampliado
   const week = mondayOf(todayISO());
   const checked = s.shopping[week] || {};
-  const groups = useMemo(() => buildShoppingList(), []);
+  const groups = useMemo(() => buildShoppingList(s, week), [s.custom, week]);
   const toggle = (k) =>
     update((d) => {
       d.shopping[week] = { ...(d.shopping[week] || {}), [k]: !d.shopping[week]?.[k] };
@@ -307,13 +312,13 @@ function Rules() {
             <b>Gazpacho y salmorejo</b> (los de la nevera del súper): un vaso = 1-2 raciones de verdura.
           </li>
           <li>
-            <b>Espinaca congelada en batidos:</b> con plátano y cacahuete (o whey de chocolate) no se nota nada.
+            <b>Espinaca congelada en batidos:</b> con whey de chocolate, cacao y avena no se nota nada.
           </li>
           <li>
             <b>Tomate rallado</b> en tostadas y bocadillos.
           </li>
           <li>
-            <b>Fruta todos los días (2-3 piezas):</b> kiwi, naranja, frutos rojos, plátano, piña, manzana. Es tu fuente principal de vitaminas.
+            <b>Sin fruta suelta:</b> como no te gusta, las vitaminas vienen del gazpacho, el salmorejo, las cremas y la espinaca escondida. La fibra, de la avena, las legumbres, el cacao puro y el pan integral. Si un día te apetece, un zumo de naranja natural o fruta dentro de un batido también vale.
           </li>
           <li>
             <b>Seguro:</b> multivitamínico + psyllium si vas mal al baño (ver Suplementos).
@@ -330,7 +335,7 @@ function Rules() {
             <b>Hidratos:</b> 80 g arroz o pasta (crudo) = 350 g patata = 150 g pan = 100 g avena = 9 tortitas de arroz.
           </li>
           <li>
-            <b>Grasa:</b> 10 ml aceite = 15 g crema de cacahuete = 60 g aguacate = 15 g frutos secos.
+            <b>Grasa:</b> 10 ml aceite = 15 g frutos secos = 15 g chocolate 85% = 30 g queso curado.
           </li>
           <li>
             Cambiar recetas de día entre sí está bien. Lo importante es el total del día.
@@ -341,7 +346,7 @@ function Rules() {
         <h3>🍽️ Comer fuera</h3>
         <ul className="ul" style={{ marginTop: 10 }}>
           <li>Plato a la plancha (pollo, ternera, pescado) + patata/arroz. Salsas aparte.</li>
-          <li>Menú del día: primero de crema/gazpacho/legumbre, segundo plancha, postre fruta o café.</li>
+          <li>Menú del día: primero de crema/gazpacho/legumbre, segundo plancha, postre yogur o café.</li>
           <li>Hamburguesería: burger sencilla sin bacon ni salsas, y patatas compartidas.</li>
           <li>Alcohol: si bebes, cerveza 0,0 o 1-2 copas máximo. El alcohol frena la quema de grasa e hincha la cara.</li>
         </ul>

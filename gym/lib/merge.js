@@ -3,6 +3,7 @@
 // campo, y de cada subcampo en objetos: p. ej. "sets.press-banca", "meals.cena"). Pesajes y medidas llevan `ts`.
 // Regla: gana lo modificado más recientemente, campo a campo. Lo que solo existe en un lado se conserva.
 // Borrados: pesajes borrados → `deletedWeights[fecha] = ts`; "borrar todo" → `resetAt`.
+// `custom` (tus cambios del plan: menú, recetas, rutina, notas) se combina igual que un día: campo a campo.
 
 const isObj = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
 const tsOf = (o) => (isObj(o) ? Number(o._ts) || 0 : 0);
@@ -127,6 +128,11 @@ export function mergeStates(local, remote) {
     if (v && alive(v._ts)) shopping[w] = v;
   }
   out.shopping = shopping;
+
+  // Personalizaciones del plan (menú, recetas, rutina, notas)
+  const lc = local.custom && alive(local.custom._ts) ? local.custom : null;
+  const rc = remote.custom && alive(remote.custom._ts) ? remote.custom : null;
+  out.custom = mergeObj(lc, rc) || {};
   return out;
 }
 
@@ -150,6 +156,7 @@ export function stampChanges(prev, next, now = Date.now()) {
   next.profile = stampObj(prev.profile, next.profile || {}, now);
   for (const d of Object.keys(next.days || {})) next.days[d] = stampObj(prev.days?.[d], next.days[d], now);
   for (const w of Object.keys(next.shopping || {})) next.shopping[w] = stampObj(prev.shopping?.[w], next.shopping[w], now);
+  next.custom = stampObj(prev.custom, next.custom || {}, now);
 
   const prevW = new Map((prev.weights || []).map((w) => [w.date, w]));
   next.weights = (next.weights || []).map((w) => {

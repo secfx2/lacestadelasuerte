@@ -23,7 +23,7 @@ export default function FoodImg({ recipe, sizes = '(max-width: 760px) 100vw, 50v
       {src && !err ? (
         <Image src={src} alt={recipe.name} fill sizes={sizes} priority={priority} style={{ objectFit: 'cover' }} onError={() => setErr(true)} />
       ) : (
-        <div style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', fontSize: 'min(42px, 40%)' }}>{fb[2]}</div>
+        <div style={{ position: 'absolute', inset: 0, display: 'grid', placeItems: 'center', fontSize: 40 }}>{recipe?.emoji || fb[2]}</div>
       )}
     </div>
   );

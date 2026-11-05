@@ -1,13 +1,15 @@
 // "Cerebro" de la app: qué toca hoy, progresión de cargas, estadísticas de peso y proyecciones.
 
 import { WORKOUTS, WORKOUT_BY_KEY, phaseForWeek, setsForPhase, cardioForDay, isWeighDay, isMeasureDay } from './program.js';
-import { SLOTS, WEEK_MENU, getRecipe, recipeMacros, dayMacros } from './recipes.js';
+import { SLOTS } from './recipes.js';
+import { menuFor, mealFor, recipeMacrosFor, dayMacrosFor, workoutWithCustom } from './plan.js';
+import { slotsFor } from './sleep.js';
 import { todayISO, weekdayIdx, programWeek, minutesNow, addDays, daysBetween, mondayOf } from './dates.js';
 
 export function workoutForDay(state, iso) {
   const override = state.days[iso]?.workoutKey;
-  if (override && WORKOUT_BY_KEY[override]) return WORKOUT_BY_KEY[override];
-  return WORKOUTS[weekdayIdx(iso)];
+  if (override && WORKOUT_BY_KEY[override]) return workoutWithCustom(state, WORKOUT_BY_KEY[override]);
+  return workoutWithCustom(state, WORKOUTS[weekdayIdx(iso)]);
 }
 
 export function planItems(workout, phase) {
@@ -41,7 +43,7 @@ export function dayContext(state, now = new Date(), isoOverride = null) {
     cardio,
     isWeigh: isWeighDay(dayIdx),
     isMeasure: isMeasureDay(dayIdx, week),
-    menu: WEEK_MENU[dayIdx],
+    menu: menuFor(state, iso),
     started: !!state.profile.startDate && daysBetween(state.profile.startDate, iso) >= 0,
   };
 }
@@ -131,38 +133,36 @@ export function sessionVolume(dayData) {
 export function nextMeal(state, now = new Date(), viewIso = null) {
   const iso = viewIso || todayISO(now);
   const eaten = state.days[iso]?.meals || {};
-  const menu = WEEK_MENU[weekdayIdx(iso)];
+  const slots = slotsFor(state, iso);
   // Otro día (no hoy): la primera comida sin marcar de ese día
   if (viewIso && viewIso !== todayISO(now)) {
-    const slot = SLOTS.find((sl) => !eaten[sl.key]) || SLOTS[SLOTS.length - 1];
-    return { slot, recipe: getRecipe(menu[slot.key]), iso, tomorrow: false, now: false, otherDay: true, allDone: SLOTS.every((sl) => eaten[sl.key]) };
+    const slot = slots.find((sl) => !eaten[sl.key]) || slots[slots.length - 1];
+    return { slot, recipe: mealFor(state, iso, slot.key), iso, tomorrow: false, now: false, otherDay: true, allDone: slots.every((sl) => eaten[sl.key]) };
   }
   const mins = minutesNow(now);
-  for (const slot of SLOTS) {
+  for (const slot of slots) {
     if (mins < slot.to && !eaten[slot.key]) {
       const late = mins >= slot.from;
-      return { slot, recipe: getRecipe(menu[slot.key]), iso, tomorrow: false, now: late };
+      return { slot, recipe: mealFor(state, iso, slot.key), iso, tomorrow: false, now: late };
     }
   }
   const tIso = addDays(iso, 1);
-  const tMenu = WEEK_MENU[weekdayIdx(tIso)];
-  return { slot: SLOTS[0], recipe: getRecipe(tMenu.desayuno), iso: tIso, tomorrow: true, now: false };
+  return { slot: slotsFor(state, tIso)[0], recipe: mealFor(state, tIso, 'desayuno'), iso: tIso, tomorrow: true, now: false };
 }
 
 export function eatenMacros(state, iso) {
   const eaten = state.days[iso]?.meals || {};
-  const menu = WEEK_MENU[weekdayIdx(iso)];
   const tot = { kcal: 0, p: 0, c: 0, f: 0 };
   for (const slot of SLOTS) {
     if (eaten[slot.key]) {
-      const m = recipeMacros(getRecipe(menu[slot.key]));
+      const m = recipeMacrosFor(mealFor(state, iso, slot.key));
       tot.kcal += m.kcal;
       tot.p += m.p;
       tot.c += m.c;
       tot.f += m.f;
     }
   }
-  return { eaten: tot, target: dayMacros(weekdayIdx(iso)) };
+  return { eaten: tot, target: dayMacrosFor(state, iso) };
 }
 
 // ───────── Peso ─────────
@@ -223,7 +223,7 @@ export function weightStats(state) {
     if (weeksIn <= 2 && pct > 1.2) {
       coach = { level: 'ok', title: 'Bajada inicial rápida', text: 'Normal las 2 primeras semanas: es agua y glucógeno. A partir de la 3ª se estabiliza en 0,5-1% por semana.' };
     } else if (pct > 1.2) {
-      coach = { level: 'warn', title: 'Vas demasiado rápido', text: `Has bajado un ${pct.toFixed(1).replace('.', ',')}% esta semana. Para no perder músculo, añade ~150 kcal al día (un plátano + 10 g de crema de cacahuete en la merienda).` };
+      coach = { level: 'warn', title: 'Vas demasiado rápido', text: `Has bajado un ${pct.toFixed(1).replace('.', ',')}% esta semana. Para no perder músculo, añade ~150 kcal al día (30 g más de avena o 2 tortitas de arroz con miel en la merienda).` };
     } else if (pct >= 0.5) {
       coach = { level: 'ok', title: 'Ritmo perfecto', text: `−${pct.toFixed(1).replace('.', ',')}% esta semana. Es justo lo que buscamos: grasa fuera y el músculo se queda. No toques nada.` };
     } else if (pct >= 0.2) {
