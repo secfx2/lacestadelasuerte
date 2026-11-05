@@ -5,10 +5,10 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { Suspense, useMemo } from 'react';
 import Icon from '../../components/Icon';
 import FoodImg from '../../components/FoodImg';
-import { Bar, Check, PageSkeleton, MacroLine } from '../../components/ui';
+import { Bar, Check, PageSkeleton, MacroLine, useToast } from '../../components/ui';
 import { useAppState, useHydrated, update } from '../../lib/store';
 import { SLOTS, WEEK_MENU, getRecipe, recipeMacros, dayMacros, NIGHT_SNACK } from '../../lib/recipes';
-import { FOODS } from '../../lib/foods';
+import { buildShoppingList, shoppingText, STORE_PLAN, CATEGORY_EMOJI, PANTRY_NOTE } from '../../lib/shopping';
 import { DAY_NAMES, DAY_SHORT, todayISO, weekdayIdx, mondayOf } from '../../lib/dates';
 import { DAILY_TARGETS } from '../../lib/program';
 
@@ -147,49 +147,39 @@ function Menu({ dayIdx, todayIdx, onDay }) {
   );
 }
 
-function niceQty(key, grams) {
-  const f = FOODS[key];
-  const unit = f?.unit || 'g';
-  if (f?.per && f.perLabel && ['huevo', 'platano', 'manzana', 'kiwi', 'naranja', 'yogurPro', 'yogurNat', 'panBurger', 'wrap', 'quesito', 'quesoLight', 'tortitaArroz'].includes(key)) {
-    const n = Math.ceil(grams / f.per);
-    const forms = { ud: ['ud', 'ud'], loncha: ['loncha', 'lonchas'], tortita: ['tortita', 'tortitas'], porción: ['porción', 'porciones'] }[f.perLabel] || [f.perLabel, f.perLabel];
-    return `${n} ${n === 1 ? forms[0] : forms[1]}`;
-  }
-  const rounded = Math.ceil(grams / 50) * 50;
-  if (rounded >= 1000) return `${(rounded / 1000).toFixed(1).replace('.', ',')} ${unit === 'ml' ? 'L' : 'kg'}`;
-  return `${rounded} ${unit}`;
-}
-
 function Shopping() {
   const s = useAppState();
+  const [toast, showToast] = useToast();
   const week = mondayOf(todayISO());
   const checked = s.shopping[week] || {};
-  const groups = useMemo(() => {
-    const tot = {};
-    for (const day of WEEK_MENU) {
-      for (const sl of SLOTS) {
-        for (const [k, g] of getRecipe(day[sl.key]).ingredients) {
-          if (k === 'especias') continue;
-          tot[k] = (tot[k] || 0) + g;
-        }
-      }
-    }
-    const by = {};
-    for (const [k, g] of Object.entries(tot)) {
-      const cat = FOODS[k]?.cat || 'Otros';
-      (by[cat] = by[cat] || []).push({ k, g });
-    }
-    const order = ['Carne y pescado', 'Huevos y lácteos', 'Fruta y verdura', 'Congelados', 'Refrigerados', 'Panadería', 'Despensa', 'Suplementos', 'Otros'];
-    return order.filter((c) => by[c]).map((c) => ({ cat: c, items: by[c].sort((a, b) => b.g - a.g) }));
-  }, []);
+  const groups = useMemo(() => buildShoppingList(), []);
   const toggle = (k) =>
     update((d) => {
       d.shopping[week] = { ...(d.shopping[week] || {}), [k]: !d.shopping[week]?.[k] };
     });
   const total = groups.reduce((a, g) => a + g.items.length, 0);
-  const done = Object.values(checked).filter(Boolean).length;
+  const done = groups.reduce((a, g) => a + g.items.filter((it) => checked[it.k]).length, 0);
+  const share = async () => {
+    const text = shoppingText(groups, checked);
+    try {
+      if (navigator.share) await navigator.share({ title: 'Compra de la semana', text });
+      else {
+        await navigator.clipboard.writeText(text);
+        showToast('Lista copiada 📋');
+      }
+    } catch {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast('Lista copiada 📋');
+      } catch {
+        showToast('No se pudo copiar');
+      }
+    }
+  };
+  const reset = () => update((d) => (d.shopping[week] = {}));
   return (
     <>
+      {toast}
       <div className="card" style={{ marginBottom: 14 }}>
         <div className="spread">
           <div>
@@ -203,27 +193,64 @@ function Shopping() {
         <div style={{ marginTop: 10 }}>
           <Bar pct={done / total} />
         </div>
+        <div className="row wrap" style={{ marginTop: 12 }}>
+          <button className="btn sm primary" onClick={share}>
+            <Icon name="cart" size={15} /> Copiar / compartir lo que falta
+          </button>
+          {done > 0 && (
+            <button className="btn sm ghost" onClick={reset}>
+              Desmarcar todo
+            </button>
+          )}
+        </div>
       </div>
+
+      <div className="card accent-amber" style={{ marginBottom: 14, background: 'linear-gradient(150deg,#2a1f0e 0%,var(--card) 60%)', borderColor: 'rgba(255,181,71,0.18)' }}>
+        <div className="tile-label" style={{ color: 'var(--amber)' }}>
+          <Icon name="cart" size={14} /> Dónde comprar
+        </div>
+        <h3 style={{ marginTop: 6 }}>Todo en {STORE_PLAN.main} ✓</h3>
+        <p className="small muted" style={{ marginTop: 4 }}>{STORE_PLAN.why}</p>
+        <ul className="ul small" style={{ marginTop: 10 }}>
+          {STORE_PLAN.alternatives.map((a) => (
+            <li key={a.name}>
+              <b>{a.name}:</b> <span className="muted">{a.text}</span>
+            </li>
+          ))}
+        </ul>
+        <details style={{ marginTop: 10 }}>
+          <summary className="small muted" style={{ cursor: 'pointer' }}>
+            Trucos para comprar mejor
+          </summary>
+          <ul className="ul small" style={{ marginTop: 8 }}>
+            {STORE_PLAN.tips.map((t) => (
+              <li key={t}>{t}</li>
+            ))}
+          </ul>
+        </details>
+      </div>
+
       <div className="stack">
         {groups.map((g) => (
           <div key={g.cat} className="card">
-            <div className="section-title" style={{ margin: '0 0 4px' }}>{g.cat}</div>
+            <div className="section-title" style={{ margin: '0 0 4px' }}>
+              {CATEGORY_EMOJI[g.cat]} {g.cat}
+            </div>
             <div className="list">
-              {g.items.map(({ k, g: grams }) => (
-                <div key={k} className="list-item" style={{ padding: '9px 0' }}>
-                  <Check on={checked[k]} round onClick={() => toggle(k)} label="Comprado" />
-                  <span className="grow" style={{ textDecoration: checked[k] ? 'line-through' : 'none', opacity: checked[k] ? 0.5 : 1 }}>
-                    {FOODS[k]?.name || k}
-                  </span>
-                  <span className="num small muted">{niceQty(k, grams)}</span>
+              {g.items.map((it) => (
+                <div key={it.k} className="list-item" style={{ padding: '9px 0', alignItems: 'flex-start' }}>
+                  <Check on={checked[it.k]} round onClick={() => toggle(it.k)} label="Comprado" />
+                  <div className="grow" style={{ opacity: checked[it.k] ? 0.5 : 1 }}>
+                    <div style={{ textDecoration: checked[it.k] ? 'line-through' : 'none' }}>{it.name}</div>
+                    {it.hint && <div className="tiny muted">{it.hint}</div>}
+                  </div>
+                  <span className="num small muted" style={{ paddingTop: 2, whiteSpace: 'nowrap' }}>{it.qty}</span>
                 </div>
               ))}
             </div>
           </div>
         ))}
-        <div className="card soft small muted">
-          Despensa básica: sal, pimienta, ajo en polvo, pimentón dulce, curry, cúrcuma, comino, orégano, canela, levadura química, laurel, azafrán/colorante, jengibre en polvo, lima/limón, mostaza.
-        </div>
+        <div className="card soft small muted">{PANTRY_NOTE}</div>
       </div>
     </>
   );

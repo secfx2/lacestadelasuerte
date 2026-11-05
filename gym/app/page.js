@@ -14,6 +14,7 @@ import { prettyDate, DAY_SHORT, DAY_NAMES, mondayOf, addDays, weekdayIdx, todayI
 import DateNav, { useViewDate, relLabel } from '../components/DateNav';
 import { fmtKg } from '../lib/coach';
 import Onboarding from '../components/Onboarding';
+import { buildShoppingList, shoppingText, STORE_PLAN, CATEGORY_EMOJI } from '../lib/shopping';
 
 export default function HomePage() {
   return (
@@ -77,6 +78,7 @@ function Home() {
         <ProgressTile s={s} />
         {ctx.isMeasure && <MeasureTile />}
         <WeekTile s={s} iso={ctx.iso} today={today} />
+        <ShoppingTile s={s} iso={ctx.iso} showToast={showToast} />
         <TipTile iso={ctx.iso} />
         <Link href="/plan#michelines" className="tile w2 accent-amber" style={{ minHeight: 0 }}>
           <span className="tile-label" style={{ color: 'var(--amber)' }}>
@@ -87,7 +89,7 @@ function Home() {
         </Link>
         <LinkTile href="/plan" icon="target" color="violet" label="Expectativas" title="¿Cuándo me veré aesthetic?" />
         <LinkTile href="/plan#mandibula" icon="face" color="pink" label="Mandíbula" title="Guía de cara y cuello" />
-        <LinkTile href="/dieta?tab=compra" icon="cart" color="amber" label="Compra" title="Lista de la semana" />
+        <LinkTile href="/asesor" icon="sparkle" color="lime" label="Asesor IA" title="Pregúntale lo que quieras" />
         <LinkTile href="/plan#suplementos" icon="pill" color="cyan" label="Suplementos" title="Qué tomar y qué no" />
       </div>
     </>
@@ -559,6 +561,70 @@ function WeekTile({ s, iso, today }) {
           );
         })}
       </div>
+    </div>
+  );
+}
+
+function ShoppingTile({ s, iso, showToast }) {
+  const groups = useMemo(() => buildShoppingList(), []);
+  const week = mondayOf(iso);
+  const checked = s.shopping[week] || {};
+  const all = groups.flatMap((g) => g.items.map((it) => ({ ...it, cat: g.cat })));
+  const pending = all.filter((it) => !checked[it.k]);
+  const done = all.length - pending.length;
+  const copy = async () => {
+    const text = shoppingText(groups, checked);
+    try {
+      if (navigator.share) await navigator.share({ title: 'Compra de la semana', text });
+      else {
+        await navigator.clipboard.writeText(text);
+        showToast('Lista copiada 📋');
+      }
+    } catch {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast('Lista copiada 📋');
+      } catch {
+        /* cancelado */
+      }
+    }
+  };
+  return (
+    <div className="tile w2 w2-lg accent-amber">
+      <div className="spread">
+        <span className="tile-label" style={{ color: 'var(--amber)' }}>
+          <Icon name="cart" size={14} /> Compra de la semana
+        </span>
+        <span className="pill amber num">
+          {done}/{all.length}
+        </span>
+      </div>
+      <div className="tile-title" style={{ fontSize: 17 }}>
+        {pending.length === 0 ? '¡Todo comprado! ✓' : `Todo en ${STORE_PLAN.main} · te faltan ${pending.length} cosas`}
+      </div>
+      <Bar pct={done / all.length} color="amber" thin />
+      {pending.length > 0 && (
+        <p className="small muted" style={{ lineHeight: 1.5 }}>
+          {pending.slice(0, 7).map((it, i) => (
+            <span key={it.k}>
+              {i ? ' · ' : ''}
+              {CATEGORY_EMOJI[it.cat]} {it.name.split(' (')[0]} <b style={{ color: 'var(--text)' }}>{it.qty}</b>
+            </span>
+          ))}
+          {pending.length > 7 ? ` · y ${pending.length - 7} más` : ''}
+        </p>
+      )}
+      <div className="tile-foot" style={{ justifyContent: 'flex-start' }}>
+        <Link href="/dieta?tab=compra" className="btn sm primary">
+          <Icon name="cart" size={15} /> Ver lista y marcar
+        </Link>
+        {pending.length > 0 && (
+          <button className="btn sm" onClick={copy}>
+            Copiar
+          </button>
+        )}
+      </div>
+      <p className="tiny faint">Proteína y creatina: online (HSN, MyProtein…), mucho más baratas.</p>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { getLocalKey, setLocalKey } from '../../lib/advisorStore';
 import Icon from '../../components/Icon';
 import { BackLink, PageSkeleton, useToast } from '../../components/ui';
 import { getState, replaceState, resetState, update, useAppState, useHydrated } from '../../lib/store';
@@ -98,6 +99,8 @@ export default function AjustesPage() {
         </div>
       </div>
 
+      <AdvisorKeyCard showToast={showToast} />
+
       <div className="card stack">
         <h3>Copia de seguridad</h3>
         <p className="small muted">Exporta un archivo para pasar tus datos a otro móvil o guardarlos. Importarlo reemplaza lo que hay aquí.</p>
@@ -139,5 +142,72 @@ export default function AjustesPage() {
         </div>
       </div>
     </>
+  );
+}
+
+function AdvisorKeyCard({ showToast }) {
+  const [serverKey, setServerKey] = useState(null);
+  const [local, setLocal] = useState('');
+  const [draft, setDraft] = useState('');
+  useEffect(() => {
+    setLocal(getLocalKey());
+    fetch('/api/coach')
+      .then((r) => (r.ok ? r.json() : { serverKey: false }))
+      .then((d) => setServerKey(!!d.serverKey))
+      .catch(() => setServerKey(false));
+  }, []);
+  const save = () => {
+    const k = draft.trim();
+    if (!k.startsWith('sk-ant-')) return showToast('La key debe empezar por sk-ant-');
+    setLocalKey(k);
+    setLocal(k);
+    setDraft('');
+    showToast('API key guardada ✓');
+  };
+  return (
+    <div className="card stack">
+      <h3>Asesor IA (Claude)</h3>
+      {serverKey ? (
+        <div className="hint ok">
+          <Icon name="check" size={18} />
+          <span>Hay una API key configurada en el servidor (Vercel). Funciona en todos tus dispositivos.</span>
+        </div>
+      ) : local ? (
+        <div className="hint ok">
+          <Icon name="check" size={18} />
+          <span>
+            API key guardada en este dispositivo (<span className="kbd">{local.slice(0, 10)}…{local.slice(-4)}</span>).
+          </span>
+        </div>
+      ) : (
+        <p className="small muted">Sin API key todavía. Pégala aquí o configúrala en Vercel como ANTHROPIC_API_KEY.</p>
+      )}
+      {!serverKey && (
+        <>
+          <div className="row">
+            <input className="input grow" type="password" autoComplete="off" placeholder={local ? 'Nueva key (sk-ant-...)' : 'sk-ant-...'} value={draft} onChange={(e) => setDraft(e.target.value)} />
+            <button className="btn primary" onClick={save} disabled={!draft.trim()}>
+              Guardar
+            </button>
+          </div>
+          {local && (
+            <button
+              className="btn sm danger"
+              style={{ alignSelf: 'flex-start' }}
+              onClick={() => {
+                setLocalKey('');
+                setLocal('');
+                showToast('Key eliminada de este dispositivo');
+              }}
+            >
+              Quitar key de este dispositivo
+            </button>
+          )}
+        </>
+      )}
+      <p className="tiny faint">
+        La key no se incluye al exportar tus datos. Cada pregunta con Opus 5.5 cuesta unos céntimos (el plan va cacheado); Sonnet 5.5 es aproximadamente la mitad.
+      </p>
+    </div>
   );
 }

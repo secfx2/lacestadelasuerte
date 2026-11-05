@@ -1,0 +1,107 @@
+// Lista de la compra semanal (7 días del menú) + recomendaciones de supermercado.
+
+import { FOODS } from './foods.js';
+import { SLOTS, WEEK_MENU, getRecipe } from './recipes.js';
+
+export const CATEGORY_ORDER = ['Carne y pescado', 'Huevos y lácteos', 'Fruta y verdura', 'Congelados', 'Refrigerados', 'Panadería', 'Despensa', 'Suplementos', 'Otros'];
+
+export const CATEGORY_EMOJI = {
+  'Carne y pescado': '🥩',
+  'Huevos y lácteos': '🥚',
+  'Fruta y verdura': '🍌',
+  Congelados: '🧊',
+  Refrigerados: '🥣',
+  Panadería: '🍞',
+  Despensa: '🥫',
+  Suplementos: '💊',
+  Otros: '🛒',
+};
+
+// Dónde comprarlo. La idea: TODO en Mercadona en un solo viaje; la proteína en polvo, online.
+export const STORE_PLAN = {
+  main: 'Mercadona',
+  why: 'Tiene todo el menú en un solo viaje: yogures +Proteínas, queso fresco batido 0%, claras en brick, pavo 90%, gazpacho y salmorejo de nevera, legumbre cocida en bote y crema de cacahuete 100%.',
+  alternatives: [
+    { name: 'Lidl', text: 'Vale casi para todo (gama High Protein de Milbona, claras, pavo). El queso batido 0% y las cremas de verdura van por temporadas.' },
+    { name: 'Carrefour', text: 'Lo tiene todo, algo más caro de media. Útil si te pilla al lado.' },
+    { name: 'Online (HSN, MyProtein, Prozis)', text: 'Para la whey y la creatina: sale bastante más barato por kilo que en el súper. Compra creatina monohidrato normal (sin "HCL" ni mezclas).' },
+  ],
+  tips: [
+    'Haz una compra grande el domingo y una pequeña el miércoles (fruta, pan y pescado fresco).',
+    'Pechuga y carne picada en bandejas grandes: divide en raciones y congela lo del jueves en adelante.',
+    'El pescado (merluza, salmón) congelado sale más barato y vale igual.',
+  ],
+};
+
+// Pistas por producto (si no hay, vale cualquier marca)
+export const STORE_HINTS = {
+  batido0: 'Mercadona: queso fresco batido 0% Hacendado (tarrina 500 g)',
+  yogurPro: 'Mercadona: yogur +Proteínas natural Hacendado (pack de 6)',
+  claras: 'Mercadona: claras de huevo pasteurizadas (brick)',
+  pavo: 'Pechuga de pavo de 90% o más de carne (lonchas finas)',
+  salmorejo: 'Nevera: salmorejo Hacendado o Alvalle',
+  gazpacho: 'Nevera: gazpacho Hacendado o Alvalle',
+  cremaCalabaza: 'Nevera: crema de calabaza Hacendado (o haz la tuya y congela)',
+  crCacahuete: 'Crema de cacahuete 100% (solo cacahuete, sin azúcar)',
+  tortitaArroz: 'Tortitas de maíz o arroz (las de maíz con sal tienen más sabor)',
+  wrap: 'Tortillas de trigo integral (paquete de 8)',
+  lentejas: 'Bote de cristal de lentejas cocidas',
+  frijoles: 'Bote de alubias negras cocidas (o rojas)',
+  frutosRojos: 'Congelados: frutos rojos / frutas del bosque',
+  espinacaCong: 'Congelados: espinacas en porciones (bolitas)',
+  whey: 'Online (HSN Evowhey, MyProtein Impact Whey…): sabor chocolate o vainilla',
+  leCoco: 'Lata de leche de coco (si no la hay light, pon la mitad)',
+  merluza: 'Lomos de merluza (congelados valen y salen más baratos)',
+  salmon: 'Lomos de salmón (congelados valen)',
+  gambas: 'Gambas peladas congeladas',
+  ternera5: 'Carne picada de vacuno 5% grasa (o "burger meat" magra)',
+  quesoLight: 'Lonchas de queso light / havarti light',
+  mozzaLight: 'Mozzarella rallada light',
+};
+
+export function niceQty(key, grams) {
+  const f = FOODS[key];
+  const unit = f?.unit || 'g';
+  if (f?.per && f.perLabel && ['huevo', 'platano', 'manzana', 'kiwi', 'naranja', 'yogurPro', 'yogurNat', 'panBurger', 'wrap', 'quesito', 'quesoLight', 'tortitaArroz'].includes(key)) {
+    const n = Math.ceil(grams / f.per);
+    const forms = { ud: ['ud', 'ud'], loncha: ['loncha', 'lonchas'], tortita: ['tortita', 'tortitas'], porción: ['porción', 'porciones'] }[f.perLabel] || [f.perLabel, f.perLabel];
+    return `${n} ${n === 1 ? forms[0] : forms[1]}`;
+  }
+  const rounded = Math.ceil(grams / 50) * 50;
+  if (rounded >= 1000) return `${(rounded / 1000).toFixed(1).replace('.', ',')} ${unit === 'ml' ? 'L' : 'kg'}`;
+  return `${rounded} ${unit}`;
+}
+
+// [{ cat, items: [{ k, g, name, qty, hint }] }]
+export function buildShoppingList() {
+  const tot = {};
+  for (const day of WEEK_MENU) {
+    for (const sl of SLOTS) {
+      for (const [k, g] of getRecipe(day[sl.key]).ingredients) {
+        if (k === 'especias') continue;
+        tot[k] = (tot[k] || 0) + g;
+      }
+    }
+  }
+  const by = {};
+  for (const [k, g] of Object.entries(tot)) {
+    const cat = FOODS[k]?.cat || 'Otros';
+    (by[cat] = by[cat] || []).push({ k, g, name: FOODS[k]?.name || k, qty: niceQty(k, g), hint: STORE_HINTS[k] || null });
+  }
+  return CATEGORY_ORDER.filter((c) => by[c]).map((c) => ({ cat: c, items: by[c].sort((a, b) => b.g - a.g) }));
+}
+
+export const PANTRY_NOTE =
+  'Despensa básica: sal, pimienta, ajo en polvo, pimentón dulce, curry, cúrcuma, comino, orégano, canela, levadura química, laurel, azafrán/colorante, jengibre en polvo, lima/limón, mostaza.';
+
+// Texto plano para copiar/compartir (WhatsApp, notas…)
+export function shoppingText(groups, checked = {}, { onlyPending = true } = {}) {
+  const lines = [`🛒 Compra de la semana (${STORE_PLAN.main})`];
+  for (const g of groups) {
+    const items = g.items.filter((it) => !onlyPending || !checked[it.k]);
+    if (!items.length) continue;
+    lines.push('', `${CATEGORY_EMOJI[g.cat] || '•'} ${g.cat}`);
+    for (const it of items) lines.push(`- ${it.name}: ${it.qty}`);
+  }
+  return lines.join('\n');
+}
