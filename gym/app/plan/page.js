@@ -2,10 +2,10 @@
 
 import Link from 'next/link';
 import Icon from '../../components/Icon';
-import { PageSkeleton } from '../../components/ui';
+import { PageSkeleton, useHashScroll } from '../../components/ui';
 import { useAppState, useHydrated } from '../../lib/store';
 import { dayContext, projection, weeksToGoal, fmtKg } from '../../lib/coach';
-import { WORKOUTS, PHASES, SUPPLEMENTS, NO_SUPPLEMENTS, JAWLINE, RULES, DOUBLE_SESSION } from '../../lib/program';
+import { WORKOUTS, PHASES, SUPPLEMENTS, NO_SUPPLEMENTS, JAWLINE, LOVE_HANDLES, RULES, DOUBLE_SESSION } from '../../lib/program';
 import { getExercise } from '../../lib/exercises';
 import { DAY_NAMES, addDays, mondayOf, shortDate } from '../../lib/dates';
 
@@ -28,12 +28,12 @@ const MILESTONES = [
   {
     week: 12,
     title: 'Semana 12 · V-taper en camiseta',
-    text: 'Forma de V clara con ropa. Venas en hombros y antebrazos con el pump. Abdomen superior se intuye con buena luz. Mandíbula bastante más marcada.',
+    text: 'Forma de V clara con ropa. Venas en hombros y antebrazos con el pump. Abdomen superior se intuye con buena luz. Mandíbula bastante más marcada y los michelines ya claramente más pequeños.',
   },
   {
     week: 18,
     title: 'Semanas 16-20 · Aesthetic',
-    text: '~12-14% de grasa: abdomen visible, mandíbula marcada, hombros "3D". Musculado y definido, nada de "gigante". Este es el objetivo.',
+    text: '~12-14% de grasa: abdomen visible, mandíbula marcada, hombros "3D" y los costados limpios (los michelines son lo último en irse). Musculado y definido, nada de "gigante". Este es el objetivo.',
   },
   {
     week: 24,
@@ -45,6 +45,7 @@ const MILESTONES = [
 export default function PlanPage() {
   const hydrated = useHydrated();
   const s = useAppState();
+  useHashScroll(hydrated);
   if (!hydrated) return <PageSkeleton />;
   const ctx = dayContext(s);
   const { startKg, goalKg, startDate } = s.profile;
@@ -72,6 +73,7 @@ export default function PlanPage() {
           ['#semana', 'Semana tipo'],
           ['#fases', 'Fases'],
           ['#suplementos', 'Suplementos'],
+          ['#michelines', 'Michelines'],
           ['#mandibula', 'Mandíbula'],
           ['#reglas', 'Reglas'],
         ].map(([h, l]) => (
@@ -128,7 +130,7 @@ export default function PlanPage() {
           {[
             ['🔥', 'Déficit de ~700 kcal/día', '~2.300 kcal los días de entreno y ~2.100 el domingo. Tu gasto estimado es ~3.000 kcal con este nivel de actividad. Así bajas ~0,7-0,9 kg/semana.'],
             ['🥩', '~190-210 g de proteína', 'Lo que protege (y construye) músculo en déficit. Va repartida en 5 comidas.'],
-            ['🏋️', '6 días con especialización', 'Deltoide lateral 4 veces/semana (es lo que te hace ancho), espalda 2-3, brazos 3. Pierna 2 días para gastar más y estar proporcionado.'],
+            ['🏋️', '6 días con especialización', 'Deltoide lateral 4 veces/semana (es lo que te hace ancho), espalda 2-3, brazos 3. Pierna 2 días con glúteo extra (hip thrust y abducción) para rellenar la zona de los michelines.'],
             ['🚶', 'Cardio suave + pasos', '20-40 min de cinta inclinada o bici tras las pesas y 8-12k pasos. Quema grasa sin robar recuperación.'],
             ['😴', 'Dormir 7,5-9 h', 'Con poco sueño pierdes más músculo y menos grasa con la misma dieta. No es negociable.'],
             ['📈', 'Ajuste automático', 'La app mira tu media semanal de peso y te dice si subir o bajar calorías.'],
@@ -261,6 +263,33 @@ export default function PlanPage() {
             </ul>
           </div>
           <p className="tiny faint">Presupuesto: creatina + whey + vitamina D + multi ≈ 35-45 €/mes. Si tomas medicación o tienes algún problema de salud, coméntalo con tu médico.</p>
+        </div>
+      </section>
+
+      {/* ───── Michelines ───── */}
+      <section id="michelines" className="section" style={{ scrollMarginTop: 16 }}>
+        <div className="section-title">Michelines (costados y lumbar)</div>
+        <div className="card" style={{ background: 'linear-gradient(150deg,#2a1f0e 0%,var(--card) 60%)', borderColor: 'rgba(255,181,71,0.18)' }}>
+          <p>{LOVE_HANDLES.intro}</p>
+        </div>
+        <div className="stack" style={{ marginTop: 12 }}>
+          {LOVE_HANDLES.items.map((it) => (
+            <div key={it.t} className="card">
+              <h3 style={{ fontSize: 16 }}>{it.t}</h3>
+              <p className="small muted" style={{ marginTop: 4 }}>{it.d}</p>
+            </div>
+          ))}
+          <div className="row wrap">
+            <Link href="/ejercicio/abduccion-cadera" className="btn sm">
+              <Icon name="cube" size={15} /> Abducción de cadera
+            </Link>
+            <Link href="/ejercicio/hip-thrust" className="btn sm">
+              <Icon name="cube" size={15} /> Hip thrust
+            </Link>
+            <Link href="/ejercicio/vacio-abdominal" className="btn sm">
+              <Icon name="cube" size={15} /> Vacío abdominal
+            </Link>
+          </div>
         </div>
       </section>
 

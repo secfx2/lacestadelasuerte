@@ -78,6 +78,13 @@ function Home() {
         {ctx.isMeasure && <MeasureTile />}
         <WeekTile s={s} iso={ctx.iso} today={today} />
         <TipTile iso={ctx.iso} />
+        <Link href="/plan#michelines" className="tile w2 accent-amber" style={{ minHeight: 0 }}>
+          <span className="tile-label" style={{ color: 'var(--amber)' }}>
+            <Icon name="target" size={14} /> Michelines
+          </span>
+          <div className="tile-title" style={{ fontSize: 17 }}>Plan para los costados: glúteo, cintura y paciencia</div>
+          <p className="small muted">Por qué es lo último en irse y qué hacer mientras (hip thrust, abducción, vacío abdominal).</p>
+        </Link>
         <LinkTile href="/plan" icon="target" color="violet" label="Expectativas" title="¿Cuándo me veré aesthetic?" />
         <LinkTile href="/plan#mandibula" icon="face" color="pink" label="Mandíbula" title="Guía de cara y cuello" />
         <LinkTile href="/dieta?tab=compra" icon="cart" color="amber" label="Compra" title="Lista de la semana" />

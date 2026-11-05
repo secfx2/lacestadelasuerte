@@ -21,6 +21,7 @@ const MOBILITY = [
   '10 dislocaciones de hombro con toalla o banda (brazos rectos por encima de la cabeza).',
   '1 min por lado estiramiento de flexor de cadera (rodilla en el suelo, glúteo apretado).',
   '2 × 10 chin tucks (barbilla atrás 3 s) para la postura y la mandíbula.',
+  '3 × 20-30 s de vacío abdominal (mejor en ayunas): cintura más recogida.',
 ];
 
 export default function EntrenoPage() {
@@ -481,6 +482,9 @@ function RestDay({ ctx, day, iso }) {
           ))}
         </div>
       </div>
+      <Link href="/ejercicio/vacio-abdominal" className="btn sm" style={{ alignSelf: 'flex-start' }}>
+        <Icon name="cube" size={15} /> Cómo se hace el vacío abdominal
+      </Link>
       <div className="hint up">
         <Icon name="sparkle" size={18} />
         <span>Domingo = día ideal para meal prep: cocina el curry o la boloñesa para lunes-miércoles y haz la compra con la lista.</span>

@@ -922,6 +922,55 @@ export const EXERCISES = [
     alt: { id: 'rueda-abdominal', text: 'Rueda abdominal o dead bug' },
   },
 
+  // ───────────── GLÚTEO / CINTURA (michelines) ─────────────
+  {
+    id: 'abduccion-cadera',
+    name: 'Abducción de cadera en máquina',
+    img: 'Thigh_Abductor',
+    anim: 'hipAbduction',
+    primary: ['glutes'],
+    secondary: [],
+    equip: 'Máquina de abductores (la de abrir piernas)',
+    zone: 'Zona de máquinas de pierna: es la máquina de abrir/cerrar piernas (abductor/aductor). Pon las almohadillas por FUERA de las rodillas.',
+    setup: [
+      'Almohadillas en la cara exterior de las rodillas y rango cerrado al empezar.',
+      'Agarra las asas. Inclinarte un poco hacia delante carga más la parte alta del glúteo.',
+    ],
+    steps: [
+      'Abre las rodillas empujando hacia fuera con el lateral de la cadera (glúteo medio), no con los pies.',
+      'En la máxima apertura aprieta 1 s: lo tienes que notar en el glúteo de arriba, justo debajo del michelín.',
+      'Vuelve en 2-3 s sin dejar que las placas choquen.',
+      'Mantén el culo pegado al asiento todo el recorrido.',
+    ],
+    mistakes: [
+      'Poner tanto peso que solo abres unos centímetros.',
+      'Rebotar en la parte cerrada.',
+      'Levantar el culo del asiento para ayudarte.',
+    ],
+    tip: 'Es el ejercicio que más rellena la zona de encima de la cadera: más glúteo medio = transición cintura-cadera limpia y menos "corte" con el calzoncillo.',
+    alt: { id: null, text: 'Abducción en polea baja con tobillera, o pasos laterales con banda elástica en las rodillas.' },
+  },
+  {
+    id: 'vacio-abdominal',
+    name: 'Vacío abdominal (stomach vacuum)',
+    img: 'Stomach_Vacuum',
+    anim: 'vacuum',
+    primary: ['abs'],
+    secondary: ['obliques'],
+    equip: 'Nada (en casa o en el gym)',
+    zone: 'En cualquier sitio. Mejor por la mañana en ayunas, de pie o a cuatro patas.',
+    setup: ['De pie o a cuatro patas, espalda neutra.', 'Con el estómago vacío (al levantarte es ideal).'],
+    steps: [
+      'Saca TODO el aire de los pulmones.',
+      'Sin coger aire, mete el ombligo hacia la columna lo máximo posible, como si quisieras tocar la espalda.',
+      'Aguanta 20-30 s respirando muy poco por arriba.',
+      'Suelta, respira normal 30 s y repite 3 veces.',
+    ],
+    mistakes: ['Meter tripa cogiendo aire (eso es otra cosa).', 'Encorvar la espalda.', 'Hacerlo justo después de comer.'],
+    tip: 'Entrena el transverso, tu "faja" natural: con el tiempo la cintura se ve más recogida incluso relajado.',
+    alt: { id: 'plancha', text: 'Plancha frontal' },
+  },
+
   // ───────────── CARDIO ─────────────
   {
     id: 'cinta-inclinada', name: 'Cinta inclinada (caminar en cuesta)', img: 'Walking_Treadmill', anim: 'walkIncline', primary: ['glutes', 'calves', 'hamstrings'], secondary: [], equip: 'Cinta de correr', cardio: true,

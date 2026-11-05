@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import Icon from '../../components/Icon';
-import { PageSkeleton, useToast } from '../../components/ui';
+import { PageSkeleton, useHashScroll, useToast } from '../../components/ui';
 import { useAppState, useHydrated, update } from '../../lib/store';
 import { weightStats, sortedWeights, weeklyAverages, navyBodyFat, targetWeightFor, adonis, fmtKg, personalRecords, sessionVolume, workoutForDay, projection } from '../../lib/coach';
 import { getExercise } from '../../lib/exercises';
@@ -14,6 +14,7 @@ export default function ProgresoPage() {
   const hydrated = useHydrated();
   const s = useAppState();
   const [toast, showToast] = useToast();
+  useHashScroll(hydrated);
   if (!hydrated) return <PageSkeleton />;
   const st = weightStats(s);
   return (

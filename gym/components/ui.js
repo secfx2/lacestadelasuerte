@@ -143,3 +143,23 @@ export function MacroLine({ m, compact }) {
     </span>
   );
 }
+
+// Las páginas se pintan en cliente tras hidratar: el salto a #ancla del navegador llega antes
+// de que exista la sección. Este hook lo repite cuando el contenido ya está montado.
+export function useHashScroll(ready) {
+  useEffect(() => {
+    if (!ready || typeof window === 'undefined') return;
+    const go = () => {
+      const id = decodeURIComponent(window.location.hash.slice(1));
+      if (!id) return;
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    const t = setTimeout(go, 60);
+    window.addEventListener('hashchange', go);
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener('hashchange', go);
+    };
+  }, [ready]);
+}

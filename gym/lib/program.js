@@ -42,15 +42,16 @@ export const WORKOUTS = [
     key: 'piernaA',
     weekday: 2,
     name: 'Pierna A',
-    subtitle: 'Cuádriceps · Abdomen',
+    subtitle: 'Cuádriceps · Glúteo · Abdomen',
     emoji: '🦵',
-    focus: 'Piernas proporcionadas y mucho gasto calórico. Abdomen para cuando baje la grasa.',
+    focus: 'Piernas proporcionadas, glúteo para rellenar la zona de los michelines y mucho gasto calórico.',
     items: [
       ['sentadilla-hack', 3, 8, 10, 150],
-      ['prensa', 3, 10, 12, 120],
-      ['extension-cuadriceps', 3, 12, 15, 75],
+      ['prensa', 3, 10, 12, 120, 'Pies altos y algo abiertos en la plataforma: más glúteo.'],
+      ['hip-thrust', 3, 8, 12, 120, 'Pausa 1 s arriba apretando el glúteo.'],
+      ['extension-cuadriceps', 2, 12, 15, 75],
       ['curl-femoral-sentado', 3, 10, 12, 75],
-      ['gemelo-de-pie', 3, 10, 15, 60, 'Pausa 1 s abajo en estiramiento y 1 s arriba.'],
+      ['abduccion-cadera', 3, 15, 20, 60, 'Inclínate un poco hacia delante: trabaja la parte alta del glúteo.'],
       ['crunch-polea', 3, 12, 15, 60],
       ['elevacion-piernas', 3, 10, 15, 60],
     ],
@@ -97,13 +98,14 @@ export const WORKOUTS = [
     name: 'Pierna B',
     subtitle: 'Femoral · Glúteo · Hombro lateral',
     emoji: '🍑',
-    focus: 'Cadena posterior y una dosis extra de deltoide lateral.',
+    focus: 'Cadena posterior, glúteo (tu punto a mejorar) y una dosis extra de deltoide lateral.',
     items: [
       ['peso-muerto-rumano', 3, 8, 10, 150],
-      ['hip-thrust', 3, 8, 12, 120],
-      ['sentadilla-bulgara', 2, 10, 12, 90, 'Reps por pierna.'],
+      ['hip-thrust', 3, 8, 12, 120, 'Pausa 1 s arriba. Es tu ejercicio clave para el glúteo.'],
+      ['sentadilla-bulgara', 2, 10, 12, 90, 'Reps por pierna. Torso algo inclinado y paso largo = más glúteo.'],
       ['curl-femoral-tumbado', 3, 10, 12, 75],
-      ['gemelo-sentado', 3, 12, 15, 60],
+      ['abduccion-cadera', 3, 15, 20, 60, 'Última serie: aguanta 10 s abierto al final.'],
+      ['gemelo-sentado', 2, 12, 15, 60],
       ['elevacion-lateral-polea', 3, 12, 15, 45, 'Reps por brazo.'],
       ['rueda-abdominal', 3, 8, 12, 60, 'Si no puedes con la rueda: plancha 3 × 30-45 s.'],
     ],
@@ -246,6 +248,20 @@ export const JAWLINE = {
   ],
 };
 
+export const LOVE_HANDLES = {
+  intro:
+    'Eso que tienes son los michelines (love handles): grasa en los costados y la zona lumbar, justo encima de la goma del calzoncillo. En los hombres es de los últimos sitios de los que se va la grasa, así que es normal que sea lo que más tarde cambie. La grasa no se quema por zonas (hacer oblicuos no la quita), pero sí puedes cambiar mucho cómo se ve la zona.',
+  items: [
+    { t: 'Bajar grasa total (lo principal)', d: 'Es lo que ya hace el plan. Primero bajan cara, pecho y brazos; los michelines suelen empezar a reducirse de verdad entre las semanas 10 y 16 y casi desaparecen hacia el 12-13% de grasa. No cambies la dieta por esto: el déficit ya es el correcto.' },
+    { t: 'Más glúteo (tu caso)', d: 'Con poco glúteo, la grasa de encima "cuelga" sobre el corte del calzoncillo. Más glúteo (sobre todo el glúteo medio, la parte alta y lateral) rellena la zona y la transición cintura-cadera se ve limpia. Por eso ahora hay hip thrust 2 días y abducción de cadera 2 días.' },
+    { t: 'Nada de oblicuos con peso', d: 'Las inclinaciones laterales con mancuerna pesada engordan el oblicuo y ensanchan la cintura: justo lo contrario del V-taper. Core sí, pero de estabilidad: rueda, plancha y vacío abdominal.' },
+    { t: 'Vacío abdominal cada mañana', d: '3 × 20-30 s en ayunas. Entrena el transverso, tu faja natural: la cintura se ve más recogida en reposo. Lo tienes en el día de descanso y en la ficha del ejercicio.' },
+    { t: 'Postura de la pelvis', d: 'Si la pelvis se te va hacia delante (culo hacia fuera, lumbar muy arqueada), la tripa y los michelines sobresalen más. Estira el flexor de cadera (lo tienes en la movilidad del domingo) y aprieta un poco el glúteo cuando estés de pie.' },
+    { t: 'Pasos, sueño y alcohol', d: 'Los pasos diarios queman grasa total sin fatigar. Dormir poco y el alcohol favorecen acumular grasa abdominal. Cumple tus pasos y tus 8 h.' },
+    { t: 'Truco inmediato: la ropa', d: 'Una goma estrecha y apretada "corta" y marca el michelín. Usa bóxer de cintura ancha en tu talla real (no una menos) y pantalón de tiro medio que no apriete justo ahí. Se nota desde hoy.' },
+  ],
+};
+
 export const TIPS = [
   'Las elevaciones laterales son el ejercicio nº1 para verte ancho. Peso ligero, técnica perfecta, sin balanceo.',
   'Hoy bebe un vaso de agua nada más levantarte. Llevas 8 h sin beber.',
@@ -261,4 +277,6 @@ export const TIPS = [
   'Un día malo no arruina nada. Una semana mala tampoco. Lo que cuenta es el mes.',
   'Pásate a la sal yodada y limita ultraprocesados: menos retención en la cara.',
   'Face pull = hombros hacia atrás = postura de "aesthetic" en las fotos.',
+  'Vacío abdominal al levantarte: 3 × 20-30 s con el ombligo hacia la columna. Cintura más recogida.',
+  'Los michelines son de lo último en irse. Si ves la cara y los brazos más definidos, vas por buen camino: luego vienen los costados.',
 ];

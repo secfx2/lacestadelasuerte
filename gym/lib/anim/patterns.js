@@ -708,6 +708,24 @@ export const PATTERNS = {
     lock: { joint: 'knees', y: 0.055 },
     view: [1.3, 0.35, 0.3],
   },
+  hipAbduction: {
+    a: { hips: [0, -0.35, 0], spine: [-5, 0, 0], armSpace: 'root', arms: { up: [0.3, -1, 0.05], fore: [0.2, -0.7, 0.6] }, legs: { thigh: [0.1, -0.06, 1], shin: [0.05, -1, 0.05] } },
+    b: { hips: [0, -0.35, 0], spine: [-5, 0, 0], armSpace: 'root', arms: { up: [0.3, -1, 0.05], fore: [0.2, -0.7, 0.6] }, legs: { thigh: [0.62, -0.06, 0.78], shin: [0.2, -1, 0.05] } },
+    tempo: [1, 0.8, 2, 0.3],
+    labels: ['Abre', 'Aprieta', 'Cierra', 'Junta'],
+    props: [...seatSet(0.06), backrest(0.62, 0.36), backPost(0.2)],
+    lock: null,
+    view: [0.75, 1.05, 0.75],
+  },
+  vacuum: {
+    a: { arms: { up: [0.14, -1, 0.0], fore: [0.12, -1, 0.12] }, legs: STAND },
+    b: { spine: [3, 0, 0], arms: { up: [0.17, -1, 0.04], fore: [0.15, -1, 0.16] }, legs: STAND },
+    tempo: [2, 3, 1.5, 1],
+    labels: ['Saca el aire', 'Ombligo dentro', 'Suelta', 'Respira'],
+    props: [],
+    lock: 'feet',
+    view: [0.9, 0.3, 0.6],
+  },
   plank: {
     a: {
       root: { rot: [80, 0, 0] },
