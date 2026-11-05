@@ -399,3 +399,19 @@ a.tile:hover { border-color: var(--line-2); }
 .week-strip .d.ok { box-shadow: 0 0 0 1.5px var(--lime) inset; }
 .week-strip .d .e { font-size: 16px; }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+/* ───────── Navegador de días ───────── */
+.datenav { display: flex; align-items: center; gap: 8px; margin: 0 0 14px; }
+.datenav-mid {
+  position: relative; flex: 1; min-width: 0; height: 44px; border-radius: 999px; background: var(--card);
+  border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer;
+}
+.datenav-rel { font-weight: 700; font-size: 14px; }
+.datenav-rel.other { color: var(--amber); }
+.datenav-date { color: var(--muted); font-size: 13.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.datenav-mid input { position: absolute; inset: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer; }
+.datenav-mid input::-webkit-calendar-picker-indicator { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+.glasses { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; }
+.glasses i { height: 9px; border-radius: 3px; background: rgba(96, 165, 250, 0.16); }
+.glasses i.on { background: var(--blue); }
+.week-strip .d.isnow:not(.today) span:first-child { color: var(--lime); font-weight: 700; }

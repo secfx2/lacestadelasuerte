@@ -22,8 +22,9 @@ export function planItems(workout, phase) {
   }));
 }
 
-export function dayContext(state, now = new Date()) {
-  const iso = todayISO(now);
+// Contexto de un día. Por defecto hoy; `isoOverride` permite ver/editar otro día (ayer, mañana…)
+export function dayContext(state, now = new Date(), isoOverride = null) {
+  const iso = isoOverride || todayISO(now);
   const dayIdx = weekdayIdx(iso);
   const week = programWeek(state.profile.startDate || iso, iso);
   const phase = phaseForWeek(week);
@@ -127,11 +128,16 @@ export function sessionVolume(dayData) {
 
 // ───────── Comidas ─────────
 
-export function nextMeal(state, now = new Date()) {
-  const iso = todayISO(now);
-  const mins = minutesNow(now);
+export function nextMeal(state, now = new Date(), viewIso = null) {
+  const iso = viewIso || todayISO(now);
   const eaten = state.days[iso]?.meals || {};
   const menu = WEEK_MENU[weekdayIdx(iso)];
+  // Otro día (no hoy): la primera comida sin marcar de ese día
+  if (viewIso && viewIso !== todayISO(now)) {
+    const slot = SLOTS.find((sl) => !eaten[sl.key]) || SLOTS[SLOTS.length - 1];
+    return { slot, recipe: getRecipe(menu[slot.key]), iso, tomorrow: false, now: false, otherDay: true, allDone: SLOTS.every((sl) => eaten[sl.key]) };
+  }
+  const mins = minutesNow(now);
   for (const slot of SLOTS) {
     if (mins < slot.to && !eaten[slot.key]) {
       const late = mins >= slot.from;

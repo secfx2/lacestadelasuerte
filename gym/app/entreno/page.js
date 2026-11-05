@@ -10,7 +10,8 @@ import { useAppState, useHydrated, updateDay, getState } from '../../lib/store';
 import { dayContext, planItems, setProgress, lastPerformance, overloadHint, fmtKg, sessionVolume, personalRecords, e1rm } from '../../lib/coach';
 import { WORKOUTS, WORKOUT_BY_KEY, WARMUP, cardioForDay, DOUBLE_SESSION } from '../../lib/program';
 import { getExercise } from '../../lib/exercises';
-import { DAY_SHORT, fmtClock, fmtRest } from '../../lib/dates';
+import { DAY_SHORT, fmtClock, fmtRest, todayISO, prettyDate } from '../../lib/dates';
+import DateNav, { useViewDate, relLabel } from '../../components/DateNav';
 import { beep, unlockAudio } from '../../lib/sound';
 
 const MOBILITY = [
@@ -42,7 +43,9 @@ function Entreno() {
   const [summary, setSummary] = useState(null);
   useWakeLock(hydrated);
 
-  const ctx = useMemo(() => (hydrated ? dayContext(s) : null), [hydrated, s]);
+  const viewIso = useViewDate();
+  const isToday = viewIso === todayISO();
+  const ctx = useMemo(() => (hydrated ? dayContext(s, new Date(), viewIso) : null), [hydrated, s, viewIso]);
   const viewKey = params.get('d');
   const workout = ctx ? (viewKey && WORKOUT_BY_KEY[viewKey]) || ctx.workout : null;
   const items = useMemo(() => (ctx && workout ? planItems(workout, ctx.phase) : []), [ctx, workout]);
@@ -52,11 +55,11 @@ function Entreno() {
 
   // abre automáticamente el primer ejercicio sin terminar
   useEffect(() => {
-    if (!ctx || open !== null) return;
+    if (!ctx) return;
     const idx = items.findIndex((it) => (day.sets?.[it.id] || []).filter((x) => x?.done).length < it.sets);
     setOpen(idx === -1 ? null : idx);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ctx, items.length]);
+  }, [ctx?.iso, workout?.key, hydrated]);
 
   const startRest = useCallback((sec, label) => {
     unlockAudio();
@@ -116,6 +119,15 @@ function Entreno() {
         {!workout.rest && <Ring pct={prog.pct} size={66} label={day.done && !isOther ? '✓' : `${prog.done}/${prog.total}`} />}
       </header>
 
+      <DateNav iso={iso} />
+      {!isToday && (
+        <div className="hint warn" style={{ marginBottom: 12 }}>
+          <Icon name="calendar" size={18} />
+          <span>
+            Estás en <b>{relLabel(iso).toLowerCase()}</b> ({prettyDate(iso).toLowerCase()}). Las series que marques se guardan en ese día.
+          </span>
+        </div>
+      )}
       <div className="chips" style={{ marginBottom: 14 }}>
         {WORKOUTS.map((w, i) => (
           <button
@@ -123,7 +135,11 @@ function Entreno() {
             className={`chip${w.key === workout.key ? ' on' : ''}${i === ctx.dayIdx ? ' today' : ''}`}
             onClick={() => {
               setOpen(null);
-              router.replace(w.key === ctx.workout.key ? '/entreno' : `/entreno?d=${w.key}`, { scroll: false });
+              const q = new URLSearchParams();
+              if (!isToday) q.set('fecha', iso);
+              if (w.key !== ctx.workout.key) q.set('d', w.key);
+              const qs = q.toString();
+              router.replace(qs ? `/entreno?${qs}` : '/entreno', { scroll: false });
             }}
           >
             {DAY_SHORT[i]} · {w.emoji} {w.name}
@@ -135,7 +151,7 @@ function Entreno() {
         <div className="hint warn" style={{ marginBottom: 12 }}>
           <Icon name="swap" size={18} />
           <span>
-            Hoy tocaba <b>{ctx.workout.name}</b>. Si registras series aquí, hoy contará como <b>{workout.name}</b> (útil si te saltaste un día).
+            {isToday ? 'Hoy' : 'Ese día'} tocaba <b>{ctx.workout.name}</b>. Si registras series aquí, {isToday ? 'hoy' : 'ese día'} contará como <b>{workout.name}</b> (útil si te saltaste un día).
           </span>
         </div>
       )}

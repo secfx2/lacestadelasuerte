@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useMemo, useState } from 'react';
+import { Suspense, useMemo, useState } from 'react';
 import Icon from '../components/Icon';
 import FoodImg from '../components/FoodImg';
 import { Bar, Check, PageSkeleton, Ring, Stepper, useToast } from '../components/ui';
@@ -10,20 +10,32 @@ import { useAppState, useHydrated, useNow, update, updateDay } from '../lib/stor
 import { dayContext, setProgress, nextMeal, eatenMacros, weightStats, streak, dayCompleted, sortedWeights, workoutForDay } from '../lib/coach';
 import { SLOTS, WEEK_MENU, getRecipe, recipeMacros } from '../lib/recipes';
 import { SUPPLEMENTS, DAILY_TARGETS, TIPS, WEIGH_HOWTO, WEIGH_DAYS } from '../lib/program';
-import { prettyDate, DAY_SHORT, DAY_NAMES, mondayOf, addDays, weekdayIdx } from '../lib/dates';
+import { prettyDate, DAY_SHORT, DAY_NAMES, mondayOf, addDays, weekdayIdx, todayISO, minutesNow } from '../lib/dates';
+import DateNav, { useViewDate, relLabel } from '../components/DateNav';
 import { fmtKg } from '../lib/coach';
 import Onboarding from '../components/Onboarding';
 
-export default function Home() {
+export default function HomePage() {
+  return (
+    <Suspense fallback={<PageSkeleton />}>
+      <Home />
+    </Suspense>
+  );
+}
+
+function Home() {
   const hydrated = useHydrated();
   const s = useAppState();
   const now = useNow(30000);
+  const viewIso = useViewDate();
   const [toast, showToast] = useToast();
 
   if (!hydrated) return <PageSkeleton />;
   if (!s.profile.startDate) return <Onboarding />;
 
-  const ctx = dayContext(s, now);
+  const ctx = dayContext(s, now, viewIso);
+  const today = todayISO(now);
+  const isToday = ctx.iso === today;
   const day = s.days[ctx.iso] || {};
 
   return (
@@ -41,20 +53,30 @@ export default function Home() {
         </Link>
       </header>
 
+      <DateNav iso={ctx.iso} />
+      {!isToday && (
+        <div className="hint warn" style={{ marginBottom: 12 }}>
+          <Icon name="calendar" size={18} />
+          <span>
+            Estás viendo <b>{relLabel(ctx.iso).toLowerCase()}</b> ({prettyDate(ctx.iso).toLowerCase()}). Todo lo que marques aquí se guarda en ese día.
+          </span>
+        </div>
+      )}
+
       <div className="bento">
-        <WorkoutTile s={s} ctx={ctx} day={day} />
-        <MealTile s={s} now={now} showToast={showToast} />
-        <WeighTile s={s} ctx={ctx} showToast={showToast} />
-        <WaterTile day={day} iso={ctx.iso} />
+        <WorkoutTile s={s} ctx={ctx} day={day} isToday={isToday} />
+        <MealTile s={s} now={now} iso={ctx.iso} showToast={showToast} />
+        <WeighTile s={s} ctx={ctx} isToday={isToday} showToast={showToast} />
+        <WaterTile day={day} iso={ctx.iso} isToday={isToday} now={now} />
         <CardioTile ctx={ctx} day={day} />
-        <StreakTile s={s} iso={ctx.iso} />
+        <StreakTile s={s} iso={today} />
         <MacrosTile s={s} iso={ctx.iso} />
         <SuppsTile ctx={ctx} day={day} />
         <StepsTile ctx={ctx} day={day} />
         <SleepTile day={day} iso={ctx.iso} />
         <ProgressTile s={s} />
         {ctx.isMeasure && <MeasureTile />}
-        <WeekTile s={s} iso={ctx.iso} />
+        <WeekTile s={s} iso={ctx.iso} today={today} />
         <TipTile iso={ctx.iso} />
         <LinkTile href="/plan" icon="target" color="violet" label="Expectativas" title="¿Cuándo me veré aesthetic?" />
         <LinkTile href="/plan#mandibula" icon="face" color="pink" label="Mandíbula" title="Guía de cara y cuello" />
@@ -67,13 +89,15 @@ export default function Home() {
 
 /* ───────────────────────── Tiles ───────────────────────── */
 
-function WorkoutTile({ s, ctx, day }) {
+function WorkoutTile({ s, ctx, day, isToday }) {
   const { workout, items } = ctx;
+  const href = isToday ? '/entreno' : `/entreno?fecha=${ctx.iso}`;
+  const when = isToday ? 'Hoy' : relLabel(ctx.iso);
   if (workout.rest) {
     return (
-      <Link href="/entreno" className="tile w2 w2-lg h2-lg accent-lime" style={{ minHeight: 200 }}>
+      <Link href={href} className="tile w2 w2-lg h2-lg accent-lime" style={{ minHeight: 200 }}>
         <span className="tile-label" style={{ color: 'var(--lime)' }}>
-          <Icon name="dumbbell" size={14} /> Hoy
+          <Icon name="dumbbell" size={14} /> {when}
         </span>
         <div style={{ fontSize: 40 }}>{workout.emoji}</div>
         <div className="tile-title" style={{ fontSize: 26 }}>{workout.name}</div>
@@ -89,10 +113,10 @@ function WorkoutTile({ s, ctx, day }) {
   const mins = Math.round(8 + items.reduce((a, it) => a + it.sets * (0.75 + it.rest / 60), 0) + ctx.cardio.minutes);
   const cta = day.done ? 'Entreno completado' : prog.done > 0 ? 'Continuar entreno' : 'Empezar entreno';
   return (
-    <Link href="/entreno" className="tile w2 w2-lg h2-lg accent-lime" style={{ minHeight: 210 }}>
+    <Link href={href} className="tile w2 w2-lg h2-lg accent-lime" style={{ minHeight: 210 }}>
       <div className="spread" style={{ alignItems: 'flex-start' }}>
         <span className="tile-label" style={{ color: 'var(--lime)' }}>
-          <Icon name="dumbbell" size={14} /> Entreno de hoy
+          <Icon name="dumbbell" size={14} /> {isToday ? 'Entreno de hoy' : `Entreno · ${when}`}
         </span>
         <Ring pct={prog.pct} size={58} stroke={6} label={day.done ? '✓' : `${prog.done}/${prog.total}`} />
       </div>
@@ -118,8 +142,8 @@ function WorkoutTile({ s, ctx, day }) {
   );
 }
 
-function MealTile({ s, now, showToast }) {
-  const nm = nextMeal(s, now);
+function MealTile({ s, now, iso, showToast }) {
+  const nm = nextMeal(s, now, iso);
   const m = recipeMacros(nm.recipe);
   const href = `/receta/${nm.recipe.id}?pasos=1&slot=${nm.slot.key}&d=${nm.iso}`;
   const markEaten = () => {
@@ -135,7 +159,7 @@ function MealTile({ s, now, showToast }) {
       </div>
       <div className="inner">
         <span className="tile-label" style={{ color: 'var(--amber)' }}>
-          <span className="dot" /> {nm.tomorrow ? 'Mañana' : nm.now ? 'Ahora toca' : 'Próxima comida'} · {nm.slot.label} · {nm.slot.time}
+          <span className="dot" /> {nm.otherDay ? (nm.allDone ? `${relLabel(iso)} · todo comido ✓` : `${relLabel(iso)} · pendiente`) : nm.tomorrow ? 'Mañana' : nm.now ? 'Ahora toca' : 'Próxima comida'} · {nm.slot.label} · {nm.slot.time}
         </span>
         <Link href={href} className="tile-title" style={{ fontSize: 22 }}>{nm.recipe.name}</Link>
         <div className="small" style={{ color: 'rgba(255,255,255,0.78)' }}>
@@ -145,7 +169,7 @@ function MealTile({ s, now, showToast }) {
           <Link href={href} className="btn primary sm">
             <Icon name="play" size={13} fill="currentColor" /> Receta paso a paso
           </Link>
-          {!nm.tomorrow && (
+          {!nm.tomorrow && !nm.allDone && (
             <button className="btn sm" onClick={markEaten} style={{ background: 'rgba(0,0,0,0.35)' }}>
               <Icon name="check" size={15} /> Hecha
             </button>
@@ -156,7 +180,7 @@ function MealTile({ s, now, showToast }) {
   );
 }
 
-function WeighTile({ s, ctx, showToast }) {
+function WeighTile({ s, ctx, isToday, showToast }) {
   const ws = sortedWeights(s);
   const todayW = ws.find((w) => w.date === ctx.iso);
   const last = ws[ws.length - 1];
@@ -185,7 +209,7 @@ function WeighTile({ s, ctx, showToast }) {
       </span>
       {due ? (
         <>
-          <div className="tile-title" style={{ fontSize: 17 }}>Hoy toca pesarse</div>
+          <div className="tile-title" style={{ fontSize: 17 }}>{isToday ? 'Hoy toca pesarse' : 'Ese día tocaba pesarse'}</div>
           <div className="row" style={{ gap: 6, marginTop: 'auto' }}>
             <input
               className="input sm"
@@ -205,11 +229,11 @@ function WeighTile({ s, ctx, showToast }) {
       ) : (
         <>
           <div className="tile-big num">
-            {last ? fmtKg(last.kg) : '—'}
+            {todayW ? fmtKg(todayW.kg) : last ? fmtKg(last.kg) : '—'}
             <span className="small muted" style={{ fontWeight: 500 }}> kg</span>
           </div>
           <p className="small muted" style={{ marginTop: 'auto' }}>
-            {todayW ? '✓ Registrado hoy' : `Próximo: ${nextDay}`}
+            {todayW ? `✓ Registrado${isToday ? ' hoy' : ''}: ${fmtKg(todayW.kg)} kg` : `Próximo: ${nextDay}`}
           </p>
         </>
       )}
@@ -217,10 +241,14 @@ function WeighTile({ s, ctx, showToast }) {
   );
 }
 
-function WaterTile({ day, iso }) {
+function WaterTile({ day, iso, isToday, now }) {
   const glasses = day.water || 0;
+  const target = Math.ceil(DAILY_TARGETS.waterMl / DAILY_TARGETS.glassMl);
   const ml = glasses * DAILY_TARGETS.glassMl;
-  const pct = Math.min(1, ml / DAILY_TARGETS.waterMl);
+  const pct = Math.min(1, glasses / target);
+  const left = Math.max(0, target - glasses);
+  // Ritmo: repartido entre las 8:00 y las 22:00
+  const expected = isToday ? Math.round(target * Math.max(0, Math.min(1, (minutesNow(now) - 8 * 60) / (14 * 60)))) : target;
   const add = (n) =>
     updateDay(iso, (d) => {
       d.water = Math.max(0, (d.water || 0) + n);
@@ -232,9 +260,19 @@ function WaterTile({ day, iso }) {
         <Icon name="drop" size={14} /> Agua
       </span>
       <div className="tile-big num">
-        {(ml / 1000).toFixed(1).replace('.', ',')}
-        <span className="small muted" style={{ fontWeight: 500 }}> / {DAILY_TARGETS.waterMl / 1000} L</span>
+        {glasses}
+        <span className="small muted" style={{ fontWeight: 500 }}> / {target} vasos</span>
       </div>
+      <div className="glasses" aria-hidden="true">
+        {Array.from({ length: target }).map((_, i) => (
+          <i key={i} className={i < glasses ? 'on' : ''} />
+        ))}
+      </div>
+      <p className="tiny muted">
+        {left === 0
+          ? `✓ ${(ml / 1000).toFixed(1).replace('.', ',')} L · objetivo cumplido`
+          : `${(ml / 1000).toFixed(1).replace('.', ',')} de ${DAILY_TARGETS.waterMl / 1000} L · faltan ${left} vasos${isToday && glasses < expected ? ` · a esta hora ~${expected}` : ''}`}
+      </p>
       <div className="tile-foot">
         <button className="icon-btn sm" onClick={() => add(-1)} aria-label="Quitar vaso">
           <Icon name="minus" size={15} />
@@ -485,20 +523,29 @@ function MeasureTile() {
   );
 }
 
-function WeekTile({ s, iso }) {
+function WeekTile({ s, iso, today }) {
   const mon = mondayOf(iso);
   return (
     <div className="tile w2" style={{ minHeight: 0 }}>
-      <span className="tile-label">
-        <Icon name="calendar" size={14} /> Esta semana
-      </span>
+      <div className="spread">
+        <span className="tile-label">
+          <Icon name="calendar" size={14} /> {mon === mondayOf(today) ? 'Esta semana' : `Semana del ${prettyDate(mon, { weekday: false })}`}
+        </span>
+        <span className="tiny faint">Toca un día para verlo</span>
+      </div>
       <div className="week-strip">
         {DAY_SHORT.map((d, i) => {
           const di = addDays(mon, i);
           const wk = workoutForDay(s, di);
           const ok = dayCompleted(s, di);
           return (
-            <Link key={d} href={`/entreno?d=${wk.key}`} className={`d${di === iso ? ' today' : ''}${ok ? ' ok' : ''}`}>
+            <Link
+              key={d}
+              href={di === today ? '/' : `/?fecha=${di}`}
+              scroll={false}
+              className={`d${di === iso ? ' today' : ''}${di === today ? ' isnow' : ''}${ok ? ' ok' : ''}`}
+              aria-label={`${DAY_NAMES[i]} ${prettyDate(di, { weekday: false })}`}
+            >
               <span>{d}</span>
               <span className="e">{ok ? '✅' : wk.emoji}</span>
             </Link>
