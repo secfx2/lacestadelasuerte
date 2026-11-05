@@ -7,7 +7,7 @@ import { todayISO } from '../lib/dates';
 import { weeksToGoal } from '../lib/coach';
 
 export default function Onboarding() {
-  const [f, setF] = useState({ startDate: todayISO(), age: 25, heightCm: 175, startKg: 94, goalKg: 80, gymTime: '18:30' });
+  const [f, setF] = useState({ startDate: todayISO(), age: 25, heightCm: 174, startKg: 95, goalKg: 80, gymTime: '18:30' });
   const set = (k) => (e) => setF((p) => ({ ...p, [k]: e.target.value }));
   const weeks = weeksToGoal(Number(f.startKg) || 94, Number(f.goalKg) || 80);
   const start = () => {

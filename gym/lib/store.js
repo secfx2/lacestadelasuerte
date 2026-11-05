@@ -12,8 +12,8 @@ export const DEFAULT_STATE = {
   profile: {
     startDate: null, // 'YYYY-MM-DD' (lunes recomendado)
     age: 25,
-    heightCm: 175,
-    startKg: 94,
+    heightCm: 174,
+    startKg: 95,
     goalKg: 80,
     gymTime: '18:30',
     doubleSession: false,

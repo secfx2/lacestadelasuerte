@@ -91,7 +91,7 @@ export default function PlanPage() {
             ~{wk ?? 20} semanas para el look aesthetic (≈ {Math.round((wk ?? 20) / 4.3)}-{Math.round((wk ?? 20) / 4.3) + 1} meses)
           </h2>
           <p className="muted" style={{ marginTop: 8 }}>
-            Con 1,75 m y ~94 kg, lo que te separa de verte ancho y definido es sobre todo grasa: unos 12-15 kg. El ritmo máximo sin perder músculo es ~0,7-1% del peso por semana.
+            Con 1,74 m y ~95 kg, lo que te separa de verte ancho y definido es sobre todo grasa: unos 12-15 kg. El ritmo máximo sin perder músculo es ~0,7-1% del peso por semana.
             Cambios visibles en 6-8 semanas, V-taper clara en ~12, definición completa en 4-6 meses.
             <b style={{ color: 'var(--text)' }}> Ir más veces al gym no lo acelera: lo aceleran el déficit, los pasos, el sueño y la constancia.</b>
           </p>
