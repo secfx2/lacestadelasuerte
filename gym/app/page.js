@@ -17,6 +17,7 @@ import Onboarding from '../components/Onboarding';
 import { SyncBadge } from '../components/SyncAgent';
 import { useSyncStatus } from '../lib/sync';
 import { buildShoppingList, shoppingText, STORE_PLAN, CATEGORY_EMOJI } from '../lib/shopping';
+import ProductImg from '../components/ProductImg';
 
 export default function HomePage() {
   return (
@@ -619,6 +620,13 @@ function ShoppingTile({ s, iso, showToast }) {
         {pending.length === 0 ? '¡Todo comprado! ✓' : `Todo en ${STORE_PLAN.main} · te faltan ${pending.length} cosas`}
       </div>
       <Bar pct={done / all.length} color="amber" thin />
+      {pending.length > 0 && (
+        <div className="row" style={{ gap: 6, overflow: 'hidden' }}>
+          {pending.slice(0, 8).map((it) => (
+            <ProductImg key={it.k} k={it.k} cat={it.cat} size={40} rounded={11} />
+          ))}
+        </div>
+      )}
       {pending.length > 0 && (
         <p className="small muted" style={{ lineHeight: 1.5 }}>
           {pending.slice(0, 7).map((it, i) => (

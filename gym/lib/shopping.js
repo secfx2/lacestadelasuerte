@@ -33,11 +33,20 @@ export const STORE_PLAN = {
   ],
 };
 
+// Tiendas (etiqueta de color en cada producto)
+export const STORES = {
+  mercadona: { name: 'Mercadona', icon: '🛒', bg: 'rgba(0, 166, 81, 0.16)', fg: '#4ade80' },
+  online: { name: 'Online', icon: '📦', bg: 'rgba(167, 139, 250, 0.16)', fg: '#c4b5fd' },
+};
+// Dónde comprar cada producto (por defecto, todo en Mercadona)
+export const STORE_FOR = { whey: 'online' };
+export const storeFor = (k) => STORES[STORE_FOR[k] || 'mercadona'];
+
 // Pistas por producto (si no hay, vale cualquier marca)
 export const STORE_HINTS = {
-  batido0: 'Mercadona: queso fresco batido 0% Hacendado (tarrina 500 g)',
-  yogurPro: 'Mercadona: yogur +Proteínas natural Hacendado (pack de 6)',
-  claras: 'Mercadona: claras de huevo pasteurizadas (brick)',
+  batido0: 'Queso fresco batido 0% Hacendado (tarrina 500 g)',
+  yogurPro: 'Yogur +Proteínas natural Hacendado (pack de 6)',
+  claras: 'Claras de huevo pasteurizadas (brick, en la nevera de huevos)',
   pavo: 'Pechuga de pavo de 90% o más de carne (lonchas finas)',
   salmorejo: 'Nevera: salmorejo Hacendado o Alvalle',
   gazpacho: 'Nevera: gazpacho Hacendado o Alvalle',
@@ -86,7 +95,7 @@ export function buildShoppingList() {
   const by = {};
   for (const [k, g] of Object.entries(tot)) {
     const cat = FOODS[k]?.cat || 'Otros';
-    (by[cat] = by[cat] || []).push({ k, g, name: FOODS[k]?.name || k, qty: niceQty(k, g), hint: STORE_HINTS[k] || null });
+    (by[cat] = by[cat] || []).push({ k, g, name: FOODS[k]?.name || k, qty: niceQty(k, g), hint: STORE_HINTS[k] || null, store: storeFor(k) });
   }
   return CATEGORY_ORDER.filter((c) => by[c]).map((c) => ({ cat: c, items: by[c].sort((a, b) => b.g - a.g) }));
 }
@@ -101,7 +110,7 @@ export function shoppingText(groups, checked = {}, { onlyPending = true } = {}) 
     const items = g.items.filter((it) => !onlyPending || !checked[it.k]);
     if (!items.length) continue;
     lines.push('', `${CATEGORY_EMOJI[g.cat] || '•'} ${g.cat}`);
-    for (const it of items) lines.push(`- ${it.name}: ${it.qty}`);
+    for (const it of items) lines.push(`- ${it.name}: ${it.qty}${it.store?.name && it.store.name !== STORE_PLAN.main ? ` (${it.store.name})` : ''}`);
   }
   return lines.join('\n');
 }

@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Suspense, useMemo } from 'react';
+import { Suspense, useMemo, useState } from 'react';
 import Icon from '../../components/Icon';
 import FoodImg from '../../components/FoodImg';
-import { Bar, Check, PageSkeleton, MacroLine, useToast } from '../../components/ui';
+import { Bar, Check, PageSkeleton, MacroLine, Sheet, useToast } from '../../components/ui';
+import ProductImg, { StoreChip } from '../../components/ProductImg';
 import { useAppState, useHydrated, update } from '../../lib/store';
 import { SLOTS, WEEK_MENU, getRecipe, recipeMacros, dayMacros, NIGHT_SNACK } from '../../lib/recipes';
 import { buildShoppingList, shoppingText, STORE_PLAN, CATEGORY_EMOJI, PANTRY_NOTE } from '../../lib/shopping';
@@ -150,6 +151,7 @@ function Menu({ dayIdx, todayIdx, onDay }) {
 function Shopping() {
   const s = useAppState();
   const [toast, showToast] = useToast();
+  const [view, setView] = useState(null); // producto ampliado
   const week = mondayOf(todayISO());
   const checked = s.shopping[week] || {};
   const groups = useMemo(() => buildShoppingList(), []);
@@ -238,20 +240,53 @@ function Shopping() {
             </div>
             <div className="list">
               {g.items.map((it) => (
-                <div key={it.k} className="list-item" style={{ padding: '9px 0', alignItems: 'flex-start' }}>
+                <div key={it.k} className="list-item" style={{ padding: '9px 0' }}>
                   <Check on={checked[it.k]} round onClick={() => toggle(it.k)} label="Comprado" />
-                  <div className="grow" style={{ opacity: checked[it.k] ? 0.5 : 1 }}>
-                    <div style={{ textDecoration: checked[it.k] ? 'line-through' : 'none' }}>{it.name}</div>
-                    {it.hint && <div className="tiny muted">{it.hint}</div>}
+                  <button
+                    onClick={() => setView({ ...it, cat: g.cat })}
+                    style={{ background: 'none', border: 0, padding: 0, opacity: checked[it.k] ? 0.45 : 1 }}
+                    aria-label={`Ver foto de ${it.name}`}
+                  >
+                    <ProductImg k={it.k} cat={g.cat} size={52} />
+                  </button>
+                  <div className="grow" style={{ opacity: checked[it.k] ? 0.5 : 1, minWidth: 0 }}>
+                    <div style={{ textDecoration: checked[it.k] ? 'line-through' : 'none', fontWeight: 550, lineHeight: 1.25 }}>{it.name}</div>
+                    <div className="row wrap" style={{ gap: 6, marginTop: 4 }}>
+                      <StoreChip store={it.store} />
+                      {it.hint && <span className="tiny muted">{it.hint}</span>}
+                    </div>
                   </div>
-                  <span className="num small muted" style={{ paddingTop: 2, whiteSpace: 'nowrap' }}>{it.qty}</span>
+                  <span className="num small" style={{ whiteSpace: 'nowrap', fontWeight: 600 }}>{it.qty}</span>
                 </div>
               ))}
             </div>
           </div>
         ))}
         <div className="card soft small muted">{PANTRY_NOTE}</div>
+        <p className="tiny faint">Fotos de referencia generadas con IA: te dicen qué tipo de producto buscar, no la marca exacta.</p>
       </div>
+
+      <Sheet open={!!view} onClose={() => setView(null)} title={view?.name || ''}>
+        {view && (
+          <div className="stack" style={{ gap: 12 }}>
+            <ProductImg k={view.k} cat={view.cat} size={'100%'} rounded={20} sizes="(max-width: 760px) 100vw, 600px" style={{ width: '100%', height: 'auto', aspectRatio: '1 / 1', maxHeight: 420 }} />
+            <div className="spread">
+              <StoreChip store={view.store} />
+              <span className="num" style={{ fontWeight: 700, fontSize: 18 }}>{view.qty}</span>
+            </div>
+            {view.hint && <p className="muted">{view.hint}</p>}
+            <button
+              className={`btn block ${checked[view.k] ? '' : 'primary'}`}
+              onClick={() => {
+                toggle(view.k);
+                setView(null);
+              }}
+            >
+              <Icon name="check" size={16} stroke={2.4} /> {checked[view.k] ? 'Desmarcar' : 'Marcar como comprado'}
+            </button>
+          </div>
+        )}
+      </Sheet>
     </>
   );
 }
