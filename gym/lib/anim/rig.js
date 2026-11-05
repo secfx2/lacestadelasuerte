@@ -43,7 +43,6 @@ export const COLORS = {
 // ───────────────────────── utilidades ─────────────────────────
 const v3 = (a) => new THREE.Vector3(a[0], a[1], a[2]);
 const _m = new THREE.Matrix4();
-const _q = new THREE.Quaternion();
 const _qa = new THREE.Quaternion();
 const _v = new THREE.Vector3();
 const _v2 = new THREE.Vector3();

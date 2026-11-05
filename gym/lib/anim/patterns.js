@@ -120,13 +120,13 @@ export const PATTERNS = {
   facePull: {
     a: {
       spine: [-4, 0, 0],
-      arms: { up: [-0.1, 0.1, 1], fore: [-0.16, 0.08, 1] },
+      arms: { ik: { rel: 'chest', offset: [0.07, 0.28, 0.58], frame: 'local' }, pole: [1, 0.45, -0.3] },
       legL: { thigh: [0.06, -1, 0.12], shin: [0.06, -1, 0.0] },
       legR: { thigh: [-0.06, -1, -0.1], shin: [-0.06, -1, -0.14] },
     },
     b: {
       spine: [-6, 0, 0],
-      arms: { up: [1, 0.12, -0.18], fore: [-0.62, 0.72, 0.3] },
+      arms: { ik: { rel: 'chest', offset: [0.27, 0.48, 0.06], frame: 'local' }, pole: [1, 0.45, -0.3] },
       legL: { thigh: [0.06, -1, 0.12], shin: [0.06, -1, 0.0] },
       legR: { thigh: [-0.06, -1, -0.1], shin: [-0.06, -1, -0.14] },
     },
@@ -624,10 +624,10 @@ export const PATTERNS = {
     tempo: [1, 0.8, 2, 0.3],
     props: [
       { kind: 'rbox', size: [1.0, 0.4, 0.32], at: { rel: 'A:shoulders', offset: [0, -0.3, -0.12] }, color: 'pad' },
-      { kind: 'bar', type: 'barbell', len: 1.7, plate: 0.22 },
+      { kind: 'bar', type: 'barbell', len: 1.7, plate: 0.2 },
     ],
     lock: 'feet',
-    view: [1.3, 0.4, 0.2],
+    view: [1, 0.75, 0.85],
   },
   splitSquat: {
     a: {
@@ -824,7 +824,9 @@ export const PATTERNS = {
       { kind: 'rbox', size: [0.62, 0.06, 0.3], at: [0, 0.2, 0.0], color: 'frame' },
       { kind: 'rbox', size: [0.62, 0.06, 0.3], at: [0, 0.42, 0.28], color: 'frame' },
       { kind: 'rbox', size: [0.62, 0.06, 0.3], at: [0, 0.64, 0.56], color: 'frame' },
-      { kind: 'rbox', size: [0.7, 1.4, 0.2], at: [0, 0.7, 0.8], rot: [-25, 0, 0], color: 'frame' },
+      { kind: 'rbox', size: [0.66, 0.9, 0.1], at: [0, 0.5, 0.86], rot: [-38, 0, 0], color: 'frame' },
+      { kind: 'rbox', size: [0.5, 0.22, 0.08], at: [0, 1.28, 0.62], rot: [-30, 0, 0], color: 'frame' },
+      { kind: 'line', from: [0, 0.9, 0.95], to: [0, 1.2, 0.66], radius: 0.03 },
       { kind: 'line', from: [0.34, 1.1, -0.15], to: [0.34, 1.12, 0.62], radius: 0.018, color: 'metal' },
       { kind: 'line', from: [-0.34, 1.1, -0.15], to: [-0.34, 1.12, 0.62], radius: 0.018, color: 'metal' },
       { kind: 'line', from: [0.34, 0.0, -0.15], to: [0.34, 1.1, -0.15], radius: 0.02 },
