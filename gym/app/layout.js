@@ -1,5 +1,6 @@
 import { Inter, Space_Grotesk } from 'next/font/google';
 import Nav from '../components/Nav';
+import SyncAgent from '../components/SyncAgent';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
       <body>
         <main className="app">{children}</main>
         <Nav />
+        <SyncAgent />
       </body>
     </html>
   );

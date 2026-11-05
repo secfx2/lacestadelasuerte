@@ -9,7 +9,22 @@ Web-app privada (tipo app de móvil) con mi plan de **entreno + dieta** para def
 - **Progreso**: gráfica de peso con media semanal y proyección, coach que te dice si ajustar calorías, medidas, % de grasa (método Navy), índice hombros/cintura (Adonis ≈ 1,6), historial y récords.
 - **Plan**: expectativas semana a semana, fases (adaptación → construcción → descarga → intensificación → diet break → afinado), suplementos con evidencia (y lo que no merece la pena), guía de mandíbula y reglas de oro.
 
-Los datos (series, pesos, medidas…) se guardan en **localStorage** del dispositivo. En Ajustes puedes exportarlos/importarlos en JSON.
+## Datos y sincronización
+
+Los datos (series, pesos, medidas, comidas…) se guardan **en la nube y en cada dispositivo**:
+
+- Copia local en `localStorage`: la app funciona sin conexión.
+- Copia en la nube: Supabase (proyecto `embersaintco-web`), esquema privado `aesthetic_coach` (tablas `state`, `state_history`, `secret`) que la API pública no expone. Solo se accede mediante las funciones RPC `ac_get_state`, `ac_put_state`, `ac_list_backups` y `ac_get_backup`, que exigen un token secreto.
+- El servidor (`/api/state`, protegido por la sesión) calcula ese token a partir de `APP_PASSWORD`; en Supabase solo se guarda su hash.
+- Escritura con control de versión: si otro dispositivo guardó antes, la app combina ambos estados campo a campo (`lib/merge.js`, gana lo más reciente) y vuelve a guardar.
+- Copia de seguridad diaria automática (últimos 90 días), restaurable desde Ajustes. Exportar/importar JSON sigue disponible.
+
+Variables en Vercel: `SUPABASE_URL` y `SUPABASE_PUBLISHABLE_KEY`. Si faltan, la app funciona solo en local.
+
+> **Si cambias `APP_PASSWORD`**, la sincronización deja de funcionar hasta que actualices el hash en Supabase:
+> `update aesthetic_coach.secret set token_hash = encode(extensions.digest(encode(extensions.digest('aesthetic-coach-sync:v1:' || '<NUEVA_CONTRASEÑA>', 'sha256'), 'hex'), 'sha256'), 'hex') where id = 1;`
+>
+> Para quitarlo todo de Supabase: `drop schema aesthetic_coach cascade;` y borrar las funciones `public.ac_*`.
 
 ## Privacidad
 

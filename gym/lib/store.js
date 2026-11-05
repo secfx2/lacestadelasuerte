@@ -1,16 +1,19 @@
 'use client';
 
-// Estado de la app guardado en localStorage (privado en tu dispositivo).
-// Exporta/importa un JSON desde Ajustes para pasarlo a otro móvil o hacer copia.
+// Estado de la app. Copia local en localStorage (funciona sin conexión) y copia en la nube
+// sincronizada por lib/sync.js. Cada cambio local se marca con fecha (lib/merge.js) para poder
+// combinar datos de varios dispositivos sin perder nada.
 
 import { useEffect, useState, useSyncExternalStore } from 'react';
+import { stampChanges } from './merge.js';
 
 const KEY = 'aesthetic-coach-v1';
+const BACKUP_KEY = 'aesthetic-coach-v1-localbackups';
 
 export const DEFAULT_STATE = {
   version: 1,
   profile: {
-    startDate: null, // 'YYYY-MM-DD' (lunes recomendado)
+    startDate: null, // 'YYYY-MM-DD'
     age: 25,
     heightCm: 174,
     startKg: 95,
@@ -18,14 +21,16 @@ export const DEFAULT_STATE = {
     gymTime: '18:30',
     doubleSession: false,
   },
-  days: {}, // 'YYYY-MM-DD' → { sets, done, startedAt, finishedAt, cardio, cardioAm, warmup, meals, water, supps, steps, sleep, workoutKey }
-  weights: [], // { date, kg }
-  measures: [], // { date, waist, neck, shoulders, chest, arm }
-  shopping: {}, // 'YYYY-MM-DD(lunes)' → { [foodKey]: true }
+  days: {}, // 'YYYY-MM-DD' → { sets, done, startedAt, finishedAt, cardio, cardioAm, warmup, meals, water, supps, steps, sleep, workoutKey, _ts }
+  weights: [], // { date, kg, ts }
+  measures: [], // { date, waist, neck, shoulders, chest, arm, ts }
+  shopping: {}, // 'YYYY-MM-DD(lunes)' → { [foodKey]: true, _ts }
+  deletedWeights: {}, // fecha → ts del borrado
 };
 
 let state = null;
-const listeners = new Set();
+const listeners = new Set(); // UI (cualquier cambio)
+const localListeners = new Set(); // sincronización (solo cambios hechos en este dispositivo)
 
 function load() {
   if (state) return state;
@@ -33,24 +38,25 @@ function load() {
   try {
     const raw = window.localStorage.getItem(KEY);
     const parsed = raw ? JSON.parse(raw) : null;
-    state = merge(parsed);
+    state = normalize(parsed);
   } catch {
     state = structuredClone(DEFAULT_STATE);
   }
   return state;
 }
 
-function merge(parsed) {
+export function normalize(parsed) {
   const base = structuredClone(DEFAULT_STATE);
   if (!parsed || typeof parsed !== 'object') return base;
   return {
     ...base,
     ...parsed,
     profile: { ...base.profile, ...(parsed.profile || {}) },
-    days: parsed.days || {},
+    days: parsed.days && typeof parsed.days === 'object' ? parsed.days : {},
     weights: Array.isArray(parsed.weights) ? parsed.weights : [],
     measures: Array.isArray(parsed.measures) ? parsed.measures : [],
-    shopping: parsed.shopping || {},
+    shopping: parsed.shopping && typeof parsed.shopping === 'object' ? parsed.shopping : {},
+    deletedWeights: parsed.deletedWeights && typeof parsed.deletedWeights === 'object' ? parsed.deletedWeights : {},
   };
 }
 
@@ -62,33 +68,70 @@ function save() {
   }
 }
 
-function emit() {
+function emit({ local }) {
   listeners.forEach((l) => l());
+  if (local) localListeners.forEach((l) => l());
 }
 
 export function getState() {
   return load();
 }
 
-// update(draft => { ...mutaciones... })
+// update(draft => { ...mutaciones... }) — cambio hecho en este dispositivo
 export function update(fn) {
-  const draft = structuredClone(load());
+  const prev = load();
+  const draft = structuredClone(prev);
   fn(draft);
+  stampChanges(prev, draft, Date.now());
   state = draft;
   save();
-  emit();
+  emit({ local: true });
 }
 
+// Importar/restaurar: todo cuenta como modificado ahora (gana al combinar)
 export function replaceState(next) {
-  state = merge(next);
+  const now = Date.now();
+  const n = normalize(next);
+  n.profile = { ...n.profile, _ts: now };
+  for (const d of Object.keys(n.days)) n.days[d] = { ...n.days[d], _ts: now };
+  n.weights = n.weights.map((w) => ({ ...w, ts: now }));
+  n.measures = n.measures.map((m) => ({ ...m, ts: now }));
+  for (const w of Object.keys(n.shopping)) n.shopping[w] = { ...n.shopping[w], _ts: now };
+  backupLocal('antes de importar/restaurar');
+  state = n;
   save();
-  emit();
+  emit({ local: true });
 }
 
+// Borrar todo (también en la nube y en los demás dispositivos)
 export function resetState() {
+  backupLocal('antes de borrar todo');
+  const now = Date.now();
   state = structuredClone(DEFAULT_STATE);
+  state.resetAt = now;
+  state.profile._ts = now;
   save();
-  emit();
+  emit({ local: true });
+}
+
+// Estado que llega de la nube (ya combinado): no se vuelve a marcar ni dispara subida
+export function applyRemote(next) {
+  state = normalize(next);
+  save();
+  emit({ local: false });
+}
+
+// Copias locales de seguridad (últimas 3) antes de operaciones delicadas
+export function backupLocal(reason = '') {
+  try {
+    const cur = load();
+    if (!cur.profile.startDate && !Object.keys(cur.days).length) return;
+    const list = JSON.parse(window.localStorage.getItem(BACKUP_KEY) || '[]');
+    list.unshift({ at: Date.now(), reason, data: cur });
+    window.localStorage.setItem(BACKUP_KEY, JSON.stringify(list.slice(0, 3)));
+  } catch {
+    /* sin espacio: no pasa nada */
+  }
 }
 
 function subscribe(l) {
@@ -105,6 +148,11 @@ function subscribe(l) {
     listeners.delete(l);
     window.removeEventListener('storage', onStorage);
   };
+}
+
+export function subscribeLocalChanges(l) {
+  localListeners.add(l);
+  return () => localListeners.delete(l);
 }
 
 export function useAppState() {

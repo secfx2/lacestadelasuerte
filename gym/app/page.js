@@ -14,6 +14,8 @@ import { prettyDate, DAY_SHORT, DAY_NAMES, mondayOf, addDays, weekdayIdx, todayI
 import DateNav, { useViewDate, relLabel } from '../components/DateNav';
 import { fmtKg } from '../lib/coach';
 import Onboarding from '../components/Onboarding';
+import { SyncBadge } from '../components/SyncAgent';
+import { useSyncStatus } from '../lib/sync';
 import { buildShoppingList, shoppingText, STORE_PLAN, CATEGORY_EMOJI } from '../lib/shopping';
 
 export default function HomePage() {
@@ -30,9 +32,21 @@ function Home() {
   const now = useNow(30000);
   const viewIso = useViewDate();
   const [toast, showToast] = useToast();
+  const sync = useSyncStatus();
 
   if (!hydrated) return <PageSkeleton />;
-  if (!s.profile.startDate) return <Onboarding />;
+  if (!s.profile.startDate) {
+    // Antes de pedir datos, mira si ya están en la nube (otro dispositivo)
+    if (!sync.initialDone) {
+      return (
+        <div className="stack center" style={{ marginTop: 80, alignItems: 'center' }}>
+          <Icon name="cloud" size={34} className="muted" />
+          <p className="muted">Buscando tus datos en la nube…</p>
+        </div>
+      );
+    }
+    return <Onboarding />;
+  }
 
   const ctx = dayContext(s, now, viewIso);
   const today = todayISO(now);
@@ -44,7 +58,9 @@ function Home() {
       {toast}
       <header className="page-head">
         <div>
-          <div className="eyebrow">{prettyDate(ctx.iso)}</div>
+          <div className="eyebrow row" style={{ gap: 8 }}>
+            {prettyDate(ctx.iso)} <SyncBadge />
+          </div>
           <h1>
             Semana {ctx.week} <span className="muted" style={{ fontWeight: 500 }}>· {ctx.phase.name}</span>
           </h1>

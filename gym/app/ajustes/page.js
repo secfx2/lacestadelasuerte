@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { getLocalKey, setLocalKey } from '../../lib/advisorStore';
+import { syncNow, useSyncStatus } from '../../lib/sync';
 import Icon from '../../components/Icon';
 import { BackLink, PageSkeleton, useToast } from '../../components/ui';
 import { getState, replaceState, resetState, update, useAppState, useHydrated } from '../../lib/store';
@@ -58,7 +59,7 @@ export default function AjustesPage() {
       <header className="page-head" style={{ marginTop: 0 }}>
         <div>
           <h1>Ajustes</h1>
-          <p className="sub">Tus datos se guardan en este dispositivo.</p>
+          <p className="sub">Tus datos se guardan en la nube y en cada dispositivo.</p>
         </div>
       </header>
 
@@ -99,11 +100,13 @@ export default function AjustesPage() {
         </div>
       </div>
 
+      <SyncCard showToast={showToast} />
+
       <AdvisorKeyCard showToast={showToast} />
 
       <div className="card stack">
-        <h3>Copia de seguridad</h3>
-        <p className="small muted">Exporta un archivo para pasar tus datos a otro móvil o guardarlos. Importarlo reemplaza lo que hay aquí.</p>
+        <h3>Copia en archivo</h3>
+        <p className="small muted">Descarga todos tus datos en un archivo (por si acaso). Importarlo reemplaza lo que hay aquí y en la nube.</p>
         <div className="row wrap">
           <button className="btn" onClick={exportData}>
             Exportar datos
@@ -131,7 +134,7 @@ export default function AjustesPage() {
           <button
             className="btn danger"
             onClick={() => {
-              if (confirm('¿Borrar TODOS tus datos de este dispositivo? No se puede deshacer.')) {
+              if (confirm('¿Borrar TODOS tus datos (en este dispositivo, en la nube y en tus otros dispositivos)? Quedará una copia diaria en la nube por si te arrepientes.')) {
                 resetState();
                 showToast('Datos borrados');
               }
@@ -208,6 +211,87 @@ function AdvisorKeyCard({ showToast }) {
       <p className="tiny faint">
         La key no se incluye al exportar tus datos. Cada pregunta con Opus 5.5 cuesta unos céntimos (el plan va cacheado); Sonnet 5.5 es aproximadamente la mitad.
       </p>
+    </div>
+  );
+}
+
+function SyncCard({ showToast }) {
+  const st = useSyncStatus();
+  const [backups, setBackups] = useState(null);
+  const [busy, setBusy] = useState(false);
+  const ago = (t) => {
+    if (!t) return 'nunca';
+    const m = Math.round((Date.now() - t) / 60000);
+    if (m < 1) return 'hace un momento';
+    if (m < 60) return `hace ${m} min`;
+    const h = Math.round(m / 60);
+    if (h < 24) return `hace ${h} h`;
+    return new Date(t).toLocaleString('es-ES', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+  };
+  const loadBackups = async () => {
+    setBusy(true);
+    try {
+      const r = await fetch('/api/state/backups', { cache: 'no-store' });
+      const d = await r.json();
+      setBackups(r.ok ? d.backups || [] : []);
+      if (!r.ok) showToast(d.error || 'No se pudieron cargar');
+    } catch {
+      showToast('Sin conexión');
+    }
+    setBusy(false);
+  };
+  const restore = async (b) => {
+    const when = new Date(b.savedAt).toLocaleString('es-ES', { day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' });
+    if (!confirm(`¿Restaurar la copia del ${when}? Lo que tienes ahora se sustituirá (se guarda antes una copia local).`)) return;
+    try {
+      const r = await fetch(`/api/state/backups?id=${b.id}`, { cache: 'no-store' });
+      const d = await r.json();
+      if (!r.ok || !d?.data) throw new Error(d?.error || 'Copia no encontrada');
+      replaceState(d.data);
+      showToast('Copia restaurada ✓');
+    } catch (e) {
+      showToast(e.message || 'No se pudo restaurar');
+    }
+  };
+  const ok = st.phase === 'ok' && !st.dirty;
+  return (
+    <div className="card stack">
+      <div className="spread">
+        <h3>Sincronización en la nube</h3>
+        <span className={`pill ${ok ? 'lime' : st.phase === 'error' ? 'red' : 'amber'}`}>
+          {st.phase === 'off' ? 'desactivada' : ok ? '✓ al día' : st.phase === 'syncing' || st.dirty ? 'guardando…' : st.phase === 'offline' ? 'sin conexión' : 'error'}
+        </span>
+      </div>
+      {st.phase === 'off' ? (
+        <p className="small muted">El servidor no tiene configurado el almacén en la nube. Tus datos están solo en este dispositivo.</p>
+      ) : (
+        <p className="small muted">
+          Tus datos (entrenos, comidas, pesos, medidas…) se guardan en la nube y aparecen en cualquier dispositivo donde entres con tu contraseña. Última sincronización:{' '}
+          <b style={{ color: 'var(--text)' }}>{ago(st.lastSync)}</b>
+          {st.error && st.phase !== 'ok' ? ` · ${st.error}` : ''}
+        </p>
+      )}
+      <div className="row wrap">
+        <button className="btn sm" onClick={() => syncNow()} disabled={st.phase === 'off'}>
+          <Icon name="cloud" size={15} /> Sincronizar ahora
+        </button>
+        <button className="btn sm ghost" onClick={loadBackups} disabled={busy || st.phase === 'off'}>
+          {busy ? 'Cargando…' : 'Ver copias diarias'}
+        </button>
+      </div>
+      {backups && (
+        <div className="list">
+          {backups.length === 0 && <p className="small muted">Aún no hay copias (se crea una cada día que uses la app).</p>}
+          {backups.slice(0, 20).map((b) => (
+            <div key={b.id} className="list-item" style={{ padding: '8px 0' }}>
+              <span className="grow small">{new Date(b.savedAt).toLocaleString('es-ES', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}</span>
+              <button className="btn xs" onClick={() => restore(b)}>
+                Restaurar
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

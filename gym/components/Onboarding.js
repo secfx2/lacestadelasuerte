@@ -73,7 +73,10 @@ export default function Onboarding() {
         <button className="btn primary block" onClick={start} style={{ height: 52, fontSize: 16 }}>
           Empezar el plan <Icon name="chevron" size={18} />
         </button>
-        <p className="tiny faint center">Tus datos se guardan solo en este dispositivo. Puedes exportarlos en Ajustes.</p>
+        <p className="tiny faint center">
+          Tus datos se guardan en la nube y se sincronizan entre tus dispositivos. Si ya empezaste el plan en otro móvil u ordenador, ábrelo allí primero para que suba tus
+          datos y luego recarga esta página.
+        </p>
       </div>
     </div>
   );
