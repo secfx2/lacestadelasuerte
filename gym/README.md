@@ -9,7 +9,7 @@ Web-app privada (tipo app de móvil) con mi plan de **entreno + dieta** para def
 - **Progreso**: gráfica de peso con media semanal y proyección, coach que te dice si ajustar calorías, medidas, % de grasa (método Navy), índice hombros/cintura (Adonis ≈ 1,6), historial y récords.
 - **Plan**: expectativas semana a semana, fases (adaptación → construcción → descarga → intensificación → diet break → afinado), suplementos con evidencia (y lo que no merece la pena), guía de mandíbula, guía de cuello (tensión de oficina) y reglas de oro.
 - **Sueño**: botones *Me acuesto* / *Me levanto* (o las horas a mano). Con la hora a la que te levantas se recoloca el horario de comidas del día; si has dormido poco, el entreno te avisa de no ir al fallo, y te dice a qué hora acostarte para dormir 8 h.
-- **Asesor IA** (Claude): conoce tu plan y tus datos y, si se lo pides, **cambia el plan**: comidas del menú (para siempre o un día), recetas nuevas, ejercicios de la rutina, perfil y notas que debe recordar. Los cambios se ven en la conversación y se pueden deshacer; la lista está en Ajustes → *Tus cambios del plan*.
+- **Asesor IA** (Claude): conoce tu plan y tus datos, puedes mandarle **fotos** (comida, etiquetas, cartas, máquinas, tu físico) y, si se lo pides, **cambia el plan**: comidas del menú (para siempre o un día), recetas nuevas, ejercicios de la rutina, perfil y notas que debe recordar. Los cambios se ven en la conversación y se pueden deshacer; la lista está en Ajustes → *Tus cambios del plan*.
 - **Fotos de progreso** (opcional): en Progreso, privadas en Supabase.
 
 ## Datos y sincronización

@@ -19,12 +19,44 @@ export async function GET() {
   return Response.json({ serverKey: !!process.env.ANTHROPIC_API_KEY, models: MODELS });
 }
 
+// Fotos que manda el usuario (JPEG/PNG/WebP/GIF en base64). Límites por foto y por petición (Vercel admite ~4,5 MB)
+const IMAGE_TYPES = new Set(['image/jpeg', 'image/png', 'image/webp', 'image/gif']);
+const MAX_IMAGES_PER_MSG = 4;
+const MAX_IMAGE_B64 = 1_500_000;
+const MAX_TOTAL_IMAGE_B64 = 3_600_000;
+const B64_RE = /^[A-Za-z0-9+/]+={0,2}$/;
+
+function cleanImages(raw, budget) {
+  if (!Array.isArray(raw)) return [];
+  const out = [];
+  for (const img of raw.slice(0, MAX_IMAGES_PER_MSG)) {
+    const type = img?.media_type;
+    const data = img?.data;
+    if (!IMAGE_TYPES.has(type) || typeof data !== 'string' || data.length > MAX_IMAGE_B64 || data.length > budget.left || !B64_RE.test(data)) continue;
+    budget.left -= data.length;
+    out.push({ type: 'image', source: { type: 'base64', media_type: type, data } });
+  }
+  return out;
+}
+
 function cleanMessages(raw) {
   if (!Array.isArray(raw)) return [];
-  const msgs = raw
-    .filter((m) => m && (m.role === 'user' || m.role === 'assistant') && typeof m.content === 'string' && m.content.trim())
-    .map((m) => ({ role: m.role, content: m.content.slice(0, 12000) }))
-    .slice(-30);
+  const budget = { left: MAX_TOTAL_IMAGE_B64 };
+  // Recorremos desde el final para que las fotos más recientes tengan prioridad en el presupuesto
+  const msgs = [];
+  for (const m of raw.slice(-30).reverse()) {
+    if (!m || (m.role !== 'user' && m.role !== 'assistant')) continue;
+    const text = typeof m.content === 'string' ? m.content.slice(0, 12000).trim() : '';
+    const images = m.role === 'user' ? cleanImages(m.images, budget) : [];
+    if (!text && !images.length) continue;
+    if (!images.length) {
+      msgs.push({ role: m.role, content: text });
+      continue;
+    }
+    // Fotos primero y luego el texto
+    msgs.push({ role: 'user', content: [...images, { type: 'text', text: text || (images.length > 1 ? 'Te mando estas fotos.' : 'Te mando esta foto.') }] });
+  }
+  msgs.reverse();
   while (msgs.length && msgs[0].role !== 'user') msgs.shift();
   return msgs;
 }

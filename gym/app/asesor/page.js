@@ -4,7 +4,8 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import Icon from '../../components/Icon';
 import Markdown from '../../components/Markdown';
-import { PageSkeleton } from '../../components/ui';
+import { PageSkeleton, Sheet } from '../../components/ui';
+import { prepareImage } from '../../lib/imageResize';
 import { getState, update, useHydrated } from '../../lib/store';
 import { applyOps } from '../../lib/planOps';
 import { todayISO } from '../../lib/dates';
@@ -36,6 +37,29 @@ function undoChanges(undo) {
   });
 }
 
+const MAX_ATTACH = 4;
+const MAX_PREV_IMAGES = 4; // fotos de mensajes anteriores que se reenvían (en tamaño reducido) para que no pierda el contexto
+const imgSrc = (img) => `data:${img.mime};base64,${img.data}`;
+
+// Mensajes para la API: el último con las fotos a tamaño completo; los anteriores, con las reducidas (las más recientes)
+function apiMessages(history) {
+  const out = [];
+  let prevLeft = MAX_PREV_IMAGES;
+  for (let i = history.length - 1; i >= 0; i--) {
+    const m = history[i];
+    const msg = { role: m.role, content: m.content };
+    if (m.role === 'user' && m.images?.length) {
+      if (i === history.length - 1) msg.images = m.images.map((img) => ({ media_type: img.mime, data: img.full || img.data }));
+      else if (prevLeft > 0) {
+        msg.images = m.images.slice(0, prevLeft).map((img) => ({ media_type: img.mime, data: img.data }));
+        prevLeft -= msg.images.length;
+      }
+    }
+    out.push(msg);
+  }
+  return out.reverse();
+}
+
 const SUGGESTIONS = [
   '¿Cómo voy? Analiza mi progreso de estas semanas',
   'Hoy no me apetece la cena del menú, cámbiamela por otra cosa',
@@ -47,6 +71,7 @@ const SUGGESTIONS = [
   '¿Qué ejercicios me ayudan más con los michelines y el culo?',
   'Hoy solo tengo 45 minutos, adáptame el entreno',
   '¿Qué creatina y proteína compro y cómo las tomo?',
+  '📷 Te mando foto de lo que voy a comer: ¿encaja en mi plan?',
   'Anoche dormí 5 horas, ¿cómo adapto el entreno de hoy?',
 ];
 
@@ -65,6 +90,10 @@ export default function AsesorPage() {
   const [localKey, setLocalKeyState] = useState('');
   const [keyDraft, setKeyDraft] = useState('');
   const [error, setError] = useState('');
+  const [attachments, setAttachments] = useState([]); // [{ id, mime, full, small }]
+  const [attaching, setAttaching] = useState(false);
+  const [viewer, setViewer] = useState(null); // foto ampliada
+  const fileRef = useRef(null);
   const abortRef = useRef(null);
   const endRef = useRef(null);
   const taRef = useRef(null);
@@ -86,13 +115,38 @@ export default function AsesorPage() {
   if (!hydrated || serverKey === null) return <PageSkeleton />;
   const hasKey = serverKey || !!localKey;
 
+  const pickImages = async (files) => {
+    const list = Array.from(files || []).slice(0, MAX_ATTACH - attachments.length);
+    if (!list.length) {
+      if (files?.length) setError(`Máximo ${MAX_ATTACH} fotos por mensaje.`);
+      return;
+    }
+    setAttaching(true);
+    setError('');
+    const added = [];
+    for (const f of list) {
+      try {
+        const r = await prepareImage(f);
+        added.push({ id: `${Date.now()}-${Math.random().toString(36).slice(2, 7)}`, mime: r.mime, full: r.full, small: r.small });
+      } catch (e) {
+        setError(e.message || 'No se pudo leer la foto');
+      }
+    }
+    setAttachments((a) => [...a, ...added].slice(0, MAX_ATTACH));
+    setAttaching(false);
+  };
+
   const send = async (textArg) => {
     const text = (textArg ?? input).trim();
-    if (!text || busy) return;
+    const imgs = textArg ? [] : attachments;
+    if ((!text && !imgs.length) || busy || attaching) return;
     setError('');
     setInput('');
+    setAttachments([]);
     if (taRef.current) taRef.current.style.height = '';
-    const history = [...msgs, { role: 'user', content: text }];
+    const userMsg = { role: 'user', content: text };
+    if (imgs.length) userMsg.images = imgs.map((a) => ({ mime: a.mime, data: a.small, full: a.full }));
+    const history = [...msgs, userMsg];
     const withReply = [...history, { role: 'assistant', content: '' }];
     setMsgs(withReply);
     setBusy(true);
@@ -105,7 +159,7 @@ export default function AsesorPage() {
         headers: { 'Content-Type': 'application/json', ...(!serverKey && localKey ? { 'x-anthropic-key': localKey } : {}) },
         body: JSON.stringify({
           model,
-          messages: history.slice(-24).map((m) => ({ role: m.role, content: m.content })),
+          messages: apiMessages(history.slice(-24)),
           context: buildAdvisorContext(getState()),
           custom: getState().custom || {},
           profile: getState().profile,
@@ -115,7 +169,9 @@ export default function AsesorPage() {
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        throw new Error(data.error === 'NO_KEY' ? 'Falta la API key.' : data.error || `Error ${res.status}`);
+        throw new Error(
+          data.error === 'NO_KEY' ? 'Falta la API key.' : res.status === 413 ? 'Las fotos pesan demasiado: manda menos a la vez.' : data.error || `Error ${res.status}`
+        );
       }
       const reader = res.body.getReader();
       const dec = new TextDecoder();
@@ -235,7 +291,7 @@ export default function AsesorPage() {
         </div>
       ) : (
         <>
-          <div className="chat">
+          <div className="chat" style={attachments.length || attaching ? { paddingBottom: 170 } : undefined}>
             {msgs.length === 0 && (
               <div className="stack" style={{ gap: 10 }}>
                 <div className="hint up">
@@ -246,7 +302,13 @@ export default function AsesorPage() {
                 </div>
                 <div className="row wrap" style={{ gap: 8 }}>
                   {SUGGESTIONS.map((q) => (
-                    <button key={q} className="chip" style={{ height: 'auto', padding: '8px 12px', whiteSpace: 'normal', textAlign: 'left' }} onClick={() => send(q)}>
+                    <button key={q} className="chip" style={{ height: 'auto', padding: '8px 12px', whiteSpace: 'normal', textAlign: 'left', maxWidth: '100%' }} onClick={() => {
+                        if (q.startsWith('📷')) {
+                          setInput(q.replace('📷 ', ''));
+                          fileRef.current?.click();
+                        } else send(q);
+                      }}
+                    >
                       {q}
                     </button>
                   ))}
@@ -256,7 +318,19 @@ export default function AsesorPage() {
             {msgs.map((m, i) => (
               <div key={i} className={`bubble ${m.role === 'user' ? 'me' : 'ai'}`}>
                 {m.role === 'user' ? (
-                  <p style={{ whiteSpace: 'pre-wrap' }}>{m.content}</p>
+                  <>
+                    {m.images?.length > 0 && (
+                      <div className="chat-imgs">
+                        {m.images.map((img, j) => (
+                          <button key={j} type="button" onClick={() => setViewer(imgSrc(img))} aria-label="Ver foto">
+                            <img src={imgSrc(img)} alt="" />
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                    {m.imagesDropped > 0 && <p className="tiny" style={{ opacity: 0.75 }}>📷 {m.imagesDropped === 1 ? '1 foto' : `${m.imagesDropped} fotos`} (ya no guardada)</p>}
+                    {m.content && <p style={{ whiteSpace: 'pre-wrap' }}>{m.content}</p>}
+                  </>
                 ) : m.content ? (
                   <>
                     <Markdown text={m.content} />
@@ -313,11 +387,45 @@ export default function AsesorPage() {
               send();
             }}
           >
+            {(attachments.length > 0 || attaching) && (
+              <div className="attach-row">
+                {attachments.map((a) => (
+                  <div key={a.id} className="attach">
+                    <img src={`data:${a.mime};base64,${a.small}`} alt="" />
+                    <button type="button" onClick={() => setAttachments((list) => list.filter((x) => x.id !== a.id))} aria-label="Quitar foto">
+                      <Icon name="x" size={12} stroke={2.6} />
+                    </button>
+                  </div>
+                ))}
+                {attaching && <div className="attach loading" aria-label="Preparando foto" />}
+              </div>
+            )}
+            <input
+              ref={fileRef}
+              type="file"
+              accept="image/*"
+              multiple
+              hidden
+              onChange={(e) => {
+                pickImages(e.target.files);
+                e.target.value = '';
+              }}
+            />
+            <button
+              type="button"
+              className="icon-btn"
+              onClick={() => fileRef.current?.click()}
+              disabled={busy || attaching || attachments.length >= MAX_ATTACH}
+              aria-label="Adjuntar foto"
+              title="Mandar foto (cámara o galería)"
+            >
+              <Icon name="camera" size={19} />
+            </button>
             <textarea
               ref={taRef}
               rows={1}
               className="input"
-              placeholder="Pregunta a tu asesor…"
+              placeholder={attachments.length ? 'Añade una pregunta (opcional)…' : 'Pregunta a tu asesor…'}
               value={input}
               onChange={(e) => {
                 setInput(e.target.value);
@@ -337,11 +445,14 @@ export default function AsesorPage() {
                 <Icon name="pause" size={18} />
               </button>
             ) : (
-              <button type="submit" className="icon-btn" disabled={!input.trim()} aria-label="Enviar" style={{ background: 'var(--lime)', color: 'var(--lime-ink)', borderColor: 'transparent' }}>
+              <button type="submit" className="icon-btn" disabled={(!input.trim() && !attachments.length) || attaching} aria-label="Enviar" style={{ background: 'var(--lime)', color: 'var(--lime-ink)', borderColor: 'transparent' }}>
                 <Icon name="chevron" size={20} stroke={2.4} />
               </button>
             )}
           </form>
+          <Sheet open={!!viewer} onClose={() => setViewer(null)} title="Foto">
+            {viewer && <img src={viewer} alt="" style={{ width: '100%', borderRadius: 14, display: 'block' }} />}
+          </Sheet>
           <p className="tiny faint center" style={{ marginTop: 6 }}>
             {model === 'opus' ? 'Opus 5.5' : 'Sonnet 5.5'} · {serverKey ? 'key del servidor' : 'key guardada en este móvil'} · no sustituye a un médico ·{' '}
             <Link href="/ajustes" style={{ textDecoration: 'underline' }}>
