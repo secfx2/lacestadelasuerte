@@ -203,13 +203,14 @@ export const SUPPLEMENTS = [
   { key: 'whey', name: 'Proteína whey', dose: '1-2 scoops (30-60 g)', when: 'Ya viene en el menú (desayuno, merienda). Isolate si te sienta mal la lactosa.', daily: true, evidence: 'A', why: 'No es magia: es comida práctica para llegar a ~190 g de proteína al día sin cocinar más.' },
   { key: 'cafeina', name: 'Cafeína (café o pre-entreno simple)', dose: '100-200 mg (1-2 cafés)', when: '30-45 min antes de entrenar. Nunca después de las 17:00.', training: true, evidence: 'A', why: 'Más rendimiento y menos sensación de esfuerzo. Si tomas tarde, destroza el sueño (y el sueño es fat loss).' },
   { key: 'vitd', name: 'Vitamina D3', dose: '2.000 UI', when: 'Con la comida (necesita grasa). Sobre todo de octubre a abril.', daily: true, evidence: 'B', why: 'Casi todo el mundo en España la tiene baja en invierno. Ideal hacerte una analítica.' },
-  { key: 'multi', name: 'Multivitamínico básico', dose: '1 comprimido', when: 'Con el desayuno.', daily: true, evidence: 'B', why: 'Como comes poca verdura entera, es un seguro barato para micronutrientes.' },
+  { key: 'multi', name: 'Multivitamínico básico', dose: '1 comprimido', when: 'Con el desayuno.', daily: true, evidence: 'B', why: 'Como comes poca verdura entera, es un seguro barato para micronutrientes. Ya suele llevar ~10 mg de zinc: con eso y la carne vas sobrado (mira que no pase de 15 mg).' },
   { key: 'omega3', name: 'Omega-3 (EPA+DHA)', dose: '1-2 g de EPA+DHA', when: 'Con la comida.', daily: true, evidence: 'B', why: 'Si comes pescado azul menos de 2 veces/semana. Salud cardiovascular y articular.' },
-  { key: 'magnesio', name: 'Magnesio bisglicinato', dose: '200-300 mg', when: 'Antes de dormir.', daily: true, optional: true, evidence: 'C', why: 'Opcional. Puede ayudar a dormir mejor y con calambres.' },
+  { key: 'magnesio', name: 'Magnesio (bisglicinato o citrato)', dose: '200-250 mg de magnesio elemental', when: 'Por la noche, antes de dormir.', daily: true, evidence: 'B', why: 'Recomendado en tu caso: sin verdura de hoja ni frutos secos te quedas algo corto de los ~400 mg diarios, y entrenando 2 h al día pierdes más con el sudor. Ayuda al sueño y a los calambres cuando vas justo. Evita el óxido de magnesio (se absorbe mal y suelta el estómago) y no pases de 250 mg en suplemento.' },
   { key: 'psyllium', name: 'Psyllium (fibra)', dose: '5 g en un vaso grande de agua', when: 'Opcional, si vas mal al baño.', daily: false, optional: true, evidence: 'B', why: 'Te cuesta llegar a 30 g de fibra sin verdura entera. Esto lo soluciona.' },
 ];
 
 export const NO_SUPPLEMENTS = [
+  'Zinc extra o ZMA: con la carne, el marisco, los huevos y el multi ya llegas (~12-15 mg/día). Más de 25 mg/día durante meses baja el cobre, y no sube la testosterona si no tienes déficit.',
   'Quemagrasas / "fat burners": cafeína cara + riesgo. El déficit es el quemagrasas.',
   'BCAAs / EAAs: inútiles si llegas a tu proteína (y vas a llegar).',
   'Potenciadores de testosterona (tribulus, etc.): no funcionan.',

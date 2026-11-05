@@ -262,7 +262,7 @@ export default function PlanPage() {
               ))}
             </ul>
           </div>
-          <p className="tiny faint">Presupuesto: creatina + whey + vitamina D + multi ≈ 35-45 €/mes. Si tomas medicación o tienes algún problema de salud, coméntalo con tu médico.</p>
+          <p className="tiny faint">Presupuesto: creatina + whey + vitamina D + multi + magnesio ≈ 40-50 €/mes. Si tomas medicación o tienes algún problema de salud, coméntalo con tu médico.</p>
         </div>
       </section>
 
