@@ -20,6 +20,8 @@ import { SyncBadge } from '../components/SyncAgent';
 import { useSyncStatus } from '../lib/sync';
 import { buildShoppingList, shoppingText, STORE_PLAN, CATEGORY_EMOJI } from '../lib/shopping';
 import ProductImg from '../components/ProductImg';
+import KegelTrainer from '../components/KegelTrainer';
+import { kegelLevel, KEGEL_SESSIONS_PER_DAY, sessionSeconds } from '../lib/kegel';
 
 export default function HomePage() {
   return (
@@ -92,6 +94,7 @@ function Home() {
         <StreakTile s={s} iso={today} />
         <MacrosTile s={s} iso={ctx.iso} />
         <SuppsTile ctx={ctx} day={day} />
+        <KegelTile s={s} day={day} iso={ctx.iso} showToast={showToast} />
         <StepsTile ctx={ctx} day={day} />
         <SleepTile s={s} iso={ctx.iso} isToday={isToday} now={now} showToast={showToast} />
         <ProgressTile s={s} />
@@ -427,6 +430,57 @@ function MacrosTile({ s, iso }) {
           </div>
         ))}
       </div>
+    </div>
+  );
+}
+
+// Suelo pélvico: 3 sesiones guiadas al día
+function KegelTile({ s, day, iso, showToast }) {
+  const [open, setOpen] = useState(false);
+  const level = kegelLevel(s);
+  const n = Math.min(KEGEL_SESSIONS_PER_DAY, Number(day.kegel) || 0);
+  const add = (delta) =>
+    updateDay(iso, (d) => {
+      d.kegel = Math.max(0, Math.min(KEGEL_SESSIONS_PER_DAY, (Number(d.kegel) || 0) + delta));
+    });
+  return (
+    <div className="tile w2 accent-cyan">
+      <div className="spread">
+        <span className="tile-label" style={{ color: 'var(--cyan)' }}>
+          <Icon name="heart" size={14} /> Suelo pélvico · {n}/{KEGEL_SESSIONS_PER_DAY}
+        </span>
+        <Link href="/plan#suelo-pelvico" className="small muted">
+          Guía ›
+        </Link>
+      </div>
+      <div className="small muted">
+        Nivel {level.n} · {level.name} · ~{Math.max(1, Math.round(sessionSeconds(level) / 60))} min
+      </div>
+      <div className="row" style={{ gap: 6, marginTop: 'auto', alignItems: 'center' }}>
+        {Array.from({ length: KEGEL_SESSIONS_PER_DAY }).map((_, i) => (
+          <button
+            key={i}
+            className={`check${i < n ? ' on' : ''}`}
+            style={{ width: 34, height: 34, borderRadius: 11 }}
+            onClick={() => add(i < n ? -1 : 1)}
+            aria-label={`Sesión ${i + 1} ${i < n ? 'hecha' : 'pendiente'}`}
+          >
+            {i < n ? <Icon name="check" size={15} stroke={2.6} /> : <span className="tiny">{i + 1}</span>}
+          </button>
+        ))}
+        <button className="btn primary sm" style={{ marginLeft: 'auto' }} onClick={() => setOpen(true)} disabled={n >= KEGEL_SESSIONS_PER_DAY}>
+          {n >= KEGEL_SESSIONS_PER_DAY ? '✓ Hecho hoy' : 'Empezar guiado'}
+        </button>
+      </div>
+      <KegelTrainer
+        open={open}
+        onClose={() => setOpen(false)}
+        level={level}
+        onDone={() => {
+          add(1);
+          showToast('Sesión de suelo pélvico hecha ✓');
+        }}
+      />
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { SLOTS, WEEK_MENU, getRecipe } from './recipes.js';
 import { customOf, mealFor, mealChange, recipeMacrosFor, foodFor, workoutsFor, notesOf } from './plan.js';
 import { nightOf, pendingNight, bedtimeFor, usualWake, slotsFor, sleepAverage, fmtHours } from './sleep.js';
 import { WORKOUT_BY_KEY } from './program.js';
+import { kegelLevel, KEGEL_SESSIONS_PER_DAY } from './kegel.js';
 import { SUPPLEMENTS, DAILY_TARGETS } from './program.js';
 import { addDays, prettyDate, todayISO, weekdayIdx } from './dates.js';
 
@@ -71,11 +72,15 @@ export function buildAdvisorContext(s, now = new Date()) {
         return nt.hours != null || nt.bed ? `sueño ${nt.hours != null ? `${fmtHours(nt.hours)} h` : '?'}${nt.bed || nt.wake ? ` (${nt.bed || '?'}→${nt.wake || '?'})` : ''}` : null;
       })(),
       day.cardio ? 'cardio ✓' : null,
+      Number(day.kegel) > 0 ? `suelo pélvico ${day.kegel}/${KEGEL_SESSIONS_PER_DAY}` : null,
       supps.length ? `suplementos: ${supps.join(', ')}` : null,
     ].filter(Boolean);
     week.push(parts.join(' · '));
   }
   lines.push(`ÚLTIMOS 7 DÍAS:\n${week.join('\n')}`);
+
+  const kl = kegelLevel(s);
+  lines.push(`SUELO PÉLVICO (Kegel): ${kl.days ? `${kl.days} días con sesiones · nivel ${kl.n} (${kl.name})` : 'aún no ha empezado'} · objetivo ${KEGEL_SESSIONS_PER_DAY} sesiones al día (las hace guiadas desde Hoy).`);
 
   // Sueño
   const pend = pendingNight(s, now);

@@ -4,6 +4,7 @@
 import { WORKOUTS, PHASES, SUPPLEMENTS, NO_SUPPLEMENTS, RULES, JAWLINE, LOVE_HANDLES, NECK_CARE, DAILY_TARGETS, WEIGH_HOWTO, DOUBLE_SESSION, WARMUP } from './program.js';
 import { EXERCISES, getExercise, MUSCLE_LABELS } from './exercises.js';
 import { RECIPES, WEEK_MENU, SLOTS, recipeMacros, dayMacros, getRecipe, NIGHT_SNACK } from './recipes.js';
+import { PELVIC, KEGEL_LEVELS } from './kegel.js';
 import { FOODS } from './foods.js';
 import { STORE_PLAN } from './shopping.js';
 
@@ -157,6 +158,16 @@ ${LOVE_HANDLES.items.map((i) => `- ${i.t}: ${i.d}`).join('\n')}
 CUELLO Y TENSIÓN
 ${NECK_CARE.intro}
 ${NECK_CARE.items.map((i) => `- ${i.t}: ${i.d}`).join('\n')}
+
+SUELO PÉLVICO Y SALUD SEXUAL
+- Si saca temas de erección, libido o eyaculación, responde con naturalidad, sin bromas ni juicios, concreto y práctico como con cualquier otro tema de salud. No supongas que es "psicológico" ni que es "físico": suele ser una mezcla; pregunta lo que haga falta (erecciones matutinas, con masturbación, desde cuándo).
+- La app tiene un programa de Kegel guiado (3 sesiones al día, sube de nivel solo) y una guía en Plan → Suelo pélvico.
+- Nada de suplementos "milagro" para la erección ni compras de pastillas sin receta. Los fármacos (tadalafilo, sildenafilo) existen y funcionan, pero los pauta un médico. Si dura meses, las matutinas son flojas o hay otros síntomas, recomiéndale ir al médico (puede ser un primer aviso cardiovascular o de testosterona baja).
+${PELVIC.intro}
+Niveles: ${KEGEL_LEVELS.map((l) => `${l.n}) ${l.name} desde el día ${l.fromDay + 1}: ${l.slow.reps} lentas de ${l.slow.hold} s${l.fast ? ` + ${l.fast.reps} rápidas` : ''}, ${l.where.toLowerCase()}`).join('; ')}.
+${PELVIC.erection.intro}
+${PELVIC.erection.items.map((i) => `- ${i.t}: ${i.d}`).join('\n')}
+- ${PELVIC.erection.doctor}
 
 CATÁLOGO DE ALIMENTOS (clave: nombre, por 100 g) — para crear_receta
 ${foodsText()}

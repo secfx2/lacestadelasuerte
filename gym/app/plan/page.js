@@ -8,6 +8,7 @@ import { dayContext, projection, weeksToGoal, fmtKg } from '../../lib/coach';
 import { WORKOUTS, PHASES, SUPPLEMENTS, NO_SUPPLEMENTS, JAWLINE, LOVE_HANDLES, NECK_CARE, RULES, DOUBLE_SESSION } from '../../lib/program';
 import { getExercise } from '../../lib/exercises';
 import { workoutsFor } from '../../lib/plan';
+import { PELVIC, KEGEL_LEVELS } from '../../lib/kegel';
 import { DAY_NAMES, addDays, mondayOf, shortDate } from '../../lib/dates';
 
 const MILESTONES = [
@@ -77,6 +78,7 @@ export default function PlanPage() {
           ['#michelines', 'Michelines'],
           ['#mandibula', 'Mandíbula'],
           ['#cuello', 'Cuello'],
+          ['#suelo-pelvico', 'Suelo pélvico'],
           ['#reglas', 'Reglas'],
         ].map(([h, l]) => (
           <a key={h} href={h} className="chip">
@@ -335,6 +337,60 @@ export default function PlanPage() {
             <Link href="/ejercicio/face-pull" className="btn sm">
               <Icon name="cube" size={15} /> Face pull
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ───── Suelo pélvico ───── */}
+      <section id="suelo-pelvico" className="section" style={{ scrollMarginTop: 16 }}>
+        <div className="section-title">Suelo pélvico (Kegel) y erección</div>
+        <div className="card" style={{ background: 'linear-gradient(150deg,#0e2228 0%,var(--card) 60%)', borderColor: 'rgba(34,211,238,0.18)' }}>
+          <p>{PELVIC.intro}</p>
+        </div>
+        <div className="stack" style={{ marginTop: 12 }}>
+          <div className="card">
+            <h3 style={{ fontSize: 16 }}>Cómo encontrar el músculo</h3>
+            <ul className="ul" style={{ marginTop: 8 }}>
+              {PELVIC.find.map((t) => (
+                <li key={t} className="small">{t}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="card">
+            <h3 style={{ fontSize: 16 }}>El programa (12 semanas)</h3>
+            <div className="stack" style={{ gap: 10, marginTop: 8 }}>
+              {KEGEL_LEVELS.map((l) => (
+                <div key={l.n} className="row" style={{ alignItems: 'flex-start' }}>
+                  <span className="pill cyan num" style={{ minWidth: 26, justifyContent: 'center' }}>{l.n}</span>
+                  <span className="small">
+                    <b>{l.name}</b> <span className="muted">(desde el día {l.fromDay + 1})</span>: {l.slow.reps} lentas apretando {l.slow.hold} s y soltando {l.slow.rest} s
+                    {l.fast ? ` + ${l.fast.reps} rápidas (1 s / 1 s)` : ''}. {l.where}. 3 veces al día.
+                  </span>
+                </div>
+              ))}
+            </div>
+            <ul className="ul" style={{ marginTop: 10 }}>
+              {PELVIC.rules.map((t) => (
+                <li key={t} className="small muted">{t}</li>
+              ))}
+            </ul>
+            <Link href="/" className="btn sm" style={{ marginTop: 10 }}>
+              Hacerlo guiado (en Hoy)
+            </Link>
+          </div>
+          <div className="card">
+            <h3 style={{ fontSize: 16 }}>Erecciones firmes: qué ayuda</h3>
+            <p className="small muted" style={{ marginTop: 4 }}>{PELVIC.erection.intro}</p>
+          </div>
+          {PELVIC.erection.items.map((it) => (
+            <div key={it.t} className="card">
+              <h3 style={{ fontSize: 16 }}>{it.t}</h3>
+              <p className="small muted" style={{ marginTop: 4 }}>{it.d}</p>
+            </div>
+          ))}
+          <div className="hint warn">
+            <Icon name="info" size={18} />
+            <span>{PELVIC.erection.doctor}</span>
           </div>
         </div>
       </section>
