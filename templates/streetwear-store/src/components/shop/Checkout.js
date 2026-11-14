@@ -5,8 +5,9 @@ import SmartImage from "./SmartImage";
 import Modal from "./Modal";
 import { useCart } from "./CartProvider";
 import { IconChevron } from "./Icons";
-import { DISCOUNT_CODES, SHIPPING_METHODS, formatPrice, roundMoney } from "@/lib/shop";
+import { DISCOUNT_CODES, SHIPPING_METHODS, VAT_RATE, formatPrice, roundMoney } from "@/lib/shop";
 import styles from "./Checkout.module.css";
+import brand from "@/config/brand";
 
 const PROVINCES = [
   "A Coruña", "Álava", "Albacete", "Alicante", "Almería", "Asturias", "Ávila", "Badajoz", "Baleares", "Barcelona", "Burgos", "Cáceres",
@@ -15,17 +16,9 @@ const PROVINCES = [
   "Pontevedra", "Salamanca", "Santa Cruz de Tenerife", "Segovia", "Sevilla", "Soria", "Tarragona", "Teruel", "Toledo", "Valencia",
   "Valladolid", "Bizkaia", "Zamora", "Zaragoza", "Ceuta", "Melilla",
 ];
-const COUNTRIES = [
-  { code: "ES", name: "España" },
-  { code: "PT", name: "Portugal" },
-  { code: "AD", name: "Andorra" },
-];
-const PAYMENTS = [
-  { id: "tarjeta", name: "Tarjeta de crédito o débito", tags: ["Visa", "Mastercard", "Amex"] },
-  { id: "applepay", name: "Apple Pay", tags: [] },
-  { id: "paypal", name: "PayPal", tags: [] },
-  { id: "bizum", name: "Bizum", tags: [] },
-];
+const COUNTRIES = brand.checkout.countries;
+const PAYMENTS = brand.payments;
+const EXPRESS = PAYMENTS.filter((p) => ["applepay", "paypal", "bizum"].includes(p.id));
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 const digits = (s) => s.replace(/\D/g, "");
@@ -138,7 +131,7 @@ export default function Checkout() {
   const shippingCost = (m) => (m.freeFrom != null && subtotal >= m.freeFrom ? 0 : m.price);
   const shipping = shippingCost(method);
   const total = roundMoney(subtotal - discount + shipping);
-  const vat = roundMoney(total - total / 1.21);
+  const vat = roundMoney(total - total / (1 + VAT_RATE));
 
   function applyCode(e) {
     e.preventDefault();
@@ -283,7 +276,7 @@ export default function Checkout() {
         <div className={styles.grand}>
           <dt>Total</dt>
           <dd>
-            <small>EUR</small> {formatPrice(total)}
+            <small>{brand.locale.currency}</small> {formatPrice(total)}
           </dd>
         </div>
       </dl>
@@ -311,15 +304,11 @@ export default function Checkout() {
           <section className={styles.express} aria-label="Pago exprés">
             <p className={styles.expressTitle}>Pago exprés</p>
             <div className={styles.expressBtns}>
-              <button type="button" className={styles.expressBtn} data-kind="apple" onClick={() => setDemo(true)}>
-                Apple Pay
-              </button>
-              <button type="button" className={styles.expressBtn} data-kind="paypal" onClick={() => setDemo(true)}>
-                PayPal
-              </button>
-              <button type="button" className={styles.expressBtn} data-kind="bizum" onClick={() => setDemo(true)}>
-                Bizum
-              </button>
+              {EXPRESS.map((p) => (
+                <button key={p.id} type="button" className={styles.expressBtn} data-kind={p.id === "applepay" ? "apple" : p.id} onClick={() => setDemo(true)}>
+                  {p.name}
+                </button>
+              ))}
             </div>
             <p className={styles.or}>
               <span>o</span>
@@ -345,7 +334,7 @@ export default function Checkout() {
               </div>
               <label className={`mk-check ${styles.check}`}>
                 <input type="checkbox" checked={v.news} onChange={set("news")} />
-                <span>Quiero recibir la carta del regimiento (novedades y reposiciones).</span>
+                <span>{brand.newsletter.checkoutOptIn}</span>
               </label>
             </fieldset>
 
@@ -501,7 +490,7 @@ export default function Checkout() {
             </button>
             <p className={styles.legal}>
               Al realizar el pedido aceptas las <Link href="/legal" className="mk-link mk-link--on">condiciones de venta</Link> y la{" "}
-              <Link href="/legal#privacidad" className="mk-link mk-link--on">política de privacidad</Link>. Devoluciones gratuitas en 30 días.
+              <Link href="/legal#privacidad" className="mk-link mk-link--on">política de privacidad</Link>. Devoluciones gratuitas en {brand.shipping.returnDays} días.
             </p>
           </form>
         </div>
@@ -514,8 +503,8 @@ export default function Checkout() {
       <Modal
         open={demo}
         onClose={() => setDemo(false)}
-        eyebrow="MUSKETEER"
-        title="Modo demostración"
+        eyebrow={brand.name}
+        title={brand.checkout.demoTitle}
         size="sm"
         footer={
           <>
@@ -528,9 +517,9 @@ export default function Checkout() {
           </>
         }
       >
-        <p className={styles.demoText}>Los pagos están desactivados. Ningún cargo ha sido realizado.</p>
+        <p className={styles.demoText}>{brand.checkout.demoText}</p>
         <p className={styles.demoSub}>
-          Esta tienda es una demostración del catálogo MUSKETEER. Tu cesta se conserva intacta. <em>Tous pour un.</em>
+          {brand.checkout.demoSub} <em>{brand.tagline}.</em>
         </p>
       </Modal>
     </>

@@ -8,6 +8,7 @@ import { useDialog, useLockBody, usePresence } from "./hooks";
 import { IconClose, IconSearch, IconArrow } from "./Icons";
 import { CATEGORIES, POPULAR_SEARCHES, categoryName, formatPrice, productHref, searchProducts } from "@/lib/shop";
 import styles from "./SearchOverlay.module.css";
+import brand from "@/config/brand";
 
 export default function SearchOverlay({ open, onClose }) {
   const catalog = useCatalog();
@@ -151,7 +152,7 @@ export default function SearchOverlay({ open, onClose }) {
               <p>
                 Sin resultados para <em>“{q.trim()}”</em>.
               </p>
-              <p className={styles.emptyHint}>Prueba con «hoodie», «plata» o «denim», o explora el catálogo completo.</p>
+              <p className={styles.emptyHint}>{brand.search.emptyHint}</p>
               <Link href="/tienda" onClick={onClose} className="mk-btn mk-btn--ghost mk-btn--sm">
                 Ver catálogo
               </Link>

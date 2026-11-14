@@ -18,8 +18,9 @@ import {
   sortProducts,
 } from "@/lib/shop";
 import styles from "./ShopCatalog.module.css";
+import brand from "@/config/brand";
 
-const DENSITY_KEY = "musketeer.density";
+const DENSITY_KEY = `${brand.storageKey}.density`;
 
 function parseQuery(sp) {
   const sort = sp.get("orden");

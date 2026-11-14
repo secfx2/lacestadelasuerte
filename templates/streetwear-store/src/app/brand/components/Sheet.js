@@ -1,5 +1,6 @@
 import s from "../brand.module.css";
 import { EDITION } from "../data";
+import brand from "@/config/brand";
 
 /**
  * One printed page of the book (A4 landscape ratio on screen, exactly
@@ -13,7 +14,7 @@ export default function Sheet({ chapter, label, tone = "paper", bare = false, cl
       <div className={`${s.sheetInner} ${bare ? s.sheetBare : ""}`}>
         {!bare && (
           <header className={s.runhead}>
-            <span>Musketeer — Brand Book</span>
+            <span>{brand.displayName} — Brand Book</span>
             <span className={s.runheadCenter}>
               {chapter.num} &nbsp;{chapter.title}
               {label ? <span className={s.runheadLabel}> — {label}</span> : null}
@@ -27,7 +28,7 @@ export default function Sheet({ chapter, label, tone = "paper", bare = false, cl
         {!bare && (
           <footer className={s.runfoot}>
             <span className={s.folio} />
-            <span className={s.runfootMotto}>Tous pour un</span>
+            <span className={s.runfootMotto}>{brand.tagline}</span>
           </footer>
         )}
       </div>

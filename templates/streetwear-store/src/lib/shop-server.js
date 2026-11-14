@@ -71,7 +71,14 @@ export function newInSlugs() {
   if (slugs.length) return slugs;
   const all = slimCatalog();
   const fresh = all.filter((p) => p.badge === "Nuevo" || (p.line && p.line === brand.currentLine));
-  return (fresh.length ? fresh : [...all].reverse()).slice(0, limit).map((p) => p.slug);
+  // Small catalogs: top up to one full desktop row (5) with the latest other pieces.
+  const min = Math.min(limit, 5);
+  const list = fresh.slice(0, limit);
+  for (const p of [...all].reverse()) {
+    if (list.length >= min) break;
+    if (!list.includes(p)) list.push(p);
+  }
+  return list.map((p) => p.slug);
 }
 
 /** "Best sellers": brand.home.bestSellers.slugs, else `featured: true`, badge "Best seller", then catalog order. */
@@ -87,7 +94,13 @@ export function featureProducts(n = 4) {
   const f = brand.home.feature;
   if (!f?.category) return [];
   if (f.slugs?.length) return slimProducts(f.slugs).slice(0, n);
-  return ordered(slimByCategory(f.category), (p) => p.featured).slice(0, n);
+  const list = ordered(slimByCategory(f.category), (p) => p.featured).slice(0, n);
+  // Small catalogs: fewer than 3 pieces in the category → top up with featured pieces (desktop shows 3).
+  if (list.length < 3) for (const p of ordered(slimCatalog(), (x) => x.featured)) {
+    if (list.length >= 3) break;
+    if (!list.includes(p)) list.push(p);
+  }
+  return list;
 }
 
 /** "Completa el look": compatible categories (brand.relatedCategories), deterministic. */

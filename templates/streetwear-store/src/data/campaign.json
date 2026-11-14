@@ -2,7 +2,7 @@
   "hero": {
     "desktop": "/campaign/hero.jpg",
     "mobile": "/campaign/hero-mobile.jpg",
-    "alt": "Los cuatro mosqueteros de MUSKETEER con la línea 2026: chaqueta con capa burdeos, varsity verde, chándal azul tabardo y camiseta boxy mantequilla, en un patio de piedra al sol"
+    "alt": "Campaña: cuatro modelos con la línea actual en la ciudad"
   },
   "banners": [
     {
@@ -10,15 +10,15 @@
       "image": "/campaign/banner-chaquetas.jpg",
       "ratio": "4:5",
       "title": "Chaquetas",
-      "kicker": "Capas, bombers y lona pesada",
+      "kicker": "Lona pesada y corte boxy",
       "href": "/categoria/chaquetas"
     },
     {
       "id": "joyeria",
       "image": "/campaign/banner-joyeria.jpg",
       "ratio": "4:5",
-      "title": "Plata 925",
-      "kicker": "Anillos, cadenas y guanteletes",
+      "title": "Joyería",
+      "kicker": "Plata 925 maciza",
       "href": "/categoria/joyeria"
     },
     {
@@ -26,14 +26,14 @@
       "image": "/campaign/banner-punto.jpg",
       "ratio": "4:5",
       "title": "Punto",
-      "kicker": "Cota de malla y mohair",
+      "kicker": "Punto grueso, tacto denso",
       "href": "/categoria/punto"
     },
     {
       "id": "wide",
       "image": "/campaign/banner-wide.jpg",
       "ratio": "21:9",
-      "title": "Un pour tous",
+      "title": "Your motto",
       "kicker": "Catálogo permanente. Sin drops.",
       "href": "/tienda"
     }
@@ -42,52 +42,55 @@
     {
       "image": "/campaign/look-01.jpg",
       "ratio": "4:5",
-      "caption": "Look 01"
+      "caption": "Look 01",
+      "title": "Escalera",
+      "pieces": [
+        "boxy-work-jacket",
+        "boxy-tee",
+        "straight-denim"
+      ]
     },
     {
       "image": "/campaign/look-02.jpg",
       "ratio": "4:5",
-      "caption": "Look 02"
+      "caption": "Look 02",
+      "title": "Azotea",
+      "pieces": [
+        "logo-hoodie",
+        "straight-denim",
+        "six-panel-cap"
+      ]
     },
     {
       "image": "/campaign/look-03.jpg",
       "ratio": "4:5",
-      "caption": "Look 03"
+      "caption": "Look 03",
+      "title": "Taller",
+      "pieces": [
+        "oxford-overshirt",
+        "boxy-tee",
+        "signet-ring"
+      ]
     },
     {
       "image": "/campaign/look-04.jpg",
       "ratio": "4:5",
-      "caption": "Look 04"
-    },
-    {
-      "image": "/campaign/look-05.jpg",
-      "ratio": "4:5",
-      "caption": "Look 05"
-    },
-    {
-      "image": "/campaign/look-06.jpg",
-      "ratio": "4:5",
-      "caption": "Look 06"
-    },
-    {
-      "image": "/campaign/look-07.jpg",
-      "ratio": "4:5",
-      "caption": "Look 07"
-    },
-    {
-      "image": "/campaign/look-08.jpg",
-      "ratio": "4:5",
-      "caption": "Look 08"
+      "caption": "Look 04",
+      "title": "Patio",
+      "pieces": [
+        "heavy-knit-crewneck",
+        "straight-denim"
+      ]
     }
   ],
   "maison": {
-    "image": "/campaign/maison.jpg",
+    "image": "/campaign/about.jpg",
     "ratio": "3:2",
-    "alt": "Taller de MUSKETEER"
+    "alt": "El taller de la marca"
   },
   "heroClassic": {
     "desktop": "/campaign/hero-classic.jpg",
     "mobile": "/campaign/hero-classic-mobile.jpg",
-    "alt": "Los cuatro mosqueteros de MUSKETEER, hombro con hombro, en un patio de piedra al amanecer"
+    "alt": "Campaña alternativa"
   }
 }

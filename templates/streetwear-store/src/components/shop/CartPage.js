@@ -4,6 +4,7 @@ import { useCart } from "./CartProvider";
 import CartLines, { FreeShippingBar } from "./CartLines";
 import { CATEGORIES, FREE_SHIPPING_FROM, SHIPPING_METHODS, formatPrice } from "@/lib/shop";
 import styles from "./CartPage.module.css";
+import brand from "@/config/brand";
 
 export default function CartPage() {
   const { ready, lines, count, subtotal, freeShipping } = useCart();
@@ -16,7 +17,7 @@ export default function CartPage() {
       <div className={styles.empty}>
         <p className={styles.emptyTitle}>Tu cesta está vacía.</p>
         <p className={styles.emptyText}>
-          <em>Tous pour un</em> — el catálogo completo está siempre disponible.
+          <em>{brand.tagline}</em> — {brand.cart.emptyPage}
         </p>
         <div className={styles.emptyCats}>
           {CATEGORIES.map((c) => (
@@ -69,8 +70,8 @@ export default function CartPage() {
             Finalizar compra
           </Link>
           <ul className={styles.perks}>
-            <li>Devoluciones gratuitas en 30 días</li>
-            <li>Pago seguro: tarjeta, Apple Pay, PayPal y Bizum</li>
+            <li>Devoluciones gratuitas en {brand.shipping.returnDays} días</li>
+            <li>Pago seguro: {["tarjeta", ...brand.payments.filter((p) => p.id !== "tarjeta").map((p) => p.name)].join(", ").replace(/, ([^,]*)$/, " y $1")}</li>
           </ul>
         </div>
       </aside>

@@ -1,6 +1,7 @@
 "use client";
 import { useId, useState } from "react";
 import styles from "./Newsletter.module.css";
+import brand from "@/config/brand";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -23,9 +24,9 @@ export default function Newsletter({ variant = "footer" }) {
   if (state === "done") {
     return (
       <div className={styles.done} data-variant={variant} role="status">
-        <p className={styles.doneTitle}>Gracias. Ya formas parte de la hermandad.</p>
+        <p className={styles.doneTitle}>{brand.newsletter.doneTitle}</p>
         <p className={styles.doneText}>
-          <em>Un pour tous.</em> Recibirás una carta al mes, nunca más.
+          <em>{brand.motto}.</em> {brand.newsletter.doneText}
         </p>
       </div>
     );
@@ -64,7 +65,7 @@ export default function Newsletter({ variant = "footer" }) {
       {variant === "feature" && (
         <label className={`mk-check ${styles.consent}`}>
           <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} />
-          <span>Acepto recibir comunicaciones de MUSKETEER. Puedes darte de baja cuando quieras.</span>
+          <span>{brand.newsletter.consent}</span>
         </label>
       )}
     </form>

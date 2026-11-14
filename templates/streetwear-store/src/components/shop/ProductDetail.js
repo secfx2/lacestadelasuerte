@@ -8,11 +8,20 @@ import SizeTables from "./SizeTables";
 import Accordion, { AccordionItem } from "./Accordion";
 import { useCart, useWishlist } from "./CartProvider";
 import { IconStar, IconZoom } from "./Icons";
-import { careText, categoryName, fitNote, formatPrice, getColor, isOneSize } from "@/lib/shop";
+import { SHIPPING_METHODS, careText, categoryName, fitNote, formatPrice, getColor, isOneSize } from "@/lib/shop";
 import { guidesFor } from "@/lib/sizeGuides";
 import styles from "./ProductDetail.module.css";
+import brand from "@/config/brand";
 
 const VIEW_LABELS = ["Vista plana", "Con modelo", "Otra vista", "Detalle"];
+
+/** "Envío estándar en 2–4 días laborables (4,95 €, gratuito desde 150 €). Express en 24–48 h por 9,95 €." — from brand.shipping. */
+function shippingSummary() {
+  return SHIPPING_METHODS.map((m, i) => {
+    const free = m.freeFrom != null ? `, gratuito desde ${formatPrice(m.freeFrom)}` : "";
+    return i === 0 ? `Envío ${m.name.toLowerCase()} en ${m.eta} (${formatPrice(m.price)}${free}).` : `${m.name} en ${m.eta} por ${formatPrice(m.price)}${free}.`;
+  }).join(" ");
+}
 
 export default function ProductDetail({ product }) {
   const { add } = useCart();
@@ -234,9 +243,9 @@ export default function ProductDetail({ product }) {
             </div>
 
             <ul className={styles.perks}>
-              <li>Envío gratuito desde 150 €</li>
-              <li>Devoluciones gratuitas en 30 días</li>
-              <li>Catálogo permanente — siempre disponible</li>
+              {brand.product.perks.map((t) => (
+                <li key={t}>{t}</li>
+              ))}
             </ul>
 
             <Accordion className={styles.accordion}>
@@ -254,12 +263,12 @@ export default function ProductDetail({ product }) {
                   <br />
                   <strong>Corte:</strong> {product.fit}
                   <br />
-                  <strong>Referencia:</strong> MSK-{String(product.index + 1).padStart(3, "0")}-{color.slug.toUpperCase().replace(/-/g, "")}
+                  <strong>Referencia:</strong> {brand.skuPrefix}-{String(product.index + 1).padStart(3, "0")}-{color.slug.toUpperCase().replace(/-/g, "")}
                 </p>
               </AccordionItem>
               <AccordionItem title="Envíos y devoluciones">
-                <p>Envío estándar en 2–4 días laborables (4,95 €, gratuito desde 150 €). Express en 24–48 h por 9,95 €. Enviamos a toda España peninsular y Baleares.</p>
-                <p>Tienes 30 días desde la entrega para devolver cualquier pieza sin usar y con sus etiquetas. La devolución es gratuita.</p>
+                <p>{shippingSummary()} {brand.shipping.zones}</p>
+                <p>Tienes {brand.shipping.returnDays} días desde la entrega para devolver cualquier pieza sin usar y con sus etiquetas. La devolución es gratuita.</p>
                 <p>
                   <Link href="/ayuda#envios" className="mk-link mk-link--on">Más información</Link>
                 </p>

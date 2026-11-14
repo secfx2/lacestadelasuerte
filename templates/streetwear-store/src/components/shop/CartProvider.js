@@ -1,9 +1,10 @@
 "use client";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { getColor, FREE_SHIPPING_FROM } from "@/lib/shop";
+import brand from "@/config/brand";
 
-const STORAGE_KEY = "musketeer.cart.v1";
-const WISH_KEY = "musketeer.wishlist.v1";
+const STORAGE_KEY = `${brand.storageKey}.cart.v1`;
+const WISH_KEY = `${brand.storageKey}.wishlist.v1`;
 const MAX_QTY = 10;
 
 const CatalogContext = createContext([]);

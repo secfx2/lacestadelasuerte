@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Logo from "@/components/brand/Logo";
+import brand from "@/config/brand";
 import s from "../brand.module.css";
 
 /** Sticky chapter index for the online Brand Book (hidden in print). */
@@ -50,8 +51,8 @@ export default function ChapterNav({ chapters, pdfHref }) {
 
   return (
     <nav className={s.nav} aria-label="Índice del Brand Book">
-      <a href="#portada" className={s.navBrand} aria-label="Musketeer — volver a la portada">
-        <Logo variant="wordmark" className={s.navLogo} />
+      <a href="#portada" className={s.navBrand} aria-label={`${brand.name} — volver a la portada`}>
+        <Logo variant="wordmark" className={s.navLogo} title={brand.name} />
         <span className={s.navBook}>Brand Book</span>
       </a>
       <ol className={s.navList} ref={listRef}>

@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import brand from "@/config/brand";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -21,7 +22,7 @@ export default function ContactForm() {
       <div role="status" style={{ padding: "20px 0" }}>
         <p className="caps" style={{ margin: 0, fontWeight: 500 }}>Mensaje recibido.</p>
         <p className="muted" style={{ margin: "8px 0 0", fontSize: 13 }}>
-          Te responderemos en un plazo de 24–48 h laborables. <em className="serif" style={{ fontSize: 16, color: "var(--ink)" }}>Un pour tous.</em>
+          Te responderemos en un plazo de 24–48 h laborables. <em className="serif" style={{ fontSize: 16, color: "var(--ink)" }}>{brand.motto}.</em>
         </p>
       </div>
     );
@@ -52,7 +53,7 @@ export default function ContactForm() {
       </div>
       <div>
         <label className="mk-label" htmlFor="cf-order">Número de pedido (opcional)</label>
-        <input id="cf-order" className="mk-input" value={v.order} onChange={set("order")} placeholder="MSK-0000" />
+        <input id="cf-order" className="mk-input" value={v.order} onChange={set("order")} placeholder={`${brand.skuPrefix}-0000`} />
       </div>
       <div>
         <label className="mk-label" htmlFor="cf-msg">Mensaje</label>

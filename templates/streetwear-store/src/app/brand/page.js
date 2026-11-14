@@ -2,6 +2,8 @@ import fs from "node:fs";
 import path from "node:path";
 import Logo from "@/components/brand/Logo";
 import LOGOS from "@/components/brand/logoData";
+import { formatPrice } from "@/lib/shop";
+import brand from "@/config/brand";
 import catalog from "@/data/catalog.json";
 import ChapterNav from "./components/ChapterNav";
 import SafeImage from "./components/SafeImage";
@@ -9,15 +11,14 @@ import Sheet, { ChapterHead } from "./components/Sheet";
 import s from "./brand.module.css";
 import {
   CHAPTERS, EDITION, WORDMARK, SYMBOLS, USAGE, USAGE_COLUMNS, SYMBOL_RULES,
-  COLORS, PROPORTIONS, PAIRS, TYPE_SCALE, TYPE_RULES, PHOTO_SEQUENCE, PHOTO_RULES,
-  PHOTO_DONTS, CASTING, VOICE_PRINCIPLES, VOICE_YES_NO, VOCAB, MICROCOPY, MOCKUPS, UI_TYPE,
-  PRODUCT_PALETTE, LINE_2026,
+  COLORS, PROPORTIONS, PAIRS, TYPE_SCALE, TYPE_RULES, PHOTO, PHOTO_SEQUENCE, PHOTO_RULES,
+  PHOTO_DONTS, VOICE, VOICE_PRINCIPLES, VOICE_YES_NO, VOCAB, MICROCOPY, MOCKUPS, UI_TYPE,
+  PRODUCT_PALETTE, LINE, FONTS, TYPE, APPLICATIONS, WEB, CONTACT, MANIFESTO, CONCEPT, COVER,
 } from "./data";
 
 export const metadata = {
   title: "Brand Book",
-  description:
-    "Manual de identidad de MUSKETEER: logotipo, sistema de símbolos, color, tipografía, fotografía, tono de voz, aplicaciones y web.",
+  description: brand.seo.brandBook,
 };
 
 /* ---------- helpers ------------------------------------------------------- */
@@ -55,8 +56,15 @@ const grade = (r) => (r >= 7 ? "AAA" : r >= 4.5 ? "AA" : r >= 3 ? "AA grande" : 
 
 /* ---------- data from the catalog ----------------------------------------- */
 const PRODUCTS = catalog.products || [];
-const HERO = PRODUCTS.find((p) => p.slug === "tous-pour-un-hoodie") || PRODUCTS[0];
+const HERO =
+  PRODUCTS.find((p) => p.slug === PHOTO.heroSlug) ||
+  PRODUCTS.find((p) => p.kind === "garment" && (p.colors?.[0]?.images || []).length >= 4) ||
+  PRODUCTS[0];
 const HERO_IMAGES = HERO?.colors?.[0]?.images || [];
+const capitalize = (k) => k.charAt(0).toUpperCase() + k.slice(1);
+/** Fixed casting = the `models` map of catalog.json (key → name shown in the book). */
+const CASTING = Object.entries(catalog.models || {}).map(([key, m]) => ({ key, name: m.name || capitalize(key) }));
+const PDF_HREF = publicFileExists(brand.brandBook.pdfHref) ? brand.brandBook.pdfHref : null;
 
 function castingShots() {
   return CASTING.map((m) => {
@@ -103,7 +111,7 @@ function Misuse({ m }) {
     <figure className={s.misuse}>
       <div className={`${s.misuseTile} ${s[`fx_${m.fx}`] || ""}`}>
         {m.fx === "retype" ? (
-          <span className={s.retype}>MUSKETEER</span>
+          <span className={s.retype}>{brand.name}</span>
         ) : (
           <div className={s.misuseLogo}>
             <Logo variant={WORDMARK.variant} className={s.fit} title="Uso incorrecto del logotipo" />
@@ -128,27 +136,30 @@ export default function BrandBook() {
   const gridDiv = WORDMARK.gridDiv || 8;
   const clearH = Math.min(8.5, (wide ? 52 : 40) / (ar + 2 * k)); // cqw — fits its stage whatever the logo's proportions
   const constrW = Math.min(wide ? 54 : 44, 17 * ar); // cqw
-  const LINE = PRODUCTS.filter((p) => p.line === "2026");
+  const LINE_PRODUCTS = PRODUCTS.filter((p) => p.line && p.line === LINE.line);
   const productPalette = PRODUCT_PALETTE.map((c) => ({
     ...c,
     rgb: hexRgb(c.hex),
-    products: LINE.filter((p) => (p.colors || []).some((x) => (x.hex || "").toLowerCase() === c.hex.toLowerCase()))
+    products: PRODUCTS.filter((p) => (p.colors || []).some((x) => (x.hex || "").toLowerCase() === c.hex.toLowerCase()))
       .map((p) => p.name)
       .slice(0, 3),
   }));
-  const line2026 = [
-    ...LINE_2026.slugs.map((slug) => PRODUCTS.find((p) => p.slug === slug)).filter(Boolean),
-    ...LINE.filter((p) => !LINE_2026.slugs.includes(p.slug)),
+  const lineSlugs = LINE.slugs || [];
+  const lineShots = [
+    ...lineSlugs.map((slug) => PRODUCTS.find((p) => p.slug === slug)).filter(Boolean),
+    ...LINE_PRODUCTS.filter((p) => !lineSlugs.includes(p.slug)),
+    ...PRODUCTS.filter((p) => p.kind === "garment" && !LINE_PRODUCTS.includes(p) && !lineSlugs.includes(p.slug)),
   ].slice(0, 4);
   const casting = castingShots();
-  const grid = [...LINE, ...gridProducts(null, 8)]
+  const grid = [...LINE_PRODUCTS, ...gridProducts(null, 8), HERO].filter(Boolean)
     .filter((p, i, a) => a.findIndex((q) => q.slug === p.slug) === i)
     .slice(0, 8);
-  const gridTitle = "Catálogo";
+  const gridTitle = WEB.browser.gridTitle;
+  const sansWidths = FONTS.sans.widths || [];
 
   return (
     <div className={s.book}>
-      <ChapterNav chapters={CHAPTERS} pdfHref="/brand/musketeer-brandbook.pdf" />
+      <ChapterNav chapters={CHAPTERS} pdfHref={PDF_HREF} />
 
       <main className={s.main}>
         {/* 00 ─ PORTADA ───────────────────────────────────────────────── */}
@@ -162,16 +173,17 @@ export default function BrandBook() {
               </span>
             </div>
             <div className={s.coverLogo}>
-              <Logo variant="wordmark" className={s.fit} title="Musketeer" />
+              <Logo variant="wordmark" className={s.fit} title={brand.name} />
             </div>
             <div className={s.coverBottom}>
-              <p className={s.coverMotto}>Tous pour un.</p>
+              <p className={s.coverMotto}>{COVER.motto}</p>
               <p className={s.coverMeta}>
-                Ropa unisex de lujo callejero.
-                <br />
-                Catálogo permanente, sin drops.
-                <br />
-                Plata 925.
+                {COVER.meta.map((line, i) => (
+                  <span key={line}>
+                    {i > 0 && <br />}
+                    {line}
+                  </span>
+                ))}
               </p>
             </div>
           </Sheet>
@@ -180,10 +192,7 @@ export default function BrandBook() {
             <div className={s.indexLeft}>
               <span className={s.label}>Contenido</span>
               <h2 className={s.indexTitle}>Índice</h2>
-              <p className={s.indexNote}>
-                Este manual fija las reglas de la identidad de MUSKETEER. Es la referencia para quien diseñe,
-                fotografíe, escriba o produzca en nombre de la casa. Ante la duda, menos.
-              </p>
+              <p className={s.indexNote}>{brand.brandBook.indexNote}</p>
             </div>
             <ol className={s.indexList}>
               {CHAPTERS.slice(1).map((c) => (
@@ -204,49 +213,35 @@ export default function BrandBook() {
           <Sheet chapter={C.manifiesto} className={s.manifesto}>
             <div className={s.manLeft}>
               <span className={s.chNum}>{C.manifiesto.num}</span>
-              <h2 className={s.manQuote}>Tous pour un.</h2>
-              <p className={s.manSub}>Un pour tous.</p>
+              <h2 className={s.manQuote}>{MANIFESTO.quote}</h2>
+              <p className={s.manSub}>{MANIFESTO.sub}</p>
             </div>
             <div className={s.manText}>
-              <p className={s.manLead}>
-                Hubo un tiempo en que bastaba con un juramento. Cuatro espadas, una capa azul con su cruz y una
-                palabra dada. No necesitaban anunciarse: se les reconocía por cómo estaban de pie.
-              </p>
+              <p className={s.manLead}>{MANIFESTO.lead}</p>
               <div className={s.manCols}>
-                <p>
-                  MUSKETEER nace de ese código —hermandad, lealtad, oficio— y lo traduce a la ropa de calle de hoy:
-                  cortes amplios, tejidos pesados, lavados que parecen vividos y plata que se hereda.
-                </p>
-                <p>
-                  No hacemos drops. No fabricamos urgencia. Construimos un catálogo que permanece: prendas que podrás
-                  volver a comprar dentro de diez años, porque seguirán aquí.
-                </p>
-                <p>Unisex, porque la hermandad no pregunta. Silenciosa, porque no hace falta gritar.</p>
-                <p className={s.manSign}>— En garde.</p>
+                {MANIFESTO.paragraphs.map((t) => (
+                  <p key={t}>{t}</p>
+                ))}
+                <p className={s.manSign}>{MANIFESTO.sign}</p>
               </div>
             </div>
           </Sheet>
 
           <Sheet chapter={C.manifiesto} label="Concepto" className={s.concept}>
             <div className={s.conceptHead}>
-              <h3 className={s.h2}>Cuatro principios</h3>
-              <p className={s.lead}>
-                Todo lo que hace MUSKETEER —una sudadera, una etiqueta, una frase— debe poder explicarse con uno de
-                ellos.
-              </p>
+              <h3 className={s.h2}>{CONCEPT.title}</h3>
+              <p className={s.lead}>{CONCEPT.lead}</p>
             </div>
             <p className={s.conceptStatement}>
-              Catálogo,
-              <br />
-              no drops.
+              {CONCEPT.statement.map((line, i) => (
+                <span key={line}>
+                  {i > 0 && <br />}
+                  {line}
+                </span>
+              ))}
             </p>
             <div className={s.pillars}>
-              {[
-                { k: "Hermandad", v: "Unisex en casi todo. Un casting fijo, una misma familia. La marca es un nosotros." },
-                { k: "Oficio", v: "Felpas de 500 g/m², denim pesado, plata 925. El valor está en el material y en el acabado." },
-                { k: "Permanencia", v: "Catálogo, no drops. Cada pieza sigue disponible, organizada por categorías, temporada tras temporada." },
-                { k: "Silencio", v: "Fondo blanco, mucho aire, ninguna estridencia. La seguridad no levanta la voz." },
-              ].map((p, i) => (
+              {CONCEPT.pillars.map((p, i) => (
                 <div key={p.k} className={s.pillar}>
                   <span className={s.roman}>{ROMAN[i]}</span>
                   <h4 className={s.pillarTitle}>{p.k}</h4>
@@ -255,7 +250,7 @@ export default function BrandBook() {
               ))}
             </div>
             <ul className={s.attrs}>
-              {["Unisex", "Boxy", "Baggy", "Oversize", "Gramajes pesados", "Lavados vintage", "Plata 925"].map((a) => (
+              {CONCEPT.attributes.map((a) => (
                 <li key={a}>{a}</li>
               ))}
             </ul>
@@ -267,7 +262,7 @@ export default function BrandBook() {
           <Sheet chapter={C.logotipo} label="Logotipo principal" className={s.logoHero}>
             <ChapterHead chapter={C.logotipo} title="Logotipo" lead={WORDMARK.intro} />
             <div className={s.logoHeroMark}>
-              <Logo variant={WORDMARK.variant} className={s.fit} title="Musketeer — wordmark" />
+              <Logo variant={WORDMARK.variant} className={s.fit} title={`${brand.name} — wordmark`} />
             </div>
             <dl className={s.notes3}>
               {WORDMARK.notes.map((n) => (
@@ -376,10 +371,7 @@ export default function BrandBook() {
         {/* 03 ─ SÍMBOLOS ──────────────────────────────────────────────── */}
         <Chapter c={C.simbolos}>
           <Sheet chapter={C.simbolos} className={s.symbolsSheet}>
-            <ChapterHead
-              chapter={C.simbolos}
-              lead="Junto a musketeer™ viven una marca corta, una marca gráfica, un símbolo y un sello. Cada pieza tiene su territorio y no lo abandona."
-            />
+            <ChapterHead chapter={C.simbolos} lead={brand.brandBook.symbolsLead} />
             <div className={s.symbolGrid} style={{ "--n": Math.max(symbols.length, 1) }}>
               {symbols.map((sym) => (
                 <article key={sym.variant} className={s.symbol}>
@@ -461,15 +453,12 @@ export default function BrandBook() {
         {/* 04 ─ COLOR ─────────────────────────────────────────────────── */}
         <Chapter c={C.color}>
           <Sheet chapter={C.color} className={s.colorSheet}>
-            <ChapterHead
-              chapter={C.color}
-              lead="Una paleta corta y casi monocroma. El blanco y el negro sostienen la marca; el Azul Tabardo la firma; el Lacre aparece solo cuando hay algo que avisar."
-            />
+            <ChapterHead chapter={C.color} lead={brand.brandBook.colorLead} />
             <div className={s.swatches}>
               {COLORS.map((c) => (
                 <div key={c.name} className={s.swatch}>
                   <div
-                    className={`${s.swatchChip} ${c.hex === "#FFFFFF" ? s.swatchChipLight : ""}`}
+                    className={`${s.swatchChip} ${isLight(c.hex) ? s.swatchChipLight : ""}`}
                     style={{ background: `var(${c.token})` }}
                   />
                   <h3 className={s.swatchName}>{c.name}</h3>
@@ -501,10 +490,7 @@ export default function BrandBook() {
             <div>
               <div className={s.propHead}>
                 <h3 className={s.h3}>Proporción de uso</h3>
-                <p className={s.small}>
-                  Papel y Tinta dominan cualquier pieza. El Tabardo es un acento: un detalle, nunca un fondo general. El
-                  Lacre es raro: rebajas, avisos y errores.
-                </p>
+                <p className={s.small}>{brand.brandBook.proportionsText}</p>
               </div>
               <div className={s.propBar} role="img" aria-label="Proporción de color">
                 {PROPORTIONS.map((p) => (
@@ -529,7 +515,7 @@ export default function BrandBook() {
                   return (
                     <div
                       key={p.fgN + p.bgN}
-                      className={`${s.pair} ${p.bg === "#FFFFFF" ? s.pairBorder : ""}`}
+                      className={`${s.pair} ${isLight(p.bg) ? s.pairBorder : ""}`}
                       style={{ background: p.bg, color: p.fg }}
                     >
                       <span className={s.pairAa}>Aa</span>
@@ -547,13 +533,10 @@ export default function BrandBook() {
             </div>
           </Sheet>
 
-          <Sheet chapter={C.color} label="Paleta de producto — línea 2026" className={s.prodSheet}>
+          <Sheet chapter={C.color} label={`Paleta de producto — línea ${LINE.line}`} className={s.prodSheet}>
             <div className={s.prodHead}>
-              <h3 className={s.h3}>Paleta de producto — línea 2026</h3>
-              <p className={s.small}>
-                El color entra en la prenda, no en la marca: logotipo, web y packaging siguen en Tinta y Papel. El Azul
-                Tabardo textil es la versión luminosa del Tabardo de marca; conviven, pero no se intercambian.
-              </p>
+              <h3 className={s.h3}>Paleta de producto — línea {LINE.line}</h3>
+              <p className={s.small}>{brand.brandBook.productPaletteText}</p>
             </div>
             <div className={s.prodGrid}>
               {productPalette.map((c) => (
@@ -582,7 +565,7 @@ export default function BrandBook() {
 
         {/* 05 ─ TIPOGRAFÍA ────────────────────────────────────────────── */}
         <Chapter c={C.tipografia}>
-          <Sheet chapter={C.tipografia} label="Archivo" className={s.typeSheet}>
+          <Sheet chapter={C.tipografia} label={FONTS.sans.family} className={s.typeSheet}>
             <div className={s.typeLeft}>
               <ChapterHead chapter={C.tipografia} />
               <p className={s.bigAa} aria-hidden="true">
@@ -591,20 +574,19 @@ export default function BrandBook() {
             </div>
             <div className={s.typeRight}>
               <div>
-                <h3 className={s.fontName}>Archivo</h3>
+                <h3 className={s.fontName}>{FONTS.sans.family}</h3>
                 <p className={s.small}>
-                  Omnibus-Type · Google Fonts · variable: peso 100–900, anchura 62–125. La voz funcional: interfaz,
-                  navegación, precios y cuerpo de texto. Dos anchuras en uso: normal y expanded.
+                  {FONTS.sans.source} · {FONTS.sans.axes}. {FONTS.sans.role}
                 </p>
               </div>
               <div className={s.ramp}>
-                {[62.5, 75, 87.5, 100, 112.5, 125].map((w) => {
+                {(sansWidths.length ? sansWidths : [100]).map((w) => {
                   const use = w === 100 ? "Normal" : w === 125 ? "Expanded" : null;
                   return (
                     <div key={w} className={`${s.rampRow} ${use ? s.rampUse : ""}`}>
                       <span className={s.rampLabel}>wdth {String(w).replace(".", ",")}</span>
                       <span className={s.rampSample} style={{ fontStretch: `${w}%` }}>
-                        Tous pour un
+                        {TYPE.rampSample}
                       </span>
                       <span className={s.rampTag}>{use || ""}</span>
                     </div>
@@ -612,9 +594,9 @@ export default function BrandBook() {
                 })}
               </div>
               <div className={s.weights}>
-                {[300, 400, 500, 600, 700].map((wt) => (
+                {(FONTS.sans.weights || [300, 400, 500, 600, 700]).map((wt) => (
                   <span key={wt} style={{ fontWeight: wt }}>
-                    <b>{wt}</b> Estoque
+                    <b>{wt}</b> {TYPE.weightSample}
                   </span>
                 ))}
               </div>
@@ -628,18 +610,17 @@ export default function BrandBook() {
             </div>
           </Sheet>
 
-          <Sheet chapter={C.tipografia} label="Instrument Serif" className={s.serifSheet}>
+          <Sheet chapter={C.tipografia} label={FONTS.serif.family} className={s.serifSheet}>
             <p className={s.serifBig}>
-              <em>Tous pour un,</em>
+              <em>{TYPE.serifBig[0]}</em>
               <br />
-              un pour tous.
+              {TYPE.serifBig[1]}
             </p>
             <div className={s.serifSpec}>
               <div>
-                <h3 className={s.fontNameSerif}>Instrument Serif</h3>
+                <h3 className={s.fontNameSerif}>{FONTS.serif.family}</h3>
                 <p className={s.small}>
-                  Instrument · Google Fonts · regular e itálica. La voz literaria: el lema, las citas y los acentos
-                  editoriales. Siempre en tamaños generosos; nunca en interfaz funcional ni en cuerpo largo.
+                  {FONTS.serif.source} · {FONTS.serif.axes}. {FONTS.serif.role}
                 </p>
               </div>
               <p className={s.glyphsSerif}>
@@ -650,8 +631,8 @@ export default function BrandBook() {
                 0123456789 &amp;
               </p>
               <div className={s.pairing}>
-                <p className={s.pairingQuote}>«Se les reconocía por cómo estaban de pie.»</p>
-                <p className={s.capsSmall}>Manifiesto · 01</p>
+                <p className={s.pairingQuote}>{TYPE.pairingQuote}</p>
+                <p className={s.capsSmall}>{TYPE.pairingCaption}</p>
               </div>
             </div>
           </Sheet>
@@ -688,10 +669,7 @@ export default function BrandBook() {
         <Chapter c={C.fotografia}>
           <Sheet chapter={C.fotografia} label="La secuencia" className={s.photoSheet}>
             <div className={s.photoHead}>
-              <ChapterHead
-                chapter={C.fotografia}
-                lead="La fotografía de producto es la tienda. Cuatro imágenes por prenda, siempre en el mismo orden, siempre sobre blanco."
-              />
+              <ChapterHead chapter={C.fotografia} lead={PHOTO.lead} />
               <p className={s.photoCredit}>
                 {HERO?.name} · {HERO?.colors?.[0]?.name}
               </p>
@@ -720,10 +698,7 @@ export default function BrandBook() {
             <div className={s.castMain}>
               <div className={s.castHead}>
                 <h3 className={s.h3}>Casting fijo</h3>
-                <p className={s.small}>
-                  Cuatro modelos para todo el catálogo. La repetición construye familia: el cliente reconoce las caras
-                  como reconoce el logotipo.
-                </p>
+                <p className={s.small}>{PHOTO.castingText}</p>
               </div>
               <div className={s.castGrid}>
                 {casting.map((c) => (
@@ -761,12 +736,12 @@ export default function BrandBook() {
             </aside>
           </Sheet>
 
-          <Sheet chapter={C.fotografia} label="Línea 2026" className={s.lineSheet}>
+          <Sheet chapter={C.fotografia} label={LINE.title} className={s.lineSheet}>
             <div className={s.lineText}>
-              <h3 className={s.h3}>Línea 2026</h3>
-              <p className={s.lead}>{LINE_2026.lead}</p>
+              <h3 className={s.h3}>{LINE.title}</h3>
+              <p className={s.lead}>{LINE.lead}</p>
               <dl className={s.defList}>
-                {LINE_2026.rules.map((r) => (
+                {LINE.rules.map((r) => (
                   <div key={r.k}>
                     <dt>{r.k}</dt>
                     <dd>{r.v}</dd>
@@ -775,7 +750,7 @@ export default function BrandBook() {
               </dl>
             </div>
             <div className={s.lineGrid}>
-              {line2026.map((p) => (
+              {lineShots.map((p) => (
                 <figure key={p.slug} className={s.castItem}>
                   <div className={s.frame45}>
                     <SafeImage src={p.colors?.[0]?.images?.[1]} alt={`${p.name} — con modelo`} label={p.name} />
@@ -796,10 +771,7 @@ export default function BrandBook() {
         {/* 07 ─ TONO DE VOZ ───────────────────────────────────────────── */}
         <Chapter c={C.voz}>
           <Sheet chapter={C.voz} label="Principios" className={s.voiceSheet}>
-            <ChapterHead
-              chapter={C.voz}
-              lead="Escribimos como vestimos: pocas piezas, bien elegidas. Español sobrio, ligeramente literario, con algún guiño en francés."
-            />
+            <ChapterHead chapter={C.voz} lead={VOICE.lead} />
             <div className={s.principles}>
               {VOICE_PRINCIPLES.map((p, i) => (
                 <div key={p.k} className={s.principle}>
@@ -845,8 +817,8 @@ export default function BrandBook() {
                 </div>
               </div>
               <div className={s.french}>
-                <p className={s.frenchWords}>Tous pour un · Un pour tous · En garde · Touché</p>
-                <p className={s.small}>El francés es un guiño: una expresión por pieza, nunca una frase entera.</p>
+                <p className={s.frenchWords}>{VOICE.expressions.join(" · ")}</p>
+                <p className={s.small}>{VOICE.expressionsNote}</p>
               </div>
             </div>
             <div className={s.microcopy}>
@@ -867,23 +839,14 @@ export default function BrandBook() {
         <Chapter c={C.aplicaciones}>
           <Sheet chapter={C.aplicaciones} label="Tienda" className={s.appHero}>
             <div className={s.appHeroText}>
-              <ChapterHead
-                chapter={C.aplicaciones}
-                lead="El sistema en el mundo físico. Materiales nobles, acabados mate, ningún brillo innecesario: la marca se toca antes de leerse."
-              />
+              <ChapterHead chapter={C.aplicaciones} lead={APPLICATIONS.lead} />
               <dl className={s.defList}>
-                <div>
-                  <dt>Materiales</dt>
-                  <dd>Papel de algodón, cartón rígido soft-touch, damasco tejido, ante.</dd>
-                </div>
-                <div>
-                  <dt>Acabados</dt>
-                  <dd>Impresión mate, stamping en plata o blanco. Nunca oro, nunca brillo.</dd>
-                </div>
-                <div>
-                  <dt>Color</dt>
-                  <dd>Negro y blanco. Azul Tabardo solo en piezas especiales.</dd>
-                </div>
+                {APPLICATIONS.specs.map((r) => (
+                  <div key={r.k}>
+                    <dt>{r.k}</dt>
+                    <dd>{r.v}</dd>
+                  </div>
+                ))}
               </dl>
             </div>
             <MockFigure m={MOCKUPS[0]} className={s.appHeroImg} />
@@ -891,11 +854,8 @@ export default function BrandBook() {
 
           <Sheet chapter={C.aplicaciones} label="Etiquetado" className={s.appRow4}>
             <div className={s.appIntro}>
-              <h3 className={s.h3}>Etiquetado y bolsa</h3>
-              <p className={s.small}>
-                Lo primero que se toca. musketeer™ firma la etiqueta tejida, la colgante y la bolsa; msk✦tr vive en
-                la prenda como gráfico. Siempre en una sola tinta.
-              </p>
+              <h3 className={s.h3}>{APPLICATIONS.labelling.title}</h3>
+              <p className={s.small}>{APPLICATIONS.labelling.text}</p>
             </div>
             {MOCKUPS.slice(1, 5).map((m) => (
               <MockFigure key={m.file} m={m} />
@@ -904,11 +864,8 @@ export default function BrandBook() {
 
           <Sheet chapter={C.aplicaciones} label="Packaging" className={s.appRow3}>
             <div className={s.appIntro}>
-              <h3 className={s.h3}>Packaging y joyería</h3>
-              <p className={s.small}>
-                Caja rígida negra, papel de seda blanco y el sello MSKTR como cierre. La joyería viaja en estuche con
-                msktr™ y en bolsa de ante Azul Tabardo: el único lugar donde el acento ocupa toda la superficie.
-              </p>
+              <h3 className={s.h3}>{APPLICATIONS.packaging.title}</h3>
+              <p className={s.small}>{APPLICATIONS.packaging.text}</p>
             </div>
             {MOCKUPS.slice(5, 8).map((m, i) => (
               <MockFigure key={m.file} m={m} ratio={i === 0 ? "8 / 5" : undefined} className={i === 0 ? s.appWide : ""} />
@@ -920,18 +877,15 @@ export default function BrandBook() {
         <Chapter c={C.web}>
           <Sheet chapter={C.web} label="Componentes" className={s.uiSheet}>
             <div className={s.uiLeft}>
-              <ChapterHead
-                chapter={C.web}
-                lead="La web es un catálogo: fondo blanco, retícula estricta, esquinas rectas. La interfaz se retira para que hable la prenda."
-              />
+              <ChapterHead chapter={C.web} lead={WEB.lead} />
               <div className={s.uiBlocks}>
                 <div className={s.uiBlock}>
                   <span className={s.label}>Botones</span>
                   <div className={s.btnRow}>
-                    <span className={s.btnPrimary}>Añadir a la cesta</span>
-                    <span className={s.btnSecondary}>Guía de tallas</span>
-                    <span className={s.btnText}>Ver el catálogo</span>
-                    <span className={s.btnDisabled}>Agotado</span>
+                    <span className={s.btnPrimary}>{WEB.buttons.primary}</span>
+                    <span className={s.btnSecondary}>{WEB.buttons.secondary}</span>
+                    <span className={s.btnText}>{WEB.buttons.text}</span>
+                    <span className={s.btnDisabled}>{WEB.buttons.disabled}</span>
                   </div>
                 </div>
                 <div className={s.uiBlock}>
@@ -947,17 +901,17 @@ export default function BrandBook() {
                 <div className={s.uiBlock}>
                   <span className={s.label}>Campo</span>
                   <div className={s.field}>
-                    <span className={s.fieldInput}>Correo electrónico</span>
-                    <span className={s.btnPrimary}>Unirme</span>
+                    <span className={s.fieldInput}>{WEB.field.placeholder}</span>
+                    <span className={s.btnPrimary}>{WEB.field.button}</span>
                   </div>
-                  <p className={s.fieldHelp}>Únete a las filas. Una carta al mes, nunca más.</p>
+                  <p className={s.fieldHelp}>{WEB.field.help}</p>
                 </div>
                 <div className={s.uiBlock}>
                   <span className={s.label}>Reglas</span>
                   <ul className={s.uiRules}>
-                    <li>Radio 0. Sin sombras. Líneas de 1 px.</li>
-                    <li>Hover: subrayado o inversión Tinta / Papel. Sin animación decorativa.</li>
-                    <li>Foco siempre visible: contorno de 1 px en Tinta.</li>
+                    {WEB.rules.map((t) => (
+                      <li key={t}>{t}</li>
+                    ))}
                   </ul>
                 </div>
               </div>
@@ -971,7 +925,7 @@ export default function BrandBook() {
                 </div>
                 <div className={s.cardRow}>
                   <span>{HERO?.name}</span>
-                  <span>{HERO?.price} €</span>
+                  <span>{formatPrice(HERO?.price || 0)}</span>
                 </div>
                 <div className={s.cardSwatches}>
                   {(HERO?.colors || []).map((c) => (
@@ -980,7 +934,7 @@ export default function BrandBook() {
                   <span className={s.cardColors}>{HERO?.colors?.length} colores</span>
                 </div>
               </article>
-              <p className={s.small}>Hover: la imagen pasa del flat lay a la foto con modelo.</p>
+              <p className={s.small}>{WEB.cardNote}</p>
             </div>
           </Sheet>
 
@@ -991,11 +945,11 @@ export default function BrandBook() {
                 <span />
                 <span />
               </div>
-              <div className={s.announce}>Catálogo permanente · Sin drops · Tous pour un</div>
+              <div className={s.announce}>{WEB.browser.announce}</div>
               <div className={s.hdr}>
-                <span className={s.hdrNav}>Catálogo · Sudaderas · Chaquetas · Joyería</span>
-                <Logo variant="wordmark" className={s.hdrLogo} title="Musketeer" />
-                <span className={`${s.hdrNav} ${s.hdrRight}`}>Buscar · Cuenta · Cesta (0)</span>
+                <span className={s.hdrNav}>{WEB.browser.nav}</span>
+                <Logo variant="wordmark" className={s.hdrLogo} title={brand.name} />
+                <span className={`${s.hdrNav} ${s.hdrRight}`}>{WEB.browser.navRight}</span>
               </div>
               <div className={s.pgWrap}>
                 <h4 className={s.pgTitle}>{gridTitle}</h4>
@@ -1007,7 +961,7 @@ export default function BrandBook() {
                       </div>
                       <div className={s.pgRow}>
                         <span>{p.name}</span>
-                        <span>{p.price} €</span>
+                        <span>{formatPrice(p.price)}</span>
                       </div>
                     </div>
                   ))}
@@ -1022,22 +976,12 @@ export default function BrandBook() {
             <div className={s.gridAside}>
               <h3 className={s.h3}>Retícula</h3>
               <dl className={s.defList}>
-                <div>
-                  <dt>Escritorio</dt>
-                  <dd>12 columnas · medianil y margen 24 px</dd>
-                </div>
-                <div>
-                  <dt>Móvil</dt>
-                  <dd>4 columnas · medianil y margen 12 px</dd>
-                </div>
-                <div>
-                  <dt>Producto</dt>
-                  <dd>4 por fila en escritorio, 2 en móvil · imagen 4:5</dd>
-                </div>
-                <div>
-                  <dt>Cabecera</dt>
-                  <dd>56 px, más barra de aviso de 30 px</dd>
-                </div>
+                {WEB.grid.map((r) => (
+                  <div key={r.k}>
+                    <dt>{r.k}</dt>
+                    <dd>{r.v}</dd>
+                  </div>
+                ))}
               </dl>
               <h3 className={s.h3}>Tipo en pantalla</h3>
               <table className={s.uiType}>
@@ -1062,34 +1006,26 @@ export default function BrandBook() {
             <ChapterHead chapter={C.contacto} />
             <div className={s.closeCenter}>
               <div className={s.closeEmblem}>
-                <Logo variant="emblem" className={s.fit} title="Musketeer — emblema" />
+                <Logo variant="emblem" className={s.fit} title={`${brand.name} — emblema`} />
               </div>
               <p className={s.closeMotto}>
-                <em>Tous pour un.</em>
+                <em>{CONTACT.motto[0]}.</em>
                 <br />
-                Un pour tous.
+                {CONTACT.motto[1]}.
               </p>
             </div>
             <dl className={s.closeCols}>
-              <div>
-                <dt>Equipo de marca</dt>
-                <dd>
-                  Cualquier uso no previsto en este manual se consulta antes de producir. Ninguna pieza se imprime sin
-                  prueba de color aprobada.
-                </dd>
-              </div>
-              <div>
-                <dt>Archivos maestros</dt>
-                <dd>
-                  /public/brand — musketeer™ (wordmark), msktr™ (monogram), msk✦tr (gothic), estrella (emblem) y sello
-                  (seal), en negro, blanco y currentColor.
-                </dd>
-              </div>
+              {CONTACT.cols.map((c) => (
+                <div key={c.k}>
+                  <dt>{c.k}</dt>
+                  <dd>{c.v}</dd>
+                </div>
+              ))}
               <div>
                 <dt>Este documento</dt>
                 <dd>
-                  Brand Book · versión {EDITION.version} · {EDITION.date}. Versión viva en /brand; PDF en
-                  /brand/musketeer-brandbook.pdf.
+                  Brand Book · versión {EDITION.version} · {EDITION.date}. Versión viva en /brand
+                  {PDF_HREF ? `; PDF en ${PDF_HREF}` : ""}.
                 </dd>
               </div>
             </dl>

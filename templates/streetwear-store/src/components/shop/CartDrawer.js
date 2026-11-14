@@ -8,6 +8,7 @@ import { useDialog, useLockBody, usePresence } from "./hooks";
 import { IconClose, IconArrow } from "./Icons";
 import { CATEGORIES, formatPrice } from "@/lib/shop";
 import styles from "./CartDrawer.module.css";
+import brand from "@/config/brand";
 
 export default function CartDrawer() {
   const { isOpen, closeCart, lines, count, subtotal } = useCart();
@@ -59,14 +60,14 @@ export default function CartDrawer() {
                   Ver cesta
                 </Link>
               </div>
-              <p className={styles.pay}>Tarjeta · Apple Pay · PayPal · Bizum</p>
+              <p className={styles.pay}>{["Tarjeta", ...brand.payments.filter((p) => p.id !== "tarjeta").map((p) => p.name)].join(" · ")}</p>
             </footer>
           </>
         ) : (
           <div className={styles.empty}>
             <p className={styles.emptyTitle}>Tu cesta está vacía.</p>
             <p className={styles.emptyText}>
-              <em>Tous pour un</em> — empieza por lo esencial.
+              <em>{brand.tagline}</em> — {brand.cart.emptyDrawer}
             </p>
             <ul className={styles.emptyCats}>
               {CATEGORIES.map((c) => (

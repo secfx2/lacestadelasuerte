@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useCart, useWishlist } from "./CartProvider";
 import styles from "./AccountForms.module.css";
+import brand from "@/config/brand";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -73,7 +74,7 @@ export default function AccountForms() {
 
         {notice ? (
           <div className={styles.notice} role="status">
-            <p className={styles.noticeTitle}>{notice === "login" ? "Las cuentas abrirán pronto." : "Gracias por unirte a la hermandad."}</p>
+            <p className={styles.noticeTitle}>{notice === "login" ? "Las cuentas abrirán pronto." : brand.account.registerThanks}</p>
             <p>
               Las cuentas de cliente todavía no están activas en esta demostración. Mientras tanto, tu cesta ({count}) y tus favoritos ({wish.count}) se
               guardan en este dispositivo.
@@ -110,15 +111,14 @@ export default function AccountForms() {
       </div>
 
       <aside className={styles.aside}>
-        <p className={styles.asideTitle}>Ventajas de la hermandad</p>
+        <p className={styles.asideTitle}>{brand.account.benefitsTitle}</p>
         <ul>
-          <li>Seguimiento de pedidos y devoluciones en un clic.</li>
-          <li>Favoritos sincronizados entre dispositivos.</li>
-          <li>Aviso de reposiciones y piezas raras.</li>
-          <li>Direcciones y datos de envío guardados.</li>
+          {brand.account.benefits.map((b) => (
+            <li key={b}>{b}</li>
+          ))}
         </ul>
         <p className={styles.motto}>
-          <em>Tous pour un.</em>
+          <em>{brand.tagline}.</em>
         </p>
       </aside>
     </div>

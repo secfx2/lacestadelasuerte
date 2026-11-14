@@ -545,7 +545,7 @@ const brand = {
      Los logotipos se pintan siempre con <Logo variant=…/> (logoData.js).
      ====================================================================== */
   brandBook: {
-    edition: { name: "Édition 01", year: YEAR, version: "1.0", date: "Noviembre 2026" },
+    edition: { name: "Edición 01", year: YEAR, version: "1.0", date: "Noviembre 2026" },
     /** PDF exportado con scripts/export-brandbook-pdf.mjs (el enlace se oculta si no existe). */
     pdfHref: "/brand/brandbook.pdf",
     cover: {
