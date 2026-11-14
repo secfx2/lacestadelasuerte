@@ -3,6 +3,14 @@
     "job_id": "9c2d4c57-f133-4868-8c7d-b04355456f48",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_212920_9c2d4c57-f133-4868-8c7d-b04355456f48.png"
   },
+  "/products/barrel-denim/mid-blue-2.jpg": {
+    "job_id": "82cc0437-4348-4ceb-be4e-2b4075460817",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213443_82cc0437-4348-4ceb-be4e-2b4075460817.png"
+  },
+  "/products/barrel-denim/mid-blue-3.jpg": {
+    "job_id": "576b9e63-b9ce-41d3-952f-bd5c962e260b",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213444_576b9e63-b9ce-41d3-952f-bd5c962e260b.png"
+  },
   "/products/boxy-emblem-tee/butter-1.jpg": {
     "job_id": "ad367f77-4648-46d9-974b-60e9656ab349",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_212133_ad367f77-4648-46d9-974b-60e9656ab349.png"
@@ -19,9 +27,17 @@
     "job_id": "768ea013-badc-460f-bdd4-1565f842005a",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213014_768ea013-badc-460f-bdd4-1565f842005a.png"
   },
+  "/products/boxy-emblem-tee/cherry-2.jpg": {
+    "job_id": "b28aef4f-7a57-4b42-a7a0-43beb14cb4d2",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213359_b28aef4f-7a57-4b42-a7a0-43beb14cb4d2.png"
+  },
   "/products/boxy-emblem-tee/sky-1.jpg": {
     "job_id": "ab06d887-94b7-4920-a236-f77aa38ada73",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213013_ab06d887-94b7-4920-a236-f77aa38ada73.png"
+  },
+  "/products/boxy-emblem-tee/sky-2.jpg": {
+    "job_id": "7c9910db-a08f-424d-bcbc-286778631083",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213400_7c9910db-a08f-424d-bcbc-286778631083.png"
   },
   "/products/brotherhood-varsity/forest-1.jpg": {
     "job_id": "26298e21-393f-4694-8f6a-78d7f61e4b9a",
@@ -39,29 +55,85 @@
     "job_id": "23aa02b2-fc5a-477b-ba23-ec0c92119ba2",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213013_23aa02b2-fc5a-477b-ba23-ec0c92119ba2.png"
   },
+  "/products/brotherhood-varsity/navy-2.jpg": {
+    "job_id": "56f3291a-cdb9-43e9-be23-3aa79164613e",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213359_56f3291a-cdb9-43e9-be23-3aa79164613e.png"
+  },
   "/products/cavalier-suede-overshirt/tan-1.jpg": {
     "job_id": "84b9f41e-ec57-4fc7-a732-3c86289d0dc1",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_212917_84b9f41e-ec57-4fc7-a732-3c86289d0dc1.png"
+  },
+  "/products/cavalier-suede-overshirt/tan-2.jpg": {
+    "job_id": "9cd9675d-65fc-4a36-991f-9fd1702ede38",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213444_9cd9675d-65fc-4a36-991f-9fd1702ede38.png"
+  },
+  "/products/cavalier-suede-overshirt/tan-3.jpg": {
+    "job_id": "4ad675dc-8aaa-4dc9-911b-8074c323767d",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213444_4ad675dc-8aaa-4dc9-911b-8074c323767d.png"
   },
   "/products/cropped-zip-hoodie/chocolate-1.jpg": {
     "job_id": "330e2d88-fdba-408e-b6f1-e8f27ab452b5",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_212919_330e2d88-fdba-408e-b6f1-e8f27ab452b5.png"
   },
+  "/products/cropped-zip-hoodie/chocolate-2.jpg": {
+    "job_id": "84cca3e0-815c-4018-8716-bf91853f43c5",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213401_84cca3e0-815c-4018-8716-bf91853f43c5.png"
+  },
+  "/products/cropped-zip-hoodie/chocolate-3.jpg": {
+    "job_id": "0bdb5853-0bc1-4636-b1dd-e9cfb9247e69",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213400_0bdb5853-0bc1-4636-b1dd-e9cfb9247e69.png"
+  },
+  "/products/cropped-zip-hoodie/sage-1.jpg": {
+    "job_id": "5e16e45d-a84d-410d-8b3f-30c9d16530a3",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213443_5e16e45d-a84d-410d-8b3f-30c9d16530a3.png"
+  },
+  "/products/cropped-zip-hoodie/sage-2.jpg": {
+    "job_id": "3dd1b58c-ec31-4183-9d85-815eeef91818",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213756_3dd1b58c-ec31-4183-9d85-815eeef91818.png"
+  },
   "/products/duelist-camp-shirt/sky-1.jpg": {
-    "job_id": "ad04e1c0-0e9a-4fa3-b26f-2c2e1198e9d5",
-    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_212919_ad04e1c0-0e9a-4fa3-b26f-2c2e1198e9d5.png"
+    "job_id": "ef3dc2ad-fd65-4daf-8cd1-fe7cad5a5bd7",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213507_ef3dc2ad-fd65-4daf-8cd1-fe7cad5a5bd7.png"
+  },
+  "/products/duelist-camp-shirt/sky-2.jpg": {
+    "job_id": "12dfd5e0-8b73-4e96-bfbe-3c3b807b913e",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213757_12dfd5e0-8b73-4e96-bfbe-3c3b807b913e.png"
+  },
+  "/products/duelist-camp-shirt/sky-3.jpg": {
+    "job_id": "15229919-010d-48f8-9984-d241b453d8a1",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213757_15229919-010d-48f8-9984-d241b453d8a1.png"
   },
   "/products/feint-windbreaker/cherry-black-1.jpg": {
     "job_id": "0debfc7f-e938-4aff-a4ac-26c4d8d543f6",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_212917_0debfc7f-e938-4aff-a4ac-26c4d8d543f6.png"
   },
+  "/products/feint-windbreaker/cherry-black-2.jpg": {
+    "job_id": "a973cc91-dc55-41ee-8870-109aea402326",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213359_a973cc91-dc55-41ee-8870-109aea402326.png"
+  },
+  "/products/feint-windbreaker/cherry-black-3.jpg": {
+    "job_id": "3201bb06-5e64-498a-ada9-2e9df0c3be5c",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213401_3201bb06-5e64-498a-ada9-2e9df0c3be5c.png"
+  },
   "/products/garde-rugby-shirt/burgundy-stripe-1.jpg": {
-    "job_id": "a4d30059-af12-42ab-8702-0d472afa25ba",
-    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_212918_a4d30059-af12-42ab-8702-0d472afa25ba.png"
+    "job_id": "89d2286a-2a0a-4565-a45f-f3a07e6e7d34",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213507_89d2286a-2a0a-4565-a45f-f3a07e6e7d34.png"
+  },
+  "/products/garde-rugby-shirt/burgundy-stripe-2.jpg": {
+    "job_id": "d47d456b-7d4d-4c01-a077-8b6004e4c943",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213755_d47d456b-7d4d-4c01-a077-8b6004e4c943.png"
+  },
+  "/products/garde-rugby-shirt/burgundy-stripe-3.jpg": {
+    "job_id": "c470c997-a5ab-4b41-89dc-d1d7432d5d2d",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213756_c470c997-a5ab-4b41-89dc-d1d7432d5d2d.png"
   },
   "/products/mantle-cropped-jacket/charcoal-1.jpg": {
     "job_id": "dc62791e-1256-47fa-ab0c-45d26d89ecd3",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213015_dc62791e-1256-47fa-ab0c-45d26d89ecd3.png"
+  },
+  "/products/mantle-cropped-jacket/charcoal-2.jpg": {
+    "job_id": "84560ed5-ad52-439f-8369-6c2e0ef33a0a",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213401_84560ed5-ad52-439f-8369-6c2e0ef33a0a.png"
   },
   "/products/mantle-cropped-jacket/oxblood-1.jpg": {
     "job_id": "6736d03d-6ff4-4b4e-b131-3953c8407f42",
@@ -79,6 +151,10 @@
     "job_id": "36f7f42f-1ca3-40a9-8c15-2cced9fd2689",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213037_36f7f42f-1ca3-40a9-8c15-2cced9fd2689.png"
   },
+  "/products/riviera-knit-polo/chocolate-2.jpg": {
+    "job_id": "1d7aeec9-d479-48b4-aaf2-d32501a406f6",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213359_1d7aeec9-d479-48b4-aaf2-d32501a406f6.png"
+  },
   "/products/riviera-knit-polo/sky-1.jpg": {
     "job_id": "86c737d2-d534-40e4-9a19-e1a849a07de3",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_212134_86c737d2-d534-40e4-9a19-e1a849a07de3.png"
@@ -95,17 +171,53 @@
     "job_id": "438438e5-4cab-400f-9f1a-99a7089d7e64",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_212920_438438e5-4cab-400f-9f1a-99a7089d7e64.png"
   },
+  "/products/salle-pleated-trouser/cream-2.jpg": {
+    "job_id": "81b951a1-406e-4f9f-bf8b-1eabc4570a9f",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213442_81b951a1-406e-4f9f-bf8b-1eabc4570a9f.png"
+  },
+  "/products/salle-pleated-trouser/cream-3.jpg": {
+    "job_id": "6a3582b5-aa8a-4593-8fc0-128ba04a8c2e",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213442_6a3582b5-aa8a-4593-8fc0-128ba04a8c2e.png"
+  },
   "/products/tabard-cropped-cardigan/tabard-blue-1.jpg": {
     "job_id": "5783f8b7-8609-447b-8b5c-cb3d95956a8a",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_212918_5783f8b7-8609-447b-8b5c-cb3d95956a8a.png"
+  },
+  "/products/tabard-cropped-cardigan/tabard-blue-2.jpg": {
+    "job_id": "6719ce91-cfeb-4cd1-8367-26dd7d647f92",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213446_6719ce91-cfeb-4cd1-8367-26dd7d647f92.png"
+  },
+  "/products/tabard-cropped-cardigan/tabard-blue-3.jpg": {
+    "job_id": "17dc8137-b29f-4309-888a-b5c153a3b655",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213444_17dc8137-b29f-4309-888a-b5c153a3b655.png"
   },
   "/products/tabard-stripe-socks/cream-blue-1.jpg": {
     "job_id": "c978a932-04a9-4a44-8118-b7feb8ea2952",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_212919_c978a932-04a9-4a44-8118-b7feb8ea2952.png"
   },
+  "/products/tabard-stripe-socks/cream-blue-2.jpg": {
+    "job_id": "07ec086c-3d08-4b75-aa9f-16b1ffdfe789",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213443_07ec086c-3d08-4b75-aa9f-16b1ffdfe789.png"
+  },
+  "/products/tabard-stripe-socks/cream-blue-3.jpg": {
+    "job_id": "938aab40-e863-4a8c-8754-d21028b9dbe9",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213442_938aab40-e863-4a8c-8754-d21028b9dbe9.png"
+  },
+  "/products/tabard-stripe-socks/cream-burgundy-1.jpg": {
+    "job_id": "064b5721-7c7a-4af5-a31f-fcf6ec2ce14e",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213443_064b5721-7c7a-4af5-a31f-fcf6ec2ce14e.png"
+  },
+  "/products/tabard-stripe-socks/cream-green-1.jpg": {
+    "job_id": "2d60ed6a-ec89-42b7-b134-5e5c9d18d91e",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213507_2d60ed6a-ec89-42b7-b134-5e5c9d18d91e.png"
+  },
   "/products/tabard-track-jacket/burgundy-1.jpg": {
     "job_id": "a4ab2f9f-0eec-4835-91fe-caa2ea4964f3",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213015_a4ab2f9f-0eec-4835-91fe-caa2ea4964f3.png"
+  },
+  "/products/tabard-track-jacket/burgundy-2.jpg": {
+    "job_id": "e57f2900-6efd-4833-8edf-217af752c3ae",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213401_e57f2900-6efd-4833-8edf-217af752c3ae.png"
   },
   "/products/tabard-track-jacket/tabard-blue-1.jpg": {
     "job_id": "81fcf461-ec33-49f5-88e6-de25cab98720",
@@ -122,5 +234,13 @@
   "/products/tabard-track-pant/tabard-blue-1.jpg": {
     "job_id": "ba454897-5f73-4370-8ad5-221baeef6cba",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_212920_ba454897-5f73-4370-8ad5-221baeef6cba.png"
+  },
+  "/products/tabard-track-pant/tabard-blue-2.jpg": {
+    "job_id": "0436bbea-9193-406c-a283-b7ae14c3daae",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213400_0436bbea-9193-406c-a283-b7ae14c3daae.png"
+  },
+  "/products/tabard-track-pant/tabard-blue-3.jpg": {
+    "job_id": "51ae17f8-5844-477c-be83-c04b9e73449a",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_213402_51ae17f8-5844-477c-be83-c04b9e73449a.png"
   }
 }

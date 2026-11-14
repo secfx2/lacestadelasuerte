@@ -11,6 +11,7 @@ import {
   CHAPTERS, EDITION, WORDMARK, SYMBOLS, USAGE, USAGE_COLUMNS, SYMBOL_RULES,
   COLORS, PROPORTIONS, PAIRS, TYPE_SCALE, TYPE_RULES, PHOTO_SEQUENCE, PHOTO_RULES,
   PHOTO_DONTS, CASTING, VOICE_PRINCIPLES, VOICE_YES_NO, VOCAB, MICROCOPY, MOCKUPS, UI_TYPE,
+  PRODUCT_PALETTE, LINE_2026,
 } from "./data";
 
 export const metadata = {
@@ -48,6 +49,8 @@ function contrast(a, b) {
   const [l1, l2] = [luminance(a), luminance(b)].sort((x, y) => y - x);
   return (l1 + 0.05) / (l2 + 0.05);
 }
+const hexRgb = (hex) => [0, 2, 4].map((i) => parseInt(hex.replace("#", "").slice(i, i + 2), 16)).join(" · ");
+const isLight = (hex) => luminance(hex) > 0.55;
 const grade = (r) => (r >= 7 ? "AAA" : r >= 4.5 ? "AA" : r >= 3 ? "AA grande" : "Decorativo");
 
 /* ---------- data from the catalog ----------------------------------------- */
@@ -100,7 +103,7 @@ function Misuse({ m }) {
     <figure className={s.misuse}>
       <div className={`${s.misuseTile} ${s[`fx_${m.fx}`] || ""}`}>
         {m.fx === "retype" ? (
-          <span className={s.retype}>Musketeer</span>
+          <span className={s.retype}>MUSKETEER</span>
         ) : (
           <div className={s.misuseLogo}>
             <Logo variant={WORDMARK.variant} className={s.fit} title="Uso incorrecto del logotipo" />
@@ -121,10 +124,26 @@ export default function BrandBook() {
   const usageRows = [WORDMARK, ...symbols].filter((x) => USAGE[x.variant]);
   const ar = aspectOf(WORDMARK.variant);
   const k = WORDMARK.clearRatio;
-  const clearH = Math.min(8.5, 40 / (ar + 2 * k)); // cqw — fits half a sheet whatever the logo's proportions
-  const constrW = Math.min(44, 17 * ar); // cqw
+  const wide = ar > 4; // very wide wordmarks get a stacked construction sheet
+  const gridDiv = WORDMARK.gridDiv || 8;
+  const clearH = Math.min(8.5, (wide ? 52 : 40) / (ar + 2 * k)); // cqw — fits its stage whatever the logo's proportions
+  const constrW = Math.min(wide ? 54 : 44, 17 * ar); // cqw
+  const LINE = PRODUCTS.filter((p) => p.line === "2026");
+  const productPalette = PRODUCT_PALETTE.map((c) => ({
+    ...c,
+    rgb: hexRgb(c.hex),
+    products: LINE.filter((p) => (p.colors || []).some((x) => (x.hex || "").toLowerCase() === c.hex.toLowerCase()))
+      .map((p) => p.name)
+      .slice(0, 3),
+  }));
+  const line2026 = [
+    ...LINE_2026.slugs.map((slug) => PRODUCTS.find((p) => p.slug === slug)).filter(Boolean),
+    ...LINE.filter((p) => !LINE_2026.slugs.includes(p.slug)),
+  ].slice(0, 4);
   const casting = castingShots();
-  const grid = gridProducts(null, 8);
+  const grid = [...LINE, ...gridProducts(null, 8)]
+    .filter((p, i, a) => a.findIndex((q) => q.slug === p.slug) === i)
+    .slice(0, 8);
   const gridTitle = "Catálogo";
 
   return (
@@ -260,11 +279,11 @@ export default function BrandBook() {
             </dl>
           </Sheet>
 
-          <Sheet chapter={C.logotipo} label="Construcción y área de respeto" className={s.twoCol}>
+          <Sheet chapter={C.logotipo} label="Construcción y área de respeto" className={wide ? s.stackCol : s.twoCol}>
             <div className={s.col}>
               <h3 className={s.h3}>Construcción</h3>
               <div className={s.constrStage}>
-                <div className={s.constr} style={{ "--arn": ar, width: `${constrW}cqw` }}>
+                <div className={s.constr} style={{ "--arn": ar, "--div": gridDiv, width: `${constrW}cqw` }}>
                   <Logo variant={WORDMARK.variant} className={s.fit} title="Construcción del logotipo" />
                   <span className={s.constrW}>{fmt(ar)} H</span>
                   <span className={s.constrH}>H</span>
@@ -272,7 +291,7 @@ export default function BrandBook() {
               </div>
               <p className={s.body}>{WORDMARK.construction}</p>
               <p className={s.micro}>
-                Proporción {fmt(ar)} : 1 · módulo = H / 8
+                Proporción {fmt(ar)} : 1 · módulo = H / {gridDiv}
               </p>
             </div>
             <div className={s.col}>
@@ -289,7 +308,9 @@ export default function BrandBook() {
                 </div>
               </div>
               <p className={s.body}>{WORDMARK.clearText}</p>
-              <p className={s.micro}>x = {fmt(k, 2)} H</p>
+              <p className={s.micro}>
+                {WORDMARK.clearLabel || "x"} ≈ {fmt(k, 2)} H
+              </p>
             </div>
           </Sheet>
 
@@ -319,8 +340,7 @@ export default function BrandBook() {
               <div>
                 <h3 className={s.h3}>Tamaños mínimos</h3>
                 <p className={s.small}>
-                  Por debajo de estas medidas el dibujo pierde detalle. Muestras a tamaño real: en pantalla al 100 % y
-                  en el PDF impreso sin escalar.
+                  {WORDMARK.minNote} Muestras a tamaño real: en pantalla al 100 % y en el PDF impreso sin escalar.
                 </p>
               </div>
               <div className={s.minRow}>
@@ -358,7 +378,7 @@ export default function BrandBook() {
           <Sheet chapter={C.simbolos} className={s.symbolsSheet}>
             <ChapterHead
               chapter={C.simbolos}
-              lead="Junto al wordmark viven otras piezas. Cada una tiene su territorio y no lo abandona."
+              lead="Junto a musketeer™ viven una marca corta, una marca gráfica, un símbolo y un sello. Cada pieza tiene su territorio y no lo abandona."
             />
             <div className={s.symbolGrid} style={{ "--n": Math.max(symbols.length, 1) }}>
               {symbols.map((sym) => (
@@ -524,6 +544,38 @@ export default function BrandBook() {
                   );
                 })}
               </div>
+            </div>
+          </Sheet>
+
+          <Sheet chapter={C.color} label="Paleta de producto — línea 2026" className={s.prodSheet}>
+            <div className={s.prodHead}>
+              <h3 className={s.h3}>Paleta de producto — línea 2026</h3>
+              <p className={s.small}>
+                El color entra en la prenda, no en la marca: logotipo, web y packaging siguen en Tinta y Papel. El Azul
+                Tabardo textil es la versión luminosa del Tabardo de marca; conviven, pero no se intercambian.
+              </p>
+            </div>
+            <div className={s.prodGrid}>
+              {productPalette.map((c) => (
+                <div key={c.hex} className={s.prodSwatch}>
+                  <div
+                    className={`${s.prodChip} ${isLight(c.hex) ? s.swatchChipLight : ""}`}
+                    style={{ background: c.hex }}
+                  />
+                  <h4 className={s.prodName}>{c.name}</h4>
+                  <dl className={s.specs}>
+                    <div>
+                      <dt>HEX</dt>
+                      <dd>{c.hex}</dd>
+                    </div>
+                    <div>
+                      <dt>RGB</dt>
+                      <dd>{c.rgb}</dd>
+                    </div>
+                  </dl>
+                  <p className={s.prodUse}>{c.products.length ? c.products.join(" · ") : "—"}</p>
+                </div>
+              ))}
             </div>
           </Sheet>
         </Chapter>
@@ -708,6 +760,37 @@ export default function BrandBook() {
               </ul>
             </aside>
           </Sheet>
+
+          <Sheet chapter={C.fotografia} label="Línea 2026" className={s.lineSheet}>
+            <div className={s.lineText}>
+              <h3 className={s.h3}>Línea 2026</h3>
+              <p className={s.lead}>{LINE_2026.lead}</p>
+              <dl className={s.defList}>
+                {LINE_2026.rules.map((r) => (
+                  <div key={r.k}>
+                    <dt>{r.k}</dt>
+                    <dd>{r.v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+            <div className={s.lineGrid}>
+              {line2026.map((p) => (
+                <figure key={p.slug} className={s.castItem}>
+                  <div className={s.frame45}>
+                    <SafeImage src={p.colors?.[0]?.images?.[1]} alt={`${p.name} — con modelo`} label={p.name} />
+                  </div>
+                  <figcaption className={s.caption}>
+                    <strong>{p.name}</strong>
+                    <span>
+                      {p.colors?.[0]?.name}
+                      {p.fit ? ` · ${p.fit}` : ""}
+                    </span>
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </Sheet>
         </Chapter>
 
         {/* 07 ─ TONO DE VOZ ───────────────────────────────────────────── */}
@@ -810,8 +893,8 @@ export default function BrandBook() {
             <div className={s.appIntro}>
               <h3 className={s.h3}>Etiquetado y bolsa</h3>
               <p className={s.small}>
-                Lo primero que se toca. El wordmark firma la etiqueta tejida, la colgante y la bolsa; el emblema se
-                reserva para el bordado. Siempre en una sola tinta.
+                Lo primero que se toca. musketeer™ firma la etiqueta tejida, la colgante y la bolsa; msk✦tr vive en
+                la prenda como gráfico. Siempre en una sola tinta.
               </p>
             </div>
             {MOCKUPS.slice(1, 5).map((m) => (
@@ -823,8 +906,8 @@ export default function BrandBook() {
             <div className={s.appIntro}>
               <h3 className={s.h3}>Packaging y joyería</h3>
               <p className={s.small}>
-                Caja rígida negra, papel de seda blanco y el sello como cierre. La joyería viaja en estuche negro y en
-                bolsa de ante Azul Tabardo: el único lugar donde el acento ocupa toda la superficie.
+                Caja rígida negra, papel de seda blanco y el sello MSKTR como cierre. La joyería viaja en estuche con
+                msktr™ y en bolsa de ante Azul Tabardo: el único lugar donde el acento ocupa toda la superficie.
               </p>
             </div>
             {MOCKUPS.slice(5, 8).map((m, i) => (
@@ -997,7 +1080,10 @@ export default function BrandBook() {
               </div>
               <div>
                 <dt>Archivos maestros</dt>
-                <dd>/public/brand — wordmark, emblem, monogram, gothic y seal, en negro, blanco y currentColor.</dd>
+                <dd>
+                  /public/brand — musketeer™ (wordmark), msktr™ (monogram), msk✦tr (gothic), estrella (emblem) y sello
+                  (seal), en negro, blanco y currentColor.
+                </dd>
               </div>
               <div>
                 <dt>Este documento</dt>
