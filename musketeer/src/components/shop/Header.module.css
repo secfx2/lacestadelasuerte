@@ -32,6 +32,7 @@
   padding: 6px 0 4px;
   white-space: nowrap;
 }
+.navLink.active, .navLink[aria-current="page"] { background-size: 100% 1px; }
 .logo { display: flex; align-items: center; color: inherit; justify-self: center; }
 /* Sized by height: the slot accepts a wide horizontal wordmark (auto width). */
 .wordmark { height: 22px; width: auto; max-width: 240px; }

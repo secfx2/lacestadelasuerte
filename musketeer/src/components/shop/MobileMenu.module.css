@@ -46,6 +46,23 @@
 }
 .cat sup { font-size: 10px; font-weight: 400; color: var(--text-muted); letter-spacing: 0.04em; margin-top: 4px; }
 .all { display: inline-flex; align-items: center; gap: 10px; margin-top: 16px; font-size: var(--fs-xs); letter-spacing: var(--track-caps); text-transform: uppercase; border-bottom: 1px solid currentColor; padding-bottom: 3px; }
+.collectionsHeading { margin-top: 36px; }
+.collections {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 38%;
+  gap: 6px;
+  margin: 0 calc(var(--page-pad) * -1);
+  padding: 0 var(--page-pad);
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.collections::-webkit-scrollbar { display: none; }
+.collections li { scroll-snap-align: start; }
+.collection { display: block; font-size: var(--fs-micro); letter-spacing: var(--track-caps); text-transform: uppercase; }
+.collectionImg { aspect-ratio: 4 / 5; margin-bottom: 8px; }
 .secondary {
   margin: 36px 0 0;
   padding: 20px 0 0;

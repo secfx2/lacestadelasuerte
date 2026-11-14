@@ -5,7 +5,9 @@ import Logo from "@/components/brand/Logo";
 import { useCatalog } from "./CartProvider";
 import { useDialog, useLockBody, usePresence } from "./hooks";
 import { IconClose, IconSearch, IconArrow } from "./Icons";
+import SmartImage from "./SmartImage";
 import { CATEGORIES } from "@/lib/shop";
+import campaign from "@/data/campaign.json";
 import styles from "./MobileMenu.module.css";
 
 export default function MobileMenu({ open, onClose, onSearch }) {
@@ -53,6 +55,18 @@ export default function MobileMenu({ open, onClose, onSearch }) {
                 Ver todo <IconArrow />
               </Link>
             </li>
+          </ul>
+
+          <p className={`${styles.heading} ${styles.collectionsHeading}`}>Colecciones</p>
+          <ul className={styles.collections}>
+            {campaign.banners.map((b) => (
+              <li key={b.id}>
+                <Link href={b.href} onClick={onClose} className={styles.collection}>
+                  <SmartImage src={b.image} alt="" sizes="40vw" className={styles.collectionImg} tone="bone" />
+                  <span>{b.title}</span>
+                </Link>
+              </li>
+            ))}
           </ul>
 
           <ul className={styles.secondary}>

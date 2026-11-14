@@ -125,7 +125,7 @@ export default function Header() {
                   <button
                     ref={(el) => (triggers.current[m.id] = el)}
                     type="button"
-                    className={`${styles.navLink} mk-link ${menu === m.id || (m.id === "shop" && shopActive && !menu) ? "mk-link--on" : ""}`}
+                    className={`${styles.navLink} mk-link ${menu === m.id || (m.id === "shop" && shopActive && !menu) ? styles.active : ""}`}
                     aria-expanded={menu === m.id}
                     aria-controls={`menu-${m.id}`}
                     onClick={() => setMenu((v) => (v === m.id ? null : m.id))}

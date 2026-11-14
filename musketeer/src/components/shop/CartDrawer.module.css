@@ -38,6 +38,7 @@
 .subtotal { display: flex; justify-content: space-between; align-items: baseline; font-size: var(--fs-xs); letter-spacing: var(--track-caps); text-transform: uppercase; }
 .subtotal strong { font-size: 15px; font-weight: 500; letter-spacing: 0.02em; font-variant-numeric: tabular-nums; }
 .note { margin: 6px 0 16px; font-size: 11px; line-height: 1.5; color: var(--text-muted); }
+.secondary button { text-transform: inherit; letter-spacing: inherit; font-size: inherit; }
 .secondary { display: flex; justify-content: space-between; margin-top: 14px; font-size: var(--fs-xs); letter-spacing: var(--track-caps); text-transform: uppercase; }
 .pay { margin: 16px 0 0; text-align: center; font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }
 
