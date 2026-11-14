@@ -3754,6 +3754,1423 @@
           ]
         }
       ]
+    },
+    {
+      "slug": "gambeson-jacket",
+      "name": "Gambeson Jacket",
+      "category": "chaquetas",
+      "price": 320,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "marco",
+      "description": "El gambesón, la chaqueta acolchada que se llevaba bajo la armadura, recortado y cuadrado. Canales verticales, cierre lateral con cordón y lona crema.",
+      "details": [
+        "Lona de algodón acolchada",
+        "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
+        "Acolchado en canales verticales",
+        "Cierre lateral con cordón encerado",
+        "Cuello alto"
+      ],
+      "composition": "100% algodón. Relleno 100% poliéster",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a cropped boxy gambeson jacket in cream cotton canvas, padded with tall vertical quilted channels, high stand collar, closing at the left side with black waxed cord laced through silver eyelets, long sleeves, short body ending at the waist",
+        "back": "the back of the gambeson jacket showing the vertical quilted channels",
+        "detail": "",
+        "pose": "worn with wide charcoal wool pleated trousers, black leather derby shoes, a thin black leather belt with silver buckle and a chunky silver chain; standing with one shoulder forward, chin slightly up"
+      },
+      "colors": [
+        {
+          "name": "Cream",
+          "slug": "cream",
+          "hex": "#EFE6D2",
+          "variant": null,
+          "images": [
+            "/products/gambeson-jacket/cream-1.jpg",
+            "/products/gambeson-jacket/cream-2.jpg",
+            "/products/gambeson-jacket/cream-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "corsair-leather-blazer",
+      "name": "Corsair Leather Blazer",
+      "category": "chaquetas",
+      "price": 520,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kofi",
+      "description": "Blazer corto y cuadrado en piel burdeos con solapa de pico ancha y un único botón de plata con forma de empuñadura.",
+      "details": [
+        "Piel de cordero",
+        "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
+        "Solapa de pico ancha",
+        "Botón único en forma de empuñadura",
+        "Forro de satén"
+      ],
+      "composition": "100% piel de cordero. Forro 100% viscosa",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a cropped boxy blazer in burgundy lambskin leather, wide peak lapels, a single large antique silver button shaped like a swept rapier hilt, two flap pockets, short square body ending at the waist",
+        "back": "the back of the leather blazer, clean back with a centre vent",
+        "detail": "",
+        "pose": "worn buttoned over a sheer black mesh top, wide black pleated trousers, pointed black leather Chelsea boots, layered silver chains and rings; mid-stride, hands relaxed"
+      },
+      "colors": [
+        {
+          "name": "Burgundy",
+          "slug": "burgundy",
+          "hex": "#6E1423",
+          "variant": null,
+          "images": [
+            "/products/corsair-leather-blazer/burgundy-1.jpg",
+            "/products/corsair-leather-blazer/burgundy-2.jpg",
+            "/products/corsair-leather-blazer/burgundy-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "powder-horn-field-jacket",
+      "name": "Powder Horn Field Jacket",
+      "category": "chaquetas",
+      "price": 280,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "yuna",
+      "description": "Chaqueta de campo corta en algodón encerado color ocre, con un bolsillo lateral curvo de piel inspirado en el cuerno de pólvora del mosquetero.",
+      "details": [
+        "Algodón encerado",
+        "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
+        "Bolsillo curvo de piel tipo cuerno de pólvora",
+        "Cuello de pana marrón",
+        "Corchetes de latón"
+      ],
+      "composition": "100% algodón encerado",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a cropped boxy field jacket in ochre mustard waxed cotton, brown corduroy collar, a curved horn-shaped brown leather pocket on the left side, brass snap buttons, short square body ending at the waist",
+        "back": "the back of the waxed field jacket with a back yoke and the curved leather pocket visible at the side",
+        "detail": "",
+        "pose": "worn open over a fine cream turtleneck, deep chocolate brown straight trousers, burgundy leather loafers with white socks, small silver hoop earrings; hands in jacket pockets, relaxed weight on one leg"
+      },
+      "colors": [
+        {
+          "name": "Ochre",
+          "slug": "ochre",
+          "hex": "#C08A2E",
+          "variant": null,
+          "images": [
+            "/products/powder-horn-field-jacket/ochre-1.jpg",
+            "/products/powder-horn-field-jacket/ochre-2.jpg",
+            "/products/powder-horn-field-jacket/ochre-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "fleur-velvet-bomber",
+      "name": "Fleur Velvet Bomber",
+      "category": "chaquetas",
+      "price": 260,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "nia",
+      "description": "Bomber corta en terciopelo azul medianoche con flores de lis bordadas en plata en las mangas.",
+      "details": [
+        "Terciopelo de algodón",
+        "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
+        "Flores de lis bordadas en hilo plata",
+        "Rib en contraste",
+        "Cremallera plateada"
+      ],
+      "composition": "100% algodón. Bordado en hilo metalizado",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a cropped boxy bomber jacket in midnight blue crushed cotton velvet, a column of small silver-thread embroidered fleur-de-lis down each sleeve, black rib-knit collar, cuffs and hem, silver zipper, short body ending at the waist",
+        "back": "the back of the velvet bomber with the silver fleur-de-lis embroidery visible on the sleeves",
+        "detail": "",
+        "pose": "worn zipped with a cherry red mini pleated skirt over sheer black tights, black patent leather mary-jane shoes, silver ear cuffs; one hand on hip"
+      },
+      "colors": [
+        {
+          "name": "Midnight",
+          "slug": "midnight",
+          "hex": "#1B2240",
+          "variant": null,
+          "images": [
+            "/products/fleur-velvet-bomber/midnight-1.jpg",
+            "/products/fleur-velvet-bomber/midnight-2.jpg",
+            "/products/fleur-velvet-bomber/midnight-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "garrison-cropped-trench",
+      "name": "Garrison Cropped Trench",
+      "category": "chaquetas",
+      "price": 300,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "marco",
+      "description": "Gabardina recortada a la cintura en gabardina arena, con solapa trasera en forma de escudo y cinturón de hebilla de plata.",
+      "details": [
+        "Gabardina de algodón",
+        "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
+        "Solapa trasera en forma de escudo",
+        "Cinturón con hebilla de plata",
+        "Charreteras"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a cropped boxy trench jacket in sand beige cotton gabardine ending at the waist, double-breasted with dark horn buttons, epaulettes, wide notched lapels, a matching belt with a silver buckle",
+        "back": "the back of the cropped trench with a storm flap shaped like a heraldic shield across the shoulders",
+        "detail": "",
+        "pose": "worn belted over a sky blue striped shirt with the collar out, wide sand pleated trousers, brown suede loafers, tortoiseshell sunglasses held in hand; three-quarter stance"
+      },
+      "colors": [
+        {
+          "name": "Sand",
+          "slug": "sand",
+          "hex": "#CDB894",
+          "variant": null,
+          "images": [
+            "/products/garrison-cropped-trench/sand-1.jpg",
+            "/products/garrison-cropped-trench/sand-2.jpg",
+            "/products/garrison-cropped-trench/sand-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "escrime-shearling-aviator",
+      "name": "Escrime Shearling Aviator",
+      "category": "chaquetas",
+      "price": 480,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kofi",
+      "description": "Aviadora corta en ante chocolate con cuello de borrego crema y tirador de cremallera en forma de estoques cruzados.",
+      "details": [
+        "Ante de cordero",
+        "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
+        "Cuello y forro de borrego",
+        "Tirador de estoques cruzados en plata",
+        "Correas en el cuello"
+      ],
+      "composition": "100% piel de ante. Cuello 100% borrego",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a cropped boxy aviator jacket in chocolate brown suede with a large cream shearling collar and shearling trim, buckled collar straps, an asymmetric silver zip with a crossed-rapier zip pull, short body ending at the waist",
+        "back": "the back of the aviator jacket showing the shearling collar folded down and suede panels",
+        "detail": "",
+        "pose": "worn open over a forest green knit polo, mid-blue barrel jeans, chunky black leather lace-up boots, silver signet ring; standing with collar popped, looking slightly off camera"
+      },
+      "colors": [
+        {
+          "name": "Chocolate",
+          "slug": "chocolate",
+          "hex": "#4A2C1F",
+          "variant": null,
+          "images": [
+            "/products/escrime-shearling-aviator/chocolate-1.jpg",
+            "/products/escrime-shearling-aviator/chocolate-2.jpg",
+            "/products/escrime-shearling-aviator/chocolate-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "heraldry-coach-jacket",
+      "name": "Heraldry Coach Jacket",
+      "category": "chaquetas",
+      "price": 170,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "yuna",
+      "description": "Coach jacket corta en nylon dividida en cuarteles como un estandarte heráldico: azul tabardo, crema, burdeos y verde bosque.",
+      "details": [
+        "Nylon con forro de malla",
+        "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
+        "Cuatro cuarteles de color",
+        "Botones de presión",
+        "Cordón en el bajo"
+      ],
+      "composition": "100% nylon",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a cropped boxy nylon coach jacket colour-blocked in four heraldic quarters: royal blue upper left, cream upper right, burgundy lower left, forest green lower right, the sleeves matching their quarters, white snap buttons down the front, small turn-down collar",
+        "back": "the back of the coach jacket with the four quarters mirrored and a small cream four-point star at the centre",
+        "detail": "",
+        "pose": "worn snapped over a white ringer tee, black wide track pants with a cream side stripe, burgundy suede trainers; playful pose with one hand adjusting the collar"
+      },
+      "colors": [
+        {
+          "name": "Heraldic",
+          "slug": "heraldic",
+          "hex": "#2340A0",
+          "variant": null,
+          "images": [
+            "/products/heraldry-coach-jacket/heraldic-1.jpg",
+            "/products/heraldry-coach-jacket/heraldic-2.jpg",
+            "/products/heraldry-coach-jacket/heraldic-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lace-up-leather-vest",
+      "name": "Lace-Up Leather Vest",
+      "category": "chaquetas",
+      "price": 240,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "nia",
+      "description": "Chaleco corto de piel negra con los laterales cerrados por cordón, como un jubón de esgrimista. Se lleva solo o sobre camisa.",
+      "details": [
+        "Piel de vacuno",
+        "Corte recortado a la cintura",
+        "Laterales con cordón y ojales de plata",
+        "Cuello en pico"
+      ],
+      "composition": "100% piel",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a cropped boxy sleeveless vest in black leather, deep V-neck, front closed with a row of silver ball buttons, both sides laced with black waxed cord through silver eyelets, hem ending at the waist",
+        "back": "the back of the leather vest with the side lacing visible",
+        "detail": "",
+        "pose": "worn over a voluminous white poplin shirt with bishop sleeves, wide black trousers, square-toe black boots, a long silver chain; arms crossed loosely"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#111111",
+          "variant": null,
+          "images": [
+            "/products/lace-up-leather-vest/black-1.jpg",
+            "/products/lace-up-leather-vest/black-2.jpg",
+            "/products/lace-up-leather-vest/black-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "coif-knit-hood",
+      "name": "Coif Knit Hood",
+      "category": "accesorios",
+      "price": 85,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "kofi",
+      "description": "La cofia de cota de malla, en punto: capucha-pasamontañas de hilo plata con lúrex que cae sobre los hombros.",
+      "details": [
+        "Punto efecto cota de malla",
+        "Hilo con lúrex plateado",
+        "Abertura facial amplia",
+        "Cae sobre los hombros"
+      ],
+      "composition": "60% algodón, 30% lana, 10% lúrex",
+      "fit": "Talla única",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a knitted chainmail-look coif hood in silver grey yarn with sparkling silver lurex, a jacquard of interlocking rings, open face opening, short cape that falls over the shoulders, laid flat",
+        "back": "",
+        "detail": "",
+        "pose": "close-up from the chest up wearing the coif hood with the face clearly visible, over a black crewneck, a silver chain; serious gaze straight to camera"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#A9ADB3",
+          "variant": null,
+          "images": [
+            "/products/coif-knit-hood/silver-1.jpg",
+            "/products/coif-knit-hood/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "visor-ring",
+      "name": "Visor Ring",
+      "category": "joyeria",
+      "price": 180,
+      "sizes": [
+        "10",
+        "12",
+        "14",
+        "16",
+        "18",
+        "20"
+      ],
+      "model": "marco",
+      "description": "Anillo de plata 925 con forma de yelmo de caballero: la visera calada se abre con una bisagra.",
+      "details": [
+        "Plata de ley 925",
+        "Visera articulada con bisagra",
+        "Calado de visera",
+        "Oxidado y pulido"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "jewellery",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a chunky sterling silver ring shaped like a miniature knight's helmet with a slotted visor on a tiny hinge, polished with oxidized recesses",
+        "back": "",
+        "detail": "",
+        "pose": "close-up of a hand wearing the visor ring on the middle finger, the hand resting on the lapel of a burgundy leather jacket"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/visor-ring/silver-1.jpg",
+            "/products/visor-ring/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "heraldic-quartered-knit",
+      "name": "Heraldic Quartered Knit",
+      "category": "punto",
+      "price": 180,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "nia",
+      "description": "Jersey corto y cuadrado dividido en cuatro cuarteles de color, como un escudo: burdeos, crema, azul tabardo y verde bosque.",
+      "details": [
+        "Punto de lana merino",
+        "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
+        "Intarsia en cuatro cuarteles",
+        "Pequeña flor de lis bordada"
+      ],
+      "composition": "100% lana merino",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a cropped boxy crewneck sweater in merino knit divided into four heraldic quarters: burgundy upper left, cream upper right, royal blue lower left, forest green lower right, sleeves matching their quarter, a tiny cream fleur-de-lis embroidered in the burgundy quarter",
+        "back": "the back of the sweater with the four quarters mirrored",
+        "detail": "",
+        "pose": "worn with a short pleated burgundy skirt, cream knee-high socks and black leather loafers, small silver hoops; seated-on-air relaxed stance, hands in skirt pockets"
+      },
+      "colors": [
+        {
+          "name": "Heraldic",
+          "slug": "heraldic",
+          "hex": "#6E1423",
+          "variant": null,
+          "images": [
+            "/products/heraldic-quartered-knit/heraldic-1.jpg",
+            "/products/heraldic-quartered-knit/heraldic-2.jpg",
+            "/products/heraldic-quartered-knit/heraldic-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "portcullis-knit-vest",
+      "name": "Portcullis Knit Vest",
+      "category": "punto",
+      "price": 130,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "marco",
+      "description": "Chaleco de punto corto en amarillo mantequilla con un trenzado en celosía que dibuja el rastrillo de un castillo.",
+      "details": [
+        "Punto de algodón",
+        "Trenzado en celosía",
+        "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
+        "Cuello de pico"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a cropped boxy V-neck knitted vest in butter yellow cotton with a raised lattice cable pattern like a castle portcullis, ribbed armholes and hem ending at the waist",
+        "back": "the back of the vest with the lattice cable pattern",
+        "detail": "",
+        "pose": "worn over a white oxford shirt with the sleeves rolled, forest green straight trousers, brown penny loafers with argyle socks, round tortoiseshell glasses; hands behind back, slight lean"
+      },
+      "colors": [
+        {
+          "name": "Butter",
+          "slug": "butter",
+          "hex": "#F2D98A",
+          "variant": null,
+          "images": [
+            "/products/portcullis-knit-vest/butter-1.jpg",
+            "/products/portcullis-knit-vest/butter-2.jpg",
+            "/products/portcullis-knit-vest/butter-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "plume-mohair-knit",
+      "name": "Plume Mohair Knit",
+      "category": "punto",
+      "price": 190,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "yuna",
+      "description": "Jersey corto de mohair azul cielo con una gran pluma de sombrero en intarsia blanca cruzando el pecho.",
+      "details": [
+        "Mohair cepillado",
+        "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
+        "Intarsia de pluma",
+        "Cuello redondo canalé"
+      ],
+      "composition": "50% mohair, 30% poliamida, 20% lana",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a cropped boxy crewneck sweater in fuzzy sky blue brushed mohair with a large white intarsia ostrich feather plume curving diagonally across the chest",
+        "back": "the back of the mohair sweater, plain sky blue fuzzy knit",
+        "detail": "",
+        "pose": "worn with wide chocolate brown corduroy trousers, cream chunky sneakers, a silver feather brooch and layered thin chains; hands holding the sleeves, soft smile"
+      },
+      "colors": [
+        {
+          "name": "Sky",
+          "slug": "sky",
+          "hex": "#A9C6E8",
+          "variant": null,
+          "images": [
+            "/products/plume-mohair-knit/sky-1.jpg",
+            "/products/plume-mohair-knit/sky-2.jpg",
+            "/products/plume-mohair-knit/sky-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ruffle-neck-knit",
+      "name": "Ruffle Neck Knit",
+      "category": "punto",
+      "price": 150,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kofi",
+      "description": "Jersey fino y corto con cuello alto fruncido en volantes, la gorguera hecha punto. Negro.",
+      "details": [
+        "Punto fino de lana merino",
+        "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
+        "Cuello de volantes fruncido",
+        "Manga larga ajustada"
+      ],
+      "composition": "100% lana merino",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a cropped boxy fine-gauge black merino sweater with a high ruffled collar made of gathered knit frills like an Elizabethan ruff, long slim sleeves, hem ending at the waist",
+        "back": "the back of the sweater with the ruffled collar visible from behind",
+        "detail": "",
+        "pose": "worn with oxblood leather straight trousers, pointed black boots, a silver signet ring and a silver ear cuff; strong frontal stance, hands at sides"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#111111",
+          "variant": null,
+          "images": [
+            "/products/ruffle-neck-knit/black-1.jpg",
+            "/products/ruffle-neck-knit/black-2.jpg",
+            "/products/ruffle-neck-knit/black-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "jabot-bib-shirt",
+      "name": "Jabot Bib Shirt",
+      "category": "camisas",
+      "price": 160,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "nia",
+      "description": "Camisa corta de popelín blanco con pechera plisada y un lazo de cinta negra en el cuello, como el jabot del mosquetero.",
+      "details": [
+        "Popelín de algodón",
+        "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
+        "Pechera plisada",
+        "Lazo de cinta de raso desmontable",
+        "Puños con botón de plata"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a cropped boxy long-sleeve shirt in crisp white cotton poplin with a pleated bib front, a black satin ribbon tied in a bow at the collar like a jabot, silver cufflink buttons, square body ending at the waist",
+        "back": "the back of the shirt with a back yoke and box pleat",
+        "detail": "",
+        "pose": "worn tucked into wide black high-waisted pleated trousers with a thin black belt, black patent loafers, silver hoops; one hand in pocket, chin up"
+      },
+      "colors": [
+        {
+          "name": "White",
+          "slug": "white",
+          "hex": "#F7F7F5",
+          "variant": null,
+          "images": [
+            "/products/jabot-bib-shirt/white-1.jpg",
+            "/products/jabot-bib-shirt/white-2.jpg",
+            "/products/jabot-bib-shirt/white-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "bishop-stripe-shirt",
+      "name": "Bishop Stripe Shirt",
+      "category": "camisas",
+      "price": 140,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "marco",
+      "description": "Camisa corta a rayas caramelo azul tabardo y blanco con mangas obispo amplias recogidas en puños largos.",
+      "details": [
+        "Popelín de algodón",
+        "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
+        "Mangas obispo con puño largo",
+        "Rayas caramelo"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a cropped boxy shirt in royal blue and white candy stripes, voluminous bishop sleeves gathered into long buttoned cuffs, point collar, square body ending at the waist",
+        "back": "the back of the striped shirt showing the voluminous bishop sleeves",
+        "detail": "",
+        "pose": "worn open over a white tank with burgundy wide pleated trousers, white leather loafers without socks, a long silver chain; arms slightly open to show the sleeves"
+      },
+      "colors": [
+        {
+          "name": "Blue Stripe",
+          "slug": "blue-stripe",
+          "hex": "#2340A0",
+          "variant": null,
+          "images": [
+            "/products/bishop-stripe-shirt/blue-stripe-1.jpg",
+            "/products/bishop-stripe-shirt/blue-stripe-2.jpg",
+            "/products/bishop-stripe-shirt/blue-stripe-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "satin-duel-shirt",
+      "name": "Satin Duel Shirt",
+      "category": "camisas",
+      "price": 130,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kofi",
+      "description": "Camisa de bolos corta en satén rojo cereza con dos estoques cruzados bordados a cadeneta crema en la espalda.",
+      "details": [
+        "Satén de viscosa",
+        "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
+        "Cuello camp",
+        "Bordado a cadeneta en la espalda"
+      ],
+      "composition": "100% viscosa",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a cropped boxy short-sleeve bowling shirt in cherry red satin with a camp collar and cream contrast piping, cream buttons, square body ending at the waist",
+        "back": "the back of the satin shirt with a large cream chain-stitch embroidery of two crossed rapiers",
+        "detail": "",
+        "pose": "worn open over a white ribbed tank, black straight-leg trousers, black leather loafers with white socks, silver chain and sunglasses pushed up on the head; turning slightly to show the back"
+      },
+      "colors": [
+        {
+          "name": "Cherry",
+          "slug": "cherry",
+          "hex": "#B3121B",
+          "variant": null,
+          "images": [
+            "/products/satin-duel-shirt/cherry-1.jpg",
+            "/products/satin-duel-shirt/cherry-2.jpg",
+            "/products/satin-duel-shirt/cherry-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "shield-pocket-tee",
+      "name": "Shield Pocket Tee",
+      "category": "camisetas",
+      "price": 60,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "yuna",
+      "description": "Camiseta boxy azul cielo con un bolsillo en forma de escudo heráldico en burdeos.",
+      "details": [
+        "Algodón 300 g/m²",
+        "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
+        "Bolsillo de escudo en contraste",
+        "Cuello canalé"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a cropped boxy heavyweight t-shirt in sky blue cotton with a burgundy heater-shield-shaped patch pocket on the left chest, thick ribbed collar, square body ending at the waist",
+        "back": "the back of the tee, plain sky blue",
+        "detail": "",
+        "pose": "worn with an olive bandolier-style cargo skirt to the knee, white crew socks and brown suede clogs, silver rings; casual lean"
+      },
+      "colors": [
+        {
+          "name": "Sky",
+          "slug": "sky",
+          "hex": "#A9C6E8",
+          "variant": null,
+          "images": [
+            "/products/shield-pocket-tee/sky-1.jpg",
+            "/products/shield-pocket-tee/sky-2.jpg",
+            "/products/shield-pocket-tee/sky-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "heraldry-ringer-tee",
+      "name": "Heraldry Ringer Tee",
+      "category": "camisetas",
+      "price": 60,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "marco",
+      "description": "Camiseta ringer boxy crema con ribetes verde bosque y un león rampante con estoque bordado en el pecho.",
+      "details": [
+        "Algodón 280 g/m²",
+        "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
+        "Ribetes en contraste",
+        "León rampante bordado"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a cropped boxy ringer t-shirt in cream cotton with forest green contrast collar and sleeve bands, a small embroidered forest green heraldic lion rampant holding a rapier on the left chest, square body ending at the waist",
+        "back": "the back of the ringer tee, plain cream with green bands",
+        "detail": "",
+        "pose": "worn tucked into burgundy wool bermuda shorts with a brown leather belt, green-striped knee socks and brown leather loafers; hands in pockets, confident"
+      },
+      "colors": [
+        {
+          "name": "Cream Green",
+          "slug": "cream-green",
+          "hex": "#EFE6D2",
+          "variant": null,
+          "images": [
+            "/products/heraldry-ringer-tee/cream-green-1.jpg",
+            "/products/heraldry-ringer-tee/cream-green-2.jpg",
+            "/products/heraldry-ringer-tee/cream-green-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "gambeson-hoodie",
+      "name": "Gambeson Hoodie",
+      "category": "sudaderas",
+      "price": 160,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "nia",
+      "description": "Sudadera con capucha corta en verde salvia con el cuerpo acolchado en canales verticales, como un gambesón.",
+      "details": [
+        "Felpa con panel acolchado",
+        "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
+        "Canales verticales acolchados",
+        "Capucha forrada"
+      ],
+      "composition": "100% algodón. Relleno 100% poliéster",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a cropped boxy pullover hoodie in sage green with the front and back body padded in vertical quilted channels like a gambeson, plain fleece sleeves and hood, ribbed cuffs, short body ending at the waist",
+        "back": "the back of the hoodie showing the vertical quilted channels and the hood",
+        "detail": "",
+        "pose": "worn hood down with wide cream wool trousers, chocolate suede chunky boots, a silver chain over the hoodie; walking pose"
+      },
+      "colors": [
+        {
+          "name": "Sage",
+          "slug": "sage",
+          "hex": "#9CAF88",
+          "variant": null,
+          "images": [
+            "/products/gambeson-hoodie/sage-1.jpg",
+            "/products/gambeson-hoodie/sage-2.jpg",
+            "/products/gambeson-hoodie/sage-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "fleur-rib-track-top",
+      "name": "Fleur Rib Track Top",
+      "category": "sudaderas",
+      "price": 140,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kofi",
+      "description": "Chaqueta de chándal corta en punto canalé crema con una cinta jacquard de flores de lis burdeos por las mangas.",
+      "details": [
+        "Punto canalé de algodón",
+        "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
+        "Cinta jacquard flor de lis",
+        "Cremallera plateada"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "E",
+      "prompt": {
+        "garment": "a cropped boxy zip track top in cream ribbed cotton knit, a burgundy jacquard tape with small cream fleur-de-lis running down each sleeve, stand collar, silver zip, short body ending at the waist",
+        "back": "the back of the track top with the fleur-de-lis tapes visible on the sleeves",
+        "detail": "",
+        "pose": "worn zipped to the chest with burgundy straight track pants, cream sneakers with burgundy laces, small silver hoops; dynamic half-turn"
+      },
+      "colors": [
+        {
+          "name": "Cream",
+          "slug": "cream",
+          "hex": "#EFE6D2",
+          "variant": null,
+          "images": [
+            "/products/fleur-rib-track-top/cream-1.jpg",
+            "/products/fleur-rib-track-top/cream-2.jpg",
+            "/products/fleur-rib-track-top/cream-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "musketeer-script-raglan",
+      "name": "Musketeer Script Raglan",
+      "category": "camisetas",
+      "price": 75,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "yuna",
+      "description": "Manga larga raglán boxy con mangas verde bosque y cuerpo crema, con 'musketeer' bordado a cadeneta.",
+      "details": [
+        "Algodón 260 g/m²",
+        "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
+        "Mangas raglán en contraste",
+        "Bordado a cadeneta"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "E",
+      "prompt": {
+        "garment": "a cropped boxy raglan long-sleeve t-shirt with a cream body and forest green raglan sleeves, the lowercase word musketeer embroidered in forest green chain-stitch script across the chest, square body ending at the waist",
+        "back": "the back of the raglan tee, plain cream body with green sleeves",
+        "detail": "",
+        "pose": "worn with a short burgundy pleated skirt over black leggings, white sneakers with forest green socks, silver rings; hands in sleeves, playful stance"
+      },
+      "colors": [
+        {
+          "name": "Cream Forest",
+          "slug": "cream-forest",
+          "hex": "#1F4D3A",
+          "variant": null,
+          "images": [
+            "/products/musketeer-script-raglan/cream-forest-1.jpg",
+            "/products/musketeer-script-raglan/cream-forest-2.jpg",
+            "/products/musketeer-script-raglan/cream-forest-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "pantaloon-trouser",
+      "name": "Pantaloon Trouser",
+      "category": "pantalones",
+      "price": 170,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "model": "marco",
+      "description": "Pantalón de pinzas muy amplio que se recoge en el tobillo con una tira y botón de plata, como los calzones del siglo XVII. Lana gris marengo.",
+      "details": [
+        "Lana fría",
+        "Pinzas dobles",
+        "Recogido en el tobillo con tira y botón",
+        "Tiro alto"
+      ],
+      "composition": "70% lana, 30% poliéster",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "E",
+      "prompt": {
+        "garment": "very wide double-pleated pantaloon trousers in charcoal grey wool, high rise, voluminous legs gathered at the ankle into a buttoned cuff tab with a silver button, belt loops",
+        "back": "the back of the pantaloon trousers with welt pockets and the gathered ankle cuffs",
+        "detail": "",
+        "pose": "worn with a tucked-in white jabot bow shirt and a black leather belt, pointed black leather mules with sheer black socks, silver chain; strong stance with feet apart"
+      },
+      "colors": [
+        {
+          "name": "Charcoal",
+          "slug": "charcoal",
+          "hex": "#3A3A3C",
+          "variant": null,
+          "images": [
+            "/products/pantaloon-trouser/charcoal-1.jpg",
+            "/products/pantaloon-trouser/charcoal-2.jpg",
+            "/products/pantaloon-trouser/charcoal-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "gambeson-quilted-pant",
+      "name": "Gambeson Quilted Pant",
+      "category": "pantalones",
+      "price": 160,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "model": "nia",
+      "description": "Pantalón recto en nylon azul medianoche con las rodillas acolchadas en canales, como una armadura blanda.",
+      "details": [
+        "Nylon mate",
+        "Pierna recta",
+        "Rodilleras acolchadas en canales",
+        "Cintura elástica con cordón"
+      ],
+      "composition": "100% nylon",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "E",
+      "prompt": {
+        "garment": "straight-leg trousers in matte midnight blue nylon with padded knee panels quilted in horizontal channels like soft armour, elastic waist with silver toggle drawcord, clean full-length hem",
+        "back": "the back of the trousers with two zipped back pockets",
+        "detail": "",
+        "pose": "worn with a cropped cherry red knit top, silver puffer gilet, black chunky trainers; hands on hips, confident"
+      },
+      "colors": [
+        {
+          "name": "Midnight",
+          "slug": "midnight",
+          "hex": "#1B2240",
+          "variant": null,
+          "images": [
+            "/products/gambeson-quilted-pant/midnight-1.jpg",
+            "/products/gambeson-quilted-pant/midnight-2.jpg",
+            "/products/gambeson-quilted-pant/midnight-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "laced-fly-denim",
+      "name": "Laced Fly Denim",
+      "category": "pantalones",
+      "price": 160,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "model": "kofi",
+      "description": "Vaquero de pierna recta en índigo oscuro con la bragueta cerrada por cordón encerado y ojales de plata.",
+      "details": [
+        "Denim 14 oz índigo",
+        "Pierna recta",
+        "Bragueta con cordón y ojales de plata",
+        "Cinco bolsillos"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "E",
+      "prompt": {
+        "garment": "straight-leg jeans in dark raw indigo denim with a lace-up fly: the front closed by black waxed cord crossing through a column of silver eyelets, five pockets, clean full-length hem",
+        "back": "the back of the jeans with plain back pockets",
+        "detail": "",
+        "pose": "worn with a cropped boxy black leather vest over bare chest, pointed black Chelsea boots, layered silver chains and a coif knit hood around the neck; slight stride"
+      },
+      "colors": [
+        {
+          "name": "Indigo",
+          "slug": "indigo",
+          "hex": "#1F2A44",
+          "variant": null,
+          "images": [
+            "/products/laced-fly-denim/indigo-1.jpg",
+            "/products/laced-fly-denim/indigo-2.jpg",
+            "/products/laced-fly-denim/indigo-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tabard-wrap-skirt",
+      "name": "Tabard Wrap Skirt",
+      "category": "pantalones",
+      "price": 150,
+      "sizes": [
+        "XS/S",
+        "M/L",
+        "XL/XXL"
+      ],
+      "model": "marco",
+      "description": "Falda cruzada unisex de lana burdeos con pliegues, cerrada con correas de piel y hebillas de plata. Se lleva sobre pantalón o sola.",
+      "details": [
+        "Lana con pliegues",
+        "Cierre cruzado con dos correas de piel",
+        "Hebillas de plata",
+        "Unisex: sobre pantalón o sola"
+      ],
+      "composition": "70% lana, 30% poliéster",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "E",
+      "prompt": {
+        "garment": "a knee-length unisex pleated wrap skirt in burgundy wool, wrapping at the side and fastened with two black leather straps with silver buckles, laid flat",
+        "back": "the back of the wrap skirt with the deep pleats",
+        "detail": "",
+        "pose": "worn by the man over slim black trousers, with a cropped boxy cream knit, black leather derbies and a silver chain; editorial confident stance"
+      },
+      "colors": [
+        {
+          "name": "Burgundy",
+          "slug": "burgundy",
+          "hex": "#6E1423",
+          "variant": null,
+          "images": [
+            "/products/tabard-wrap-skirt/burgundy-1.jpg",
+            "/products/tabard-wrap-skirt/burgundy-2.jpg",
+            "/products/tabard-wrap-skirt/burgundy-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "escrime-knee-breeches",
+      "name": "Escrime Knee Breeches",
+      "category": "pantalones",
+      "price": 140,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "model": "yuna",
+      "description": "Calzón de esgrima hasta la rodilla en algodón crema, con botones laterales en la rodilla y tirantes desmontables.",
+      "details": [
+        "Sarga de algodón",
+        "Largo a la rodilla",
+        "Botones laterales en la rodilla",
+        "Tirantes desmontables"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "batch": "E",
+      "prompt": {
+        "garment": "knee-length fencing breeches in cream cotton twill, high waist, a row of small silver buttons at the outer side of each knee, detachable cream braces, laid flat",
+        "back": "the back of the breeches showing the braces crossing at the back",
+        "detail": "",
+        "pose": "worn with the braces up over a cherry red lace-up longsleeve, white knee-high socks and black patent loafers; playful hands on braces"
+      },
+      "colors": [
+        {
+          "name": "Cream",
+          "slug": "cream",
+          "hex": "#EFE6D2",
+          "variant": null,
+          "images": [
+            "/products/escrime-knee-breeches/cream-1.jpg",
+            "/products/escrime-knee-breeches/cream-2.jpg",
+            "/products/escrime-knee-breeches/cream-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hilt-buckle-belt",
+      "name": "Hilt Buckle Belt",
+      "category": "accesorios",
+      "price": 130,
+      "sizes": [
+        "80",
+        "90",
+        "100",
+        "110"
+      ],
+      "model": "nia",
+      "description": "Cinturón de piel color tabaco con hebilla de plata en forma de empuñadura de lazo de estoque.",
+      "details": [
+        "Piel curtida vegetal",
+        "Hebilla en forma de empuñadura de lazo",
+        "Acabado plata envejecida"
+      ],
+      "composition": "100% piel. Hebilla en latón con baño de plata",
+      "fit": "Ancho 3,5 cm",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "E",
+      "prompt": {
+        "garment": "a tobacco brown vegetable-tanned leather belt coiled loosely, with an antique silver buckle shaped like an ornate swept rapier hilt",
+        "back": "",
+        "detail": "",
+        "pose": "close-up of the waist wearing the belt through high-waisted cream pleated trousers with a tucked-in black knit"
+      },
+      "colors": [
+        {
+          "name": "Tobacco",
+          "slug": "tobacco",
+          "hex": "#5C3A21",
+          "variant": null,
+          "images": [
+            "/products/hilt-buckle-belt/tobacco-1.jpg",
+            "/products/hilt-buckle-belt/tobacco-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "powder-flask-bag",
+      "name": "Powder Flask Bag",
+      "category": "accesorios",
+      "price": 150,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "kofi",
+      "description": "Bolso bandolera pequeño de piel negra con forma de polvorera de mosquetero y tapón de plata.",
+      "details": [
+        "Piel de vacuno",
+        "Forma de polvorera",
+        "Tapón de plata",
+        "Correa larga ajustable"
+      ],
+      "composition": "100% piel",
+      "fit": "Talla única",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "E",
+      "prompt": {
+        "garment": "a small crossbody bag in black leather shaped like a musketeer's curved powder flask, a polished silver cap at the narrow end, silver zip along the top edge, long thin leather strap, laid flat",
+        "back": "",
+        "detail": "",
+        "pose": "upper body wearing the powder flask bag across the chest over a cream gambeson-style quilted jacket, silver chain; looking to the side"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#111111",
+          "variant": null,
+          "images": [
+            "/products/powder-flask-bag/black-1.jpg",
+            "/products/powder-flask-bag/black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "pauldron-ear-cuff",
+      "name": "Pauldron Ear Cuff",
+      "category": "joyeria",
+      "price": 95,
+      "sizes": [
+        "Unidad"
+      ],
+      "model": "yuna",
+      "description": "Ear cuff de plata 925 en placas articuladas que abrazan la oreja como una hombrera de armadura. Sin agujero.",
+      "details": [
+        "Plata de ley 925",
+        "Placas articuladas",
+        "Sin necesidad de agujero"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "jewellery",
+      "line": "2026",
+      "batch": "E",
+      "prompt": {
+        "garment": "a sterling silver ear cuff made of three small curved articulated armour plates with tiny rivets, polished with oxidized edges, laid on its side",
+        "back": "",
+        "detail": "",
+        "pose": "close-up profile of an ear wearing the articulated silver ear cuff, hair tucked back, black turtleneck collar visible"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/pauldron-ear-cuff/silver-1.jpg",
+            "/products/pauldron-ear-cuff/silver-2.jpg"
+          ]
+        }
+      ]
     }
   ]
 }
