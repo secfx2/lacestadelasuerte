@@ -48,7 +48,7 @@ export const CATEGORY_COPY = {
   sudaderas: "Felpa gruesa, lavados vintage y el lema bordado. La base del uniforme.",
   camisetas: "Algodón de gramaje alto, corte boxy y gráficos de esgrima.",
   camisas: "Camisas de poeta y sobrecamisas. La parte más literaria del armario.",
-  pantalones: "Denim baggy, cargos y lona de carpintero. Caída amplia, tiro relajado.",
+  pantalones: "Pierna recta, barril y pinzas. Denim, lona, tricot y lana fría con caída limpia.",
   accesorios: "Gorras, cinturones, bolsas y calcetines. Los detalles del regimiento.",
   joyeria: "Plata 925 maciza. Sellos, guanteletes y cadenas, sin baño ni atajos.",
 };
@@ -177,6 +177,10 @@ export function fitNote(product) {
     return `${product.fit}.`;
   }
   if (product.slug === "mantle-cape") return "Corte amplio tipo capa — recomendamos tu talla habitual.";
+  if (product.line === "2026") {
+    if (product.category === "pantalones") return "Pierna recta con caída limpia — recomendamos tu talla habitual.";
+    return "Boxy recortado: termina en la cintura — recomendamos tu talla habitual.";
+  }
   if (product.category === "pantalones") {
     return product.sizes[0] === "28"
       ? "Corte baggy — recomendamos tu talla habitual de cintura."

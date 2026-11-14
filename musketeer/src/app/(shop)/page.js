@@ -17,7 +17,7 @@ import styles from "./home.module.css";
 export const metadata = {
   title: { absolute: "MUSKETEER — Tous pour un" },
   description:
-    "Ropa unisex de corte boxy y baggy, chaquetas, punto, accesorios y joyería de plata 925. Catálogo permanente, sin drops. Envío gratuito desde 150 €.",
+    "Ropa unisex de corte boxy, color y chaquetas con carácter, punto, accesorios y joyería de plata 925. Catálogo permanente, sin drops. Envío gratuito desde 150 €.",
   alternates: { canonical: "/" },
 };
 
@@ -82,7 +82,7 @@ export default function HomePage() {
           </Link>
         </div>
         <p className={styles.heroCaption}>
-          <span>Catálogo permanente</span>
+          <span>Nueva línea 2026</span>
           <span className={styles.heroBar} aria-hidden="true">|</span>
           <em>Tous pour un</em>
         </p>

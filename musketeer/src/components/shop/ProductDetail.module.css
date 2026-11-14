@@ -153,3 +153,12 @@
   .barName { font-size: var(--fs-xs); font-weight: 500; letter-spacing: var(--track-caps); text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .barMeta { font-size: 11px; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 }
+
+/* Odd image counts (e.g. the 3-shot 2026 line): the last shot spans the full row as a wide tile
+   so the grid never leaves an empty cell. The garment stays whole (contain) on the grey tile. */
+.gallery[data-count="3"] .shot:last-child,
+.gallery[data-count="5"] .shot:last-child { grid-column: 1 / -1; }
+.gallery[data-count="3"] .shot:last-child .shotImg,
+.gallery[data-count="5"] .shot:last-child .shotImg { aspect-ratio: 8 / 5; }
+.gallery[data-count="3"] .shot:last-child .shotImg img,
+.gallery[data-count="5"] .shot:last-child .shotImg img { object-fit: contain !important; }

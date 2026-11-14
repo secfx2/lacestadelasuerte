@@ -19,7 +19,7 @@ const instrument = Instrument_Serif({
 export const metadata = {
   title: { default: "MUSKETEER — Tous pour un", template: "%s — MUSKETEER" },
   description:
-    "MUSKETEER. Ropa unisex de corte boxy y baggy, punto, chaquetas, accesorios y joyería de plata 925. Catálogo permanente, sin drops.",
+    "MUSKETEER. Ropa unisex de corte boxy, color, punto, chaquetas, accesorios y joyería de plata 925. Catálogo permanente, sin drops.",
   icons: { icon: "/brand/emblem-black.svg" },
 };
 

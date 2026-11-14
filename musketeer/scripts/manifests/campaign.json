@@ -59,5 +59,13 @@
   "/campaign/maison.jpg": {
     "job_id": "7a2afa93-e808-40ea-998a-ec8a41c3b121",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_191426_7a2afa93-e808-40ea-998a-ec8a41c3b121.png"
+  },
+  "/campaign/hero.jpg (2026)": {
+    "job_id": "81db7b4a-f0fe-4528-9b47-0fc31f395f84",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_214625_81db7b4a-f0fe-4528-9b47-0fc31f395f84.png"
+  },
+  "/campaign/hero-mobile.jpg (2026)": {
+    "job_id": "6515a09d-3ecf-4cde-8be4-3ad9ecdd9707",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_214753_6515a09d-3ecf-4cde-8be4-3ad9ecdd9707.png"
   }
 }

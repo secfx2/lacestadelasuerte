@@ -19,6 +19,7 @@ export function slimProduct(p) {
     unisex: p.unisex,
     badge: p.badge,
     kind: p.kind,
+    line: p.line || null,
     colors: p.colors.map((c) => ({ name: c.name, slug: c.slug, hex: c.hex, images: c.images })),
   };
 }
@@ -80,7 +81,10 @@ export function relatedProducts(slug, n = 4) {
   const out = [];
   for (let k = 0; out.length < n && k < 12; k++) {
     const cat = cats[k % cats.length];
-    const pool = slimCatalog().filter((p) => p.category === cat && p.slug !== product.slug && !out.includes(p));
+    const all = slimCatalog().filter((p) => p.category === cat && p.slug !== product.slug && !out.includes(p));
+    // 2026-line pieces suggest 2026-line pieces first (accessories/jewellery are shared by both lines)
+    const sameLine = product.line ? all.filter((p) => p.line === product.line) : [];
+    const pool = sameLine.length ? sameLine : all;
     if (pool.length) out.push(pool[(seed + k) % pool.length]);
   }
   return out;

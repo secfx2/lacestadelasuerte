@@ -37,7 +37,7 @@ const SECTIONS = [
     id: "tallas",
     title: "Tallas",
     faqs: [
-      ["¿Cómo tallan las prendas?", "Casi todo es unisex y de corte boxy o baggy: hombro caído y volumen amplio. Recomendamos tu talla habitual; elige una más si buscas un efecto aún más holgado."],
+      ["¿Cómo tallan las prendas?", "Casi todo es unisex. La línea 2026 es boxy recortada: cuerpo cuadrado que termina en la cintura y hombro estructurado. Las piezas del catálogo clásico son más amplias. Recomendamos tu talla habitual en ambos casos."],
       ["¿Cómo sé mi talla de anillo?", "Usamos tallaje español. Rodea la base del dedo con un hilo, mide la longitud en milímetros y réstale 40: ese número es tu talla. Si dudas entre dos, elige la mayor."],
       ["¿Qué largo de cadena elijo?", "45 cm queda en la base del cuello, 50 cm sobre la clavícula, 55 cm por debajo y 60 cm en la parte alta del pecho."],
     ],
