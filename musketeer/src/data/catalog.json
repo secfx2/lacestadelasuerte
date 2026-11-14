@@ -3455,7 +3455,7 @@
         "XXL"
       ],
       "model": "yuna",
-      "description": "Sudadera corta y cuadrada en crema con una diana de práctica de esgrima estampada en puff rojo y azul.",
+      "description": "Sudadera corta y cuadrada en crema con una diana de práctica de esgrima estampada en puff burdeos y verde bosque, con dos sables cruzados en el centro.",
       "details": [
         "Felpa 450 g/m²",
         "Corte boxy recortado: cuerpo cuadrado que termina en la cintura, hombro estructurado.",
@@ -3469,10 +3469,10 @@
       "line": "2026",
       "batch": "B",
       "prompt": {
-        "garment": "a cropped boxy crewneck sweatshirt in cream fleece with a raised puff print of a fencing practice target on the chest: concentric circles in cherry red and royal blue with a small four-point star in the centre, square body ending at the waist",
+        "garment": "a cropped boxy crewneck sweatshirt in cream fleece with a raised puff print of an old fencing practice target on the chest: three concentric rings in burgundy and forest green with two small crossed burgundy sabres at the centre, square body ending at the waist",
         "back": "the back of the sweatshirt, plain cream",
         "detail": "",
-        "pose": "standing, royal blue straight track pants"
+        "pose": "standing, forest green straight trousers"
       },
       "colors": [
         {
