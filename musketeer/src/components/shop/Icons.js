@@ -46,3 +46,8 @@ export const IconGrid = ({ cols = 2, size = 14, ...p }) => {
 export const IconZoom = ({ size = 16, ...p }) => (
   <svg width={size} height={size} viewBox="0 0 16 16" {...base} {...p}><circle cx="7" cy="7" r="5" /><path d="M10.6 10.6L14.5 14.5M7 4.8v4.4M4.8 7h4.4" /></svg>
 );
+export const IconStar = ({ size = 18, filled = false, ...p }) => (
+  <svg width={size} height={size} viewBox="0 0 18 18" {...base} strokeLinejoin="miter" fill={filled ? "currentColor" : "none"} {...p}>
+    <path d="M9 1.8l2.2 4.6 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5L1.8 7.1l5-.7z" />
+  </svg>
+);

@@ -34,8 +34,8 @@ export default function ProductCard({ product, sizes = "(min-width: 1024px) 25vw
     <article className={`${styles.card} ${className}`} onMouseLeave={() => setPicking(false)}>
       <div className={styles.media}>
         <Link href={href} className={styles.mediaLink} tabIndex={-1} aria-hidden="true">
-          <SmartImage src={flat} alt={`${product.name} — ${color.name}`} sizes={sizes} priority={priority} className={styles.frame} />
-          {hover && <SmartImage src={hover} alt="" sizes={sizes} hideOnError className={styles.hover} tone="white" />}
+          <SmartImage src={flat} alt={`${product.name} — ${color.name}`} sizes={sizes} priority={priority} className={styles.frame} blend />
+          {hover && <SmartImage src={hover} alt="" sizes={sizes} hideOnError className={styles.hover} blend />}
         </Link>
 
         {product.badge && <span className={styles.badge}>{product.badge}</span>}

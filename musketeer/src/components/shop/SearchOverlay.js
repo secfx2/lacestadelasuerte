@@ -134,7 +134,7 @@ export default function SearchOverlay({ open, onClose }) {
                     onMouseEnter={() => setActive(i)}
                   >
                     <Link href={productHref(p)} onClick={onClose} tabIndex={-1} className={styles.resultLink}>
-                      <SmartImage src={p.colors[0].images[0]} alt="" sizes="(min-width: 1024px) 12vw, 25vw" className={styles.resultImg} />
+                      <SmartImage src={p.colors[0].images[0]} alt="" sizes="(min-width: 1024px) 12vw, 25vw" className={styles.resultImg} blend />
                       <span className={styles.resultName}>{p.name}</span>
                       <span className={styles.resultMeta}>
                         {categoryName(p.category)} · {formatPrice(p.price)}

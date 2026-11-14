@@ -3,10 +3,12 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useState } 
 import { getColor, FREE_SHIPPING_FROM } from "@/lib/shop";
 
 const STORAGE_KEY = "musketeer.cart.v1";
+const WISH_KEY = "musketeer.wishlist.v1";
 const MAX_QTY = 10;
 
 const CatalogContext = createContext([]);
 const CartContext = createContext(null);
+const WishContext = createContext(null);
 
 const lineKey = (slug, color, size) => `${slug}__${color}__${size}`;
 
@@ -20,6 +22,7 @@ export function CartProvider({ catalog, children }) {
   const [ready, setReady] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [lastAdded, setLastAdded] = useState(null);
+  const [wish, setWish] = useState([]);
 
   const sanitize = useCallback(
     (raw) => {
@@ -47,16 +50,20 @@ export function CartProvider({ catalog, children }) {
     } catch {
       /* storage unavailable: in-memory cart */
     }
+    try {
+      const w = JSON.parse(window.localStorage.getItem(WISH_KEY) || "[]");
+      if (Array.isArray(w)) setWish(w.filter((s) => bySlug.has(s)));
+    } catch {}
     setReady(true);
     function onStorage(e) {
-      if (e.key !== STORAGE_KEY) return;
       try {
-        setItems(sanitize(JSON.parse(e.newValue || "[]")));
+        if (e.key === STORAGE_KEY) setItems(sanitize(JSON.parse(e.newValue || "[]")));
+        if (e.key === WISH_KEY) setWish((JSON.parse(e.newValue || "[]") || []).filter((s) => bySlug.has(s)));
       } catch {}
     }
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
-  }, [sanitize]);
+  }, [sanitize, bySlug]);
 
   useEffect(() => {
     if (!ready) return;
@@ -64,6 +71,19 @@ export function CartProvider({ catalog, children }) {
       window.localStorage.setItem(STORAGE_KEY, JSON.stringify(items.map(({ slug, color, size, qty }) => ({ slug, color, size, qty }))));
     } catch {}
   }, [items, ready]);
+
+  useEffect(() => {
+    if (!ready) return;
+    try {
+      window.localStorage.setItem(WISH_KEY, JSON.stringify(wish));
+    } catch {}
+  }, [wish, ready]);
+
+  const toggleWish = useCallback((slug) => setWish((prev) => (prev.includes(slug) ? prev.filter((s) => s !== slug) : [slug, ...prev])), []);
+  const wishValue = useMemo(
+    () => ({ slugs: wish, count: wish.length, ready, has: (slug) => wish.includes(slug), toggle: toggleWish }),
+    [wish, ready, toggleWish]
+  );
 
   const add = useCallback(
     ({ slug, color, size, qty = 1 }, { open = true } = {}) => {
@@ -124,7 +144,9 @@ export function CartProvider({ catalog, children }) {
 
   return (
     <CatalogContext.Provider value={catalog}>
-      <CartContext.Provider value={value}>{children}</CartContext.Provider>
+      <CartContext.Provider value={value}>
+        <WishContext.Provider value={wishValue}>{children}</WishContext.Provider>
+      </CartContext.Provider>
     </CatalogContext.Provider>
   );
 }
@@ -132,6 +154,13 @@ export function CartProvider({ catalog, children }) {
 export function useCart() {
   const ctx = useContext(CartContext);
   if (!ctx) throw new Error("useCart must be used inside <CartProvider>");
+  return ctx;
+}
+
+/** Wishlist ("Favoritos"): { slugs, count, has(slug), toggle(slug) } — persisted in localStorage. */
+export function useWishlist() {
+  const ctx = useContext(WishContext);
+  if (!ctx) throw new Error("useWishlist must be used inside <CartProvider>");
   return ctx;
 }
 

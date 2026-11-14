@@ -46,7 +46,7 @@ export default function CartLines({ onNavigate, variant = "drawer" }) {
       {lines.map((l) => (
         <li key={l.key} className={styles.line} data-fresh={lastAdded?.key === l.key && Date.now() - lastAdded.at < 1500 ? "true" : undefined}>
           <Link href={productHref(l.product, l.color)} onClick={onNavigate} className={styles.thumb} tabIndex={-1} aria-hidden="true">
-            <SmartImage src={l.image} alt="" sizes="120px" className={styles.thumbImg} />
+            <SmartImage src={l.image} alt="" sizes="120px" className={styles.thumbImg} blend />
           </Link>
           <div className={styles.meta}>
             <div className={styles.row}>

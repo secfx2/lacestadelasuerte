@@ -88,9 +88,8 @@
 
 .info {
   display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 12px;
+  flex-direction: column;
+  gap: 3px;
   padding-top: 12px;
 }
 .name {
@@ -106,7 +105,7 @@
 .card:hover .name a, .name a:focus-visible { background-size: 100% 1px; }
 .price {
   margin: 0;
-  flex: none;
+  color: #3a3a3a;
   font-size: var(--fs-xs);
   letter-spacing: 0.04em;
   font-variant-numeric: tabular-nums;
@@ -136,6 +135,6 @@
 .colorName { font-size: var(--fs-micro); letter-spacing: var(--track-caps); text-transform: uppercase; color: var(--text-muted); }
 
 @media (max-width: 640px) {
-  .info { flex-direction: column; gap: 2px; padding-top: 10px; }
+  .info { padding-top: 10px; }
   .badge { top: 6px; left: 6px; padding: 4px 5px 3px; font-size: 9px; }
 }

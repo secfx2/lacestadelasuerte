@@ -6,13 +6,14 @@
 .frame[data-tone="bone"] { background: var(--bone); }
 .frame[data-tone="dark"] { background: #121212; }
 .frame[data-tone="white"] { background: var(--paper); }
-.frame[data-hide="true"] { background: transparent; }
 
 .img {
   opacity: 0;
   transition: opacity 0.7s var(--ease);
 }
 .loaded { opacity: 1; }
+.frame[data-blend] { isolation: isolate; background: var(--fog); }
+.blend { mix-blend-mode: multiply; }
 
 .placeholder {
   position: absolute;

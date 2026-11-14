@@ -16,6 +16,7 @@ export function ImagePlaceholder({ tone = "fog", className = "" }) {
  * next/image wrapped in a positioned frame. Fades in on load; on error (file not
  * generated yet) degrades to the fog placeholder — or to nothing with `hideOnError`.
  * Size the frame with `className` / `ratio` (e.g. "4 / 5"); the image fills it.
+ * `blend` multiplies product shots (shot on white) onto the fog tile so every tile reads identical.
  */
 export default function SmartImage({
   src,
@@ -30,6 +31,7 @@ export default function SmartImage({
   hideOnError = false,
   fit = "cover",
   position,
+  blend = false,
   style,
 }) {
   const [failed, setFailed] = useState(null);
@@ -37,12 +39,14 @@ export default function SmartImage({
   const isError = !src || failed === src;
   const isLoaded = loaded === src;
 
+  if (hideOnError && isError) return null;
+
   return (
     <div
       className={`${styles.frame} ${className}`}
       data-tone={tone}
       data-state={isError ? "error" : isLoaded ? "loaded" : "loading"}
-      data-hide={hideOnError && isError ? "true" : undefined}
+      data-blend={blend || undefined}
       style={{ ...(ratio ? { aspectRatio: ratio } : null), ...style }}
     >
       {!isError && (
@@ -53,13 +57,13 @@ export default function SmartImage({
           sizes={sizes}
           priority={priority}
           quality={quality}
-          className={`${styles.img} ${isLoaded ? styles.loaded : ""} ${imgClassName}`}
+          className={`${styles.img} ${isLoaded ? styles.loaded : ""} ${blend ? styles.blend : ""} ${imgClassName}`}
           style={{ objectFit: fit, objectPosition: position }}
           onLoad={() => setLoaded(src)}
           onError={() => setFailed(src)}
         />
       )}
-      {isError && !hideOnError && <ImagePlaceholder tone={tone} />}
+      {isError && <ImagePlaceholder tone={tone} />}
     </div>
   );
 }
