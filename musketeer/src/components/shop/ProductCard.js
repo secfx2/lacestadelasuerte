@@ -2,17 +2,18 @@
 import Link from "next/link";
 import { useRef, useState } from "react";
 import SmartImage from "./SmartImage";
-import { useCart } from "./CartProvider";
-import { IconClose, IconPlus } from "./Icons";
+import { useCart, useWishlist } from "./CartProvider";
+import { IconClose, IconPlus, IconStar } from "./Icons";
 import { formatPrice, getColor, productHref, isOneSize } from "@/lib/shop";
 import styles from "./ProductCard.module.css";
 
 /**
- * Grid card: flat lay, crossfades to the on-model shot on hover.
- * Swatches switch the colourway; "+" opens a quick size picker.
+ * Grid tile (grey #f2f2f2, photo multiplied onto it): flat lay crossfades to the
+ * on-model shot on hover. Colour dots switch the colourway; "+" opens a quick size picker.
  */
 export default function ProductCard({ product, sizes = "(min-width: 1024px) 25vw, 50vw", priority = false, quickAdd = true, className = "" }) {
   const { add } = useCart();
+  const wish = useWishlist();
   const [colorSlug, setColorSlug] = useState(product.colors[0].slug);
   const [picking, setPicking] = useState(false);
   const pickerRef = useRef(null);
@@ -20,6 +21,7 @@ export default function ProductCard({ product, sizes = "(min-width: 1024px) 25vw
   const href = productHref(product, color.slug);
   const [flat, hover] = color.images;
   const oneSize = isOneSize(product);
+  const saved = wish.has(product.slug);
 
   function quick() {
     if (oneSize) {
@@ -39,6 +41,17 @@ export default function ProductCard({ product, sizes = "(min-width: 1024px) 25vw
         </Link>
 
         {product.badge && <span className={styles.badge}>{product.badge}</span>}
+
+        <button
+          type="button"
+          className={styles.star}
+          data-on={saved || undefined}
+          onClick={() => wish.toggle(product.slug)}
+          aria-pressed={saved}
+          aria-label={saved ? `Quitar ${product.name} de favoritos` : `Guardar ${product.name} en favoritos`}
+        >
+          <IconStar size={15} filled={saved} />
+        </button>
 
         {quickAdd && (
           <>
@@ -92,28 +105,25 @@ export default function ProductCard({ product, sizes = "(min-width: 1024px) 25vw
         <h3 className={styles.name}>
           <Link href={href}>{product.name}</Link>
         </h3>
-        <p className={styles.price}>{formatPrice(product.price)}</p>
-      </div>
-
-      <div className={styles.swatches}>
-        {product.colors.length > 1 ? (
-          product.colors.map((c) => (
-            <button
-              key={c.slug}
-              type="button"
-              className={styles.swatch}
-              style={{ "--sw": c.hex }}
-              aria-label={`Color ${c.name}`}
-              aria-pressed={c.slug === color.slug}
-              title={c.name}
-              onMouseEnter={() => setColorSlug(c.slug)}
-              onFocus={() => setColorSlug(c.slug)}
-              onClick={() => setColorSlug(c.slug)}
-            />
-          ))
-        ) : (
-          <span className={styles.colorName}>{color.name}</span>
+        {product.colors.length > 1 && (
+          <div className={styles.dots}>
+            {product.colors.map((c) => (
+              <button
+                key={c.slug}
+                type="button"
+                className={styles.dot}
+                style={{ "--sw": c.hex }}
+                aria-label={`Color ${c.name}`}
+                aria-pressed={c.slug === color.slug}
+                title={c.name}
+                onMouseEnter={() => setColorSlug(c.slug)}
+                onFocus={() => setColorSlug(c.slug)}
+                onClick={() => setColorSlug(c.slug)}
+              />
+            ))}
+          </div>
         )}
+        <p className={styles.price}>{formatPrice(product.price)}</p>
       </div>
     </article>
   );
