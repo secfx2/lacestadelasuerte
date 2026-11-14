@@ -17,11 +17,16 @@ function Run({ hidden }) {
 export default function AnnouncementBar() {
   return (
     <div className={styles.bar} role="region" aria-label="Avisos">
-      <div className={styles.track}>
-        <Run />
+      <ul className="sr-only">
+        {ANNOUNCEMENTS.map((t) => (
+          <li key={t}>{t}</li>
+        ))}
+      </ul>
+      <div className={styles.track} aria-hidden="true">
+        <Run hidden />
         <Run hidden />
       </div>
-      <p className={styles.static}>{ANNOUNCEMENTS[0]} · {ANNOUNCEMENTS[1]}</p>
+      <p className={styles.static} aria-hidden="true">{ANNOUNCEMENTS[0]} · {ANNOUNCEMENTS[1]}</p>
     </div>
   );
 }

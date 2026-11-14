@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Logo from "@/components/brand/Logo";
 import { useCart, useWishlist } from "./CartProvider";
 import MegaMenu from "./MegaMenu";
@@ -38,8 +38,8 @@ export default function Header() {
     setHovering(false);
   }, [pathname]);
 
-  // Transparent over the home hero; solid once scrolled past it
-  useEffect(() => {
+  // Transparent over the home hero; solid once scrolled past it (layout effect: no flash on client navigation)
+  useLayoutEffect(() => {
     if (!isHome) {
       setOverHero(false);
       return;

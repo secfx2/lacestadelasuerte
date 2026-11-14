@@ -49,13 +49,25 @@ export default function ProductDetail({ product }) {
     window.history.replaceState(window.history.state, "", url);
   };
 
-  // Mobile sticky bar: visible while the main CTA is off-screen
+  // Mobile sticky bar: visible once the main CTA has scrolled above the viewport
   useEffect(() => {
-    const el = ctaRef.current;
-    if (!el) return;
-    const io = new IntersectionObserver(([e]) => setShowBar(!e.isIntersecting && e.boundingClientRect.top < 0), { threshold: 0 });
-    io.observe(el);
-    return () => io.disconnect();
+    let raf = 0;
+    const check = () => {
+      raf = 0;
+      const el = ctaRef.current;
+      if (el) setShowBar(el.getBoundingClientRect().bottom < 0);
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(check);
+    };
+    check();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
 
   const onCarouselScroll = useCallback(() => {

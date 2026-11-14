@@ -20,6 +20,16 @@ import {
 import styles from "./ShopCatalog.module.css";
 
 const DENSITY_KEY = "musketeer.density";
+
+function parseQuery(sp) {
+  const sort = sp.get("orden");
+  return {
+    colors: (sp.get("color") || "").split(",").filter((c) => COLOR_FAMILIES.some((f) => f.slug === c)),
+    sizes: (sp.get("talla") || "").split(",").map(sizeFromParam).filter(Boolean),
+    sort: SORTS.some((s) => s.id === sort) ? sort : "destacados",
+    q: (sp.get("q") || "").trim(),
+  };
+}
 const EMPTY = new URLSearchParams();
 
 /** Grid page for /tienda and /categoria/[slug]. Filters live in the URL (?color=&talla=&orden=&q=). */
@@ -41,6 +51,14 @@ function CatalogView({ category = null, params }) {
   const router = useRouter();
   const pathname = usePathname();
   const [filtersOpen, setFiltersOpen] = useState(false);
+  const chipsRef = useRef(null);
+
+  // Bring the active category chip into view on narrow screens
+  useEffect(() => {
+    const ul = chipsRef.current;
+    const el = ul?.querySelector('[aria-current="page"]');
+    if (ul && el && ul.scrollWidth > ul.clientWidth) ul.scrollLeft = Math.max(0, el.parentElement.offsetLeft - 16);
+  }, [category]);
   const [density, setDensity] = useState("compact");
 
   useEffect(() => {
@@ -56,30 +74,45 @@ function CatalogView({ category = null, params }) {
     } catch {}
   };
 
-  // ---- URL state
-  const colors = useMemo(() => (params.get("color") || "").split(",").filter((c) => COLOR_FAMILIES.some((f) => f.slug === c)), [params]);
-  const sizes = useMemo(() => (params.get("talla") || "").split(",").map(sizeFromParam).filter(Boolean), [params]);
-  const sort = SORTS.some((s) => s.id === params.get("orden")) ? params.get("orden") : "destacados";
-  const q = (params.get("q") || "").trim();
+  // ---- URL state. A local mirror of the query string keeps rapid consecutive
+  // updates consistent (router.replace is async); external navigations are adopted.
+  const paramsStr = params.toString();
+  const [qs, setQs] = useState(paramsStr);
+  const qsRef = useRef(paramsStr);
+  const pushed = useRef(new Set());
+  useEffect(() => {
+    if (pushed.current.has(paramsStr)) {
+      pushed.current.delete(paramsStr);
+      return;
+    }
+    qsRef.current = paramsStr;
+    setQs(paramsStr);
+  }, [paramsStr]);
+
+  const current = useMemo(() => parseQuery(new URLSearchParams(qs)), [qs]);
+  const { colors, sizes, sort, q } = current;
 
   const update = useCallback(
-    (patch) => {
-      const next = new URLSearchParams(params.toString());
+    (patchOrFn) => {
+      const cur = new URLSearchParams(qsRef.current);
+      const patch = typeof patchOrFn === "function" ? patchOrFn(parseQuery(cur)) : patchOrFn;
       for (const [k, v] of Object.entries(patch)) {
-        if (!v || (Array.isArray(v) && !v.length)) next.delete(k);
-        else next.set(k, Array.isArray(v) ? v.join(",") : v);
+        if (!v || (Array.isArray(v) && !v.length)) cur.delete(k);
+        else cur.set(k, Array.isArray(v) ? v.join(",") : v);
       }
-      const qs = next.toString();
-      router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
+      const next = cur.toString();
+      if (next === qsRef.current) return;
+      qsRef.current = next;
+      setQs(next);
+      pushed.current.add(next);
+      router.replace(next ? `${pathname}?${next}` : pathname, { scroll: false });
     },
-    [params, pathname, router]
+    [pathname, router]
   );
 
-  const toggleColor = (slug) => update({ color: colors.includes(slug) ? colors.filter((c) => c !== slug) : [...colors, slug] });
-  const toggleSize = (s) => {
-    const list = sizes.includes(s) ? sizes.filter((x) => x !== s) : [...sizes, s];
-    update({ talla: list.map(sizeToParam) });
-  };
+  const toggleColor = (slug) => update((c) => ({ color: c.colors.includes(slug) ? c.colors.filter((x) => x !== slug) : [...c.colors, slug] }));
+  const toggleSize = (size) =>
+    update((c) => ({ talla: (c.sizes.includes(size) ? c.sizes.filter((x) => x !== size) : [...c.sizes, size]).map(sizeToParam) }));
   const clearAll = () => update({ color: null, talla: null, q: null });
 
   // ---- Data
@@ -118,7 +151,6 @@ function CatalogView({ category = null, params }) {
   }, [catalog]);
 
   const activeCount = colors.length + sizes.length;
-  const qs = params.toString();
   const chipHref = (path) => {
     const keep = new URLSearchParams(qs);
     keep.delete("q");
@@ -130,7 +162,7 @@ function CatalogView({ category = null, params }) {
     <>
       {/* Category chips */}
       <nav className={styles.chips} aria-label="Categorías">
-        <ul>
+        <ul ref={chipsRef}>
           <li>
             <Link href={chipHref("/tienda")} className={styles.chip} aria-current={!category ? "page" : undefined}>
               Todo <sup>{catalog.length}</sup>

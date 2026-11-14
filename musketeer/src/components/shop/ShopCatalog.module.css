@@ -1,5 +1,6 @@
 /* Category chips (pills) */
 .chips ul {
+  position: relative;
   display: flex;
   gap: 6px;
   margin: 0;
