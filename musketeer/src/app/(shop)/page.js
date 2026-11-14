@@ -22,16 +22,16 @@ export const metadata = {
 };
 
 const NEW_IN = [
+  "doublet-jacket",
+  "fencing-jacket",
   "mantle-cropped-jacket",
+  "ruff-collar-shirt",
+  "pauldron-bomber",
+  "tabard-overvest",
+  "cuirass-puffer-vest",
+  "masque-hoodie",
   "brotherhood-varsity",
-  "tabard-track-jacket",
-  "boxy-emblem-tee",
-  "riviera-knit-polo",
-  "garde-rugby-shirt",
-  "feint-windbreaker",
-  "cropped-zip-hoodie",
-  "tabard-cropped-cardigan",
-  "barrel-denim",
+  "gorget-knit",
 ];
 
 const BEST_SELLERS = [

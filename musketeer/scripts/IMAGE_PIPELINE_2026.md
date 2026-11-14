@@ -17,3 +17,8 @@ Other colours: n=1 flat (variant template) and n=2 on model. Accessories (`kind:
 
 ## Reuse
 If `prompt.seed_job` is set, that job is ALREADY the n=1 flat lay of the primary colour: do not regenerate it — download its result (fetch the URL with `jobs_wait` on that job id) and convert it to the n=1 path, then use the job id as the reference for n=2, n=3 and other colours.
+
+## Batch 2 (fields `batch: "A"` / `batch: "B"`)
+- Products with only 2 entries in their `images` array (accessories and jewellery) get n=1 flat lay + n=2 on model only (no back shot; `prompt.back` is empty).
+- Every flat lay prompt must also say: "blank woven neck label with no text; no text anywhere except the garment's own print described above".
+- These are deliberately original, statement-but-wearable pieces: render the special construction detail (paned sleeves, ruff collar, gorget collar, armour-plate quilting, mesh hood visor, bandolier pocket, tabard side straps…) clearly and accurately in every shot — regenerate if the model shot loses it.
