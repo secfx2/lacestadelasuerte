@@ -22,16 +22,16 @@ export const metadata = {
 };
 
 const NEW_IN = [
-  "tabard-work-jacket",
-  "rapier-zip-hoodie",
-  "chainmail-knit",
-  "fleur-link-chain",
-  "regiment-jersey",
-  "parachute-cargo",
-  "fleur-mohair-cardigan",
-  "garrison-puffer",
-  "gauntlet-ring",
-  "bandolier-bag",
+  "mantle-cropped-jacket",
+  "brotherhood-varsity",
+  "tabard-track-jacket",
+  "boxy-emblem-tee",
+  "riviera-knit-polo",
+  "garde-rugby-shirt",
+  "feint-windbreaker",
+  "cropped-zip-hoodie",
+  "tabard-cropped-cardigan",
+  "barrel-denim",
 ];
 
 const BEST_SELLERS = [

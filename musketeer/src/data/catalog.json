@@ -77,7 +77,7 @@
       "composition": "100% algodón",
       "fit": "Boxy",
       "unisex": true,
-      "badge": "Nuevo",
+      "badge": null,
       "kind": "garment",
       "prompt": {
         "garment": "a boxy cropped heavyweight cotton canvas work jacket, garment-dyed and stone-washed faded black, oversized dropped shoulders, wide boxy body cropped at the hip, black corduroy point collar, four antique silver metal snap buttons, two chest flap pockets, tonal triple stitching",
@@ -374,7 +374,7 @@
       "composition": "60% algodón, 30% lana, 10% lúrex",
       "fit": "Boxy",
       "unisex": true,
-      "badge": "Nuevo",
+      "badge": null,
       "kind": "garment",
       "prompt": {
         "garment": "a chunky oversized boxy crewneck sweater knitted in a dense jacquard texture that imitates medieval chainmail rings, steel grey melange yarn with subtle silver lurex sheen, dropped shoulders, wide ribbed hem and cuffs",
@@ -593,7 +593,7 @@
       "composition": "100% algodón",
       "fit": "Boxy",
       "unisex": true,
-      "badge": "Nuevo",
+      "badge": null,
       "kind": "garment",
       "prompt": {
         "garment": "a boxy oversized full-zip hoodie in sun-faded charcoal fleece with a double silver zipper, a long rapier sword made of sparkling clear rhinestones running vertically along the left side of the zipper from the hem to the chest",
@@ -1889,7 +1889,7 @@
       "composition": "Plata de ley 925",
       "fit": "Plata 925",
       "unisex": true,
-      "badge": "Nuevo",
+      "badge": null,
       "kind": "jewellery",
       "prompt": {
         "garment": "a heavy sterling silver chain necklace made of interlocking links shaped like stylized fleur-de-lis, box clasp, laid in a loose oval",
@@ -1908,6 +1908,814 @@
             "/products/fleur-link-chain/silver-2.jpg",
             "/products/fleur-link-chain/silver-3.jpg",
             "/products/fleur-link-chain/silver-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "mantle-cropped-jacket",
+      "name": "Mantle Cropped Jacket",
+      "category": "chaquetas",
+      "price": 380,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kofi",
+      "description": "La capa del mosquetero, llevable. Chaqueta corta y cuadrada en melton de lana con una capelina desmontable sobre los hombros: con ella es una declaración, sin ella una chaqueta perfecta. Alamares de plata con forma de empuñadura.",
+      "details": [
+        "Melton de lana 680 g/m²",
+        "Corte boxy recortado 2026: cuerpo cuadrado y ancho que termina en la cintura, hombro estructurado.",
+        "Capelina desmontable con automáticos ocultos",
+        "Alamares de metal en forma de empuñadura",
+        "Mangas montadas de largo completo"
+      ],
+      "composition": "80% lana, 20% poliamida",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "prompt": {
+        "garment": "a cropped boxy jacket in heavy oxblood burgundy melton wool, short body ending exactly at the waist, wide straight boxy silhouette, structured shoulders, full-length set-in sleeves, with a detachable short shoulder capelet that drapes over the shoulders and upper arms like a musketeer mantle, three antique silver toggle closures shaped like small rapier hilts down the front",
+        "back": "the back of the cropped jacket with the short capelet covering the shoulders and upper back, clean seams",
+        "detail": "",
+        "pose": "standing straight, jacket closed, capelet on, straight-leg black trousers with a clean break",
+        "seed_job": "6736d03d-6ff4-4b4e-b131-3953c8407f42"
+      },
+      "colors": [
+        {
+          "name": "Oxblood",
+          "slug": "oxblood",
+          "hex": "#5E1A24",
+          "variant": null,
+          "images": [
+            "/products/mantle-cropped-jacket/oxblood-1.jpg",
+            "/products/mantle-cropped-jacket/oxblood-2.jpg",
+            "/products/mantle-cropped-jacket/oxblood-3.jpg"
+          ]
+        },
+        {
+          "name": "Charcoal",
+          "slug": "charcoal",
+          "hex": "#3A3A3C",
+          "variant": "the same cropped capelet jacket in charcoal grey melton wool with silver hilt toggles",
+          "images": [
+            "/products/mantle-cropped-jacket/charcoal-1.jpg",
+            "/products/mantle-cropped-jacket/charcoal-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "brotherhood-varsity",
+      "name": "Brotherhood Varsity",
+      "category": "chaquetas",
+      "price": 320,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "marco",
+      "description": "Varsity corta y cuadrada en lana cocida con mangas de piel. En el pecho, la M de dos estoques en chenilla.",
+      "details": [
+        "Lana cocida y mangas de piel",
+        "Corte boxy recortado 2026: cuerpo cuadrado y ancho que termina en la cintura, hombro estructurado.",
+        "Rib a rayas en cuello, puños y bajo",
+        "Parche de chenilla M de estoques",
+        "Forro acolchado"
+      ],
+      "composition": "Cuerpo 80% lana, 20% poliamida. Mangas 100% piel",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "prompt": {
+        "garment": "a cropped boxy varsity jacket, forest green boiled wool body with cream leather sleeves, short boxy body ending at the waist, cream and green striped rib collar, cuffs and hem, cream snap buttons, a large cream chenille patch of a stylised letter M formed by two crossed rapiers on the left chest",
+        "back": "the back of the varsity jacket with a large arched cream chenille word musketeer in lowercase extended italic letters across the shoulders",
+        "detail": "",
+        "pose": "standing relaxed, jacket open over a white tee, straight-leg light wash jeans",
+        "seed_job": "26298e21-393f-4694-8f6a-78d7f61e4b9a"
+      },
+      "colors": [
+        {
+          "name": "Forest",
+          "slug": "forest",
+          "hex": "#1F4D3A",
+          "variant": null,
+          "images": [
+            "/products/brotherhood-varsity/forest-1.jpg",
+            "/products/brotherhood-varsity/forest-2.jpg",
+            "/products/brotherhood-varsity/forest-3.jpg"
+          ]
+        },
+        {
+          "name": "Navy",
+          "slug": "navy",
+          "hex": "#1C2541",
+          "variant": "the same cropped varsity jacket with a deep navy wool body and cream leather sleeves",
+          "images": [
+            "/products/brotherhood-varsity/navy-1.jpg",
+            "/products/brotherhood-varsity/navy-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tabard-track-jacket",
+      "name": "Tabard Track Jacket",
+      "category": "chaquetas",
+      "price": 140,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "nia",
+      "description": "Chaqueta de chándal corta en tricot azul tabardo con vivos crema. Se combina con el Tabard Track Pant.",
+      "details": [
+        "Tricot brillante",
+        "Corte boxy recortado 2026: cuerpo cuadrado y ancho que termina en la cintura, hombro estructurado.",
+        "Vivos en contraste",
+        "Cremallera plateada",
+        "Emblema bordado"
+      ],
+      "composition": "100% poliéster reciclado",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "prompt": {
+        "garment": "a cropped boxy track jacket in royal tabard blue tricot with cream piping along the shoulders and sleeves, short boxy body ending at the waist, full silver zip, stand collar, small cream embroidered three-rapier emblem on the chest",
+        "back": "the back of the track jacket with cream piping over the shoulders and a small cream lowercase word musketeer embroidered below the collar",
+        "detail": "",
+        "pose": "standing, jacket zipped halfway, matching royal blue straight track pants with cream piping",
+        "seed_job": "81fcf461-ec33-49f5-88e6-de25cab98720"
+      },
+      "colors": [
+        {
+          "name": "Tabard Blue",
+          "slug": "tabard-blue",
+          "hex": "#2340A0",
+          "variant": null,
+          "images": [
+            "/products/tabard-track-jacket/tabard-blue-1.jpg",
+            "/products/tabard-track-jacket/tabard-blue-2.jpg",
+            "/products/tabard-track-jacket/tabard-blue-3.jpg"
+          ]
+        },
+        {
+          "name": "Burgundy",
+          "slug": "burgundy",
+          "hex": "#6E1423",
+          "variant": "the same cropped track jacket in burgundy tricot with cream piping",
+          "images": [
+            "/products/tabard-track-jacket/burgundy-1.jpg",
+            "/products/tabard-track-jacket/burgundy-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tabard-track-pant",
+      "name": "Tabard Track Pant",
+      "category": "pantalones",
+      "price": 110,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "nia",
+      "description": "Pantalón de chándal de pierna recta en tricot azul tabardo con vivos crema. Cae limpio sobre la zapatilla.",
+      "details": [
+        "Tricot brillante",
+        "Pierna recta relajada",
+        "Vivos laterales en contraste",
+        "Cintura elástica con cordón"
+      ],
+      "composition": "100% poliéster reciclado",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "prompt": {
+        "garment": "relaxed straight-leg track pants in royal tabard blue tricot with a cream piping stripe down each side seam, elastic waist with cream drawcord, clean full-length hem",
+        "back": "the back of the track pants with one zipped back pocket",
+        "detail": "",
+        "pose": "standing, wearing a fitted white tank top and white sneakers",
+        "seed_job": null
+      },
+      "colors": [
+        {
+          "name": "Tabard Blue",
+          "slug": "tabard-blue",
+          "hex": "#2340A0",
+          "variant": null,
+          "images": [
+            "/products/tabard-track-pant/tabard-blue-1.jpg",
+            "/products/tabard-track-pant/tabard-blue-2.jpg",
+            "/products/tabard-track-pant/tabard-blue-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "boxy-emblem-tee",
+      "name": "Boxy Emblem Tee",
+      "category": "camisetas",
+      "price": 55,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "yuna",
+      "description": "Camiseta cuadrada y corta, de algodón pesado que mantiene la forma. Cuello mock y emblema bordado tono sobre tono.",
+      "details": [
+        "Algodón 300 g/m²",
+        "Corte boxy recortado 2026: cuerpo cuadrado y ancho que termina en la cintura, hombro estructurado.",
+        "Cuello mock canalé",
+        "Emblema bordado tono sobre tono"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "prompt": {
+        "garment": "a heavyweight cropped boxy t-shirt in butter yellow cotton, wide square body, short cropped length ending at the waistband, slightly dropped shoulders, sleeves ending just above the elbow, thick ribbed mock-crew collar, small tonal embroidered emblem of three crossed rapier swords on the chest",
+        "back": "the back of the boxy t-shirt, plain with a tiny tonal lowercase word musketeer embroidered under the collar",
+        "detail": "",
+        "pose": "standing, straight-leg cream trousers with a clean break",
+        "seed_job": "ad367f77-4648-46d9-974b-60e9656ab349"
+      },
+      "colors": [
+        {
+          "name": "Butter",
+          "slug": "butter",
+          "hex": "#F2D98A",
+          "variant": null,
+          "images": [
+            "/products/boxy-emblem-tee/butter-1.jpg",
+            "/products/boxy-emblem-tee/butter-2.jpg",
+            "/products/boxy-emblem-tee/butter-3.jpg"
+          ]
+        },
+        {
+          "name": "Sky",
+          "slug": "sky",
+          "hex": "#A9C6E8",
+          "variant": "the same cropped boxy t-shirt in powder sky blue with tonal embroidery",
+          "images": [
+            "/products/boxy-emblem-tee/sky-1.jpg",
+            "/products/boxy-emblem-tee/sky-2.jpg"
+          ]
+        },
+        {
+          "name": "Cherry",
+          "slug": "cherry",
+          "hex": "#B3121B",
+          "variant": "the same cropped boxy t-shirt in cherry red with tonal embroidery",
+          "images": [
+            "/products/boxy-emblem-tee/cherry-1.jpg",
+            "/products/boxy-emblem-tee/cherry-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "riviera-knit-polo",
+      "name": "Riviera Knit Polo",
+      "category": "punto",
+      "price": 120,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "marco",
+      "description": "Polo de punto cuadrado y corto con cuello y ribetes en contraste. Para llevar abierto.",
+      "details": [
+        "Punto de algodón fino texturizado",
+        "Corte boxy recortado 2026: cuerpo cuadrado y ancho que termina en la cintura, hombro estructurado.",
+        "Cuello y ribetes en contraste",
+        "Botones de plata"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "prompt": {
+        "garment": "a boxy cropped knit polo in powder sky blue with a cream contrast collar and cream tipping on the short sleeves, open three-button placket with small silver buttons, wide square body ending at the waist, fine-gauge cotton knit with a subtle textured stitch",
+        "back": "the back of the knit polo, plain textured knit with the cream collar",
+        "detail": "",
+        "pose": "standing, polo open at the neck, chocolate brown pleated wide trousers",
+        "seed_job": "86c737d2-d534-40e4-9a19-e1a849a07de3"
+      },
+      "colors": [
+        {
+          "name": "Sky",
+          "slug": "sky",
+          "hex": "#A9C6E8",
+          "variant": null,
+          "images": [
+            "/products/riviera-knit-polo/sky-1.jpg",
+            "/products/riviera-knit-polo/sky-2.jpg",
+            "/products/riviera-knit-polo/sky-3.jpg"
+          ]
+        },
+        {
+          "name": "Chocolate",
+          "slug": "chocolate",
+          "hex": "#4A2C1F",
+          "variant": "the same knit polo in chocolate brown with a cream collar and tipping",
+          "images": [
+            "/products/riviera-knit-polo/chocolate-1.jpg",
+            "/products/riviera-knit-polo/chocolate-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "garde-rugby-shirt",
+      "name": "Garde Rugby Shirt",
+      "category": "camisas",
+      "price": 115,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kofi",
+      "description": "Rugby corto y cuadrado a rayas anchas burdeos y crema, con cuello blanco de sarga y botones de goma.",
+      "details": [
+        "Jersey de algodón pesado",
+        "Corte boxy recortado 2026: cuerpo cuadrado y ancho que termina en la cintura, hombro estructurado.",
+        "Rayas anchas",
+        "Cuello de sarga blanco",
+        "Escudo bordado"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "prompt": {
+        "garment": "a cropped boxy long-sleeve rugby shirt with wide horizontal burgundy and cream stripes, crisp white woven twill collar, white rubber buttons on a short placket, small embroidered three-rapier crest on the chest, square body ending at the waist",
+        "back": "the back of the rugby shirt with the wide burgundy and cream stripes and the white collar",
+        "detail": "",
+        "pose": "standing, straight-leg mid-blue barrel jeans",
+        "seed_job": null
+      },
+      "colors": [
+        {
+          "name": "Burgundy Stripe",
+          "slug": "burgundy-stripe",
+          "hex": "#6E1423",
+          "variant": null,
+          "images": [
+            "/products/garde-rugby-shirt/burgundy-stripe-1.jpg",
+            "/products/garde-rugby-shirt/burgundy-stripe-2.jpg",
+            "/products/garde-rugby-shirt/burgundy-stripe-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "feint-windbreaker",
+      "name": "Feint Windbreaker",
+      "category": "chaquetas",
+      "price": 160,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "yuna",
+      "description": "Anorak corto de media cremallera en nylon, en bloques rojo cereza y negro. Ligero, con capucha recogible.",
+      "details": [
+        "Nylon ripstop ligero",
+        "Corte boxy recortado 2026: cuerpo cuadrado y ancho que termina en la cintura, hombro estructurado.",
+        "Bloques de color",
+        "Media cremallera y bolsillo canguro",
+        "Capucha recogible en el cuello"
+      ],
+      "composition": "100% nylon",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "prompt": {
+        "garment": "a cropped boxy half-zip anorak windbreaker in colour-blocked cherry red and black ripstop nylon, red body with black shoulders and sleeves, kangaroo pouch pocket with snap, packable hood in the collar, elastic cuffs, short square body ending at the waist",
+        "back": "the back of the anorak showing the red and black colour blocking and a small reflective lowercase word musketeer at the upper back",
+        "detail": "",
+        "pose": "standing, hood down, black straight trousers",
+        "seed_job": null
+      },
+      "colors": [
+        {
+          "name": "Cherry Black",
+          "slug": "cherry-black",
+          "hex": "#B3121B",
+          "variant": null,
+          "images": [
+            "/products/feint-windbreaker/cherry-black-1.jpg",
+            "/products/feint-windbreaker/cherry-black-2.jpg",
+            "/products/feint-windbreaker/cherry-black-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cropped-zip-hoodie",
+      "name": "Cropped Zip Hoodie",
+      "category": "sudaderas",
+      "price": 130,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "nia",
+      "description": "Sudadera con cremallera corta y cuadrada en felpa marrón chocolate, con pespuntes crema en contraste.",
+      "details": [
+        "Felpa de algodón 450 g/m²",
+        "Corte boxy recortado 2026: cuerpo cuadrado y ancho que termina en la cintura, hombro estructurado.",
+        "Pespuntes en contraste",
+        "Cremallera plateada",
+        "Capucha doble"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "prompt": {
+        "garment": "a cropped boxy full-zip hoodie in chocolate brown heavyweight fleece with cream contrast flatlock stitching on all seams, double-layer hood, silver zipper, short square body ending at the waist, wide ribbed hem",
+        "back": "the back of the cropped zip hoodie with cream contrast stitching and the hood laid flat",
+        "detail": "",
+        "pose": "standing, hood down, zip half open, cream straight-leg trousers",
+        "seed_job": null
+      },
+      "colors": [
+        {
+          "name": "Chocolate",
+          "slug": "chocolate",
+          "hex": "#4A2C1F",
+          "variant": null,
+          "images": [
+            "/products/cropped-zip-hoodie/chocolate-1.jpg",
+            "/products/cropped-zip-hoodie/chocolate-2.jpg",
+            "/products/cropped-zip-hoodie/chocolate-3.jpg"
+          ]
+        },
+        {
+          "name": "Sage",
+          "slug": "sage",
+          "hex": "#9CAF88",
+          "variant": "the same cropped zip hoodie in sage green fleece with cream contrast stitching",
+          "images": [
+            "/products/cropped-zip-hoodie/sage-1.jpg",
+            "/products/cropped-zip-hoodie/sage-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "barrel-denim",
+      "name": "Barrel Denim",
+      "category": "pantalones",
+      "price": 150,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "model": "marco",
+      "description": "Vaquero de pierna barril: amplio en la rodilla y recogido en el bajo, con lavado azul medio y caída limpia.",
+      "details": [
+        "Denim 13 oz",
+        "Pierna barril curvada",
+        "Lavado azul medio",
+        "Estoque bordado en bolsillo trasero"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "prompt": {
+        "garment": "curved barrel-leg jeans in mid-blue vintage wash, wide through the knee and tapering slightly to a clean full-length hem, five pockets",
+        "back": "the back of the barrel jeans with a small tonal embroidered rapier on the right back pocket",
+        "detail": "",
+        "pose": "standing, cropped boxy white tee, jeans breaking cleanly on white sneakers",
+        "seed_job": null
+      },
+      "colors": [
+        {
+          "name": "Mid Blue",
+          "slug": "mid-blue",
+          "hex": "#5F7FA6",
+          "variant": null,
+          "images": [
+            "/products/barrel-denim/mid-blue-1.jpg",
+            "/products/barrel-denim/mid-blue-2.jpg",
+            "/products/barrel-denim/mid-blue-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "salle-pleated-trouser",
+      "name": "Salle Pleated Trouser",
+      "category": "pantalones",
+      "price": 160,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "model": "yuna",
+      "description": "Pantalón de pinzas dobles en lana fría crema, pierna ancha y recta. El contrapunto elegante a las piezas boxy.",
+      "details": [
+        "Lana fría",
+        "Pinzas dobles",
+        "Pierna ancha y recta",
+        "Trabillas y cierre con gancho"
+      ],
+      "composition": "70% lana, 30% poliéster",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "prompt": {
+        "garment": "wide straight-leg double-pleated trousers in cream wool, high rise, sharp front crease, belt loops, clean full-length hem",
+        "back": "the back of the pleated trousers with two welt back pockets",
+        "detail": "",
+        "pose": "standing, cropped boxy black knit top, black loafers",
+        "seed_job": null
+      },
+      "colors": [
+        {
+          "name": "Cream",
+          "slug": "cream",
+          "hex": "#EFE6D2",
+          "variant": null,
+          "images": [
+            "/products/salle-pleated-trouser/cream-1.jpg",
+            "/products/salle-pleated-trouser/cream-2.jpg",
+            "/products/salle-pleated-trouser/cream-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "duelist-camp-shirt",
+      "name": "Duelist Camp Shirt",
+      "category": "camisas",
+      "price": 110,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kofi",
+      "description": "Camisa de cuello abierto, corta y cuadrada, en azul cielo con un jacquard tono sobre tono de diagramas de esgrima.",
+      "details": [
+        "Viscosa jacquard",
+        "Corte boxy recortado 2026: cuerpo cuadrado y ancho que termina en la cintura, hombro estructurado.",
+        "Cuello camp",
+        "Jacquard de diagramas de esgrima"
+      ],
+      "composition": "100% viscosa",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "prompt": {
+        "garment": "a cropped boxy short-sleeve camp collar shirt in sky blue with an all-over tonal jacquard pattern of fencing diagrams and small crossed rapiers, mother-of-pearl buttons, square body ending at the waist",
+        "back": "the back of the camp shirt with the tonal fencing diagram jacquard and a back yoke",
+        "detail": "",
+        "pose": "standing, shirt half open over a white tank, cream pleated trousers",
+        "seed_job": null
+      },
+      "colors": [
+        {
+          "name": "Sky",
+          "slug": "sky",
+          "hex": "#A9C6E8",
+          "variant": null,
+          "images": [
+            "/products/duelist-camp-shirt/sky-1.jpg",
+            "/products/duelist-camp-shirt/sky-2.jpg",
+            "/products/duelist-camp-shirt/sky-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tabard-cropped-cardigan",
+      "name": "Tabard Cropped Cardigan",
+      "category": "punto",
+      "price": 170,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "nia",
+      "description": "Cárdigan corto y cuadrado en azul tabardo con la cruz blanca del tabardo mosquetero en intarsia en la espalda.",
+      "details": [
+        "Punto de lana merino",
+        "Corte boxy recortado 2026: cuerpo cuadrado y ancho que termina en la cintura, hombro estructurado.",
+        "Cruz en intarsia en la espalda",
+        "Botones de plata"
+      ],
+      "composition": "100% lana merino",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "prompt": {
+        "garment": "a cropped boxy V-neck cardigan in royal tabard blue merino knit, five silver buttons, ribbed hem ending at the waist, the front plain",
+        "back": "the back of the cardigan with a large white cross with flared fleur-de-lis ends in intarsia, like a musketeer tabard",
+        "detail": "",
+        "pose": "standing, cardigan buttoned, straight-leg light wash jeans",
+        "seed_job": null
+      },
+      "colors": [
+        {
+          "name": "Tabard Blue",
+          "slug": "tabard-blue",
+          "hex": "#2340A0",
+          "variant": null,
+          "images": [
+            "/products/tabard-cropped-cardigan/tabard-blue-1.jpg",
+            "/products/tabard-cropped-cardigan/tabard-blue-2.jpg",
+            "/products/tabard-cropped-cardigan/tabard-blue-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cavalier-suede-overshirt",
+      "name": "Cavalier Suede Overshirt",
+      "category": "chaquetas",
+      "price": 340,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "marco",
+      "description": "Sobrecamisa corta y cuadrada en ante color tabaco, con bolsillos de parche y automáticos de plata.",
+      "details": [
+        "Ante de vacuno",
+        "Corte boxy recortado 2026: cuerpo cuadrado y ancho que termina en la cintura, hombro estructurado.",
+        "Bolsillos de parche",
+        "Automáticos en plata"
+      ],
+      "composition": "100% piel de ante",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "prompt": {
+        "garment": "a cropped boxy overshirt jacket in tan tobacco suede, point collar, two chest patch pockets with flaps, silver snap buttons, square body ending at the waist",
+        "back": "the back of the suede overshirt with a back yoke",
+        "detail": "",
+        "pose": "standing, overshirt open over a white tee, cream pleated trousers",
+        "seed_job": null
+      },
+      "colors": [
+        {
+          "name": "Tan",
+          "slug": "tan",
+          "hex": "#A8754A",
+          "variant": null,
+          "images": [
+            "/products/cavalier-suede-overshirt/tan-1.jpg",
+            "/products/cavalier-suede-overshirt/tan-2.jpg",
+            "/products/cavalier-suede-overshirt/tan-3.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tabard-stripe-socks",
+      "name": "Tabard Stripe Socks",
+      "category": "accesorios",
+      "price": 18,
+      "sizes": [
+        "36-40",
+        "41-46"
+      ],
+      "model": "yuna",
+      "description": "Calcetines de canalé con dos rayas de color en la caña. En crema con azul, burdeos o verde.",
+      "details": [
+        "Algodón peinado",
+        "Canalé",
+        "Rayas de color",
+        "Planta acolchada"
+      ],
+      "composition": "80% algodón, 17% poliamida, 3% elastano",
+      "fit": "Crew",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "accessory",
+      "line": "2026",
+      "prompt": {
+        "garment": "a pair of ribbed crew socks in cream with two royal tabard blue stripes at the top of the shaft, laid flat side by side",
+        "back": "the pair of socks fanned out showing the heel and cushioned sole",
+        "detail": "",
+        "pose": "close-up of legs from the knee down wearing the socks pulled up with white leather sneakers and shorts",
+        "seed_job": null
+      },
+      "colors": [
+        {
+          "name": "Cream Blue",
+          "slug": "cream-blue",
+          "hex": "#2340A0",
+          "variant": null,
+          "images": [
+            "/products/tabard-stripe-socks/cream-blue-1.jpg",
+            "/products/tabard-stripe-socks/cream-blue-2.jpg",
+            "/products/tabard-stripe-socks/cream-blue-3.jpg"
+          ]
+        },
+        {
+          "name": "Cream Burgundy",
+          "slug": "cream-burgundy",
+          "hex": "#6E1423",
+          "variant": "the same pair of cream ribbed socks with two burgundy stripes",
+          "images": [
+            "/products/tabard-stripe-socks/cream-burgundy-1.jpg"
+          ]
+        },
+        {
+          "name": "Cream Green",
+          "slug": "cream-green",
+          "hex": "#1F4D3A",
+          "variant": "the same pair of cream ribbed socks with two forest green stripes",
+          "images": [
+            "/products/tabard-stripe-socks/cream-green-1.jpg"
           ]
         }
       ]
