@@ -1,0 +1,5 @@
+.frame { position: absolute; inset: 0; overflow: hidden; background: #121212; }
+.frame[data-tone="fog"] { background: var(--fog); }
+.frame[data-tone="bone"] { background: var(--bone); }
+.img { object-fit: cover; opacity: 0; transform: scale(1.025); transition: opacity 1s var(--ease), transform 2.4s var(--ease); }
+.loaded { opacity: 1; transform: none; }
