@@ -1,0 +1,24 @@
+{
+  "hero": {
+    "desktop": "/campaign/hero.jpg",
+    "mobile": "/campaign/hero-mobile.jpg",
+    "alt": "Los cuatro mosqueteros de MUSKETEER, hombro con hombro, en un patio de piedra al amanecer"
+  },
+  "banners": [
+    { "id": "chaquetas", "image": "/campaign/banner-chaquetas.jpg", "ratio": "4:5", "title": "Chaquetas", "kicker": "Capas, bombers y lona pesada", "href": "/categoria/chaquetas" },
+    { "id": "joyeria", "image": "/campaign/banner-joyeria.jpg", "ratio": "4:5", "title": "Plata 925", "kicker": "Anillos, cadenas y guanteletes", "href": "/categoria/joyeria" },
+    { "id": "punto", "image": "/campaign/banner-punto.jpg", "ratio": "4:5", "title": "Punto", "kicker": "Cota de malla y mohair", "href": "/categoria/punto" },
+    { "id": "wide", "image": "/campaign/banner-wide.jpg", "ratio": "21:9", "title": "Un pour tous", "kicker": "Catálogo permanente. Sin drops.", "href": "/tienda" }
+  ],
+  "lookbook": [
+    { "image": "/campaign/look-01.jpg", "ratio": "4:5", "caption": "Look 01" },
+    { "image": "/campaign/look-02.jpg", "ratio": "4:5", "caption": "Look 02" },
+    { "image": "/campaign/look-03.jpg", "ratio": "4:5", "caption": "Look 03" },
+    { "image": "/campaign/look-04.jpg", "ratio": "4:5", "caption": "Look 04" },
+    { "image": "/campaign/look-05.jpg", "ratio": "4:5", "caption": "Look 05" },
+    { "image": "/campaign/look-06.jpg", "ratio": "4:5", "caption": "Look 06" },
+    { "image": "/campaign/look-07.jpg", "ratio": "4:5", "caption": "Look 07" },
+    { "image": "/campaign/look-08.jpg", "ratio": "4:5", "caption": "Look 08" }
+  ],
+  "maison": { "image": "/campaign/maison.jpg", "ratio": "3:2", "alt": "Taller de MUSKETEER" }
+}

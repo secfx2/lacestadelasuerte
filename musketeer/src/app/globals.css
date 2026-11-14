@@ -1,0 +1,70 @@
+/* ==========================================================================
+   MUSKETEER — design tokens (source of truth, mirrored in the Brand Book)
+   ========================================================================== */
+:root {
+  /* Core palette */
+  --ink: #0a0a0a;          /* Tinta — text, logo, primary buttons */
+  --paper: #ffffff;        /* Papel — page background */
+  --fog: #f4f4f2;          /* Niebla — soft surfaces, image placeholders */
+  --bone: #ece8e1;         /* Hueso — editorial blocks */
+  --steel: #9a9da1;        /* Acero — silver / secondary text on dark */
+  --tabard: #1f2b4d;       /* Azul Tabardo — the musketeer tunic blue (accent) */
+  --wax: #7a1f1f;          /* Lacre — sealing-wax red (rare accent: sale, alerts) */
+
+  /* Functional */
+  --text: var(--ink);
+  --text-muted: #6b6b6b;
+  --line: rgba(10, 10, 10, 0.12);
+  --line-strong: rgba(10, 10, 10, 0.9);
+
+  /* Type */
+  --font-sans: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --font-serif: var(--font-instrument), "Times New Roman", serif;
+
+  --fs-micro: 10px;    /* labels, legal */
+  --fs-xs: 11px;       /* nav, product meta (uppercase, tracked) */
+  --fs-sm: 13px;       /* body small */
+  --fs-md: 15px;       /* body */
+  --fs-lg: 20px;
+  --fs-xl: clamp(28px, 4vw, 44px);
+  --fs-display: clamp(48px, 9vw, 140px);
+
+  --track-caps: 0.08em;
+  --track-wide: 0.22em;
+
+  /* Layout */
+  --gutter: clamp(12px, 2vw, 24px);
+  --header-h: 56px;
+  --announce-h: 30px;
+  --radius: 0px;           /* the brand is square: no rounded corners */
+  --ease: cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+img, svg, video { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+input, select, textarea { font: inherit; color: inherit; border-radius: 0; }
+::selection { background: var(--ink); color: var(--paper); }
+
+/* Utility type styles */
+.caps { text-transform: uppercase; letter-spacing: var(--track-caps); font-size: var(--fs-xs); }
+.caps-wide { text-transform: uppercase; letter-spacing: var(--track-wide); font-size: var(--fs-micro); }
+.serif { font-family: var(--font-serif); font-weight: 400; }
+.expanded { font-stretch: 125%; }
+.muted { color: var(--text-muted); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+:focus-visible { outline: 1px solid var(--ink); outline-offset: 2px; }

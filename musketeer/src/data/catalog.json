@@ -1,0 +1,1916 @@
+{
+  "categories": [
+    {
+      "slug": "chaquetas",
+      "name": "Chaquetas"
+    },
+    {
+      "slug": "punto",
+      "name": "Punto"
+    },
+    {
+      "slug": "sudaderas",
+      "name": "Sudaderas"
+    },
+    {
+      "slug": "camisetas",
+      "name": "Camisetas"
+    },
+    {
+      "slug": "camisas",
+      "name": "Camisas"
+    },
+    {
+      "slug": "pantalones",
+      "name": "Pantalones"
+    },
+    {
+      "slug": "accesorios",
+      "name": "Accesorios"
+    },
+    {
+      "slug": "joyeria",
+      "name": "Joyería"
+    }
+  ],
+  "models": {
+    "marco": {
+      "job_id": "26d3113f-0dc2-4fe0-83d0-597607ef4b96",
+      "desc": "young Mediterranean man, buzz cut"
+    },
+    "yuna": {
+      "job_id": "82e13614-7bf3-45d2-b71b-540460d7d471",
+      "desc": "young East Asian woman, low bun"
+    },
+    "nia": {
+      "job_id": "85fc5e76-9446-4571-8d1f-2ae8e2f18427",
+      "desc": "young mixed Black-Latina woman, short curls"
+    },
+    "kofi": {
+      "job_id": "9eeb60da-4103-4678-9ccd-5da0cb8b1a84",
+      "desc": "young Black man, short twists"
+    }
+  },
+  "products": [
+    {
+      "slug": "tabard-work-jacket",
+      "name": "Tabard Work Jacket",
+      "category": "chaquetas",
+      "price": 260,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "marco",
+      "description": "Chaqueta de trabajo en lona de algodón pesada, teñida en prenda y lavada a la piedra. Corte boxy recortado a la cadera, hombro caído y el emblema de las tres espadas bordado a cadeneta en la espalda.",
+      "details": [
+        "Lona de algodón 14 oz teñida en prenda",
+        "Corte boxy recortado",
+        "Cuello en pana",
+        "Corchetes metálicos en plata envejecida",
+        "Emblema bordado a cadeneta en la espalda"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "prompt": {
+        "garment": "a boxy cropped heavyweight cotton canvas work jacket, garment-dyed and stone-washed faded black, oversized dropped shoulders, wide boxy body cropped at the hip, black corduroy point collar, four antique silver metal snap buttons, two chest flap pockets, tonal triple stitching",
+        "back": "the back of the jacket with a large silver-grey chain-stitch embroidery of three crossed rapier swords forming a six-pointed star emblem, centered on the back",
+        "detail": "macro close-up of the silver-grey chain-stitch rapier embroidery and an antique silver snap button on the faded black canvas",
+        "pose": "standing with one hand in trouser pocket, jacket open over a plain white tee, baggy black trousers"
+      },
+      "colors": [
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2A2A2A",
+          "variant": null,
+          "images": [
+            "/products/tabard-work-jacket/washed-black-1.jpg",
+            "/products/tabard-work-jacket/washed-black-2.jpg",
+            "/products/tabard-work-jacket/washed-black-3.jpg",
+            "/products/tabard-work-jacket/washed-black-4.jpg"
+          ]
+        },
+        {
+          "name": "Faded Tabard",
+          "slug": "faded-tabard",
+          "hex": "#3B4A6B",
+          "variant": "the same jacket in faded washed tabard blue (dusty indigo navy) canvas with silver snaps",
+          "images": [
+            "/products/tabard-work-jacket/faded-tabard-1.jpg",
+            "/products/tabard-work-jacket/faded-tabard-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cavalier-leather-bomber",
+      "name": "Cavalier Leather Bomber",
+      "category": "chaquetas",
+      "price": 490,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kofi",
+      "description": "Bomber oversize en piel de cordero envejecida a mano. Pátina craquelada, rib grueso en negro y tirador de cremallera con forma de estoque en plata.",
+      "details": [
+        "Piel de cordero con acabado vintage",
+        "Corte oversize boxy",
+        "Rib de punto grueso",
+        "Tirador de cremallera en forma de estoque",
+        "Forro acolchado"
+      ],
+      "composition": "Exterior 100% piel de cordero. Forro 100% poliéster",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Edición limitada",
+      "kind": "garment",
+      "prompt": {
+        "garment": "an oversized boxy bomber jacket in heavily distressed vintage-washed tobacco brown lambskin leather with cracked creased patina, chunky black rib-knit collar, cuffs and hem, slanted welt pockets, a silver zipper with a small rapier-sword-shaped zipper pull",
+        "back": "the back of the leather bomber showing distressed tobacco leather panels and seams with a small debossed three-rapier emblem at the nape",
+        "detail": "macro close-up of the silver rapier-shaped zipper pull on the cracked tobacco brown leather",
+        "pose": "standing straight, jacket zipped halfway, over a white tee, baggy faded black jeans"
+      },
+      "colors": [
+        {
+          "name": "Tobacco",
+          "slug": "tobacco",
+          "hex": "#5C3A21",
+          "variant": null,
+          "images": [
+            "/products/cavalier-leather-bomber/tobacco-1.jpg",
+            "/products/cavalier-leather-bomber/tobacco-2.jpg",
+            "/products/cavalier-leather-bomber/tobacco-3.jpg",
+            "/products/cavalier-leather-bomber/tobacco-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "garrison-puffer",
+      "name": "Garrison Puffer",
+      "category": "chaquetas",
+      "price": 340,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "yuna",
+      "description": "Plumífero boxy recortado en nylon negro mate. El acolchado no va en canales: está pespunteado formando flores de lis repetidas.",
+      "details": [
+        "Nylon mate con relleno técnico",
+        "Acolchado con patrón flor de lis",
+        "Cuello alto tipo embudo",
+        "Cremallera doble en plata",
+        "Emblema reflectante en la espalda"
+      ],
+      "composition": "Exterior 100% nylon. Relleno 100% poliéster reciclado",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "a boxy cropped puffer jacket in matte black nylon, the quilting stitched in a repeating fleur-de-lis shaped pattern instead of horizontal channels, high funnel collar, very puffy oversized volume, two-way silver zipper",
+        "back": "the back of the puffer showing the repeating fleur-de-lis quilting and a small reflective silver three-rapier emblem at the upper back",
+        "detail": "macro close-up of the fleur-de-lis shaped quilting stitches on matte black nylon",
+        "pose": "standing with arms slightly away from body, collar up, baggy black parachute pants"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#111111",
+          "variant": null,
+          "images": [
+            "/products/garrison-puffer/black-1.jpg",
+            "/products/garrison-puffer/black-2.jpg",
+            "/products/garrison-puffer/black-3.jpg",
+            "/products/garrison-puffer/black-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "mantle-cape",
+      "name": "Mantle Cape Coat",
+      "category": "chaquetas",
+      "price": 420,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kofi",
+      "description": "Capa con capucha en melton de lana pesada. Silueta en A sin mangas, aberturas para los brazos y tres alamares de plata con forma de empuñadura.",
+      "details": [
+        "Melton de lana 680 g/m²",
+        "Silueta capa hasta la cadera",
+        "Aberturas laterales para los brazos",
+        "Capucha oversize",
+        "Alamares de metal en forma de empuñadura"
+      ],
+      "composition": "80% lana, 20% poliamida",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Pieza rara",
+      "kind": "garment",
+      "prompt": {
+        "garment": "a short hooded cape coat in heavy charcoal grey melton wool, hip length, wide A-line poncho silhouette with vertical arm slits instead of sleeves, oversized hood, three large antique silver toggle closures shaped like small rapier sword hilts down the front, clean raw-cut edges",
+        "back": "the back of the cape coat laid flat with the oversized hood spread out, plain wide charcoal wool back with a small tonal embroidered three-rapier emblem near the hem",
+        "detail": "macro close-up of one antique silver toggle closure shaped like a swept rapier hilt on charcoal melton wool",
+        "pose": "standing tall, hood down, cape closed, arms emerging through the slits, baggy black trousers"
+      },
+      "colors": [
+        {
+          "name": "Charcoal",
+          "slug": "charcoal",
+          "hex": "#3A3A3C",
+          "variant": null,
+          "images": [
+            "/products/mantle-cape/charcoal-1.jpg",
+            "/products/mantle-cape/charcoal-2.jpg",
+            "/products/mantle-cape/charcoal-3.jpg",
+            "/products/mantle-cape/charcoal-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "duel-denim-jacket",
+      "name": "Duel Denim Jacket",
+      "category": "chaquetas",
+      "price": 220,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "nia",
+      "description": "Trucker de denim rígido de 14 oz en lavado vintage. En la espalda, una lámina de un antiguo manual de esgrima francés, impresa con lejía.",
+      "details": [
+        "Denim rígido 14 oz",
+        "Corte boxy recortado",
+        "Pespunte cobre en contraste",
+        "Botones de plata grabados",
+        "Ilustración de esgrima con lejía en la espalda"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "a boxy cropped oversized trucker jacket in heavyweight rigid 14oz denim with faded vintage mid-blue wash and whiskering, contrast copper stitching, silver shank buttons, two chest flap pockets",
+        "back": "the back of the denim jacket with a large bleached discharge print of an antique French fencing manual illustration: two fencers lunging with rapiers, geometric diagram lines and old French annotations",
+        "detail": "close-up of the bleached fencing manual illustration texture on faded blue denim",
+        "pose": "standing relaxed, jacket open over a white tank top, baggy light-wash jeans"
+      },
+      "colors": [
+        {
+          "name": "Vintage Blue",
+          "slug": "vintage-blue",
+          "hex": "#5D7898",
+          "variant": null,
+          "images": [
+            "/products/duel-denim-jacket/vintage-blue-1.jpg",
+            "/products/duel-denim-jacket/vintage-blue-2.jpg",
+            "/products/duel-denim-jacket/vintage-blue-3.jpg",
+            "/products/duel-denim-jacket/vintage-blue-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "siege-gilet",
+      "name": "Siege Shearling Gilet",
+      "category": "chaquetas",
+      "price": 280,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "marco",
+      "description": "Chaleco boxy de borrego rizado en crudo con vivos de ante negro, bolsillos de parche y automáticos de plata.",
+      "details": [
+        "Borrego sintético rizado",
+        "Vivos en ante negro",
+        "Bolsillos de parche",
+        "Automáticos en plata",
+        "Corte boxy"
+      ],
+      "composition": "Exterior 100% poliéster. Vivos 100% piel de ante",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "a boxy oversized gilet vest in curly ecru sherpa shearling with thick black suede trims and piping, two large black suede patch pockets, silver press-stud closures, wide armholes",
+        "back": "the back of the shearling gilet, plain curly ecru with a small black leather tab at the nape stamped with a silver three-rapier emblem",
+        "detail": "macro close-up of the curly ecru shearling texture meeting the black suede piping and a silver press stud",
+        "pose": "standing with hands relaxed, gilet over a black longsleeve, baggy black trousers"
+      },
+      "colors": [
+        {
+          "name": "Ecru",
+          "slug": "ecru",
+          "hex": "#E8E0CF",
+          "variant": null,
+          "images": [
+            "/products/siege-gilet/ecru-1.jpg",
+            "/products/siege-gilet/ecru-2.jpg",
+            "/products/siege-gilet/ecru-3.jpg",
+            "/products/siege-gilet/ecru-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "chainmail-knit",
+      "name": "Chainmail Knit",
+      "category": "punto",
+      "price": 190,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "nia",
+      "description": "Jersey de punto grueso con un jacquard que imita la cota de malla. Hilo melange gris acero con lúrex plateado.",
+      "details": [
+        "Jacquard efecto cota de malla",
+        "Hilo con lúrex plateado",
+        "Corte boxy, hombro caído",
+        "Rib ancho en bajo y puños"
+      ],
+      "composition": "60% algodón, 30% lana, 10% lúrex",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "prompt": {
+        "garment": "a chunky oversized boxy crewneck sweater knitted in a dense jacquard texture that imitates medieval chainmail rings, steel grey melange yarn with subtle silver lurex sheen, dropped shoulders, wide ribbed hem and cuffs",
+        "back": "the back of the sweater showing the same chainmail ring knit texture throughout",
+        "detail": "macro close-up of the chainmail ring knit texture with sparkling silver lurex threads",
+        "pose": "standing with hands in pockets of baggy black trousers"
+      },
+      "colors": [
+        {
+          "name": "Steel",
+          "slug": "steel",
+          "hex": "#8C8E91",
+          "variant": null,
+          "images": [
+            "/products/chainmail-knit/steel-1.jpg",
+            "/products/chainmail-knit/steel-2.jpg",
+            "/products/chainmail-knit/steel-3.jpg",
+            "/products/chainmail-knit/steel-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "fleur-mohair-cardigan",
+      "name": "Fleur Mohair Cardigan",
+      "category": "punto",
+      "price": 210,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "yuna",
+      "description": "Cárdigan boxy de mohair cepillado con una flor de lis gigante en intarsia. Botones de cúpula en plata pulida.",
+      "details": [
+        "Mohair cepillado efecto peludo",
+        "Flor de lis en intarsia",
+        "Botones de cúpula en plata",
+        "Cuello de pico canalé"
+      ],
+      "composition": "50% mohair, 30% poliamida, 20% lana",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "a boxy oversized brushed mohair cardigan in cream with a fuzzy hairy texture, a large black intarsia fleur-de-lis motif on each front panel, five oversized polished silver dome buttons, ribbed V-neck, dropped shoulders",
+        "back": "the back of the cardigan with one huge black intarsia fleur-de-lis across the back",
+        "detail": "macro close-up of the fuzzy mohair fibers and a polished silver dome button",
+        "pose": "standing with cardigan buttoned, baggy light-wash jeans"
+      },
+      "colors": [
+        {
+          "name": "Cream",
+          "slug": "cream",
+          "hex": "#EDE6D6",
+          "variant": null,
+          "images": [
+            "/products/fleur-mohair-cardigan/cream-1.jpg",
+            "/products/fleur-mohair-cardigan/cream-2.jpg",
+            "/products/fleur-mohair-cardigan/cream-3.jpg",
+            "/products/fleur-mohair-cardigan/cream-4.jpg"
+          ]
+        },
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#151515",
+          "variant": "the same cardigan in black brushed mohair with grey intarsia fleur-de-lis motifs and silver buttons",
+          "images": [
+            "/products/fleur-mohair-cardigan/black-1.jpg",
+            "/products/fleur-mohair-cardigan/black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ruin-knit-polo",
+      "name": "Ruin Knit Polo",
+      "category": "punto",
+      "price": 150,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "marco",
+      "description": "Polo de punto grueso, desgastado a propósito con agujeros, carreras y bordes deshilachados. Boxy y de manga corta.",
+      "details": [
+        "Punto de algodón galga gruesa",
+        "Desgastes y agujeros hechos a mano",
+        "Botones de plata",
+        "Cuello ancho"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "a boxy short-sleeve knit polo shirt in washed ink black heavy gauge cotton, deliberately distressed with holes, ladders and frayed edges, wide collar, open three-button placket with small silver buttons",
+        "back": "the back of the knit polo showing distressed holes and ladders",
+        "detail": "macro close-up of the distressed ladders and frayed holes in the black cotton knit",
+        "pose": "standing relaxed, polo untucked over baggy black parachute pants"
+      },
+      "colors": [
+        {
+          "name": "Ink",
+          "slug": "ink",
+          "hex": "#1A1A1D",
+          "variant": null,
+          "images": [
+            "/products/ruin-knit-polo/ink-1.jpg",
+            "/products/ruin-knit-polo/ink-2.jpg",
+            "/products/ruin-knit-polo/ink-3.jpg",
+            "/products/ruin-knit-polo/ink-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tous-pour-un-hoodie",
+      "name": "Tous Pour Un Hoodie",
+      "category": "sudaderas",
+      "price": 135,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "marco",
+      "description": "Nuestra sudadera insignia. Felpa de 500 g/m², corte boxy recortado, capucha doble y estampado puff craquelado “TOUS POUR UN”.",
+      "details": [
+        "Felpa de algodón 500 g/m²",
+        "Corte boxy recortado",
+        "Capucha de doble capa",
+        "Estampado puff craquelado",
+        "Emblema bordado en la espalda"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Best seller",
+      "kind": "garment",
+      "prompt": {
+        "garment": "a heavyweight 500gsm boxy cropped hoodie in washed faded black cotton fleece, dropped shoulders, double-layer hood, kangaroo pocket, thick ribbed cuffs and hem, cracked off-white puff print reading TOUS POUR UN in sharp gothic-serif lettering across the chest",
+        "back": "the back of the hoodie, plain except a small off-white embroidered emblem of three crossed rapier swords centered below the neckline",
+        "detail": "macro close-up of the cracked off-white puff print letters on washed black fleece",
+        "pose": "standing with hands in the hoodie pocket, baggy black trousers"
+      },
+      "colors": [
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2B2B2B",
+          "variant": null,
+          "images": [
+            "/products/tous-pour-un-hoodie/washed-black-1.jpg",
+            "/products/tous-pour-un-hoodie/washed-black-2.jpg",
+            "/products/tous-pour-un-hoodie/washed-black-3.jpg",
+            "/products/tous-pour-un-hoodie/washed-black-4.jpg"
+          ]
+        },
+        {
+          "name": "Heather Grey",
+          "slug": "heather-grey",
+          "hex": "#A3A3A3",
+          "variant": "the same hoodie in heather grey melange fleece with a black cracked puff print",
+          "images": [
+            "/products/tous-pour-un-hoodie/heather-grey-1.jpg",
+            "/products/tous-pour-un-hoodie/heather-grey-2.jpg"
+          ]
+        },
+        {
+          "name": "Bone",
+          "slug": "bone",
+          "hex": "#E6E0D4",
+          "variant": "the same hoodie in bone off-white fleece with a black cracked puff print",
+          "images": [
+            "/products/tous-pour-un-hoodie/bone-1.jpg",
+            "/products/tous-pour-un-hoodie/bone-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "rapier-zip-hoodie",
+      "name": "Rapier Zip Hoodie",
+      "category": "sudaderas",
+      "price": 160,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "nia",
+      "description": "Sudadera con doble cremallera y un estoque de pedrería que recorre la cremallera de abajo arriba. Detrás, “Musketeer” gótico en strass.",
+      "details": [
+        "Felpa lavada al sol",
+        "Doble cremallera en plata",
+        "Estoque de pedrería aplicado a mano",
+        "Logo gótico en strass en la espalda"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "prompt": {
+        "garment": "a boxy oversized full-zip hoodie in sun-faded charcoal fleece with a double silver zipper, a long rapier sword made of sparkling clear rhinestones running vertically along the left side of the zipper from the hem to the chest",
+        "back": "the back of the zip hoodie with an arched sparkling rhinestone blackletter word Musketeer across the shoulders",
+        "detail": "macro close-up of the rhinestone rapier hilt sparkling on charcoal fleece next to the silver zipper",
+        "pose": "standing with the hood down, zip half open, baggy grey sweatpants"
+      },
+      "colors": [
+        {
+          "name": "Charcoal",
+          "slug": "charcoal",
+          "hex": "#3C3C3E",
+          "variant": null,
+          "images": [
+            "/products/rapier-zip-hoodie/charcoal-1.jpg",
+            "/products/rapier-zip-hoodie/charcoal-2.jpg",
+            "/products/rapier-zip-hoodie/charcoal-3.jpg",
+            "/products/rapier-zip-hoodie/charcoal-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "crest-crewneck",
+      "name": "Crest Crewneck",
+      "category": "sudaderas",
+      "price": 120,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kofi",
+      "description": "Sudadera de cuello redondo en azul marino desteñido por el sol, con un escudo heráldico serigrafiado y craquelado.",
+      "details": [
+        "Felpa de algodón 450 g/m²",
+        "Lavado vintage desteñido",
+        "Serigrafía craquelada",
+        "Corte boxy"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "a boxy heavyweight crewneck sweatshirt in vintage sun-faded navy with a cracked distressed off-white screen print of an ornate heraldic crest: a shield with three crossed rapiers, a plumed helmet on top, laurel branches and a ribbon banner reading UN POUR TOUS",
+        "back": "the back of the crewneck, plain sun-faded navy with faded seams",
+        "detail": "macro close-up of the cracked vintage crest print on faded navy fleece",
+        "pose": "standing straight, baggy light-wash carpenter jeans"
+      },
+      "colors": [
+        {
+          "name": "Faded Navy",
+          "slug": "faded-navy",
+          "hex": "#2A3550",
+          "variant": null,
+          "images": [
+            "/products/crest-crewneck/faded-navy-1.jpg",
+            "/products/crest-crewneck/faded-navy-2.jpg",
+            "/products/crest-crewneck/faded-navy-3.jpg",
+            "/products/crest-crewneck/faded-navy-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "garrison-sweatpants",
+      "name": "Garrison Sweatpants",
+      "category": "pantalones",
+      "price": 110,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "yuna",
+      "description": "Pantalón de chándal baggy de pierna ancha, bajo abierto que cae sobre la zapatilla y emblema bordado en el muslo.",
+      "details": [
+        "Felpa de algodón 500 g/m²",
+        "Pierna ancha baggy",
+        "Bajo abierto sin puño",
+        "Cordón con herretes de plata",
+        "Emblema bordado tono sobre tono"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "baggy wide-leg heavyweight sweatpants in washed black fleece, long open hem without cuffs, elastic waistband with a drawcord ending in silver metal aglets, a small tonal embroidered three-rapier emblem on the left thigh",
+        "back": "the back of the sweatpants with one back patch pocket",
+        "detail": "macro close-up of the silver drawcord aglets and tonal embroidered emblem",
+        "pose": "standing, wearing a fitted white tank top, pants puddling over white sneakers"
+      },
+      "colors": [
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2B2B2B",
+          "variant": null,
+          "images": [
+            "/products/garrison-sweatpants/washed-black-1.jpg",
+            "/products/garrison-sweatpants/washed-black-2.jpg",
+            "/products/garrison-sweatpants/washed-black-3.jpg",
+            "/products/garrison-sweatpants/washed-black-4.jpg"
+          ]
+        },
+        {
+          "name": "Heather Grey",
+          "slug": "heather-grey",
+          "hex": "#A3A3A3",
+          "variant": "the same sweatpants in heather grey melange fleece",
+          "images": [
+            "/products/garrison-sweatpants/heather-grey-1.jpg",
+            "/products/garrison-sweatpants/heather-grey-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "emblem-tee",
+      "name": "Emblem Tee",
+      "category": "camisetas",
+      "price": 60,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kofi",
+      "description": "Camiseta pesada de 280 g/m² con cuello canalé grueso. Emblema bordado en el pecho y estampado grande en la espalda.",
+      "details": [
+        "Algodón 280 g/m²",
+        "Corte boxy recortado",
+        "Emblema bordado en el pecho",
+        "Estampado de espalda"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "a heavyweight 280gsm boxy cropped t-shirt in optic white with a thick ribbed collar, a small black embroidered emblem of three crossed rapier swords on the left chest",
+        "back": "the back of the t-shirt with a large black print of the six-pointed three-rapier emblem and small serif text below reading MUSKETEER - TOUS POUR UN - MMXXVI",
+        "detail": "macro close-up of the black embroidered rapier emblem on white jersey",
+        "pose": "standing, t-shirt tucked loosely, baggy black jeans"
+      },
+      "colors": [
+        {
+          "name": "White",
+          "slug": "white",
+          "hex": "#F5F5F2",
+          "variant": null,
+          "images": [
+            "/products/emblem-tee/white-1.jpg",
+            "/products/emblem-tee/white-2.jpg",
+            "/products/emblem-tee/white-3.jpg",
+            "/products/emblem-tee/white-4.jpg"
+          ]
+        },
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#121212",
+          "variant": "the same t-shirt in black with a white embroidered emblem",
+          "images": [
+            "/products/emblem-tee/black-1.jpg",
+            "/products/emblem-tee/black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "duel-engraving-tee",
+      "name": "Duel Engraving Tee",
+      "category": "camisetas",
+      "price": 65,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "marco",
+      "description": "Camiseta teñida en prenda con un grabado del siglo XVII de dos mosqueteros en duelo, estampado a todo el frente.",
+      "details": [
+        "Algodón 260 g/m² teñido en prenda",
+        "Estampado de grabado en tinta al agua",
+        "Corte boxy"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "a garment-dyed faded black boxy t-shirt with a large full-front off-white print of a 17th-century copperplate engraving showing two musketeers in plumed hats dueling with rapiers, fine cross-hatching detail, slightly cracked vintage print",
+        "back": "the back of the t-shirt, plain faded black with small off-white text EN GARDE printed under the collar",
+        "detail": "macro close-up of the cross-hatched engraving print texture on faded black cotton",
+        "pose": "standing with one hand in pocket of baggy faded black jeans"
+      },
+      "colors": [
+        {
+          "name": "Faded Black",
+          "slug": "faded-black",
+          "hex": "#2E2E2E",
+          "variant": null,
+          "images": [
+            "/products/duel-engraving-tee/faded-black-1.jpg",
+            "/products/duel-engraving-tee/faded-black-2.jpg",
+            "/products/duel-engraving-tee/faded-black-3.jpg",
+            "/products/duel-engraving-tee/faded-black-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "gothic-logo-tee",
+      "name": "Gothic Logo Tee",
+      "category": "camisetas",
+      "price": 60,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "nia",
+      "description": "Camiseta boxy con el logotipo gótico “Musketeer” en estampado puff a lo ancho del pecho.",
+      "details": [
+        "Algodón 260 g/m²",
+        "Estampado puff en relieve",
+        "Corte boxy"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "a boxy heavyweight t-shirt in black with a large off-white puff-print blackletter gothic word Musketeer across the chest",
+        "back": "the back of the t-shirt, plain black",
+        "detail": "macro close-up of the raised puff-print blackletter lettering on black cotton",
+        "pose": "standing, baggy light-wash carpenter jeans"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#121212",
+          "variant": null,
+          "images": [
+            "/products/gothic-logo-tee/black-1.jpg",
+            "/products/gothic-logo-tee/black-2.jpg",
+            "/products/gothic-logo-tee/black-3.jpg",
+            "/products/gothic-logo-tee/black-4.jpg"
+          ]
+        },
+        {
+          "name": "White",
+          "slug": "white",
+          "hex": "#F5F5F2",
+          "variant": "the same t-shirt in white with a black puff-print gothic word Musketeer",
+          "images": [
+            "/products/gothic-logo-tee/white-1.jpg",
+            "/products/gothic-logo-tee/white-2.jpg"
+          ]
+        },
+        {
+          "name": "Tabard Blue",
+          "slug": "tabard-blue",
+          "hex": "#1F2B4D",
+          "variant": "the same t-shirt in deep tabard navy blue with an off-white puff-print gothic word Musketeer",
+          "images": [
+            "/products/gothic-logo-tee/tabard-blue-1.jpg",
+            "/products/gothic-logo-tee/tabard-blue-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "regiment-jersey",
+      "name": "Regiment 01 Jersey",
+      "category": "camisetas",
+      "price": 95,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kofi",
+      "description": "Jersey de fútbol oversize en malla azul tabardo con dorsal 01: uno para todos.",
+      "details": [
+        "Malla técnica transpirable",
+        "Dorsal en tackle twill",
+        "Cuello de pico",
+        "Cruz plateada en las mangas"
+      ],
+      "composition": "100% poliéster",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "an oversized boxy american football mesh jersey in royal tabard blue breathable mesh, white tackle-twill number 01 on the front, white V-neck trim, small silver cross patches on the short sleeves",
+        "back": "the back of the jersey with a white tackle-twill nameplate MUSKETEER above a large white number 01",
+        "detail": "macro close-up of the white tackle-twill 01 numbers on blue mesh",
+        "pose": "standing, jersey over a white longsleeve, baggy black mesh shorts"
+      },
+      "colors": [
+        {
+          "name": "Tabard Blue",
+          "slug": "tabard-blue",
+          "hex": "#23397A",
+          "variant": null,
+          "images": [
+            "/products/regiment-jersey/tabard-blue-1.jpg",
+            "/products/regiment-jersey/tabard-blue-2.jpg",
+            "/products/regiment-jersey/tabard-blue-3.jpg",
+            "/products/regiment-jersey/tabard-blue-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "acid-siege-longsleeve",
+      "name": "Acid Siege Longsleeve",
+      "category": "camisetas",
+      "price": 75,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "yuna",
+      "description": "Manga larga boxy con lavado ácido mineral, textos góticos en las mangas y un sombrero de mosquetero estampado en la espalda.",
+      "details": [
+        "Algodón 240 g/m²",
+        "Lavado ácido mineral",
+        "Estampados en mangas",
+        "Estampado de espalda desgastado"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "a boxy longsleeve t-shirt in mineral acid-washed marbled grey cotton, blackletter gothic text printed vertically down each sleeve reading TOUS POUR UN on one sleeve and UN POUR TOUS on the other, a small black emblem on the chest",
+        "back": "the back of the longsleeve with a large faded distressed black print of a plumed musketeer hat above two crossed rapiers",
+        "detail": "macro close-up of the acid wash marbling and the gothic sleeve print",
+        "pose": "standing, sleeves pushed up, baggy black parachute pants"
+      },
+      "colors": [
+        {
+          "name": "Acid Grey",
+          "slug": "acid-grey",
+          "hex": "#7E7F80",
+          "variant": null,
+          "images": [
+            "/products/acid-siege-longsleeve/acid-grey-1.jpg",
+            "/products/acid-siege-longsleeve/acid-grey-2.jpg",
+            "/products/acid-siege-longsleeve/acid-grey-3.jpg",
+            "/products/acid-siege-longsleeve/acid-grey-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lace-up-poet-shirt",
+      "name": "Lace-Up Poet Shirt",
+      "category": "camisas",
+      "price": 150,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "nia",
+      "description": "Camisa oversize de popelín con cierre de cordón encerado a través de ojales de plata y mangas abullonadas. Un guiño directo al siglo XVII.",
+      "details": [
+        "Popelín de algodón",
+        "Cierre de cordón encerado",
+        "Ojales de plata",
+        "Mangas abullonadas con puño largo",
+        "Cuello mao"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Pieza rara",
+      "kind": "garment",
+      "prompt": {
+        "garment": "an oversized boxy shirt in crisp optic white cotton poplin with a lace-up placket instead of buttons, laced with black waxed cord through silver metal eyelets, voluminous blouson sleeves gathered into long cuffs, band collar, dropped shoulders",
+        "back": "the back of the poet shirt with a central box pleat and voluminous sleeves",
+        "detail": "macro close-up of the black waxed cord lacing through silver eyelets on white poplin",
+        "pose": "standing, shirt untucked and loosely laced, baggy black trousers"
+      },
+      "colors": [
+        {
+          "name": "Optic White",
+          "slug": "optic-white",
+          "hex": "#F7F7F5",
+          "variant": null,
+          "images": [
+            "/products/lace-up-poet-shirt/optic-white-1.jpg",
+            "/products/lace-up-poet-shirt/optic-white-2.jpg",
+            "/products/lace-up-poet-shirt/optic-white-3.jpg",
+            "/products/lace-up-poet-shirt/optic-white-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "musket-check-overshirt",
+      "name": "Musket Check Overshirt",
+      "category": "camisas",
+      "price": 140,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "marco",
+      "description": "Sobrecamisa pesada en cuadro grande negro y gris pizarra. Boxy, cepillada y con automáticos de plata.",
+      "details": [
+        "Mezcla de lana cepillada",
+        "Cuadro grande",
+        "Corte boxy oversize",
+        "Automáticos en plata"
+      ],
+      "composition": "60% lana, 40% poliéster",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "a heavy brushed wool-blend overshirt in a large black and slate grey check, boxy oversized fit, two chest flap pockets, silver snap buttons",
+        "back": "the back of the overshirt with a back yoke and the large black and slate grey check",
+        "detail": "macro close-up of the brushed check texture and a silver snap",
+        "pose": "standing, overshirt open over a black tee, baggy black jeans"
+      },
+      "colors": [
+        {
+          "name": "Black Slate",
+          "slug": "black-slate",
+          "hex": "#4A4D52",
+          "variant": null,
+          "images": [
+            "/products/musket-check-overshirt/black-slate-1.jpg",
+            "/products/musket-check-overshirt/black-slate-2.jpg",
+            "/products/musket-check-overshirt/black-slate-3.jpg",
+            "/products/musket-check-overshirt/black-slate-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "baggy-carpenter-denim",
+      "name": "Baggy Carpenter Denim",
+      "category": "pantalones",
+      "price": 150,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "model": "kofi",
+      "description": "Vaquero carpenter extremadamente baggy, con lavado vintage, bucle de martillo y un estoque bordado en el bolsillo trasero.",
+      "details": [
+        "Denim 13 oz",
+        "Corte baggy de pierna ancha",
+        "Bucle de martillo y bolsillo lateral",
+        "Estoque bordado en bolsillo trasero"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "extremely baggy wide-leg carpenter jeans in light vintage blue wash with whiskering and fading, hammer loop, side utility pocket, long stacked hem",
+        "back": "the back of the jeans with a tonal embroidered rapier sword on the right back pocket",
+        "detail": "macro close-up of the embroidered rapier on the back pocket of light wash denim",
+        "pose": "standing, wearing a white boxy tee tucked in, jeans stacking over sneakers"
+      },
+      "colors": [
+        {
+          "name": "Light Wash",
+          "slug": "light-wash",
+          "hex": "#9DB3C8",
+          "variant": null,
+          "images": [
+            "/products/baggy-carpenter-denim/light-wash-1.jpg",
+            "/products/baggy-carpenter-denim/light-wash-2.jpg",
+            "/products/baggy-carpenter-denim/light-wash-3.jpg",
+            "/products/baggy-carpenter-denim/light-wash-4.jpg"
+          ]
+        },
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2F2F31",
+          "variant": "the same jeans in faded washed black denim",
+          "images": [
+            "/products/baggy-carpenter-denim/washed-black-1.jpg",
+            "/products/baggy-carpenter-denim/washed-black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "parachute-cargo",
+      "name": "Parachute Cargo",
+      "category": "pantalones",
+      "price": 140,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "yuna",
+      "description": "Pantalón paracaídas en nylon arrugado negro con bolsillos de fuelle, automáticos de plata y cordones en el bajo.",
+      "details": [
+        "Nylon crinkle",
+        "Bolsillos cargo de fuelle",
+        "Cordones con tope en el bajo",
+        "Cintura elástica con herrajes de plata"
+      ],
+      "composition": "100% nylon",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "baggy black crinkled nylon parachute cargo pants with large bellows cargo pockets closed by silver snaps, toggle drawcords at the ankles, elastic waistband with silver hardware",
+        "back": "the back of the parachute pants with two flap back pockets",
+        "detail": "macro close-up of the crinkled black nylon texture with a silver snap and toggle",
+        "pose": "standing, wearing a cropped black tank, pants gathered at ankles over sneakers"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#111111",
+          "variant": null,
+          "images": [
+            "/products/parachute-cargo/black-1.jpg",
+            "/products/parachute-cargo/black-2.jpg",
+            "/products/parachute-cargo/black-3.jpg",
+            "/products/parachute-cargo/black-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "double-knee-canvas-pant",
+      "name": "Double Knee Canvas Pant",
+      "category": "pantalones",
+      "price": 145,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "model": "marco",
+      "description": "Pantalón de trabajo baggy en lona de pato color chocolate lavado, con doble rodilla y pespunte en contraste.",
+      "details": [
+        "Lona de pato 12 oz",
+        "Doble rodilla",
+        "Corte baggy recto",
+        "Pespunte en contraste"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "baggy straight-leg work pants in faded washed chocolate brown duck canvas with reinforced double-knee panels, contrast tan stitching, utility pocket and hammer loop",
+        "back": "the back of the canvas pants with two back patch pockets",
+        "detail": "macro close-up of the double-knee panel stitching on washed brown canvas",
+        "pose": "standing, wearing a white boxy tee, pants stacking over white sneakers"
+      },
+      "colors": [
+        {
+          "name": "Chocolate",
+          "slug": "chocolate",
+          "hex": "#4B3426",
+          "variant": null,
+          "images": [
+            "/products/double-knee-canvas-pant/chocolate-1.jpg",
+            "/products/double-knee-canvas-pant/chocolate-2.jpg",
+            "/products/double-knee-canvas-pant/chocolate-3.jpg",
+            "/products/double-knee-canvas-pant/chocolate-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "bastion-jorts",
+      "name": "Bastion Jorts",
+      "category": "pantalones",
+      "price": 110,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "model": "kofi",
+      "description": "Bermudas vaqueras baggy por debajo de la rodilla, negro lavado y bajo deshilachado.",
+      "details": [
+        "Denim 13 oz",
+        "Largo bajo la rodilla",
+        "Bajo deshilachado",
+        "Parche bordado"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "baggy long denim jorts reaching below the knee in faded washed black denim with raw frayed hems and a small woven patch with a three-rapier emblem near the back waistband",
+        "back": "the back of the jorts showing the back pockets and woven emblem patch",
+        "detail": "macro close-up of the raw frayed hem on washed black denim",
+        "pose": "standing, wearing a white boxy tee and white crew socks with sneakers"
+      },
+      "colors": [
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2F2F31",
+          "variant": null,
+          "images": [
+            "/products/bastion-jorts/washed-black-1.jpg",
+            "/products/bastion-jorts/washed-black-2.jpg",
+            "/products/bastion-jorts/washed-black-3.jpg",
+            "/products/bastion-jorts/washed-black-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "regiment-mesh-shorts",
+      "name": "Regiment Mesh Shorts",
+      "category": "pantalones",
+      "price": 70,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "nia",
+      "description": "Pantalón corto de baloncesto en malla, baggy, con banda lateral blanca y dorsal 01.",
+      "details": [
+        "Malla técnica",
+        "Corte baggy",
+        "Banda lateral",
+        "Dorsal 01"
+      ],
+      "composition": "100% poliéster",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "baggy basketball mesh shorts in black with a white side stripe and a white number 01 on the left leg, wide elastic waistband",
+        "back": "the back of the mesh shorts with small white text MUSKETEER on the waistband",
+        "detail": "macro close-up of the black mesh and white 01 number",
+        "pose": "standing, wearing a white boxy tee and white crew socks with sneakers"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#111111",
+          "variant": null,
+          "images": [
+            "/products/regiment-mesh-shorts/black-1.jpg",
+            "/products/regiment-mesh-shorts/black-2.jpg",
+            "/products/regiment-mesh-shorts/black-3.jpg",
+            "/products/regiment-mesh-shorts/black-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "plume-cap",
+      "name": "Plume Cap",
+      "category": "accesorios",
+      "price": 55,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "yuna",
+      "description": "Gorra de seis paneles en algodón lavado, sin estructura, con una pluma bordada en el frontal y hebilla de plata.",
+      "details": [
+        "Algodón lavado",
+        "Seis paneles sin estructura",
+        "Pluma bordada",
+        "Cierre trasero con hebilla de plata"
+      ],
+      "composition": "100% algodón",
+      "fit": "Ajustable",
+      "unisex": true,
+      "badge": null,
+      "kind": "accessory",
+      "prompt": {
+        "garment": "an unstructured six-panel cap in washed black cotton with a curved brim, a white embroidered feather plume on the front panel, an adjustable back strap with a silver buckle",
+        "back": "the cap seen from the back showing the strap with silver buckle and a small embroidered three-rapier emblem",
+        "detail": "macro close-up of the white embroidered feather plume on washed black cotton",
+        "pose": "close-up portrait from the chest up wearing the cap, plain white tee"
+      },
+      "colors": [
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2B2B2B",
+          "variant": null,
+          "images": [
+            "/products/plume-cap/washed-black-1.jpg",
+            "/products/plume-cap/washed-black-2.jpg",
+            "/products/plume-cap/washed-black-3.jpg",
+            "/products/plume-cap/washed-black-4.jpg"
+          ]
+        },
+        {
+          "name": "Stone",
+          "slug": "stone",
+          "hex": "#CFC6B5",
+          "variant": "the same cap in stone beige washed cotton with a black embroidered feather plume",
+          "images": [
+            "/products/plume-cap/stone-1.jpg",
+            "/products/plume-cap/stone-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "emblem-beanie",
+      "name": "Emblem Beanie",
+      "category": "accesorios",
+      "price": 45,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "kofi",
+      "description": "Gorro de punto canalé grueso con vuelta y una placa metálica con el emblema en plata pulida.",
+      "details": [
+        "Punto canalé grueso",
+        "Vuelta doble",
+        "Placa de metal pulido"
+      ],
+      "composition": "100% lana merino",
+      "fit": "Talla única",
+      "unisex": true,
+      "badge": null,
+      "kind": "accessory",
+      "prompt": {
+        "garment": "a chunky rib-knit beanie in black with a folded cuff and a small polished silver metal plate bearing the three-rapier emblem on the cuff",
+        "back": "the beanie seen from the side",
+        "detail": "macro close-up of the polished silver emblem plate on chunky black rib knit",
+        "pose": "close-up portrait from the chest up wearing the beanie, black hoodie"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#111111",
+          "variant": null,
+          "images": [
+            "/products/emblem-beanie/black-1.jpg",
+            "/products/emblem-beanie/black-2.jpg",
+            "/products/emblem-beanie/black-3.jpg",
+            "/products/emblem-beanie/black-4.jpg"
+          ]
+        },
+        {
+          "name": "Grey",
+          "slug": "grey",
+          "hex": "#8E8E8E",
+          "variant": "the same beanie in grey melange rib knit",
+          "images": [
+            "/products/emblem-beanie/grey-1.jpg",
+            "/products/emblem-beanie/grey-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "fleur-jacquard-socks",
+      "name": "Fleur Jacquard Socks",
+      "category": "accesorios",
+      "price": 20,
+      "sizes": [
+        "36-40",
+        "41-46"
+      ],
+      "model": "nia",
+      "description": "Calcetines deportivos de canalé grueso con un jacquard de flores de lis en la caña.",
+      "details": [
+        "Algodón peinado",
+        "Canalé grueso",
+        "Jacquard flor de lis",
+        "Planta acolchada"
+      ],
+      "composition": "80% algodón, 17% poliamida, 3% elastano",
+      "fit": "Crew",
+      "unisex": true,
+      "badge": null,
+      "kind": "accessory",
+      "prompt": {
+        "garment": "a pair of thick ribbed crew sport socks in white with a black jacquard pattern of small fleur-de-lis motifs on the shaft, laid flat side by side",
+        "back": "the pair of socks seen from the sole side showing the cushioned terry sole",
+        "detail": "macro close-up of the black fleur-de-lis jacquard on white rib knit",
+        "pose": "close-up of legs from the knee down wearing the socks pulled up with white leather sneakers and black mesh shorts"
+      },
+      "colors": [
+        {
+          "name": "White",
+          "slug": "white",
+          "hex": "#F5F5F2",
+          "variant": null,
+          "images": [
+            "/products/fleur-jacquard-socks/white-1.jpg",
+            "/products/fleur-jacquard-socks/white-2.jpg",
+            "/products/fleur-jacquard-socks/white-3.jpg",
+            "/products/fleur-jacquard-socks/white-4.jpg"
+          ]
+        },
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#121212",
+          "variant": "the same pair of socks in black with white fleur-de-lis jacquard",
+          "images": [
+            "/products/fleur-jacquard-socks/black-1.jpg",
+            "/products/fleur-jacquard-socks/black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "rapier-socks-3-pack",
+      "name": "Rapier Socks 3-Pack",
+      "category": "accesorios",
+      "price": 45,
+      "sizes": [
+        "36-40",
+        "41-46"
+      ],
+      "model": "marco",
+      "description": "Pack de tres pares de calcetines de canalé con un estoque en jacquard recorriendo la caña. Negro, blanco y gris.",
+      "details": [
+        "Pack de 3 pares",
+        "Algodón peinado",
+        "Jacquard de estoque",
+        "Puño reforzado"
+      ],
+      "composition": "80% algodón, 17% poliamida, 3% elastano",
+      "fit": "Crew",
+      "unisex": true,
+      "badge": null,
+      "kind": "accessory",
+      "prompt": {
+        "garment": "three pairs of ribbed crew socks laid flat side by side in black, white and heather grey, each with a slim rapier sword in contrasting jacquard running vertically down the shaft",
+        "back": "the three pairs of socks fanned out diagonally showing the heels",
+        "detail": "macro close-up of the jacquard rapier on black rib knit",
+        "pose": "close-up of legs from the knee down wearing a black sock with the rapier jacquard and white sneakers, baggy shorts"
+      },
+      "colors": [
+        {
+          "name": "Multi",
+          "slug": "multi",
+          "hex": "#777777",
+          "variant": null,
+          "images": [
+            "/products/rapier-socks-3-pack/multi-1.jpg",
+            "/products/rapier-socks-3-pack/multi-2.jpg",
+            "/products/rapier-socks-3-pack/multi-3.jpg",
+            "/products/rapier-socks-3-pack/multi-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "rapier-buckle-belt",
+      "name": "Rapier Buckle Belt",
+      "category": "accesorios",
+      "price": 120,
+      "sizes": [
+        "80",
+        "90",
+        "100",
+        "110"
+      ],
+      "model": "kofi",
+      "description": "Cinturón grueso de piel curtida vegetal con hebilla maciza en forma de dos estoques cruzados, acabado plata.",
+      "details": [
+        "Piel curtida vegetal 4 mm",
+        "Hebilla de estoques cruzados",
+        "Acabado plata envejecida",
+        "Puntera metálica"
+      ],
+      "composition": "100% piel. Hebilla en latón con baño de plata",
+      "fit": "Ancho 4 cm",
+      "unisex": true,
+      "badge": null,
+      "kind": "accessory",
+      "prompt": {
+        "garment": "a thick black vegetable-tanned leather belt coiled loosely with a solid antique silver buckle shaped like two crossed rapier swords and a silver tip at the end",
+        "back": "the belt laid out straight showing the punched holes and silver tip",
+        "detail": "macro close-up of the crossed rapier silver buckle with engraved detail",
+        "pose": "close-up of the waist area wearing the belt through baggy light-wash jeans with a tucked white tee"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#111111",
+          "variant": null,
+          "images": [
+            "/products/rapier-buckle-belt/black-1.jpg",
+            "/products/rapier-buckle-belt/black-2.jpg",
+            "/products/rapier-buckle-belt/black-3.jpg",
+            "/products/rapier-buckle-belt/black-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "fleur-chain-belt",
+      "name": "Fleur Chain Belt",
+      "category": "accesorios",
+      "price": 140,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "yuna",
+      "description": "Cinturón de cadena barbada plana con colgantes de flor de lis y cierre de mosquetón. Acabado plata.",
+      "details": [
+        "Cadena barbada plana",
+        "Colgantes flor de lis",
+        "Cierre de mosquetón",
+        "Acabado plata de ley"
+      ],
+      "composition": "Latón con baño de plata de ley",
+      "fit": "Ajustable",
+      "unisex": true,
+      "badge": null,
+      "kind": "accessory",
+      "prompt": {
+        "garment": "a silver chain belt with heavy flat curb links and three small dangling fleur-de-lis charms, a lobster clasp, laid in a loose S-curve",
+        "back": "the chain belt laid straight showing the full length and clasp",
+        "detail": "macro close-up of a silver fleur-de-lis charm hanging from the curb links",
+        "pose": "close-up of the hips wearing the chain belt over baggy black jeans with a cropped white tee"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/fleur-chain-belt/silver-1.jpg",
+            "/products/fleur-chain-belt/silver-2.jpg",
+            "/products/fleur-chain-belt/silver-3.jpg",
+            "/products/fleur-chain-belt/silver-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "bandolier-bag",
+      "name": "Bandolier Bag",
+      "category": "accesorios",
+      "price": 180,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "marco",
+      "description": "Bolso bandolera inspirado en las bandoleras de los mosqueteros: piel negra, correa ancha con remaches tipo cartucho y hebilla de plata.",
+      "details": [
+        "Piel de vacuno",
+        "Correa ancha con remaches",
+        "Hebilla de plata",
+        "Bolsillo interior"
+      ],
+      "composition": "100% piel",
+      "fit": "Talla única",
+      "unisex": true,
+      "badge": null,
+      "kind": "accessory",
+      "prompt": {
+        "garment": "a crossbody sling bag inspired by musketeer bandoliers: a long slim black leather pouch with a wide black leather strap decorated with a row of small silver cartridge-style rivets and a silver buckle, laid flat",
+        "back": "the back of the bag showing the strap attachment and a debossed three-rapier emblem",
+        "detail": "macro close-up of the silver cartridge rivets on the black leather strap",
+        "pose": "upper body wearing the bag across the chest over a black hoodie"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#111111",
+          "variant": null,
+          "images": [
+            "/products/bandolier-bag/black-1.jpg",
+            "/products/bandolier-bag/black-2.jpg",
+            "/products/bandolier-bag/black-3.jpg",
+            "/products/bandolier-bag/black-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "emblem-signet-ring",
+      "name": "Emblem Signet Ring",
+      "category": "joyeria",
+      "price": 110,
+      "sizes": [
+        "10",
+        "12",
+        "14",
+        "16",
+        "18",
+        "20"
+      ],
+      "model": "kofi",
+      "description": "Sello macizo de plata de ley 925 con el emblema de las tres espadas grabado en profundidad y oxidado.",
+      "details": [
+        "Plata de ley 925",
+        "Grabado profundo oxidado",
+        "Pulido a mano",
+        "Peso aprox. 18 g"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": null,
+      "kind": "jewellery",
+      "prompt": {
+        "garment": "a chunky polished sterling silver signet ring with a deeply engraved emblem of three crossed rapier swords forming a six-pointed star on the flat face, oxidized dark recesses",
+        "back": "the ring seen from the side showing the thick band profile and hallmark",
+        "detail": "extreme macro of the engraved three-rapier emblem on the signet face",
+        "pose": "close-up of a hand wearing the signet ring on the index finger, relaxed hand against a black sleeve"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/emblem-signet-ring/silver-1.jpg",
+            "/products/emblem-signet-ring/silver-2.jpg",
+            "/products/emblem-signet-ring/silver-3.jpg",
+            "/products/emblem-signet-ring/silver-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "gauntlet-ring",
+      "name": "Gauntlet Ring",
+      "category": "joyeria",
+      "price": 160,
+      "sizes": [
+        "10",
+        "12",
+        "14",
+        "16",
+        "18",
+        "20"
+      ],
+      "model": "nia",
+      "description": "Anillo articulado de plata 925 que cubre todo el dedo, con placas segmentadas como el guantelete de una armadura.",
+      "details": [
+        "Plata de ley 925",
+        "Articulado en 4 segmentos",
+        "Acabado oxidado y pulido",
+        "Peso aprox. 22 g"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": "Pieza rara",
+      "kind": "jewellery",
+      "prompt": {
+        "garment": "an articulated sterling silver armor knuckle ring covering a full finger, made of four segmented curved plates like a knight's gauntlet finger with rivets, oxidized and polished",
+        "back": "the gauntlet ring seen from the side showing the hinged segments",
+        "detail": "extreme macro of the rivets and hinged silver plates",
+        "pose": "close-up of a hand wearing the gauntlet ring on the middle finger, fingers slightly bent"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/gauntlet-ring/silver-1.jpg",
+            "/products/gauntlet-ring/silver-2.jpg",
+            "/products/gauntlet-ring/silver-3.jpg",
+            "/products/gauntlet-ring/silver-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "hilt-pendant",
+      "name": "Hilt Pendant",
+      "category": "joyeria",
+      "price": 140,
+      "sizes": [
+        "45 cm",
+        "55 cm"
+      ],
+      "model": "marco",
+      "description": "Colgante de plata 925 con forma de empuñadura de estoque de lazo y hoja corta, en cadena cordón gruesa.",
+      "details": [
+        "Plata de ley 925",
+        "Empuñadura de lazo detallada",
+        "Cadena cordón de 3 mm",
+        "Cierre de mosquetón"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": null,
+      "kind": "jewellery",
+      "prompt": {
+        "garment": "a sterling silver pendant shaped like an ornate swept rapier hilt with a short blade, hanging on a chunky silver rope chain, laid in a circle",
+        "back": "the pendant flipped showing the back with hallmark and MUSKETEER engraving",
+        "detail": "extreme macro of the swept hilt detail on the pendant",
+        "pose": "close-up of the chest wearing the pendant over a plain white tee"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/hilt-pendant/silver-1.jpg",
+            "/products/hilt-pendant/silver-2.jpg",
+            "/products/hilt-pendant/silver-3.jpg",
+            "/products/hilt-pendant/silver-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "chainmail-bracelet",
+      "name": "Chainmail Bracelet",
+      "category": "joyeria",
+      "price": 130,
+      "sizes": [
+        "S/M",
+        "L/XL"
+      ],
+      "model": "yuna",
+      "description": "Pulsera de malla de plata 925 tejida como una cota de malla, con cierre de palanca en forma de espada.",
+      "details": [
+        "Plata de ley 925",
+        "Malla tejida a mano",
+        "Cierre de palanca en forma de espada"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": null,
+      "kind": "jewellery",
+      "prompt": {
+        "garment": "a woven sterling silver chainmail bracelet of interlocking tiny rings with a toggle clasp shaped like a small sword, laid flat",
+        "back": "the bracelet laid open showing the toggle and ring",
+        "detail": "extreme macro of the interlocking chainmail rings",
+        "pose": "close-up of a wrist and hand wearing the chainmail bracelet against a black sleeve"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/chainmail-bracelet/silver-1.jpg",
+            "/products/chainmail-bracelet/silver-2.jpg",
+            "/products/chainmail-bracelet/silver-3.jpg",
+            "/products/chainmail-bracelet/silver-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "rapier-drop-earring",
+      "name": "Rapier Drop Earring",
+      "category": "joyeria",
+      "price": 70,
+      "sizes": [
+        "Unidad"
+      ],
+      "model": "nia",
+      "description": "Pendiente individual: aro de plata 925 con un estoque en miniatura colgando. Se vende por unidad.",
+      "details": [
+        "Plata de ley 925",
+        "Se vende por unidad",
+        "Estoque en miniatura articulado"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": null,
+      "kind": "jewellery",
+      "prompt": {
+        "garment": "a single small sterling silver hoop earring with a miniature rapier sword charm dangling from it",
+        "back": "the earring seen from the side showing the hinge of the hoop",
+        "detail": "extreme macro of the miniature rapier charm",
+        "pose": "close-up profile of an ear wearing the rapier drop earring"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/rapier-drop-earring/silver-1.jpg",
+            "/products/rapier-drop-earring/silver-2.jpg",
+            "/products/rapier-drop-earring/silver-3.jpg",
+            "/products/rapier-drop-earring/silver-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "fleur-link-chain",
+      "name": "Fleur Link Chain",
+      "category": "joyeria",
+      "price": 190,
+      "sizes": [
+        "50 cm",
+        "60 cm"
+      ],
+      "model": "kofi",
+      "description": "Cadena pesada de plata 925 con eslabones en forma de flor de lis entrelazadas.",
+      "details": [
+        "Plata de ley 925",
+        "Eslabones flor de lis",
+        "Cierre de caja",
+        "Peso aprox. 45 g"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "jewellery",
+      "prompt": {
+        "garment": "a heavy sterling silver chain necklace made of interlocking links shaped like stylized fleur-de-lis, box clasp, laid in a loose oval",
+        "back": "the chain laid straight showing the clasp and link sequence",
+        "detail": "extreme macro of two interlocking fleur-de-lis links",
+        "pose": "close-up of the neck and collarbone wearing the chain over bare skin and an open white shirt"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/fleur-link-chain/silver-1.jpg",
+            "/products/fleur-link-chain/silver-2.jpg",
+            "/products/fleur-link-chain/silver-3.jpg",
+            "/products/fleur-link-chain/silver-4.jpg"
+          ]
+        }
+      ]
+    }
+  ]
+}
