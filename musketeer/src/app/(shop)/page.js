@@ -22,16 +22,16 @@ export const metadata = {
 };
 
 const NEW_IN = [
+  "gambeson-jacket",
+  "corsair-leather-blazer",
+  "fleur-velvet-bomber",
   "doublet-jacket",
-  "fencing-jacket",
-  "mantle-cropped-jacket",
+  "heraldic-quartered-knit",
+  "pantaloon-trouser",
   "ruff-collar-shirt",
-  "pauldron-bomber",
-  "tabard-overvest",
-  "cuirass-puffer-vest",
-  "masque-hoodie",
-  "brotherhood-varsity",
-  "gorget-knit",
+  "escrime-shearling-aviator",
+  "plume-mohair-knit",
+  "tabard-wrap-skirt",
 ];
 
 const BEST_SELLERS = [

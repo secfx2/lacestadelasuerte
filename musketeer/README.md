@@ -7,7 +7,7 @@ Todo el material visual (logotipos, fotografía de producto, campaña y mockups 
 **Web en vivo:** https://musketeer-eight.vercel.app
 
 - **Logo v2:** `musketeer™` (principal), `msktr™` (marca corta), `msk✦tr` (gráfico), estrella de estoques (símbolo) y sello MSKTR.
-- **Catálogo:** 75 piezas. 37 de la **línea 2026** (boxy recortado y color: varsity, chándal, rugby, polo de punto, Mantle Cropped Jacket…) y 38 del catálogo clásico.
+- **Catálogo:** 105 piezas. 67 de la **línea 2026** (boxy recortado y color: varsity, chándal, rugby, polo de punto, Mantle Cropped Jacket…) y 38 del catálogo clásico.
 
 ## Arrancar
 
@@ -34,7 +34,7 @@ Código de descuento de prueba: `TOUSPOURUN` (−10 %).
 ## Estructura
 
 - `BRIEF.md` — concepto, logo, paleta, tipografía y reglas visuales.
-- `src/data/catalog.json` — los 75 productos (los de `"line": "2026"` son la línea nueva) (precios, tallas, colores, imágenes y el brief de generación de cada foto).
+- `src/data/catalog.json` — los 105 productos (los de `"line": "2026"` son la línea nueva) (precios, tallas, colores, imágenes y el brief de generación de cada foto).
 - `src/data/campaign.json` — imágenes de campaña.
 - `public/brand/` — logotipos SVG (wordmark, emblema, monograma, gótico, sello) en negro, blanco y `currentColor`.
 - `brand-source/` — vectores originales de Recraft V4.1.
