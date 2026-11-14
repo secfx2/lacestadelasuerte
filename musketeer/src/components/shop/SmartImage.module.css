@@ -12,7 +12,7 @@
   transition: opacity 0.7s var(--ease);
 }
 .loaded { opacity: 1; }
-.frame[data-blend] { isolation: isolate; background: var(--fog); }
+.frame[data-blend] { isolation: isolate; background: var(--tile); }
 .blend { mix-blend-mode: multiply; }
 
 .placeholder {

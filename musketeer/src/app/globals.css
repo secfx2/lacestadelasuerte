@@ -75,6 +75,8 @@ input, select, textarea { font: inherit; color: inherit; border-radius: 0; }
 :root {
   --fs-body: 13px;          /* UI body copy in the shop */
   --page-pad: clamp(16px, 2.2vw, 32px);
+  --tile: #f2f2f2;          /* product tile grey (photos multiply onto it) */
+  --chip: #f0f0f0;
   --drawer-w: 460px;
   --dur: 0.45s;
   --dur-fast: 0.22s;

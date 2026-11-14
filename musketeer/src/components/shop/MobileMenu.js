@@ -30,7 +30,7 @@ export default function MobileMenu({ open, onClose, onSearch }) {
             <IconClose size={18} />
           </button>
           <Link href="/" className={styles.logo} onClick={onClose} aria-label="MUSKETEER — inicio">
-            <Logo variant="wordmark" title="MUSKETEER" style={{ width: 104 }} />
+            <Logo variant="wordmark" title="MUSKETEER" style={{ height: 18, width: "auto", maxWidth: 160 }} />
           </Link>
           <button type="button" className={styles.icon} onClick={onSearch} aria-label="Buscar">
             <IconSearch />
@@ -57,6 +57,7 @@ export default function MobileMenu({ open, onClose, onSearch }) {
 
           <ul className={styles.secondary}>
             <li><Link href="/lookbook" onClick={onClose}>Lookbook</Link></li>
+            <li><Link href="/favoritos" onClick={onClose}>Favoritos</Link></li>
             <li><Link href="/la-maison" onClick={onClose}>La Maison</Link></li>
             <li><Link href="/cuenta" onClick={onClose}>Cuenta</Link></li>
             <li><Link href="/ayuda" onClick={onClose}>Ayuda</Link></li>
