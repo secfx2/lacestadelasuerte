@@ -800,12 +800,26 @@ export default function BrandBook() {
           </Sheet>
 
           <Sheet chapter={C.aplicaciones} label="Etiquetado" className={s.appRow4}>
+            <div className={s.appIntro}>
+              <h3 className={s.h3}>Etiquetado y bolsa</h3>
+              <p className={s.small}>
+                Lo primero que se toca. El wordmark firma la etiqueta tejida, la colgante y la bolsa; el emblema se
+                reserva para el bordado. Siempre en una sola tinta.
+              </p>
+            </div>
             {MOCKUPS.slice(1, 5).map((m) => (
               <MockFigure key={m.file} m={m} />
             ))}
           </Sheet>
 
           <Sheet chapter={C.aplicaciones} label="Packaging" className={s.appRow3}>
+            <div className={s.appIntro}>
+              <h3 className={s.h3}>Packaging y joyería</h3>
+              <p className={s.small}>
+                Caja rígida negra, papel de seda blanco y el sello como cierre. La joyería viaja en estuche negro y en
+                bolsa de ante Azul Tabardo: el único lugar donde el acento ocupa toda la superficie.
+              </p>
+            </div>
             {MOCKUPS.slice(5, 8).map((m, i) => (
               <MockFigure key={m.file} m={m} ratio={i === 0 ? "45.8 / 27.6" : undefined} className={i === 0 ? s.appWide : ""} />
             ))}
