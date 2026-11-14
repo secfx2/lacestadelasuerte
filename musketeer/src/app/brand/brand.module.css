@@ -187,7 +187,7 @@
 }
 .runhead {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   gap: var(--s3);
   padding-bottom: var(--s2);
   margin-bottom: var(--s4);
@@ -210,6 +210,20 @@
 .sheetBody {
   flex: 1;
   position: relative;
+}
+.cover,
+.concept,
+.logoHero,
+.versionsSheet,
+.misuseSheet,
+.symbolsSheet,
+.colorSheet,
+.propSheet,
+.serifSheet,
+.photoSheet,
+.voiceSheet,
+.closing {
+  grid-template-columns: minmax(0, 1fr);
 }
 .runfoot {
   display: flex;
@@ -323,7 +337,7 @@
 }
 .defList > div {
   display: grid;
-  grid-template-columns: 7.5cqw 1fr;
+  grid-template-columns: 7.5cqw minmax(0, 1fr);
   gap: var(--s2);
   padding: var(--s2) 0;
   border-top: 1px solid var(--ln);
@@ -417,7 +431,7 @@
 }
 .coverTop {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
   font-size: var(--fs-micro);
   letter-spacing: var(--track-wide);
   text-transform: uppercase;
@@ -456,7 +470,7 @@
 /* ---------- 00 · Index ----------------------------------------------------- */
 .indexSheet {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   gap: var(--s5);
 }
 .indexLeft {
@@ -482,7 +496,7 @@
 }
 .indexRow {
   display: grid;
-  grid-template-columns: 4.5cqw 1fr 1fr;
+  grid-template-columns: 4.5cqw minmax(0, 1fr) minmax(0, 1fr);
   align-items: baseline;
   gap: var(--s3);
   padding: 0.95cqw 0;
@@ -512,7 +526,7 @@
 /* ---------- 01 · Manifesto ------------------------------------------------- */
 .manifesto {
   display: grid;
-  grid-template-columns: 5fr 7fr;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   gap: var(--s5);
 }
 .manLeft {
@@ -565,18 +579,26 @@
 /* ---------- 01 · Concept --------------------------------------------------- */
 .concept {
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr auto auto;
   gap: var(--s4);
 }
 .conceptHead {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--s5);
   align-items: end;
 }
+.conceptStatement {
+  align-self: center;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 7.4cqw;
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+}
 .pillars {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--gap);
   align-self: end;
 }
@@ -620,7 +642,7 @@
 }
 .notes3 {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--gap);
 }
 .notes3 > div {
@@ -641,7 +663,7 @@
 
 .twoCol {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--s5);
 }
 .col {
@@ -752,13 +774,13 @@
 }
 .versions {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--gap);
 }
 .versionTile {
   display: grid;
   place-items: center;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 5 / 4;
 }
 .versionBorder {
   box-shadow: inset 0 0 0 1px var(--line);
@@ -769,7 +791,7 @@
 }
 .minBlock {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   gap: var(--s5);
   align-items: end;
   align-self: end;
@@ -813,7 +835,7 @@
 }
 .misuseHead {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--s5);
   align-items: start;
 }
@@ -822,7 +844,7 @@
 }
 .misuseGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--s4) var(--gap);
   align-content: end;
 }
@@ -830,7 +852,7 @@
   position: relative;
   display: grid;
   place-items: center;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 4 / 3;
   background: var(--tile);
   overflow: hidden;
 }
@@ -884,7 +906,7 @@
 }
 .symbolGrid {
   display: grid;
-  grid-template-columns: repeat(var(--n), 1fr);
+  grid-template-columns: repeat(var(--n), minmax(0, 1fr));
   gap: var(--gap);
   align-content: end;
 }
@@ -925,7 +947,7 @@
 
 .matrixSheet {
   display: grid;
-  grid-template-columns: 8fr 4fr;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
   gap: var(--s5);
 }
 .matrix {
@@ -986,7 +1008,7 @@
 }
 .numList li {
   display: grid;
-  grid-template-columns: 2.6cqw 1fr;
+  grid-template-columns: 2.6cqw minmax(0, 1fr);
   gap: var(--s2);
   padding: var(--s3) 0;
   border-top: 1px solid var(--ln);
@@ -1008,7 +1030,7 @@
 }
 .swatches {
   display: grid;
-  grid-template-columns: 1.35fr 1.35fr repeat(5, 1fr);
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1.35fr) repeat(5, minmax(0, 1fr));
   gap: var(--s2);
   align-content: end;
 }
@@ -1017,7 +1039,7 @@
   flex-direction: column;
 }
 .swatchChip {
-  height: 19cqw;
+  height: 23cqw;
   margin-bottom: var(--s2);
 }
 .swatchChipLight {
@@ -1038,7 +1060,7 @@
 }
 .specs > div {
   display: grid;
-  grid-template-columns: 3.1cqw 1fr;
+  grid-template-columns: 3.1cqw minmax(0, 1fr);
   padding: 0.38cqw 0;
   border-top: 1px solid var(--ln);
   font-size: var(--fs-micro);
@@ -1060,7 +1082,7 @@
 }
 .propHead {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--s5);
 }
 .propHead .small {
@@ -1068,7 +1090,7 @@
 }
 .propBar {
   display: flex;
-  height: 8.5cqw;
+  height: 13cqw;
   margin: var(--s2) 0 var(--s3);
   border: 1px solid var(--fg);
 }
@@ -1098,7 +1120,7 @@
 }
 .pairs {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: var(--s2);
 }
 .pair {
@@ -1130,7 +1152,7 @@
 /* ---------- 05 · Typography ------------------------------------------------ */
 .typeSheet {
   display: grid;
-  grid-template-columns: 5fr 7fr;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   gap: var(--s5);
 }
 .typeLeft {
@@ -1165,7 +1187,7 @@
 }
 .rampRow {
   display: grid;
-  grid-template-columns: 7cqw 1fr 7cqw;
+  grid-template-columns: 7cqw minmax(0, 1fr) 7cqw;
   align-items: baseline;
   padding: 0.5cqw 0;
   border-top: 1px solid var(--ln);
@@ -1224,7 +1246,7 @@
 }
 .serifSpec {
   display: grid;
-  grid-template-columns: 4fr 5fr 3fr;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 5fr) minmax(0, 3fr);
   gap: var(--s5);
   padding-top: var(--s3);
   border-top: 1px solid var(--fg);
@@ -1259,12 +1281,12 @@
 
 .scaleSheet {
   display: grid;
-  grid-template-columns: 8fr 4fr;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
   gap: var(--s5);
 }
 .scaleRow {
   display: grid;
-  grid-template-columns: 7cqw 1fr 15cqw;
+  grid-template-columns: 7cqw minmax(0, 1fr) 15cqw;
   align-items: baseline;
   gap: var(--s3);
   padding: var(--s2) 0;
@@ -1345,7 +1367,7 @@
 }
 .seq {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--gap);
   align-content: end;
 }
@@ -1357,7 +1379,7 @@
 
 .castSheet {
   display: grid;
-  grid-template-columns: 8fr 4fr;
+  grid-template-columns: minmax(0, 9fr) minmax(0, 3fr);
   gap: var(--s5);
 }
 .castMain {
@@ -1368,7 +1390,7 @@
 }
 .castHead {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--s4);
 }
 .castHead .small {
@@ -1376,7 +1398,7 @@
 }
 .castGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--s3);
 }
 .donts li {
@@ -1392,7 +1414,7 @@
 }
 .principles {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: var(--gap);
 }
 .principle {
@@ -1412,7 +1434,7 @@
 .yesnoHead,
 .yesnoRow {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--gap);
 }
 .yesnoHead {
@@ -1456,7 +1478,7 @@
 
 .vocabSheet {
   display: grid;
-  grid-template-columns: 5fr 7fr;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
   gap: var(--s5);
 }
 .vocab {
@@ -1465,7 +1487,7 @@
 }
 .vocabCols {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--gap);
 }
 .vocabYes li,
@@ -1504,7 +1526,7 @@
 }
 .microList > div {
   display: grid;
-  grid-template-columns: 13cqw 1fr;
+  grid-template-columns: 13cqw minmax(0, 1fr);
   gap: var(--s3);
   align-items: baseline;
   padding: 1.15cqw 0;
@@ -1533,7 +1555,7 @@
 }
 .appHero {
   display: grid;
-  grid-template-columns: 4fr 8fr;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
   gap: var(--s5);
 }
 .appHeroText {
@@ -1548,7 +1570,7 @@
 .appIntro {
   grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--s5);
 }
 .appIntro .small {
@@ -1557,27 +1579,27 @@
 }
 .appRow4 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   grid-template-rows: 1fr auto;
   gap: var(--s3) var(--gap);
 }
 .appRow4 > .mock {
-  align-self: end;
+  align-self: start;
 }
 .appRow3 {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
   grid-template-rows: 1fr auto;
   gap: var(--s3) var(--gap);
 }
 .appRow3 > .mock {
-  align-self: end;
+  align-self: start;
 }
 
 /* ---------- 09 · Web / UI -------------------------------------------------- */
 .uiSheet {
   display: grid;
-  grid-template-columns: 8fr 4fr;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
   gap: var(--s5);
 }
 .uiLeft {
@@ -1588,7 +1610,7 @@
 }
 .uiBlocks {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--s4) var(--s5);
 }
 .uiBlock {
@@ -1721,7 +1743,7 @@
 
 .gridSheet {
   display: grid;
-  grid-template-columns: 8fr 4fr;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
   gap: var(--s5);
 }
 .browser {
@@ -1752,7 +1774,7 @@
 }
 .hdr {
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   gap: var(--s3);
   padding: 1.1cqw 1.6cqw;
@@ -1784,8 +1806,8 @@
 .pg {
   position: relative;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1cqw;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.2cqw 1cqw;
 }
 .pgRow {
   display: flex;
@@ -1798,7 +1820,7 @@
   position: absolute;
   inset: -0.4cqw 0;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 1cqw;
   pointer-events: none;
 }
@@ -1860,7 +1882,7 @@
 }
 .closeCols {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: var(--gap);
 }
 .closeCols > div {
@@ -1913,7 +1935,7 @@
     aspect-ratio: auto;
   }
   .runhead {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto;
   }
   .runhead > span:first-child {
     display: none;
@@ -1948,7 +1970,7 @@
   .gridSheet,
   .notes3,
   .closeCols {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
   .pillars,
   .versions,
@@ -1959,10 +1981,17 @@
   .principles,
   .appRow4,
   .swatches {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
   .pairs {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .specs > div {
+    grid-template-columns: 44px minmax(0, 1fr);
+    padding: 4px 0;
+  }
+  .conceptStatement {
+    font-size: 48px;
   }
   .rulesAside {
     padding-left: 0;
@@ -1983,7 +2012,7 @@
     columns: 1;
   }
   .indexRow {
-    grid-template-columns: 36px 1fr;
+    grid-template-columns: 36px minmax(0, 1fr);
   }
   .indexName {
     font-size: 18px;
@@ -2055,7 +2084,7 @@
     font-size: 28px;
   }
   .rampRow {
-    grid-template-columns: 70px 1fr 70px;
+    grid-template-columns: 70px minmax(0, 1fr) 70px;
   }
   .rampSample {
     font-size: 22px;
@@ -2075,7 +2104,7 @@
     font-size: 22px;
   }
   .scaleRow {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 6px;
   }
   .tsDisplay {
@@ -2110,14 +2139,14 @@
     font-size: 17px;
   }
   .microList > div {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 4px;
   }
   .microList dd {
     font-size: 18px;
   }
   .defList > div {
-    grid-template-columns: 96px 1fr;
+    grid-template-columns: 96px minmax(0, 1fr);
   }
   .btnPrimary,
   .btnSecondary,

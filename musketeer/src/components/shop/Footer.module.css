@@ -1,4 +1,6 @@
 .footer { margin-top: clamp(64px, 9vw, 140px); border-top: 1px solid var(--line); background: var(--paper); }
+.minimal { margin-top: 0; border-top: 0; }
+.minimal .bottom { margin-top: 0; }
 .top {
   display: grid;
   grid-template-columns: minmax(260px, 1.6fr) repeat(4, minmax(0, 1fr));
@@ -38,7 +40,9 @@
 .region { color: var(--text-muted); }
 
 @media (max-width: 1023px) {
-  .top { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 24px; padding-top: 44px; }
+  .minimal { margin-top: 0; border-top: 0; }
+.minimal .bottom { margin-top: 0; }
+.top { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 24px; padding-top: 44px; }
   .brand { grid-column: 1 / -1; max-width: none; }
 }
 @media (max-width: 640px) {

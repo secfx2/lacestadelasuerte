@@ -105,6 +105,7 @@ export default function ProductCard({ product, sizes = "(min-width: 1024px) 25vw
         <h3 className={styles.name}>
           <Link href={href}>{product.name}</Link>
         </h3>
+        <p className={styles.price}>{formatPrice(product.price)}</p>
         {product.colors.length > 1 && (
           <div className={styles.dots}>
             {product.colors.map((c) => (
@@ -123,7 +124,6 @@ export default function ProductCard({ product, sizes = "(min-width: 1024px) 25vw
             ))}
           </div>
         )}
-        <p className={styles.price}>{formatPrice(product.price)}</p>
       </div>
     </article>
   );

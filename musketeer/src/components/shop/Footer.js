@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Logo from "@/components/brand/Logo";
 import FooterNewsletter from "./FooterNewsletter";
+import RouteGate from "./RouteGate";
 import { CATEGORIES } from "@/lib/shop";
 import styles from "./Footer.module.css";
 
@@ -21,7 +22,33 @@ const MAISON = [
 const SOCIAL = ["Instagram", "TikTok", "Pinterest", "YouTube"];
 const PAYMENTS = ["Visa", "Mastercard", "Amex", "Apple Pay", "PayPal", "Bizum"];
 
+function MinimalFooter() {
+  return (
+    <footer className={`${styles.footer} ${styles.minimal}`}>
+      <div className={styles.bottom}>
+        <p className={styles.copy}>
+          © 2026 MUSKETEER <span className={styles.dot} aria-hidden="true">·</span> <em>Tous pour un</em>
+        </p>
+        <ul className={styles.legal}>
+          <li><Link href="/ayuda#envios" className="mk-link">Envíos</Link></li>
+          <li><Link href="/ayuda#devoluciones" className="mk-link">Devoluciones</Link></li>
+          <li><Link href="/legal" className="mk-link">Aviso legal</Link></li>
+          <li><Link href="/legal#privacidad" className="mk-link">Privacidad</Link></li>
+        </ul>
+      </div>
+    </footer>
+  );
+}
+
 export default function Footer() {
+  return (
+    <RouteGate routes={["/checkout"]} alt={<MinimalFooter />}>
+      <FullFooter />
+    </RouteGate>
+  );
+}
+
+function FullFooter() {
   return (
     <footer className={styles.footer}>
       <div className={styles.top}>

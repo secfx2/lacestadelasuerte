@@ -64,8 +64,9 @@ function castingShots() {
   });
 }
 
-function gridProducts(n = 4) {
-  const pool = PRODUCTS.filter((p) => p.slug !== HERO?.slug);
+function gridProducts(category, n = 4) {
+  const inCat = PRODUCTS.filter((p) => p.category === category && p.slug !== HERO?.slug);
+  const pool = inCat.length >= n ? inCat : PRODUCTS.filter((p) => p.slug !== HERO?.slug);
   const ready = pool.filter((p) => publicFileExists(p.colors?.[0]?.images?.[0]));
   const picks = [...ready, ...pool.filter((p) => !ready.includes(p))].slice(0, n);
   return picks;
@@ -120,10 +121,11 @@ export default function BrandBook() {
   const usageRows = [WORDMARK, ...symbols].filter((x) => USAGE[x.variant]);
   const ar = aspectOf(WORDMARK.variant);
   const k = WORDMARK.clearRatio;
-  const clearH = Math.min(6.5, 34 / (ar + 2 * k)); // cqw — fits half a sheet whatever the logo's proportions
+  const clearH = Math.min(8.5, 40 / (ar + 2 * k)); // cqw — fits half a sheet whatever the logo's proportions
   const constrW = Math.min(44, 17 * ar); // cqw
   const casting = castingShots();
-  const grid = gridProducts(4);
+  const grid = gridProducts(null, 8);
+  const gridTitle = "Catálogo";
 
   return (
     <div className={s.book}>
@@ -214,6 +216,11 @@ export default function BrandBook() {
                 ellos.
               </p>
             </div>
+            <p className={s.conceptStatement}>
+              Catálogo,
+              <br />
+              no drops.
+            </p>
             <div className={s.pillars}>
               {[
                 { k: "Hermandad", v: "Unisex en casi todo. Un casting fijo, una misma familia. La marca es un nosotros." },
@@ -821,7 +828,7 @@ export default function BrandBook() {
               </p>
             </div>
             {MOCKUPS.slice(5, 8).map((m, i) => (
-              <MockFigure key={m.file} m={m} ratio={i === 0 ? "45.8 / 27.6" : undefined} className={i === 0 ? s.appWide : ""} />
+              <MockFigure key={m.file} m={m} ratio={i === 0 ? "8 / 5" : undefined} className={i === 0 ? s.appWide : ""} />
             ))}
           </Sheet>
         </Chapter>
@@ -908,7 +915,7 @@ export default function BrandBook() {
                 <span className={`${s.hdrNav} ${s.hdrRight}`}>Buscar · Cuenta · Cesta (0)</span>
               </div>
               <div className={s.pgWrap}>
-                <h4 className={s.pgTitle}>Sudaderas</h4>
+                <h4 className={s.pgTitle}>{gridTitle}</h4>
                 <div className={s.pg}>
                   {grid.map((p) => (
                     <div key={p.slug} className={s.pgItem}>

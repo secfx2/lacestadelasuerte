@@ -205,7 +205,7 @@ function CatalogView({ category = null, params }) {
 
       {/* Grid */}
       {visible.length > 0 ? (
-        <div className={styles.grid} data-density={density}>
+        <div key={`${density}-${colors.join()}-${sizes.join()}-${sort}-${q}`} className={styles.grid} data-density={density}>
           {visible.map((p, i) => (
             <ProductCard
               key={p.slug}

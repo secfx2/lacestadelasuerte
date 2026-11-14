@@ -4,11 +4,13 @@ import HeroImage from "@/components/shop/HeroImage";
 import SmartImage from "@/components/shop/SmartImage";
 import ProductCard from "@/components/shop/ProductCard";
 import SectionHead from "@/components/shop/SectionHead";
+import ChipGrid from "@/components/shop/ChipGrid";
 import Marquee from "@/components/shop/Marquee";
 import Rail from "@/components/shop/Rail";
 import Newsletter from "@/components/shop/Newsletter";
 import { IconArrow } from "@/components/shop/Icons";
 import { categoryTiles, slimByCategory, slimProducts } from "@/lib/shop-server";
+import { CATEGORIES, sortProducts } from "@/lib/shop";
 import campaign from "@/data/campaign.json";
 import styles from "./home.module.css";
 
@@ -19,7 +21,20 @@ export const metadata = {
   alternates: { canonical: "/" },
 };
 
-const ESSENTIALS = [
+const NEW_IN = [
+  "tabard-work-jacket",
+  "rapier-zip-hoodie",
+  "chainmail-knit",
+  "fleur-link-chain",
+  "regiment-jersey",
+  "parachute-cargo",
+  "fleur-mohair-cardigan",
+  "garrison-puffer",
+  "gauntlet-ring",
+  "bandolier-bag",
+];
+
+const BEST_SELLERS = [
   "tous-pour-un-hoodie",
   "tabard-work-jacket",
   "mantle-cape",
@@ -28,77 +43,66 @@ const ESSENTIALS = [
   "baggy-carpenter-denim",
   "chainmail-knit",
   "cavalier-leather-bomber",
+  "gothic-logo-tee",
+  "plume-cap",
 ];
+
+/** Chip sets for a ChipGrid: "Ver todo" + one per category. */
+function chipSets(allSlugs, sort) {
+  return [
+    { id: "all", label: "Ver todo", slugs: allSlugs, href: sort === "novedades" ? "/tienda?orden=novedades" : "/tienda" },
+    ...CATEGORIES.map((c) => ({
+      id: c.slug,
+      label: c.name,
+      slugs: sortProducts(slimByCategory(c.slug), sort).slice(0, 10).map((p) => p.slug),
+      href: `/categoria/${c.slug}`,
+    })),
+  ];
+}
 
 export default function HomePage() {
   const tiles = categoryTiles();
-  const essentials = slimProducts(ESSENTIALS);
-  const jewellery = slimByCategory("joyeria");
-  const banners = campaign.banners.filter((b) => b.ratio === "4:5");
-  const wide = campaign.banners.find((b) => b.id === "wide");
+  const jewellery = slimProducts(["emblem-signet-ring", "gauntlet-ring", "fleur-link-chain", "hilt-pendant"]);
+  const banner = (id) => campaign.banners.find((b) => b.id === id);
+  const split = [banner("chaquetas"), banner("punto")].filter(Boolean);
+  const silver = banner("joyeria");
+  const wide = banner("wide");
   const looks = campaign.lookbook.slice(0, 4);
 
   return (
     <>
-      {/* 1 — Hero */}
-      <section className={styles.hero} aria-label="Campaña">
+      {/* 1 — Hero (header sits transparent over it) */}
+      <section className={styles.hero} data-hero aria-label="Campaña">
         <HeroImage desktop={campaign.hero.desktop} mobile={campaign.hero.mobile} alt={campaign.hero.alt} />
         <div className={styles.heroShade} aria-hidden="true" />
-        <div className={styles.heroContent}>
-          <p className={styles.heroEyebrow}>Catálogo permanente</p>
-          <h1 className={styles.heroTitle}>Tous pour un</h1>
-          <div className={styles.heroCtas}>
-            <Link href="/tienda" className="mk-btn mk-btn--light">
-              Ver catálogo
-            </Link>
-            <Link href="/lookbook" className={`${styles.heroLink} mk-link mk-link--on`}>
-              Lookbook
-            </Link>
-          </div>
+        <h1 className="sr-only">MUSKETEER — Tous pour un. Ropa unisex y joyería de plata 925.</h1>
+        <div className={styles.heroCta}>
+          <Link href="/tienda" className={styles.heroBtn}>
+            Comprar
+          </Link>
         </div>
-        <p className={styles.heroCorner}>
-          <span>MUSKETEER</span>
-          <span>Ropa unisex · Plata 925</span>
+        <p className={styles.heroCaption}>
+          <span>Catálogo permanente</span>
+          <span className={styles.heroBar} aria-hidden="true">|</span>
+          <em>Tous pour un</em>
         </p>
       </section>
 
-      {/* 2 — Categories */}
-      <section className={`${styles.section} mk-container`} aria-labelledby="h-cats">
-        <SectionHead id="h-cats" title="Categorías" kicker="Todo, siempre disponible" href="/tienda" linkLabel="Ver catálogo" />
-        <ul className={styles.cats}>
-          {tiles.map((c) => (
-            <li key={c.slug}>
-              <Link href={`/categoria/${c.slug}`} className={styles.cat}>
-                <SmartImage src={c.hover || c.image} alt="" sizes="(min-width: 1024px) 12.5vw, 42vw" className={styles.catImg} />
-                <span className={styles.catLabel}>
-                  <span>{c.name}</span>
-                  <sup>{c.count}</sup>
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
+      {/* 2 — Novedades */}
+      <div className={styles.first}>
+        <ChipGrid id="h-new" title="Novedades" sets={chipSets(NEW_IN, "novedades")} />
+      </div>
 
-      {/* 3 — Lo esencial */}
-      <section className={`${styles.section} mk-container`} aria-labelledby="h-ess">
-        <SectionHead id="h-ess" title="Lo esencial" kicker="Las piezas que definen la casa" href="/tienda" />
-        <div className={styles.grid}>
-          {essentials.map((p, i) => (
-            <ProductCard key={p.slug} product={p} priority={i < 4} />
-          ))}
-        </div>
-      </section>
-
-      {/* 4 — Editorial banners */}
-      <section className={`${styles.section} ${styles.banners}`} aria-label="Colecciones">
-        {banners.map((b) => (
-          <Link key={b.id} href={b.href} className={styles.banner}>
-            <SmartImage src={b.image} alt={b.title} sizes="(min-width: 768px) 33vw, 86vw" className={styles.bannerImg} tone="bone" />
-            <span className={styles.bannerText}>
-              <span className={styles.bannerTitle}>{b.title}</span>
-              <span className={styles.bannerKicker}>{b.kicker}</span>
-              <span className={styles.bannerCta}>
+      {/* 3 — Split editorial banner */}
+      <section className={`${styles.section} ${styles.split}`} aria-label="Colecciones">
+        {split.map((b, i) => (
+          <Link key={b.id} href={b.href} className={styles.splitItem}>
+            <SmartImage src={b.image} alt={b.title} sizes="(min-width: 768px) 50vw, 100vw" className={styles.splitImg} tone="bone" />
+            <span className={styles.splitShade} aria-hidden="true" />
+            <span className={styles.splitText}>
+              <span className={styles.splitTitle}>{b.title}</span>
+              <span className={styles.splitKicker}>{b.kicker}</span>
+              <span className={styles.splitCta}>
                 Descubrir <IconArrow size={12} />
               </span>
             </span>
@@ -106,37 +110,59 @@ export default function HomePage() {
         ))}
       </section>
 
-      {/* 5 — Marquee */}
+      {/* 4 — Best sellers */}
+      <div className={styles.section}>
+        <ChipGrid id="h-best" title="Best Sellers" sets={chipSets(BEST_SELLERS, "destacados")} />
+      </div>
+
+      {/* 5 — Category tiles */}
+      <section className={`${styles.section} ${styles.catsSection}`} aria-labelledby="h-cats">
+        <div className="mk-container">
+          <SectionHead id="h-cats" title="Categorías" kicker="Todo, siempre disponible" href="/tienda" linkLabel="Ver catálogo" />
+        </div>
+        <Rail label="Categorías" perView={4} perViewMobile={1.55} gap={0}>
+          {tiles.map((c) => (
+            <Link key={c.slug} href={`/categoria/${c.slug}`} className={styles.cat}>
+              <SmartImage src={c.hover || c.image} alt="" sizes="(min-width: 768px) 25vw, 64vw" className={styles.catImg} blend />
+              <span className={styles.catLabel}>
+                <span>{c.name}</span>
+                <sup>{c.count}</sup>
+              </span>
+            </Link>
+          ))}
+        </Rail>
+      </section>
+
+      {/* 6 — Marquee */}
       <div className={styles.section}>
         <Marquee items={["Tous pour un", "Un pour tous"]} />
       </div>
 
-      {/* 6 — Plata 925 */}
-      <section className={`${styles.section} ${styles.silver} mk-container`} aria-labelledby="h-silver">
-        <div className={styles.silverText}>
-          <p className="mk-eyebrow">Joyería</p>
-          <h2 id="h-silver" className={styles.silverTitle}>
-            Plata 925
-          </h2>
-          <p className={styles.silverLead}>Forjada para durar más que la moda.</p>
-          <p className={styles.silverBody}>
-            Sellos, guanteletes y cadenas en plata de ley maciza, con el emblema de las tres espadas grabado a mano. Sin baños, sin
-            atajos. Cada pieza llega con su certificado sellado.
-          </p>
-          <Link href="/categoria/joyeria" className="mk-btn mk-btn--ghost">
-            Ver joyería
-          </Link>
+      {/* 7 — Plata 925 */}
+      <section className={styles.section} aria-labelledby="h-silver">
+        <div className="mk-container">
+          <SectionHead id="h-silver" title="Plata 925" kicker="Forjada para durar más que la moda" href="/categoria/joyeria" linkLabel="Ver joyería" />
         </div>
-        <div className={styles.silverRail}>
-          <Rail label="Joyería de plata 925" perView={3} perViewMobile={1.7}>
-            {jewellery.map((p) => (
-              <ProductCard key={p.slug} product={p} sizes="(min-width: 1024px) 20vw, 60vw" />
-            ))}
-          </Rail>
+        <div className={styles.silver}>
+          {silver && (
+            <Link href={silver.href} className={styles.silverFeature}>
+              <SmartImage src={silver.image} alt={silver.title} sizes="(min-width: 1024px) 25vw, 100vw" className={styles.silverImg} tone="dark" />
+              <span className={styles.splitShade} aria-hidden="true" />
+              <span className={styles.splitText}>
+                <span className={styles.silverKicker}>Sellos, guanteletes y cadenas en plata de ley maciza. Sin baños, sin atajos.</span>
+                <span className={styles.splitCta}>
+                  Descubrir <IconArrow size={12} />
+                </span>
+              </span>
+            </Link>
+          )}
+          {jewellery.map((p) => (
+            <ProductCard key={p.slug} product={p} sizes="(min-width: 1024px) 25vw, 50vw" className={styles.silverCard} />
+          ))}
         </div>
       </section>
 
-      {/* 7 — Wide banner */}
+      {/* 8 — Wide banner */}
       {wide && (
         <section className={styles.section} aria-label={wide.title}>
           <Link href={wide.href} className={styles.wide}>
@@ -151,7 +177,7 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* 8 — Lookbook teaser */}
+      {/* 9 — Lookbook teaser */}
       <section className={`${styles.section} mk-container`} aria-labelledby="h-look">
         <SectionHead id="h-look" title="Lookbook" kicker="Cuatro mosqueteros, un uniforme" href="/lookbook" linkLabel="Ver lookbook" />
         <div className={styles.looks}>
@@ -164,7 +190,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 9 — Newsletter */}
+      {/* 10 — Newsletter */}
       <section className={`${styles.section} mk-container`} aria-labelledby="h-news">
         <div className={styles.news}>
           <Logo variant="seal" title="Sello Tous pour un" className={styles.newsSeal} />

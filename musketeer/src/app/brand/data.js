@@ -149,7 +149,7 @@ export const PAIRS = [
 
 /* ---------- 05 · Tipografía ------------------------------------------------- */
 export const TYPE_SCALE = [
-  { k: "Display", token: "--fs-display", web: "48–140 px", spec: "Archivo Expanded 500 · 0,95 · −0,02 em", sample: "Tous pour un", cls: "tsDisplay" },
+  { k: "Display", token: "--fs-display", web: "48–140 px", spec: "Archivo Expanded 500 · 0,95 · −0,02 em", sample: "En garde.", cls: "tsDisplay" },
   { k: "XL", token: "--fs-xl", web: "28–44 px", spec: "Archivo Expanded 500 · 1,05 · −0,01 em", sample: "Chaquetas", cls: "tsXl" },
   { k: "LG", token: "--fs-lg", web: "20 px", spec: "Archivo 400 · 1,3", sample: "Felpa de 500 g/m², corte boxy.", cls: "tsLg" },
   { k: "MD", token: "--fs-md", web: "15 px", spec: "Archivo 400 · 1,45 · cuerpo", sample: "Nuestra sudadera insignia, siempre en catálogo.", cls: "tsMd" },
