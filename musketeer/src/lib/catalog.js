@@ -24,6 +24,13 @@ export function primaryImages(product) {
   return { flat: imgs[0], hover: imgs[1] || imgs[0] };
 }
 
+/** Spanish EUR formatting. Whole amounts render without decimals ("260 €"); others with two ("4,95 €"). */
 export function formatPrice(eur) {
-  return new Intl.NumberFormat("es-ES", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(eur);
+  const whole = Math.abs(eur - Math.round(eur)) < 0.005;
+  return new Intl.NumberFormat("es-ES", {
+    style: "currency",
+    currency: "EUR",
+    minimumFractionDigits: whole ? 0 : 2,
+    maximumFractionDigits: whole ? 0 : 2,
+  }).format(whole ? Math.round(eur) : eur);
 }
