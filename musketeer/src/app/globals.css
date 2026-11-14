@@ -164,3 +164,11 @@ html.mk-locked, html.mk-locked body { overflow: hidden; }
     scroll-behavior: auto !important;
   }
 }
+
+.mk-skip {
+  position: fixed; top: 8px; left: 8px; z-index: 100;
+  padding: 10px 14px; background: var(--ink); color: var(--paper);
+  font-size: var(--fs-xs); letter-spacing: var(--track-caps); text-transform: uppercase;
+  transform: translateY(-200%); transition: transform var(--dur-fast) var(--ease);
+}
+.mk-skip:focus { transform: none; }
