@@ -1,0 +1,16 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/brand/page": "app/brand/page.js",
+  "/(shop)/checkout/page": "app/(shop)/checkout/page.js",
+  "/(shop)/cesta/page": "app/(shop)/cesta/page.js",
+  "/(shop)/favoritos/page": "app/(shop)/favoritos/page.js",
+  "/(shop)/categoria/[slug]/page": "app/(shop)/categoria/[slug]/page.js",
+  "/(shop)/ayuda/page": "app/(shop)/ayuda/page.js",
+  "/(shop)/legal/page": "app/(shop)/legal/page.js",
+  "/(shop)/cuenta/page": "app/(shop)/cuenta/page.js",
+  "/(shop)/la-maison/page": "app/(shop)/la-maison/page.js",
+  "/(shop)/tienda/page": "app/(shop)/tienda/page.js",
+  "/(shop)/lookbook/page": "app/(shop)/lookbook/page.js",
+  "/(shop)/producto/[slug]/page": "app/(shop)/producto/[slug]/page.js",
+  "/(shop)/page": "app/(shop)/page.js"
+}

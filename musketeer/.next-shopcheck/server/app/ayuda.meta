@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(shop)/layout,_N_T_/(shop)/ayuda/layout,_N_T_/(shop)/ayuda/page,_N_T_/ayuda"
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/b7d422c3e560ccb54fd2aa431494dee7e0f9b5a87fbd2caad95eb031f1644ccc/$/ayuda",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/(shop)/ayuda/page"
+    },
+    "isFallback": false
+  }
+}

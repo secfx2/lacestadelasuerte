@@ -1,0 +1,15 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "300",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/brand/layout,_N_T_/brand/page,_N_T_/brand"
+  },
+  "routeCache": {
+    "key": "/route-cache/APP_PAGE/31587d4d785be403703db4e6adf8ce717328a649d11523f7d54bb4027f9ce312/$/brand",
+    "owner": {
+      "kind": "APP_PAGE",
+      "sourceRoute": "/brand/page"
+    },
+    "isFallback": false
+  }
+}

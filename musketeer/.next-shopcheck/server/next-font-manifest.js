@@ -1,0 +1,1 @@
+self.__NEXT_FONT_MANIFEST='{"pages":{},"app":{"/home/user/lacestadelasuerte/musketeer/src/app/layout":["static/media/c214ffb7f5362987-s.p.woff2","static/media/9cc5b37ab1350db7-s.p.woff2","static/media/e6099e249fd938cc-s.p.woff2"]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}';

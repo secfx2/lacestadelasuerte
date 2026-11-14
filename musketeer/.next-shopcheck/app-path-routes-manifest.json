@@ -1,0 +1,16 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/brand/page": "/brand",
+  "/(shop)/checkout/page": "/checkout",
+  "/(shop)/cesta/page": "/cesta",
+  "/(shop)/favoritos/page": "/favoritos",
+  "/(shop)/categoria/[slug]/page": "/categoria/[slug]",
+  "/(shop)/ayuda/page": "/ayuda",
+  "/(shop)/legal/page": "/legal",
+  "/(shop)/cuenta/page": "/cuenta",
+  "/(shop)/la-maison/page": "/la-maison",
+  "/(shop)/tienda/page": "/tienda",
+  "/(shop)/lookbook/page": "/lookbook",
+  "/(shop)/producto/[slug]/page": "/producto/[slug]",
+  "/(shop)/page": "/"
+}
