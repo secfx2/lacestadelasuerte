@@ -8,8 +8,8 @@
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_191725_b6dbe417-b2ed-40f5-8a1a-199de19e2369.png"
   },
   "/products/acid-siege-longsleeve/acid-grey-3.jpg": {
-    "job_id": "5cd14a8f-e3ca-4d0a-bf67-34f841501d78",
-    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_191727_5cd14a8f-e3ca-4d0a-bf67-34f841501d78.png"
+    "job_id": "e78552e9-c249-4271-9037-c9a878d70839",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_192114_e78552e9-c249-4271-9037-c9a878d70839.png"
   },
   "/products/acid-siege-longsleeve/acid-grey-4.jpg": {
     "job_id": "1e2ab510-d134-405c-9049-6410f255544f",
@@ -51,6 +51,10 @@
     "job_id": "264bc379-2cdd-4e30-a830-fff15e3fec44",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_191720_264bc379-2cdd-4e30-a830-fff15e3fec44.png"
   },
+  "/products/emblem-tee/black-2.jpg": {
+    "job_id": "6bc061f7-7148-4be1-ba31-0fecf232cc72",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_192113_6bc061f7-7148-4be1-ba31-0fecf232cc72.png"
+  },
   "/products/emblem-tee/white-1.jpg": {
     "job_id": "f3f0716a-c7e4-4f7b-9385-d3e97747ce49",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_191421_f3f0716a-c7e4-4f7b-9385-d3e97747ce49.png"
@@ -70,6 +74,10 @@
   "/products/garrison-sweatpants/heather-grey-1.jpg": {
     "job_id": "db46b76d-a634-4e01-a448-7b43b99927f4",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_191716_db46b76d-a634-4e01-a448-7b43b99927f4.png"
+  },
+  "/products/garrison-sweatpants/heather-grey-2.jpg": {
+    "job_id": "6c53fd1b-dd86-466c-ba71-a0b997f5834d",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_192114_6c53fd1b-dd86-466c-ba71-a0b997f5834d.png"
   },
   "/products/garrison-sweatpants/washed-black-1.jpg": {
     "job_id": "a7d0b15e-2956-440b-9af1-0e5b11a02be2",
@@ -107,9 +115,17 @@
     "job_id": "e64b881e-de43-4726-9f2f-8a9e31f2b285",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_191720_e64b881e-de43-4726-9f2f-8a9e31f2b285.png"
   },
+  "/products/gothic-logo-tee/tabard-blue-2.jpg": {
+    "job_id": "bb4f1aa0-0471-43ab-832d-a61c6a63d1ee",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_192114_bb4f1aa0-0471-43ab-832d-a61c6a63d1ee.png"
+  },
   "/products/gothic-logo-tee/white-1.jpg": {
     "job_id": "6e2f08e2-7b0c-4c74-8bb6-acf14e3ff6dd",
     "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_191720_6e2f08e2-7b0c-4c74-8bb6-acf14e3ff6dd.png"
+  },
+  "/products/gothic-logo-tee/white-2.jpg": {
+    "job_id": "bc55228d-b98f-48e7-af0e-98a580c2ad31",
+    "result_url": "https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261114_192114_bc55228d-b98f-48e7-af0e-98a580c2ad31.png"
   },
   "/products/rapier-zip-hoodie/charcoal-1.jpg": {
     "job_id": "c84837ca-6b06-42e4-abca-287d3f7ad3e1",
