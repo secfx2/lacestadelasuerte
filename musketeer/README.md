@@ -1,6 +1,6 @@
 # MUSKETEER — *Tous pour un*
 
-Tienda online de una marca de ropa unisex de lujo callejero: cortes boxy y baggy, punto, chaquetas, accesorios y joyería de plata 925. Catálogo permanente, sin drops.
+Tienda online de una marca de ropa unisex de lujo callejero: cortes boxy, color, punto, chaquetas, accesorios y joyería de plata 925. Catálogo permanente, sin drops.
 
 Todo el material visual (logotipos, fotografía de producto, campaña y mockups del brand book) se generó con **Higgsfield**.
 
