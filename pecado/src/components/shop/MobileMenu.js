@@ -60,10 +60,10 @@ export default function MobileMenu({ open, onClose, onSearch }) {
 
           <p className={`${styles.heading} ${styles.collectionsHeading}`}>{brand.nav.collections}</p>
           <ul className={styles.collections}>
-            {campaign.banners.map((b) => (
+            {campaign.banners.filter((b) => b.image).map((b) => (
               <li key={b.id}>
                 <Link href={b.href} onClick={onClose} className={styles.collection}>
-                  <SmartImage src={b.image} alt="" sizes="40vw" className={styles.collectionImg} tone="bone" />
+                  <SmartImage src={b.image} alt="" sizes="40vw" className={styles.collectionImg} tone="dark" blend />
                   <span>{b.title}</span>
                 </Link>
               </li>

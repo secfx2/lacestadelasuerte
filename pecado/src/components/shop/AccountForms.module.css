@@ -7,8 +7,8 @@
 .form { display: grid; gap: 16px; padding: 28px; }
 .field { min-width: 0; }
 .forgot { justify-self: start; font-size: 11px; letter-spacing: var(--track-caps); text-transform: uppercase; }
-.notice { padding: 28px; font-size: var(--fs-body); line-height: 1.6; color: #3a3a3a; }
-.noticeTitle { margin: 0 0 8px; font-size: 18px; font-stretch: 125%; font-weight: 600; text-transform: uppercase; color: var(--ink); line-height: 1.1; }
+.notice { padding: 28px; font-size: var(--fs-body); line-height: 1.6; color: var(--text-soft); }
+.noticeTitle { margin: 0 0 8px; font-size: 26px; font-family: var(--font-display); font-weight: 700; letter-spacing: 0; color: var(--ink); line-height: 1.05; }
 .noticeActions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }
 .aside { padding-top: 8px; }
 .asideTitle { margin: 0 0 16px; font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }

@@ -2,26 +2,32 @@
    Design tokens. The palette values below are DEFAULTS: the real values come
    from src/config/brand.js (brand.palette) and are injected on <html> by
    src/app/layout.js. Edit the palette there, not here.
+   PECADO is a DARK site: the template's tokens are inverted — --paper is the
+   near-black page background (Asfalto) and --ink the bone text (Hueso).
    ========================================================================== */
 :root {
   /* Core palette */
-  --ink: #0a0a0a;          /* Tinta — text, logo, primary buttons */
-  --paper: #ffffff;        /* Papel — page background */
-  --fog: #f4f4f2;          /* Niebla — soft surfaces, image placeholders */
-  --bone: #ece8e1;         /* Hueso — editorial blocks */
-  --steel: #9a9da1;        /* Acero — silver / secondary text on dark */
-  --accent: #33415c;       /* Acento — brand accent (a detail, never a full background) */
-  --alert: #8e2a2a;        /* Alerta — rare accent: sale, alerts, form errors */
+  --ink: #e9e2d3;          /* Hueso — text, logo, primary buttons */
+  --paper: #0b0b0c;        /* Asfalto — page background */
+  --fog: #18171a;          /* Hollín — soft surfaces, image placeholders */
+  --bone: #2b2a2d;         /* Negro lavado — editorial blocks */
+  --steel: #bfc2c6;        /* Plata — metal / jewellery */
+  --ash: #8c8a88;          /* Ceniza — secondary text */
+  --accent: #4a1015;       /* Burdeos — brand accent (a detail, never a full background) */
+  --alert: #e0574d;        /* Herida — form errors only */
 
   /* Functional */
   --text: var(--ink);
-  --text-muted: #6b6b6b;
-  --line: rgba(10, 10, 10, 0.12);
-  --line-strong: rgba(10, 10, 10, 0.9);
+  --text-muted: var(--ash);
+  --text-soft: #c9c2b4;    /* long-form body copy on the dark page */
+  --line: rgba(233, 226, 211, 0.14);
+  --line-strong: rgba(233, 226, 211, 0.9);
+  --on-tile: #0b0b0c;      /* icons / labels drawn on the light product tile */
 
   /* Type */
-  --font-sans: var(--font-brand-sans), "Helvetica Neue", Arial, sans-serif;   /* src/config/fonts.js */
-  --font-serif: var(--font-brand-serif), "Times New Roman", serif;
+  --font-sans: var(--font-brand-sans), "Helvetica Neue", Arial, sans-serif;   /* src/config/fonts.js: Archivo */
+  --font-display: var(--font-brand-display), "Times New Roman", serif;          /* Grenze Gotisch: headlines */
+  --font-serif: var(--font-brand-serif), var(--font-brand-display), serif;      /* UnifrakturMaguntia: lemas */
 
   --fs-micro: 10px;    /* labels, legal */
   --fs-xs: 11px;       /* nav, product meta (uppercase, tracked) */
@@ -43,7 +49,12 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html {
+  -webkit-text-size-adjust: 100%;
+  color-scheme: dark;
+  /* Blackletter faces have no italic or bold cuts: never fake them */
+  font-synthesis: none;
+}
 html, body { margin: 0; padding: 0; }
 body {
   background: var(--paper);
@@ -59,12 +70,13 @@ img, svg, video { display: block; max-width: 100%; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
 input, select, textarea { font: inherit; color: inherit; border-radius: 0; }
-::selection { background: var(--ink); color: var(--paper); }
+::selection { background: var(--accent); color: var(--ink); }
 
 /* Utility type styles */
 .caps { text-transform: uppercase; letter-spacing: var(--track-caps); font-size: var(--fs-xs); }
 .caps-wide { text-transform: uppercase; letter-spacing: var(--track-wide); font-size: var(--fs-micro); }
 .serif { font-family: var(--font-serif); font-weight: 400; }
+.display { font-family: var(--font-display); font-weight: 700; }
 .expanded { font-stretch: 125%; }
 .muted { color: var(--text-muted); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
@@ -77,8 +89,9 @@ input, select, textarea { font: inherit; color: inherit; border-radius: 0; }
 :root {
   --fs-body: 13px;          /* UI body copy in the shop */
   --page-pad: clamp(16px, 2.2vw, 32px);
-  --tile: #f2f2f2;          /* product tile grey (photos multiply onto it) */
-  --chip: #f0f0f0;
+  --tile: #e2e0db;          /* light product tile: flat lays (shot 1, on white) multiply onto it */
+  --chip: #1d1c1f;          /* pill / chip surface on the dark page */
+  --chip-hover: #2b2a2d;
   --drawer-w: 460px;
   --dur: 0.45s;
   --dur-fast: 0.22s;
@@ -100,7 +113,7 @@ input, select, textarea { font: inherit; color: inherit; border-radius: 0; }
   transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), opacity var(--dur-fast);
   white-space: nowrap;
 }
-.mk-btn:hover { background: #262626; border-color: #262626; }
+.mk-btn:hover { background: #fffaf0; border-color: #fffaf0; }
 .mk-btn:disabled, .mk-btn[aria-disabled="true"] { opacity: 0.35; cursor: not-allowed; }
 .mk-btn--block { width: 100%; }
 .mk-btn--ghost { background: transparent; color: var(--ink); }
@@ -129,13 +142,14 @@ input, select, textarea { font: inherit; color: inherit; border-radius: 0; }
   transition: border-color var(--dur-fast);
   appearance: none; -webkit-appearance: none;
 }
-.mk-input::placeholder { color: #8a8a8a; }
-.mk-input:hover, .mk-select:hover { border-color: rgba(10,10,10,0.35); }
+.mk-input::placeholder { color: #75736f; }
+.mk-input:hover, .mk-select:hover { border-color: rgba(233, 226, 211, 0.35); }
+.mk-input:-webkit-autofill { -webkit-text-fill-color: var(--ink); box-shadow: 0 0 0 100px var(--fog) inset; caret-color: var(--ink); }
 .mk-input:focus, .mk-select:focus { border-color: var(--ink); }
 .mk-input[aria-invalid="true"], .mk-select[aria-invalid="true"] { border-color: var(--alert); }
 .mk-select {
   padding-right: 36px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%230a0a0a' stroke-width='1.2'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23e9e2d3' stroke-width='1.2'/%3E%3C/svg%3E");
   background-repeat: no-repeat; background-position: right 14px center;
 }
 .mk-label { display: block; margin-bottom: 8px; font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }
@@ -152,8 +166,8 @@ input, select, textarea { font: inherit; color: inherit; border-radius: 0; }
 
 /* Headings */
 .mk-display {
-  font-stretch: 125%; font-weight: 600; text-transform: uppercase;
-  letter-spacing: -0.01em; line-height: 0.92;
+  font-family: var(--font-display); font-weight: 700;
+  letter-spacing: 0; line-height: 0.95;
 }
 .mk-eyebrow { font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }
 

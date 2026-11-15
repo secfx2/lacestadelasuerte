@@ -37,7 +37,7 @@
   align-items: flex-start;
   gap: 6px;
   padding: 3px 0;
-  font-size: clamp(28px, 8.4vw, 40px);
+  font-size: clamp(24px, 7vw, 36px);
   font-stretch: 125%;
   font-weight: 600;
   text-transform: uppercase;
@@ -87,4 +87,4 @@
   text-transform: uppercase;
   color: var(--text-muted);
 }
-.motto { font-family: var(--font-serif); font-style: italic; font-size: 16px; letter-spacing: 0; text-transform: none; color: var(--ink); }
+.motto { font-family: var(--font-serif); font-size: 21px; letter-spacing: 0; text-transform: none; color: var(--ink); }

@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import brand from "@/config/brand";
 import { products, categories } from "@/lib/catalog";
+import { BEST_SELLER_BADGES } from "@/lib/shop";
 
 /* Server-side catalog helpers. Everything that touches the full catalog JSON lives here. */
 
@@ -81,11 +82,11 @@ export function newInSlugs() {
   return list.map((p) => p.slug);
 }
 
-/** "Best sellers": brand.home.bestSellers.slugs, else `featured: true`, badge "Best seller", then catalog order. */
+/** "Best sellers": brand.home.bestSellers.slugs, else `featured: true`, badge "Best seller" / "Top", then catalog order. */
 export function bestSellerSlugs() {
   const { slugs = [], limit = 10 } = brand.home.bestSellers || {};
   if (slugs.length) return slugs;
-  const all = ordered(ordered(slimCatalog(), (p) => p.badge === "Best seller"), (p) => p.featured);
+  const all = ordered(ordered(slimCatalog(), (p) => BEST_SELLER_BADGES.includes(p.badge)), (p) => p.featured);
   return all.slice(0, limit).map((p) => p.slug);
 }
 

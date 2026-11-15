@@ -9,7 +9,7 @@
 }
 .header[data-transparent] {
   background: transparent;
-  color: var(--paper);
+  color: var(--ink);
   border-bottom-color: transparent;
 }
 .inner {
@@ -67,7 +67,7 @@
   position: fixed;
   inset: 0;
   z-index: calc(var(--z-header) - 1);
-  background: rgba(10, 10, 10, 0.18);
+  background: rgba(0, 0, 0, 0.5);
   opacity: 0;
   visibility: hidden;
   transition: opacity var(--dur) var(--ease), visibility 0s linear var(--dur);

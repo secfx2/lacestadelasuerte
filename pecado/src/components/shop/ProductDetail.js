@@ -112,6 +112,7 @@ export default function ProductDetail({ product }) {
                 sizes="(min-width: 1024px) 31vw, 100vw"
                 priority={i < 2}
                 className={styles.shotImg}
+                fallback={null}
                 blend
               />
               <span className={styles.zoomIcon} aria-hidden="true">
@@ -126,7 +127,7 @@ export default function ProductDetail({ product }) {
           <div ref={carouselRef} className={styles.carousel} onScroll={onCarouselScroll} aria-label="Imágenes del producto" role="region" tabIndex={0}>
             {images.map((src, i) => (
               <button key={src} type="button" className={styles.slide} onClick={() => setLightbox(i)} aria-label={`Ampliar imagen ${i + 1}`}>
-                <SmartImage src={src} alt={`${product.name}, ${color.name} — ${VIEW_LABELS[i] || ""}`} sizes="100vw" priority={i === 0} className={styles.shotImg} blend />
+                <SmartImage src={src} alt={`${product.name}, ${color.name} — ${VIEW_LABELS[i] || ""}`} sizes="100vw" priority={i === 0} className={styles.shotImg} fallback={null} blend />
               </button>
             ))}
           </div>
@@ -152,7 +153,7 @@ export default function ProductDetail({ product }) {
               <span aria-hidden="true">/</span>
               <Link href={`/categoria/${product.category}`} className="mk-link">{categoryName(product.category)}</Link>
             </nav>
-            {product.badge && <p className={styles.badge}>{product.badge}</p>}
+            {product.badge && <p className={styles.badge} data-badge={product.badge}>{product.badge}</p>}
             <h1 className={styles.name}>{product.name}</h1>
             <p className={styles.price}>{formatPrice(product.price)}</p>
             <p className={styles.tax}>IVA incluido{product.unisex ? " · Unisex" : ""}</p>

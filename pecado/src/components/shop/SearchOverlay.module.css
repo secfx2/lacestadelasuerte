@@ -2,7 +2,7 @@
 .backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(10, 10, 10, 0.25);
+  background: rgba(0, 0, 0, 0.62);
   opacity: 0;
   transition: opacity var(--dur) var(--ease);
 }
@@ -44,7 +44,7 @@
   text-transform: uppercase;
   letter-spacing: -0.01em;
 }
-.input::placeholder { color: #c4c4c0; }
+.input::placeholder { color: #6f6d69; }
 .input::-webkit-search-cancel-button { display: none; }
 .clear { font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }
 .clear:hover { color: var(--ink); }

@@ -20,7 +20,7 @@
 .panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--dur) var(--ease); }
 .item[data-open] .panel { grid-template-rows: 1fr; }
 .inner { overflow: hidden; }
-.content { padding: 0 0 20px; font-size: var(--fs-body); line-height: 1.65; color: #2b2b2b; }
+.content { padding: 0 0 20px; font-size: var(--fs-body); line-height: 1.65; color: var(--text-soft); }
 .content p { margin: 0 0 10px; }
 .content p:last-child { margin-bottom: 0; }
 .content ul { margin: 0; padding-left: 16px; }

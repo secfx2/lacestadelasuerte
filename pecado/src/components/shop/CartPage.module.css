@@ -23,12 +23,12 @@
 .perks { margin: 18px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 11px; color: var(--text-muted); }
 
 .empty { padding: 24px var(--page-pad) 40px; max-width: 720px; }
-.emptyTitle { margin: 0; font-size: clamp(24px, 3vw, 36px); font-stretch: 125%; font-weight: 600; text-transform: uppercase; letter-spacing: -0.01em; }
+.emptyTitle { margin: 0; font-size: clamp(32px, 3.6vw, 48px); font-family: var(--font-display); font-weight: 700; letter-spacing: 0; }
 .emptyText { margin: 10px 0 28px; color: var(--text-muted); font-size: var(--fs-body); }
 .emptyText em { font-family: var(--font-serif); font-size: 18px; color: var(--ink); }
 .emptyCats { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 28px; }
 .emptyChip { height: 30px; display: inline-flex; align-items: center; padding: 0 14px; background: var(--chip); font-size: var(--fs-xs); letter-spacing: var(--track-caps); text-transform: uppercase; transition: background-color var(--dur-fast); }
-.emptyChip:hover { background: #e2e2e0; }
+.emptyChip:hover { background: var(--chip-hover); }
 
 @media (max-width: 1023px) {
   .layout { grid-template-columns: 1fr; }

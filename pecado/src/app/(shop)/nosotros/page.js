@@ -3,11 +3,13 @@ import Logo from "@/components/brand/Logo";
 import PageIntro from "@/components/shop/PageIntro";
 import SmartImage from "@/components/shop/SmartImage";
 import { IconArrow } from "@/components/shop/Icons";
+import { getSlimProduct } from "@/lib/shop-server";
+import { productHref } from "@/lib/shop";
 import brand from "@/config/brand";
 import campaign from "@/data/campaign.json";
 import styles from "./about.module.css";
 
-/* Manifesto / about page (MUSKETEER: /la-maison). Copy: brand.about in src/config/brand.js. */
+/* Manifesto / about page. Copy: brand.about in src/config/brand.js; crew strip: campaign.json → maison.crew. */
 const A = brand.about;
 
 export const metadata = {
@@ -17,13 +19,47 @@ export const metadata = {
 };
 
 export default function AboutPage() {
+  // No campaign photography: the crew strip uses each model's on-model product shot (image 2, concrete wall).
+  const crew = (campaign.maison?.crew || [])
+    .map((m) => ({ ...m, product: getSlimProduct(m.slug) }))
+    .filter((m) => m.product);
   return (
     <>
       <PageIntro crumbs={[{ label: "Inicio", href: "/" }, { label: A.title }]} title={A.title} aside={A.aside} />
 
-      <div className={styles.hero}>
-        <SmartImage src={campaign.maison?.image} alt={campaign.maison?.alt || ""} sizes="100vw" className={styles.heroImg} tone="bone" priority />
-      </div>
+      {crew.length > 0 ? (
+        <section className={styles.crew} aria-label={A.crewTitle || campaign.maison?.alt}>
+          <div className={styles.crewHead}>
+            <span>{A.crewTitle}</span>
+            <span>{A.crewText}</span>
+          </div>
+          <ol className={styles.crewGrid}>
+            {crew.map((m, i) => (
+              <li key={m.slug}>
+                <Link href={productHref(m.product)} className={styles.crewItem}>
+                  <SmartImage
+                    src={m.product.colors[0].images[1] || m.product.colors[0].images[0]}
+                    alt={`${m.name} — ${m.product.name}`}
+                    sizes="(min-width: 768px) 25vw, 50vw"
+                    className={styles.crewImg}
+                    tone="dark"
+                    blend
+                    priority
+                  />
+                  <span className={styles.crewCaption}>
+                    <span>{String(i + 1).padStart(2, "0")} · {m.name}</span>
+                    <span>{m.product.name}</span>
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ) : (
+        <div className={styles.hero}>
+          <SmartImage src={campaign.maison?.image} alt={campaign.maison?.alt || ""} sizes="100vw" className={styles.heroImg} tone="dark" priority />
+        </div>
+      )}
 
       <section className={styles.manifesto} aria-labelledby="h-manifesto">
         <p id="h-manifesto" className={styles.eyebrow}>

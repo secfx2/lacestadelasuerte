@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import styles from "./SmartImage.module.css";
 
-/** Fog placeholder with a small grey emblem. tone: "fog" | "bone" | "dark" */
+/** Placeholder with a small emblem. tone: "fog" | "bone" | "dark" | "tile" (light product tile) */
 export function ImagePlaceholder({ tone = "fog", className = "" }) {
   return (
     <div className={`${styles.placeholder} ${className}`} data-tone={tone} aria-hidden="true">
@@ -13,13 +13,25 @@ export function ImagePlaceholder({ tone = "fog", className = "" }) {
 }
 
 /**
+ * PECADO: shot 1 of every product is a flat lay on white, shot 2 is on model against a
+ * grey concrete wall. Only shots on white may be multiplied onto the light tile.
+ */
+export const ON_WALL = /-2\.(jpe?g|png|webp|avif)$/i;
+export const onWhite = (src) => !!src && !ON_WALL.test(src);
+/** The flat lay of an on-model shot (".../black-2.jpg" → ".../black-1.jpg"), or null. */
+export const flatOf = (src) => (src && ON_WALL.test(src) ? src.replace(ON_WALL, "-1.$1") : null);
+
+/**
  * next/image wrapped in a positioned frame. Fades in on load; on error (file not
- * generated yet) degrades to the fog placeholder — or to nothing with `hideOnError`.
+ * generated yet) tries `fallback` (e.g. the flat lay when the on-model shot is missing),
+ * then degrades to the placeholder — or to nothing with `hideOnError`.
  * Size the frame with `className` / `ratio` (e.g. "4 / 5"); the image fills it.
- * `blend` multiplies product shots (shot on white) onto the fog tile so every tile reads identical.
+ * `blend` multiplies product shots shot on white onto the light tile so every tile reads
+ * identical; on-model shots (concrete wall, see ON_WALL) are never blended.
  */
 export default function SmartImage({
-  src,
+  src: primary,
+  fallback,
   alt = "",
   sizes = "100vw",
   priority = false,
@@ -34,10 +46,14 @@ export default function SmartImage({
   blend = false,
   style,
 }) {
-  const [failed, setFailed] = useState(null);
+  const [failed, setFailed] = useState(() => new Set());
   const [loaded, setLoaded] = useState(null);
-  const isError = !src || failed === src;
+  // An on-model shot that is not there yet falls back to its flat lay unless `fallback` says otherwise (null = none)
+  const fb = fallback !== undefined ? fallback : flatOf(primary);
+  const src = primary && !failed.has(primary) ? primary : fb && !failed.has(fb) ? fb : null;
+  const isError = !src;
   const isLoaded = loaded === src;
+  const doBlend = blend && onWhite(src);
 
   if (hideOnError && isError) return null;
 
@@ -46,24 +62,26 @@ export default function SmartImage({
       className={`${styles.frame} ${className}`}
       data-tone={tone}
       data-state={isError ? "error" : isLoaded ? "loaded" : "loading"}
-      data-blend={blend || undefined}
+      data-blend={doBlend || undefined}
       style={{ ...(ratio ? { aspectRatio: ratio } : null), ...style }}
     >
       {!isError && (
         <Image
+          key={src}
           src={src}
           alt={alt}
           fill
           sizes={sizes}
           priority={priority}
           quality={quality}
-          className={`${styles.img} ${isLoaded ? styles.loaded : ""} ${blend ? styles.blend : ""} ${imgClassName}`}
+          className={`${styles.img} ${isLoaded ? styles.loaded : ""} ${doBlend ? styles.blend : ""} ${imgClassName}`}
           style={{ objectFit: fit, objectPosition: position }}
           onLoad={() => setLoaded(src)}
-          onError={() => setFailed(src)}
+          onError={() => setFailed((f) => new Set(f).add(src))}
         />
       )}
-      {isError && <ImagePlaceholder tone={tone} />}
+      {/* product shots keep the light tile while their photo is missing, so the grid stays even */}
+      {isError && <ImagePlaceholder tone={blend ? "tile" : tone} />}
     </div>
   );
 }

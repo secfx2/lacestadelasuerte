@@ -11,7 +11,7 @@ import styles from "./MegaMenu.module.css";
 const M = brand.megaMenu;
 const banner = (id) => campaign.banners.find((b) => b.id === id);
 const SHOP_FEATURED = (M.shopBanners || []).map(banner).filter(Boolean).slice(0, 2);
-const COLLECTIONS = (M.collectionBanners?.length ? M.collectionBanners.map(banner) : campaign.banners).filter(Boolean).slice(0, 4);
+const COLLECTIONS = (M.collectionBanners?.length ? M.collectionBanners.map(banner) : campaign.banners).filter((b) => b?.image).slice(0, 4);
 
 export default function MegaMenu({ id, variant = "shop", open, onClose, onEnter }) {
   const catalog = useCatalog();
@@ -63,7 +63,7 @@ export default function MegaMenu({ id, variant = "shop", open, onClose, onEnter 
 
           {SHOP_FEATURED.map((b) => (
             <Link key={b.id} href={b.href} className={styles.feature}>
-              <SmartImage src={b.image} alt={b.title} sizes="(min-width: 1024px) 22vw, 1px" className={styles.featureImg} tone="bone" />
+              <SmartImage src={b.image} alt={b.title} sizes="(min-width: 1024px) 22vw, 1px" className={styles.featureImg} tone="dark" blend />
               <span className={styles.featureText}>
                 <span className={styles.featureTitle}>{b.title}</span>
                 <span className={styles.featureKicker}>{b.kicker}</span>
@@ -86,7 +86,7 @@ export default function MegaMenu({ id, variant = "shop", open, onClose, onEnter 
           </div>
           {COLLECTIONS.map((b) => (
             <Link key={b.id} href={b.href} className={styles.feature}>
-              <SmartImage src={b.image} alt={b.title} sizes="(min-width: 1024px) 18vw, 1px" className={styles.featureImg} tone="bone" />
+              <SmartImage src={b.image} alt={b.title} sizes="(min-width: 1024px) 18vw, 1px" className={styles.featureImg} tone="dark" blend />
               <span className={styles.featureText}>
                 <span className={styles.featureTitle}>{b.title}</span>
                 <span className={styles.featureKicker}>{b.kicker}</span>

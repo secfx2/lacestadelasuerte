@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useDialog, useLockBody, usePresence } from "./hooks";
 import { IconArrow, IconClose } from "./Icons";
-import { ImagePlaceholder } from "./SmartImage";
+import { ImagePlaceholder, onWhite } from "./SmartImage";
 import styles from "./Lightbox.module.css";
 
 /** Fullscreen gallery: arrows / keys / swipe, click to zoom (follows the pointer). */
@@ -51,6 +51,7 @@ export default function Lightbox({ images, index, onIndex, open, onClose, label 
       <div
         className={styles.stage}
         data-zoom={zoom || undefined}
+        data-white={onWhite(src) || undefined}
         onClick={(e) => {
           move(e);
           setZoom((z) => !z);
@@ -91,7 +92,7 @@ export default function Lightbox({ images, index, onIndex, open, onClose, label 
           </button>
           <div className={styles.thumbs}>
             {images.map((im, i) => (
-              <button key={im} type="button" className={styles.thumb} aria-current={i === index || undefined} onClick={() => onIndex(i)} aria-label={`Ver imagen ${i + 1}`}>
+              <button key={im} type="button" className={styles.thumb} data-white={onWhite(im) || undefined} aria-current={i === index || undefined} onClick={() => onIndex(i)} aria-label={`Ver imagen ${i + 1}`}>
                 {!failed[im] && <Image src={im} alt="" fill sizes="64px" className={styles.thumbImg} onError={() => setFailed((f) => ({ ...f, [im]: true }))} />}
               </button>
             ))}

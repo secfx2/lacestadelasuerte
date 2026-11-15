@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
   z-index: var(--z-modal);
-  background: var(--tile);
+  background: var(--paper);
   opacity: 0;
   transition: opacity 0.4s var(--ease);
 }
@@ -27,18 +27,23 @@
 .counter { font-variant-numeric: tabular-nums; }
 .hint { color: var(--text-muted); }
 .close { width: 44px; height: 44px; display: grid; place-items: center; margin-right: -12px; }
-.stage { position: absolute; inset: 64px 72px 96px; overflow: hidden; cursor: zoom-in; isolation: isolate; background: var(--tile); }
+.stage { position: absolute; inset: 64px 72px 96px; overflow: hidden; cursor: zoom-in; isolation: isolate; }
+/* flat lays (shot on white) sit on the light tile; on-model shots (concrete wall) float on the dark page */
+.stage[data-white] { background: var(--tile); }
+.stage[data-white] .img { mix-blend-mode: multiply; }
 .stage[data-zoom] { cursor: zoom-out; }
-.img { object-fit: contain; mix-blend-mode: multiply; transition: transform 0.45s var(--ease); }
+.img { object-fit: contain; transition: transform 0.45s var(--ease); }
 .stage[data-zoom] .img { transform: scale(2.2); transition: transform 0.45s var(--ease), transform-origin 0.08s linear; }
 .nav { position: absolute; top: 50%; z-index: 2; width: 52px; height: 52px; display: grid; place-items: center; transform: translateY(-50%); transition: background-color var(--dur-fast); }
-.nav:hover { background: rgba(255, 255, 255, 0.7); }
+.nav:hover { background: rgba(233, 226, 211, 0.12); }
 .prev { left: 12px; }
 .next { right: 12px; }
 .thumbs { position: absolute; left: 0; right: 0; bottom: 20px; display: flex; justify-content: center; gap: 6px; }
-.thumb { position: relative; width: 48px; height: 60px; background: var(--paper); opacity: 0.55; transition: opacity var(--dur-fast); isolation: isolate; }
+.thumb { position: relative; width: 48px; height: 60px; background: var(--fog); opacity: 0.55; transition: opacity var(--dur-fast); isolation: isolate; }
+.thumb[data-white] { background: var(--tile); }
 .thumb[aria-current], .thumb:hover { opacity: 1; box-shadow: 0 0 0 1px var(--ink); }
-.thumbImg { object-fit: cover; mix-blend-mode: multiply; }
+.thumbImg { object-fit: cover; }
+.thumb[data-white] .thumbImg { mix-blend-mode: multiply; }
 @media (max-width: 767px) {
   .stage { inset: 56px 0 92px; }
   .hint { display: none; }

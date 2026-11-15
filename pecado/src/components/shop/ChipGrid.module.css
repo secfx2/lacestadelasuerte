@@ -2,14 +2,13 @@
 .head { display: flex; align-items: baseline; gap: 18px; flex-wrap: wrap; padding: 0 var(--page-pad); }
 .title {
   margin: 0;
-  font-size: clamp(22px, 2.6vw, 36px);
-  font-stretch: 125%;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: -0.01em;
-  line-height: 1;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3.4vw, 50px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 0.95;
 }
-.kicker { margin: 0; font-family: var(--font-serif); font-style: italic; font-size: clamp(16px, 1.5vw, 20px); color: var(--text-muted); }
+.kicker { margin: 0; font-family: var(--font-display); font-weight: 500; font-size: clamp(17px, 1.6vw, 22px); color: var(--text-muted); }
 .chips {
   display: flex;
   gap: 6px;
@@ -30,7 +29,7 @@
   white-space: nowrap;
   transition: background-color var(--dur-fast), color var(--dur-fast);
 }
-.chip:hover { background: #e2e2e0; }
+.chip:hover { background: var(--chip-hover); }
 .chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 .grid {
   display: grid;

@@ -10,6 +10,7 @@
 .shotImg { aspect-ratio: 4 / 5; }
 .zoomIcon {
   position: absolute;
+  color: var(--ink);
   right: 14px;
   bottom: 14px;
   width: 34px;
@@ -36,16 +37,16 @@
 }
 .sticky::-webkit-scrollbar { display: none; }
 .crumbs { display: flex; gap: 8px; font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }
-.crumbs span { color: #c2c2bf; }
-.badge { margin: 28px 0 0; font-size: var(--fs-micro); font-weight: 500; letter-spacing: var(--track-wide); text-transform: uppercase; }
+.crumbs span { color: rgba(233, 226, 211, 0.3); }
+.badge { display: inline-block; margin: 28px 0 0; padding: 5px 8px 4px; border: 1px solid var(--line); font-size: var(--fs-micro); font-weight: 500; letter-spacing: var(--track-wide); text-transform: uppercase; line-height: 1; }
+.badge[data-badge="Top"] { background: var(--accent); border-color: var(--accent); }
 .name {
-  margin: 10px 0 0;
-  font-size: clamp(22px, 2vw, 30px);
-  font-stretch: 125%;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: -0.01em;
-  line-height: 1.02;
+  margin: 12px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 2.9vw, 44px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 0.98;
 }
 .crumbs + .name { margin-top: 28px; }
 .price { margin: 14px 0 0; font-size: 15px; letter-spacing: 0.02em; font-variant-numeric: tabular-nums; }
@@ -77,7 +78,7 @@
 }
 .size:hover { border-color: var(--ink); }
 .size[aria-checked="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
-.sizes[data-error] .size { border-color: rgba(122, 31, 31, 0.45); }
+.sizes[data-error] .size { border-color: rgba(224, 87, 77, 0.55); }
 .sizes[data-error] { animation: shake 0.4s var(--ease); }
 @keyframes shake { 25% { transform: translateX(-4px); } 75% { transform: translateX(4px); } }
 .error { margin: 10px 0 0; font-size: 12px; color: var(--alert); }
@@ -126,10 +127,11 @@
     font-size: var(--fs-micro);
     letter-spacing: var(--track-wide);
     font-variant-numeric: tabular-nums;
+    color: var(--on-tile);
   }
   .dots { position: absolute; left: 0; right: 0; bottom: 14px; display: flex; justify-content: center; gap: 6px; }
   .dots span { width: 18px; height: 2px; background: rgba(10, 10, 10, 0.18); transition: background-color var(--dur-fast); }
-  .dots span[data-on] { background: var(--ink); }
+  .dots span[data-on] { background: var(--on-tile); }
   .sticky { position: static; max-height: none; overflow: visible; padding: 22px var(--page-pad) 32px; }
   .crumbs + .name, .badge { margin-top: 18px; }
 

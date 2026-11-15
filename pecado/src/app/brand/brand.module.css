@@ -65,7 +65,7 @@
   gap: 20px;
   height: 48px;
   padding: 0 var(--gutter);
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(11, 11, 12, 0.94);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--line);
@@ -286,6 +286,7 @@
 }
 .h2 {
   font-size: var(--fs-h2);
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   line-height: 0.95;
@@ -295,6 +296,7 @@
 .h3 {
   margin-bottom: var(--s3) !important;
   font-size: var(--fs-h3);
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -374,6 +376,7 @@
 }
 .chTitle {
   font-size: var(--fs-h2);
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   line-height: 0.95;
@@ -513,6 +516,7 @@
 }
 .indexName {
   font-size: 1.7cqw;
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   text-transform: uppercase;
@@ -609,6 +613,7 @@
 .pillarTitle {
   margin-bottom: var(--s2) !important;
   font-size: 1.5cqw;
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   text-transform: uppercase;
@@ -777,7 +782,7 @@
   font-style: italic;
   font-size: calc(var(--k) * var(--H) * 0.55);
   color: var(--acc);
-  background: rgba(31, 43, 77, 0.07);
+  background: rgba(233, 226, 211, 0.06);
 }
 .xTop {
   top: 0;
@@ -972,6 +977,7 @@
 }
 .symbolName {
   font-size: 1.45cqw;
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 600;
   text-transform: none !important;
@@ -1091,6 +1097,7 @@
 }
 .swatchName {
   font-size: 1.05cqw;
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   text-transform: uppercase;
@@ -1226,6 +1233,7 @@
   overflow-wrap: anywhere;
   margin-bottom: var(--s1) !important;
   font-size: 0.95cqw;
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   text-transform: uppercase;
@@ -1279,7 +1287,7 @@
   align-items: baseline;
   padding: 0.5cqw 0;
   border-top: 1px solid var(--ln);
-  color: #b4b4b4;
+  color: var(--mut);
 }
 .rampUse {
   color: var(--fg);
@@ -1399,6 +1407,7 @@
 }
 .tsDisplay {
   font-size: 5.2cqw;
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   line-height: 0.95;
@@ -1406,6 +1415,7 @@
 }
 .tsXl {
   font-size: 2.6cqw;
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   line-height: 1.05;
@@ -1870,7 +1880,7 @@
 .browserBar span {
   width: 0.5cqw;
   height: 0.5cqw;
-  background: #cfcfcc;
+  background: rgba(233, 226, 211, 0.3);
 }
 .announce {
   padding: 0.45cqw;
@@ -1908,6 +1918,7 @@
 .pgTitle {
   margin-bottom: 1.2cqw !important;
   font-size: 1.7cqw;
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   text-transform: uppercase;
@@ -1934,8 +1945,8 @@
   pointer-events: none;
 }
 .colsOverlay span {
-  background: rgba(31, 43, 77, 0.07);
-  box-shadow: inset 1px 0 0 rgba(31, 43, 77, 0.22), inset -1px 0 0 rgba(31, 43, 77, 0.22);
+  background: rgba(233, 226, 211, 0.05);
+  box-shadow: inset 1px 0 0 rgba(233, 226, 211, 0.16), inset -1px 0 0 rgba(233, 226, 211, 0.16);
 }
 .gridAside {
   display: flex;
@@ -2365,4 +2376,305 @@
   .indexRow:hover {
     padding-left: 0;
   }
+}
+
+/* ==========================================================================
+   PECADO — overrides and additions
+   A dark book: tone_paper sheets are Asfalto with Hueso text (the site's
+   inverted tokens), tone_ink sheets flip to Hueso with Asfalto text, and
+   tone_accent is Burdeos. Headlines in Grenze Gotisch (var(--font-display),
+   always mixed case), lemas and big statements in UnifrakturMaguntia
+   (var(--font-serif)), labels in Archivo caps. Typographic applications are
+   drawn with the logo SVGs (no photographic mockups yet).
+   ========================================================================== */
+.book { --grid-line: rgba(233, 226, 211, 0.16); }
+.tone_paper { --acc: var(--steel); }
+.tone_ink {
+  --ln: rgba(11, 11, 12, 0.16);
+  --mut: #5f5b55;
+  --acc: var(--accent);
+  --tile: rgba(11, 11, 12, 0.07);
+}
+.tone_accent {
+  --bg: var(--accent);
+  --fg: var(--ink);
+  --ln: rgba(233, 226, 211, 0.22);
+  --mut: rgba(233, 226, 211, 0.72);
+  --acc: var(--ink);
+  --tile: rgba(0, 0, 0, 0.16);
+  background: var(--bg);
+  color: var(--fg);
+}
+
+/* Headlines: gothic, mixed case */
+.h2,
+.chTitle,
+.indexName,
+.pillarTitle,
+.symbolName,
+.tsDisplay,
+.tsXl,
+.pgTitle {
+  font-family: var(--font-display);
+  font-stretch: 100%;
+  font-weight: 700;
+  text-transform: none !important;
+  letter-spacing: 0;
+}
+.chTitle, .h2 { font-size: 3.7cqw; line-height: 0.95; }
+.indexName { font-size: 1.75cqw; }
+.pillarTitle { font-size: 1.9cqw; }
+.symbolName { font-size: 2cqw; }
+.pgTitle { font-size: 2.6cqw; }
+.tsDisplay { font-size: 5.4cqw; font-weight: 800; }
+.tsXl { font-size: 2.9cqw; }
+/* Small headings and product / swatch names stay in the grotesque */
+.h3,
+.swatchName,
+.prodName {
+  font-family: var(--font-sans);
+  font-stretch: 125%;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+.swatchName, .prodName { font-size: 0.98cqw; }
+.chNum, .indexNum { font-family: var(--font-sans); }
+
+/* Fraktur statements (the template asks for italics: blackletter has none, and font-synthesis is off) */
+.coverMotto { font-size: 5.6cqw; line-height: 0.95; }
+.indexTitle { font-size: 8.6cqw; line-height: 0.95; }
+.manQuote { font-size: 9cqw; line-height: 0.92; letter-spacing: 0; }
+.manSub { font-family: var(--font-display); font-weight: 500; font-size: 2.6cqw; line-height: 1.05; }
+.manLead { font-family: var(--font-display); font-weight: 600; font-size: 2.3cqw; line-height: 1.12; }
+.manSign { font-size: 2cqw; color: var(--fg); }
+.conceptStatement { font-size: 7.2cqw; line-height: 0.95; }
+.serifBig { font-size: 8.8cqw; line-height: 0.98; letter-spacing: 0; }
+.pairingQuote { font-family: var(--font-display); font-weight: 500; font-size: 1.8cqw; line-height: 1.2; }
+.closeMotto { font-size: 5.6cqw; line-height: 1; }
+.closeMotto em { font-style: normal; }
+.closeEmblem { width: 15cqw; height: 15cqw; color: var(--ink); }
+.roman { font-size: 3cqw; }
+.runfootMotto { font-style: normal; font-size: 1.15cqw; }
+.retype { font-family: var(--font-display); font-style: normal; font-weight: 800; font-stretch: 100%; font-size: 2.4cqw; }
+
+/* Logo misuse examples on the dark tile */
+.fx_offpalette .misuseLogo { color: #c9a227; }
+.fx_lowcontrast .misuseLogo { color: #2b2a2d; }
+.fx_busy { background: repeating-linear-gradient(-45deg, rgba(233, 226, 211, 0.28) 0 0.22cqw, var(--fog) 0.22cqw 0.8cqw); }
+.fx_enclose .misuseLogo { border-color: var(--ink); }
+
+/* 05 · Display sheet (Grenze Gotisch) */
+.displaySheet {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--s5);
+}
+.bigAaDisplay {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 17cqw;
+  line-height: 0.9;
+  color: var(--fg);
+}
+.fontNameDisplay {
+  margin-bottom: var(--s2) !important;
+  font-family: var(--font-display);
+  font-size: 3.2cqw;
+  font-weight: 700;
+  line-height: 1;
+}
+.displaySample {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 5cqw;
+  line-height: 0.98;
+}
+.displayWeight { font-family: var(--font-display); font-size: 2.2cqw; }
+.glyphsDisplay {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.5cqw;
+  line-height: 1.45;
+}
+.fontName { font-size: 2.6cqw; font-weight: 600; text-transform: uppercase; }
+.bigAa { font-size: 19cqw; letter-spacing: -0.04em; }
+.sansSample { font-size: 2.1cqw; line-height: 1.2; letter-spacing: -0.01em; max-width: 48cqw; }
+
+/* 06 · Photo: the 2-shot sequence runs across two products */
+.seqItem { min-width: 0; }
+
+/* 08 · Typographic applications */
+.taFrame { background: var(--fog); container-type: inline-size; }
+.taFrame > * { position: absolute; inset: 0; }
+.appWide { grid-column: span 1; }
+
+.taBox { display: grid; place-items: center; background: #232226; }
+.taBoxLid {
+  position: relative;
+  width: 74%;
+  height: 68%;
+  padding-right: 22%;
+  background: var(--paper);
+  border: 1px solid rgba(233, 226, 211, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3cqw;
+  overflow: hidden;
+}
+.taBoxLogo { width: 56%; aspect-ratio: 3.24; color: var(--ink); }
+.taBoxMeta { font-size: 1.6cqw; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink); opacity: 0.7; }
+.taBoxTape { position: absolute; top: 0; bottom: 0; right: 8%; width: 7%; background: var(--accent); }
+.taBoxSeal { position: absolute; right: 4%; bottom: 12%; width: 15%; aspect-ratio: 1; color: var(--ink); background: var(--paper); border-radius: 50%; padding: 0.4cqw; }
+
+.taWoven { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7cqw; background: var(--bone); }
+.taWovenLabel {
+  position: relative;
+  width: 70%;
+  aspect-ratio: 2.6;
+  display: grid;
+  place-items: center;
+  background: var(--paper);
+  outline: 1px dashed rgba(233, 226, 211, 0.4);
+  outline-offset: -3.6cqw;
+}
+.taWovenMark { height: 62%; aspect-ratio: 1; color: var(--ink); }
+.taSize {
+  display: grid;
+  place-items: center;
+  width: 22%;
+  aspect-ratio: 1;
+  background: var(--accent);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 8cqw;
+}
+
+.taTagWrap { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+.taString { width: 1px; height: 10%; background: rgba(233, 226, 211, 0.5); }
+.taTag {
+  position: relative;
+  width: 58%;
+  height: 82%;
+  padding: 16cqw 7cqw 7cqw;
+  background: var(--ink);
+  color: var(--paper);
+  display: flex;
+  flex-direction: column;
+  gap: 6cqw;
+}
+.taHole { position: absolute; top: 5cqw; left: 50%; width: 6cqw; height: 6cqw; margin-left: -3cqw; border-radius: 50%; background: var(--fog); }
+.taTagLogo { width: 100%; aspect-ratio: 3.24; color: var(--paper); }
+.taTagData { display: grid; gap: 1.6cqw; font-size: 3cqw; letter-spacing: 0.06em; text-transform: uppercase; }
+.taTagData > div { display: grid; grid-template-columns: 34% 1fr; gap: 2cqw; border-top: 1px solid rgba(11, 11, 12, 0.18); padding-top: 1.6cqw; }
+.taTagData dt { color: #6b665f; }
+.taTagPrice { margin-top: auto; font-family: var(--font-display); font-weight: 700; font-size: 8cqw; }
+.taTagEmblem { position: absolute; right: 7cqw; bottom: 7cqw; width: 14cqw; aspect-ratio: 1; color: var(--accent); }
+
+.taPatchWrap { display: grid; place-items: center; background: var(--paper); }
+.taPatch {
+  display: grid;
+  place-items: center;
+  width: 72%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 2.6cqw var(--paper), 0 0 0 3.2cqw rgba(233, 226, 211, 0.35);
+}
+.taPatchSeal { width: 86%; aspect-ratio: 1; color: var(--ink); }
+
+.taGraphic { display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 8cqw 6cqw; background: var(--bone); color: var(--ink); }
+.taGraphicMark { width: 96%; aspect-ratio: 3.56; }
+.taGraphicMeta { font-size: 3cqw; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.75; }
+
+.taTapeWrap { display: flex; flex-direction: column; justify-content: center; gap: 7cqw; overflow: hidden; }
+.taTape {
+  display: flex;
+  align-items: center;
+  gap: 5cqw;
+  width: 140%;
+  margin-left: -20%;
+  padding: 2.6cqw 4cqw;
+  background: var(--accent);
+  color: var(--ink);
+  transform: rotate(-5deg);
+  white-space: nowrap;
+}
+.taTape:nth-child(2) { background: var(--ink); color: var(--paper); margin-left: -34%; }
+.taTapeItem { display: inline-flex; align-items: center; gap: 5cqw; flex: none; }
+.taTapeLogo { width: 18cqw; aspect-ratio: 3.24; }
+.taTapeEmblem { width: 6cqw; aspect-ratio: 1; }
+
+.taJewelWrap { display: grid; place-items: center; }
+.taJewel {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 62%;
+  aspect-ratio: 1;
+  background: var(--steel);
+  border: 1px solid rgba(11, 11, 12, 0.12);
+}
+.taJewelMark { width: 44%; aspect-ratio: 1; color: rgba(11, 11, 12, 0.55); }
+.taJewelMeta { position: absolute; bottom: 6cqw; font-size: 3cqw; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(11, 11, 12, 0.7); }
+
+.taStickers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 6cqw;
+  padding: 9cqw;
+  place-items: center;
+  background: var(--fog);
+}
+.taSticker { display: grid; place-items: center; width: 100%; color: var(--ink); }
+.taSticker > svg { width: 78%; height: auto; }
+.taStickerSeal { aspect-ratio: 1; border-radius: 50%; background: var(--accent); }
+.taStickerSeal > svg { width: 88%; }
+.taStickerEmblem { aspect-ratio: 1; border-radius: 22%; background: var(--ink); color: var(--paper); }
+.taStickerMono { aspect-ratio: 1; border-radius: 50%; background: var(--bone); }
+.taStickerWord { aspect-ratio: 1.8; border-radius: 999px; background: var(--steel); color: var(--paper); }
+.taStickerWord > svg { width: 74%; }
+
+@media (min-width: 901px) {
+  /* 8 brand tokens, 7 approved pairs, 9 product colours: one row each */
+  .swatches { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.25fr) repeat(6, minmax(0, 1fr)); }
+  .pairs { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+  .prodGrid { grid-template-columns: repeat(9, minmax(0, 1fr)); }
+}
+@media (max-width: 900px) {
+  .chTitle, .h2 { font-size: 34px; }
+  .h3 { font-size: 13px; }
+  .indexTitle, .manQuote { font-size: 52px; }
+  .manSub { font-size: 20px; }
+  .manLead { font-size: 22px; }
+  .manSign { font-size: 20px; }
+  .conceptStatement { font-size: 44px; }
+  .coverMotto { font-size: 30px; }
+  .closeMotto { font-size: 38px; }
+  .closeEmblem { width: 110px; height: 110px; }
+  .displaySheet { grid-template-columns: 1fr; }
+  .bigAaDisplay { font-size: 104px; }
+  .fontNameDisplay, .fontName { font-size: 26px; }
+  .displaySample { font-size: 34px; }
+  .displayWeight { font-size: 20px; }
+  .glyphsDisplay { font-size: 14px; }
+  .serifBig { font-size: 44px; }
+  .pairingQuote { font-size: 18px; }
+  .tsDisplay { font-size: 40px; }
+  .tsXl { font-size: 26px; }
+  .roman { font-size: 22px; }
+  .indexName { font-size: 18px; }
+  .pillarTitle { font-size: 20px; }
+  .symbolName { font-size: 22px; }
+  .pgTitle { font-size: 24px; }
+  .bigAa { font-size: 120px; }
+  .swatchName, .prodName { font-size: 13px; }
+  .sansSample { max-width: none; font-size: 20px; }
+  .retype { font-size: 20px; }
+  .runfootMotto { font-size: 14px; }
+  .taBoxMeta { font-size: 2.2cqw; }
 }

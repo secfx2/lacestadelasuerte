@@ -57,23 +57,27 @@ export function productHref(product, colorSlug) {
    -------------------------------------------------------------------------- */
 export const COLOR_FAMILIES = [
   { slug: "negro", name: "Negro", hex: "#111111" },
-  { slug: "gris", name: "Gris", hex: "#8e8f92" },
-  { slug: "crudo", name: "Blanco y crudo", hex: "#efe9dc" },
-  { slug: "azul", name: "Azul", hex: "#2f4470" },
+  { slug: "gris", name: "Gris y ceniza", hex: "#8c8a88" },
+  { slug: "crudo", name: "Hueso y blanco", hex: "#e9e2d3" },
+  { slug: "azul", name: "Índigo y azul", hex: "#2c3a5c" },
+  { slug: "burdeos", name: "Burdeos", hex: "#4a1015" },
+  { slug: "rosa", name: "Rosa", hex: "#f6c6d6" },
   { slug: "marron", name: "Marrón", hex: "#5a3b26" },
   { slug: "plata", name: "Plata", hex: "#c0c0c0" },
-  { slug: "multi", name: "Multicolor", hex: "linear-gradient(135deg,#111 0 33%,#9a9da1 33% 66%,#efe9dc 66%)" },
+  { slug: "multi", name: "Multicolor", hex: "linear-gradient(135deg,#111 0 33%,#8c8a88 33% 66%,#e9e2d3 66%)" },
 ];
 
+/** Family of a colourway, from its (English) name. Two-tone names ("Black / Oxblood") use the first colour. */
 export function colorFamily(color) {
-  const n = color.name.toLowerCase();
+  const n = color.name.toLowerCase().split("/")[0].trim();
   if (/silver/.test(n)) return "plata";
-  if (/multi/.test(n)) return "multi";
-  if (/tobacco|chocolate|brown/.test(n)) return "marron";
-  if (/blue|navy|indigo|denim|wash/.test(n) && !/washed black/.test(n)) return "azul";
-  if (/white|cream|ecru|bone|stone|optic/.test(n)) return "crudo";
-  if (/grey|gray|charcoal|steel|slate|acid/.test(n)) return "gris";
+  if (/pink|rose/.test(n)) return "rosa";
+  if (/oxblood|blood|burgundy|wine/.test(n)) return "burdeos";
+  if (/indigo|blue|navy|denim|ice/.test(n)) return "azul";
+  if (/white|cream|ecru|bone|stone|optic|marble|sand/.test(n)) return "crudo";
+  if (/grey|gray|charcoal|steel|slate|coal|ash|acid/.test(n) && !/black/.test(n)) return "gris";
   if (/black|ink/.test(n)) return "negro";
+  if (/tobacco|chocolate|brown/.test(n)) return "marron";
   return "multi";
 }
 
@@ -83,30 +87,81 @@ export function productFamilies(product) {
 
 /* --------------------------------------------------------------------------
    Sizes (filter facets)
+   The same string can mean different things ("36" is a jeans waist AND a shoe
+   size), so filters work on group-scoped keys: "cintura:36" vs "calzado:36".
+   A product belongs to one group, worked out from its sizes, kind and category.
    -------------------------------------------------------------------------- */
-const SIZE_ORDER = [
-  "XS", "S", "M", "L", "XL", "XXL",
-  "28", "30", "32", "34", "36",
-  "10", "12", "14", "16", "18", "20",
-  "S/M", "L/XL", "36-40", "41-46",
-  "80", "90", "100", "110",
-  "45 cm", "50 cm", "55 cm", "60 cm",
-  "Talla única", "Unidad",
-];
+const range = (a, b, step = 1) => Array.from({ length: Math.floor((b - a) / step) + 1 }, (_, i) => String(a + i * step));
 
 export const SIZE_GROUPS = [
-  { id: "ropa", label: "Ropa", sizes: ["XS", "S", "M", "L", "XL", "XXL"] },
-  { id: "cintura", label: "Cintura (denim y lona)", sizes: ["28", "30", "32", "34", "36"] },
-  { id: "anillo", label: "Anillos (ES)", sizes: ["10", "12", "14", "16", "18", "20"] },
-  { id: "otros", label: "Otros", sizes: ["S/M", "L/XL", "36-40", "41-46", "80", "90", "100", "110", "45 cm", "50 cm", "55 cm", "60 cm", "Talla única", "Unidad"] },
+  { id: "ropa", label: "Ropa", sizes: ["XXS", "XS", "S", "M", "L", "XL", "XXL", "XXXL"] },
+  { id: "cintura", label: "Cintura · vaqueros (pulgadas)", sizes: range(24, 44) },
+  { id: "calzado", label: "Calzado (EU)", sizes: range(34, 48) },
+  { id: "cinturon", label: "Cinturones (cm)", sizes: range(60, 130, 5) },
+  { id: "anillo", label: "Anillos (ES)", sizes: range(6, 30) },
+  { id: "largo", label: "Cadenas y gargantillas", sizes: range(30, 90, 5).map((n) => `${n} cm`) },
+  { id: "otros", label: "Otros", sizes: ["S/M", "L/XL", "36-40", "41-46", "Par", "Unidad", "Talla única"] },
 ];
+const GROUP_PREFIX = { cintura: "Cintura", calzado: "Calzado", cinturon: "Cinturón", anillo: "Anillo", largo: "Largo" };
+const CLOTHING = new Set(SIZE_GROUPS[0].sizes);
+const BOTTOMS = new Set(brand.bottomCategories || ["pantalones"]);
 
-export function sortSizes(list) {
-  return [...list].sort((a, b) => SIZE_ORDER.indexOf(a) - SIZE_ORDER.indexOf(b));
+/** Size group of a product: ropa | cintura | calzado | cinturon | anillo | largo | otros. */
+export function sizeGroupOf(product) {
+  const s = product.sizes || [];
+  if (s.length && s.every((x) => /^\d+\s*cm$/.test(x))) return "largo";
+  if (s.length && s.every((x) => /^\d+$/.test(x))) {
+    const nums = s.map(Number);
+    if (product.kind === "jewellery") return "anillo";
+    if (Math.min(...nums) >= 60) return "cinturon";
+    if (BOTTOMS.has(product.category) || (Math.min(...nums) < 34 && Math.max(...nums) <= 44)) return "cintura";
+    return "calzado";
+  }
+  if (s.some((x) => CLOTHING.has(x))) return "ropa";
+  return "otros";
+}
+
+export const sizeKey = (group, size) => `${group}:${size}`;
+export const splitSizeKey = (key) => {
+  const i = key.indexOf(":");
+  return i < 0 ? ["ropa", key] : [key.slice(0, i), key.slice(i + 1)];
+};
+/** Filter keys of a product ("cintura:32", "ropa:M"…). */
+export function productSizeKeys(product) {
+  const g = sizeGroupOf(product);
+  return (product.sizes || []).map((s) => sizeKey(g, s));
 }
 
 /** Size encoded for URLs: keep it readable. */
 export const sizeToParam = (s) => s.toLowerCase().replace(/\s+/g, "").replace("/", "-");
+/** Clothing sizes stay bare in the URL (?talla=m,l); the rest carry their group (?talla=cintura-32,calzado-42). */
+export function sizeKeyToParam(key) {
+  const [g, s] = splitSizeKey(key);
+  return g === "ropa" ? sizeToParam(s) : `${g}-${sizeToParam(s)}`;
+}
+const ALL_KEYS = SIZE_GROUPS.flatMap((g) => g.sizes.map((s) => sizeKey(g.id, s)));
+export function sizeKeyFromParam(param) {
+  return ALL_KEYS.find((k) => sizeKeyToParam(k) === param) || null;
+}
+/** Human label of a filter key: "Talla M", "Cintura 32", "Calzado 42", "Anillo 14", "Talla única". */
+export function sizeKeyLabel(key) {
+  const [g, s] = splitSizeKey(key);
+  if (GROUP_PREFIX[g]) return `${GROUP_PREFIX[g]} ${s}`;
+  return /^[A-Z/]+$/.test(s) ? `Talla ${s}` : s;
+}
+
+/** Every known size in display order (clothing, waist, shoes, belts, rings, lengths, others). */
+const SIZE_ORDER = [...new Set(SIZE_GROUPS.flatMap((g) => g.sizes))];
+
+/** Sorts a size list: known sizes in SIZE_ORDER, unknown ones after (numeric, then alphabetical). */
+export function sortSizes(list) {
+  const rank = (x) => {
+    const i = SIZE_ORDER.indexOf(x);
+    return i < 0 ? SIZE_ORDER.length : i;
+  };
+  return [...list].sort((a, b) => rank(a) - rank(b) || parseFloat(a) - parseFloat(b) || String(a).localeCompare(String(b), "es"));
+}
+
 export function sizeFromParam(param) {
   return SIZE_ORDER.find((s) => sizeToParam(s) === param) || null;
 }
@@ -125,7 +180,9 @@ export const SORTS = [
   { id: "precio-desc", label: "Precio ↓" },
 ];
 
-const BADGE_WEIGHT = { "Best seller": 4, Nuevo: 3, "Edición limitada": 2, "Pieza rara": 1 };
+/** «Top» (PECADO) counts as the template's best-seller badge. */
+const BADGE_WEIGHT = { "Best seller": 4, Top: 4, Nuevo: 3, "Edición limitada": 2, "Pieza rara": 1 };
+export const BEST_SELLER_BADGES = ["Best seller", "Top"];
 
 /** Products carry `index` (catalog order) in the slim catalog. */
 export function sortProducts(list, sort) {
@@ -153,25 +210,29 @@ export function fitNote(product) {
   const F = brand.fitNotes;
   if (F.bySlug?.[product.slug]) return F.bySlug[product.slug];
   if (product.kind === "jewellery") {
-    return product.sizes.some((s) => /^\d+$/.test(s)) ? F.jewelleryRing : F.jewellery;
+    return sizeGroupOf(product) === "anillo" ? F.jewelleryRing : F.jewellery;
   }
   if (product.kind === "accessory") {
+    const g = sizeGroupOf(product);
+    if (g === "cinturon" && F.belts) return F.belts;
+    if (g === "calzado" && F.shoes) return F.shoes;
     if (isOneSize(product)) return product.fit === "Ajustable" ? F.accessoryAdjustable : F.accessoryOneSize;
     return `${product.fit}.`;
   }
-  if (product.line && product.line === brand.currentLine) {
-    return product.category === "pantalones" ? F.lineBottoms : F.lineTops;
-  }
-  if (product.category === "pantalones") return product.sizes[0] === "28" ? F.bottomsWaist : F.bottoms;
+  if (F.byFit?.[product.fit]) return F.byFit[product.fit];
+  if (F.byCategory?.[product.category]) return F.byCategory[product.category];
+  const bottoms = BOTTOMS.has(product.category);
+  if (product.line && product.line === brand.currentLine) return bottoms ? F.lineBottoms : F.lineTops;
+  if (bottoms) return sizeGroupOf(product) === "cintura" ? F.bottomsWaist : F.bottoms;
   return F.default;
 }
 
 export function careText(product) {
   const C = brand.care;
   if (product.kind === "jewellery") return C.jewellery;
-  if (/leather|piel/i.test(product.composition + product.name)) return C.leather;
+  if (/leather|piel|cuero/i.test(product.composition + product.name)) return C.leather;
   if (product.kind === "accessory") return C.accessory;
-  return C.garment;
+  return C.byCategory?.[product.category] || C.garment;
 }
 
 
@@ -187,8 +248,17 @@ export const normalize = (s) =>
 const SYNONYMS = {
   sudadera: "sudaderas hoodie crewneck",
   capucha: "hoodie",
-  vaquero: "denim",
-  vaqueros: "denim",
+  vaquero: "denim jean baggy vaqueros",
+  vaqueros: "denim jean baggy",
+  baggy: "jean vaqueros",
+  chandal: "sweatpant jogger chandal",
+  pantalon: "sweatpant jogger jean jort",
+  cruz: "cross",
+  cruces: "cross",
+  espinas: "thorn",
+  alas: "wing",
+  tachas: "pyramid spike grommet",
+  calavera: "skull",
   plata: "joyeria silver",
   anillo: "ring",
   anillos: "ring",
@@ -206,8 +276,10 @@ const SYNONYMS = {
   chaqueta: "jacket",
   camiseta: "tee",
   camisa: "shirt",
-  pantalon: "pant",
   jersey: "knit",
+  polo: "polos",
+  zapatillas: "skate",
+  mochila: "backpack",
 };
 
 export function searchProducts(products, query, limit = 12) {

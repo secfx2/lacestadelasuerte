@@ -22,7 +22,7 @@
   transition: background-color var(--dur-fast), color var(--dur-fast);
 }
 .expressBtn[data-kind="apple"] { background: var(--ink); color: var(--paper); }
-.expressBtn[data-kind="apple"]:hover { background: #262626; }
+.expressBtn[data-kind="apple"]:hover { background: #fffaf0; }
 .expressBtn[data-kind="paypal"]:hover, .expressBtn[data-kind="bizum"]:hover { background: var(--fog); }
 .or { position: relative; margin: 26px 0 8px; text-align: center; font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }
 .or::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: var(--line); }
@@ -42,7 +42,7 @@
 .row3 { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1.2fr 1.2fr; gap: 10px; }
 .optional { text-transform: none; letter-spacing: 0; }
 .adornment { position: absolute; right: 14px; top: 34px; font-size: var(--fs-micro); letter-spacing: var(--track-caps); text-transform: uppercase; color: var(--text-muted); pointer-events: none; }
-.check { margin-top: 14px; font-size: 12px; color: #3a3a3a; }
+.check { margin-top: 14px; font-size: 12px; color: var(--text-soft); }
 
 .options { clear: both; border: 1px solid var(--line); }
 .option {
@@ -55,7 +55,7 @@
   font-size: var(--fs-body);
 }
 .options > .option + .option, .payment + .payment { border-top: 1px solid var(--line); }
-.option[data-checked], .payment[data-checked] > .option { background: #fafaf9; }
+.option[data-checked], .payment[data-checked] > .option { background: var(--fog); }
 .option .mk-check, .option :global(.mk-check) { pointer-events: none; }
 .optionText { display: flex; flex-direction: column; gap: 2px; }
 .optionName { font-weight: 500; }
@@ -63,7 +63,7 @@
 .optionPrice { font-variant-numeric: tabular-nums; font-weight: 500; }
 .tags { display: flex; gap: 4px; }
 .tag { padding: 3px 6px 2px; border: 1px solid var(--line); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; background: var(--paper); }
-.paymentBody { padding: 4px 16px 18px; background: #fafaf9; }
+.paymentBody { padding: 4px 16px 18px; background: var(--fog); }
 .redirect { margin: 0; padding: 4px 0 0 30px; font-size: 12px; color: var(--text-muted); line-height: 1.55; }
 
 .pay { margin-top: 32px; min-height: 56px; font-size: var(--fs-xs); }
@@ -95,7 +95,7 @@
 .itemPrice { font-size: var(--fs-body); font-variant-numeric: tabular-nums; }
 .code { display: grid; grid-template-columns: 1fr auto; gap: 8px; padding-top: 22px; border-top: 1px solid var(--line); }
 .code :global(.mk-btn) { min-height: 48px; padding: 0 20px; }
-.applied { display: flex; justify-content: space-between; margin: 10px 0 0; padding: 8px 10px; background: var(--paper); border: 1px dashed rgba(10, 10, 10, 0.3); font-size: 11px; letter-spacing: var(--track-caps); text-transform: uppercase; }
+.applied { display: flex; justify-content: space-between; margin: 10px 0 0; padding: 8px 10px; background: var(--paper); border: 1px dashed rgba(233, 226, 211, 0.3); font-size: 11px; letter-spacing: var(--track-caps); text-transform: uppercase; }
 .totals { margin: 22px 0 0; padding-top: 18px; border-top: 1px solid var(--line); display: grid; gap: 10px; font-size: var(--fs-body); }
 .totals div { display: flex; justify-content: space-between; gap: 12px; }
 .totals dt { color: var(--text-muted); }
@@ -111,7 +111,7 @@
 .demoSub em { font-family: var(--font-serif); font-size: 15px; color: var(--ink); }
 
 .emptyWrap { padding: 72px var(--page-pad); text-align: center; }
-.emptyTitle { margin: 0; font-size: clamp(24px, 3vw, 36px); font-stretch: 125%; font-weight: 600; text-transform: uppercase; }
+.emptyTitle { margin: 0; font-size: clamp(32px, 3.6vw, 48px); font-family: var(--font-display); font-weight: 700; letter-spacing: 0; }
 .emptyText { margin: 10px 0 28px; color: var(--text-muted); font-size: var(--fs-body); }
 
 @media (max-width: 1023px) {

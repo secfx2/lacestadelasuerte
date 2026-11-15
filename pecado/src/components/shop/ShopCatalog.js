@@ -12,10 +12,14 @@ import {
   SIZE_GROUPS,
   SORTS,
   productFamilies,
+  productSizeKeys,
   searchProducts,
-  sizeFromParam,
-  sizeToParam,
+  sizeKey,
+  sizeKeyFromParam,
+  sizeKeyLabel,
+  sizeKeyToParam,
   sortProducts,
+  splitSizeKey,
 } from "@/lib/shop";
 import styles from "./ShopCatalog.module.css";
 import brand from "@/config/brand";
@@ -26,7 +30,8 @@ function parseQuery(sp) {
   const sort = sp.get("orden");
   return {
     colors: (sp.get("color") || "").split(",").filter((c) => COLOR_FAMILIES.some((f) => f.slug === c)),
-    sizes: (sp.get("talla") || "").split(",").map(sizeFromParam).filter(Boolean),
+    // group-scoped size keys ("cintura:32", "calzado:42", "ropa:M"): a jeans 36 is not a shoe 36
+    sizes: (sp.get("talla") || "").split(",").map(sizeKeyFromParam).filter(Boolean),
     sort: SORTS.some((s) => s.id === sort) ? sort : "destacados",
     q: (sp.get("q") || "").trim(),
   };
@@ -113,7 +118,7 @@ function CatalogView({ category = null, params }) {
 
   const toggleColor = (slug) => update((c) => ({ color: c.colors.includes(slug) ? c.colors.filter((x) => x !== slug) : [...c.colors, slug] }));
   const toggleSize = (size) =>
-    update((c) => ({ talla: (c.sizes.includes(size) ? c.sizes.filter((x) => x !== size) : [...c.sizes, size]).map(sizeToParam) }));
+    update((c) => ({ talla: (c.sizes.includes(size) ? c.sizes.filter((x) => x !== size) : [...c.sizes, size]).map(sizeKeyToParam) }));
   const clearAll = () => update({ color: null, talla: null, q: null });
 
   // ---- Data
@@ -123,7 +128,7 @@ function CatalogView({ category = null, params }) {
   }, [catalog, category, q]);
 
   const matchColor = (p) => !colors.length || productFamilies(p).some((f) => colors.includes(f));
-  const matchSize = (p) => !sizes.length || p.sizes.some((s) => sizes.includes(s));
+  const matchSize = (p) => !sizes.length || productSizeKeys(p).some((k) => sizes.includes(k));
 
   const visible = useMemo(() => {
     const list = base.filter((p) => matchColor(p) && matchSize(p));
@@ -140,7 +145,7 @@ function CatalogView({ category = null, params }) {
   }, [base, sizes]);
   const availableSizes = useMemo(() => {
     const set = new Set();
-    for (const p of base.filter(matchColor)) p.sizes.forEach((s) => set.add(s));
+    for (const p of base.filter(matchColor)) productSizeKeys(p).forEach((k) => set.add(k));
     return set;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [base, colors]);
@@ -198,8 +203,8 @@ function CatalogView({ category = null, params }) {
               </button>
             ))}
             {sizes.map((s) => (
-              <button key={s} type="button" className={styles.pill} onClick={() => toggleSize(s)} aria-label={`Quitar talla ${s}`}>
-                Talla {s} <IconClose size={8} />
+              <button key={s} type="button" className={styles.pill} onClick={() => toggleSize(s)} aria-label={`Quitar ${sizeKeyLabel(s).toLowerCase()}`}>
+                {sizeKeyLabel(s)} <IconClose size={8} />
               </button>
             ))}
             {(activeCount > 0 || q) && (
@@ -288,7 +293,10 @@ function FilterDrawer({ open, onClose, colors, sizes, colorCounts, availableSize
   useDialog(ref, open, onClose);
   if (!mounted) return null;
 
-  const groups = SIZE_GROUPS.map((g) => ({ ...g, sizes: g.sizes.filter((s) => availableSizes.has(s) || sizes.includes(s)) })).filter((g) => g.sizes.length);
+  const groups = SIZE_GROUPS.map((g) => ({
+    ...g,
+    keys: g.sizes.map((s) => sizeKey(g.id, s)).filter((k) => availableSizes.has(k) || sizes.includes(k)),
+  })).filter((g) => g.keys.length);
 
   return (
     <div className={styles.fRoot} data-visible={visible || undefined}>
@@ -334,9 +342,9 @@ function FilterDrawer({ open, onClose, colors, sizes, colorCounts, availableSize
               <div key={g.id} className={styles.fGroup}>
                 <p className={styles.fGroupLabel}>{g.label}</p>
                 <div className={styles.fSizes}>
-                  {g.sizes.map((s) => (
-                    <button key={s} type="button" className={styles.fSize} aria-pressed={sizes.includes(s)} onClick={() => toggleSize(s)}>
-                      {s}
+                  {g.keys.map((k) => (
+                    <button key={k} type="button" className={styles.fSize} aria-pressed={sizes.includes(k)} onClick={() => toggleSize(k)} aria-label={sizeKeyLabel(k)}>
+                      {splitSizeKey(k)[1]}
                     </button>
                   ))}
                 </div>

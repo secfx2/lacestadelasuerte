@@ -16,7 +16,7 @@
   font-size: var(--fs-body);
   padding: 0;
 }
-.input::placeholder { color: #8a8a8a; }
+.input::placeholder { color: #6f6d69; }
 .submit {
   flex: none;
   padding: 0 0 0 16px;

@@ -8,8 +8,9 @@ import { formatPrice, getColor, productHref, isOneSize } from "@/lib/shop";
 import styles from "./ProductCard.module.css";
 
 /**
- * Grid tile (grey #f2f2f2, photo multiplied onto it): flat lay crossfades to the
- * on-model shot on hover. Colour dots switch the colourway; "+" opens a quick size picker.
+ * Grid tile: the flat lay (shot on white) is multiplied onto the light tile and crossfades
+ * to the on-model shot (concrete wall, shown as it is) on hover. If the on-model shot is
+ * missing the flat lay simply stays. Colour dots switch the colourway; "+" opens a quick size picker.
  */
 export default function ProductCard({ product, sizes = "(min-width: 1024px) 25vw, 50vw", priority = false, quickAdd = true, className = "" }) {
   const { add } = useCart();
@@ -37,10 +38,10 @@ export default function ProductCard({ product, sizes = "(min-width: 1024px) 25vw
       <div className={styles.media}>
         <Link href={href} className={styles.mediaLink} tabIndex={-1} aria-hidden="true">
           <SmartImage src={flat} alt={`${product.name} — ${color.name}`} sizes={sizes} priority={priority} className={styles.frame} blend />
-          {hover && <SmartImage src={hover} alt="" sizes={sizes} hideOnError className={styles.hover} blend />}
+          {hover && <SmartImage src={hover} fallback={null} alt="" sizes={sizes} hideOnError className={styles.hover} blend />}
         </Link>
 
-        {product.badge && <span className={styles.badge}>{product.badge}</span>}
+        {product.badge && <span className={styles.badge} data-badge={product.badge}>{product.badge}</span>}
 
         <button
           type="button"

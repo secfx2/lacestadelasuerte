@@ -1,7 +1,7 @@
 .ship { }
 .shipText { margin: 0 0 10px; font-size: var(--fs-xs); letter-spacing: 0.02em; }
 .shipText strong { font-weight: 600; }
-.track { position: relative; height: 2px; background: rgba(10, 10, 10, 0.1); overflow: hidden; }
+.track { position: relative; height: 2px; background: rgba(233, 226, 211, 0.12); overflow: hidden; }
 .fill { position: absolute; inset: 0; background: var(--ink); transform-origin: left; transition: transform 0.7s var(--ease); }
 
 .list { margin: 0; padding: 0; list-style: none; }
