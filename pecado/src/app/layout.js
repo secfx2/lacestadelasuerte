@@ -1,11 +1,12 @@
 import brand from "@/config/brand";
 import { display, sans, serif } from "@/config/fonts";
+import { asset, assetCssVars } from "@/lib/asset";
 import "./globals.css";
 
 export const metadata = {
   title: { default: brand.seo.title, template: brand.seo.titleTemplate },
   description: brand.seo.description,
-  icons: { icon: "/favicon.svg" }, // emblem, adapts to light / dark tab bars (made from public/brand/emblem.svg)
+  icons: { icon: asset("/favicon.svg") }, // emblem, adapts to light / dark tab bars (made from public/brand/emblem.svg)
 };
 
 export const viewport = { themeColor: brand.themeColor, colorScheme: "dark" };
@@ -14,6 +15,7 @@ export const viewport = { themeColor: brand.themeColor, colorScheme: "dark" };
 const paletteVars = {
   ...Object.fromEntries(Object.entries(brand.palette).map(([token, c]) => [`--${token}`, c.hex])),
   "--tile": brand.tile,
+  ...assetCssVars,
 };
 
 export default function RootLayout({ children }) {

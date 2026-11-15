@@ -3,7 +3,7 @@
   "hero": {
     "type": "wall",
     "wall": ["seraph-baggy", "x-ray-storm-hoodie", "blood-vine-hoodie", "frost-thorn-hoodie"],
-    "mobile": "blood-vine-hoodie",
+    "mobileSlug": "blood-vine-hoodie",
     "alt": "Rizo, Sombra, Vera y Lux contra la pared de hormigón con vaqueros ultra baggy y sudaderas lavadas de PECADO"
   },
   "banners": [

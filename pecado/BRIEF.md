@@ -12,11 +12,11 @@ El universo gráfico es iconografía de cementerio y de catedral reinterpretada 
 
 | Nombre | Hex | Rol |
 |---|---|---|
-| Asfalto | `#0B0B0C` | Negro base: texto, logo, botones |
+| Asfalto | `#0B0B0C` | Negro base: fondo de la web, packaging, logo sobre claro |
 | Negro lavado | `#2B2A2D` | Superficies oscuras, denim, fondos de bloque |
 | Ceniza | `#8C8A88` | Gris desteñido, texto secundario |
 | Índigo crudo | `#1F2A44` | Denim crudo, acento frío |
-| Hueso | `#E9E2D3` | Fondo editorial, pespunte, packaging |
+| Hueso | `#E9E2D3` | Texto, logo y botones sobre Asfalto; pespunte |
 | Burdeos | `#4A1015` | Acento de marca (enlaces, etiquetas, rebajas) |
 | Plata | `#BFC2C6` | Metal, joyería, foil |
 | *Pop* Rojo sangre | `#B3121B` | Solo en gráfico (llamas), nunca en UI |
@@ -24,7 +24,7 @@ El universo gráfico es iconografía de cementerio y de catedral reinterpretada 
 | *Pop* Rosa bebé | `#F6C6D6` | Baby tee, polo; contraste puntual |
 | *Pop* Azul hielo | `#9DB8C9` | Solo el conjunto Frost Thorn |
 
-Regla: como mucho un *pop* por pantalla o por look. Fondo de la web blanco o hueso, como pide la plantilla.
+Regla: como mucho un *pop* por pantalla o por look. La web es **oscura**: fondo Asfalto, texto Hueso y Burdeos como acento (en la web, los tokens `paper`/`ink` de la plantilla están invertidos); las fichas de producto son claras para que se vea la prenda.
 
 ## Tipografía (Google Fonts)
 
@@ -34,11 +34,12 @@ Regla: como mucho un *pop* por pantalla o por look. Fondo de la web blanco o hue
 
 ## Logo (sin Higgsfield)
 
-- **Wordmark:** «Pecado» compuesto en UnifrakturMaguntia y retocado a mano en vector: astas más largas, una espina en el remate de la «P» y la «d», y espaciado apretado. Versiones negra, hueso y plata.
+- **Wordmark:** «Pecado» compuesto en UnifrakturMaguntia, cerrado como dibujo vectorial con el espaciado apretado (las espinas viven en el resto del sistema). Versiones Asfalto, Hueso y blanco.
 - **Emblema:** cruz alada dentro de un anillo de espinas, construida geométricamente en SVG (cruz de brazos apuntados y dos alas simétricas de 5 plumas). Sirve para favicon, herrajes, etiqueta tejida y placeholders.
-- **Monograma / marca corta:** «P» blackletter dentro del anillo de espinas, más «PCD» en grotesca expanded para etiquetas pequeñas.
+- **Monograma / marca corta:** «P» blackletter dentro del anillo de espinas.
+- **Marca alada (gráfico de prenda):** el wordmark entre dos alas de 5 plumas sobre una rama de espinas.
 - **Sello:** emblema + «PECADO» en círculo, para packaging y newsletter.
-- Todo se construye con fuentes y SVG en código (`scripts/vectorize.py` / `build-logo-data.mjs` de la plantilla), sin créditos de imagen.
+- Todo se construye con fuentes y formas en código (`scripts/placeholder-logos.py` → `scripts/vectorize.py` → `npm run logos`), sin créditos de imagen.
 
 ## Producto
 

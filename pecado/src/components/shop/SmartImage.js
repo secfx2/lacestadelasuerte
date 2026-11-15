@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { asset } from "@/lib/asset";
 import styles from "./SmartImage.module.css";
 
 /** Placeholder with a small emblem. tone: "fog" | "bone" | "dark" | "tile" (light product tile) */
@@ -68,7 +69,7 @@ export default function SmartImage({
       {!isError && (
         <Image
           key={src}
-          src={src}
+          src={asset(src)}
           alt={alt}
           fill
           sizes={sizes}

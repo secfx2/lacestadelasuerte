@@ -45,7 +45,7 @@ const wallShot = (p) => p.colors[0].images[1] || p.colors[0].images[0];
  */
 function WallHero() {
   const crew = slimProducts(campaign.hero.wall || []);
-  const mobile = campaign.hero.mobile || crew[0]?.slug;
+  const mobile = campaign.hero.mobileSlug || crew[0]?.slug;
   return (
     <section className={styles.hero} data-hero aria-label="Campaña">
       <h1 className="sr-only">{H.hero.srTitle}</h1>
