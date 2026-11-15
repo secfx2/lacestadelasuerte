@@ -20,8 +20,8 @@
   line-height: 0.95;
 }
 .marquee[data-size="md"] .item { font-size: clamp(24px, 3.6vw, 52px); }
-.item:nth-child(even) { font-family: var(--font-serif); font-style: italic; font-weight: 400; font-stretch: 100%; text-transform: none; letter-spacing: -0.04em; font-size: 0.82em; }
-.item:nth-child(even) .sep { width: 0.95em; height: 0.58em; }
+.item:nth-child(even) { color: var(--accent); }
+.item:nth-child(even) .sep { background: var(--accent); }
 .sep {
   width: 0.78em;
   height: 0.48em;

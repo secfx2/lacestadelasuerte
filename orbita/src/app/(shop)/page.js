@@ -41,12 +41,12 @@ function chipSets(allSlugs, sort) {
  * Editorial banner from a product shot (shot on white): the photo multiplies onto the tile grey
  * and the copy sits in a coloured label box (banner.tone: accent | ink | bone | mustard | steel).
  */
-function LabelBanner({ b, n, sizes, className = "", imgClassName = "", children }) {
+function LabelBanner({ b, n, sizes, className = "", imgClassName = "", compact = false, children }) {
   return (
     <Link href={b.href} className={`${styles.labelBanner} ${className}`}>
       <SmartImage src={b.image} alt={b.title} sizes={sizes} className={imgClassName} tone="bone" blend />
       {n && <span className={styles.labelIndex}>{n}</span>}
-      <span className={styles.label} data-tone={b.tone || "ink"}>
+      <span className={styles.label} data-tone={b.tone || "ink"} data-compact={compact || undefined}>
         <span className={styles.labelTitle}>{b.title}</span>
         <span className={styles.labelKicker}>{children || b.kicker}</span>
         <span className={styles.labelCta}>
@@ -134,7 +134,7 @@ export default function HomePage() {
           </div>
           <div className={styles.silver}>
             {featureBanner && (
-              <LabelBanner b={featureBanner} sizes="(min-width: 1024px) 25vw, 100vw" className={styles.silverFeature} imgClassName={styles.silverImg}>
+              <LabelBanner b={featureBanner} sizes="(min-width: 1024px) 25vw, 100vw" className={styles.silverFeature} imgClassName={styles.silverImg} compact>
                 {feature.text}
               </LabelBanner>
             )}

@@ -1,0 +1,38 @@
+.frame {
+  position: relative;
+  overflow: hidden;
+  background: var(--fog);
+}
+.frame[data-tone="bone"] { background: var(--bone); }
+.frame[data-tone="dark"] { background: #121212; }
+.frame[data-tone="white"] { background: var(--paper); }
+
+.img {
+  opacity: 0;
+  transition: opacity 0.7s var(--ease);
+}
+.loaded { opacity: 1; }
+.frame[data-blend] { isolation: isolate; background: var(--tile); }
+/* lift near-white photo backgrounds to pure white, then multiply onto the grey tile */
+.blend { mix-blend-mode: multiply; filter: brightness(1.035) contrast(1.02); }
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--fog);
+}
+.placeholder[data-tone="bone"] { background: var(--bone); }
+.placeholder[data-tone="dark"] { background: #121212; }
+
+.emblem {
+  display: block;
+  width: clamp(16px, 9%, 34px);
+  aspect-ratio: 1;
+  background: #cdcdc9;
+  -webkit-mask: url("/brand/emblem-black.svg") center / contain no-repeat;
+  mask: url("/brand/emblem-black.svg") center / contain no-repeat;
+}
+.placeholder[data-tone="dark"] .emblem { background: #2e2e2e; }
+.placeholder[data-tone="bone"] .emblem { background: #cfc9bf; }

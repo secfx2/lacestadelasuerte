@@ -2633,3 +2633,13 @@
   .manSign { font-size: 13px; }
   .bigAa { font-size: 120px; }
 }
+/* Off-palette example: a colour clearly outside the ÓRBITA palette (mustard is in it) */
+.fx_offpalette .misuseLogo { color: #8a3fc2; }
+.symbolName { text-transform: uppercase !important; }
+.swatchName, .prodName { font-size: 1.05cqw; }
+@media (min-width: 901px) {
+  /* 8 brand tokens, 7 approved pairs, 9 product colours: one row each */
+  .swatches { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1.25fr) repeat(6, minmax(0, 1fr)); }
+  .pairs { grid-template-columns: repeat(7, minmax(0, 1fr)); }
+  .prodGrid { grid-template-columns: repeat(9, minmax(0, 1fr)); }
+}

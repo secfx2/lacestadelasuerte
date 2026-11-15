@@ -201,7 +201,7 @@ const brand = {
     /** ids de campaign.json → banners destacados en el menú «Tienda». */
     shopBanners: ["chaquetas", "punto"],
     /** ids de banners del menú «Misiones» ([] = todos). */
-    collectionBanners: ["chaquetas", "punto", "pantalones", "accesorios"],
+    collectionBanners: ["chaquetas", "camisas", "pantalones", "sudaderas"],
     selection: [
       { label: "Novedades", href: "/tienda?orden=novedades" },
       { label: "Best sellers", href: "/tienda" },
@@ -278,18 +278,26 @@ const brand = {
       srTitle: `${NAME} — ${TAGLINE}. Ropa unisex de la era espacial, accesorios y joyería.`,
     },
     /** slugs: [] → se deriva del catálogo (badge "Nuevo" o línea actual). */
-    newIn: { title: "Novedades", slugs: [], limit: 10 },
+    newIn: {
+      title: "Novedades",
+      slugs: ["capsule-flight-jacket", "moonwalk-puffer", "mission-control-blouson", "starfield-knit", "saturn-cardigan", "mission-patch-hoodie", "engineer-shirt", "flight-suit-trouser", "crater-boot", "launchpad-zip-hoodie"],
+      limit: 10,
+    },
     /** slugs: [] → productos con "featured": true, luego badge "Best seller", luego orden del catálogo. */
-    bestSellers: { title: "Best Sellers", slugs: [], limit: 10 },
+    bestSellers: {
+      title: "Best Sellers",
+      slugs: ["orbit-varsity", "silver-moon-trouser", "constellation-cardigan", "blueprint-tee", "helmet-bag", "cosmonaut-quarter-zip", "orbital-stripe-shirt", "eva-quilted-trouser", "zero-g-crewneck", "saturn-spinner-ring"],
+      limit: 10,
+    },
     /** ids de banners de campaign.json para el bloque doble. */
-    split: ["punto", "pantalones"],
+    split: ["punto", "camisas"],
     splitCta: "Descubrir",
     categories: {
       title: "Categorías",
       kicker: "Todo, siempre en órbita",
       linkLabel: "Ver catálogo",
       /** Portada de cada categoría: { chaquetas: "slug-producto" }. Vacío → primer producto destacado. */
-      covers: { accesorios: "helmet-bag", joyeria: "saturn-spinner-ring", camisetas: "blueprint-tee" },
+      covers: { chaquetas: "heat-shield-bomber", punto: "lunar-mohair-knit", sudaderas: "launchpad-zip-hoodie", camisetas: "rocket-stage-tee", camisas: "control-room-camp-shirt", pantalones: "orbit-barrel-denim", accesorios: "crater-boot", joyeria: "rocket-pendant" },
     },
     marquee: [TAGLINE, MOTTO, SIGNOFF],
     /** Bloque destacado de una categoría. category: null lo oculta. */

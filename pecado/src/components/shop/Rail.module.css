@@ -1,0 +1,29 @@
+.wrap { position: relative; min-width: 0; }
+.track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - (var(--per) - 1) * var(--gap)) / var(--per));
+  gap: var(--gap);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  outline: none;
+}
+.track::-webkit-scrollbar { display: none; }
+.track > * { scroll-snap-align: start; }
+.controls { display: flex; justify-content: flex-end; gap: 6px; margin-top: 18px; padding: 0 var(--page-pad); }
+.controls button {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  transition: background-color var(--dur-fast), color var(--dur-fast), border-color var(--dur-fast), opacity var(--dur-fast);
+}
+.controls button:hover:not(:disabled) { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.controls button:disabled { opacity: 0.3; cursor: default; }
+@media (max-width: 767px) {
+  .track { grid-auto-columns: calc((100% - (var(--per-m) - 1) * var(--gap)) / var(--per-m)); }
+  .controls { display: none; }
+}
