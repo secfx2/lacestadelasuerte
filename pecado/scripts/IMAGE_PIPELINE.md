@@ -1,6 +1,6 @@
 # PECADO — product photo protocol (Higgsfield)
 
-Budget brand: 64 products × 2 shots, one colour each, no logos generated in Higgsfield (blackletter wordmark is typographic). Hard total cap for the whole brand: 160 credits (4 castings already spent).
+Budget brand: 72 products × 2 shots, one colour each, no logos generated in Higgsfield (blackletter wordmark is typographic). Hard total cap for the whole brand: 175 credits (4 castings already spent) → per batch of 18 products: 36 base images + max 4 retries = 40.
 
 ## Tools
 ToolSearch: `select:mcp__Higgsfield__generate_image_batch,mcp__Higgsfield__jobs_wait`. ≤12 requests per batch; poll with `jobs_wait` (timeout ≤15) until terminal. Never pass folder_id / use_unlim / count. Never resubmit a job with unknown outcome.
@@ -14,7 +14,7 @@ ToolSearch: `select:mcp__Higgsfield__generate_image_batch,mcp__Higgsfield__jobs_
 ## Data
 `src/data/catalog.json` → `products[]` with `batch` A–D. Use `prompt.garment`, `prompt.pose` (a COMPLETE styled look), `model` (key into top-level `models` → casting `job_id` + `desc`), `kind` and `colors[0].images` (exactly 2 output paths: `-1` flat, `-2` on model / close-up).
 
-Aesthetic: Y2K grunge / mall-goth street — ULTRA-WIDE baggy jeans (leg opening ~34 cm that swallows the shoe, thick contrast topstitching, oversized back pockets) with big embroidered/printed gothic art (winged crosses, thorns, filigree, flames, skulls with roses), distressed foil/rhinestone graphic tees layered over long-sleeves, graphic polos, zip hoodies, studded belts and backpacks, keychain charms, beanies, puffy skate shoes, silver jewellery. Original designs only: no real brand, band or logo, no legible text unless the garment description gives it explicitly.
+Aesthetic: Y2K grunge / mall-goth street — ULTRA-WIDE baggy jeans (leg opening ~34 cm that swallows the shoe, thick contrast topstitching, oversized back pockets) with big embroidered/printed gothic art (winged crosses, thorns, filigree, flames, skulls with roses), distressed foil/rhinestone graphic tees layered over long-sleeves, graphic polos, zip hoodies, studded belts and backpacks, keychain charms, beanies, puffy skate shoes, silver jewellery. Heavy washed boxy hoodies often have RAW FRAYED DISTRESSED hems and cuffs (shredded hanging threads) and all-over grunge prints (skeleton spines, x-ray ribcages, lightning, flames, thorny illegible death-metal style logo shapes) — render the fraying and the wash texture clearly. Original designs only: no real brand, band or logo, no legible text unless the garment description gives it explicitly.
 
 ## Shot 1 — flat lay on white (no refs)
 Garments:

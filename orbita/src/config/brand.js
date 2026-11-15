@@ -745,6 +745,7 @@ const brand = {
       rampSample: TAGLINE,
       weightSample: "Misión",
       displaySample: ["Fuera de", "órbita"],
+      sansSample: "Nylon técnico mate, bolsillos de bolígrafo en las mangas y paneles de parche lisos para tus propias misiones.",
       serifBig: [`${TAGLINE},`, `${MOTTO.toLowerCase()}.`],
       pairingQuote: "«T–10. Todo el mundo mirando hacia arriba a la vez.»",
       pairingCaption: "Transcripción · Manifiesto 01",

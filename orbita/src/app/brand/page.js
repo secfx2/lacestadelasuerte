@@ -725,20 +725,24 @@ export default function BrandBook() {
                   {FONTS.sans.source} · {FONTS.sans.axes}. {FONTS.sans.role}
                 </p>
               </div>
-              <div className={s.ramp}>
-                {(sansWidths.length ? sansWidths : [100]).map((w) => {
-                  const use = w === 100 ? "Normal" : w === 125 ? "Expanded" : null;
-                  return (
-                    <div key={w} className={`${s.rampRow} ${use ? s.rampUse : ""}`}>
-                      <span className={s.rampLabel}>wdth {String(w).replace(".", ",")}</span>
-                      <span className={s.rampSample} style={{ fontStretch: `${w}%` }}>
-                        {TYPE.rampSample}
-                      </span>
-                      <span className={s.rampTag}>{use || ""}</span>
-                    </div>
-                  );
-                })}
-              </div>
+              {sansWidths.length ? (
+                <div className={s.ramp}>
+                  {(sansWidths.length ? sansWidths : [100]).map((w) => {
+                    const use = w === 100 ? "Normal" : w === 125 ? "Expanded" : null;
+                    return (
+                      <div key={w} className={`${s.rampRow} ${use ? s.rampUse : ""}`}>
+                        <span className={s.rampLabel}>wdth {String(w).replace(".", ",")}</span>
+                        <span className={s.rampSample} style={{ fontStretch: `${w}%` }}>
+                          {TYPE.rampSample}
+                        </span>
+                        <span className={s.rampTag}>{use || ""}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <p className={s.sansSample}>{TYPE.sansSample || TYPE.rampSample}</p>
+              )}
               <div className={s.weights}>
                 {(FONTS.sans.weights || [300, 400, 500, 600, 700]).map((wt) => (
                   <span key={wt} style={{ fontWeight: wt }}>
@@ -1075,7 +1079,7 @@ export default function BrandBook() {
                   {(HERO?.colors || []).map((c) => (
                     <span key={c.slug} className={s.cardSwatch} style={{ background: c.hex }} title={c.name} />
                   ))}
-                  <span className={s.cardColors}>{HERO?.colors?.length} colores</span>
+                  <span className={s.cardColors}>{HERO?.colors?.length === 1 ? "1 color" : `${HERO?.colors?.length} colores`}</span>
                 </div>
               </article>
               <p className={s.small}>{WEB.cardNote}</p>

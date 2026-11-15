@@ -2643,3 +2643,13 @@
   .pairs { grid-template-columns: repeat(7, minmax(0, 1fr)); }
   .prodGrid { grid-template-columns: repeat(9, minmax(0, 1fr)); }
 }
+.tsDisplay { text-transform: uppercase; }
+.sansSample { font-size: 2.1cqw; line-height: 1.2; letter-spacing: -0.01em; max-width: 48cqw; }
+@media (max-width: 900px) { .sansSample { font-size: 22px; } }
+/* Box: copy in the left three quarters, tape + seal on the right */
+.taBoxLid { padding-right: 22%; gap: 3cqw; }
+.taBoxLogo { width: 56%; }
+.taBoxMeta { font-size: 1.5cqw; }
+.taBoxTape { right: 8%; width: 7%; }
+.taBoxSeal { right: 4.5%; bottom: 12%; width: 14%; }
+.taStickers { background: var(--fog); }
