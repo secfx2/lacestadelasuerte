@@ -1,0 +1,96 @@
+{
+  "hero": {
+    "desktop": "/campaign/hero.jpg",
+    "mobile": "/campaign/hero-mobile.jpg",
+    "alt": "Campaña: cuatro modelos con la línea actual en la ciudad"
+  },
+  "banners": [
+    {
+      "id": "chaquetas",
+      "image": "/campaign/banner-chaquetas.jpg",
+      "ratio": "4:5",
+      "title": "Chaquetas",
+      "kicker": "Lona pesada y corte boxy",
+      "href": "/categoria/chaquetas"
+    },
+    {
+      "id": "joyeria",
+      "image": "/campaign/banner-joyeria.jpg",
+      "ratio": "4:5",
+      "title": "Joyería",
+      "kicker": "Plata 925 maciza",
+      "href": "/categoria/joyeria"
+    },
+    {
+      "id": "punto",
+      "image": "/campaign/banner-punto.jpg",
+      "ratio": "4:5",
+      "title": "Punto",
+      "kicker": "Punto grueso, tacto denso",
+      "href": "/categoria/punto"
+    },
+    {
+      "id": "wide",
+      "image": "/campaign/banner-wide.jpg",
+      "ratio": "21:9",
+      "title": "Your motto",
+      "kicker": "Catálogo permanente. Sin drops.",
+      "href": "/tienda"
+    }
+  ],
+  "lookbook": [
+    {
+      "image": "/campaign/look-01.jpg",
+      "ratio": "4:5",
+      "caption": "Look 01",
+      "title": "Escalera",
+      "pieces": [
+        "boxy-work-jacket",
+        "boxy-tee",
+        "straight-denim"
+      ]
+    },
+    {
+      "image": "/campaign/look-02.jpg",
+      "ratio": "4:5",
+      "caption": "Look 02",
+      "title": "Azotea",
+      "pieces": [
+        "logo-hoodie",
+        "straight-denim",
+        "six-panel-cap"
+      ]
+    },
+    {
+      "image": "/campaign/look-03.jpg",
+      "ratio": "4:5",
+      "caption": "Look 03",
+      "title": "Taller",
+      "pieces": [
+        "oxford-overshirt",
+        "boxy-tee",
+        "signet-ring"
+      ]
+    },
+    {
+      "image": "/campaign/look-04.jpg",
+      "ratio": "4:5",
+      "caption": "Look 04",
+      "title": "Patio",
+      "pieces": [
+        "heavy-knit-crewneck",
+        "straight-denim"
+      ]
+    }
+  ],
+  "maison": {
+    "image": "/campaign/about.jpg",
+    "ratio": "3:2",
+    "alt": "El taller de la marca"
+  },
+  "heroClassic": {
+    "desktop": "/campaign/hero-classic.jpg",
+    "mobile": "/campaign/hero-classic-mobile.jpg",
+    "alt": "Campaña alternativa"
+  }
+}
