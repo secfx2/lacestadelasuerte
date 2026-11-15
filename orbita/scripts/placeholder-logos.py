@@ -93,9 +93,9 @@ def ellipse_point(cx, cy, rx, ry, rot_deg, t):
     return ellipse_pts(cx, cy, rx, ry, rot_deg, t, t, 1)[0]
 
 
-def band(draw, cx, cy, rx, ry, rot_deg, t0, t1, width, fill, n=1440):
+def band(draw, cx, cy, rx, ry, rot_deg, t0, t1, width, fill, n=1440, caps=True):
     """A clean stroke of constant `width` along a rotated elliptical arc, drawn as one polygon
-    (offset curves along the normal) so there are no polyline seams. Round caps at both ends."""
+    (offset curves along the normal) so there are no polyline seams. Optional round caps."""
     th = math.radians(rot_deg)
     ct, st = math.cos(th), math.sin(th)
     outer, inner = [], []
@@ -110,7 +110,7 @@ def band(draw, cx, cy, rx, ry, rot_deg, t0, t1, width, fill, n=1440):
             px, py = x + sgn * h * nx, y + sgn * h * ny
             acc.append((cx + px * ct - py * st, cy + px * st + py * ct))
     draw.polygon(outer + inner[::-1], fill=fill)
-    for t in (t0, t1):
+    for t in (t0, t1) if caps else ():
         x, y = ellipse_point(cx, cy, rx, ry, rot_deg, t)
         draw.ellipse([x - h, y - h, x + h, y + h], fill=fill)
 
@@ -148,53 +148,48 @@ def make_monogram(fontp, short, tracking, size=1000, dot=True):
 
 
 def make_graphic(fontp, name, tracking, size=1000):
-    """NAME wrapped by a tilted orbit ring + satellite. One colour: knockout gaps keep it legible."""
+    """NAME wrapped by a tilted orbit ring + satellite (garment / campaign graphic).
+    The back half of the ring disappears behind the word block; the front half crosses the
+    last letter with a paper knockout, so the one-colour mark stays legible."""
     font = ImageFont.truetype(fontp, size)
     top, cap = cap_metrics(font)
     tr = tracking * size
     w = text_run(font, name, tr)
-    W, H = w + size * 1.6, size * 3.2
+    W, H = w + size * 1.6, size * 3.4
     img, d = canvas(W, H)
     x0, y0 = (W - w) / 2, H / 2 - top - cap / 2  # cap band centred vertically
     cx, cy = W / 2, H / 2
 
-    rx, ry, rot = w * 0.6, cap * 0.92, -9
+    rx, ry, rot = w * 0.6, cap * 0.8, -5
     ring = cap * 0.075
-    gap = cap * 0.07
+    gap = cap * 0.075
 
-    # 1) back half of the ring (behind the letters)
+    # 1) back half of the ring, hidden behind the whole word block (accents included)
     band(d, cx, cy, rx, ry, rot, math.pi, 2 * math.pi, ring, INK)
-    # 2) letters with a paper halo (knocks the back arc out where it meets them)
-    draw_text(d, (x0, y0), font, name, tr, fill=PAPER, stroke=int(gap), stroke_fill=PAPER)
+    ink_top = min(font.getbbox(ch)[1] for ch in name)
+    d.rectangle([x0 - gap, y0 + ink_top - gap, x0 + w + gap, y0 + top + cap + gap], fill=PAPER)
+    # 2) letters
     draw_text(d, (x0, y0), font, name, tr)
-    # 3) front half of the ring, with its own paper halo over the letters
-    band(d, cx, cy, rx, ry, rot, 0, math.pi, ring + 2 * gap, PAPER)
+    # 3) front half of the ring, with a paper halo where it crosses the letters
+    band(d, cx, cy, rx, ry, rot, 0.04, math.pi - 0.04, ring + 2 * gap, PAPER, caps=False)
     band(d, cx, cy, rx, ry, rot, 0, math.pi, ring, INK)
-    # 4) satellite riding the front-right of the ring
-    sx, sy = ellipse_point(cx, cy, rx, ry, rot, math.radians(28))
+    # 4) satellite riding the right end of the ring
+    sx, sy = ellipse_point(cx, cy, rx, ry, rot, math.radians(20))
     disc(d, sx, sy, ring * 1.9 + gap, PAPER)
     disc(d, sx, sy, ring * 1.9)
     return img
 
 
 def draw_emblem(d, c, R):
-    """Planet + tilted ring + satellite inside a circle of radius R centred at (c, c)."""
-    rp = R * 0.42  # planet
-    rx, ry, rot = R * 0.98, R * 0.34, -24
-    ring = R * 0.085
-    gap = R * 0.07
-    # back half of the ring, then the planet with a paper halo over it
-    stroke_arc(d, ellipse_pts(c, c, rx, ry, rot, math.pi, 2 * math.pi), ring, INK)
-    disc(d, c, c, rp + gap, PAPER)
-    disc(d, c, c, rp)
-    # front half with a paper halo where it crosses the planet
-    front = ellipse_pts(c, c, rx, ry, rot, 0, math.pi)
-    d.line(front, fill=PAPER, width=int(ring + 2 * gap), joint="curve")
-    stroke_arc(d, front, ring, INK)
-    # satellite on the far (upper-right) side of the ring
-    sx, sy = ellipse_point(c, c, rx, ry, rot, math.radians(-38))
-    disc(d, sx, sy, ring * 1.55 + gap * 0.8, PAPER)
-    disc(d, sx, sy, ring * 1.55)
+    """Orbit: tilted elliptical ring around a planet, with a satellite riding the ring
+    (fits a circle of radius R centred at (c, c)). Reads down to 16 px."""
+    rx, ry, rot = R * 0.98, R * 0.36, -24
+    ring = R * 0.08
+    band(d, c, c, rx, ry, rot, 0, 2 * math.pi, ring, INK, caps=False)
+    disc(d, c, c, R * 0.24)  # planet
+    sx, sy = ellipse_point(c, c, rx, ry, rot, math.radians(-60))  # satellite, upper right
+    disc(d, sx, sy, R * 0.18, PAPER)
+    disc(d, sx, sy, R * 0.12)
 
 
 def make_emblem(size=1600):
