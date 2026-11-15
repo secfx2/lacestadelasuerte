@@ -1,5 +1,5 @@
 import brand from "@/config/brand";
-import { sans, serif } from "@/config/fonts";
+import { display, sans, serif } from "@/config/fonts";
 import "./globals.css";
 
 export const metadata = {
@@ -18,7 +18,7 @@ const paletteVars = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang={brand.locale.lang} className={`${sans.variable} ${serif.variable}`} style={paletteVars}>
+    <html lang={brand.locale.lang} className={`${display.variable} ${sans.variable} ${serif.variable}`} style={paletteVars}>
       <body>{children}</body>
     </html>
   );

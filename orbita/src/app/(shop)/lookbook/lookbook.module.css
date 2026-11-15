@@ -16,8 +16,8 @@
 .look:hover .img img { transform: scale(1.02); }
 .caption { padding-top: 16px; }
 .capHead { display: flex; align-items: baseline; gap: 14px; }
-.num { font-size: 22px; font-stretch: 125%; font-weight: 600; letter-spacing: -0.01em; }
-.title { font-family: var(--font-serif); font-style: italic; font-size: 20px; }
+.num { font-size: 22px; font-family: var(--font-display); font-stretch: 125%; font-weight: 600; letter-spacing: -0.01em; }
+.title { font-family: var(--font-serif); font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; }
 .inLook { margin: 14px 0 8px; font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }
 .pieces { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); max-width: 460px; }
 .piece {
@@ -35,11 +35,12 @@
   grid-column: 1 / -1;
   margin: 0;
   text-align: center;
-  font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(56px, 10vw, 168px);
-  line-height: 0.9;
-  letter-spacing: -0.02em;
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(26px, 5vw, 76px);
+  line-height: 1;
+  letter-spacing: 0;
 }
 .marquee { margin-top: clamp(72px, 9vw, 140px); }
 .cta { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; padding: 40px var(--page-pad) 0; }

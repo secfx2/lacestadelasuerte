@@ -1,0 +1,178 @@
+/* ==========================================================================
+   Design tokens. The palette values below are DEFAULTS: the real values come
+   from src/config/brand.js (brand.palette) and are injected on <html> by
+   src/app/layout.js. Edit the palette there, not here.
+   ========================================================================== */
+:root {
+  /* Core palette */
+  --ink: #0a0a0a;          /* Tinta — text, logo, primary buttons */
+  --paper: #ffffff;        /* Papel — page background */
+  --fog: #f4f4f2;          /* Niebla — soft surfaces, image placeholders */
+  --bone: #ece8e1;         /* Hueso — editorial blocks */
+  --steel: #9a9da1;        /* Acero — silver / secondary text on dark */
+  --accent: #33415c;       /* Acento — brand accent (a detail, never a full background) */
+  --alert: #8e2a2a;        /* Alerta — rare accent: sale, alerts, form errors */
+
+  /* Functional */
+  --text: var(--ink);
+  --text-muted: #6b6b6b;
+  --line: rgba(10, 10, 10, 0.12);
+  --line-strong: rgba(10, 10, 10, 0.9);
+
+  /* Type */
+  --font-sans: var(--font-brand-sans), "Helvetica Neue", Arial, sans-serif;   /* src/config/fonts.js */
+  --font-serif: var(--font-brand-serif), "Times New Roman", serif;
+
+  --fs-micro: 10px;    /* labels, legal */
+  --fs-xs: 11px;       /* nav, product meta (uppercase, tracked) */
+  --fs-sm: 13px;       /* body small */
+  --fs-md: 15px;       /* body */
+  --fs-lg: 20px;
+  --fs-xl: clamp(28px, 4vw, 44px);
+  --fs-display: clamp(48px, 9vw, 140px);
+
+  --track-caps: 0.08em;
+  --track-wide: 0.22em;
+
+  /* Layout */
+  --gutter: clamp(12px, 2vw, 24px);
+  --header-h: 56px;
+  --announce-h: 30px;
+  --radius: 0px;           /* the brand is square: no rounded corners */
+  --ease: cubic-bezier(0.2, 0.7, 0.1, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+img, svg, video { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+input, select, textarea { font: inherit; color: inherit; border-radius: 0; }
+::selection { background: var(--ink); color: var(--paper); }
+
+/* Utility type styles */
+.caps { text-transform: uppercase; letter-spacing: var(--track-caps); font-size: var(--fs-xs); }
+.caps-wide { text-transform: uppercase; letter-spacing: var(--track-wide); font-size: var(--fs-micro); }
+.serif { font-family: var(--font-serif); font-weight: 400; }
+.expanded { font-stretch: 125%; }
+.muted { color: var(--text-muted); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+:focus-visible { outline: 1px solid var(--ink); outline-offset: 2px; }
+
+/* ==========================================================================
+   Shop extensions (shared by the (shop) route group). Prefixed `mk-`.
+   ========================================================================== */
+:root {
+  --fs-body: 13px;          /* UI body copy in the shop */
+  --page-pad: clamp(16px, 2.2vw, 32px);
+  --tile: #f2f2f2;          /* product tile grey (photos multiply onto it) */
+  --chip: #f0f0f0;
+  --drawer-w: 460px;
+  --dur: 0.45s;
+  --dur-fast: 0.22s;
+  --z-header: 40;
+  --z-overlay: 60;
+  --z-drawer: 70;
+  --z-modal: 80;
+}
+
+.mk-container { padding-left: var(--page-pad); padding-right: var(--page-pad); }
+
+/* Buttons — square, ink, uppercase tracked */
+.mk-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px; padding: 0 28px;
+  background: var(--ink); color: var(--paper);
+  border: 1px solid var(--ink); border-radius: var(--radius);
+  font-size: var(--fs-xs); font-weight: 500; letter-spacing: var(--track-caps); text-transform: uppercase;
+  transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease), opacity var(--dur-fast);
+  white-space: nowrap;
+}
+.mk-btn:hover { background: #262626; border-color: #262626; }
+.mk-btn:disabled, .mk-btn[aria-disabled="true"] { opacity: 0.35; cursor: not-allowed; }
+.mk-btn--block { width: 100%; }
+.mk-btn--ghost { background: transparent; color: var(--ink); }
+.mk-btn--ghost:hover { background: var(--ink); color: var(--paper); }
+.mk-btn--light { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+.mk-btn--light:hover { background: transparent; color: var(--paper); border-color: var(--paper); }
+.mk-btn--sm { min-height: 38px; padding: 0 18px; }
+
+/* Animated underline link */
+.mk-link {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px; background-repeat: no-repeat; background-position: 0 100%;
+  transition: background-size var(--dur) var(--ease);
+  padding-bottom: 2px;
+}
+.mk-link:hover, .mk-link:focus-visible, .mk-link[aria-current="page"] { background-size: 100% 1px; }
+.mk-link--on { background-size: 100% 1px; }
+.mk-link--on:hover { background-size: 0% 1px; }
+
+/* Form fields */
+.mk-field { position: relative; display: block; }
+.mk-input, .mk-select {
+  display: block; width: 100%; height: 48px; padding: 0 14px;
+  background: var(--paper); border: 1px solid var(--line); outline: 0;
+  font-size: var(--fs-body); color: var(--ink);
+  transition: border-color var(--dur-fast);
+  appearance: none; -webkit-appearance: none;
+}
+.mk-input::placeholder { color: #8a8a8a; }
+.mk-input:hover, .mk-select:hover { border-color: rgba(10,10,10,0.35); }
+.mk-input:focus, .mk-select:focus { border-color: var(--ink); }
+.mk-input[aria-invalid="true"], .mk-select[aria-invalid="true"] { border-color: var(--alert); }
+.mk-select {
+  padding-right: 36px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%230a0a0a' stroke-width='1.2'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 14px center;
+}
+.mk-label { display: block; margin-bottom: 8px; font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }
+.mk-error { margin-top: 6px; font-size: 11px; color: var(--alert); }
+
+.mk-check { display: inline-flex; align-items: flex-start; gap: 10px; font-size: var(--fs-body); cursor: pointer; }
+.mk-check input {
+  appearance: none; -webkit-appearance: none; flex: none;
+  width: 16px; height: 16px; margin: 1px 0 0; border: 1px solid var(--ink); background: var(--paper);
+  display: grid; place-items: center; cursor: pointer;
+}
+.mk-check input:checked { background: var(--ink); box-shadow: inset 0 0 0 3px var(--paper); }
+.mk-check input[type="radio"] { border-radius: 50%; }
+
+/* Headings */
+.mk-display {
+  font-stretch: 125%; font-weight: 600; text-transform: uppercase;
+  letter-spacing: -0.01em; line-height: 0.92;
+}
+.mk-eyebrow { font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }
+
+/* Body scroll lock when an overlay is open */
+html.mk-locked, html.mk-locked body { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.mk-skip {
+  position: fixed; top: 8px; left: 8px; z-index: 100;
+  padding: 10px 14px; background: var(--ink); color: var(--paper);
+  font-size: var(--fs-xs); letter-spacing: var(--track-caps); text-transform: uppercase;
+  transform: translateY(-200%); transition: transform var(--dur-fast) var(--ease);
+}
+.mk-skip:focus { transform: none; }

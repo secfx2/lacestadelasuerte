@@ -19,8 +19,8 @@
 .run { display: flex; margin: 0; padding: 0; list-style: none; }
 .item { display: flex; align-items: center; white-space: nowrap; }
 .sep {
-  width: 7px;
-  height: 9px;
+  width: 13px;
+  height: 8px;
   margin: 0 44px;
   background: var(--steel);
   -webkit-mask: url("/brand/emblem-black.svg") center / contain no-repeat;
@@ -30,8 +30,8 @@
   font-family: var(--font-serif);
   font-style: italic;
   text-transform: none;
-  letter-spacing: 0.02em;
-  font-size: 13px;
+  letter-spacing: 0.04em;
+  font-size: 11px;
 }
 .static { display: none; margin: 0 auto; }
 

@@ -36,5 +36,5 @@
 .done { padding: 6px 0; }
 .doneTitle { margin: 0; font-size: var(--fs-xs); font-weight: 500; letter-spacing: var(--track-caps); text-transform: uppercase; }
 .doneText { margin: 6px 0 0; font-size: var(--fs-body); color: var(--text-muted); }
-.doneText em { font-family: var(--font-serif); font-size: 17px; color: var(--ink); }
+.doneText em { font-family: var(--font-serif); font-size: 14px; color: var(--ink); }
 .done[data-variant="feature"] .doneTitle { font-size: 15px; }

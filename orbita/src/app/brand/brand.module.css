@@ -286,6 +286,7 @@
 }
 .h2 {
   font-size: var(--fs-h2);
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   line-height: 0.95;
@@ -295,6 +296,7 @@
 .h3 {
   margin-bottom: var(--s3) !important;
   font-size: var(--fs-h3);
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -374,6 +376,7 @@
 }
 .chTitle {
   font-size: var(--fs-h2);
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   line-height: 0.95;
@@ -513,6 +516,7 @@
 }
 .indexName {
   font-size: 1.7cqw;
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   text-transform: uppercase;
@@ -609,6 +613,7 @@
 .pillarTitle {
   margin-bottom: var(--s2) !important;
   font-size: 1.5cqw;
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   text-transform: uppercase;
@@ -972,6 +977,7 @@
 }
 .symbolName {
   font-size: 1.45cqw;
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 600;
   text-transform: none !important;
@@ -1091,6 +1097,7 @@
 }
 .swatchName {
   font-size: 1.05cqw;
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   text-transform: uppercase;
@@ -1226,6 +1233,7 @@
   overflow-wrap: anywhere;
   margin-bottom: var(--s1) !important;
   font-size: 0.95cqw;
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   text-transform: uppercase;
@@ -1399,6 +1407,7 @@
 }
 .tsDisplay {
   font-size: 5.2cqw;
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   line-height: 0.95;
@@ -1406,6 +1415,7 @@
 }
 .tsXl {
   font-size: 2.6cqw;
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   line-height: 1.05;
@@ -1908,6 +1918,7 @@
 .pgTitle {
   margin-bottom: 1.2cqw !important;
   font-size: 1.7cqw;
+  font-family: var(--font-display);
   font-stretch: 125%;
   font-weight: 500;
   text-transform: uppercase;
@@ -2365,4 +2376,260 @@
   .indexRow:hover {
     padding-left: 0;
   }
+}
+
+/* ==========================================================================
+   ÓRBITA — overrides and additions
+   Big statements in Syncopate (display); Space Mono (var(--font-serif)) only
+   for small accents; typographic applications drawn with the logo SVGs.
+   ========================================================================== */
+.tone_ink {
+  --tile: rgba(255, 255, 255, 0.06);
+  --acc: var(--accent);
+}
+.h2,
+.h3,
+.chTitle,
+.indexName,
+.pillarTitle,
+.symbolName,
+.swatchName,
+.prodName,
+.tsDisplay,
+.tsXl,
+.pgTitle {
+  font-weight: 700;
+  letter-spacing: 0;
+}
+.h3 { font-size: 1.05cqw; letter-spacing: 0.02em; }
+.chTitle, .h2 { font-size: 2.8cqw; line-height: 1.02; }
+.runfootMotto { font-style: normal; font-size: var(--fs-micro); letter-spacing: 0.1em; text-transform: uppercase; }
+.roman { font-size: 1.15cqw; letter-spacing: 0.12em; color: var(--acc); }
+.chNum, .indexNum { font-family: var(--font-serif); }
+.label, .capsSmall, .micro { font-family: var(--font-serif); letter-spacing: 0.12em; }
+
+/* Cover: Tinta Noche field, wordmark in safety orange */
+.cover .coverLogo { color: var(--accent); }
+.coverMotto { font-family: var(--font-display); font-style: normal; font-weight: 700; font-size: 2.6cqw; line-height: 1; text-transform: uppercase; }
+.coverTop { font-family: var(--font-serif); }
+
+.indexTitle { font-family: var(--font-display); font-style: normal; font-weight: 700; font-size: 5.2cqw; line-height: 1; text-transform: uppercase; }
+.indexName { font-size: 1.45cqw; }
+
+.manQuote { font-family: var(--font-display); font-style: normal; font-weight: 700; font-size: 4.8cqw; line-height: 1; text-transform: uppercase; }
+.manSub { font-family: var(--font-serif); font-size: 1.5cqw; letter-spacing: 0.08em; text-transform: uppercase; color: var(--acc); }
+.manLead { font-size: 1.8cqw; }
+.manSign { font-style: normal; font-size: 1.1cqw; letter-spacing: 0.1em; text-transform: uppercase; color: var(--acc); }
+.conceptStatement { font-family: var(--font-display); font-style: normal; font-weight: 700; font-size: 6cqw; line-height: 1; text-transform: uppercase; }
+.pillarTitle { font-size: 1.3cqw; }
+
+.closeMotto { font-family: var(--font-display); font-weight: 700; font-size: 3.6cqw; line-height: 1.05; text-transform: uppercase; }
+.closeMotto em { font-style: normal; color: var(--accent); }
+.closeEmblem { width: 18cqw; height: 12cqw; color: var(--accent); }
+
+/* 05 · Display sheet (Syncopate) */
+.displaySheet {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: var(--s5);
+}
+.bigAaDisplay {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 15cqw;
+  line-height: 0.9;
+  color: var(--accent);
+}
+.fontNameDisplay {
+  margin-bottom: var(--s2) !important;
+  font-family: var(--font-display);
+  font-size: 2.6cqw;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;
+}
+.displaySample {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 4.4cqw;
+  line-height: 1;
+  text-transform: uppercase;
+}
+.displayWeight { font-family: var(--font-display); text-transform: uppercase; }
+.glyphsDisplay {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.25cqw;
+  line-height: 1.5;
+}
+.fontName { font-size: 2.6cqw; font-weight: 600; text-transform: none; }
+.bigAa { font-size: 19cqw; letter-spacing: -0.04em; }
+.serifBig { font-size: 5.6cqw; line-height: 1.05; letter-spacing: -0.02em; }
+.pairingQuote { font-size: 1.45cqw; line-height: 1.3; }
+.tsDisplay { font-size: 4.2cqw; }
+.tsXl { font-size: 2.1cqw; }
+.tsMicro { font-family: var(--font-serif); letter-spacing: 0.14em; }
+.retype { font-family: var(--font-sans); }
+
+/* 06 · Photo: the sequence runs across two products */
+.seqItem { min-width: 0; }
+
+/* 08 · Typographic applications */
+.taFrame { background: var(--fog); container-type: inline-size; }
+.taFrame > * { position: absolute; inset: 0; }
+.appWide { grid-column: span 1; }
+
+.taBox { display: grid; place-items: center; }
+.taBoxLid {
+  position: relative;
+  width: 74%;
+  height: 68%;
+  background: var(--paper);
+  border: 1px solid rgba(14, 26, 58, 0.14);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4cqw;
+  overflow: hidden;
+}
+.taBoxLogo { width: 46%; aspect-ratio: 5.13; color: var(--ink); }
+.taBoxMeta { font-family: var(--font-serif); font-size: 2.1cqw; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); opacity: 0.7; }
+.taBoxTape { position: absolute; top: 0; bottom: 0; right: 16%; width: 9%; background: var(--accent); }
+.taBoxSeal { position: absolute; right: 9.5%; bottom: 9%; width: 20%; aspect-ratio: 1; color: var(--ink); background: var(--paper); border-radius: 50%; }
+
+.taWoven { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7cqw; background: var(--bone); }
+.taWovenLabel {
+  position: relative;
+  width: 70%;
+  aspect-ratio: 2.6;
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+  outline: 1px dashed rgba(255, 255, 255, 0.45);
+  outline-offset: -3.6cqw;
+}
+.taWovenMark { width: 50%; aspect-ratio: 4; color: var(--paper); }
+.taSize {
+  display: grid;
+  place-items: center;
+  width: 22%;
+  aspect-ratio: 1;
+  background: var(--accent);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 9cqw;
+}
+
+.taTagWrap { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
+.taString { width: 1px; height: 10%; background: rgba(14, 26, 58, 0.5); }
+.taTag {
+  position: relative;
+  width: 58%;
+  height: 82%;
+  padding: 16cqw 7cqw 7cqw;
+  background: var(--ink);
+  color: var(--paper);
+  display: flex;
+  flex-direction: column;
+  gap: 6cqw;
+}
+.taHole { position: absolute; top: 5cqw; left: 50%; width: 6cqw; height: 6cqw; margin-left: -3cqw; border-radius: 50%; background: var(--fog); }
+.taTagLogo { width: 100%; aspect-ratio: 5.13; color: var(--accent); }
+.taTagData { display: grid; gap: 1.6cqw; font-family: var(--font-serif); font-size: 3.1cqw; letter-spacing: 0.04em; text-transform: uppercase; }
+.taTagData > div { display: grid; grid-template-columns: 34% 1fr; gap: 2cqw; border-top: 1px solid rgba(255, 255, 255, 0.18); padding-top: 1.6cqw; }
+.taTagData dt { color: var(--steel); }
+.taTagPrice { margin-top: auto; font-family: var(--font-display); font-weight: 700; font-size: 6cqw; }
+.taTagEmblem { position: absolute; right: 7cqw; bottom: 7cqw; width: 16cqw; aspect-ratio: 1.63; color: var(--accent); }
+
+.taPatchWrap { display: grid; place-items: center; background: var(--ink); }
+.taPatch {
+  display: grid;
+  place-items: center;
+  width: 72%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 2.6cqw var(--ink), 0 0 0 3.2cqw rgba(255, 255, 255, 0.35);
+}
+.taPatchSeal { width: 86%; aspect-ratio: 1; color: var(--ink); }
+
+.taGraphic { display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 8cqw 6cqw; background: var(--mustard); color: var(--ink); }
+.taGraphicMark { width: 94%; aspect-ratio: 5.08; }
+.taGraphicMeta { font-family: var(--font-serif); font-size: 3cqw; letter-spacing: 0.12em; text-transform: uppercase; }
+
+.taTapeWrap { display: flex; flex-direction: column; justify-content: center; gap: 7cqw; overflow: hidden; }
+.taTape {
+  display: flex;
+  align-items: center;
+  gap: 5cqw;
+  width: 140%;
+  margin-left: -20%;
+  padding: 2.6cqw 4cqw;
+  background: var(--accent);
+  color: var(--ink);
+  transform: rotate(-5deg);
+  white-space: nowrap;
+}
+.taTape:nth-child(2) { background: var(--ink); color: var(--accent); margin-left: -34%; }
+.taTapeItem { display: inline-flex; align-items: center; gap: 5cqw; flex: none; }
+.taTapeLogo { width: 22cqw; aspect-ratio: 5.13; }
+.taTapeEmblem { width: 6cqw; aspect-ratio: 1.63; }
+
+.taJewelWrap { display: grid; place-items: center; }
+.taJewel {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 62%;
+  aspect-ratio: 1;
+  background: var(--steel);
+  border: 1px solid rgba(14, 26, 58, 0.12);
+}
+.taJewelMark { width: 54%; aspect-ratio: 4; color: rgba(14, 26, 58, 0.55); }
+.taJewelMeta { position: absolute; bottom: 6cqw; font-family: var(--font-serif); font-size: 3cqw; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(14, 26, 58, 0.7); }
+
+.taStickers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 6cqw;
+  padding: 9cqw;
+  place-items: center;
+  background: var(--paper);
+}
+.taSticker { display: grid; place-items: center; width: 100%; color: var(--ink); }
+.taSticker > svg { width: 78%; height: auto; }
+.taStickerSeal { aspect-ratio: 1; border-radius: 50%; background: var(--accent); }
+.taStickerSeal > svg { width: 88%; }
+.taStickerEmblem { aspect-ratio: 1; border-radius: 22%; background: var(--ink); color: var(--accent); }
+.taStickerMono { aspect-ratio: 1; border-radius: 50%; background: var(--bone); }
+.taStickerWord { aspect-ratio: 1.8; border-radius: 999px; background: var(--mustard); }
+.taStickerWord > svg { width: 72%; }
+
+@media (max-width: 900px) {
+  .chTitle, .h2 { font-size: 30px; }
+  .h3 { font-size: 13px; }
+  .indexTitle, .manQuote { font-size: 40px; }
+  .manSub { font-size: 16px; }
+  .conceptStatement { font-size: 36px; }
+  .coverMotto { font-size: 22px; }
+  .closeMotto { font-size: 30px; }
+  .closeEmblem { width: 120px; height: 80px; }
+  .displaySheet { grid-template-columns: 1fr; }
+  .bigAaDisplay { font-size: 96px; }
+  .fontNameDisplay, .fontName { font-size: 24px; }
+  .displaySample { font-size: 30px; }
+  .glyphsDisplay { font-size: 12px; }
+  .serifBig { font-size: 30px; }
+  .pairingQuote { font-size: 16px; }
+  .tsDisplay { font-size: 34px; }
+  .tsXl { font-size: 22px; }
+  .roman { font-size: 12px; }
+  .indexName { font-size: 16px; }
+  .pillarTitle { font-size: 15px; }
+  .manLead { font-size: 20px; }
+  .manSign { font-size: 13px; }
+  .bigAa { font-size: 120px; }
 }

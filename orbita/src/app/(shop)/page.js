@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Logo from "@/components/brand/Logo";
 import HeroImage from "@/components/shop/HeroImage";
+import MissionHero from "@/components/shop/MissionHero";
 import SmartImage from "@/components/shop/SmartImage";
 import ProductCard from "@/components/shop/ProductCard";
 import SectionHead from "@/components/shop/SectionHead";
@@ -9,7 +10,7 @@ import Marquee from "@/components/shop/Marquee";
 import Rail from "@/components/shop/Rail";
 import Newsletter from "@/components/shop/Newsletter";
 import { IconArrow } from "@/components/shop/Icons";
-import { bestSellerSlugs, categoryTiles, featureProducts, newInSlugs, slimByCategory } from "@/lib/shop-server";
+import { bestSellerSlugs, categoryTiles, featureProducts, newInSlugs, slimByCategory, slimProducts } from "@/lib/shop-server";
 import { CATEGORIES, sortProducts } from "@/lib/shop";
 import brand from "@/config/brand";
 import campaign from "@/data/campaign.json";
@@ -36,6 +37,26 @@ function chipSets(allSlugs, sort) {
   ];
 }
 
+/**
+ * Editorial banner from a product shot (shot on white): the photo multiplies onto the tile grey
+ * and the copy sits in a coloured label box (banner.tone: accent | ink | bone | mustard | steel).
+ */
+function LabelBanner({ b, n, sizes, className = "", imgClassName = "", children }) {
+  return (
+    <Link href={b.href} className={`${styles.labelBanner} ${className}`}>
+      <SmartImage src={b.image} alt={b.title} sizes={sizes} className={imgClassName} tone="bone" blend />
+      {n && <span className={styles.labelIndex}>{n}</span>}
+      <span className={styles.label} data-tone={b.tone || "ink"}>
+        <span className={styles.labelTitle}>{b.title}</span>
+        <span className={styles.labelKicker}>{children || b.kicker}</span>
+        <span className={styles.labelCta}>
+          {H.splitCta} <IconArrow size={12} />
+        </span>
+      </span>
+    </Link>
+  );
+}
+
 export default function HomePage() {
   const tiles = categoryTiles();
   const banner = (id) => campaign.banners.find((b) => b.id === id);
@@ -45,46 +66,34 @@ export default function HomePage() {
   const featureBanner = feature ? banner(feature.banner) : null;
   const wide = banner(H.wide?.banner);
   const looks = campaign.lookbook.slice(0, H.lookbook?.count ?? 4);
+  const crew = slimProducts(campaign.hero.strip || []);
+  const photoHero = campaign.hero.desktop;
 
   return (
     <>
-      {/* 1 — Hero (header sits transparent over it) */}
-      <section className={styles.hero} data-hero aria-label="Campaña">
-        <HeroImage desktop={campaign.hero.desktop} mobile={campaign.hero.mobile} alt={campaign.hero.alt} />
-        <div className={styles.heroShade} aria-hidden="true" />
-        <h1 className="sr-only">{H.hero.srTitle}</h1>
-        <div className={styles.heroCta}>
-          <Link href={H.hero.ctaHref || "/tienda"} className={styles.heroBtn}>
-            {H.hero.cta}
-          </Link>
-        </div>
-        <p className={styles.heroCaption}>
-          <span>{H.hero.caption}</span>
-          <span className={styles.heroBar} aria-hidden="true">|</span>
-          <em>{brand.tagline}</em>
-        </p>
-      </section>
+      {/* 1 — Hero: typographic mission board (or a campaign photo if campaign.hero.desktop exists) */}
+      {photoHero ? (
+        <section className={styles.hero} data-hero aria-label="Campaña">
+          <HeroImage desktop={campaign.hero.desktop} mobile={campaign.hero.mobile} alt={campaign.hero.alt} />
+          <h1 className="sr-only">{H.hero.srTitle}</h1>
+        </section>
+      ) : (
+        <MissionHero products={crew} />
+      )}
+
+      {/* 1b — Telemetry ticker */}
+      <Marquee items={[brand.tagline, brand.motto, brand.countdown, brand.signoff]} size="ticker" repeat={6} />
 
       {/* 2 — Novedades */}
       <div className={styles.first}>
         <ChipGrid id="h-new" title={H.newIn.title} sets={chipSets(newInSlugs(), "novedades")} />
       </div>
 
-      {/* 3 — Split editorial banner */}
+      {/* 3 — Split editorial banners (product shots + label boxes) */}
       {split.length > 0 && (
         <section className={`${styles.section} ${styles.split}`} aria-label={brand.nav.collections}>
-          {split.map((b) => (
-            <Link key={b.id} href={b.href} className={styles.splitItem}>
-              <SmartImage src={b.image} alt={b.title} sizes="(min-width: 768px) 50vw, 100vw" className={styles.splitImg} tone="bone" />
-              <span className={styles.splitShade} aria-hidden="true" />
-              <span className={styles.splitText}>
-                <span className={styles.splitTitle}>{b.title}</span>
-                <span className={styles.splitKicker}>{b.kicker}</span>
-                <span className={styles.splitCta}>
-                  {H.splitCta} <IconArrow size={12} />
-                </span>
-              </span>
-            </Link>
+          {split.map((b, i) => (
+            <LabelBanner key={b.id} b={b} n={`0${i + 1}`} sizes="(min-width: 768px) 50vw, 100vw" imgClassName={styles.splitImg} />
           ))}
         </section>
       )}
@@ -117,7 +126,7 @@ export default function HomePage() {
         <Marquee items={H.marquee} />
       </div>
 
-      {/* 7 — Feature category (MUSKETEER: «Plata 925») */}
+      {/* 7 — Feature category */}
       {feature && featured.length > 0 && (
         <section className={styles.section} aria-labelledby="h-feature">
           <div className="mk-container">
@@ -125,16 +134,9 @@ export default function HomePage() {
           </div>
           <div className={styles.silver}>
             {featureBanner && (
-              <Link href={featureBanner.href} className={styles.silverFeature}>
-                <SmartImage src={featureBanner.image} alt={featureBanner.title} sizes="(min-width: 1024px) 25vw, 100vw" className={styles.silverImg} tone="dark" />
-                <span className={styles.splitShade} aria-hidden="true" />
-                <span className={styles.splitText}>
-                  <span className={styles.silverKicker}>{feature.text}</span>
-                  <span className={styles.splitCta}>
-                    {H.splitCta} <IconArrow size={12} />
-                  </span>
-                </span>
-              </Link>
+              <LabelBanner b={featureBanner} sizes="(min-width: 1024px) 25vw, 100vw" className={styles.silverFeature} imgClassName={styles.silverImg}>
+                {feature.text}
+              </LabelBanner>
             )}
             {featured.map((p) => (
               <ProductCard key={p.slug} product={p} sizes="(min-width: 1024px) 25vw, 50vw" className={styles.silverCard} />
@@ -143,16 +145,28 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* 8 — Wide banner */}
+      {/* 8 — Wide typographic banner (no photo needed) */}
       {wide && (
-        <section className={styles.section} aria-label={wide.title}>
-          <Link href={wide.href} className={styles.wide}>
-            <SmartImage src={wide.image} alt="" sizes="100vw" className={styles.wideImg} tone="dark" />
-            <span className={styles.wideShade} aria-hidden="true" />
-            <span className={styles.wideText}>
-              <span className={styles.wideTitle}>{wide.title}</span>
-              <span className={styles.wideKicker}>{wide.kicker}</span>
-              <span className={`${styles.wideCta} mk-link mk-link--on`}>{H.wide.cta}</span>
+        <section className={`${styles.section} mk-container`} aria-label={wide.title}>
+          <Link href={wide.href} className={styles.wide} data-tone={wide.tone || "accent"}>
+            <span className={styles.wideMeta}>
+              <span>{wide.kicker}</span>
+              <span>{brand.coords}</span>
+            </span>
+            <span className={styles.wideTitle}>
+              {(H.wide.lines || [wide.title]).map((l) => (
+                <span key={l}>{l}</span>
+              ))}
+            </span>
+            <span className={styles.wideSide}>
+              {H.wide.text && <span className={styles.wideText}>{H.wide.text}</span>}
+              {H.wide.note && <span className={styles.wideNote}>{H.wide.note}</span>}
+              <span className={styles.wideCta}>
+                {H.wide.cta} <IconArrow size={12} />
+              </span>
+            </span>
+            <span className={styles.wideEmblem} aria-hidden="true">
+              <Logo variant="emblem" title="" />
             </span>
           </Link>
         </section>
@@ -165,8 +179,11 @@ export default function HomePage() {
           <div className={styles.looks}>
             {looks.map((l, i) => (
               <Link key={l.image} href={`/lookbook#look-${String(i + 1).padStart(2, "0")}`} className={styles.look}>
-                <SmartImage src={l.image} alt={l.caption} sizes="(min-width: 768px) 25vw, 50vw" className={styles.lookImg} tone="bone" />
-                <span className={styles.lookCaption}>{l.caption}</span>
+                <SmartImage src={l.image} alt={`${l.caption} — ${l.title}`} sizes="(min-width: 768px) 25vw, 50vw" className={styles.lookImg} tone="bone" blend />
+                <span className={styles.lookCaption}>
+                  <span>{l.caption}</span>
+                  <span>{l.title}</span>
+                </span>
               </Link>
             ))}
           </div>

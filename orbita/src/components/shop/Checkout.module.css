@@ -33,7 +33,7 @@
 .alert { margin: 18px 0 0; padding: 12px 14px; border: 1px solid var(--alert); color: var(--alert); font-size: 12px; }
 .section { border: 0; margin: 0; padding: 30px 0 0; min-width: 0; }
 .sectionHead { display: flex; justify-content: space-between; align-items: baseline; font-size: var(--fs-xs); }
-.legend { float: left; padding: 0; margin: 0 0 16px; font-size: 15px; font-stretch: 125%; font-weight: 600; text-transform: uppercase; letter-spacing: -0.005em; }
+.legend { float: left; padding: 0; margin: 0 0 16px; font-size: 15px; font-family: var(--font-display); font-stretch: 125%; font-weight: 600; text-transform: uppercase; letter-spacing: -0.005em; }
 .sectionHead .legend { float: none; }
 .sectionNote { clear: both; margin: -6px 0 14px; font-size: 12px; color: var(--text-muted); }
 .grid { clear: both; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 10px; }
@@ -108,10 +108,10 @@
 
 .demoText { margin: 0; font-size: 15px; line-height: 1.5; }
 .demoSub { margin: 12px 0 0; color: var(--text-muted); font-size: 12px; }
-.demoSub em { font-family: var(--font-serif); font-size: 15px; color: var(--ink); }
+.demoSub em { font-family: var(--font-serif); font-size: 13px; color: var(--ink); }
 
 .emptyWrap { padding: 72px var(--page-pad); text-align: center; }
-.emptyTitle { margin: 0; font-size: clamp(24px, 3vw, 36px); font-stretch: 125%; font-weight: 600; text-transform: uppercase; }
+.emptyTitle { margin: 0; font-size: clamp(24px, 3vw, 36px); font-family: var(--font-display); font-stretch: 125%; font-weight: 600; text-transform: uppercase; }
 .emptyText { margin: 10px 0 28px; color: var(--text-muted); font-size: var(--fs-body); }
 
 @media (max-width: 1023px) {

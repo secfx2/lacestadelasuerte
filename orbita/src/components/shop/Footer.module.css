@@ -32,7 +32,7 @@
   text-transform: uppercase;
 }
 .copy { margin: 0; }
-.copy em { font-family: var(--font-serif); font-size: 14px; letter-spacing: 0; text-transform: none; }
+.copy em { font-family: var(--font-serif); font-size: 12px; letter-spacing: 0; text-transform: none; }
 .dot { margin: 0 6px; }
 .payments { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .payments li { padding: 4px 7px 3px; border: 1px solid var(--line); font-size: 9px; letter-spacing: 0.1em; line-height: 1.2; }

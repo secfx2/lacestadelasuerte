@@ -38,9 +38,9 @@
   border: 0;
   outline: 0;
   background: transparent;
-  font-size: clamp(22px, 3vw, 34px);
-  font-stretch: 125%;
-  font-weight: 500;
+  font-size: clamp(18px, 2.4vw, 28px);
+  font-family: var(--font-display); font-stretch: 125%;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: -0.01em;
 }
@@ -87,7 +87,7 @@
   text-transform: uppercase;
   color: var(--text-muted);
 }
-.resultsHead em { font-family: var(--font-serif); font-size: 16px; text-transform: none; letter-spacing: 0; color: var(--ink); }
+.resultsHead em { font-family: var(--font-serif); font-size: 13px; text-transform: none; letter-spacing: 0; color: var(--ink); }
 .seeAll { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); }
 .results {
   display: grid;
@@ -115,7 +115,7 @@
 
 .empty { padding: 12px 0 8px; }
 .empty p { margin: 0 0 8px; font-size: var(--fs-body); }
-.empty em { font-family: var(--font-serif); font-size: 17px; }
+.empty em { font-family: var(--font-serif); font-size: 14px; }
 .emptyHint { color: var(--text-muted); margin-bottom: 20px !important; }
 
 @media (max-width: 1023px) {

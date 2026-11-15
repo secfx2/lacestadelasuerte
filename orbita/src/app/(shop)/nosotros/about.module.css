@@ -1,4 +1,33 @@
 .hero { padding: 0; }
+.crew { padding: 0 var(--page-pad); }
+.crewHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 0 12px;
+  font-family: var(--font-serif);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.crewHead span:first-child { color: var(--ink); }
+.crewGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
+.crewItem { display: block; }
+.crewImg { aspect-ratio: 4 / 5; }
+.crewImg img { transition: transform 1.4s var(--ease), opacity 0.7s var(--ease) !important; }
+.crewItem:hover .crewImg img { transform: scale(1.03); }
+.crewCaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+  font-size: var(--fs-micro);
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+}
+.crewCaption span:first-child { font-family: var(--font-serif); letter-spacing: 0.1em; }
+.crewCaption span + span { color: var(--text-muted); text-align: right; }
 .heroImg { aspect-ratio: 21 / 9; }
 .manifesto {
   display: grid;
@@ -9,8 +38,8 @@
 .eyebrow { margin: 6px 0 0; font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }
 .manifestoText { max-width: 760px; font-size: 15px; line-height: 1.7; color: #2b2b2b; }
 .manifestoText p { margin: 0 0 18px; }
-.lead { font-family: var(--font-serif); font-size: clamp(28px, 3.4vw, 48px) !important; line-height: 1.08 !important; color: var(--ink); margin-bottom: 32px !important; letter-spacing: -0.01em; }
-.sign em { font-family: var(--font-serif); font-size: 24px; color: var(--ink); }
+.lead { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; font-size: clamp(20px, 2.3vw, 34px) !important; line-height: 1.18 !important; color: var(--ink); margin-bottom: 36px !important; letter-spacing: 0; }
+.sign em { font-family: var(--font-serif); font-size: 15px; font-style: normal; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
 
 .values {
   display: grid;
@@ -19,19 +48,19 @@
   margin: clamp(64px, 8vw, 128px) var(--page-pad) 0;
 }
 .value { padding: 28px 24px 32px; background: var(--fog); min-height: 280px; display: flex; flex-direction: column; }
-.valueN { font-family: var(--font-serif); font-size: 28px; font-style: italic; }
-.valueTitle { margin: auto 0 0; padding-top: 40px; font-size: 20px; font-stretch: 125%; font-weight: 600; text-transform: uppercase; letter-spacing: -0.01em; }
+.valueN { font-family: var(--font-serif); font-size: 13px; letter-spacing: 0.12em; color: var(--accent); }
+.valueTitle { margin: auto 0 0; padding-top: 40px; font-size: 18px; font-family: var(--font-display); font-stretch: 125%; font-weight: 700; text-transform: uppercase; letter-spacing: 0; }
 .valueText { margin: 10px 0 0; font-size: var(--fs-body); line-height: 1.6; color: #4a4a4a; }
 
 .seal { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; padding: clamp(64px, 8vw, 128px) var(--page-pad) 0; }
 .sealLogo { width: clamp(110px, 12vw, 160px); height: auto; color: var(--ink); }
-.sealText { margin: 0; max-width: 34ch; font-family: var(--font-serif); font-style: italic; font-size: clamp(20px, 2vw, 26px); line-height: 1.2; }
+.sealText { margin: 0; max-width: 34ch; font-family: var(--font-serif); font-size: clamp(13px, 1.2vw, 16px); line-height: 1.5; }
 
 .links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: clamp(64px, 8vw, 128px) var(--page-pad) 0; }
 .linkCard { display: flex; flex-direction: column; gap: 8px; padding: 28px; border: 1px solid var(--line); min-height: 240px; transition: border-color var(--dur-fast), background-color var(--dur-fast); }
 .linkCard:hover { border-color: var(--ink); }
 .linkEyebrow { font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }
-.linkTitle { font-size: 24px; font-stretch: 125%; font-weight: 600; text-transform: uppercase; letter-spacing: -0.01em; }
+.linkTitle { font-size: 20px; font-family: var(--font-display); font-stretch: 125%; font-weight: 600; text-transform: uppercase; letter-spacing: -0.01em; }
 .linkText { font-size: var(--fs-body); color: var(--text-muted); line-height: 1.55; }
 .linkCta { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-xs); letter-spacing: var(--track-caps); text-transform: uppercase; }
 
@@ -41,6 +70,8 @@
 }
 @media (max-width: 767px) {
   .heroImg { aspect-ratio: 4 / 3; }
+  .crewGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .crewHead { flex-direction: column; gap: 4px; }
   .manifesto { grid-template-columns: 1fr; gap: 16px; }
   .values { grid-template-columns: 1fr; }
   .value { min-height: 0; }

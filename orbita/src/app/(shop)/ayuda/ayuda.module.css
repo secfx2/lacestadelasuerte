@@ -4,7 +4,7 @@
 .content { max-width: 860px; }
 .section { scroll-margin-top: calc(var(--header-h) + 24px); }
 .section + .section { margin-top: clamp(48px, 6vw, 88px); }
-.title { margin: 0 0 18px; font-size: clamp(22px, 2.4vw, 32px); font-stretch: 125%; font-weight: 600; text-transform: uppercase; letter-spacing: -0.01em; }
+.title { margin: 0 0 18px; font-size: clamp(19px, 2vw, 27px); font-family: var(--font-display); font-stretch: 125%; font-weight: 600; text-transform: uppercase; letter-spacing: -0.01em; }
 .contactText { margin: 0 0 24px; max-width: 60ch; font-size: var(--fs-body); line-height: 1.65; color: #3a3a3a; }
 @media (max-width: 767px) {
   .layout { grid-template-columns: 1fr; gap: 24px; }

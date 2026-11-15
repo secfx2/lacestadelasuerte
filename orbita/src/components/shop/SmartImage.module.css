@@ -6,6 +6,7 @@
 .frame[data-tone="bone"] { background: var(--bone); }
 .frame[data-tone="dark"] { background: #121212; }
 .frame[data-tone="white"] { background: var(--paper); }
+.frame[data-tone="night"] { background: rgba(255, 255, 255, 0.06); }
 
 .img {
   opacity: 0;
@@ -25,14 +26,16 @@
 }
 .placeholder[data-tone="bone"] { background: var(--bone); }
 .placeholder[data-tone="dark"] { background: #121212; }
+.placeholder[data-tone="night"] { background: rgba(255, 255, 255, 0.05); }
 
 .emblem {
   display: block;
-  width: clamp(16px, 9%, 34px);
-  aspect-ratio: 1;
-  background: #cdcdc9;
+  width: clamp(22px, 14%, 54px);
+  aspect-ratio: 1.63;
+  background: #cfd2d8;
   -webkit-mask: url("/brand/emblem-black.svg") center / contain no-repeat;
   mask: url("/brand/emblem-black.svg") center / contain no-repeat;
 }
 .placeholder[data-tone="dark"] .emblem { background: #2e2e2e; }
-.placeholder[data-tone="bone"] .emblem { background: #cfc9bf; }
+.placeholder[data-tone="bone"] .emblem { background: rgba(14, 26, 58, 0.22); }
+.placeholder[data-tone="night"] .emblem { background: rgba(255, 255, 255, 0.22); }
