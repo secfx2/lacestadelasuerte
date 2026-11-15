@@ -1,22 +1,23 @@
-"""Generate PLACEHOLDER logos for a new brand (before the real logo is designed).
+"""Generate the typographic logo system for a brand (ÓRBITA edition: orbit motif).
 
-Draws five simple marks with Pillow and traces them with scripts/vectorize.py, so
-the result is path-only SVG (no <text>, no external fonts at runtime):
+Draws five marks with Pillow and traces them with scripts/vectorize.py, so the
+result is path-only SVG (no <text>, no external fonts at runtime):
 
-  wordmark  NAME in a heavy sans
-  monogram  SHORT name (2 x 2 grid when it has 4 letters)
-  graphic   NAME with its middle letter replaced by a four-point star
-  emblem    ring + four-point star (no text)
-  seal      double ring, "NAME · TAGLINE · YEAR" around, star in the middle
+  wordmark  NAME in the display face (accents such as Ó are kept inside the canvas)
+  monogram  SHORT name; its first O gets a centred dot (a planet in orbit)
+  graphic   NAME wrapped by a tilted orbit ring (front arc knocked out over the letters)
+            with a small satellite riding the ring
+  emblem    planet + tilted ring + satellite (no text): favicon, placeholders
+  seal      double ring, "NAME · TAGLINE · CITY · EST. YEAR" around, emblem in the middle
 
 Requirements:  pip install potracer pillow numpy
 Usage:
-  python3 scripts/placeholder-logos.py --name BRAND --short BRND --tagline "Your tagline" --year 2026
+  python3 scripts/placeholder-logos.py --name "ÓRBITA" --short ORB --tagline "Fuera de órbita" \
+      --year 2026 --city Madrid --font /path/to/Syncopate-Bold.ttf
   npm run logos            # -> public/brand/*-black|white.svg + src/components/brand/logoData.js
 
-Options: --font /path/to/Bold.ttf (any heavy sans; defaults try Inter ExtraBold,
-DejaVu Sans Bold, Arial Bold) · --tracking -0.02 (em) · --out public/brand
-Replace these with the real logo as soon as it exists (see TEMPLATE.md · Logo).
+Options: --font /path/to/Bold.ttf (defaults try Inter ExtraBold, DejaVu Sans Bold, Arial Bold)
+         --tracking 0.02 (em, wordmark) · --out public/brand · --city Madrid (seal)
 """
 import argparse
 import math
@@ -48,33 +49,6 @@ def find_font(path):
     raise SystemExit("No bold font found: pass --font /path/to/a/Bold.ttf")
 
 
-def star(draw, cx, cy, R, r_ratio=0.3, fill=INK):
-    pts = []
-    for k in range(8):
-        a = math.radians(-90 + 45 * k)
-        rad = R if k % 2 == 0 else R * r_ratio
-        pts.append((cx + rad * math.cos(a), cy + rad * math.sin(a)))
-    draw.polygon(pts, fill=fill)
-
-
-def text_run(font, text, tracking_px):
-    """Width of a string drawn char by char with extra tracking."""
-    return sum(font.getlength(ch) for ch in text) + tracking_px * (len(text) - 1)
-
-
-def draw_text(draw, xy, font, text, tracking_px, star_for=None, cap_h=None):
-    """Draw `text` char by char from top-left `xy`; a char equal to `star_for` is drawn as a star."""
-    x, y = xy
-    for ch in text:
-        w = font.getlength(ch if ch != star_for else "O")
-        if ch == star_for:
-            top = font.getbbox("H")[1]  # text origin -> cap top
-            star(draw, x + w / 2, y + top + cap_h / 2, cap_h * 0.5, r_ratio=0.24)
-        else:
-            draw.text((x, y), ch, font=font, fill=INK)
-        x += w + tracking_px
-
-
 def canvas(w, h):
     img = Image.new("L", (int(w), int(h)), PAPER)
     return img, ImageDraw.Draw(img)
@@ -85,69 +59,168 @@ def cap_metrics(font):
     return t, b - t  # top offset, cap height
 
 
-def make_wordmark(fontp, name, tracking, size=1000, star_middle=False):
+def text_run(font, text, tracking_px):
+    """Width of a string drawn char by char with extra tracking."""
+    return sum(font.getlength(ch) for ch in text) + tracking_px * (len(text) - 1)
+
+
+def draw_text(draw, xy, font, text, tracking_px, fill=INK, stroke=0, stroke_fill=PAPER):
+    """Draw `text` char by char from origin `xy`. Returns the list of (char, x, advance)."""
+    x, y = xy
+    out = []
+    for ch in text:
+        w = font.getlength(ch)
+        draw.text((x, y), ch, font=font, fill=fill, stroke_width=stroke, stroke_fill=stroke_fill)
+        out.append((ch, x, w))
+        x += w + tracking_px
+    return out
+
+
+# --------------------------------------------------------------------------- orbit geometry
+def ellipse_pts(cx, cy, rx, ry, rot_deg, t0, t1, n=720):
+    """Points of a rotated ellipse between parameters t0..t1 (radians). Image coords (y down)."""
+    th = math.radians(rot_deg)
+    ct, st = math.cos(th), math.sin(th)
+    pts = []
+    for i in range(n + 1):
+        t = t0 + (t1 - t0) * i / n
+        x, y = rx * math.cos(t), ry * math.sin(t)
+        pts.append((cx + x * ct - y * st, cy + x * st + y * ct))
+    return pts
+
+
+def ellipse_point(cx, cy, rx, ry, rot_deg, t):
+    return ellipse_pts(cx, cy, rx, ry, rot_deg, t, t, 1)[0]
+
+
+def band(draw, cx, cy, rx, ry, rot_deg, t0, t1, width, fill, n=1440):
+    """A clean stroke of constant `width` along a rotated elliptical arc, drawn as one polygon
+    (offset curves along the normal) so there are no polyline seams. Round caps at both ends."""
+    th = math.radians(rot_deg)
+    ct, st = math.cos(th), math.sin(th)
+    outer, inner = [], []
+    h = width / 2
+    for i in range(n + 1):
+        t = t0 + (t1 - t0) * i / n
+        x, y = rx * math.cos(t), ry * math.sin(t)
+        dx, dy = -rx * math.sin(t), ry * math.cos(t)  # tangent
+        L = math.hypot(dx, dy) or 1
+        nx, ny = dy / L, -dx / L  # outward normal (unrotated frame)
+        for sgn, acc in ((1, outer), (-1, inner)):
+            px, py = x + sgn * h * nx, y + sgn * h * ny
+            acc.append((cx + px * ct - py * st, cy + px * st + py * ct))
+    draw.polygon(outer + inner[::-1], fill=fill)
+    for t in (t0, t1):
+        x, y = ellipse_point(cx, cy, rx, ry, rot_deg, t)
+        draw.ellipse([x - h, y - h, x + h, y + h], fill=fill)
+
+
+def disc(draw, x, y, r, fill=INK):
+    draw.ellipse([x - r, y - r, x + r, y + r], fill=fill)
+
+
+# --------------------------------------------------------------------------- marks
+def make_wordmark(fontp, name, tracking, size=1000):
     font = ImageFont.truetype(fontp, size)
-    top, cap = cap_metrics(font)
     tr = tracking * size
-    text = name
-    star_ch = None
-    if star_middle and len(name) >= 3:
-        mid = len(name) // 2
-        star_ch = "\u2726"
-        text = name[:mid] + star_ch + name[mid + 1 :]
-    w = sum(font.getlength(c if c != star_ch else "O") for c in text) + tr * (len(text) - 1)
-    img, d = canvas(w + 200, cap + 200)
-    draw_text(d, (100, 100 - top), font, text, tr, star_for=star_ch, cap_h=cap)
+    w = text_run(font, name, tr)
+    img, d = canvas(w + 400, size * 2)  # generous: vectorize() crops to the ink (accents included)
+    draw_text(d, (200, size * 0.5), font, name, tr)
     return img
 
 
-def make_monogram(fontp, short, tracking, size=1000):
+def make_monogram(fontp, short, tracking, size=1000, dot=True):
+    """SHORT in one row; the first O gets a planet dot in its counter."""
     font = ImageFont.truetype(fontp, size)
     top, cap = cap_metrics(font)
     tr = tracking * size
-    if len(short) == 4:
-        rows = [short[:2], short[2:]]
-        gap = cap * 0.18
-        w = max(text_run(font, r, tr) for r in rows)
-        img, d = canvas(w + 200, cap * 2 + gap + 200)
-        for i, row in enumerate(rows):
-            rw = text_run(font, row, tr)
-            draw_text(d, (100 + (w - rw) / 2, 100 - top + i * (cap + gap)), font, row, tr)
-        return img
     w = text_run(font, short, tr)
-    img, d = canvas(w + 200, cap + 200)
-    draw_text(d, (100, 100 - top), font, short, tr)
+    img, d = canvas(w + 400, size * 2)
+    oy = size * 0.5
+    runs = draw_text(d, (200, oy), font, short, tr)
+    if dot:
+        for ch, x, adv in runs:
+            if ch in "OÓ0":
+                l, t, r, b = font.getbbox("O")
+                disc(d, x + (l + r) / 2, oy + (t + b) / 2, cap * 0.15)
+                break
     return img
 
 
-def make_emblem(size=1200):
+def make_graphic(fontp, name, tracking, size=1000):
+    """NAME wrapped by a tilted orbit ring + satellite. One colour: knockout gaps keep it legible."""
+    font = ImageFont.truetype(fontp, size)
+    top, cap = cap_metrics(font)
+    tr = tracking * size
+    w = text_run(font, name, tr)
+    W, H = w + size * 1.6, size * 3.2
+    img, d = canvas(W, H)
+    x0, y0 = (W - w) / 2, H / 2 - top - cap / 2  # cap band centred vertically
+    cx, cy = W / 2, H / 2
+
+    rx, ry, rot = w * 0.6, cap * 0.92, -9
+    ring = cap * 0.075
+    gap = cap * 0.07
+
+    # 1) back half of the ring (behind the letters)
+    band(d, cx, cy, rx, ry, rot, math.pi, 2 * math.pi, ring, INK)
+    # 2) letters with a paper halo (knocks the back arc out where it meets them)
+    draw_text(d, (x0, y0), font, name, tr, fill=PAPER, stroke=int(gap), stroke_fill=PAPER)
+    draw_text(d, (x0, y0), font, name, tr)
+    # 3) front half of the ring, with its own paper halo over the letters
+    band(d, cx, cy, rx, ry, rot, 0, math.pi, ring + 2 * gap, PAPER)
+    band(d, cx, cy, rx, ry, rot, 0, math.pi, ring, INK)
+    # 4) satellite riding the front-right of the ring
+    sx, sy = ellipse_point(cx, cy, rx, ry, rot, math.radians(28))
+    disc(d, sx, sy, ring * 1.9 + gap, PAPER)
+    disc(d, sx, sy, ring * 1.9)
+    return img
+
+
+def draw_emblem(d, c, R):
+    """Planet + tilted ring + satellite inside a circle of radius R centred at (c, c)."""
+    rp = R * 0.42  # planet
+    rx, ry, rot = R * 0.98, R * 0.34, -24
+    ring = R * 0.085
+    gap = R * 0.07
+    # back half of the ring, then the planet with a paper halo over it
+    stroke_arc(d, ellipse_pts(c, c, rx, ry, rot, math.pi, 2 * math.pi), ring, INK)
+    disc(d, c, c, rp + gap, PAPER)
+    disc(d, c, c, rp)
+    # front half with a paper halo where it crosses the planet
+    front = ellipse_pts(c, c, rx, ry, rot, 0, math.pi)
+    d.line(front, fill=PAPER, width=int(ring + 2 * gap), joint="curve")
+    stroke_arc(d, front, ring, INK)
+    # satellite on the far (upper-right) side of the ring
+    sx, sy = ellipse_point(c, c, rx, ry, rot, math.radians(-38))
+    disc(d, sx, sy, ring * 1.55 + gap * 0.8, PAPER)
+    disc(d, sx, sy, ring * 1.55)
+
+
+def make_emblem(size=1600):
     img, d = canvas(size, size)
-    c, R = size / 2, size * 0.46
-    ring = size * 0.05
-    d.ellipse([c - R, c - R, c + R, c + R], fill=INK)
-    d.ellipse([c - R + ring, c - R + ring, c + R - ring, c + R - ring], fill=PAPER)
-    star(d, c, c, R * 0.72, r_ratio=0.26)
+    draw_emblem(d, size / 2, size * 0.47)
     return img
 
 
-def make_seal(fontp, text, size=2400, lead=""):
+def make_seal(fontp, text, size=2400):
     img, d = canvas(size, size)
     c = size / 2
-    R1, R2 = size * 0.47, size * 0.455  # outer ring
-    R3, R4 = size * 0.335, size * 0.322  # inner ring
+    R1, R2 = size * 0.47, size * 0.458  # outer ring
+    R3, R4 = size * 0.322, size * 0.31  # inner ring
     for a, b in ((R1, R2), (R3, R4)):
         d.ellipse([c - a, c - a, c + a, c + a], fill=INK)
         d.ellipse([c - b, c - b, c + b, c + b], fill=PAPER)
-    star(d, c, c, R4 * 0.62, r_ratio=0.26)
+    draw_emblem(d, c, R4 * 0.72)
 
     # Text around the band between the rings, filling the full circle.
     band_mid = (R2 + R3) / 2
-    fs = int((R2 - R3) * 0.62)
+    fs = int((R2 - R3) * 0.5)
     font = ImageFont.truetype(fontp, fs)
     top, cap = cap_metrics(font)
     widths = [font.getlength(ch) for ch in text]
     circ = 2 * math.pi * band_mid
-    while sum(widths) > circ * 0.94 and fs > 10:
+    while sum(widths) > circ * 0.9 and fs > 10:
         fs -= 2
         font = ImageFont.truetype(fontp, fs)
         top, cap = cap_metrics(font)
@@ -176,21 +249,23 @@ def main():
     ap.add_argument("--short", default=None, help="short mark, default: consonants of name (max 4)")
     ap.add_argument("--tagline", default="Your tagline")
     ap.add_argument("--year", default="2026")
+    ap.add_argument("--city", default="", help="optional city for the seal")
     ap.add_argument("--font", default=None)
-    ap.add_argument("--tracking", type=float, default=-0.01, help="letter spacing in em")
+    ap.add_argument("--tracking", type=float, default=0.02, help="letter spacing in em (wordmark)")
     ap.add_argument("--out", default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "public", "brand"))
     a = ap.parse_args()
 
     name = a.name.upper()
-    short = (a.short or "".join(ch for ch in name if ch not in "AEIOU")[:4] or name[:4]).upper()
+    short = (a.short or "".join(ch for ch in name if ch not in "AEIOUÁÉÍÓÚ")[:4] or name[:4]).upper()
     fontp = find_font(a.font)
     os.makedirs(a.out, exist_ok=True)
-    seal_text = f"{name} \u00b7 {a.tagline.upper()} \u00b7 EST. {a.year} \u00b7 "
+    parts = [name, a.tagline.upper()] + ([a.city.upper()] if a.city else []) + [f"EST. {a.year}"]
+    seal_text = " \u00b7 ".join(parts) + " \u00b7 "
 
     marks = {
         "wordmark": make_wordmark(fontp, name, a.tracking),
-        "monogram": make_monogram(fontp, short, a.tracking),
-        "graphic": make_wordmark(fontp, name, a.tracking + 0.04, star_middle=True),
+        "monogram": make_monogram(fontp, short, a.tracking + 0.02),
+        "graphic": make_graphic(fontp, name, a.tracking + 0.04),
         "emblem": make_emblem(),
         "seal": make_seal(fontp, seal_text),
     }
