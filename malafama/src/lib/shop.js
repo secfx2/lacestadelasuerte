@@ -57,16 +57,31 @@ export function productHref(product, colorSlug) {
    -------------------------------------------------------------------------- */
 export const COLOR_FAMILIES = [
   { slug: "negro", name: "Negro", hex: "#111111" },
-  { slug: "gris", name: "Gris", hex: "#8e8f92" },
-  { slug: "crudo", name: "Blanco y crudo", hex: "#efe9dc" },
-  { slug: "azul", name: "Azul", hex: "#2f4470" },
-  { slug: "marron", name: "Marrón", hex: "#5a3b26" },
-  { slug: "plata", name: "Plata", hex: "#c0c0c0" },
-  { slug: "multi", name: "Multicolor", hex: "linear-gradient(135deg,#111 0 33%,#9a9da1 33% 66%,#efe9dc 66%)" },
+  { slug: "gris", name: "Gris y carbón", hex: "#7c7e80" },
+  { slug: "crudo", name: "Blanco y crudo", hex: "#ede6da" },
+  { slug: "rojo", name: "Burdeos y rojo", hex: "#6e2430" },
+  { slug: "azul", name: "Azul", hex: "#2e4fa3" },
+  { slug: "marron", name: "Marrón", hex: "#4b2e22" },
+  { slug: "verde", name: "Oliva", hex: "#5e5f45" },
+  { slug: "rosa", name: "Rosa", hex: "#d9a6ae" },
+  { slug: "plata", name: "Plata", hex: "#c7c9cc" },
+  { slug: "multi", name: "Multicolor", hex: "linear-gradient(135deg,#111 0 33%,#6e2430 33% 66%,#ede6da 66%)" },
 ];
+
+/** MALA FAMA names its colours in Spanish ("Burdeos Lavado", "Crudo Racing"): the first word sets the family. */
+const FIRST_WORD_FAMILY = {
+  negro: "negro", carbon: "gris", gris: "gris", pizarra: "gris",
+  crudo: "crudo", blanco: "crudo", hielo: "crudo",
+  burdeos: "rojo", rojo: "rojo", ladrillo: "rojo",
+  cobalto: "azul", azul: "azul", indigo: "azul",
+  chocolate: "marron", marron: "marron",
+  oliva: "verde", rosa: "rosa", plata: "plata",
+};
 
 export function colorFamily(color) {
   const n = color.name.toLowerCase();
+  const first = n.normalize("NFD").replace(/[\u0300-\u036f]/g, "").split(/\s+/)[0];
+  if (FIRST_WORD_FAMILY[first]) return FIRST_WORD_FAMILY[first];
   if (/silver/.test(n)) return "plata";
   if (/multi/.test(n)) return "multi";
   if (/tobacco|chocolate|brown/.test(n)) return "marron";
@@ -125,7 +140,7 @@ export const SORTS = [
   { id: "precio-desc", label: "Precio ↓" },
 ];
 
-const BADGE_WEIGHT = { "Best seller": 4, Nuevo: 3, "Edición limitada": 2, "Pieza rara": 1 };
+const BADGE_WEIGHT = { "Best seller": 4, Top: 4, Nuevo: 3, "Edición limitada": 2, "Pieza rara": 1 };
 
 /** Products carry `index` (catalog order) in the slim catalog. */
 export function sortProducts(list, sort) {
@@ -152,6 +167,7 @@ export function sortProducts(list, sort) {
 export function fitNote(product) {
   const F = brand.fitNotes;
   if (F.bySlug?.[product.slug]) return F.bySlug[product.slug];
+  if (F.byCategory?.[product.category]) return F.byCategory[product.category];
   if (product.kind === "jewellery") {
     return product.sizes.some((s) => /^\d+$/.test(s)) ? F.jewelleryRing : F.jewellery;
   }
@@ -207,7 +223,31 @@ const SYNONYMS = {
   camiseta: "tee",
   camisa: "shirt",
   pantalon: "pant",
+  pantalones: "pant",
   jersey: "knit",
+  conjunto: "set conjuntos",
+  conjuntos: "set",
+  chandal: "set track",
+  polo: "polo",
+  punto: "knit polo cardigan",
+  pedreria: "crystal",
+  cristales: "crystal",
+  brillo: "crystal chrome",
+  llamas: "flame",
+  llama: "flame",
+  alas: "wing",
+  corazon: "heart",
+  espinas: "thorn",
+  daga: "dagger",
+  colgante: "pendant",
+  gafas: "shades",
+  pasamontanas: "balaclava",
+  chaqueton: "jacket puffer",
+  plumifero: "puffer",
+  cuero: "leather",
+  vaquera: "denim",
+  carreras: "racing paddock pit",
+  cremallera: "zip",
 };
 
 export function searchProducts(products, query, limit = 12) {

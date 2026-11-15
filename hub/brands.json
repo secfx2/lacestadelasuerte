@@ -4,8 +4,8 @@
     "name": "MUSKETEER",
     "tagline": "Tous pour un",
     "concept": "Ropa unisex high-end de corte boxy inspirada en los mosqueteros: punto pesado, chaquetas con capa y joyería de plata 925.",
-    "hero": "campaign/hero.jpg",
-    "heroPosition": "46% 30%",
+    "hero": ["campaign/hero-mobile.jpg", "campaign/hero.jpg"],
+    "heroPosition": "50% 40%",
     "accent": "#1F2B4D"
   },
   {

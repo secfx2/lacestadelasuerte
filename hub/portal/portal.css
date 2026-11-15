@@ -65,7 +65,8 @@ img { display: block; max-width: 100%; }
   margin: 0;
   font-weight: 800;
   font-stretch: 62%;
-  font-size: clamp(76px, 21vw, 300px);
+  /* the word fills the measure exactly: width ≈ 4.62 × font-size at this weight/stretch */
+  font-size: min(calc((100vw - 2 * var(--gutter)) / 4.62), 300px);
   line-height: 0.8;
   letter-spacing: -0.012em;
   text-transform: uppercase;

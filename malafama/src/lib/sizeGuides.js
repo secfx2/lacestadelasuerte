@@ -8,14 +8,14 @@ export const GUIDES = {
   tops: {
     title: "Partes de arriba",
     note: note("tops", "Medidas de la prenda en plano, en centímetros. Corte boxy: hombro caído y cuerpo amplio."),
-    head: ["Talla", "Ancho de pecho", "Largo", "Manga"],
+    head: ["Talla", "Ancho de pecho", "Largo (recortado)", "Manga"],
     rows: [
-      ["XS", "60", "66", "58"],
-      ["S", "63", "68", "59"],
-      ["M", "66", "70", "60"],
-      ["L", "69", "72", "61"],
-      ["XL", "72", "74", "62"],
-      ["XXL", "75", "76", "63"],
+      ["XS", "60", "58", "58"],
+      ["S", "62", "60", "59"],
+      ["M", "64", "62", "60"],
+      ["L", "66", "64", "61"],
+      ["XL", "68", "66", "62"],
+      ["XXL", "70", "68", "63"],
     ],
   },
   outer: {
@@ -32,16 +32,16 @@ export const GUIDES = {
     ],
   },
   bottoms: {
-    title: "Pantalones (XS–XXL)",
+    title: "Pantalones (XS–XXL por cintura)",
     note: note("bottoms", "Cintura elástica medida en reposo. Corte baggy de tiro relajado."),
-    head: ["Talla", "Cintura", "Cadera", "Largo exterior"],
+    head: ["Talla", "Cintura", "Cadera", "Largo exterior", "Ancho de bajo"],
     rows: [
-      ["XS", "66", "108", "102"],
-      ["S", "70", "112", "104"],
-      ["M", "74", "116", "106"],
-      ["L", "78", "120", "108"],
-      ["XL", "82", "124", "110"],
-      ["XXL", "86", "128", "112"],
+      ["XS", "64–68", "112", "104", "30"],
+      ["S", "68–72", "116", "106", "31"],
+      ["M", "72–76", "120", "108", "32"],
+      ["L", "76–80", "124", "110", "33"],
+      ["XL", "80–84", "128", "112", "34"],
+      ["XXL", "84–88", "132", "114", "35"],
     ],
   },
   waist: {
@@ -120,10 +120,12 @@ export function guidesFor(product) {
   if (s.includes("36-40")) return ["socks"];
   if (s.includes("80")) return ["belts"];
   if (s.includes("28")) return ["waist"];
+  if (product.category === "conjuntos") return ["tops", "bottoms"];
   if (product.category === "pantalones") return ["bottoms"];
   if (product.category === "chaquetas") return ["outer", "tops"];
   if (s.length === 1) return [];
   return ["tops", "outer"];
 }
 
-export const ALL_GUIDES_ORDER = ["tops", "outer", "bottoms", "waist", "rings", "chains", "bracelets", "belts", "socks"];
+/* MALA FAMA: tops XS–XXL, pantalones XS–XXL por cintura y anillos 10–20 (el resto de piezas es talla única). */
+export const ALL_GUIDES_ORDER = ["tops", "outer", "bottoms", "rings"];

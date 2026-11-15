@@ -1,96 +1,157 @@
 {
+  "_note": "MALA FAMA no tiene fotos de campaña: el hero es tipográfico con una alineación de conjuntos, y banners, lookbook y «Nosotros» usan las fotos con modelo sobre blanco (-2.jpg) de catalog.json, multiplicadas sobre el gris de ficha. Para pasar a fotos de campaña, añade hero.desktop / hero.mobile y cambia las rutas.",
   "hero": {
-    "desktop": "/campaign/hero.jpg",
-    "mobile": "/campaign/hero-mobile.jpg",
-    "alt": "Campaña: cuatro modelos con la línea actual en la ciudad"
+    "type": "lineup",
+    "strip": [
+      "tribal-panel-set",
+      "script-zip-set",
+      "halo-airbrush-set",
+      "thorn-crystal-set",
+      "paddock-fleece-set"
+    ],
+    "alt": "Cinco conjuntos MALA FAMA puestos: Tribal Panel, Script Zip, Halo Airbrush, Thorn Crystal y Paddock Fleece"
   },
   "banners": [
     {
-      "id": "chaquetas",
-      "image": "/campaign/banner-chaquetas.jpg",
+      "id": "conjuntos",
+      "image": "/products/tribal-panel-set/burdeos-lavado-2.jpg",
       "ratio": "4:5",
-      "title": "Chaquetas",
-      "kicker": "Lona pesada y corte boxy",
-      "href": "/categoria/chaquetas"
+      "title": "Conjuntos",
+      "kicker": "Arriba y abajo, a juego",
+      "href": "/categoria/conjuntos",
+      "tone": "accent"
     },
     {
-      "id": "joyeria",
-      "image": "/campaign/banner-joyeria.jpg",
+      "id": "sudaderas",
+      "image": "/products/mask-zip-hoodie/negro-estrellas-2.jpg",
       "ratio": "4:5",
-      "title": "Joyería",
-      "kicker": "Plata 925 maciza",
-      "href": "/categoria/joyeria"
+      "title": "Sudaderas",
+      "kicker": "Capucha, cremallera y pedrería",
+      "href": "/categoria/sudaderas",
+      "tone": "ink"
+    },
+    {
+      "id": "pantalones",
+      "image": "/products/paddock-racing-pant/crudo-rojo-2.jpg",
+      "ratio": "4:5",
+      "title": "Pantalones",
+      "kicker": "Extra anchos, hasta la zapatilla",
+      "href": "/categoria/pantalones",
+      "tone": "bone"
     },
     {
       "id": "punto",
-      "image": "/campaign/banner-punto.jpg",
+      "image": "/products/spray-tribal-polo/pizarra-negro-2.jpg",
       "ratio": "4:5",
       "title": "Punto",
-      "kicker": "Punto grueso, tacto denso",
-      "href": "/categoria/punto"
+      "kicker": "Polos de jacquard y mohair",
+      "href": "/categoria/punto",
+      "tone": "alert"
+    },
+    {
+      "id": "chaquetas",
+      "image": "/products/ice-puffer/hielo-translucido-2.jpg",
+      "ratio": "4:5",
+      "title": "Chaquetas",
+      "kicker": "Para que se vea de lejos",
+      "href": "/categoria/chaquetas",
+      "tone": "ink"
+    },
+    {
+      "id": "accesorios",
+      "image": "/products/crystal-balaclava/negro-2.jpg",
+      "ratio": "4:5",
+      "title": "Accesorios",
+      "kicker": "El remate del conjunto",
+      "href": "/categoria/accesorios",
+      "tone": "bone"
+    },
+    {
+      "id": "joyeria",
+      "image": "/products/star-tennis-chain/plata-925-2.jpg",
+      "ratio": "4:5",
+      "title": "Plata 925",
+      "kicker": "Maciza, sin baños",
+      "href": "/categoria/joyeria",
+      "tone": "steel"
     },
     {
       "id": "wide",
-      "image": "/campaign/banner-wide.jpg",
+      "image": null,
       "ratio": "21:9",
-      "title": "Your motto",
-      "kicker": "Catálogo permanente. Sin drops.",
-      "href": "/tienda"
+      "title": "Mejor mala fama que ninguna",
+      "kicker": "Catálogo, no drops",
+      "href": "/tienda",
+      "tone": "accent"
     }
   ],
   "lookbook": [
     {
-      "image": "/campaign/look-01.jpg",
+      "image": "/products/tribal-panel-set/burdeos-lavado-2.jpg",
       "ratio": "4:5",
       "caption": "Look 01",
-      "title": "Escalera",
-      "pieces": [
-        "boxy-work-jacket",
-        "boxy-tee",
-        "straight-denim"
-      ]
+      "title": "Plaza",
+      "pieces": ["tribal-panel-set", "star-tennis-chain", "cuban-bracelet"]
     },
     {
-      "image": "/campaign/look-02.jpg",
+      "image": "/products/script-zip-set/cobalto-lavado-2.jpg",
       "ratio": "4:5",
       "caption": "Look 02",
-      "title": "Azotea",
-      "pieces": [
-        "logo-hoodie",
-        "straight-denim",
-        "six-panel-cap"
-      ]
+      "title": "Andén",
+      "pieces": ["script-zip-set", "star-tennis-chain", "thorn-ring"]
     },
     {
-      "image": "/campaign/look-03.jpg",
+      "image": "/products/halo-airbrush-set/negro-2.jpg",
       "ratio": "4:5",
       "caption": "Look 03",
-      "title": "Taller",
-      "pieces": [
-        "oxford-overshirt",
-        "boxy-tee",
-        "signet-ring"
-      ]
+      "title": "Eclipse",
+      "pieces": ["halo-airbrush-set", "wrap-shades", "padlock-hoops"]
     },
     {
-      "image": "/campaign/look-04.jpg",
+      "image": "/products/thorn-crystal-set/negro-cristal-2.jpg",
       "ratio": "4:5",
       "caption": "Look 04",
-      "title": "Patio",
-      "pieces": [
-        "heavy-knit-crewneck",
-        "straight-denim"
-      ]
+      "title": "Cristal",
+      "pieces": ["thorn-crystal-set", "flame-signet", "padlock-hoops"]
+    },
+    {
+      "image": "/products/paddock-fleece-set/crudo-racing-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 05",
+      "title": "Paddock",
+      "pieces": ["paddock-fleece-set", "charm-crossbody", "dagger-pendant"]
+    },
+    {
+      "image": "/products/thorn-eyelet-set/carbon-lavado-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 06",
+      "title": "Portal",
+      "pieces": ["thorn-eyelet-set", "charm-keychain", "thorn-ring"]
+    },
+    {
+      "image": "/products/velour-piping-set/chocolate-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 07",
+      "title": "Terciopelo",
+      "pieces": ["velour-piping-set", "padlock-hoops", "flame-socks"]
+    },
+    {
+      "image": "/products/wing-puff-set/negro-lavado-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 08",
+      "title": "Alas",
+      "pieces": ["wing-puff-set", "dagger-pendant", "mf-beanie"]
     }
   ],
   "maison": {
-    "image": "/campaign/about.jpg",
+    "image": null,
     "ratio": "3:2",
-    "alt": "El taller de la marca"
-  },
-  "heroClassic": {
-    "desktop": "/campaign/hero-classic.jpg",
-    "mobile": "/campaign/hero-classic-mobile.jpg",
-    "alt": "Campaña alternativa"
+    "alt": "El barrio: las cuatro caras de MALA FAMA con sus conjuntos",
+    "crew": [
+      { "name": "Leo", "slug": "tribal-panel-set" },
+      { "name": "Nia", "slug": "script-zip-set" },
+      { "name": "Yuna", "slug": "halo-airbrush-set" },
+      { "name": "Dani", "slug": "thorn-eyelet-set" }
+    ]
   }
 }
