@@ -9,7 +9,7 @@ import brand from "@/config/brand";
 import campaign from "@/data/campaign.json";
 import styles from "./about.module.css";
 
-/* Manifesto / about page (MUSKETEER: /la-maison). Copy: brand.about in src/config/brand.js. */
+/* Manifesto / about page. Copy: brand.about in src/config/brand.js; crew strip: campaign.json → maison.crew. */
 const A = brand.about;
 
 export const metadata = {

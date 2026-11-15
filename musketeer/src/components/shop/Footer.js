@@ -3,6 +3,7 @@ import Logo from "@/components/brand/Logo";
 import FooterNewsletter from "./FooterNewsletter";
 import RouteGate from "./RouteGate";
 import { CATEGORIES } from "@/lib/shop";
+import { asset } from "@/lib/asset";
 import styles from "./Footer.module.css";
 
 const HELP = [
@@ -101,7 +102,7 @@ function FullFooter() {
           <p className={`${styles.colTitle} ${styles.spaced}`}>Brand Book</p>
           <ul>
             <li><Link href="/brand" className="mk-link">Identidad de marca</Link></li>
-            <li><a href="/brand/musketeer-brandbook.pdf" className="mk-link">Descargar PDF</a></li>
+            <li><a href={asset("/brand/musketeer-brandbook.pdf")} className="mk-link">Descargar PDF</a></li>
           </ul>
         </nav>
 

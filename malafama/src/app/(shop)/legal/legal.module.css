@@ -2,7 +2,7 @@
 .toc { position: sticky; top: calc(var(--header-h) + 32px); display: grid; gap: 12px; justify-items: start; font-size: var(--fs-xs); letter-spacing: var(--track-caps); text-transform: uppercase; }
 .body { max-width: 720px; font-size: 14px; line-height: 1.75; color: #2b2b2b; }
 .body section { scroll-margin-top: calc(var(--header-h) + 24px); padding-bottom: 32px; margin-bottom: 32px; border-bottom: 1px solid var(--line); }
-.body h2 { margin: 0 0 14px; font-size: 18px; font-stretch: 125%; font-weight: 600; text-transform: uppercase; letter-spacing: -0.005em; color: var(--ink); }
+.body h2 { margin: 0 0 14px; font-size: 18px; font-stretch: var(--head-stretch); font-weight: var(--head-weight); text-transform: uppercase; letter-spacing: 0.005em; color: var(--ink); }
 .body p { margin: 0 0 12px; }
 .updated { font-size: 11px; color: var(--text-muted); letter-spacing: var(--track-caps); text-transform: uppercase; }
 @media (max-width: 767px) {

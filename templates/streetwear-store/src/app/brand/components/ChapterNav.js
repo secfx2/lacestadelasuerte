@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Logo from "@/components/brand/Logo";
+import { asset } from "@/lib/asset";
 import brand from "@/config/brand";
 import s from "../brand.module.css";
 
@@ -70,7 +71,7 @@ export default function ChapterNav({ chapters, pdfHref }) {
         ))}
       </ol>
       {pdfHref && (
-        <a href={pdfHref} className={s.navPdf} download>
+        <a href={asset(pdfHref)} className={s.navPdf} download>
           PDF
         </a>
       )}

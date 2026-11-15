@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { asset } from "@/lib/asset";
 import s from "../brand.module.css";
 
 /**
@@ -33,7 +34,7 @@ export default function SafeImage({ src, alt = "", label, className = "", fit = 
     // eslint-disable-next-line @next/next/no-img-element
     <img
       ref={ref}
-      src={src}
+      src={asset(src)}
       alt={alt}
       loading="eager"
       decoding="async"

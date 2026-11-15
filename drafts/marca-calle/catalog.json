@@ -1,0 +1,3497 @@
+{
+  "categories": [
+    {
+      "slug": "vaqueros",
+      "name": "Vaqueros"
+    },
+    {
+      "slug": "sudaderas",
+      "name": "Sudaderas"
+    },
+    {
+      "slug": "chandal",
+      "name": "Chándal"
+    },
+    {
+      "slug": "camisetas",
+      "name": "Camisetas"
+    },
+    {
+      "slug": "polos-y-camisas",
+      "name": "Polos y camisas"
+    },
+    {
+      "slug": "chaquetas",
+      "name": "Chaquetas"
+    },
+    {
+      "slug": "capas",
+      "name": "Capas"
+    },
+    {
+      "slug": "accesorios",
+      "name": "Accesorios"
+    },
+    {
+      "slug": "joyeria",
+      "name": "Joyería"
+    }
+  ],
+  "models": {
+    "rizo": {
+      "job_id": null,
+      "desc": "lanky young Spanish man, pale skin, big messy dark brown curly mop",
+      "casting_prompt": "Full-body street casting photo of a lanky young Spanish man, pale skin, big messy dark brown curly mop, about 20 years old, natural face, neutral expression, standing straight facing camera, arms relaxed at the sides, wearing a plain black crew-neck t-shirt, plain black straight jeans and plain black sneakers. Standing in front of a raw grey concrete wall with a concrete floor, soft overcast daylight, straight-on eye-level framing, head to toe in frame, sharp focus, no accessories, no logos, no text."
+    },
+    "sombra": {
+      "job_id": null,
+      "desc": "androgynous young man, pale skin, layered jet-black hair with a long emo fringe over one eye, small silver lip ring",
+      "casting_prompt": "Full-body street casting photo of a androgynous young man, pale skin, layered jet-black hair with a long emo fringe over one eye, small silver lip ring, about 20 years old, natural face, neutral expression, standing straight facing camera, arms relaxed at the sides, wearing a plain black crew-neck t-shirt, plain black straight jeans and plain black sneakers. Standing in front of a raw grey concrete wall with a concrete floor, soft overcast daylight, straight-on eye-level framing, head to toe in frame, sharp focus, no accessories except the small lip ring, no logos, no text."
+    },
+    "vera": {
+      "job_id": null,
+      "desc": "young woman, light olive skin, black shoulder-length hair with a heavy blunt fringe, silver septum ring",
+      "casting_prompt": "Full-body street casting photo of a young woman, light olive skin, black shoulder-length hair with a heavy blunt fringe, silver septum ring, about 20 years old, natural face, neutral expression, standing straight facing camera, arms relaxed at the sides, wearing a plain black crew-neck t-shirt, plain black straight jeans and plain black sneakers. Standing in front of a raw grey concrete wall with a concrete floor, soft overcast daylight, straight-on eye-level framing, head to toe in frame, sharp focus, no accessories except the septum ring, no logos, no text."
+    },
+    "lux": {
+      "job_id": null,
+      "desc": "young woman, light brown skin, bleached platinum wolf cut with dark roots, fine-line forearm tattoos",
+      "casting_prompt": "Full-body street casting photo of a young woman, light brown skin, bleached platinum wolf cut with dark roots, fine-line forearm tattoos, about 20 years old, natural face, neutral expression, standing straight facing camera, arms relaxed at the sides, wearing a plain black crew-neck t-shirt, plain black straight jeans and plain black sneakers. Standing in front of a raw grey concrete wall with a concrete floor, soft overcast daylight, straight-on eye-level framing, head to toe in frame, sharp focus, no accessories, no logos, no text."
+    }
+  },
+  "products": [
+    {
+      "slug": "seraph-baggy",
+      "name": "Seraph Baggy",
+      "category": "vaqueros",
+      "price": 95,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36",
+        "38"
+      ],
+      "model": "rizo",
+      "description": "El vaquero que define Pecado: pernera ultra ancha que se come la zapatilla y dos cruces aladas bordadas en blanco sobre los bolsillos traseros XL. Denim negro lavado con pespunte grueso en crudo, hecho para patinar, arrastrarlo por el suelo y repetir.",
+      "details": [
+        "Bajo de 34 cm",
+        "Tiro medio-bajo",
+        "Denim 14 oz lavado a la piedra",
+        "Cruces aladas bordadas en los bolsillos traseros",
+        "Pespunte grueso en contraste crudo"
+      ],
+      "composition": "100% algodón",
+      "fit": "Ultra baggy",
+      "unisex": true,
+      "badge": "Top",
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "ultra-wide baggy jeans in washed black denim with a faded stone wash and lighter fading across the seat and thighs, extremely wide straight leg, leg opening around 34 cm, huge volume, hem stacking slightly, low-mid rise, oversized back pockets, thick contrast off-white topstitching on every seam; each oversized back pocket is embroidered edge to edge with a large original winged cross in dense white and silver-grey thread: a slim ornate cross with pointed filigree tips and a pair of spread feathered wings behind it; the flat lay shows the BACK of the jeans so the art is fully visible",
+        "back": "",
+        "detail": "",
+        "pose": "back view looking over the shoulder: worn low on the hips with a white pyramid-studded leather belt, a black boxy tee layered over a white long-sleeve, black puffy skate shoes half swallowed by the stacked hems, a heavy silver wallet chain looping from the front belt loop to the back pocket edge, a black ribbed beanie pushed back on the messy curly mop; slouched with the weight on one leg, hands in the front pockets, both back pockets fully visible"
+      },
+      "colors": [
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2B2A2D",
+          "variant": null,
+          "images": [
+            "/products/seraph-baggy/washed-black-1.jpg",
+            "/products/seraph-baggy/washed-black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "thorn-vine-jean",
+      "name": "Thorn Vine Jean",
+      "category": "vaqueros",
+      "price": 99,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36",
+        "38"
+      ],
+      "model": "vera",
+      "description": "Índigo crudo sin lavar con una enredadera de espinas bordada que trepa desde el bajo hasta el muslo. Se irá destiñendo contigo, así que cuanto más lo lleves, más tuyo será.",
+      "details": [
+        "Bajo de 33 cm",
+        "Tiro medio-bajo",
+        "Denim crudo 14,5 oz sin lavar",
+        "Enredadera de espinas bordada en cadeneta crudo y burdeos",
+        "Bolsillos traseros XL con pespunte crudo"
+      ],
+      "composition": "100% algodón",
+      "fit": "Ultra baggy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "ultra-wide baggy jeans in dark raw indigo rigid unwashed denim with a slight sheen, extremely wide straight leg, leg opening around 33 cm, huge volume, hem stacking slightly, low-mid rise, oversized back pockets, thick ecru topstitching; on the FRONT a thorned vine embroidered in ecru chain-stitch climbs from the hem up the outer side of both legs to mid-thigh, with sharp thorns, curling tendrils and a few small oxblood red rosebuds; front view laid flat with both legs spread to show their full width",
+        "back": "",
+        "detail": "",
+        "pose": "worn with a fitted black baby tee with a black rhinestone print layered over a sheer black mesh long-sleeve, a black leather belt with a double row of silver grommets, black chunky platform Mary Janes with white frilly ankle socks peeking under the huge hems, small silver cross hoop earrings and the septum ring; standing pigeon-toed, one finger hooked in a belt loop, chin down with a hard stare through the blunt fringe"
+      },
+      "colors": [
+        {
+          "name": "Raw Indigo",
+          "slug": "raw-indigo",
+          "hex": "#1F2A44",
+          "variant": null,
+          "images": [
+            "/products/thorn-vine-jean/raw-indigo-1.jpg",
+            "/products/thorn-vine-jean/raw-indigo-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "limbo-jean",
+      "name": "Limbo Jean",
+      "category": "vaqueros",
+      "price": 89,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36",
+        "38"
+      ],
+      "model": "sombra",
+      "description": "Gris ceniza desteñido, como un vaquero negro que ha sobrevivido a demasiados veranos. Detrás, un halo con alas en estampado negro craquelado se desborda por los dos bolsillos.",
+      "details": [
+        "Bajo de 34 cm",
+        "Tiro medio-bajo",
+        "Denim 13 oz con lavado gris desteñido",
+        "Estampado craquelado de halo y alas en la espalda",
+        "Pespunte blanco grueso"
+      ],
+      "composition": "100% algodón",
+      "fit": "Ultra baggy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "ultra-wide baggy jeans in faded ash grey denim, a washed-out black turned soft grey with whiskering at the hips, extremely wide straight leg, leg opening around 34 cm, huge volume, hem stacking slightly, low-mid rise, oversized back pockets, thick white topstitching; across both back pockets one large cracked black screen print: an ornate filigree halo ring above a pair of spread angel wings whose feathers spill over the pocket edges onto the seat, distressed and crackled like an old transfer; the flat lay shows the BACK of the jeans so the art is fully visible",
+        "back": "",
+        "detail": "",
+        "pose": "back view, head bowed so the long jet-black fringe hangs forward: worn with a short boxy black zip hoodie zipped to the chin, hood down, grey chunky skate sneakers buried under the stacked hems, a cluster of small silver keychain charms hanging from a back belt loop, wired headphones around the neck; both hands shoved in the hoodie pockets, shoulders hunched, the hoodie hem sitting above the back pockets so the print is fully visible"
+      },
+      "colors": [
+        {
+          "name": "Ash Grey",
+          "slug": "ash-grey",
+          "hex": "#8C8A88",
+          "variant": null,
+          "images": [
+            "/products/limbo-jean/ash-grey-1.jpg",
+            "/products/limbo-jean/ash-grey-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "pyre-baggy",
+      "name": "Pyre Baggy",
+      "category": "vaqueros",
+      "price": 89,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36",
+        "38"
+      ],
+      "model": "lux",
+      "description": "Negro profundo con llamas en crudo y burdeos que suben desde el bajo hasta la rodilla. Para quemar la calle sin pedirle permiso a nadie.",
+      "details": [
+        "Bajo de 35 cm",
+        "Tiro medio-bajo",
+        "Denim 14 oz negro sobreteñido",
+        "Llamas estampadas en descarga crudo con perfil burdeos",
+        "Bolsillos traseros XL"
+      ],
+      "composition": "100% algodón",
+      "fit": "Ultra baggy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "ultra-wide baggy jeans in deep overdyed black denim, extremely wide straight leg, leg opening around 35 cm, huge volume, hem stacking slightly, low-mid rise, oversized back pockets, thick off-white topstitching; on the FRONT tall licking flames printed in faded ecru discharge ink with a thin oxblood red outline rise from the hem of both legs up to the knee, slightly cracked and vintage-looking; front view laid flat with both legs spread to show their full width",
+        "back": "",
+        "detail": "",
+        "pose": "worn with a fitted white ribbed tank under an open black leather biker jacket with silver pyramid studs on the shoulders, a black pyramid-studded belt, chunky black-and-white skate sneakers, layered silver chains, fine-line forearm tattoos; feet planted wide, thumbs hooked in the front pockets, chin up with a defiant look, the flames fully visible from hem to knee"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#0B0B0C",
+          "variant": null,
+          "images": [
+            "/products/pyre-baggy/black-1.jpg",
+            "/products/pyre-baggy/black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "rosary-jean",
+      "name": "Rosary Jean",
+      "category": "vaqueros",
+      "price": 99,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36",
+        "38"
+      ],
+      "model": "lux",
+      "description": "Denim color hueso con pespunte negro grueso y filigrana gótica bordada alrededor de los bolsillos traseros. Es el negativo perfecto de un vaquero negro y se nota desde la otra punta del parque.",
+      "details": [
+        "Bajo de 33 cm",
+        "Tiro medio-bajo",
+        "Denim 13 oz sin teñir color hueso",
+        "Filigrana bordada en negro en los bolsillos traseros",
+        "Pespunte negro grueso en contraste"
+      ],
+      "composition": "100% algodón",
+      "fit": "Ultra baggy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "ultra-wide baggy jeans in ecru bone-coloured undyed denim, extremely wide straight leg, leg opening around 33 cm, huge volume, hem stacking slightly, low-mid rise, oversized back pockets, thick black contrast topstitching on every seam; both oversized back pockets are framed by dense black embroidered gothic filigree: curling ornamental scrolls, small pointed crosses at the pocket corners and a beaded chain-like line that drapes between the two pockets like a rosary; the flat lay shows the BACK of the jeans so the art is fully visible",
+        "back": "",
+        "detail": "",
+        "pose": "back view turned three-quarters to show both pockets: worn with a sheer black mesh short-sleeve tee over a black and white striped long-sleeve tucked in at the back, a black leather belt with a double row of silver grommets, worn black leather lace-up boots under the stacked hems, a silver wallet chain swinging at the hip, bleached platinum wolf cut with dark roots; looking back over the shoulder with a bored expression, arms relaxed"
+      },
+      "colors": [
+        {
+          "name": "Bone",
+          "slug": "bone",
+          "hex": "#E9E2D3",
+          "variant": null,
+          "images": [
+            "/products/rosary-jean/bone-1.jpg",
+            "/products/rosary-jean/bone-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "crypt-double-knee",
+      "name": "Crypt Double Knee",
+      "category": "vaqueros",
+      "price": 105,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36",
+        "38"
+      ],
+      "model": "rizo",
+      "description": "Carpenter de doble rodilla en negro lavado con trabilla de martillo y un parche bordado de calavera con rosas en la rodilla. Aguanta caídas en el bowl y noches enteras en el banco de la plaza.",
+      "details": [
+        "Bajo de 36 cm",
+        "Tiro medio-bajo",
+        "Denim 14 oz con doble rodilla",
+        "Trabilla de martillo y bolsillo de herramientas",
+        "Parche bordado de calavera con rosas"
+      ],
+      "composition": "100% algodón",
+      "fit": "Ultra baggy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "ultra-wide baggy carpenter jeans in washed black denim with double-layer knee panels, extremely wide straight leg, leg opening around 36 cm, huge volume, hem stacking slightly, low-mid rise, oversized back pockets, thick off-white topstitching, a hammer loop and a narrow tool pocket on the right leg; on the left knee panel an embroidered patch of an original anatomical skull wrapped in blooming roses, the skull in bone white thread and the roses in oxblood red with dark green leaves; front view laid flat with both legs spread to show their full width",
+        "back": "",
+        "detail": "",
+        "pose": "worn with a faded charcoal boxy tee with a cracked flame print, a black leather belt with a double row of silver grommets, black puffy skate shoes, a black trucker cap worn backwards over the curly mop; standing with one foot up on the tail of a skateboard, leaning forward with a forearm on the raised knee so the skull patch faces the camera, cheeky half-smile"
+      },
+      "colors": [
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2B2A2D",
+          "variant": null,
+          "images": [
+            "/products/crypt-double-knee/washed-black-1.jpg",
+            "/products/crypt-double-knee/washed-black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "wingspan-jean",
+      "name": "Wingspan Jean",
+      "category": "vaqueros",
+      "price": 110,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36",
+        "38"
+      ],
+      "model": "vera",
+      "description": "Unas alas gigantes en foil plateado se abren desde los bolsillos traseros y bajan por detrás de los muslos. Índigo oscuro, pernera infinita y la espalda más fotografiada del skatepark.",
+      "details": [
+        "Bajo de 34 cm",
+        "Tiro medio-bajo",
+        "Denim 14 oz índigo oscuro enjuagado",
+        "Alas estampadas en foil plateado envejecido",
+        "Pespunte blanco grueso y bolsillos traseros XL"
+      ],
+      "composition": "100% algodón",
+      "fit": "Ultra baggy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "ultra-wide baggy jeans in dark rinsed midnight indigo denim, extremely wide straight leg, leg opening around 34 cm, huge volume, hem stacking slightly, low-mid rise, oversized back pockets, thick white topstitching; a huge pair of original feathered wings printed in distressed cracked silver foil opens outward from the two back pockets and sweeps down the back of both thighs almost to the knees, each feather sharply drawn, the foil worn and flaking at the edges; the flat lay shows the BACK of the jeans so the art is fully visible",
+        "back": "",
+        "detail": "",
+        "pose": "full back view, walking away and glancing back over the shoulder: worn with a short boxy washed black hoodie with silver pyramid studs along the shoulders, a white pyramid-studded belt, black platform Mary Janes with white socks under the stacked hems, black blunt fringe in profile; one hand flicking the fringe, the hoodie hem above the pockets so the wings are fully visible"
+      },
+      "colors": [
+        {
+          "name": "Midnight Indigo",
+          "slug": "midnight-indigo",
+          "hex": "#1B2233",
+          "variant": null,
+          "images": [
+            "/products/wingspan-jean/midnight-indigo-1.jpg",
+            "/products/wingspan-jean/midnight-indigo-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "gutter-jort",
+      "name": "Gutter Jort",
+      "category": "vaqueros",
+      "price": 79,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36",
+        "38"
+      ],
+      "model": "sombra",
+      "description": "El baggy en versión verano: jort ultra ancho por debajo de la rodilla con una cruz de filigrana bordada en una pernera. Bajo deshilachado, bolsillos traseros XL y cero ganas de volver a casa.",
+      "details": [
+        "Bajo de 32 cm",
+        "Tiro medio-bajo",
+        "Largo por debajo de la rodilla, bajo deshilachado",
+        "Cruz de filigrana bordada en la pernera izquierda",
+        "Denim 14 oz con pespunte crudo"
+      ],
+      "composition": "100% algodón",
+      "fit": "Ultra baggy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "ultra-baggy denim jorts in washed black denim, extremely wide legs ending below the knee with a raw frayed hem, leg opening around 32 cm, huge volume, low-mid rise, oversized back pockets, thick off-white topstitching; on the FRONT left leg a large embroidered original filigree cross in white thread with ornate looping scrollwork arms and small thorn spikes at each tip; front view laid flat",
+        "back": "",
+        "detail": "",
+        "pose": "worn with a washed black boxy tee with a toxic lime cracked cross print layered over a white long-sleeve, grey ribbed knee-high socks pulled up, chunky black skate sneakers, a silver wallet chain, wired headphones around the neck, long emo fringe over one eye; leaning back against the wall with one sole flat on it and arms crossed, the embroidered leg toward the camera"
+      },
+      "colors": [
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2B2A2D",
+          "variant": null,
+          "images": [
+            "/products/gutter-jort/washed-black-1.jpg",
+            "/products/gutter-jort/washed-black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "spine-hoodie",
+      "name": "Spine Hoodie",
+      "category": "sudaderas",
+      "price": 85,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rizo",
+      "description": "Sudadera boxy de 450 g/m² en carbón lavado con una columna vertebral de espinas en color arena que baja por el centro y costillas puntiagudas en las mangas. El bajo y los puños vienen deshilachados, porque las cosas buenas llegan rotas.",
+      "details": [
+        "Corte boxy corto, hombro caído",
+        "Felpa 450 g/m² lavada",
+        "Estampado tonal arena de columna y costillas",
+        "Bajo y puños deshilachados",
+        "Sin bolsillo delantero"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a boxy cropped heavyweight 450 gsm cotton fleece pullover hoodie with dropped shoulders, a wide square body ending just above the hip and a double-layered hood, in washed charcoal grey with a soft uneven fade, no front pocket, raw frayed distressed hem and cuffs with loose shredded threads hanging; a tonal sand-coloured print of an original spine runs straight down the centre front from the neckline to the hem, each vertebra sharp and spiked, with thorn-like ribs curving outward from it across the chest, and spiky rib lines running down the outside of both sleeves; the print slightly cracked and sunk into the wash",
+        "back": "",
+        "detail": "",
+        "pose": "worn hood down with the matching washed charcoal wide sweatpants with a sand spine print down the outer legs, black puffy skate shoes, a black ribbed beanie over the messy curly mop, over-ear headphones around the neck; standing straight-on with arms hanging and fists loosely closed, head tilted back, deadpan, the spine print unobstructed"
+      },
+      "colors": [
+        {
+          "name": "Washed Charcoal",
+          "slug": "washed-charcoal",
+          "hex": "#3F3E3D",
+          "variant": null,
+          "images": [
+            "/products/spine-hoodie/washed-charcoal-1.jpg",
+            "/products/spine-hoodie/washed-charcoal-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "x-ray-storm-hoodie",
+      "name": "X-Ray Storm Hoodie",
+      "category": "sudaderas",
+      "price": 89,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "sombra",
+      "description": "Negro con lavado ácido, una caja torácica de rayos X en gris y relámpagos que se ramifican por todo el cuerpo. En el pecho, un logo de espinas ilegible que no dice nada y lo dice todo.",
+      "details": [
+        "Corte boxy corto, hombro caído",
+        "Felpa 450 g/m² con lavado ácido",
+        "Estampado integral de rayos X y relámpagos",
+        "Bajo y puños deshilachados",
+        "Capucha de doble capa"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a boxy cropped heavyweight 450 gsm cotton fleece pullover hoodie with dropped shoulders, a wide square body ending just above the hip and a double-layered hood, in black acid wash with cloudy grey bleached marbling, front pouch pocket, raw frayed distressed hem and cuffs with loose shredded threads hanging; an all-over grey print of an x-ray ribcage across the chest with branching lightning veins crackling over the body, hood and sleeves, plus a small white logo on the left chest made of thorny illegible death-metal style logo shapes that read as pure spiky graphic, no legible letters",
+        "back": "",
+        "detail": "",
+        "pose": "worn hood up with the long emo fringe falling over one eye, with the matching black acid-wash sweatpants veined with grey lightning, chunky grey skate sneakers, a barbed silver chain over the hoodie, wired headphones around the neck; hands deep in the front pocket, shoulders hunched, staring at the camera from under the hood"
+      },
+      "colors": [
+        {
+          "name": "Black Acid",
+          "slug": "black-acid",
+          "hex": "#1E1E20",
+          "variant": null,
+          "images": [
+            "/products/x-ray-storm-hoodie/black-acid-1.jpg",
+            "/products/x-ray-storm-hoodie/black-acid-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "flame-wash-hoodie",
+      "name": "Flame Wash Hoodie",
+      "category": "sudaderas",
+      "price": 85,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rizo",
+      "description": "Gris claro con lavado mineral, llamas tonales en gris oscuro que suben desde el bajo y las mangas y salpicaduras negras de pintura. Parece rescatada del incendio de un local de ensayo, en el buen sentido.",
+      "details": [
+        "Corte boxy corto, hombro caído",
+        "Felpa 450 g/m² con lavado mineral",
+        "Llamas tonales en bajo y mangas",
+        "Salpicaduras negras",
+        "Bajo y puños deshilachados"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a boxy cropped heavyweight 450 gsm cotton fleece pullover hoodie with dropped shoulders, a wide square body ending just above the hip and a double-layered hood, in mineral-washed light grey with a chalky uneven fade, front pouch pocket, raw frayed distressed hem and cuffs with loose shredded threads hanging; tonal darker grey flames printed rising from the hem up the body and from the cuffs up the sleeves, with scattered black grunge paint splatter specks all over",
+        "back": "",
+        "detail": "",
+        "pose": "worn with the matching distressed grey wide sweatpants with pale flames rising from the hem, black puffy skate shoes, white crew socks, a black ribbed beanie on the curly mop, a silver chain, a skateboard tucked under one arm at his side; walking toward the camera mid-stride, grinning"
+      },
+      "colors": [
+        {
+          "name": "Mineral Grey",
+          "slug": "mineral-grey",
+          "hex": "#B4B2AE",
+          "variant": null,
+          "images": [
+            "/products/flame-wash-hoodie/mineral-grey-1.jpg",
+            "/products/flame-wash-hoodie/mineral-grey-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "frost-thorn-hoodie",
+      "name": "Frost Thorn Hoodie",
+      "category": "sudaderas",
+      "price": 89,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "lux",
+      "description": "Degradado de azul hielo en la capucha a negro en el bajo, con pinchos tribales de espinas que salen disparados desde el pecho. Lleva salpicaduras de lejía y un bajo deshilachado que no vas a querer recortar.",
+      "details": [
+        "Corte boxy corto, hombro caído",
+        "Felpa 450 g/m² teñida en degradado",
+        "Pinchos tribales de espinas en el pecho",
+        "Salpicaduras de lejía",
+        "Bajo y puños deshilachados"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a boxy cropped heavyweight 450 gsm cotton fleece pullover hoodie with dropped shoulders, a wide square body ending just above the hip and a double-layered hood, dip-dyed in a gradient that fades from pale ice blue at the hood and shoulders through grey to black at the hem, front pouch pocket, raw frayed distressed hem and cuffs with loose shredded threads hanging; sharp black thorny tribal spikes radiate outward from the centre of the chest like a frozen starburst, with small white bleach specks scattered all over",
+        "back": "",
+        "detail": "",
+        "pose": "worn hood up over the bleached platinum wolf cut, with the matching gradient wide sweatpants fading from black at the waist to ice blue at the hem, chunky black-and-white skate sneakers, layered silver chains, sleeves pushed up to show the fine-line forearm tattoos; one hand pulling the hood forward, chin down, cold stare"
+      },
+      "colors": [
+        {
+          "name": "Ice Fade",
+          "slug": "ice-fade",
+          "hex": "#9DB8C9",
+          "variant": null,
+          "images": [
+            "/products/frost-thorn-hoodie/ice-fade-1.jpg",
+            "/products/frost-thorn-hoodie/ice-fade-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "blood-vine-hoodie",
+      "name": "Blood Vine Hoodie",
+      "category": "sudaderas",
+      "price": 89,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "vera",
+      "description": "Negro lavado con ángeles de piedra que lloran en gris desteñido, invadidos por enredaderas de espinas burdeos craqueladas. Las mangas van en burdeos lavado con formas de logo espinosas en crudo bajando por los brazos.",
+      "details": [
+        "Corte boxy corto, hombro caído",
+        "Felpa 450 g/m² lavada",
+        "Mangas teñidas en burdeos",
+        "Estampado de ángeles y espinas craqueladas",
+        "Bajo y puños deshilachados"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a boxy cropped heavyweight 450 gsm cotton fleece pullover hoodie with dropped shoulders, a wide square body ending just above the hip and a double-layered hood, with a washed black body and oxblood red garment-washed sleeves, front pouch pocket, raw frayed distressed hem and cuffs with loose shredded threads hanging; on the body a faded grey print of weeping stone angel statues with bowed heads, overgrown by oxblood red cracked thorn vines spreading across the chest and over the shoulders; running vertically down both oxblood sleeves, ecru thorny illegible death-metal style logo shapes that read as pure spiky graphic, no legible letters",
+        "back": "",
+        "detail": "",
+        "pose": "worn with black ultra-wide baggy jeans with white topstitching, a white pyramid-studded belt showing under the cropped hem, black platform Mary Janes with white socks, a silver filigree cross pendant over the hoodie, black blunt fringe and septum ring; arms held slightly away from the body to show the sleeves, head tilted, unimpressed"
+      },
+      "colors": [
+        {
+          "name": "Washed Black / Oxblood",
+          "slug": "washed-black-oxblood",
+          "hex": "#2B2A2D",
+          "variant": null,
+          "images": [
+            "/products/blood-vine-hoodie/washed-black-oxblood-1.jpg",
+            "/products/blood-vine-hoodie/washed-black-oxblood-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "barbwire-sand-hoodie",
+      "name": "Barbwire Sand Hoodie",
+      "category": "sudaderas",
+      "price": 85,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "lux",
+      "description": "Lavado arena con alambre de espino tonal que se enrosca por el cuerpo y las mangas. Es el color más suave del catálogo con el dibujo más áspero.",
+      "details": [
+        "Corte boxy corto, hombro caído",
+        "Felpa 450 g/m² con lavado arena",
+        "Alambre de espino tonal estampado",
+        "Bajo y puños deshilachados"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a boxy cropped heavyweight 450 gsm cotton fleece pullover hoodie with dropped shoulders, a wide square body ending just above the hip and a double-layered hood, in sand-washed beige with a dusty uneven fade, front pouch pocket, raw frayed distressed hem and cuffs with loose shredded threads hanging; tonal darker sand-brown barbed wire printed coiling around the body and wrapping both sleeves, with a larger barbed wire loop knotted into a heart shape on the chest, slightly cracked",
+        "back": "",
+        "detail": "",
+        "pose": "worn hood down with faded ash grey ultra-wide baggy jeans with white topstitching, a black pyramid-studded belt, worn black leather lace-up boots under the stacked hems, a black studded leather backpack slung on one shoulder at the back, platinum wolf cut with dark roots; hands in the front pocket, weight on one hip, lazy half-smile"
+      },
+      "colors": [
+        {
+          "name": "Sand Wash",
+          "slug": "sand-wash",
+          "hex": "#C8B89C",
+          "variant": null,
+          "images": [
+            "/products/barbwire-sand-hoodie/sand-wash-1.jpg",
+            "/products/barbwire-sand-hoodie/sand-wash-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "bleach-wing-hoodie",
+      "name": "Bleach Wing Hoodie",
+      "category": "sudaderas",
+      "price": 89,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "lux",
+      "description": "Índigo teñido en prenda con unas alas enormes decoloradas con lejía en toda la espalda. Cada lote sale un poco distinto, así que la tuya es solo tuya.",
+      "details": [
+        "Corte boxy corto, hombro caído",
+        "Felpa 450 g/m² teñida en índigo",
+        "Alas decoloradas a mano en la espalda",
+        "Bajo y puños deshilachados"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a boxy cropped heavyweight 450 gsm cotton fleece pullover hoodie with dropped shoulders, a wide square body ending just above the hip and a double-layered hood, garment-dyed deep indigo with darker seams, front pouch pocket, raw frayed distressed hem and cuffs with loose shredded threads hanging, shown from the BACK so the art is visible: a huge pair of original feathered angel wings bleached out across the whole back in ghostly pale blue-white discharge, the edges uneven and soaked like real bleach; hood laid flat above",
+        "back": "",
+        "detail": "",
+        "pose": "back view, looking over the shoulder: hood down, worn with black ultra-wide baggy jeans with ecru flames rising from the hem, black puffy skate shoes, a silver wallet chain, fine-line forearm tattoos with the sleeves pushed up, platinum wolf cut; one hand raised to the back of the neck, the bleached wings fully visible"
+      },
+      "colors": [
+        {
+          "name": "Washed Indigo",
+          "slug": "washed-indigo",
+          "hex": "#2C3A5C",
+          "variant": null,
+          "images": [
+            "/products/bleach-wing-hoodie/washed-indigo-1.jpg",
+            "/products/bleach-wing-hoodie/washed-indigo-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "phantom-full-zip",
+      "name": "Phantom Full-Zip",
+      "category": "sudaderas",
+      "price": 89,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "sombra",
+      "description": "Sudadera con cremallera que sube hasta cerrar la capucha sobre la cara, con dos ventanas de malla para ver sin que te vean. Filigrana plateada en la capucha y el anonimato que pide un lunes cualquiera.",
+      "details": [
+        "Corte boxy, largo a la cadera",
+        "Cremallera completa hasta la coronilla",
+        "Ventanas de malla a la altura de los ojos",
+        "Felpa 400 g/m²",
+        "Filigrana plateada estampada en la capucha"
+      ],
+      "composition": "80% algodón, 20% poliéster. Malla 100% poliéster",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a boxy black heavyweight fleece full-zip hoodie whose long silver zip runs from the hem all the way up through the hood over the face to the crown, two small black mesh eye windows in the hood, silver ornamental filigree print of curling scrolls on both sides of the hood, two front pockets, ribbed cuffs and hem, hem at the hip, not long, not oversized; laid flat with the hood fully zipped and spread above the body",
+        "back": "",
+        "detail": "",
+        "pose": "worn zipped all the way over the face so only the mesh eye windows show, with washed black ultra-wide baggy jeans with white topstitching, black puffy skate shoes, a silver wallet chain hanging below the hoodie hem; standing dead still facing the camera, hands in the hoodie pockets, eerie and calm"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#0B0B0C",
+          "variant": null,
+          "images": [
+            "/products/phantom-full-zip/black-1.jpg",
+            "/products/phantom-full-zip/black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cathedral-hoodie",
+      "name": "Cathedral Hoodie",
+      "category": "sudaderas",
+      "price": 79,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "vera",
+      "description": "Zip hoodie negro lavado con una vidriera gótica en estampado crudo que ocupa toda la espalda y unas alas que se abren sobre los hombros. Por delante va limpia, porque el espectáculo está detrás.",
+      "details": [
+        "Corte boxy, largo a la cadera",
+        "Felpa 400 g/m²",
+        "Estampado XL en toda la espalda",
+        "Delantero liso",
+        "Cremallera metálica"
+      ],
+      "composition": "80% algodón, 20% poliéster",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Top",
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a boxy washed black fleece zip hoodie, hem at the hip, not long, not oversized, plain front, shown from the BACK so the print is visible: a large ecru screen print covering the entire back of an original gothic cathedral window with pointed-arch tracery, a rose window and filigree, flanked by feathered wings that spread across both shoulders onto the upper sleeves, lightly cracked; hood laid flat above",
+        "back": "",
+        "detail": "",
+        "pose": "back view looking over the shoulder through the black blunt fringe: hood down, worn with ash grey ultra-wide baggy jeans, black platform Mary Janes with white socks, small silver cross hoop earrings, a black ribbed beanie dangling from one hand; feet together, the other hand in the back pocket, the whole back print unobstructed"
+      },
+      "colors": [
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2B2A2D",
+          "variant": null,
+          "images": [
+            "/products/cathedral-hoodie/washed-black-1.jpg",
+            "/products/cathedral-hoodie/washed-black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "spike-hoodie",
+      "name": "Spike Hoodie",
+      "category": "sudaderas",
+      "price": 89,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "lux",
+      "description": "Sudadera boxy de 450 g/m² en negro lavado con tachuelas piramidales plateadas en los hombros y en el borde de la capucha. Abrazos, sí, pero con cuidado.",
+      "details": [
+        "Corte boxy corto, hombro caído",
+        "Felpa lavada 450 g/m²",
+        "Tachuelas piramidales en hombros y capucha",
+        "Bajo y puños deshilachados"
+      ],
+      "composition": "100% algodón. Tachuelas de metal sin níquel",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a boxy cropped heavyweight 450 gsm cotton fleece pullover hoodie with dropped shoulders, a wide square body ending just above the hip and a double-layered hood, in washed black, front pouch pocket, raw frayed distressed hem and cuffs with loose shredded threads hanging, with rows of polished silver pyramid studs along both shoulder seams and lining the edge of the hood",
+        "back": "",
+        "detail": "",
+        "pose": "worn hood down over a white ribbed tank peeking at the neck, with raw indigo ultra-wide baggy jeans with an ecru thorned vine climbing the legs, a white pyramid-studded belt, chunky black-and-white skate sneakers, layered silver chains and a spike ring, sleeves pushed up to show the fine-line forearm tattoos, platinum wolf cut; hands in the front pocket, shoulders up, chewing-gum attitude"
+      },
+      "colors": [
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2B2A2D",
+          "variant": null,
+          "images": [
+            "/products/spike-hoodie/washed-black-1.jpg",
+            "/products/spike-hoodie/washed-black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "nightmoth-hoodie",
+      "name": "Nightmoth Hoodie",
+      "category": "sudaderas",
+      "price": 75,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "vera",
+      "description": "Sudadera de capucha burdeos con lavado ácido y una polilla nocturna con alas de filigrana en negro desteñido. Cuadrada, pesada y con cara de haberla encontrado en el mejor puesto del Rastro.",
+      "details": [
+        "Corte boxy corto, hombro caído",
+        "Felpa 450 g/m² con lavado ácido",
+        "Estampado desteñido de polilla de filigrana",
+        "Bajo y puños deshilachados"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a boxy cropped heavyweight 450 gsm cotton fleece pullover hoodie with dropped shoulders, a wide square body ending just above the hip and a double-layered hood, in oxblood red acid wash with mottled faded marbling, front pouch pocket, raw frayed distressed hem and cuffs with loose shredded threads hanging; a large sun-faded black print on the chest of an original night moth with wide wings patterned in ornamental filigree and a small skull-like marking on its body, cracked and soft",
+        "back": "",
+        "detail": "",
+        "pose": "worn hood up over the black blunt fringe, with ecru bone ultra-wide baggy jeans with black topstitching, black patent Mary Janes with white socks, a silver choker with a small winged heart charm, the septum ring, sleeves pulled over the hands; arms hanging, head slightly tilted, deadpan stare"
+      },
+      "colors": [
+        {
+          "name": "Oxblood Acid",
+          "slug": "oxblood-acid",
+          "hex": "#5A1A20",
+          "variant": null,
+          "images": [
+            "/products/nightmoth-hoodie/oxblood-acid-1.jpg",
+            "/products/nightmoth-hoodie/oxblood-acid-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "iron-gate-hoodie",
+      "name": "Iron Gate Hoodie",
+      "category": "sudaderas",
+      "price": 75,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "sombra",
+      "description": "Sudadera de capucha color hueso con una verja de cementerio de forja estampada en negro en toda la espalda. Clara por delante y bastante tétrica por detrás.",
+      "details": [
+        "Corte boxy, largo a la cadera",
+        "Felpa 400 g/m² color hueso",
+        "Estampado de verja de forja en la espalda",
+        "Puños y bajo de canalé"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a boxy ecru bone-coloured heavyweight fleece pullover hoodie, hem at the hip, not long, not oversized, front pouch pocket, ribbed cuffs and hem, plain front, shown from the BACK so the print is visible: a large black screen print covering the back of an original ornate wrought-iron cemetery gate with spear-tipped bars, curling scrollwork and a small cross on top, a thorned vine wrapped around the bars; hood laid flat above",
+        "back": "",
+        "detail": "",
+        "pose": "back view, the layered jet-black hair visible from behind: hood down, worn with black ultra-wide baggy jeans with white topstitching, grey chunky skate sneakers, a black studded leather backpack held low by its top handle at the side, wired headphones around the neck; head bowed, standing completely still, the back print unobstructed"
+      },
+      "colors": [
+        {
+          "name": "Bone",
+          "slug": "bone",
+          "hex": "#E9E2D3",
+          "variant": null,
+          "images": [
+            "/products/iron-gate-hoodie/bone-1.jpg",
+            "/products/iron-gate-hoodie/bone-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "thornstorm-sweatpant",
+      "name": "Thornstorm Sweatpant",
+      "category": "chandal",
+      "price": 69,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "sombra",
+      "description": "Pantalón de chándal ancho en gris con lavado ácido y enormes formas de logo espinosas en negro cruzando los dos muslos. Unos relámpagos blancos muy finos completan la tormenta.",
+      "details": [
+        "Pierna ancha recta",
+        "Felpa 450 g/m² con lavado ácido",
+        "Formas de logo espinosas en los muslos",
+        "Cintura elástica con cordón",
+        "Bajo deshilachado"
+      ],
+      "composition": "100% algodón",
+      "fit": "Baggy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "wide straight-leg heavyweight 450 gsm cotton fleece sweatpants with an elastic waistband, flat drawcords, side pockets, relaxed full volume and open wide hems with a leg opening around 28 cm, in grey acid wash with cloudy marbled bleaching, raw frayed hems with shredded threads; large black thorny illegible death-metal style logo shapes that read as pure spiky graphic, no legible letters sprawl across the front of both thighs, with faint thin white lightning bolts branching around them; front view laid flat",
+        "back": "",
+        "detail": "",
+        "pose": "worn with a boxy washed black heavy hoodie with silver pyramid studs on the shoulders, hood up, black puffy skate shoes under the frayed hems, small silver keychain charms clipped to the drawcord, wired headphones around the neck, the long emo fringe falling out of the hood over one eye; slouched, hands in the sweatpant side pockets, the thigh graphics fully visible"
+      },
+      "colors": [
+        {
+          "name": "Grey Acid",
+          "slug": "grey-acid",
+          "hex": "#7E7D7B",
+          "variant": null,
+          "images": [
+            "/products/thornstorm-sweatpant/grey-acid-1.jpg",
+            "/products/thornstorm-sweatpant/grey-acid-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "bleed-marble-jogger",
+      "name": "Bleed Marble Jogger",
+      "category": "chandal",
+      "price": 69,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "vera",
+      "description": "Jogger con lavado marmolado blanco y formas de logo espinosas en burdeos que gotean por las perneras. Limpio de lejos y bastante sangriento de cerca.",
+      "details": [
+        "Jogger con puño de canalé",
+        "Felpa 450 g/m² con lavado marmolado",
+        "Formas de logo espinosas que gotean",
+        "Cintura elástica con cordón"
+      ],
+      "composition": "100% algodón",
+      "fit": "Jogger",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "relaxed heavyweight 450 gsm cotton fleece jogger sweatpants with a full baggy thigh, elastic waistband, flat drawcords, side pockets and ribbed ankle cuffs that bunch slightly, in marble white wash with soft grey cloudy veining; oxblood red thorny illegible death-metal style logo shapes that read as pure spiky graphic, no legible letters across the upper front of both legs, with long drips running down from them toward the knees; front view laid flat",
+        "back": "",
+        "detail": "",
+        "pose": "worn with a fitted black fishnet long-sleeve over an oxblood red tank, black platform Mary Janes with frilly white socks above the ribbed cuffs, a silver choker with a small winged heart charm, the septum ring and black blunt fringe; standing pigeon-toed with hands in the side pockets, bored stare"
+      },
+      "colors": [
+        {
+          "name": "Marble White",
+          "slug": "marble-white",
+          "hex": "#E6E3DD",
+          "variant": null,
+          "images": [
+            "/products/bleed-marble-jogger/marble-white-1.jpg",
+            "/products/bleed-marble-jogger/marble-white-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ember-sweatpant",
+      "name": "Ember Sweatpant",
+      "category": "chandal",
+      "price": 65,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "lux",
+      "description": "Chándal ancho gris desgastado con llamas claras que suben desde el bajo deshilachado. Va de lujo con su sudadera a juego o con cualquier camiseta negra.",
+      "details": [
+        "Pierna ancha recta",
+        "Felpa 450 g/m² desgastada",
+        "Llamas claras desde el bajo",
+        "Bajo deshilachado",
+        "Cintura elástica con cordón"
+      ],
+      "composition": "100% algodón",
+      "fit": "Baggy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "wide straight-leg heavyweight 450 gsm cotton fleece sweatpants with an elastic waistband, flat drawcords, side pockets, relaxed full volume and open wide hems with a leg opening around 28 cm, in distressed mid grey with a worn faded wash and a few abraded patches at the knees, raw frayed hems with shredded threads; pale off-white flames printed rising from the hems up to mid-shin on both legs, slightly cracked; front view laid flat",
+        "back": "",
+        "detail": "",
+        "pose": "worn with a black and white striped fitted long-sleeve under a sheer black mesh short-sleeve tee, chunky black-and-white skate sneakers under the frayed hems, layered silver chains, platinum wolf cut with dark roots; leaning against the wall with one foot crossed over the other, smirk"
+      },
+      "colors": [
+        {
+          "name": "Distressed Grey",
+          "slug": "distressed-grey",
+          "hex": "#9C9A97",
+          "variant": null,
+          "images": [
+            "/products/ember-sweatpant/distressed-grey-1.jpg",
+            "/products/ember-sweatpant/distressed-grey-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "spine-sweatpant",
+      "name": "Spine Sweatpant",
+      "category": "chandal",
+      "price": 72,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "sombra",
+      "description": "Chándal ancho en carbón lavado con una columna de espinas en color arena bajando por el lateral de cada pierna. Con su sudadera a juego forma el conjunto más serio del catálogo.",
+      "details": [
+        "Pierna ancha recta",
+        "Felpa 450 g/m² lavada",
+        "Estampado tonal arena en los laterales",
+        "Bajo deshilachado",
+        "Cintura elástica con cordón"
+      ],
+      "composition": "100% algodón",
+      "fit": "Baggy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "wide straight-leg heavyweight 450 gsm cotton fleece sweatpants with an elastic waistband, flat drawcords, side pockets, relaxed full volume and open wide hems with a leg opening around 28 cm, in washed charcoal grey with a soft uneven fade, raw frayed hems with shredded threads; a tonal sand-coloured print of an original spiked spine with thorn-like ribs runs down the outer side seam of each leg from hip to hem; laid flat in a slight three-quarter turn so one side print is fully visible",
+        "back": "",
+        "detail": "",
+        "pose": "worn with a short washed black zip hoodie zipped to the chin, grey chunky skate sneakers, a black ribbed beanie over the jet-black hair, wired headphones around the neck; turned three-quarters so the spine print down the outer leg faces the camera, hands in the hoodie pockets, eyes down"
+      },
+      "colors": [
+        {
+          "name": "Washed Charcoal",
+          "slug": "washed-charcoal",
+          "hex": "#3F3E3D",
+          "variant": null,
+          "images": [
+            "/products/spine-sweatpant/washed-charcoal-1.jpg",
+            "/products/spine-sweatpant/washed-charcoal-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "x-ray-storm-jogger",
+      "name": "X-Ray Storm Jogger",
+      "category": "chandal",
+      "price": 72,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rizo",
+      "description": "Jogger negro con lavado ácido y relámpagos grises que se ramifican por las perneras, con una rodilla de rayos X en cada pierna. El conjunto perfecto con su sudadera, o por libre con lo que pilles.",
+      "details": [
+        "Jogger con puño de canalé",
+        "Felpa 450 g/m² con lavado ácido",
+        "Estampado de relámpagos y rodillas de rayos X",
+        "Cintura elástica con cordón"
+      ],
+      "composition": "100% algodón",
+      "fit": "Jogger",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "relaxed heavyweight 450 gsm cotton fleece jogger sweatpants with a full baggy thigh, elastic waistband, flat drawcords, side pockets and ribbed ankle cuffs that bunch slightly, in black acid wash with cloudy grey bleached marbling; grey branching lightning veins crackle down both legs and a grey x-ray print of knee bones sits over each knee; front view laid flat",
+        "back": "",
+        "detail": "",
+        "pose": "worn with an ecru bone raglan tee with black sleeves and a faded skull-and-roses print, black puffy skate shoes, a black trucker cap worn backwards over the curly mop, a skateboard tucked under one arm; mid-laugh, weight on one leg"
+      },
+      "colors": [
+        {
+          "name": "Black Acid",
+          "slug": "black-acid",
+          "hex": "#1E1E20",
+          "variant": null,
+          "images": [
+            "/products/x-ray-storm-jogger/black-acid-1.jpg",
+            "/products/x-ray-storm-jogger/black-acid-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "frost-thorn-sweatpant",
+      "name": "Frost Thorn Sweatpant",
+      "category": "chandal",
+      "price": 72,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rizo",
+      "description": "Chándal ancho en degradado de negro en la cintura a azul hielo en el bajo, con pinchos de espinas que suben desde los tobillos. Salpicaduras de lejía y bajo deshilachado de serie.",
+      "details": [
+        "Pierna ancha recta",
+        "Felpa 450 g/m² teñida en degradado",
+        "Pinchos tribales de espinas desde el bajo",
+        "Salpicaduras de lejía",
+        "Bajo deshilachado"
+      ],
+      "composition": "100% algodón",
+      "fit": "Baggy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "wide straight-leg heavyweight 450 gsm cotton fleece sweatpants with an elastic waistband, flat drawcords, side pockets, relaxed full volume and open wide hems with a leg opening around 28 cm, dip-dyed in a gradient from black at the waist through grey to pale ice blue at the hems, raw frayed hems with shredded threads; sharp black thorny tribal spikes rise from the hems up to the knees, with small white bleach specks scattered all over; front view laid flat",
+        "back": "",
+        "detail": "",
+        "pose": "worn with a black regular tee with a cracked silver winged cross print, black puffy skate shoes under the frayed hems, a black ribbed beanie on the curly mop, over-ear headphones around the neck; standing with feet wide apart and arms crossed, looking down at the camera"
+      },
+      "colors": [
+        {
+          "name": "Ice Fade",
+          "slug": "ice-fade",
+          "hex": "#9DB8C9",
+          "variant": null,
+          "images": [
+            "/products/frost-thorn-sweatpant/ice-fade-1.jpg",
+            "/products/frost-thorn-sweatpant/ice-fade-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "second-skin-tee",
+      "name": "Second Skin Tee",
+      "category": "camisetas",
+      "price": 45,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "sombra",
+      "description": "Camiseta negra con mangas largas de rayas cosidas por debajo, así que el layering ya viene hecho de casa. En el pecho, un corazón alado envuelto en espinas en estampado blanco craquelado.",
+      "details": [
+        "Corte regular, largo a la cadera",
+        "Mangas largas de rayas cosidas bajo la manga corta",
+        "Algodón 220 g/m²",
+        "Estampado craquelado de corazón alado",
+        "Puños con agujero para el pulgar"
+      ],
+      "composition": "100% algodón. Mangas 95% algodón, 5% elastano",
+      "fit": "Regular",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a regular-fit black cotton t-shirt, hem at the hip, not long, not oversized, with attached long under-sleeves in thin black and white horizontal stripes sewn beneath the short sleeves so it looks like a tee layered over a striped long-sleeve, thumbhole cuffs; on the chest a cracked white screen print of an original winged heart wrapped in a thorned vine with small radiating lines, distressed and crackled",
+        "back": "",
+        "detail": "",
+        "pose": "worn loosely half-tucked into washed black ultra-wide baggy jeans with white topstitching, a white pyramid-studded belt, black puffy skate shoes, a fine silver chain with a filigree cross pendant, the long emo fringe over one eye; arms hanging with thumbs through the thumbholes, slightly hunched, the chest print unobstructed"
+      },
+      "colors": [
+        {
+          "name": "Black / Stripe",
+          "slug": "black-stripe",
+          "hex": "#0B0B0C",
+          "variant": null,
+          "images": [
+            "/products/second-skin-tee/black-stripe-1.jpg",
+            "/products/second-skin-tee/black-stripe-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "thorned-heart-baby-tee",
+      "name": "Thorned Heart Baby Tee",
+      "category": "camisetas",
+      "price": 35,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "vera",
+      "description": "Baby tee ajustada en rosa bebé con un corazón envuelto en espinas y alitas de murciélago en strass negro. Dulce por fuera y nada dulce por dentro.",
+      "details": [
+        "Corte ajustado y corto, a la cintura",
+        "Punto de algodón elástico",
+        "Corazón con espinas en strass negro",
+        "Ribetes negros en cuello y mangas"
+      ],
+      "composition": "95% algodón, 5% elastano",
+      "fit": "Ajustado",
+      "unisex": false,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a fitted cropped baby tee in baby pink stretch cotton with black contrast binding at the neckline and short cap sleeves, hem ending at the natural waist; centred on the chest an original heart wrapped in a thorned vine with small bat-like wings, made entirely of black rhinestones with a few silver ones catching the light",
+        "back": "",
+        "detail": "",
+        "pose": "worn with raw indigo ultra-wide baggy jeans slung low with an ecru thorned vine embroidered up the legs, a black leather belt with a double row of silver grommets, black chunky platform Mary Janes with white lace ankle socks, a black leather backpack with pyramid studs on both shoulders, a silver choker with a small charm and the septum ring; toes pointed inward, hands holding the backpack straps at shoulder height, unimpressed stare"
+      },
+      "colors": [
+        {
+          "name": "Baby Pink",
+          "slug": "baby-pink",
+          "hex": "#F6C6D6",
+          "variant": null,
+          "images": [
+            "/products/thorned-heart-baby-tee/baby-pink-1.jpg",
+            "/products/thorned-heart-baby-tee/baby-pink-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "rosebone-raglan",
+      "name": "Rosebone Raglan",
+      "category": "camisetas",
+      "price": 39,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rizo",
+      "description": "Raglán con cuerpo hueso y mangas negras con una calavera atravesada por rosas en estampado desgastado. Tiene pinta de camiseta heredada de tu hermano mayor, pero es solo tuya.",
+      "details": [
+        "Corte regular, largo a la cadera",
+        "Mangas raglán tres cuartos en negro",
+        "Algodón 200 g/m² lavado",
+        "Estampado desgastado de calavera con rosas"
+      ],
+      "composition": "100% algodón",
+      "fit": "Regular",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a regular-fit raglan t-shirt with an ecru bone-coloured body and black three-quarter raglan sleeves, hem at the hip, not long, not oversized; on the chest a faded vintage-style screen print of an original detailed human skull in profile with roses growing through the eye socket and blooming around the jaw, in washed black and oxblood red, slightly cracked",
+        "back": "",
+        "detail": "",
+        "pose": "worn with ash grey ultra-wide baggy jeans with white topstitching, black puffy skate shoes, a black ribbed beanie on the messy curly mop, a chunky silver curb bracelet, over-ear headphones resting around the neck, a skateboard held by the trucks down at his side; grinning sideways with the weight on one hip"
+      },
+      "colors": [
+        {
+          "name": "Bone / Black",
+          "slug": "bone-black",
+          "hex": "#E9E2D3",
+          "variant": null,
+          "images": [
+            "/products/rosebone-raglan/bone-black-1.jpg",
+            "/products/rosebone-raglan/bone-black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "bramble-mesh-tee",
+      "name": "Bramble Mesh Tee",
+      "category": "camisetas",
+      "price": 39,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "lux",
+      "description": "Malla negra transparente con zarzas espinosas flocadas en relieve. Encima de una manga larga o sola, según cómo venga la noche.",
+      "details": [
+        "Corte ajustado",
+        "Malla semitransparente elástica",
+        "Estampado flocado de zarzas en relieve",
+        "Cuello redondo con ribete"
+      ],
+      "composition": "92% poliamida, 8% elastano",
+      "fit": "Ajustado",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a fitted short-sleeve t-shirt in sheer black stretch mesh, hem at the hip, with an all-over pattern of thorny bramble vines in raised black velvety flock print winding across the body and sleeves, neat black binding at the neckline; semi-transparent fabric",
+        "back": "",
+        "detail": "",
+        "pose": "worn over a fitted white long-sleeve so the bramble pattern stands out, with black ultra-wide baggy jeans with ecru flames rising from the hem, a black pyramid-studded belt, worn black leather lace-up boots, stacked silver rings and a barbed silver chain, platinum wolf cut; one shoulder against the wall, looking down at the camera with half-closed eyes"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#0B0B0C",
+          "variant": null,
+          "images": [
+            "/products/bramble-mesh-tee/black-1.jpg",
+            "/products/bramble-mesh-tee/black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "halo-foil-tee",
+      "name": "Halo Foil Tee",
+      "category": "camisetas",
+      "price": 39,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "lux",
+      "description": "La básica de Pecado: negra, corte regular y una cruz alada con halo en foil plateado craquelado. Va con todo lo que tienes en el armario y con todo lo que te vas a comprar.",
+      "details": [
+        "Corte regular, largo a la cadera",
+        "Algodón peinado 220 g/m²",
+        "Estampado en foil plateado craquelado",
+        "Cuello de canalé reforzado"
+      ],
+      "composition": "100% algodón",
+      "fit": "Regular",
+      "unisex": true,
+      "badge": "Top",
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a regular-fit black cotton t-shirt with a ribbed crew neck, hem at the hip, not long, not oversized; on the chest a large distressed silver foil print of an original winged cross: a slim pointed cross with filigree ends, spread feathered wings behind it and a thin halo ring with radiating lines above, the foil cracked and partly worn away like a vintage transfer",
+        "back": "",
+        "detail": "",
+        "pose": "worn over a white long-sleeve with the sleeves pushed up, with washed black ultra-wide baggy jeans with white topstitching, a white pyramid-studded belt, black puffy skate shoes, a small silver keychain charm set clipped to a belt loop, platinum wolf cut with dark roots; hands in the front pockets, chin up, relaxed straight-on stance"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#0B0B0C",
+          "variant": null,
+          "images": [
+            "/products/halo-foil-tee/black-1.jpg",
+            "/products/halo-foil-tee/black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ashfall-tee",
+      "name": "Ashfall Tee",
+      "category": "camisetas",
+      "price": 42,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rizo",
+      "description": "Gris carbón con lavado vintage y llamas desgastadas que suben por el pecho bajo una floritura caligráfica. Parece que la llevas desde hace diez años, y esa es justo la idea.",
+      "details": [
+        "Corte boxy, largo a la cadera",
+        "Algodón 240 g/m² con lavado enzimático",
+        "Estampado craquelado de llamas",
+        "Cuello y bajo ligeramente desgastados"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a boxy heavyweight cotton t-shirt in faded charcoal grey with a sun-faded vintage wash, wide square body, hem at the hip, not long, not oversized, slightly frayed collar and hem; on the chest a distressed cracked screen print of rising flames in off-white and faded blood red, crowned by an arch of illegible ornamental calligraphic flourishes, the print worn and crackled",
+        "back": "",
+        "detail": "",
+        "pose": "worn with ecru bone ultra-wide baggy jeans with thick black topstitching, a black leather belt with a double row of silver grommets, black puffy skate shoes, a black trucker cap worn backwards over the curly mop, a silver wallet chain; mid-laugh, one hand on the cap brim and the other in a pocket"
+      },
+      "colors": [
+        {
+          "name": "Faded Charcoal",
+          "slug": "faded-charcoal",
+          "hex": "#4A4A4C",
+          "variant": null,
+          "images": [
+            "/products/ashfall-tee/faded-charcoal-1.jpg",
+            "/products/ashfall-tee/faded-charcoal-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "venom-cross-tee",
+      "name": "Venom Cross Tee",
+      "category": "camisetas",
+      "price": 42,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "sombra",
+      "description": "Negro lavado con una cruz que se derrite en relieve puff verde tóxico, rodeada de espinas. Es el único chispazo de color que necesitas esta temporada.",
+      "details": [
+        "Corte boxy, largo a la cadera",
+        "Algodón 240 g/m² lavado",
+        "Estampado puff craquelado verde tóxico",
+        "Cuello de canalé grueso"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a boxy washed black heavyweight cotton t-shirt, wide square body, hem at the hip, not long, not oversized, thick ribbed collar; centred on the chest a raised cracked puff print in toxic lime green of an original gothic cross with dripping melting edges, encircled by a ring of sharp thorns",
+        "back": "",
+        "detail": "",
+        "pose": "worn over a fitted black fishnet long-sleeve, with ecru bone ultra-wide baggy jeans with black topstitching, a black pyramid-studded belt with a small lime green padlock charm, grey chunky skate sneakers, the long emo fringe over one eye and the silver lip ring, wired headphones around the neck; slouched with one shoulder dropped, thumbs hooked in the belt"
+      },
+      "colors": [
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2B2A2D",
+          "variant": null,
+          "images": [
+            "/products/venom-cross-tee/washed-black-1.jpg",
+            "/products/venom-cross-tee/washed-black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "stone-angel-tee",
+      "name": "Stone Angel Tee",
+      "category": "camisetas",
+      "price": 45,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "vera",
+      "description": "Burdeos oscuro con un ángel de piedra de cementerio con las alas abiertas en estampado crudo envejecido. Romántica, rara y muy de calle.",
+      "details": [
+        "Corte boxy, largo a la cadera",
+        "Algodón 240 g/m²",
+        "Estampado crudo envejecido a gran formato",
+        "Cuello de canalé"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a boxy oxblood red heavyweight cotton t-shirt, wide square body, hem at the hip, not long, not oversized; a large distressed ecru screen print across the chest of an original weathered stone cemetery angel statue with wide spread wings and bowed head, cracked and faded like an old poster",
+        "back": "",
+        "detail": "",
+        "pose": "worn with black ultra-wide baggy jeans, a white pyramid-studded belt, black Mary Janes with grey ankle socks, a black ribbed beanie pulled over the blunt fringe, a silver filigree cross pendant and small cross hoop earrings; knees slightly bent, hands in the back pockets, staring straight into the camera"
+      },
+      "colors": [
+        {
+          "name": "Oxblood",
+          "slug": "oxblood",
+          "hex": "#4A1015",
+          "variant": null,
+          "images": [
+            "/products/stone-angel-tee/oxblood-1.jpg",
+            "/products/stone-angel-tee/oxblood-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "chapel-polo",
+      "name": "Chapel Polo",
+      "category": "polos-y-camisas",
+      "price": 49,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rizo",
+      "description": "Polo negro de manga corta con un escudo de filigrana y espinas en foil plateado craquelado. El polo que tu abuelo no reconocería ni de lejos.",
+      "details": [
+        "Corte regular, largo a la cadera",
+        "Piqué de algodón 220 g/m²",
+        "Escudo en foil plateado craquelado",
+        "Tapeta de tres botones negros"
+      ],
+      "composition": "100% algodón",
+      "fit": "Regular",
+      "unisex": true,
+      "badge": null,
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a regular-fit short-sleeve polo shirt in black cotton piqué, hem at the hip, not long, not oversized, ribbed collar and sleeve bands, three-button placket with black buttons; across the chest a large cracked silver foil print of an original ornamental shield-shaped crest made of filigree scrolls and thorned vines with a small cross at its centre and an arch of illegible ornamental calligraphic flourishes above",
+        "back": "",
+        "detail": "",
+        "pose": "worn over a white long-sleeve with the collar popped, with washed black ultra-wide baggy jeans, a white pyramid-studded belt, black puffy skate shoes, a black ribbed beanie on the messy curly mop; rocking back on his heels with hands in the pockets, cocky grin"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#0B0B0C",
+          "variant": null,
+          "images": [
+            "/products/chapel-polo/black-1.jpg",
+            "/products/chapel-polo/black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "static-zip-polo",
+      "name": "Static Zip Polo",
+      "category": "polos-y-camisas",
+      "price": 55,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "lux",
+      "description": "Polo de cremallera negro con cuello color hueso y llamas desgastadas alrededor del bajo. Medio deportivo, medio callejero y cien por cien de noche.",
+      "details": [
+        "Corte boxy, largo a la cadera",
+        "Piqué de algodón",
+        "Cremallera metálica corta",
+        "Cuello en contraste hueso",
+        "Llamas estampadas desgastadas"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a boxy short-sleeve zip polo in black cotton piqué, hem at the hip, not long, not oversized, short silver metal zip at the neck, contrast ecru bone knit collar and sleeve bands; faded cracked ecru and grey flames printed rising from the hem around the lower body",
+        "back": "",
+        "detail": "",
+        "pose": "worn zipped halfway with a silver chain at the open neck, with ecru bone ultra-wide baggy jeans with black topstitching, a black pyramid-studded belt, black puffy skate shoes, fine-line forearm tattoos, platinum wolf cut with dark roots; holding the zip pull, head tilted, smirk"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#0B0B0C",
+          "variant": null,
+          "images": [
+            "/products/static-zip-polo/black-1.jpg",
+            "/products/static-zip-polo/black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lullaby-polo",
+      "name": "Lullaby Polo",
+      "category": "polos-y-camisas",
+      "price": 45,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "vera",
+      "description": "Polo ajustado rosa bebé con un pequeño corazón alado en estampado negro craquelado. Para romper un look negro con algo que también muerde.",
+      "details": [
+        "Corte ajustado",
+        "Punto de canalé elástico",
+        "Corazón alado en negro craquelado",
+        "Botones negros"
+      ],
+      "composition": "95% algodón, 5% elastano",
+      "fit": "Ajustado",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a fitted short-sleeve polo shirt in baby pink fine ribbed stretch knit, hem at the hip, not long, not oversized, black contrast collar, three small black buttons; on the left chest a small cracked black print of an original winged heart with a tiny cross above it",
+        "back": "",
+        "detail": "",
+        "pose": "worn with dark midnight indigo ultra-wide baggy jeans, a white pyramid-studded belt, black chunky platform Mary Janes with frilly white socks, small silver cross hoop earrings and the septum ring, a black ribbed beanie over the blunt fringe; hands on hips, chin down, serious"
+      },
+      "colors": [
+        {
+          "name": "Baby Pink",
+          "slug": "baby-pink",
+          "hex": "#F6C6D6",
+          "variant": null,
+          "images": [
+            "/products/lullaby-polo/baby-pink-1.jpg",
+            "/products/lullaby-polo/baby-pink-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "sanctuary-bowling-shirt",
+      "name": "Sanctuary Bowling Shirt",
+      "category": "polos-y-camisas",
+      "price": 55,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "lux",
+      "description": "Camisa de bolos negra y burdeos con llamas y filigrana bordadas en crudo en la espalda. Llévala abierta sobre una camiseta y date la vuelta despacio.",
+      "details": [
+        "Corte boxy, largo a la cadera",
+        "Viscosa con caída",
+        "Bordado en cadeneta en la espalda",
+        "Paneles bicolor y cuello camp"
+      ],
+      "composition": "100% viscosa",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a boxy short-sleeve bowling shirt in black viscose with oxblood red vertical contrast panels down each side of the front and an oxblood back yoke, camp collar, black buttons, hem at the hip, not long, not oversized; shown from the BACK so the art is visible: across the back an ecru chain-stitch embroidery of flames rising beneath an ornate filigree arch with a small winged cross at its peak",
+        "back": "",
+        "detail": "",
+        "pose": "back view turning the head over the shoulder: worn open over a white tank, with black ultra-wide baggy jeans, black puffy skate shoes, layered silver chains, fine-line forearm tattoos, platinum wolf cut with dark roots; arms relaxed at the sides, one hand holding a black ribbed beanie, the back embroidery unobstructed"
+      },
+      "colors": [
+        {
+          "name": "Black / Oxblood",
+          "slug": "black-oxblood",
+          "hex": "#0B0B0C",
+          "variant": null,
+          "images": [
+            "/products/sanctuary-bowling-shirt/black-oxblood-1.jpg",
+            "/products/sanctuary-bowling-shirt/black-oxblood-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "vigil-camp-shirt",
+      "name": "Vigil Camp Shirt",
+      "category": "polos-y-camisas",
+      "price": 52,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "sombra",
+      "description": "Camisa de cuello abierto en viscosa negra con estampado integral de enredaderas espinosas y crucecitas aladas en gris. El verano de los que no toman el sol.",
+      "details": [
+        "Corte regular, largo a la cadera",
+        "Viscosa fluida",
+        "Estampado integral en gris desteñido",
+        "Cuello camp y botones negros"
+      ],
+      "composition": "100% viscosa",
+      "fit": "Regular",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a regular-fit short-sleeve camp collar shirt in black fluid viscose, hem at the hip, not long, not oversized, black buttons; an all-over print in faded grey of thorned vines intertwined with small winged crosses and tiny roses",
+        "back": "",
+        "detail": "",
+        "pose": "worn buttoned to the top, with ecru bone ultra-wide baggy jeans with black topstitching, a white pyramid-studded belt, black Mary Janes with white socks, the long emo fringe over one eye, small silver cross hoop earrings, wired headphones around the neck; standing straight with hands loosely clasped at the belt, eerie calm"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#0B0B0C",
+          "variant": null,
+          "images": [
+            "/products/vigil-camp-shirt/black-1.jpg",
+            "/products/vigil-camp-shirt/black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "veil-mesh-shirt",
+      "name": "Veil Mesh Shirt",
+      "category": "polos-y-camisas",
+      "price": 45,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "vera",
+      "description": "Camisa de malla negra transparente con botones plateados y un ribete de encaje de espinas en el cuello. Encima de una camiseta o de un top, tú decides cuánto se ve.",
+      "details": [
+        "Corte regular, largo a la cadera",
+        "Malla semitransparente",
+        "Botones metálicos plateados",
+        "Ribete de encaje de espinas en el cuello"
+      ],
+      "composition": "100% poliamida",
+      "fit": "Regular",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a regular-fit short-sleeve button-up shirt in sheer black mesh, hem at the hip, not long, not oversized, point collar edged with a narrow black lace trim patterned with thorns, small silver metal buttons; semi-transparent fabric",
+        "back": "",
+        "detail": "",
+        "pose": "worn open over a fitted baby pink baby tee with a black rhinestone heart, with black ultra-wide baggy jeans, a black leather belt with a double row of silver grommets and a small charm cluster, worn black leather boots, a silver choker, the septum ring and black blunt fringe; one hand in the hair, the other on the hip, bored stare"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#0B0B0C",
+          "variant": null,
+          "images": [
+            "/products/veil-mesh-shirt/black-1.jpg",
+            "/products/veil-mesh-shirt/black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "sinner-biker",
+      "name": "Sinner Biker",
+      "category": "chaquetas",
+      "price": 240,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "lux",
+      "description": "Biker de piel negra con tachuelas piramidales en los hombros y en las solapas. La chaqueta que te va a durar más que cualquier relación.",
+      "details": [
+        "Corte regular, largo a la cadera",
+        "Piel bovina con acabado mate",
+        "Tachuelas piramidales metálicas",
+        "Cremallera asimétrica plateada",
+        "Cinturón en el bajo con hebilla"
+      ],
+      "composition": "100% piel bovina. Forro 100% poliéster",
+      "fit": "Regular",
+      "unisex": true,
+      "badge": "Top",
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a regular-fit classic biker jacket in matte black leather, hem at the hip, not long, not oversized, asymmetric silver zip, wide notched lapels with snap studs, belted hem with a silver buckle, zipped cuffs; rows of polished silver pyramid studs cover both shoulder yokes and line the edges of the lapels; front view laid flat",
+        "back": "",
+        "detail": "",
+        "pose": "worn open over a black regular tee with a cracked silver winged cross print, with washed black ultra-wide baggy jeans with white topstitching, a black pyramid-studded belt, chunky black-and-white skate sneakers, a chunky silver curb bracelet and stacked rings, platinum wolf cut with dark roots; collar flipped up, hands in the jacket pockets, chin raised, hard stare"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#0B0B0C",
+          "variant": null,
+          "images": [
+            "/products/sinner-biker/black-1.jpg",
+            "/products/sinner-biker/black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "relic-denim-jacket",
+      "name": "Relic Denim Jacket",
+      "category": "chaquetas",
+      "price": 139,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rizo",
+      "description": "Cazadora vaquera negra lavada y rota con un corazón en llamas, alas y espinas bordado en toda la espalda. A juego con tus baggy o en contra de todo.",
+      "details": [
+        "Corte boxy, largo a la cintura",
+        "Denim 14 oz lavado y desgastado",
+        "Bordado XL en la espalda",
+        "Pespunte grueso crudo",
+        "Botones metálicos plateados"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a boxy distressed denim trucker jacket in washed black denim with frayed edges and abrasions at the elbows and collar, thick off-white topstitching, silver metal buttons, hem at the waist, not long; shown from the BACK so the art is visible: a huge embroidery covering the whole back of an original flaming heart pierced by a long slim cross, with spread feathered wings and a ring of thorned vine around it, in white, silver-grey and oxblood red thread",
+        "back": "",
+        "detail": "",
+        "pose": "back view, half turned with one hand pushing the curly mop off his face: worn over a white long-sleeve, with raw indigo ultra-wide baggy jeans with an ecru thorned vine up the legs, black puffy skate shoes, a silver wallet chain, a black ribbed beanie stuffed in the back pocket; weight on one leg, the back embroidery fully visible"
+      },
+      "colors": [
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2B2A2D",
+          "variant": null,
+          "images": [
+            "/products/relic-denim-jacket/washed-black-1.jpg",
+            "/products/relic-denim-jacket/washed-black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "nocturne-track-jacket",
+      "name": "Nocturne Track Jacket",
+      "category": "chaquetas",
+      "price": 120,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "sombra",
+      "description": "Chaqueta de chándal de nylon negro con paneles burdeos, vivos plateados y espinas estampadas bajando por las mangas. Deportiva de nombre y nocturna de corazón.",
+      "details": [
+        "Corte boxy, largo a la cadera",
+        "Tricot de nylon brillante",
+        "Paneles laterales burdeos",
+        "Espinas estampadas en las mangas",
+        "Cuello alto con cremallera"
+      ],
+      "composition": "100% poliamida. Forro 100% poliéster",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a boxy zip track jacket in glossy black nylon tricot, hem at the hip, not long, not oversized, stand-up collar, silver zip, oxblood red panels down both sides and under the arms with thin silver-white piping along the seams, black thorned vines printed running down the outer sleeves over the oxblood, elastic cuffs and hem; no stripe tape, no logos",
+        "back": "",
+        "detail": "",
+        "pose": "worn zipped up to the chin with the collar over the mouth, with ash grey ultra-wide baggy jeans, grey chunky skate sneakers, a small silver charm set on a belt loop, wired headphones over the collar, the long emo fringe over one eye; hands in the jacket pockets, hunched against the cold"
+      },
+      "colors": [
+        {
+          "name": "Black / Oxblood",
+          "slug": "black-oxblood",
+          "hex": "#0B0B0C",
+          "variant": null,
+          "images": [
+            "/products/nocturne-track-jacket/black-oxblood-1.jpg",
+            "/products/nocturne-track-jacket/black-oxblood-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "howl-collar-jacket",
+      "name": "Howl Collar Jacket",
+      "category": "chaquetas",
+      "price": 159,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "vera",
+      "description": "Chaqueta corta de denim negro lavado con un cuello de pelo sintético negro enorme y desgreñado. Y2K de verdad, sin que parezca un disfraz.",
+      "details": [
+        "Corte boxy, largo a la cintura",
+        "Denim 13 oz lavado",
+        "Cuello de pelo sintético desmontable",
+        "Botones metálicos plateados"
+      ],
+      "composition": "100% algodón. Cuello 100% poliéster",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a boxy short jacket in washed black denim, hem at the waist, not long, silver metal buttons, two chest flap pockets, an oversized shaggy black faux-fur collar that spreads over the shoulders; front view laid flat",
+        "back": "",
+        "detail": "",
+        "pose": "worn buttoned with the faux-fur collar framing the face, with dark midnight indigo ultra-wide baggy jeans, black platform Mary Janes with white socks, small silver cross hoops, the septum ring and black blunt fringe; hands shoved in the jeans pockets, chin buried in the fur, cold stare"
+      },
+      "colors": [
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2B2A2D",
+          "variant": null,
+          "images": [
+            "/products/howl-collar-jacket/washed-black-1.jpg",
+            "/products/howl-collar-jacket/washed-black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "briar-puffer",
+      "name": "Briar Puffer",
+      "category": "chaquetas",
+      "price": 179,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "lux",
+      "description": "Plumífero corto negro mate con el pespunte del acolchado dibujando una enredadera de espinas en color hueso. Abriga como un edredón y se ve como un tatuaje.",
+      "details": [
+        "Corte boxy, largo a la cintura",
+        "Nylon mate",
+        "Acolchado con pespunte de espinas en hueso",
+        "Relleno 100% poliéster reciclado",
+        "Cuello alto"
+      ],
+      "composition": "100% nylon. Relleno 100% poliéster reciclado",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a boxy short puffer jacket in matte black nylon, hem at the waist, not long, high funnel collar, silver zip; the quilting is stitched in ecru bone thread as winding thorned vines instead of straight channels, so the puffy baffles follow the vine shapes; front view laid flat",
+        "back": "",
+        "detail": "",
+        "pose": "worn zipped to the chest over a black hoodie with the hood out, with ecru bone ultra-wide baggy jeans with black topstitching, a black pyramid-studded belt, chunky black skate sneakers, a black ribbed beanie over the platinum wolf cut, a barbed silver chain; thumbs hooked in the jean pockets, wide stance, unbothered"
+      },
+      "colors": [
+        {
+          "name": "Matte Black",
+          "slug": "matte-black",
+          "hex": "#111113",
+          "variant": null,
+          "images": [
+            "/products/briar-puffer/matte-black-1.jpg",
+            "/products/briar-puffer/matte-black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "sexton-work-jacket",
+      "name": "Sexton Work Jacket",
+      "category": "chaquetas",
+      "price": 135,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rizo",
+      "description": "Chaqueta de trabajo en lona negra desteñida con cuello de pana color hueso y una pala cruzada con una rosa espinosa bordada en el bolsillo. Hecha para currar, patinar y mancharse sin drama.",
+      "details": [
+        "Corte boxy, largo a la cadera",
+        "Lona de algodón 12 oz desteñida",
+        "Cuello de pana color hueso",
+        "Bordado de pala y rosa en el bolsillo",
+        "Pespunte triple crudo"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a boxy work jacket in faded black cotton duck canvas with a sun-faded worn look, hem at the hip, not long, not oversized, ecru bone corduroy collar, silver metal snaps, two lower patch pockets and one chest pocket, thick triple ecru topstitching; on the chest pocket a small embroidered original motif of a shovel crossed with a thorned rose in bone white and oxblood thread",
+        "back": "",
+        "detail": "",
+        "pose": "worn open over a black tee and a white long-sleeve, with raw indigo ultra-wide baggy jeans, black puffy skate shoes, a black trucker cap backwards over the curly mop, a silver wallet chain, a skateboard held by the trucks at his side; easy stance, smirking"
+      },
+      "colors": [
+        {
+          "name": "Faded Coal",
+          "slug": "faded-coal",
+          "hex": "#3A3836",
+          "variant": null,
+          "images": [
+            "/products/sexton-work-jacket/faded-coal-1.jpg",
+            "/products/sexton-work-jacket/faded-coal-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "burnout-racer",
+      "name": "Burnout Racer",
+      "category": "chaquetas",
+      "price": 149,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "sombra",
+      "description": "Chaqueta racing de nylon negro con llamas rojo sangre que suben por el cuerpo y las mangas, sin un solo parche de marca. Velocidad de los 2000 sin patrocinadores.",
+      "details": [
+        "Corte boxy, largo a la cintura",
+        "Nylon con acolchado ligero",
+        "Llamas rojo sangre estampadas",
+        "Cuello mao con presilla",
+        "Sin logotipos"
+      ],
+      "composition": "100% nylon. Relleno 100% poliéster",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a boxy short racing jacket in glossy black nylon, hem at the waist, not long, mandarin collar with a snap tab, silver zip, padded shoulders; bold blood red flames with thin ecru outlines lick up from the hem across the body and from the cuffs up the sleeves; no patches, no logos, no text",
+        "back": "",
+        "detail": "",
+        "pose": "worn zipped up, with washed black ultra-wide baggy jeans, a white pyramid-studded belt, grey chunky skate sneakers, wired headphones around the neck, the long emo fringe over one eye and the silver lip ring; one hand on the back of the neck, slouched sideways"
+      },
+      "colors": [
+        {
+          "name": "Black / Blood Red",
+          "slug": "black-blood-red",
+          "hex": "#0B0B0C",
+          "variant": null,
+          "images": [
+            "/products/burnout-racer/black-blood-red-1.jpg",
+            "/products/burnout-racer/black-blood-red-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "requiem-varsity",
+      "name": "Requiem Varsity",
+      "category": "chaquetas",
+      "price": 199,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "vera",
+      "description": "Varsity de paño negro lavado con mangas de polipiel color hueso y un corazón con espinas en chenilla en el pecho. El uniforme de un equipo que no existe y al que todos quieren unirse.",
+      "details": [
+        "Corte boxy, largo a la cadera",
+        "Cuerpo de paño de lana",
+        "Mangas de polipiel color hueso",
+        "Parche de chenilla de corazón con espinas",
+        "Ribetes de punto rayados"
+      ],
+      "composition": "Cuerpo 70% lana, 30% poliéster. Mangas 100% poliuretano",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a boxy varsity jacket with a washed black wool body and ecru bone faux-leather sleeves, black and bone striped rib-knit collar, cuffs and hem, silver snaps, hem at the hip, not long, not oversized; on the left chest a black and bone chenille patch of an original heart wrapped in thorns with a small flame on top, no letters, no numbers",
+        "back": "",
+        "detail": "",
+        "pose": "worn open over a sheer black mesh tee and a white long-sleeve, with black ultra-wide baggy jeans, a black leather belt with a double row of silver grommets and a small charm cluster, black platform Mary Janes with grey socks, black blunt fringe, the septum ring; leaning back against the wall with one knee bent, hands in the jacket pockets"
+      },
+      "colors": [
+        {
+          "name": "Washed Black / Bone",
+          "slug": "washed-black-bone",
+          "hex": "#2B2A2D",
+          "variant": null,
+          "images": [
+            "/products/requiem-varsity/washed-black-bone-1.jpg",
+            "/products/requiem-varsity/washed-black-bone-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "insomnia-stripe-ls",
+      "name": "Insomnia Stripe LS",
+      "category": "capas",
+      "price": 35,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "vera",
+      "description": "Manga larga ajustada de rayas finas blancas y negras, la base de cualquier layering que se precie. Póntela debajo de cualquier camiseta y el look ya está medio hecho.",
+      "details": [
+        "Corte ajustado",
+        "Punto de algodón elástico",
+        "Rayas tejidas, no estampadas",
+        "Puños largos con agujero para el pulgar"
+      ],
+      "composition": "95% algodón, 5% elastano",
+      "fit": "Ajustado",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a fitted long-sleeve top in stretch cotton jersey with thin even horizontal yarn-dyed black and white stripes, crew neck, hem at the hip, extra-long cuffs with thumbholes; plain, no print",
+        "back": "",
+        "detail": "",
+        "pose": "worn under a sheer black mesh short-sleeve tee so the stripes show through everywhere, with washed black ultra-wide baggy jeans, a white pyramid-studded belt, black puffy skate shoes, a silver spike ring, black blunt fringe and the septum ring; arms stretched out in front with thumbs through the thumbholes, sleepy face"
+      },
+      "colors": [
+        {
+          "name": "Black / White Stripe",
+          "slug": "black-white-stripe",
+          "hex": "#0B0B0C",
+          "variant": null,
+          "images": [
+            "/products/insomnia-stripe-ls/black-white-stripe-1.jpg",
+            "/products/insomnia-stripe-ls/black-white-stripe-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "altar-longsleeve",
+      "name": "Altar Longsleeve",
+      "category": "capas",
+      "price": 29,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "sombra",
+      "description": "Manga larga blanca ajustada con una crucecita negra bordada en el puño. Es la pieza más sencilla de la tienda y la que más vas a usar.",
+      "details": [
+        "Corte ajustado",
+        "Algodón 180 g/m² con elastano",
+        "Cruz bordada en el puño izquierdo",
+        "Agujero para el pulgar"
+      ],
+      "composition": "95% algodón, 5% elastano",
+      "fit": "Ajustado",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a fitted long-sleeve t-shirt in optic white stretch cotton, crew neck, hem at the hip, extra-long sleeves with thumbholes and a tiny black embroidered cross on the left cuff; otherwise plain",
+        "back": "",
+        "detail": "",
+        "pose": "worn alone and loosely tucked into ash grey ultra-wide baggy jeans, a black leather belt with a double row of silver grommets hung with small silver charms, grey chunky skate sneakers, a silver filigree cross pendant on the chest, wired headphones around the neck, the long emo fringe over one eye; sleeves pulled over the knuckles, head tilted, quiet"
+      },
+      "colors": [
+        {
+          "name": "Optic White",
+          "slug": "optic-white",
+          "hex": "#F4F3EF",
+          "variant": null,
+          "images": [
+            "/products/altar-longsleeve/optic-white-1.jpg",
+            "/products/altar-longsleeve/optic-white-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ruin-knit",
+      "name": "Ruin Knit",
+      "category": "capas",
+      "price": 79,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rizo",
+      "description": "Jersey de punto negro desgastado con un jacquard gris de espinas abstractas, agujeros de polilla y el bajo deshilachado. Viene roto de serie, así que tranquilo si se te engancha.",
+      "details": [
+        "Corte boxy, hombro caído",
+        "Punto grueso con agujeros y carreras",
+        "Jacquard gris de espinas abstractas",
+        "Bajo deshilachado sin rematar"
+      ],
+      "composition": "70% algodón, 30% acrílico",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a boxy distressed black chunky knit crewneck sweater with dropped shoulders and a wide square body ending at the hip, not long; a grey jacquard of abstract thorny shapes, jagged spikes and briar tangles across the body and sleeves, scattered moth holes and loose ladders, a raw frayed hem with shredded yarn hanging",
+        "back": "",
+        "detail": "",
+        "pose": "worn over a white long-sleeve that shows through the holes, with faded ash grey ultra-wide baggy jeans with white topstitching, black puffy skate shoes, a black ribbed beanie on the curly mop, wired headphones around the neck; hands in the jeans pockets, looking down at his shoes in a shy slouch"
+      },
+      "colors": [
+        {
+          "name": "Distressed Black",
+          "slug": "distressed-black",
+          "hex": "#1A1A1B",
+          "variant": null,
+          "images": [
+            "/products/ruin-knit/distressed-black-1.jpg",
+            "/products/ruin-knit/distressed-black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "wraith-thermal",
+      "name": "Wraith Thermal",
+      "category": "capas",
+      "price": 39,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rizo",
+      "description": "Térmica de punto gofre negro lavado con bordes sin rematar y espinas estampadas en las mangas. Calentita, gastada y lista para ir debajo de todo.",
+      "details": [
+        "Corte regular, largo a la cadera",
+        "Punto gofre de algodón",
+        "Bordes sin rematar",
+        "Espinas estampadas en las mangas"
+      ],
+      "composition": "100% algodón",
+      "fit": "Regular",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a regular-fit long-sleeve thermal top in washed black cotton waffle knit, crew neck, hem at the hip, not long, not oversized, raw unfinished edges at the neck, cuffs and hem, faded ecru thorned vine prints running down the outside of both sleeves",
+        "back": "",
+        "detail": "",
+        "pose": "worn alone with raw indigo ultra-wide baggy jeans with ecru topstitching, a white pyramid-studded belt, black puffy skate shoes, a black ribbed beanie on the curly mop, a chunky silver curb bracelet, a skateboard leaning against his leg; arms stretched up behind the head showing the sleeve prints, yawning half-smile"
+      },
+      "colors": [
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2B2A2D",
+          "variant": null,
+          "images": [
+            "/products/wraith-thermal/washed-black-1.jpg",
+            "/products/wraith-thermal/washed-black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ladder-arm-warmers",
+      "name": "Ladder Arm Warmers",
+      "category": "capas",
+      "price": 22,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "lux",
+      "description": "Calentadores de brazo de punto a rayas negras y grises con agujero para el pulgar y alguna carrera hecha a propósito. El truco para convertir cualquier camiseta en layering.",
+      "details": [
+        "Punto acrílico suave",
+        "Rayas negras y gris ceniza",
+        "Agujero para el pulgar",
+        "Carreras decorativas",
+        "Largo hasta por encima del codo"
+      ],
+      "composition": "100% acrílico",
+      "fit": "Elástico",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a pair of long knit arm warmers in black and ash grey horizontal stripes reaching above the elbow, thumbholes at the ends, a few deliberate decorative ladders and runs in the knit, laid flat side by side",
+        "back": "",
+        "detail": "",
+        "pose": "three-quarter framing from the thighs up: worn on both arms with a washed black boxy tee with a toxic lime cracked cross print, washed black ultra-wide baggy jeans, a black pyramid-studded belt, silver rings on the fingers poking out of the thumbholes, platinum wolf cut with dark roots; arms raised and crossed above the head to show the arm warmers, smirk"
+      },
+      "colors": [
+        {
+          "name": "Black / Grey Stripe",
+          "slug": "black-grey-stripe",
+          "hex": "#0B0B0C",
+          "variant": null,
+          "images": [
+            "/products/ladder-arm-warmers/black-grey-stripe-1.jpg",
+            "/products/ladder-arm-warmers/black-grey-stripe-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "snare-fishnet-top",
+      "name": "Snare Fishnet Top",
+      "category": "capas",
+      "price": 29,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "vera",
+      "description": "Top de rejilla ancha negra de manga larga para llevar debajo de camisetas o encima de tops. Es el detalle que convierte un look normal en uno muy tuyo.",
+      "details": [
+        "Corte ajustado",
+        "Rejilla ancha elástica",
+        "Cuello redondo con ribete",
+        "Mangas largas hasta la mano"
+      ],
+      "composition": "90% poliamida, 10% elastano",
+      "fit": "Ajustado",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a fitted long-sleeve top in wide-hole black stretch fishnet, crew neck with a neat black binding, hem at the hip, extra-long sleeves; see-through net",
+        "back": "",
+        "detail": "",
+        "pose": "worn over a fitted oxblood red tank top, with ecru bone ultra-wide baggy jeans with black topstitching, a black leather belt with a double row of silver grommets, black platform Mary Janes with white socks, a silver choker with a small winged heart charm, the septum ring, black blunt fringe; hands in the back pockets, hip popped, sharp gaze"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#0B0B0C",
+          "variant": null,
+          "images": [
+            "/products/snare-fishnet-top/black-1.jpg",
+            "/products/snare-fishnet-top/black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lattice-knit-vest",
+      "name": "Lattice Knit Vest",
+      "category": "capas",
+      "price": 49,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "sombra",
+      "description": "Chaleco de punto gris desgastado con cenefas de espinas y una celosía gótica en jacquard negro. Encima de una manga larga de rayas o de una camisa, sin miedo.",
+      "details": [
+        "Corte boxy, largo a la cadera",
+        "Punto de algodón y lana",
+        "Jacquard de espinas y celosía gótica",
+        "Cuello de pico con ribete negro"
+      ],
+      "composition": "60% algodón, 40% lana",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a boxy V-neck sweater vest in faded grey knit, hem at the hip, not long, not oversized, black ribbed V-neck, armholes and hem, a black jacquard pattern of gothic lattice diamonds framed by thorned vine borders across the front, a few small deliberate snags",
+        "back": "",
+        "detail": "",
+        "pose": "worn over a black and white striped long-sleeve, with black ultra-wide baggy jeans with white topstitching, a white pyramid-studded belt, worn black leather boots, a silver safety-pin earring and the lip ring, the long emo fringe over one eye; hands clasped behind the back, head slightly bowed"
+      },
+      "colors": [
+        {
+          "name": "Faded Grey",
+          "slug": "faded-grey",
+          "hex": "#9A9896",
+          "variant": null,
+          "images": [
+            "/products/lattice-knit-vest/faded-grey-1.jpg",
+            "/products/lattice-knit-vest/faded-grey-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "litany-longsleeve",
+      "name": "Litany Longsleeve",
+      "category": "capas",
+      "price": 42,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "lux",
+      "description": "Manga larga gris ceniza con florituras caligráficas negras estampadas a lo largo de las dos mangas y una cruz alada pequeña en el pecho. Para que se lea en los brazos lo que no dices en voz alta.",
+      "details": [
+        "Corte regular, largo a la cadera",
+        "Algodón 200 g/m² lavado",
+        "Estampado caligráfico en las mangas",
+        "Cruz alada pequeña en el pecho"
+      ],
+      "composition": "100% algodón",
+      "fit": "Regular",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a regular-fit long-sleeve t-shirt in washed ash grey cotton, crew neck, hem at the hip, not long, not oversized; long cracked black prints of illegible ornamental calligraphic flourishes run vertically down the outside of both sleeves from shoulder to cuff, and a small black winged cross is printed on the left chest",
+        "back": "",
+        "detail": "",
+        "pose": "worn alone with black ultra-wide baggy jeans with ecru flames rising from the hem, chunky black-and-white skate sneakers, a black trucker cap, a chunky silver curb bracelet, platinum wolf cut with dark roots; arms held out to the sides with palms up to show the sleeve prints, shrugging"
+      },
+      "colors": [
+        {
+          "name": "Ash Grey",
+          "slug": "ash-grey",
+          "hex": "#8C8A88",
+          "variant": null,
+          "images": [
+            "/products/litany-longsleeve/ash-grey-1.jpg",
+            "/products/litany-longsleeve/ash-grey-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "bone-pyramid-belt",
+      "name": "Bone Pyramid Belt",
+      "category": "accesorios",
+      "price": 39,
+      "sizes": [
+        "80",
+        "90",
+        "100",
+        "110"
+      ],
+      "model": "lux",
+      "description": "Cinturón de piel blanca con tres hileras de tachuelas piramidales plateadas. Es la diferencia entre llevar baggy y saber llevarlo.",
+      "details": [
+        "Piel vacuna blanca",
+        "Tres hileras de tachuelas piramidales",
+        "Hebilla de rodillo plateada",
+        "Ancho de 4 cm"
+      ],
+      "composition": "100% piel vacuna. Herrajes de metal sin níquel",
+      "fit": "Talla por cintura en cm",
+      "unisex": true,
+      "badge": "Top",
+      "featured": false,
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a white leather belt about 4 cm wide covered with three neat rows of polished silver pyramid studs along its full length, a silver roller buckle, coiled loosely in an S-shape, no logos",
+        "back": "",
+        "detail": "",
+        "pose": "waist-down framing from the ribs to the knees: worn slung low through the loops of washed black ultra-wide baggy jeans with thick white topstitching, a black boxy tee tucked in at the front only, a silver wallet chain hanging from the hip and a small charm cluster on a belt loop, a fine-line tattooed forearm with one thumb hooked in the belt"
+      },
+      "colors": [
+        {
+          "name": "White",
+          "slug": "white",
+          "hex": "#F2F0EA",
+          "variant": null,
+          "images": [
+            "/products/bone-pyramid-belt/white-1.jpg",
+            "/products/bone-pyramid-belt/white-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "twin-grommet-belt",
+      "name": "Twin Grommet Belt",
+      "category": "accesorios",
+      "price": 35,
+      "sizes": [
+        "80",
+        "90",
+        "100",
+        "110"
+      ],
+      "model": "vera",
+      "description": "Cinturón de piel negra con doble hilera de ojales plateados y hebilla de doble púa. Un clásico de toda la vida, pero de la nuestra.",
+      "details": [
+        "Piel vacuna negra",
+        "Doble hilera de ojales metálicos",
+        "Hebilla de doble púa",
+        "Ancho de 4 cm"
+      ],
+      "composition": "100% piel vacuna. Herrajes de metal sin níquel",
+      "fit": "Talla por cintura en cm",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a black leather belt about 4 cm wide with two parallel rows of silver metal grommets along its full length and a double-prong silver buckle, coiled loosely, no logos",
+        "back": "",
+        "detail": "",
+        "pose": "waist framing from the chest to mid-thigh: worn over a fitted baby pink baby tee through the loops of raw indigo ultra-wide baggy jeans, a small silver charm set clipped to one grommet, the ends of the black blunt fringe and a silver choker just visible at the top of the frame; hands resting on the hips"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#0B0B0C",
+          "variant": null,
+          "images": [
+            "/products/twin-grommet-belt/black-1.jpg",
+            "/products/twin-grommet-belt/black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "reliquary-backpack",
+      "name": "Reliquary Backpack",
+      "category": "accesorios",
+      "price": 89,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "sombra",
+      "description": "Mochila de piel sintética negra con tachuelas piramidales en la solapa y las asas, cierres plateados y anilla para colgar tus charms. Cabe el portátil, cabe la cámara y caben todos tus problemas.",
+      "details": [
+        "Piel sintética negra de grano",
+        "Tachuelas piramidales en solapa y asas",
+        "Funda acolchada para portátil de 14 pulgadas",
+        "Anilla en D para llaveros",
+        "35 × 28 × 12 cm"
+      ],
+      "composition": "Exterior 100% poliuretano (piel sintética). Forro 100% poliéster. Tachuelas de metal sin níquel",
+      "fit": "Talla única",
+      "unisex": true,
+      "badge": null,
+      "featured": true,
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a medium black grained faux-leather backpack with a rounded flap top fastened by two silver buckle straps, the flap edged with a row of silver pyramid studs and a cluster of studs forming a small cross in its centre, studded shoulder straps, a silver D-ring on the side, a front zip pocket, no logos, standing upright",
+        "back": "",
+        "detail": "",
+        "pose": "three-quarter back view from mid-thigh up: worn on both shoulders over a boxy black zip hoodie, with ash grey ultra-wide baggy jeans, a small cluster of silver charms hanging from the backpack D-ring, the long jet-black fringe visible in profile as the head turns back over the shoulder"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#0B0B0C",
+          "variant": null,
+          "images": [
+            "/products/reliquary-backpack/black-1.jpg",
+            "/products/reliquary-backpack/black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "grave-chain",
+      "name": "Grave Chain",
+      "category": "accesorios",
+      "price": 29,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "rizo",
+      "description": "Cadena de cartera gruesa de acero con dos mosquetones y una pequeña cruz alada colgando. Suena cuando caminas, y de eso se trata.",
+      "details": [
+        "Acero inoxidable",
+        "Eslabón barbado grueso",
+        "Dos mosquetones",
+        "Charm de cruz alada",
+        "Largo de 60 cm"
+      ],
+      "composition": "Acero inoxidable 316L",
+      "fit": "Talla única",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a heavy silver-tone stainless steel wallet chain with chunky curb links, a lobster clasp at each end and a small winged cross charm hanging near one end, laid in a loose U-shape",
+        "back": "",
+        "detail": "",
+        "pose": "hip framing from waist to knee: clipped from the front belt loop to the back pocket of washed black ultra-wide baggy jeans with white topstitching, worn with a black leather belt with a double row of silver grommets and a faded grey tee hanging over the waist, one hand lifting the chain slightly"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/grave-chain/silver-1.jpg",
+            "/products/grave-chain/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lurk-beanie",
+      "name": "Lurk Beanie",
+      "category": "accesorios",
+      "price": 25,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "sombra",
+      "description": "Gorro de canalé negro con vuelta y una pequeña cruz alada bordada en hilo plateado. Se lleva encasquetado hasta las cejas, sin excepciones.",
+      "details": [
+        "Punto de canalé",
+        "Vuelta doble",
+        "Cruz alada bordada en plateado",
+        "Talla única elástica"
+      ],
+      "composition": "100% acrílico",
+      "fit": "Talla única",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a black ribbed knit cuffed beanie with a small embroidered winged cross in silver thread on the cuff, no text, laid flat",
+        "back": "",
+        "detail": "",
+        "pose": "portrait framing from the chest up: worn pulled low to the eyebrows with the long emo fringe falling out over one eye, a black zip hoodie with the hood down, wired headphones around the neck, the silver lip ring; looking up from under the fringe"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#0B0B0C",
+          "variant": null,
+          "images": [
+            "/products/lurk-beanie/black-1.jpg",
+            "/products/lurk-beanie/black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "acid-flame-beanie",
+      "name": "Acid Flame Beanie",
+      "category": "accesorios",
+      "price": 29,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "rizo",
+      "description": "Gorro con vuelta en punto gris efecto lavado ácido con llamas negras que suben desde el borde y un logo de espinas ilegible en la vuelta. Para los días de pelo imposible, que son casi todos.",
+      "details": [
+        "Punto de canalé con efecto lavado ácido",
+        "Llamas negras tejidas",
+        "Logo de espinas bordado en la vuelta",
+        "Talla única elástica"
+      ],
+      "composition": "100% acrílico",
+      "fit": "Talla única",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": false,
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a cuffed ribbed knit beanie in a grey acid-wash effect marled knit, with black flames knitted rising from the cuff up the crown, and on the front of the cuff a small black embroidered logo made of thorny illegible death-metal style logo shapes that read as pure spiky graphic, no legible letters, laid flat",
+        "back": "",
+        "detail": "",
+        "pose": "portrait framing from the chest up: worn pulled low over the messy curly mop with curls escaping at the sides, over a mineral-washed grey heavy hoodie with frayed cuffs, over-ear headphones around the neck; half-smile, eyes squinting"
+      },
+      "colors": [
+        {
+          "name": "Grey Acid",
+          "slug": "grey-acid",
+          "hex": "#7E7D7B",
+          "variant": null,
+          "images": [
+            "/products/acid-flame-beanie/grey-acid-1.jpg",
+            "/products/acid-flame-beanie/grey-acid-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "frayed-thorn-cap",
+      "name": "Frayed Thorn Cap",
+      "category": "accesorios",
+      "price": 32,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "lux",
+      "description": "Gorra de seis paneles en negro lavado con la visera deshilachada, un brochazo de espinas blanco en la copa y una etiqueta tejida con emblema espinoso. Gastada desde el primer día.",
+      "details": [
+        "Sarga de algodón lavada",
+        "Visera desgastada y deshilachada",
+        "Estampado de espinas a brochazo",
+        "Etiqueta tejida con emblema",
+        "Cierre trasero ajustable"
+      ],
+      "composition": "100% algodón",
+      "fit": "Ajustable",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "an unstructured six-panel dad cap in faded washed black cotton twill with a curved brim whose edge is frayed and distressed with loose threads, a white thorny brush-stroke print sweeping across the crown, a small black woven rectangular patch on the front with an ecru thorny emblem (an abstract spiky shape, no letters), adjustable back strap with a metal buckle, placed at a three-quarter angle",
+        "back": "",
+        "detail": "",
+        "pose": "portrait framing from the chest up: worn forwards and low over the bleached platinum wolf cut with dark roots, over a boxy washed black heavy hoodie with silver pyramid studs on the shoulders, a fine-line tattooed forearm raised as one hand adjusts the brim; looking sideways at the camera"
+      },
+      "colors": [
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2B2A2D",
+          "variant": null,
+          "images": [
+            "/products/frayed-thorn-cap/washed-black-1.jpg",
+            "/products/frayed-thorn-cap/washed-black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "talisman-charm-set",
+      "name": "Talisman Charm Set",
+      "category": "accesorios",
+      "price": 22,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "vera",
+      "description": "Set de cuatro charms con mosquetón para la trabilla o la mochila: calavera, corazón alado, cruz y un candado verde tóxico. Combínalos como quieras o cuélgalos todos a la vez.",
+      "details": [
+        "4 charms y mosquetón",
+        "Metal con baño plateado",
+        "Candado de acrílico verde tóxico",
+        "Mosquetón con cierre de resorte"
+      ],
+      "composition": "Aleación de zinc con baño plateado. Candado de acrílico",
+      "fit": "Talla única",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a set of four small keychain charms on a silver carabiner: a tiny silver skull, a silver heart with small wings, a slim silver cross and a mini padlock in translucent toxic lime green acrylic, arranged neatly in a row, no text",
+        "back": "",
+        "detail": "",
+        "pose": "close-up from waist to mid-thigh: the charm set hanging from a belt loop of ecru bone ultra-wide baggy jeans with black topstitching, with a black pyramid-studded belt and a fitted black long-sleeve top, fingers with black nail polish flicking the charms"
+      },
+      "colors": [
+        {
+          "name": "Silver / Lime",
+          "slug": "silver-lime",
+          "hex": "#BFC2C6",
+          "variant": null,
+          "images": [
+            "/products/talisman-charm-set/silver-lime-1.jpg",
+            "/products/talisman-charm-set/silver-lime-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "scorch-trucker",
+      "name": "Scorch Trucker",
+      "category": "accesorios",
+      "price": 32,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "rizo",
+      "description": "Gorra trucker con frontal de espuma negro lavado, rejilla trasera y llamas rojo sangre bordadas alrededor de una cruz pequeña. Para llevar hacia atrás, por supuesto.",
+      "details": [
+        "Frontal de espuma",
+        "Rejilla trasera transpirable",
+        "Bordado de llamas y cruz",
+        "Cierre trasero de presión"
+      ],
+      "composition": "Frontal 100% poliéster. Rejilla 100% nylon",
+      "fit": "Ajustable",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a trucker cap with a high washed black foam front panel, black mesh back, curved black brim and snapback closure; on the front a small embroidered ecru cross surrounded by blood red and ecru flames, no text, placed at a three-quarter angle",
+        "back": "",
+        "detail": "",
+        "pose": "portrait framing from the chest up: worn forwards and slightly tilted with dark brown curls bursting out at the sides, over a black acid-wash heavy hoodie, a barbed silver chain, one hand pinching the brim so the embroidered front stays visible; squinting at the camera with a crooked grin"
+      },
+      "colors": [
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2B2A2D",
+          "variant": null,
+          "images": [
+            "/products/scorch-trucker/washed-black-1.jpg",
+            "/products/scorch-trucker/washed-black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "fat-tongue-skate",
+      "name": "Fat Tongue Skate",
+      "category": "accesorios",
+      "price": 99,
+      "sizes": [
+        "36",
+        "37",
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "43",
+        "44",
+        "45"
+      ],
+      "model": "rizo",
+      "description": "Zapatilla de skate inflada en ante negro con lengüeta gorda acolchada, suela blanca gruesa y pespunte crudo. La silueta de los 2000 vuelve a mandar en el parque.",
+      "details": [
+        "Ante y lona",
+        "Lengüeta y cuello acolchados XL",
+        "Suela de goma gruesa",
+        "Cordones planos anchos",
+        "Sin logotipos"
+      ],
+      "composition": "Exterior ante y lona. Suela de caucho",
+      "fit": "Horma amplia: pide tu talla habitual",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": false,
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a pair of chunky puffy skate shoes in black suede with an extremely padded fat tongue and padded collar, thick white rubber cupsole, ecru contrast stitching, wide flat black laces, plain side panels with no logos or stripes, placed side by side at a slight three-quarter angle",
+        "back": "",
+        "detail": "",
+        "pose": "framing from the knees down: worn with white crew socks and washed black ultra-wide baggy jeans cuffed up twice so the whole shoe is visible, one foot resting on a scuffed skateboard on the concrete floor"
+      },
+      "colors": [
+        {
+          "name": "Black Suede",
+          "slug": "black-suede",
+          "hex": "#141414",
+          "variant": null,
+          "images": [
+            "/products/fat-tongue-skate/black-suede-1.jpg",
+            "/products/fat-tongue-skate/black-suede-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "filigree-cross",
+      "name": "Filigree Cross",
+      "category": "joyeria",
+      "price": 59,
+      "sizes": [
+        "50 cm",
+        "60 cm"
+      ],
+      "model": "vera",
+      "description": "Colgante de cruz en plata de ley 925 con bordes de filigrana y pequeñas espinas en las puntas, con cadena fina. La pieza que no te vas a quitar ni para dormir.",
+      "details": [
+        "Plata de ley 925",
+        "Cruz de filigrana de 4 cm",
+        "Relieves oxidados",
+        "Cadena forzada fina incluida"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": null,
+      "featured": true,
+      "kind": "jewellery",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a sterling silver cross pendant about 4 cm tall with ornate openwork filigree edges, tiny thorn points at the end of each arm and dark oxidized recesses, hanging on a fine silver cable chain arranged in a loose curve",
+        "back": "",
+        "detail": "",
+        "pose": "close-up of the chest and collarbones: the cross hanging over a black boxy tee layered on a white long-sleeve, the black blunt fringe and septum ring visible at the top of the frame, a hand with silver rings lifting the chain slightly"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/filigree-cross/silver-1.jpg",
+            "/products/filigree-cross/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "barb-chain",
+      "name": "Barb Chain",
+      "category": "joyeria",
+      "price": 69,
+      "sizes": [
+        "45 cm",
+        "50 cm",
+        "55 cm"
+      ],
+      "model": "lux",
+      "description": "Collar de plata 925 con eslabones de alambre de espino retorcido. Duro de aspecto y ligero de llevar.",
+      "details": [
+        "Plata de ley 925",
+        "Eslabones de espino retorcido",
+        "Cierre de mosquetón",
+        "Grosor de 5 mm"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": false,
+      "kind": "jewellery",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a sterling silver chain necklace made of twisted barbed-wire style links with small sharp barbs every few centimetres, polished with slightly oxidized recesses, lobster clasp, laid in a loose oval",
+        "back": "",
+        "detail": "",
+        "pose": "close-up of the neck and collarbones: worn layered with a thinner silver chain over a white ribbed tank under the open collar of a black leather jacket, the tips of the bleached platinum wolf cut at the edge of the frame"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/barb-chain/silver-1.jpg",
+            "/products/barb-chain/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "spike-ring",
+      "name": "Spike Ring",
+      "category": "joyeria",
+      "price": 39,
+      "sizes": [
+        "12",
+        "14",
+        "16",
+        "18",
+        "20",
+        "22"
+      ],
+      "model": "rizo",
+      "description": "Anillo de plata 925 con una fila de pinchos cónicos alrededor de la banda. Pequeño, punki y mucho más cómodo de lo que parece.",
+      "details": [
+        "Plata de ley 925",
+        "Pinchos cónicos de 3 mm",
+        "Banda de 5 mm",
+        "Pulido espejo"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": "Top",
+      "featured": false,
+      "kind": "jewellery",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a sterling silver band ring with a single row of small polished cone spikes all around it, mirror finish, standing upright",
+        "back": "",
+        "detail": "",
+        "pose": "close-up of a pale hand wearing the spike ring on the index finger, hooked in the front pocket of washed black ultra-wide baggy jeans with white topstitching, a chunky silver curb bracelet on the wrist"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/spike-ring/silver-1.jpg",
+            "/products/spike-ring/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "fallen-wing-ring",
+      "name": "Fallen Wing Ring",
+      "category": "joyeria",
+      "price": 45,
+      "sizes": [
+        "12",
+        "14",
+        "16",
+        "18",
+        "20",
+        "22"
+      ],
+      "model": "sombra",
+      "description": "Anillo de plata 925 con forma de ala que envuelve el dedo. Cada pluma está detallada y oxidada para que el relieve destaque.",
+      "details": [
+        "Plata de ley 925",
+        "Ala de plumas envolvente",
+        "Relieve oxidado",
+        "Bordes pulidos"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "jewellery",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a sterling silver ring shaped like a single feathered wing that wraps around the finger, each feather finely detailed with dark oxidized grooves, polished edges, standing upright",
+        "back": "",
+        "detail": "",
+        "pose": "close-up of a pale hand with chipped black nail polish wearing the wing ring on the middle finger, brushing the long jet-black emo fringe away from one eye, the cuff of a black and white striped long-sleeve at the wrist"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/fallen-wing-ring/silver-1.jpg",
+            "/products/fallen-wing-ring/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "wingheart-choker",
+      "name": "Wingheart Choker",
+      "category": "joyeria",
+      "price": 49,
+      "sizes": [
+        "35 cm",
+        "40 cm"
+      ],
+      "model": "vera",
+      "description": "Gargantilla de plata 925 de cadena serpiente con un corazón alado colgando en el centro. Corta, ceñida y muy 2003.",
+      "details": [
+        "Plata de ley 925",
+        "Cadena serpiente de 2 mm",
+        "Charm de corazón alado de 1,5 cm",
+        "Alargador de 5 cm"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "jewellery",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a sterling silver snake chain choker necklace with a small polished heart charm with tiny feathered wings hanging at the centre, lobster clasp with a short extender chain, laid in a circle",
+        "back": "",
+        "detail": "",
+        "pose": "close-up of the neck and chin: worn snug at the base of the neck above the collar of a fitted baby pink baby tee, black blunt fringe, the septum ring and dark lipstick visible, chin slightly raised"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/wingheart-choker/silver-1.jpg",
+            "/products/wingheart-choker/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "crosshang-hoops",
+      "name": "Crosshang Hoops",
+      "category": "joyeria",
+      "price": 35,
+      "sizes": [
+        "Par"
+      ],
+      "model": "sombra",
+      "description": "Pareja de aros pequeños de plata 925 con una cruz colgando de cada uno. Para llevarlos dobles, en el cartílago o donde te dé la gana.",
+      "details": [
+        "Plata de ley 925",
+        "Aros de 12 mm",
+        "Cruces colgantes de 1 cm",
+        "Se venden por pareja"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "jewellery",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a pair of small sterling silver hoop earrings about 12 mm wide with a slim polished cross dangling from each, placed side by side",
+        "back": "",
+        "detail": "",
+        "pose": "close-up three-quarter profile of the ear wearing a cross hoop, the layered jet-black hair swept behind the ear, wired headphones around the neck, the collar of a sheer black mesh shirt"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/crosshang-hoops/silver-1.jpg",
+            "/products/crosshang-hoops/silver-2.jpg"
+          ]
+        }
+      ]
+    }
+  ]
+}

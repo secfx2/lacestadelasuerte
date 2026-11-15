@@ -77,7 +77,7 @@
   align-items: flex-start;
   gap: 6px;
 }
-.splitTitle { font-size: clamp(26px, 3vw, 46px); font-stretch: 125%; font-weight: 600; text-transform: uppercase; letter-spacing: -0.015em; line-height: 1; }
+.splitTitle { font-size: clamp(26px, 3vw, 46px); font-stretch: var(--head-stretch); font-weight: var(--head-weight); text-transform: uppercase; letter-spacing: 0.005em; line-height: 1; }
 .splitKicker { font-family: var(--font-serif); font-style: italic; font-size: clamp(16px, 1.4vw, 20px); }
 .splitCta {
   display: inline-flex;
@@ -158,10 +158,10 @@
 .newsTitle {
   margin: 10px 0 0;
   font-size: clamp(28px, 3.2vw, 48px);
-  font-stretch: 125%;
-  font-weight: 600;
+  font-stretch: var(--head-stretch);
+  font-weight: var(--head-weight);
   text-transform: uppercase;
-  letter-spacing: -0.015em;
+  letter-spacing: 0.005em;
   line-height: 0.95;
 }
 .newsLead { margin: 14px 0 0; font-size: var(--fs-body); color: #55524d; line-height: 1.55; max-width: 40ch; }

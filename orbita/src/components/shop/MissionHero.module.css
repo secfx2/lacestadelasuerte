@@ -154,7 +154,8 @@
   .cell { flex: 0 0 min(44vw, 260px); scroll-snap-align: start; }
 }
 @media (max-width: 767px) {
-  .hero, .inner { min-height: calc(100svh - var(--announce-h) - 24px); }
+  .hero, .inner { min-height: 0; }
+  .monitors { margin-top: 36px; padding-top: 0; }
   .telemetry { flex-direction: column; gap: 4px; }
   .telemetryRight { text-align: left; }
   .mark { margin-top: 28px; }

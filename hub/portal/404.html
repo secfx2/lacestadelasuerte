@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Página no encontrada — Propuestas</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b0b0b">
+<link rel="icon" href="/_hub/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/_hub/fonts/archivo-wdth.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+{{CSS}}
+</style>
+</head>
+<body>
+<div class="bar"><strong>Propuestas de marca</strong><span>Error 404</span></div>
+<main class="lost">
+  <h1 class="title">Perdido</h1>
+  <div class="lede-row">
+    <p class="lede">Esta página no existe o ha cambiado de sitio.</p>
+  </div>
+  <div class="lost-links">
+    <a class="cta" id="back-brand" href="/" hidden></a>
+    <a class="cta" href="/">Ver todas las propuestas</a>
+  </div>
+</main>
+<script>
+  (function () {
+    var brands = {{BRANDS_JSON}};
+    var slug = location.pathname.split("/")[1];
+    var b = brands[slug];
+    if (!b) return;
+    var a = document.getElementById("back-brand");
+    a.href = "/" + slug + "/";
+    a.textContent = "Volver a " + b;
+    a.hidden = false;
+  })();
+</script>
+</body>
+</html>

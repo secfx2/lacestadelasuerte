@@ -1,8 +1,8 @@
 {
-  "name": "streetwear-store",
+  "name": "orbita",
   "version": "1.0.0",
   "private": true,
-  "description": "Reusable Next.js template for a streetwear brand store + online brand book (born from MUSKETEER).",
+  "description": "ÓRBITA — tienda online de streetwear de la era espacial + brand book (plantilla streetwear-store).",
   "scripts": {
     "dev": "next dev -p 3100",
     "build": "next build",

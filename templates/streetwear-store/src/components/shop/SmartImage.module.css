@@ -31,8 +31,9 @@
   width: clamp(16px, 9%, 34px);
   aspect-ratio: 1;
   background: #cdcdc9;
-  -webkit-mask: url("/brand/emblem-black.svg") center / contain no-repeat;
-  mask: url("/brand/emblem-black.svg") center / contain no-repeat;
+  /* --mk-emblem-url: base-path-aware URL set on <html> by the root layout (static export under /<slug>) */
+  -webkit-mask: var(--mk-emblem-url, url("/brand/emblem-black.svg")) center / contain no-repeat;
+  mask: var(--mk-emblem-url, url("/brand/emblem-black.svg")) center / contain no-repeat;
 }
 .placeholder[data-tone="dark"] .emblem { background: #2e2e2e; }
 .placeholder[data-tone="bone"] .emblem { background: #cfc9bf; }

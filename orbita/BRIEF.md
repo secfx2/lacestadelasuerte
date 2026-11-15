@@ -1,50 +1,47 @@
-# BRAND — Brief de marca y del proyecto
-
-> Rellena este documento con el cliente antes de tocar `src/config/brand.js`. Ejemplo completo: `musketeer/BRIEF.md`.
+# ÓRBITA — Brief de marca y del proyecto
 
 ## Concepto
-- **Nombre:** BRAND · **marca corta:** BRND
-- **En una frase:** …
-- **Lemas:** *Your tagline* (principal) · *Your motto* (secundario) · *Your sign-off* (cierre)
-- **Referentes de energía (no copiar):** …
-- **Público:** …
-- **Modelo de negocio:** catálogo permanente, sin drops (por defecto) / drops
-- **Tono de voz:** sobrio, seguro… Sin emojis ni signos de exclamación.
+- **Nombre:** ÓRBITA · **marca corta:** ORB · **SKU:** `ORB-001-…` · **storage:** `orbita`
+- **En una frase:** streetwear unisex inspirado en la carrera espacial de los sesenta (NASA y cosmonautas, control de misión, cápsulas, trajes espaciales), cortado en siluetas boxy de 2026 y con mucho color.
+- **Lemas:** *Fuera de órbita* (principal) · *Misión permanente* (secundario) · *Diez, nueve, ocho…* (cuenta atrás) · *Cambio y corto* (cierre)
+- **Ciudad:** Madrid (40°25′ N · 3°42′ O)
+- **Modelo de negocio:** catálogo permanente, sin drops.
+- **Tono de voz:** optimista, preciso, un poco poético con el espacio. Español, sin emojis ni signos de exclamación.
 
 ## Producto
-- **Cortes:** boxy recortado 2026 (tops que terminan en la cintura, hombro estructurado; pantalón recto/barril con caída limpia) + color.
-- **Categorías:** chaquetas, punto, sudaderas, camisetas, camisas, pantalones, accesorios, joyería (ajusta `brand.categories`).
-- **Rango de precios:** …
-- **Detalle de concepto** que debe leerse en cada pieza: …
+- **Cortes:** boxy recortado 2026 (tops que terminan en la cintura, hombro estructurado; pantalón recto, barril o acampanado con caída limpia).
+- **Categorías:** chaquetas, punto, sudaderas, camisetas, camisas, pantalones, accesorios, joyería (8 × 8 = 64 productos).
+- **Detalle de concepto:** cada pieza lleva un elemento de la era espacial legible en la foto (bolsillos de bolígrafo, fuelles de traje EVA, parches de misión, planetas, constelaciones, plata lunar).
+- **Fotos:** 2 por producto (1 flat lay · 2 con modelo), 4 modelos fijos (Astrid, Rohan, Ama, Kai). Ver `scripts/IMAGE_PIPELINE.md`.
 
-## Sistema de logo
-| Pieza | Variante `<Logo>` | Archivo | Uso |
-|---|---|---|---|
-| Logotipo | `wordmark` | `public/brand/wordmark*.svg` | Header, pie, etiquetas, packaging |
-| Marca corta | `monogram` | `public/brand/monogram*.svg` | Bordados pequeños, joyería, redes |
-| Marca gráfica | `graphic` | `public/brand/graphic*.svg` | Solo prenda y campaña |
-| Símbolo | `emblem` | `public/brand/emblem*.svg` | Favicon, herrajes, placeholders |
-| Sello | `seal` | `public/brand/seal*.svg` | Packaging, newsletter, certificados |
+## Sistema de logo (tipográfico, generado con `scripts/placeholder-logos.py` + Syncopate Bold)
+| Pieza | Variante `<Logo>` | Qué es |
+|---|---|---|
+| Logotipo | `wordmark` | ÓRBITA con tilde, Syncopate Bold, tracking +0,02 em |
+| Marca corta | `monogram` | ORB con un planeta (punto) dentro de la O |
+| Marca gráfica | `graphic` | ÓRBITA rodeada por un anillo orbital con satélite (solo prenda/campaña) |
+| Símbolo | `emblem` | Órbita elíptica a −24° con planeta y satélite (favicon, placeholders) |
+| Sello | `seal` | ÓRBITA · FUERA DE ÓRBITA · MADRID · EST. 2026, con el símbolo en el centro |
 
-Fuentes del logo y exploración: `brand-source/` (no se publica).
+Regenerar: `python3 scripts/placeholder-logos.py --name "ÓRBITA" --short ORB --tagline "Fuera de órbita" --year 2026 --city Madrid --font <Syncopate-Bold.ttf> && npm run logos`
 
 ## Paleta
-| Nombre | Hex | Rol |
-|---|---|---|
-| Tinta | `#0A0A0A` | Texto, logo, botones |
-| Papel | `#FFFFFF` | Fondo |
-| Niebla | `#F4F4F2` | Superficies suaves |
-| Hueso | `#ECE8E1` | Bloques editoriales |
-| Acero | `#9A9DA1` | Metal, secundario |
-| Acento | `#33415C` | Acento de marca |
-| Alerta | `#8E2A2A` | Rebajas, avisos |
+| Token | Nombre | Hex | Rol |
+|---|---|---|---|
+| `ink` | Tinta Noche | `#0E1A3A` | Texto, logo, botones, hero |
+| `paper` | Blanco Puro | `#FFFFFF` | Fondo |
+| `fog` | Blanco Traje | `#F4F2EC` | Superficies suaves, placeholders |
+| `bone` | Azul Cielo | `#A9C6E8` | Bloques editoriales, newsletter |
+| `steel` | Plata | `#C3C7CC` | Metal, secundario |
+| `accent` | Naranja Seguridad | `#FF5A1F` | Firma de la marca, CTA |
+| `mustard` | Mostaza Cápsula | `#E2A72E` | Insignias, etiquetas |
+| `alert` | Rojo Cósmico | `#D7263D` | Avisos |
+
+Paleta de producto (brand book): las anteriores + Verde Vuelo `#6B7148` y Gris Lunar `#9EA1A5`.
 
 ## Tipografía
-- Sans: Archivo (UI, titulares expanded) · Serif: Instrument Serif (lema, citas). Ver `src/config/fonts.js`.
+- Display: **Syncopate** 700 (titulares, siempre en mayúsculas) · UI/cuerpo: **Space Grotesk** · Acento/telemetría: **Space Mono**. Ver `src/config/fonts.js`.
 
-## Fotografía
-- 1ª flat lay cenital sobre blanco · 2ª con modelo sobre blanco · 3ª espalda/otra vista · 4ª detalle. 4:5, 1200 × 1500.
-- Casting fijo de 4 modelos (`catalog.json → models`).
-
-## Presupuesto de créditos Higgsfield
-- Total aprobado: … créditos (ver tabla en `TEMPLATE.md`).
+## Campaña
+- Sin presupuesto para fotos de campaña: hero tipográfico (wordmark naranja sobre Tinta Noche, cuenta atrás y una tira de «monitores» con fotos de producto con modelo); banners, lookbook y «Nosotros» usan las fotos `-2.jpg` del catálogo. Ver `src/data/campaign.json`.
+- Brand book: sin mockups fotográficos; el capítulo 08 dibuja aplicaciones tipográficas con los SVG del logo (`brandBook.applications.typographic`).

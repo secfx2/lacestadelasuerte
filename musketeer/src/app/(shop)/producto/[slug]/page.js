@@ -5,6 +5,7 @@ import SectionHead from "@/components/shop/SectionHead";
 import { products } from "@/lib/catalog";
 import { getSlimProduct, relatedProducts } from "@/lib/shop-server";
 import { categoryName } from "@/lib/shop";
+import { asset } from "@/lib/asset";
 import styles from "./page.module.css";
 
 export const dynamicParams = false;
@@ -37,7 +38,7 @@ export default async function ProductPage({ params }) {
     "@type": "Product",
     name: product.name,
     description: product.description,
-    image: product.colors[0].images,
+    image: product.colors[0].images.map(asset),
     brand: { "@type": "Brand", name: "MUSKETEER" },
     category: categoryName(product.category),
     offers: { "@type": "Offer", price: product.price, priceCurrency: "EUR", availability: "https://schema.org/InStock" },

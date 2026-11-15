@@ -1,8 +1,8 @@
-"""Catálogo borrador para la nueva marca de calle ({{MARCA}}).
+"""PECADO — catálogo borrador (72 productos, 4 tandas de 18).
 
 Mismo esquema que orbita/src/data/catalog.json (categories, models, products).
 Uso:  python3 drafts/marca-calle/build_catalog.py   -> escribe drafts/marca-calle/catalog.json
-Sin nombre de marca: donde haría falta se usa el token {{MARCA}}.
+Marca: PECADO (display "Pecado", corta "PCD"). Ninguna prenda lleva texto legible.
 """
 import json
 import os
@@ -29,19 +29,30 @@ def jean_shape(opening):
 BACK_JEANS = "the flat lay shows the BACK of the jeans so the art is fully visible"
 FRONT_JEANS = "front view laid flat with both legs spread to show their full width"
 HIP = "hem at the hip, not long, not oversized"
+HEAVY = ("boxy cropped heavyweight 450 gsm cotton fleece pullover hoodie with dropped shoulders, a wide square body "
+         "ending just above the hip and a double-layered hood")
+FRAY = "raw frayed distressed hem and cuffs with loose shredded threads hanging"
+LOGO = "thorny illegible death-metal style logo shapes that read as pure spiky graphic, no legible letters"
+SWEAT_WIDE = ("wide straight-leg heavyweight 450 gsm cotton fleece sweatpants with an elastic waistband, flat drawcords, "
+              "side pockets, relaxed full volume and open wide hems with a leg opening around 28 cm")
+SWEAT_JOG = ("relaxed heavyweight 450 gsm cotton fleece jogger sweatpants with a full baggy thigh, elastic waistband, "
+             "flat drawcords, side pockets and ribbed ankle cuffs that bunch slightly")
 
 CATEGORIES = [
     ("vaqueros", "Vaqueros"),
-    ("camisetas", "Camisetas"),
     ("sudaderas", "Sudaderas"),
+    ("chandal", "Chándal"),
+    ("camisetas", "Camisetas"),
     ("polos-y-camisas", "Polos y camisas"),
     ("chaquetas", "Chaquetas"),
     ("capas", "Capas"),
     ("accesorios", "Accesorios"),
     ("joyeria", "Joyería"),
 ]
+EXPECTED = {"vaqueros": 8, "sudaderas": 12, "chandal": 6, "camisetas": 8, "polos-y-camisas": 6,
+            "chaquetas": 8, "capas": 8, "accesorios": 10, "joyeria": 6}
 
-# Fixed street casting (generate once; paste job_id after approval) ---------
+# Fixed street casting (job_id filled in by the coordinator) ----------------
 CASTING_TPL = (
     "Full-body street casting photo of a {desc}, about 20 years old, natural face, neutral expression, "
     "standing straight facing camera, arms relaxed at the sides, wearing a plain black crew-neck t-shirt, "
@@ -50,18 +61,12 @@ CASTING_TPL = (
     "no accessories{extra}, no logos, no text."
 )
 MODELS = {
-    "bruno": dict(
-        desc="lanky young Spanish man with North African roots, olive skin, big voluminous dark curly mop falling over the forehead, light stubble",
-        extra=""),
-    "kio": dict(
-        desc="androgynous young East Asian person, pale skin, slim build, glossy straight black hair with a long emo fringe falling over the eyes and choppy layers to the jaw",
-        extra=""),
-    "vera": dict(
-        desc="young Spanish woman, pale skin, jet-black shoulder-length hair with a heavy blunt fringe, small silver septum ring, thin winged eyeliner",
-        extra=" except the small septum ring"),
-    "yara": dict(
-        desc="young Afro-Latina woman, deep brown skin, short bleached blonde curls with dark roots growing out, fine-line black tattoos on both forearms and hands",
-        extra=""),
+    "rizo": dict(desc="lanky young Spanish man, pale skin, big messy dark brown curly mop", extra=""),
+    "sombra": dict(desc="androgynous young man, pale skin, layered jet-black hair with a long emo fringe over one eye, small silver lip ring",
+                   extra=" except the small lip ring"),
+    "vera": dict(desc="young woman, light olive skin, black shoulder-length hair with a heavy blunt fringe, silver septum ring",
+                 extra=" except the septum ring"),
+    "lux": dict(desc="young woman, light brown skin, bleached platinum wolf cut with dark roots, fine-line forearm tattoos", extra=""),
 }
 
 P = []
@@ -83,9 +88,9 @@ def add(slug, name, cat, price, model, color, desc, details, comp, garment, pose
     ))
 
 
-# =============================== VAQUEROS ===============================
-add("seraph-baggy", "Seraph Baggy", "vaqueros", 95, "bruno", ("Washed Black", "washed-black", "#2B2A2D"),
-    "El vaquero que define {{MARCA}}: pernera ultra ancha que se come la zapatilla y dos cruces aladas bordadas en blanco sobre los bolsillos traseros XL. Denim negro lavado con pespunte grueso en crudo, hecho para patinar, arrastrarlo por el suelo y repetir.",
+# =============================== VAQUEROS (8) ===============================
+add("seraph-baggy", "Seraph Baggy", "vaqueros", 95, "rizo", ("Washed Black", "washed-black", "#2B2A2D"),
+    "El vaquero que define Pecado: pernera ultra ancha que se come la zapatilla y dos cruces aladas bordadas en blanco sobre los bolsillos traseros XL. Denim negro lavado con pespunte grueso en crudo, hecho para patinar, arrastrarlo por el suelo y repetir.",
     ["Bajo de 34 cm", "Tiro medio-bajo", "Denim 14 oz lavado a la piedra", "Cruces aladas bordadas en los bolsillos traseros", "Pespunte grueso en contraste crudo"],
     "100% algodón",
     "ultra-wide baggy jeans in washed black denim with a faded stone wash and lighter fading across the seat and thighs, "
@@ -94,7 +99,7 @@ add("seraph-baggy", "Seraph Baggy", "vaqueros", 95, "bruno", ("Washed Black", "w
     "of spread feathered wings behind it; " + BACK_JEANS,
     "back view looking over the shoulder: worn low on the hips with a white pyramid-studded leather belt, a black boxy tee layered over "
     "a white long-sleeve, black puffy skate shoes half swallowed by the stacked hems, a heavy silver wallet chain looping from the front "
-    "belt loop to the back pocket edge, a black ribbed beanie pushed back on the big curly mop; slouched with the weight on one leg, "
+    "belt loop to the back pocket edge, a black ribbed beanie pushed back on the messy curly mop; slouched with the weight on one leg, "
     "hands in the front pockets, both back pockets fully visible",
     fit="Ultra baggy", badge="Top", featured=True)
 
@@ -107,11 +112,11 @@ add("thorn-vine-jean", "Thorn Vine Jean", "vaqueros", 99, "vera", ("Raw Indigo",
     "of both legs to mid-thigh, with sharp thorns, curling tendrils and a few small oxblood red rosebuds; " + FRONT_JEANS,
     "worn with a fitted black baby tee with a black rhinestone print layered over a sheer black mesh long-sleeve, a black leather belt "
     "with a double row of silver grommets, black chunky platform Mary Janes with white frilly ankle socks peeking under the huge hems, "
-    "small silver cross hoop earrings and septum ring; standing pigeon-toed, one finger hooked in a belt loop, chin down with a hard "
+    "small silver cross hoop earrings and the septum ring; standing pigeon-toed, one finger hooked in a belt loop, chin down with a hard "
     "stare through the blunt fringe",
     fit="Ultra baggy", badge="Nuevo")
 
-add("limbo-jean", "Limbo Jean", "vaqueros", 89, "kio", ("Ash Grey", "ash-grey", "#8C8A88"),
+add("limbo-jean", "Limbo Jean", "vaqueros", 89, "sombra", ("Ash Grey", "ash-grey", "#8C8A88"),
     "Gris ceniza desteñido, como un vaquero negro que ha sobrevivido a demasiados veranos. Detrás, un halo con alas en estampado negro craquelado se desborda por los dos bolsillos.",
     ["Bajo de 34 cm", "Tiro medio-bajo", "Denim 13 oz con lavado gris desteñido", "Estampado craquelado de halo y alas en la espalda", "Pespunte blanco grueso"],
     "100% algodón",
@@ -119,13 +124,13 @@ add("limbo-jean", "Limbo Jean", "vaqueros", 89, "kio", ("Ash Grey", "ash-grey", 
     + ", thick white topstitching; across both back pockets one large cracked black screen print: an ornate filigree halo ring above a "
     "pair of spread angel wings whose feathers spill over the pocket edges onto the seat, distressed and crackled like an old transfer; "
     + BACK_JEANS,
-    "back view, head bowed so the long black fringe hangs forward: worn with a short boxy black zip hoodie zipped to the chin, hood down, "
-    "grey chunky skate sneakers buried under the stacked hems, a cluster of small silver keychain charms hanging from a back belt loop, "
-    "wired headphones around the neck; both hands shoved in the hoodie pockets, shoulders hunched, the hoodie hem sitting above the "
-    "back pockets so the print is fully visible",
+    "back view, head bowed so the long jet-black fringe hangs forward: worn with a short boxy black zip hoodie zipped to the chin, hood "
+    "down, grey chunky skate sneakers buried under the stacked hems, a cluster of small silver keychain charms hanging from a back belt "
+    "loop, wired headphones around the neck; both hands shoved in the hoodie pockets, shoulders hunched, the hoodie hem sitting above "
+    "the back pockets so the print is fully visible",
     fit="Ultra baggy")
 
-add("pyre-baggy", "Pyre Baggy", "vaqueros", 89, "yara", ("Black", "black", "#0B0B0C"),
+add("pyre-baggy", "Pyre Baggy", "vaqueros", 89, "lux", ("Black", "black", "#0B0B0C"),
     "Negro profundo con llamas en crudo y burdeos que suben desde el bajo hasta la rodilla. Para quemar la calle sin pedirle permiso a nadie.",
     ["Bajo de 35 cm", "Tiro medio-bajo", "Denim 14 oz negro sobreteñido", "Llamas estampadas en descarga crudo con perfil burdeos", "Bolsillos traseros XL"],
     "100% algodón",
@@ -133,11 +138,11 @@ add("pyre-baggy", "Pyre Baggy", "vaqueros", 89, "yara", ("Black", "black", "#0B0
     + ", thick off-white topstitching; on the FRONT tall licking flames printed in faded ecru discharge ink with a thin oxblood red "
     "outline rise from the hem of both legs up to the knee, slightly cracked and vintage-looking; " + FRONT_JEANS,
     "worn with a fitted white ribbed tank under an open black leather biker jacket with silver pyramid studs on the shoulders, a black "
-    "pyramid-studded belt, chunky black-and-white skate sneakers, layered silver chains, tattoos on the forearms; feet planted wide, "
+    "pyramid-studded belt, chunky black-and-white skate sneakers, layered silver chains, fine-line forearm tattoos; feet planted wide, "
     "thumbs hooked in the front pockets, chin up with a defiant look, the flames fully visible from hem to knee",
     fit="Ultra baggy")
 
-add("rosary-jean", "Rosary Jean", "vaqueros", 99, "yara", ("Bone", "bone", "#E9E2D3"),
+add("rosary-jean", "Rosary Jean", "vaqueros", 99, "lux", ("Bone", "bone", "#E9E2D3"),
     "Denim color hueso con pespunte negro grueso y filigrana gótica bordada alrededor de los bolsillos traseros. Es el negativo perfecto de un vaquero negro y se nota desde la otra punta del parque.",
     ["Bajo de 33 cm", "Tiro medio-bajo", "Denim 13 oz sin teñir color hueso", "Filigrana bordada en negro en los bolsillos traseros", "Pespunte negro grueso en contraste"],
     "100% algodón",
@@ -147,11 +152,11 @@ add("rosary-jean", "Rosary Jean", "vaqueros", 99, "yara", ("Bone", "bone", "#E9E
     "the two pockets like a rosary; " + BACK_JEANS,
     "back view turned three-quarters to show both pockets: worn with a sheer black mesh short-sleeve tee over a black and white striped "
     "long-sleeve tucked in at the back, a black leather belt with a double row of silver grommets, worn black leather lace-up boots under "
-    "the stacked hems, a silver wallet chain swinging at the hip, bleached curls with dark roots; looking back over the shoulder with a "
-    "bored expression, arms relaxed",
+    "the stacked hems, a silver wallet chain swinging at the hip, bleached platinum wolf cut with dark roots; looking back over the "
+    "shoulder with a bored expression, arms relaxed",
     fit="Ultra baggy")
 
-add("crypt-double-knee", "Crypt Double Knee", "vaqueros", 105, "bruno", ("Washed Black", "washed-black", "#2B2A2D"),
+add("crypt-double-knee", "Crypt Double Knee", "vaqueros", 105, "rizo", ("Washed Black", "washed-black", "#2B2A2D"),
     "Carpenter de doble rodilla en negro lavado con trabilla de martillo y un parche bordado de calavera con rosas en la rodilla. Aguanta caídas en el bowl y noches enteras en el banco de la plaza.",
     ["Bajo de 36 cm", "Tiro medio-bajo", "Denim 14 oz con doble rodilla", "Trabilla de martillo y bolsillo de herramientas", "Parche bordado de calavera con rosas"],
     "100% algodón",
@@ -172,12 +177,12 @@ add("wingspan-jean", "Wingspan Jean", "vaqueros", 110, "vera", ("Midnight Indigo
     + ", thick white topstitching; a huge pair of original feathered wings printed in distressed cracked silver foil opens outward from "
     "the two back pockets and sweeps down the back of both thighs almost to the knees, each feather sharply drawn, the foil worn and "
     "flaking at the edges; " + BACK_JEANS,
-    "full back view, walking away and glancing back over the shoulder: worn with a short boxy washed black zip hoodie with silver pyramid "
+    "full back view, walking away and glancing back over the shoulder: worn with a short boxy washed black hoodie with silver pyramid "
     "studs along the shoulders, a white pyramid-studded belt, black platform Mary Janes with white socks under the stacked hems, black "
-    "blunt fringe and silver hoop in profile; one hand flicking the fringe, the hoodie hem above the pockets so the wings are fully visible",
+    "blunt fringe in profile; one hand flicking the fringe, the hoodie hem above the pockets so the wings are fully visible",
     fit="Ultra baggy", badge="Nuevo", featured=True)
 
-add("gutter-jort", "Gutter Jort", "vaqueros", 79, "kio", ("Washed Black", "washed-black", "#2B2A2D"),
+add("gutter-jort", "Gutter Jort", "vaqueros", 79, "sombra", ("Washed Black", "washed-black", "#2B2A2D"),
     "El baggy en versión verano: jort ultra ancho por debajo de la rodilla con una cruz de filigrana bordada en una pernera. Bajo deshilachado, bolsillos traseros XL y cero ganas de volver a casa.",
     ["Bajo de 32 cm", "Tiro medio-bajo", "Largo por debajo de la rodilla, bajo deshilachado", "Cruz de filigrana bordada en la pernera izquierda", "Denim 14 oz con pespunte crudo"],
     "100% algodón",
@@ -185,12 +190,220 @@ add("gutter-jort", "Gutter Jort", "vaqueros", 79, "kio", ("Washed Black", "washe
     "32 cm, huge volume, low-mid rise, oversized back pockets, thick off-white topstitching; on the FRONT left leg a large embroidered "
     "original filigree cross in white thread with ornate looping scrollwork arms and small thorn spikes at each tip; front view laid flat",
     "worn with a washed black boxy tee with a toxic lime cracked cross print layered over a white long-sleeve, grey ribbed knee-high socks "
-    "pulled up, chunky black skate sneakers, a silver wallet chain, wired headphones around the neck, long black fringe covering the "
-    "eyes; leaning back against the wall with one sole flat on it and arms crossed, the embroidered leg toward the camera",
+    "pulled up, chunky black skate sneakers, a silver wallet chain, wired headphones around the neck, long emo fringe over one eye; "
+    "leaning back against the wall with one sole flat on it and arms crossed, the embroidered leg toward the camera",
     fit="Ultra baggy")
 
-# =============================== CAMISETAS ===============================
-add("second-skin-tee", "Second Skin Tee", "camisetas", 45, "kio", ("Black / Stripe", "black-stripe", "#0B0B0C"),
+# =============================== SUDADERAS (12) ===============================
+add("spine-hoodie", "Spine Hoodie", "sudaderas", 85, "rizo", ("Washed Charcoal", "washed-charcoal", "#3F3E3D"),
+    "Sudadera boxy de 450 g/m² en carbón lavado con una columna vertebral de espinas en color arena que baja por el centro y costillas puntiagudas en las mangas. El bajo y los puños vienen deshilachados, porque las cosas buenas llegan rotas.",
+    ["Corte boxy corto, hombro caído", "Felpa 450 g/m² lavada", "Estampado tonal arena de columna y costillas", "Bajo y puños deshilachados", "Sin bolsillo delantero"],
+    "100% algodón",
+    "a " + HEAVY + ", in washed charcoal grey with a soft uneven fade, no front pocket, " + FRAY + "; a tonal sand-coloured print of "
+    "an original spine runs straight down the centre front from the neckline to the hem, each vertebra sharp and spiked, with thorn-like "
+    "ribs curving outward from it across the chest, and spiky rib lines running down the outside of both sleeves; the print slightly "
+    "cracked and sunk into the wash",
+    "worn hood down with the matching washed charcoal wide sweatpants with a sand spine print down the outer legs, black puffy skate "
+    "shoes, a black ribbed beanie over the messy curly mop, over-ear headphones around the neck; standing straight-on with arms hanging "
+    "and fists loosely closed, head tilted back, deadpan, the spine print unobstructed",
+    badge="Nuevo", featured=True)
+
+add("x-ray-storm-hoodie", "X-Ray Storm Hoodie", "sudaderas", 89, "sombra", ("Black Acid", "black-acid", "#1E1E20"),
+    "Negro con lavado ácido, una caja torácica de rayos X en gris y relámpagos que se ramifican por todo el cuerpo. En el pecho, un logo de espinas ilegible que no dice nada y lo dice todo.",
+    ["Corte boxy corto, hombro caído", "Felpa 450 g/m² con lavado ácido", "Estampado integral de rayos X y relámpagos", "Bajo y puños deshilachados", "Capucha de doble capa"],
+    "100% algodón",
+    "a " + HEAVY + ", in black acid wash with cloudy grey bleached marbling, front pouch pocket, " + FRAY + "; an all-over grey print "
+    "of an x-ray ribcage across the chest with branching lightning veins crackling over the body, hood and sleeves, plus a small white "
+    "logo on the left chest made of " + LOGO,
+    "worn hood up with the long emo fringe falling over one eye, with the matching black acid-wash sweatpants veined with grey "
+    "lightning, chunky grey skate sneakers, a barbed silver chain over the hoodie, wired headphones around the neck; hands deep in the "
+    "front pocket, shoulders hunched, staring at the camera from under the hood",
+    badge="Nuevo")
+
+add("flame-wash-hoodie", "Flame Wash Hoodie", "sudaderas", 85, "rizo", ("Mineral Grey", "mineral-grey", "#B4B2AE"),
+    "Gris claro con lavado mineral, llamas tonales en gris oscuro que suben desde el bajo y las mangas y salpicaduras negras de pintura. Parece rescatada del incendio de un local de ensayo, en el buen sentido.",
+    ["Corte boxy corto, hombro caído", "Felpa 450 g/m² con lavado mineral", "Llamas tonales en bajo y mangas", "Salpicaduras negras", "Bajo y puños deshilachados"],
+    "100% algodón",
+    "a " + HEAVY + ", in mineral-washed light grey with a chalky uneven fade, front pouch pocket, " + FRAY + "; tonal darker grey flames "
+    "printed rising from the hem up the body and from the cuffs up the sleeves, with scattered black grunge paint splatter specks all over",
+    "worn with the matching distressed grey wide sweatpants with pale flames rising from the hem, black puffy skate shoes, white crew "
+    "socks, a black ribbed beanie on the curly mop, a silver chain, a skateboard tucked under one arm at his side; walking toward the "
+    "camera mid-stride, grinning")
+
+add("frost-thorn-hoodie", "Frost Thorn Hoodie", "sudaderas", 89, "lux", ("Ice Fade", "ice-fade", "#9DB8C9"),
+    "Degradado de azul hielo en la capucha a negro en el bajo, con pinchos tribales de espinas que salen disparados desde el pecho. Lleva salpicaduras de lejía y un bajo deshilachado que no vas a querer recortar.",
+    ["Corte boxy corto, hombro caído", "Felpa 450 g/m² teñida en degradado", "Pinchos tribales de espinas en el pecho", "Salpicaduras de lejía", "Bajo y puños deshilachados"],
+    "100% algodón",
+    "a " + HEAVY + ", dip-dyed in a gradient that fades from pale ice blue at the hood and shoulders through grey to black at the hem, "
+    "front pouch pocket, " + FRAY + "; sharp black thorny tribal spikes radiate outward from the centre of the chest like a frozen "
+    "starburst, with small white bleach specks scattered all over",
+    "worn hood up over the bleached platinum wolf cut, with the matching gradient wide sweatpants fading from black at the waist to ice "
+    "blue at the hem, chunky black-and-white skate sneakers, layered silver chains, sleeves pushed up to show the fine-line forearm "
+    "tattoos; one hand pulling the hood forward, chin down, cold stare",
+    badge="Nuevo")
+
+add("blood-vine-hoodie", "Blood Vine Hoodie", "sudaderas", 89, "vera", ("Washed Black / Oxblood", "washed-black-oxblood", "#2B2A2D"),
+    "Negro lavado con ángeles de piedra que lloran en gris desteñido, invadidos por enredaderas de espinas burdeos craqueladas. Las mangas van en burdeos lavado con formas de logo espinosas en crudo bajando por los brazos.",
+    ["Corte boxy corto, hombro caído", "Felpa 450 g/m² lavada", "Mangas teñidas en burdeos", "Estampado de ángeles y espinas craqueladas", "Bajo y puños deshilachados"],
+    "100% algodón",
+    "a " + HEAVY + ", with a washed black body and oxblood red garment-washed sleeves, front pouch pocket, " + FRAY + "; on the body a "
+    "faded grey print of weeping stone angel statues with bowed heads, overgrown by oxblood red cracked thorn vines spreading across the "
+    "chest and over the shoulders; running vertically down both oxblood sleeves, ecru " + LOGO,
+    "worn with black ultra-wide baggy jeans with white topstitching, a white pyramid-studded belt showing under the cropped hem, black "
+    "platform Mary Janes with white socks, a silver filigree cross pendant over the hoodie, black blunt fringe and septum ring; arms held "
+    "slightly away from the body to show the sleeves, head tilted, unimpressed",
+    featured=True)
+
+add("barbwire-sand-hoodie", "Barbwire Sand Hoodie", "sudaderas", 85, "lux", ("Sand Wash", "sand-wash", "#C8B89C"),
+    "Lavado arena con alambre de espino tonal que se enrosca por el cuerpo y las mangas. Es el color más suave del catálogo con el dibujo más áspero.",
+    ["Corte boxy corto, hombro caído", "Felpa 450 g/m² con lavado arena", "Alambre de espino tonal estampado", "Bajo y puños deshilachados"],
+    "100% algodón",
+    "a " + HEAVY + ", in sand-washed beige with a dusty uneven fade, front pouch pocket, " + FRAY + "; tonal darker sand-brown barbed "
+    "wire printed coiling around the body and wrapping both sleeves, with a larger barbed wire loop knotted into a heart shape on the "
+    "chest, slightly cracked",
+    "worn hood down with faded ash grey ultra-wide baggy jeans with white topstitching, a black pyramid-studded belt, worn black leather "
+    "lace-up boots under the stacked hems, a black studded leather backpack slung on one shoulder at the back, platinum wolf cut with dark "
+    "roots; hands in the front pocket, weight on one hip, lazy half-smile")
+
+add("bleach-wing-hoodie", "Bleach Wing Hoodie", "sudaderas", 89, "lux", ("Washed Indigo", "washed-indigo", "#2C3A5C"),
+    "Índigo teñido en prenda con unas alas enormes decoloradas con lejía en toda la espalda. Cada lote sale un poco distinto, así que la tuya es solo tuya.",
+    ["Corte boxy corto, hombro caído", "Felpa 450 g/m² teñida en índigo", "Alas decoloradas a mano en la espalda", "Bajo y puños deshilachados"],
+    "100% algodón",
+    "a " + HEAVY + ", garment-dyed deep indigo with darker seams, front pouch pocket, " + FRAY + ", shown from the BACK so the art is "
+    "visible: a huge pair of original feathered angel wings bleached out across the whole back in ghostly pale blue-white discharge, the "
+    "edges uneven and soaked like real bleach; hood laid flat above",
+    "back view, looking over the shoulder: hood down, worn with black ultra-wide baggy jeans with ecru flames rising from the hem, black "
+    "puffy skate shoes, a silver wallet chain, fine-line forearm tattoos with the sleeves pushed up, platinum wolf cut; one hand raised "
+    "to the back of the neck, the bleached wings fully visible")
+
+add("phantom-full-zip", "Phantom Full-Zip", "sudaderas", 89, "sombra", ("Black", "black", "#0B0B0C"),
+    "Sudadera con cremallera que sube hasta cerrar la capucha sobre la cara, con dos ventanas de malla para ver sin que te vean. Filigrana plateada en la capucha y el anonimato que pide un lunes cualquiera.",
+    ["Corte boxy, largo a la cadera", "Cremallera completa hasta la coronilla", "Ventanas de malla a la altura de los ojos", "Felpa 400 g/m²", "Filigrana plateada estampada en la capucha"],
+    "80% algodón, 20% poliéster. Malla 100% poliéster",
+    "a boxy black heavyweight fleece full-zip hoodie whose long silver zip runs from the hem all the way up through the hood over the face "
+    "to the crown, two small black mesh eye windows in the hood, silver ornamental filigree print of curling scrolls on both sides of the "
+    "hood, two front pockets, ribbed cuffs and hem, " + HIP + "; laid flat with the hood fully zipped and spread above the body",
+    "worn zipped all the way over the face so only the mesh eye windows show, with washed black ultra-wide baggy jeans with white "
+    "topstitching, black puffy skate shoes, a silver wallet chain hanging below the hoodie hem; standing dead still facing the camera, "
+    "hands in the hoodie pockets, eerie and calm",
+    featured=True)
+
+add("cathedral-hoodie", "Cathedral Hoodie", "sudaderas", 79, "vera", ("Washed Black", "washed-black", "#2B2A2D"),
+    "Zip hoodie negro lavado con una vidriera gótica en estampado crudo que ocupa toda la espalda y unas alas que se abren sobre los hombros. Por delante va limpia, porque el espectáculo está detrás.",
+    ["Corte boxy, largo a la cadera", "Felpa 400 g/m²", "Estampado XL en toda la espalda", "Delantero liso", "Cremallera metálica"],
+    "80% algodón, 20% poliéster",
+    "a boxy washed black fleece zip hoodie, " + HIP + ", plain front, shown from the BACK so the print is visible: a large ecru screen "
+    "print covering the entire back of an original gothic cathedral window with pointed-arch tracery, a rose window and filigree, flanked "
+    "by feathered wings that spread across both shoulders onto the upper sleeves, lightly cracked; hood laid flat above",
+    "back view looking over the shoulder through the black blunt fringe: hood down, worn with ash grey ultra-wide baggy jeans, black "
+    "platform Mary Janes with white socks, small silver cross hoop earrings, a black ribbed beanie dangling from one hand; feet together, "
+    "the other hand in the back pocket, the whole back print unobstructed",
+    badge="Top")
+
+add("spike-hoodie", "Spike Hoodie", "sudaderas", 89, "lux", ("Washed Black", "washed-black", "#2B2A2D"),
+    "Sudadera boxy de 450 g/m² en negro lavado con tachuelas piramidales plateadas en los hombros y en el borde de la capucha. Abrazos, sí, pero con cuidado.",
+    ["Corte boxy corto, hombro caído", "Felpa lavada 450 g/m²", "Tachuelas piramidales en hombros y capucha", "Bajo y puños deshilachados"],
+    "100% algodón. Tachuelas de metal sin níquel",
+    "a " + HEAVY + ", in washed black, front pouch pocket, " + FRAY + ", with rows of polished silver pyramid studs along both shoulder "
+    "seams and lining the edge of the hood",
+    "worn hood down over a white ribbed tank peeking at the neck, with raw indigo ultra-wide baggy jeans with an ecru thorned vine "
+    "climbing the legs, a white pyramid-studded belt, chunky black-and-white skate sneakers, layered silver chains and a spike ring, "
+    "sleeves pushed up to show the fine-line forearm tattoos, platinum wolf cut; hands in the front pocket, shoulders up, chewing-gum "
+    "attitude")
+
+add("nightmoth-hoodie", "Nightmoth Hoodie", "sudaderas", 75, "vera", ("Oxblood Acid", "oxblood-acid", "#5A1A20"),
+    "Sudadera de capucha burdeos con lavado ácido y una polilla nocturna con alas de filigrana en negro desteñido. Cuadrada, pesada y con cara de haberla encontrado en el mejor puesto del Rastro.",
+    ["Corte boxy corto, hombro caído", "Felpa 450 g/m² con lavado ácido", "Estampado desteñido de polilla de filigrana", "Bajo y puños deshilachados"],
+    "100% algodón",
+    "a " + HEAVY + ", in oxblood red acid wash with mottled faded marbling, front pouch pocket, " + FRAY + "; a large sun-faded black "
+    "print on the chest of an original night moth with wide wings patterned in ornamental filigree and a small skull-like marking on its "
+    "body, cracked and soft",
+    "worn hood up over the black blunt fringe, with ecru bone ultra-wide baggy jeans with black topstitching, black patent Mary Janes "
+    "with white socks, a silver choker with a small winged heart charm, the septum ring, sleeves pulled over the hands; arms hanging, "
+    "head slightly tilted, deadpan stare")
+
+add("iron-gate-hoodie", "Iron Gate Hoodie", "sudaderas", 75, "sombra", ("Bone", "bone", "#E9E2D3"),
+    "Sudadera de capucha color hueso con una verja de cementerio de forja estampada en negro en toda la espalda. Clara por delante y bastante tétrica por detrás.",
+    ["Corte boxy, largo a la cadera", "Felpa 400 g/m² color hueso", "Estampado de verja de forja en la espalda", "Puños y bajo de canalé"],
+    "100% algodón",
+    "a boxy ecru bone-coloured heavyweight fleece pullover hoodie, " + HIP + ", front pouch pocket, ribbed cuffs and hem, plain front, "
+    "shown from the BACK so the print is visible: a large black screen print covering the back of an original ornate wrought-iron "
+    "cemetery gate with spear-tipped bars, curling scrollwork and a small cross on top, a thorned vine wrapped around the bars; hood laid "
+    "flat above",
+    "back view, the layered jet-black hair visible from behind: hood down, worn with black ultra-wide baggy jeans with white topstitching, "
+    "grey chunky skate sneakers, a black studded leather backpack held low by its top handle at the side, wired headphones around the "
+    "neck; head bowed, standing completely still, the back print unobstructed")
+
+# =============================== CHÁNDAL (6) ===============================
+add("thornstorm-sweatpant", "Thornstorm Sweatpant", "chandal", 69, "sombra", ("Grey Acid", "grey-acid", "#7E7D7B"),
+    "Pantalón de chándal ancho en gris con lavado ácido y enormes formas de logo espinosas en negro cruzando los dos muslos. Unos relámpagos blancos muy finos completan la tormenta.",
+    ["Pierna ancha recta", "Felpa 450 g/m² con lavado ácido", "Formas de logo espinosas en los muslos", "Cintura elástica con cordón", "Bajo deshilachado"],
+    "100% algodón",
+    SWEAT_WIDE + ", in grey acid wash with cloudy marbled bleaching, raw frayed hems with shredded threads; large black " + LOGO
+    + " sprawl across the front of both thighs, with faint thin white lightning bolts branching around them; front view laid flat",
+    "worn with a boxy washed black heavy hoodie with silver pyramid studs on the shoulders, hood up, black puffy skate shoes under the "
+    "frayed hems, small silver keychain charms clipped to the drawcord, wired headphones around the neck, the long emo fringe falling "
+    "out of the hood over one eye; slouched, hands in the sweatpant side pockets, the thigh graphics fully visible",
+    fit="Baggy", badge="Nuevo")
+
+add("bleed-marble-jogger", "Bleed Marble Jogger", "chandal", 69, "vera", ("Marble White", "marble-white", "#E6E3DD"),
+    "Jogger con lavado marmolado blanco y formas de logo espinosas en burdeos que gotean por las perneras. Limpio de lejos y bastante sangriento de cerca.",
+    ["Jogger con puño de canalé", "Felpa 450 g/m² con lavado marmolado", "Formas de logo espinosas que gotean", "Cintura elástica con cordón"],
+    "100% algodón",
+    SWEAT_JOG + ", in marble white wash with soft grey cloudy veining; oxblood red " + LOGO + " across the upper front of both legs, with "
+    "long drips running down from them toward the knees; front view laid flat",
+    "worn with a fitted black fishnet long-sleeve over an oxblood red tank, black platform Mary Janes with frilly white socks above the "
+    "ribbed cuffs, a silver choker with a small winged heart charm, the septum ring and black blunt fringe; standing pigeon-toed with "
+    "hands in the side pockets, bored stare",
+    fit="Jogger")
+
+add("ember-sweatpant", "Ember Sweatpant", "chandal", 65, "lux", ("Distressed Grey", "distressed-grey", "#9C9A97"),
+    "Chándal ancho gris desgastado con llamas claras que suben desde el bajo deshilachado. Va de lujo con su sudadera a juego o con cualquier camiseta negra.",
+    ["Pierna ancha recta", "Felpa 450 g/m² desgastada", "Llamas claras desde el bajo", "Bajo deshilachado", "Cintura elástica con cordón"],
+    "100% algodón",
+    SWEAT_WIDE + ", in distressed mid grey with a worn faded wash and a few abraded patches at the knees, raw frayed hems with shredded "
+    "threads; pale off-white flames printed rising from the hems up to mid-shin on both legs, slightly cracked; front view laid flat",
+    "worn with a black and white striped fitted long-sleeve under a sheer black mesh short-sleeve tee, chunky black-and-white skate "
+    "sneakers under the frayed hems, layered silver chains, platinum wolf cut with dark roots; leaning against the wall with one foot "
+    "crossed over the other, smirk",
+    fit="Baggy")
+
+add("spine-sweatpant", "Spine Sweatpant", "chandal", 72, "sombra", ("Washed Charcoal", "washed-charcoal", "#3F3E3D"),
+    "Chándal ancho en carbón lavado con una columna de espinas en color arena bajando por el lateral de cada pierna. Con su sudadera a juego forma el conjunto más serio del catálogo.",
+    ["Pierna ancha recta", "Felpa 450 g/m² lavada", "Estampado tonal arena en los laterales", "Bajo deshilachado", "Cintura elástica con cordón"],
+    "100% algodón",
+    SWEAT_WIDE + ", in washed charcoal grey with a soft uneven fade, raw frayed hems with shredded threads; a tonal sand-coloured print "
+    "of an original spiked spine with thorn-like ribs runs down the outer side seam of each leg from hip to hem; laid flat in a slight "
+    "three-quarter turn so one side print is fully visible",
+    "worn with a short washed black zip hoodie zipped to the chin, grey chunky skate sneakers, a black ribbed beanie over the jet-black "
+    "hair, wired headphones around the neck; turned three-quarters so the spine print down the outer leg faces the camera, hands in the "
+    "hoodie pockets, eyes down",
+    fit="Baggy")
+
+add("x-ray-storm-jogger", "X-Ray Storm Jogger", "chandal", 72, "rizo", ("Black Acid", "black-acid", "#1E1E20"),
+    "Jogger negro con lavado ácido y relámpagos grises que se ramifican por las perneras, con una rodilla de rayos X en cada pierna. El conjunto perfecto con su sudadera, o por libre con lo que pilles.",
+    ["Jogger con puño de canalé", "Felpa 450 g/m² con lavado ácido", "Estampado de relámpagos y rodillas de rayos X", "Cintura elástica con cordón"],
+    "100% algodón",
+    SWEAT_JOG + ", in black acid wash with cloudy grey bleached marbling; grey branching lightning veins crackle down both legs and a "
+    "grey x-ray print of knee bones sits over each knee; front view laid flat",
+    "worn with an ecru bone raglan tee with black sleeves and a faded skull-and-roses print, black puffy skate shoes, a black trucker cap "
+    "worn backwards over the curly mop, a skateboard tucked under one arm; mid-laugh, weight on one leg",
+    fit="Jogger")
+
+add("frost-thorn-sweatpant", "Frost Thorn Sweatpant", "chandal", 72, "rizo", ("Ice Fade", "ice-fade", "#9DB8C9"),
+    "Chándal ancho en degradado de negro en la cintura a azul hielo en el bajo, con pinchos de espinas que suben desde los tobillos. Salpicaduras de lejía y bajo deshilachado de serie.",
+    ["Pierna ancha recta", "Felpa 450 g/m² teñida en degradado", "Pinchos tribales de espinas desde el bajo", "Salpicaduras de lejía", "Bajo deshilachado"],
+    "100% algodón",
+    SWEAT_WIDE + ", dip-dyed in a gradient from black at the waist through grey to pale ice blue at the hems, raw frayed hems with "
+    "shredded threads; sharp black thorny tribal spikes rise from the hems up to the knees, with small white bleach specks scattered all "
+    "over; front view laid flat",
+    "worn with a black regular tee with a cracked silver winged cross print, black puffy skate shoes under the frayed hems, a black ribbed "
+    "beanie on the curly mop, over-ear headphones around the neck; standing with feet wide apart and arms crossed, looking down at the "
+    "camera",
+    fit="Baggy")
+
+# =============================== CAMISETAS (8) ===============================
+add("second-skin-tee", "Second Skin Tee", "camisetas", 45, "sombra", ("Black / Stripe", "black-stripe", "#0B0B0C"),
     "Camiseta negra con mangas largas de rayas cosidas por debajo, así que el layering ya viene hecho de casa. En el pecho, un corazón alado envuelto en espinas en estampado blanco craquelado.",
     ["Corte regular, largo a la cadera", "Mangas largas de rayas cosidas bajo la manga corta", "Algodón 220 g/m²", "Estampado craquelado de corazón alado", "Puños con agujero para el pulgar"],
     "100% algodón. Mangas 95% algodón, 5% elastano",
@@ -198,7 +411,7 @@ add("second-skin-tee", "Second Skin Tee", "camisetas", 45, "kio", ("Black / Stri
     "beneath the short sleeves so it looks like a tee layered over a striped long-sleeve, thumbhole cuffs; on the chest a cracked white "
     "screen print of an original winged heart wrapped in a thorned vine with small radiating lines, distressed and crackled",
     "worn loosely half-tucked into washed black ultra-wide baggy jeans with white topstitching, a white pyramid-studded belt, black puffy "
-    "skate shoes, a fine silver chain with a filigree cross pendant, long black fringe over the eyes; arms hanging with thumbs through "
+    "skate shoes, a fine silver chain with a filigree cross pendant, the long emo fringe over one eye; arms hanging with thumbs through "
     "the thumbholes, slightly hunched, the chest print unobstructed",
     fit="Regular", badge="Nuevo", featured=True)
 
@@ -211,23 +424,23 @@ add("thorned-heart-baby-tee", "Thorned Heart Baby Tee", "camisetas", 35, "vera",
     "black rhinestones with a few silver ones catching the light",
     "worn with raw indigo ultra-wide baggy jeans slung low with an ecru thorned vine embroidered up the legs, a black leather belt with a "
     "double row of silver grommets, black chunky platform Mary Janes with white lace ankle socks, a black leather backpack with pyramid "
-    "studs on both shoulders, a silver choker with a small charm and septum ring; toes pointed inward, hands holding the backpack straps "
-    "at shoulder height, unimpressed stare",
+    "studs on both shoulders, a silver choker with a small charm and the septum ring; toes pointed inward, hands holding the backpack "
+    "straps at shoulder height, unimpressed stare",
     fit="Ajustado", unisex=False)
 
-add("rosebone-raglan", "Rosebone Raglan", "camisetas", 39, "bruno", ("Bone / Black", "bone-black", "#E9E2D3"),
+add("rosebone-raglan", "Rosebone Raglan", "camisetas", 39, "rizo", ("Bone / Black", "bone-black", "#E9E2D3"),
     "Raglán con cuerpo hueso y mangas negras con una calavera atravesada por rosas en estampado desgastado. Tiene pinta de camiseta heredada de tu hermano mayor, pero es solo tuya.",
     ["Corte regular, largo a la cadera", "Mangas raglán tres cuartos en negro", "Algodón 200 g/m² lavado", "Estampado desgastado de calavera con rosas"],
     "100% algodón",
     "a regular-fit raglan t-shirt with an ecru bone-coloured body and black three-quarter raglan sleeves, " + HIP + "; on the chest a "
     "faded vintage-style screen print of an original detailed human skull in profile with roses growing through the eye socket and "
     "blooming around the jaw, in washed black and oxblood red, slightly cracked",
-    "worn with ash grey ultra-wide baggy jeans with white topstitching, black puffy skate shoes, a black ribbed beanie on the big curly "
+    "worn with ash grey ultra-wide baggy jeans with white topstitching, black puffy skate shoes, a black ribbed beanie on the messy curly "
     "mop, a chunky silver curb bracelet, over-ear headphones resting around the neck, a skateboard held by the trucks down at his side; "
     "grinning sideways with the weight on one hip",
     fit="Regular")
 
-add("bramble-mesh-tee", "Bramble Mesh Tee", "camisetas", 39, "yara", ("Black", "black", "#0B0B0C"),
+add("bramble-mesh-tee", "Bramble Mesh Tee", "camisetas", 39, "lux", ("Black", "black", "#0B0B0C"),
     "Malla negra transparente con zarzas espinosas flocadas en relieve. Encima de una manga larga o sola, según cómo venga la noche.",
     ["Corte ajustado", "Malla semitransparente elástica", "Estampado flocado de zarzas en relieve", "Cuello redondo con ribete"],
     "92% poliamida, 8% elastano",
@@ -235,22 +448,22 @@ add("bramble-mesh-tee", "Bramble Mesh Tee", "camisetas", 39, "yara", ("Black", "
     "black velvety flock print winding across the body and sleeves, neat black binding at the neckline; semi-transparent fabric",
     "worn over a fitted white long-sleeve so the bramble pattern stands out, with black ultra-wide baggy jeans with ecru flames rising "
     "from the hem, a black pyramid-studded belt, worn black leather lace-up boots, stacked silver rings and a barbed silver chain, "
-    "tattooed hands; one shoulder against the wall, looking down at the camera with half-closed eyes",
+    "platinum wolf cut; one shoulder against the wall, looking down at the camera with half-closed eyes",
     fit="Ajustado")
 
-add("halo-foil-tee", "Halo Foil Tee", "camisetas", 39, "yara", ("Black", "black", "#0B0B0C"),
-    "La básica de {{MARCA}}: negra, corte regular y una cruz alada con halo en foil plateado craquelado. Va con todo lo que tienes en el armario y con todo lo que te vas a comprar.",
+add("halo-foil-tee", "Halo Foil Tee", "camisetas", 39, "lux", ("Black", "black", "#0B0B0C"),
+    "La básica de Pecado: negra, corte regular y una cruz alada con halo en foil plateado craquelado. Va con todo lo que tienes en el armario y con todo lo que te vas a comprar.",
     ["Corte regular, largo a la cadera", "Algodón peinado 220 g/m²", "Estampado en foil plateado craquelado", "Cuello de canalé reforzado"],
     "100% algodón",
     "a regular-fit black cotton t-shirt with a ribbed crew neck, " + HIP + "; on the chest a large distressed silver foil print of an "
     "original winged cross: a slim pointed cross with filigree ends, spread feathered wings behind it and a thin halo ring with radiating "
     "lines above, the foil cracked and partly worn away like a vintage transfer",
     "worn over a white long-sleeve with the sleeves pushed up, with washed black ultra-wide baggy jeans with white topstitching, a white "
-    "pyramid-studded belt, black puffy skate shoes, a small silver keychain charm set clipped to a belt loop, bleached curls with dark "
+    "pyramid-studded belt, black puffy skate shoes, a small silver keychain charm set clipped to a belt loop, platinum wolf cut with dark "
     "roots; hands in the front pockets, chin up, relaxed straight-on stance",
     fit="Regular", badge="Top", featured=True)
 
-add("ashfall-tee", "Ashfall Tee", "camisetas", 42, "bruno", ("Faded Charcoal", "faded-charcoal", "#4A4A4C"),
+add("ashfall-tee", "Ashfall Tee", "camisetas", 42, "rizo", ("Faded Charcoal", "faded-charcoal", "#4A4A4C"),
     "Gris carbón con lavado vintage y llamas desgastadas que suben por el pecho bajo una floritura caligráfica. Parece que la llevas desde hace diez años, y esa es justo la idea.",
     ["Corte boxy, largo a la cadera", "Algodón 240 g/m² con lavado enzimático", "Estampado craquelado de llamas", "Cuello y bajo ligeramente desgastados"],
     "100% algodón",
@@ -262,15 +475,15 @@ add("ashfall-tee", "Ashfall Tee", "camisetas", 42, "bruno", ("Faded Charcoal", "
     "cap brim and the other in a pocket",
     fit="Boxy")
 
-add("venom-cross-tee", "Venom Cross Tee", "camisetas", 42, "kio", ("Washed Black", "washed-black", "#2B2A2D"),
+add("venom-cross-tee", "Venom Cross Tee", "camisetas", 42, "sombra", ("Washed Black", "washed-black", "#2B2A2D"),
     "Negro lavado con una cruz que se derrite en relieve puff verde tóxico, rodeada de espinas. Es el único chispazo de color que necesitas esta temporada.",
     ["Corte boxy, largo a la cadera", "Algodón 240 g/m² lavado", "Estampado puff craquelado verde tóxico", "Cuello de canalé grueso"],
     "100% algodón",
     "a boxy washed black heavyweight cotton t-shirt, wide square body, " + HIP + ", thick ribbed collar; centred on the chest a raised "
     "cracked puff print in toxic lime green of an original gothic cross with dripping melting edges, encircled by a ring of sharp thorns",
     "worn over a fitted black fishnet long-sleeve, with ecru bone ultra-wide baggy jeans with black topstitching, a black pyramid-studded "
-    "belt with a small lime green padlock charm, grey chunky skate sneakers, long black fringe over the eyes, wired headphones around the "
-    "neck; slouched with one shoulder dropped, thumbs hooked in the belt",
+    "belt with a small lime green padlock charm, grey chunky skate sneakers, the long emo fringe over one eye and the silver lip ring, "
+    "wired headphones around the neck; slouched with one shoulder dropped, thumbs hooked in the belt",
     fit="Boxy")
 
 add("stone-angel-tee", "Stone Angel Tee", "camisetas", 45, "vera", ("Oxblood", "oxblood", "#4A1015"),
@@ -284,99 +497,8 @@ add("stone-angel-tee", "Stone Angel Tee", "camisetas", 45, "vera", ("Oxblood", "
     "pockets, staring straight into the camera",
     fit="Boxy")
 
-# =============================== SUDADERAS ===============================
-add("phantom-full-zip", "Phantom Full-Zip", "sudaderas", 89, "kio", ("Black", "black", "#0B0B0C"),
-    "Sudadera con cremallera que sube hasta cerrar la capucha sobre la cara, con dos ventanas de malla para ver sin que te vean. Filigrana plateada en la capucha y el anonimato que pide un lunes cualquiera.",
-    ["Corte boxy, largo a la cadera", "Cremallera completa hasta la coronilla", "Ventanas de malla a la altura de los ojos", "Felpa 400 g/m²", "Filigrana plateada estampada en la capucha"],
-    "80% algodón, 20% poliéster. Malla 100% poliéster",
-    "a boxy black heavyweight fleece full-zip hoodie whose long silver zip runs from the hem all the way up through the hood over the face "
-    "to the crown, two small black mesh eye windows in the hood, silver ornamental filigree print of curling scrolls on both sides of the "
-    "hood, two front pockets, ribbed cuffs and hem, " + HIP + "; laid flat with the hood fully zipped and spread above the body",
-    "worn zipped all the way over the face so only the mesh eye windows show, with washed black ultra-wide baggy jeans with white "
-    "topstitching, black puffy skate shoes, a silver wallet chain hanging below the hoodie hem; standing dead still facing the camera, "
-    "hands in the hoodie pockets, eerie and calm",
-    badge="Nuevo", featured=True)
-
-add("spike-hoodie", "Spike Hoodie", "sudaderas", 89, "yara", ("Washed Black", "washed-black", "#2B2A2D"),
-    "Zip hoodie negro lavado con tachuelas piramidales plateadas en los hombros y en el borde de la capucha. Abrazos, sí, pero con cuidado.",
-    ["Corte boxy, largo a la cadera", "Felpa lavada 400 g/m²", "Tachuelas piramidales metálicas en hombros y capucha", "Cremallera metálica plateada"],
-    "80% algodón, 20% poliéster. Tachuelas de metal sin níquel",
-    "a boxy washed black heavyweight fleece zip hoodie, " + HIP + ", with rows of polished silver pyramid studs along both shoulder seams "
-    "and lining the edge of the hood, silver metal zip, two front pockets, ribbed cuffs and hem",
-    "worn half-zipped over a white ribbed tank, hood down, with raw indigo ultra-wide baggy jeans with an ecru thorned vine climbing the "
-    "legs, a white pyramid-studded belt, chunky black-and-white skate sneakers, layered silver chains and a spike ring, tattooed hands; "
-    "hands in the hoodie pockets, shoulders up, chewing-gum attitude",
-    badge="Nuevo")
-
-add("ruin-knit", "Ruin Knit", "sudaderas", 85, "bruno", ("Faded Grey", "faded-grey", "#9A9896"),
-    "Jersey de punto gris desgastado con carreras, agujeros y una enredadera de espinas negra en intarsia. Viene roto de serie, así que tranquilo si se te engancha.",
-    ["Corte boxy, largo a la cadera", "Punto grueso con agujeros y carreras", "Intarsia de espinas en negro", "Puños y bajo sin rematar"],
-    "70% algodón, 30% acrílico",
-    "a boxy faded grey chunky knit crewneck sweater, wide square body, " + HIP + ", deliberately distressed with ladders, small holes and "
-    "dropped stitches, raw unfinished edges at the cuffs and hem; a black intarsia thorned vine twists diagonally from the left shoulder "
-    "across the chest to the right hip",
-    "worn over a white long-sleeve that shows through the holes, with washed black double-knee ultra-wide baggy carpenter jeans, black "
-    "puffy skate shoes, a black ribbed beanie on the curly mop, wired headphones around the neck; hands in the jeans pockets, looking "
-    "down at his shoes in a shy slouch")
-
-add("cathedral-hoodie", "Cathedral Hoodie", "sudaderas", 79, "vera", ("Washed Black", "washed-black", "#2B2A2D"),
-    "Zip hoodie negro lavado con una vidriera gótica en estampado crudo que ocupa toda la espalda y unas alas que se abren sobre los hombros. Por delante va limpia, porque el espectáculo está detrás.",
-    ["Corte boxy, largo a la cadera", "Felpa 400 g/m²", "Estampado XL en toda la espalda", "Delantero liso", "Cremallera metálica"],
-    "80% algodón, 20% poliéster",
-    "a boxy washed black fleece zip hoodie, " + HIP + ", plain front, shown from the BACK so the print is visible: a large ecru screen "
-    "print covering the entire back of an original gothic cathedral window with pointed-arch tracery, a rose window and filigree, flanked "
-    "by feathered wings that spread across both shoulders onto the upper sleeves, lightly cracked; hood laid flat above",
-    "back view looking over the shoulder through the black blunt fringe: hood down, worn with ash grey ultra-wide baggy jeans, black "
-    "platform Mary Janes with white socks, small silver cross hoop earrings, a black ribbed beanie dangling from one hand; feet together, "
-    "the other hand in the back pocket, the whole back print unobstructed",
-    badge="Top", featured=True)
-
-add("rosethorn-zip", "Rosethorn Zip", "sudaderas", 75, "yara", ("Heather Grey", "heather-grey", "#A7A7A9"),
-    "Zip hoodie gris jaspeado con una rama de rosa espinosa en strass negro que baja desde la capucha hasta el bolsillo. Brilla poco, pero brilla donde tiene que brillar.",
-    ["Corte regular, largo a la cadera", "Felpa jaspeada 360 g/m²", "Rama de rosa en strass negro", "Cremallera negra mate"],
-    "80% algodón, 20% poliéster",
-    "a regular-fit heather grey fleece zip hoodie, " + HIP + ", matte black zip; a long thorned rose stem made of black and dark grey "
-    "rhinestones runs from the left side of the hood down across the chest to the left pocket, ending in one open rose bloom, sparkling; "
-    "ribbed cuffs and hem",
-    "worn zipped to mid-chest over a fitted black long-sleeve, hood up loosely framing the bleached curls with dark roots, with washed "
-    "black ultra-wide baggy jeans, a white pyramid-studded belt with a small silver charm cluster, worn black leather boots; one hand on "
-    "the zip pull, the other hanging relaxed, sly half-smile",
-    fit="Regular")
-
-add("wildfire-hoodie", "Wildfire Hoodie", "sudaderas", 79, "bruno", ("Black", "black", "#0B0B0C"),
-    "Zip hoodie negro con llamas rojo sangre y crudo que suben desde el bajo y los puños. Póntela y verás cómo te hacen hueco en la rampa.",
-    ["Corte boxy, largo a la cadera", "Felpa 400 g/m²", "Llamas estampadas en bajo y puños", "Cremallera plateada"],
-    "80% algodón, 20% poliéster",
-    "a boxy black heavyweight fleece zip hoodie, " + HIP + ", silver zip; tall blood red flames with ecru inner cores printed rising from "
-    "the hem up to the chest and from both cuffs up to the elbows, crisp edges with slight cracking",
-    "worn zipped halfway over a faded grey tee, with raw indigo ultra-wide baggy jeans, black puffy skate shoes, a black ribbed beanie on "
-    "the curly mop, a silver wallet chain, a skateboard held upright by the nose beside him; mid-stride toward the camera with a cheeky "
-    "grin")
-
-add("iron-gate-hoodie", "Iron Gate Hoodie", "sudaderas", 75, "kio", ("Bone", "bone", "#E9E2D3"),
-    "Zip hoodie color hueso con una verja de cementerio de forja estampada en negro en toda la espalda. Clara por delante y bastante tétrica por detrás.",
-    ["Corte boxy, largo a la cadera", "Felpa 380 g/m² color hueso", "Estampado de verja de forja en la espalda", "Cremallera negra"],
-    "80% algodón, 20% poliéster",
-    "a boxy ecru bone-coloured fleece zip hoodie, " + HIP + ", black zip, plain front, shown from the BACK so the print is visible: a large "
-    "black screen print covering the back of an original ornate wrought-iron cemetery gate with spear-tipped bars, curling scrollwork and "
-    "a small cross on top, a thorned vine wrapped around the bars; hood laid flat above",
-    "back view, long black fringe visible from behind: hood down, worn with black ultra-wide baggy jeans with white topstitching, grey "
-    "chunky skate sneakers, a black leather backpack with pyramid studs held low by its top handle at the side, wired headphones around "
-    "the neck; head bowed, standing completely still, the back print unobstructed")
-
-add("nightmoth-hoodie", "Nightmoth Hoodie", "sudaderas", 72, "vera", ("Oxblood Acid", "oxblood-acid", "#5A1A20"),
-    "Sudadera de capucha burdeos con lavado ácido y una polilla nocturna con alas de filigrana en negro desteñido. Cuadrada, cómoda y con cara de haberla encontrado en el mejor puesto del Rastro.",
-    ["Corte boxy, largo a la cadera", "Felpa con lavado ácido", "Estampado desteñido de polilla de filigrana", "Bolsillo delantero de parche"],
-    "100% algodón",
-    "a boxy oxblood red acid-washed fleece pullover hoodie with a mottled faded wash, " + HIP + ", front pouch pocket; a large sun-faded "
-    "black print on the chest of an original night moth with wide wings patterned in ornamental filigree and a small skull-like marking "
-    "on its body, cracked and soft",
-    "worn hood up over the black blunt fringe, with ecru bone ultra-wide baggy jeans with black topstitching, black patent Mary Janes "
-    "with white socks, a silver choker with a small winged heart charm, septum ring, sleeves pulled over the hands; arms hanging, head "
-    "slightly tilted, deadpan stare")
-
-# ============================ POLOS Y CAMISAS ============================
-add("chapel-polo", "Chapel Polo", "polos-y-camisas", 49, "bruno", ("Black", "black", "#0B0B0C"),
+# ============================ POLOS Y CAMISAS (6) ============================
+add("chapel-polo", "Chapel Polo", "polos-y-camisas", 49, "rizo", ("Black", "black", "#0B0B0C"),
     "Polo negro de manga corta con un escudo de filigrana y espinas en foil plateado craquelado. El polo que tu abuelo no reconocería ni de lejos.",
     ["Corte regular, largo a la cadera", "Piqué de algodón 220 g/m²", "Escudo en foil plateado craquelado", "Tapeta de tres botones negros"],
     "100% algodón",
@@ -384,30 +506,18 @@ add("chapel-polo", "Chapel Polo", "polos-y-camisas", 49, "bruno", ("Black", "bla
     "black buttons; across the chest a large cracked silver foil print of an original ornamental shield-shaped crest made of filigree "
     "scrolls and thorned vines with a small cross at its centre and an arch of illegible ornamental calligraphic flourishes above",
     "worn over a white long-sleeve with the collar popped, with washed black ultra-wide baggy jeans, a white pyramid-studded belt, black "
-    "puffy skate shoes, a black ribbed beanie on the big curly mop; rocking back on his heels with hands in the pockets, cocky grin",
+    "puffy skate shoes, a black ribbed beanie on the messy curly mop; rocking back on his heels with hands in the pockets, cocky grin",
     fit="Regular", featured=True)
 
-add("thornline-polo", "Thornline Polo", "polos-y-camisas", 52, "kio", ("Ash Grey", "ash-grey", "#8C8A88"),
-    "Polo gris ceniza con una línea de espinas en strass negro que lo cruza en diagonal. Discreto de lejos e inesperado de cerca.",
-    ["Corte regular, largo a la cadera", "Punto de algodón lavado", "Espinas en strass negro", "Cuello de punto con ribete negro"],
-    "100% algodón",
-    "a regular-fit short-sleeve polo shirt in washed ash grey cotton jersey, " + HIP + ", black-tipped knit collar and sleeve bands, two "
-    "grey buttons; a band of black rhinestone thorned vine wraps diagonally across the front from the right shoulder down to the left hip, "
-    "glinting",
-    "worn over a black and white striped long-sleeve, with raw indigo ultra-wide baggy jeans, a black leather belt with a double row of "
-    "silver grommets hung with small silver charms, worn black leather boots, long black emo fringe covering the eyes, a silver spike "
-    "ring; one hand gripping the opposite elbow, awkward sideways lean",
-    fit="Regular")
-
-add("static-zip-polo", "Static Zip Polo", "polos-y-camisas", 55, "yara", ("Black", "black", "#0B0B0C"),
+add("static-zip-polo", "Static Zip Polo", "polos-y-camisas", 55, "lux", ("Black", "black", "#0B0B0C"),
     "Polo de cremallera negro con cuello color hueso y llamas desgastadas alrededor del bajo. Medio deportivo, medio callejero y cien por cien de noche.",
     ["Corte boxy, largo a la cadera", "Piqué de algodón", "Cremallera metálica corta", "Cuello en contraste hueso", "Llamas estampadas desgastadas"],
     "100% algodón",
     "a boxy short-sleeve zip polo in black cotton piqué, " + HIP + ", short silver metal zip at the neck, contrast ecru bone knit collar "
     "and sleeve bands; faded cracked ecru and grey flames printed rising from the hem around the lower body",
     "worn zipped halfway with a silver chain at the open neck, with ecru bone ultra-wide baggy jeans with black topstitching, a black "
-    "pyramid-studded belt, black puffy skate shoes, tattooed forearms, bleached curls with dark roots; holding the zip pull, head tilted, "
-    "smirk",
+    "pyramid-studded belt, black puffy skate shoes, fine-line forearm tattoos, platinum wolf cut with dark roots; holding the zip pull, "
+    "head tilted, smirk",
     badge="Nuevo")
 
 add("lullaby-polo", "Lullaby Polo", "polos-y-camisas", 45, "vera", ("Baby Pink", "baby-pink", "#F6C6D6"),
@@ -417,21 +527,11 @@ add("lullaby-polo", "Lullaby Polo", "polos-y-camisas", 45, "vera", ("Baby Pink",
     "a fitted short-sleeve polo shirt in baby pink fine ribbed stretch knit, " + HIP + ", black contrast collar, three small black "
     "buttons; on the left chest a small cracked black print of an original winged heart with a tiny cross above it",
     "worn with dark midnight indigo ultra-wide baggy jeans, a white pyramid-studded belt, black chunky platform Mary Janes with frilly "
-    "white socks, small silver cross hoop earrings and septum ring, a black ribbed beanie over the blunt fringe; hands on hips, chin down, "
-    "serious",
+    "white socks, small silver cross hoop earrings and the septum ring, a black ribbed beanie over the blunt fringe; hands on hips, chin "
+    "down, serious",
     fit="Ajustado")
 
-add("nave-knit-polo", "Nave Knit Polo", "polos-y-camisas", 55, "bruno", ("Washed Black", "washed-black", "#2B2A2D"),
-    "Polo de punto fino negro lavado con una banda de jacquard color hueso que dibuja arcos góticos sobre el pecho. Elegante a su manera, que no se parece a la de nadie.",
-    ["Corte boxy, largo a la cadera", "Punto fino de algodón", "Jacquard de arcos góticos", "Cuello abierto sin botones"],
-    "100% algodón",
-    "a boxy short-sleeve fine-gauge knit polo in washed black cotton, " + HIP + ", open johnny collar without buttons, ribbed hem and "
-    "cuffs; a horizontal jacquard band across the chest in ecru bone of repeating gothic pointed arches with small crosses and filigree",
-    "worn with faded ash grey ultra-wide baggy jeans, a black leather belt with a double row of silver grommets, grey chunky skate "
-    "sneakers, a chunky silver curb bracelet and a spike ring, the curly mop falling into his face, over-ear headphones around the neck; "
-    "one shoulder on the wall, arms loose, looking off to the side")
-
-add("sanctuary-bowling-shirt", "Sanctuary Bowling Shirt", "polos-y-camisas", 55, "yara", ("Black / Oxblood", "black-oxblood", "#0B0B0C"),
+add("sanctuary-bowling-shirt", "Sanctuary Bowling Shirt", "polos-y-camisas", 55, "lux", ("Black / Oxblood", "black-oxblood", "#0B0B0C"),
     "Camisa de bolos negra y burdeos con llamas y filigrana bordadas en crudo en la espalda. Llévala abierta sobre una camiseta y date la vuelta despacio.",
     ["Corte boxy, largo a la cadera", "Viscosa con caída", "Bordado en cadeneta en la espalda", "Paneles bicolor y cuello camp"],
     "100% viscosa",
@@ -439,18 +539,17 @@ add("sanctuary-bowling-shirt", "Sanctuary Bowling Shirt", "polos-y-camisas", 55,
     "oxblood back yoke, camp collar, black buttons, " + HIP + "; shown from the BACK so the art is visible: across the back an ecru "
     "chain-stitch embroidery of flames rising beneath an ornate filigree arch with a small winged cross at its peak",
     "back view turning the head over the shoulder: worn open over a white tank, with black ultra-wide baggy jeans, black puffy skate "
-    "shoes, layered silver chains, tattoos on the arms, bleached curls with dark roots; arms relaxed at the sides, one hand holding a "
-    "black ribbed beanie, the back embroidery unobstructed",
-    badge=None)
+    "shoes, layered silver chains, fine-line forearm tattoos, platinum wolf cut with dark roots; arms relaxed at the sides, one hand "
+    "holding a black ribbed beanie, the back embroidery unobstructed")
 
-add("vigil-camp-shirt", "Vigil Camp Shirt", "polos-y-camisas", 52, "kio", ("Black", "black", "#0B0B0C"),
+add("vigil-camp-shirt", "Vigil Camp Shirt", "polos-y-camisas", 52, "sombra", ("Black", "black", "#0B0B0C"),
     "Camisa de cuello abierto en viscosa negra con estampado integral de enredaderas espinosas y crucecitas aladas en gris. El verano de los que no toman el sol.",
     ["Corte regular, largo a la cadera", "Viscosa fluida", "Estampado integral en gris desteñido", "Cuello camp y botones negros"],
     "100% viscosa",
     "a regular-fit short-sleeve camp collar shirt in black fluid viscose, " + HIP + ", black buttons; an all-over print in faded grey of "
     "thorned vines intertwined with small winged crosses and tiny roses",
     "worn buttoned to the top, with ecru bone ultra-wide baggy jeans with black topstitching, a white pyramid-studded belt, black Mary "
-    "Janes with white socks, long black fringe covering the eyes, small silver cross hoop earrings, wired headphones around the neck; "
+    "Janes with white socks, the long emo fringe over one eye, small silver cross hoop earrings, wired headphones around the neck; "
     "standing straight with hands loosely clasped at the belt, eerie calm",
     fit="Regular")
 
@@ -461,12 +560,12 @@ add("veil-mesh-shirt", "Veil Mesh Shirt", "polos-y-camisas", 45, "vera", ("Black
     "a regular-fit short-sleeve button-up shirt in sheer black mesh, " + HIP + ", point collar edged with a narrow black lace trim "
     "patterned with thorns, small silver metal buttons; semi-transparent fabric",
     "worn open over a fitted baby pink baby tee with a black rhinestone heart, with black ultra-wide baggy jeans, a black leather belt "
-    "with a double row of silver grommets and a small charm cluster, worn black leather boots, a silver choker, septum ring and black "
+    "with a double row of silver grommets and a small charm cluster, worn black leather boots, a silver choker, the septum ring and black "
     "blunt fringe; one hand in the hair, the other on the hip, bored stare",
     fit="Regular")
 
-# =============================== CHAQUETAS ===============================
-add("sinner-biker", "Sinner Biker", "chaquetas", 240, "yara", ("Black", "black", "#0B0B0C"),
+# =============================== CHAQUETAS (8) ===============================
+add("sinner-biker", "Sinner Biker", "chaquetas", 240, "lux", ("Black", "black", "#0B0B0C"),
     "Biker de piel negra con tachuelas piramidales en los hombros y en las solapas. La chaqueta que te va a durar más que cualquier relación.",
     ["Corte regular, largo a la cadera", "Piel bovina con acabado mate", "Tachuelas piramidales metálicas", "Cremallera asimétrica plateada", "Cinturón en el bajo con hebilla"],
     "100% piel bovina. Forro 100% poliéster",
@@ -475,10 +574,10 @@ add("sinner-biker", "Sinner Biker", "chaquetas", 240, "yara", ("Black", "black",
     "the lapels; front view laid flat",
     "worn open over a black regular tee with a cracked silver winged cross print, with washed black ultra-wide baggy jeans with white "
     "topstitching, a black pyramid-studded belt, chunky black-and-white skate sneakers, a chunky silver curb bracelet and stacked rings, "
-    "tattooed hands, bleached curls with dark roots; collar flipped up, hands in the jacket pockets, chin raised, hard stare",
+    "platinum wolf cut with dark roots; collar flipped up, hands in the jacket pockets, chin raised, hard stare",
     fit="Regular", badge="Top", featured=True)
 
-add("relic-denim-jacket", "Relic Denim Jacket", "chaquetas", 139, "bruno", ("Washed Black", "washed-black", "#2B2A2D"),
+add("relic-denim-jacket", "Relic Denim Jacket", "chaquetas", 139, "rizo", ("Washed Black", "washed-black", "#2B2A2D"),
     "Cazadora vaquera negra lavada y rota con un corazón en llamas, alas y espinas bordado en toda la espalda. A juego con tus baggy o en contra de todo.",
     ["Corte boxy, largo a la cintura", "Denim 14 oz lavado y desgastado", "Bordado XL en la espalda", "Pespunte grueso crudo", "Botones metálicos plateados"],
     "100% algodón",
@@ -491,7 +590,7 @@ add("relic-denim-jacket", "Relic Denim Jacket", "chaquetas", 139, "bruno", ("Was
     "the back pocket; weight on one leg, the back embroidery fully visible",
     featured=True)
 
-add("nocturne-track-jacket", "Nocturne Track Jacket", "chaquetas", 120, "kio", ("Black / Oxblood", "black-oxblood", "#0B0B0C"),
+add("nocturne-track-jacket", "Nocturne Track Jacket", "chaquetas", 120, "sombra", ("Black / Oxblood", "black-oxblood", "#0B0B0C"),
     "Chaqueta de chándal de nylon negro con paneles burdeos, vivos plateados y espinas estampadas bajando por las mangas. Deportiva de nombre y nocturna de corazón.",
     ["Corte boxy, largo a la cadera", "Tricot de nylon brillante", "Paneles laterales burdeos", "Espinas estampadas en las mangas", "Cuello alto con cremallera"],
     "100% poliamida. Forro 100% poliéster",
@@ -499,7 +598,7 @@ add("nocturne-track-jacket", "Nocturne Track Jacket", "chaquetas", 120, "kio", (
     "and under the arms with thin silver-white piping along the seams, black thorned vines printed running down the outer sleeves over "
     "the oxblood, elastic cuffs and hem; no stripe tape, no logos",
     "worn zipped up to the chin with the collar over the mouth, with ash grey ultra-wide baggy jeans, grey chunky skate sneakers, a "
-    "small silver charm set on a belt loop, wired headphones over the collar, long black fringe over the eyes; hands in the jacket "
+    "small silver charm set on a belt loop, wired headphones over the collar, the long emo fringe over one eye; hands in the jacket "
     "pockets, hunched against the cold")
 
 add("howl-collar-jacket", "Howl Collar Jacket", "chaquetas", 159, "vera", ("Washed Black", "washed-black", "#2B2A2D"),
@@ -509,10 +608,10 @@ add("howl-collar-jacket", "Howl Collar Jacket", "chaquetas", 159, "vera", ("Wash
     "a boxy short jacket in washed black denim, hem at the waist, not long, silver metal buttons, two chest flap pockets, an oversized "
     "shaggy black faux-fur collar that spreads over the shoulders; front view laid flat",
     "worn buttoned with the faux-fur collar framing the face, with dark midnight indigo ultra-wide baggy jeans, black platform Mary Janes "
-    "with white socks, small silver cross hoops, septum ring and black blunt fringe; hands shoved in the jeans pockets, chin buried in the "
-    "fur, cold stare")
+    "with white socks, small silver cross hoops, the septum ring and black blunt fringe; hands shoved in the jeans pockets, chin buried in "
+    "the fur, cold stare")
 
-add("briar-puffer", "Briar Puffer", "chaquetas", 179, "yara", ("Matte Black", "matte-black", "#111113"),
+add("briar-puffer", "Briar Puffer", "chaquetas", 179, "lux", ("Matte Black", "matte-black", "#111113"),
     "Plumífero corto negro mate con el pespunte del acolchado dibujando una enredadera de espinas en color hueso. Abriga como un edredón y se ve como un tatuaje.",
     ["Corte boxy, largo a la cintura", "Nylon mate", "Acolchado con pespunte de espinas en hueso", "Relleno 100% poliéster reciclado", "Cuello alto"],
     "100% nylon. Relleno 100% poliéster reciclado",
@@ -520,11 +619,11 @@ add("briar-puffer", "Briar Puffer", "chaquetas", 179, "yara", ("Matte Black", "m
     "in ecru bone thread as winding thorned vines instead of straight channels, so the puffy baffles follow the vine shapes; front view "
     "laid flat",
     "worn zipped to the chest over a black hoodie with the hood out, with ecru bone ultra-wide baggy jeans with black topstitching, a "
-    "black pyramid-studded belt, chunky black skate sneakers, a black ribbed beanie over the bleached curls with dark roots, a barbed "
-    "silver chain; thumbs hooked in the jean pockets, wide stance, unbothered",
+    "black pyramid-studded belt, chunky black skate sneakers, a black ribbed beanie over the platinum wolf cut, a barbed silver chain; "
+    "thumbs hooked in the jean pockets, wide stance, unbothered",
     badge="Nuevo")
 
-add("sexton-work-jacket", "Sexton Work Jacket", "chaquetas", 135, "bruno", ("Faded Coal", "faded-coal", "#3A3836"),
+add("sexton-work-jacket", "Sexton Work Jacket", "chaquetas", 135, "rizo", ("Faded Coal", "faded-coal", "#3A3836"),
     "Chaqueta de trabajo en lona negra desteñida con cuello de pana color hueso y una pala cruzada con una rosa espinosa bordada en el bolsillo. Hecha para currar, patinar y mancharse sin drama.",
     ["Corte boxy, largo a la cadera", "Lona de algodón 12 oz desteñida", "Cuello de pana color hueso", "Bordado de pala y rosa en el bolsillo", "Pespunte triple crudo"],
     "100% algodón",
@@ -534,7 +633,7 @@ add("sexton-work-jacket", "Sexton Work Jacket", "chaquetas", 135, "bruno", ("Fad
     "worn open over a black tee and a white long-sleeve, with raw indigo ultra-wide baggy jeans, black puffy skate shoes, a black trucker "
     "cap backwards over the curly mop, a silver wallet chain, a skateboard held by the trucks at his side; easy stance, smirking")
 
-add("burnout-racer", "Burnout Racer", "chaquetas", 149, "kio", ("Black / Blood Red", "black-blood-red", "#0B0B0C"),
+add("burnout-racer", "Burnout Racer", "chaquetas", 149, "sombra", ("Black / Blood Red", "black-blood-red", "#0B0B0C"),
     "Chaqueta racing de nylon negro con llamas rojo sangre que suben por el cuerpo y las mangas, sin un solo parche de marca. Velocidad de los 2000 sin patrocinadores.",
     ["Corte boxy, largo a la cintura", "Nylon con acolchado ligero", "Llamas rojo sangre estampadas", "Cuello mao con presilla", "Sin logotipos"],
     "100% nylon. Relleno 100% poliéster",
@@ -542,7 +641,7 @@ add("burnout-racer", "Burnout Racer", "chaquetas", 149, "kio", ("Black / Blood R
     "shoulders; bold blood red flames with thin ecru outlines lick up from the hem across the body and from the cuffs up the sleeves; no "
     "patches, no logos, no text",
     "worn zipped up, with washed black ultra-wide baggy jeans, a white pyramid-studded belt, grey chunky skate sneakers, wired headphones "
-    "around the neck, long black fringe over one eye; one hand on the back of the neck, slouched sideways")
+    "around the neck, the long emo fringe over one eye and the silver lip ring; one hand on the back of the neck, slouched sideways")
 
 add("requiem-varsity", "Requiem Varsity", "chaquetas", 199, "vera", ("Washed Black / Bone", "washed-black-bone", "#2B2A2D"),
     "Varsity de paño negro lavado con mangas de polipiel color hueso y un corazón con espinas en chenilla en el pecho. El uniforme de un equipo que no existe y al que todos quieren unirse.",
@@ -552,11 +651,11 @@ add("requiem-varsity", "Requiem Varsity", "chaquetas", 199, "vera", ("Washed Bla
     "and hem, silver snaps, " + HIP + "; on the left chest a black and bone chenille patch of an original heart wrapped in thorns with a "
     "small flame on top, no letters, no numbers",
     "worn open over a sheer black mesh tee and a white long-sleeve, with black ultra-wide baggy jeans, a black leather belt with a double "
-    "row of silver grommets and a small charm cluster, black platform Mary Janes with grey socks, black blunt fringe, septum ring; leaning "
-    "back against the wall with one knee bent, hands in the jacket pockets",
+    "row of silver grommets and a small charm cluster, black platform Mary Janes with grey socks, black blunt fringe, the septum ring; "
+    "leaning back against the wall with one knee bent, hands in the jacket pockets",
     badge="Nuevo")
 
-# ================================= CAPAS =================================
+# ================================= CAPAS (8) =================================
 add("insomnia-stripe-ls", "Insomnia Stripe LS", "capas", 35, "vera", ("Black / White Stripe", "black-white-stripe", "#0B0B0C"),
     "Manga larga ajustada de rayas finas blancas y negras, la base de cualquier layering que se precie. Póntela debajo de cualquier camiseta y el look ya está medio hecho.",
     ["Corte ajustado", "Punto de algodón elástico", "Rayas tejidas, no estampadas", "Puños largos con agujero para el pulgar"],
@@ -564,11 +663,11 @@ add("insomnia-stripe-ls", "Insomnia Stripe LS", "capas", 35, "vera", ("Black / W
     "a fitted long-sleeve top in stretch cotton jersey with thin even horizontal yarn-dyed black and white stripes, crew neck, hem at the "
     "hip, extra-long cuffs with thumbholes; plain, no print",
     "worn under a sheer black mesh short-sleeve tee so the stripes show through everywhere, with washed black ultra-wide baggy jeans, a "
-    "white pyramid-studded belt, black puffy skate shoes, a silver spike ring, black blunt fringe and septum ring; arms stretched out in "
-    "front with thumbs through the thumbholes, sleepy face",
-    fit="Ajustado", featured=True)
+    "white pyramid-studded belt, black puffy skate shoes, a silver spike ring, black blunt fringe and the septum ring; arms stretched out "
+    "in front with thumbs through the thumbholes, sleepy face",
+    fit="Ajustado")
 
-add("altar-longsleeve", "Altar Longsleeve", "capas", 29, "kio", ("Optic White", "optic-white", "#F4F3EF"),
+add("altar-longsleeve", "Altar Longsleeve", "capas", 29, "sombra", ("Optic White", "optic-white", "#F4F3EF"),
     "Manga larga blanca ajustada con una crucecita negra bordada en el puño. Es la pieza más sencilla de la tienda y la que más vas a usar.",
     ["Corte ajustado", "Algodón 180 g/m² con elastano", "Cruz bordada en el puño izquierdo", "Agujero para el pulgar"],
     "95% algodón, 5% elastano",
@@ -576,10 +675,21 @@ add("altar-longsleeve", "Altar Longsleeve", "capas", 29, "kio", ("Optic White", 
     "black embroidered cross on the left cuff; otherwise plain",
     "worn alone and loosely tucked into ash grey ultra-wide baggy jeans, a black leather belt with a double row of silver grommets hung "
     "with small silver charms, grey chunky skate sneakers, a silver filigree cross pendant on the chest, wired headphones around the neck, "
-    "long black fringe over the eyes; sleeves pulled over the knuckles, head tilted, quiet",
+    "the long emo fringe over one eye; sleeves pulled over the knuckles, head tilted, quiet",
     fit="Ajustado")
 
-add("wraith-thermal", "Wraith Thermal", "capas", 39, "bruno", ("Washed Black", "washed-black", "#2B2A2D"),
+add("ruin-knit", "Ruin Knit", "capas", 79, "rizo", ("Distressed Black", "distressed-black", "#1A1A1B"),
+    "Jersey de punto negro desgastado con un jacquard gris de espinas abstractas, agujeros de polilla y el bajo deshilachado. Viene roto de serie, así que tranquilo si se te engancha.",
+    ["Corte boxy, hombro caído", "Punto grueso con agujeros y carreras", "Jacquard gris de espinas abstractas", "Bajo deshilachado sin rematar"],
+    "70% algodón, 30% acrílico",
+    "a boxy distressed black chunky knit crewneck sweater with dropped shoulders and a wide square body ending at the hip, not long; a "
+    "grey jacquard of abstract thorny shapes, jagged spikes and briar tangles across the body and sleeves, scattered moth holes and loose "
+    "ladders, a raw frayed hem with shredded yarn hanging",
+    "worn over a white long-sleeve that shows through the holes, with faded ash grey ultra-wide baggy jeans with white topstitching, black "
+    "puffy skate shoes, a black ribbed beanie on the curly mop, wired headphones around the neck; hands in the jeans pockets, looking "
+    "down at his shoes in a shy slouch")
+
+add("wraith-thermal", "Wraith Thermal", "capas", 39, "rizo", ("Washed Black", "washed-black", "#2B2A2D"),
     "Térmica de punto gofre negro lavado con bordes sin rematar y espinas estampadas en las mangas. Calentita, gastada y lista para ir debajo de todo.",
     ["Corte regular, largo a la cadera", "Punto gofre de algodón", "Bordes sin rematar", "Espinas estampadas en las mangas"],
     "100% algodón",
@@ -590,15 +700,15 @@ add("wraith-thermal", "Wraith Thermal", "capas", 39, "bruno", ("Washed Black", "
     "the head showing the sleeve prints, yawning half-smile",
     fit="Regular")
 
-add("ladder-arm-warmers", "Ladder Arm Warmers", "capas", 22, "yara", ("Black / Grey Stripe", "black-grey-stripe", "#0B0B0C"),
+add("ladder-arm-warmers", "Ladder Arm Warmers", "capas", 22, "lux", ("Black / Grey Stripe", "black-grey-stripe", "#0B0B0C"),
     "Calentadores de brazo de punto a rayas negras y grises con agujero para el pulgar y alguna carrera hecha a propósito. El truco para convertir cualquier camiseta en layering.",
     ["Punto acrílico suave", "Rayas negras y gris ceniza", "Agujero para el pulgar", "Carreras decorativas", "Largo hasta por encima del codo"],
     "100% acrílico",
     "a pair of long knit arm warmers in black and ash grey horizontal stripes reaching above the elbow, thumbholes at the ends, a few "
     "deliberate decorative ladders and runs in the knit, laid flat side by side",
     "three-quarter framing from the thighs up: worn on both arms with a washed black boxy tee with a toxic lime cracked cross print, "
-    "washed black ultra-wide baggy jeans, a black pyramid-studded belt, silver rings on the fingers poking out of the thumbholes, bleached "
-    "curls with dark roots; arms raised and crossed above the head to show the arm warmers, smirk",
+    "washed black ultra-wide baggy jeans, a black pyramid-studded belt, silver rings on the fingers poking out of the thumbholes, platinum "
+    "wolf cut with dark roots; arms raised and crossed above the head to show the arm warmers, smirk",
     kind="accessory", sizes=OS, fit="Elástico")
 
 add("snare-fishnet-top", "Snare Fishnet Top", "capas", 29, "vera", ("Black", "black", "#0B0B0C"),
@@ -608,21 +718,21 @@ add("snare-fishnet-top", "Snare Fishnet Top", "capas", 29, "vera", ("Black", "bl
     "a fitted long-sleeve top in wide-hole black stretch fishnet, crew neck with a neat black binding, hem at the hip, extra-long sleeves; "
     "see-through net",
     "worn over a fitted oxblood red tank top, with ecru bone ultra-wide baggy jeans with black topstitching, a black leather belt with a "
-    "double row of silver grommets, black platform Mary Janes with white socks, a silver choker with a small winged heart charm, septum "
-    "ring, black blunt fringe; hands in the back pockets, hip popped, sharp gaze",
+    "double row of silver grommets, black platform Mary Janes with white socks, a silver choker with a small winged heart charm, the "
+    "septum ring, black blunt fringe; hands in the back pockets, hip popped, sharp gaze",
     fit="Ajustado")
 
-add("lattice-knit-vest", "Lattice Knit Vest", "capas", 49, "kio", ("Faded Grey", "faded-grey", "#9A9896"),
+add("lattice-knit-vest", "Lattice Knit Vest", "capas", 49, "sombra", ("Faded Grey", "faded-grey", "#9A9896"),
     "Chaleco de punto gris desgastado con cenefas de espinas y una celosía gótica en jacquard negro. Encima de una manga larga de rayas o de una camisa, sin miedo.",
     ["Corte boxy, largo a la cadera", "Punto de algodón y lana", "Jacquard de espinas y celosía gótica", "Cuello de pico con ribete negro"],
     "60% algodón, 40% lana",
     "a boxy V-neck sweater vest in faded grey knit, " + HIP + ", black ribbed V-neck, armholes and hem, a black jacquard pattern of gothic "
     "lattice diamonds framed by thorned vine borders across the front, a few small deliberate snags",
     "worn over a black and white striped long-sleeve, with black ultra-wide baggy jeans with white topstitching, a white pyramid-studded "
-    "belt, worn black leather boots, a silver safety-pin earring, long black fringe covering the eyes; hands clasped behind the back, head "
-    "slightly bowed")
+    "belt, worn black leather boots, a silver safety-pin earring and the lip ring, the long emo fringe over one eye; hands clasped behind "
+    "the back, head slightly bowed")
 
-add("litany-longsleeve", "Litany Longsleeve", "capas", 42, "yara", ("Ash Grey", "ash-grey", "#8C8A88"),
+add("litany-longsleeve", "Litany Longsleeve", "capas", 42, "lux", ("Ash Grey", "ash-grey", "#8C8A88"),
     "Manga larga gris ceniza con florituras caligráficas negras estampadas a lo largo de las dos mangas y una cruz alada pequeña en el pecho. Para que se lea en los brazos lo que no dices en voz alta.",
     ["Corte regular, largo a la cadera", "Algodón 200 g/m² lavado", "Estampado caligráfico en las mangas", "Cruz alada pequeña en el pecho"],
     "100% algodón",
@@ -630,23 +740,12 @@ add("litany-longsleeve", "Litany Longsleeve", "capas", 42, "yara", ("Ash Grey", 
     "calligraphic flourishes run vertically down the outside of both sleeves from shoulder to cuff, and a small black winged cross is "
     "printed on the left chest",
     "worn alone with black ultra-wide baggy jeans with ecru flames rising from the hem, chunky black-and-white skate sneakers, a black "
-    "trucker cap, a chunky silver curb bracelet, tattooed hands, bleached curls with dark roots; arms held out to the sides with palms up "
-    "to show the sleeve prints, shrugging",
+    "trucker cap, a chunky silver curb bracelet, platinum wolf cut with dark roots; arms held out to the sides with palms up to show the "
+    "sleeve prints, shrugging",
     fit="Regular")
 
-add("toxic-rib-longsleeve", "Toxic Rib Longsleeve", "capas", 32, "bruno", ("Toxic Lime", "toxic-lime", "#B6F20D"),
-    "Manga larga de canalé ajustada en verde tóxico con agujero para el pulgar. El chispazo de color que asoma por debajo de una camiseta negra.",
-    ["Corte ajustado", "Canalé de algodón elástico", "Agujero para el pulgar", "Cuello redondo fino"],
-    "95% algodón, 5% elastano",
-    "a fitted long-sleeve top in toxic lime green stretch cotton rib knit, narrow crew neck, hem at the hip, long sleeves with thumbholes; "
-    "plain, no print",
-    "worn alone with washed black double-knee ultra-wide baggy carpenter jeans with a skull patch on the knee, a black leather belt with a "
-    "double row of silver grommets and a small lime padlock charm, black puffy skate shoes, a black ribbed beanie on the curly mop, wired "
-    "headphones around the neck; mid-laugh, hands in pockets, leaning slightly forward",
-    fit="Ajustado")
-
-# =============================== ACCESORIOS ===============================
-add("bone-pyramid-belt", "Bone Pyramid Belt", "accesorios", 39, "yara", ("White", "white", "#F2F0EA"),
+# =============================== ACCESORIOS (10) ===============================
+add("bone-pyramid-belt", "Bone Pyramid Belt", "accesorios", 39, "lux", ("White", "white", "#F2F0EA"),
     "Cinturón de piel blanca con tres hileras de tachuelas piramidales plateadas. Es la diferencia entre llevar baggy y saber llevarlo.",
     ["Piel vacuna blanca", "Tres hileras de tachuelas piramidales", "Hebilla de rodillo plateada", "Ancho de 4 cm"],
     "100% piel vacuna. Herrajes de metal sin níquel",
@@ -654,7 +753,7 @@ add("bone-pyramid-belt", "Bone Pyramid Belt", "accesorios", 39, "yara", ("White"
     "roller buckle, coiled loosely in an S-shape, no logos",
     "waist-down framing from the ribs to the knees: worn slung low through the loops of washed black ultra-wide baggy jeans with thick "
     "white topstitching, a black boxy tee tucked in at the front only, a silver wallet chain hanging from the hip and a small charm "
-    "cluster on a belt loop, tattooed hand with one thumb hooked in the belt",
+    "cluster on a belt loop, a fine-line tattooed forearm with one thumb hooked in the belt",
     kind="accessory", sizes=BELT, fit="Talla por cintura en cm", badge="Top")
 
 add("twin-grommet-belt", "Twin Grommet Belt", "accesorios", 35, "vera", ("Black", "black", "#0B0B0C"),
@@ -668,7 +767,7 @@ add("twin-grommet-belt", "Twin Grommet Belt", "accesorios", 35, "vera", ("Black"
     "top of the frame; hands resting on the hips",
     kind="accessory", sizes=BELT, fit="Talla por cintura en cm")
 
-add("reliquary-backpack", "Reliquary Backpack", "accesorios", 89, "kio", ("Black", "black", "#0B0B0C"),
+add("reliquary-backpack", "Reliquary Backpack", "accesorios", 89, "sombra", ("Black", "black", "#0B0B0C"),
     "Mochila de piel sintética negra con tachuelas piramidales en la solapa y las asas, cierres plateados y anilla para colgar tus charms. Cabe el portátil, cabe la cámara y caben todos tus problemas.",
     ["Piel sintética negra de grano", "Tachuelas piramidales en solapa y asas", "Funda acolchada para portátil de 14 pulgadas", "Anilla en D para llaveros", "35 × 28 × 12 cm"],
     "Exterior 100% poliuretano (piel sintética). Forro 100% poliéster. Tachuelas de metal sin níquel",
@@ -676,11 +775,11 @@ add("reliquary-backpack", "Reliquary Backpack", "accesorios", 89, "kio", ("Black
     "of silver pyramid studs and a cluster of studs forming a small cross in its centre, studded shoulder straps, a silver D-ring on the "
     "side, a front zip pocket, no logos, standing upright",
     "three-quarter back view from mid-thigh up: worn on both shoulders over a boxy black zip hoodie, with ash grey ultra-wide baggy jeans, "
-    "a small cluster of silver charms hanging from the backpack D-ring, long black fringe visible in profile as the head turns back over "
-    "the shoulder",
+    "a small cluster of silver charms hanging from the backpack D-ring, the long jet-black fringe visible in profile as the head turns back "
+    "over the shoulder",
     kind="accessory", fit="Talla única", featured=True)
 
-add("grave-chain", "Grave Chain", "accesorios", 29, "bruno", SILVER,
+add("grave-chain", "Grave Chain", "accesorios", 29, "rizo", SILVER,
     "Cadena de cartera gruesa de acero con dos mosquetones y una pequeña cruz alada colgando. Suena cuando caminas, y de eso se trata.",
     ["Acero inoxidable", "Eslabón barbado grueso", "Dos mosquetones", "Charm de cruz alada", "Largo de 60 cm"],
     "Acero inoxidable 316L",
@@ -691,14 +790,36 @@ add("grave-chain", "Grave Chain", "accesorios", 29, "bruno", SILVER,
     "hand lifting the chain slightly",
     kind="accessory", fit="Talla única")
 
-add("lurk-beanie", "Lurk Beanie", "accesorios", 25, "kio", ("Black", "black", "#0B0B0C"),
+add("lurk-beanie", "Lurk Beanie", "accesorios", 25, "sombra", ("Black", "black", "#0B0B0C"),
     "Gorro de canalé negro con vuelta y una pequeña cruz alada bordada en hilo plateado. Se lleva encasquetado hasta las cejas, sin excepciones.",
-    ["Punto de canalé", "Vuelta doble", "Cruz alada bordada en plateado"],
+    ["Punto de canalé", "Vuelta doble", "Cruz alada bordada en plateado", "Talla única elástica"],
     "100% acrílico",
     "a black ribbed knit cuffed beanie with a small embroidered winged cross in silver thread on the cuff, no text, laid flat",
-    "portrait framing from the chest up: worn pulled low to the eyebrows over the long black fringe, with a black zip hoodie with the hood "
-    "down, wired headphones around the neck and a silver safety-pin earring; looking up from under the fringe",
+    "portrait framing from the chest up: worn pulled low to the eyebrows with the long emo fringe falling out over one eye, a black zip "
+    "hoodie with the hood down, wired headphones around the neck, the silver lip ring; looking up from under the fringe",
     kind="accessory", fit="Talla única")
+
+add("acid-flame-beanie", "Acid Flame Beanie", "accesorios", 29, "rizo", ("Grey Acid", "grey-acid", "#7E7D7B"),
+    "Gorro con vuelta en punto gris efecto lavado ácido con llamas negras que suben desde el borde y un logo de espinas ilegible en la vuelta. Para los días de pelo imposible, que son casi todos.",
+    ["Punto de canalé con efecto lavado ácido", "Llamas negras tejidas", "Logo de espinas bordado en la vuelta", "Talla única elástica"],
+    "100% acrílico",
+    "a cuffed ribbed knit beanie in a grey acid-wash effect marled knit, with black flames knitted rising from the cuff up the crown, and "
+    "on the front of the cuff a small black embroidered logo made of " + LOGO + ", laid flat",
+    "portrait framing from the chest up: worn pulled low over the messy curly mop with curls escaping at the sides, over a mineral-washed "
+    "grey heavy hoodie with frayed cuffs, over-ear headphones around the neck; half-smile, eyes squinting",
+    kind="accessory", fit="Talla única", badge="Nuevo")
+
+add("frayed-thorn-cap", "Frayed Thorn Cap", "accesorios", 32, "lux", ("Washed Black", "washed-black", "#2B2A2D"),
+    "Gorra de seis paneles en negro lavado con la visera deshilachada, un brochazo de espinas blanco en la copa y una etiqueta tejida con emblema espinoso. Gastada desde el primer día.",
+    ["Sarga de algodón lavada", "Visera desgastada y deshilachada", "Estampado de espinas a brochazo", "Etiqueta tejida con emblema", "Cierre trasero ajustable"],
+    "100% algodón",
+    "an unstructured six-panel dad cap in faded washed black cotton twill with a curved brim whose edge is frayed and distressed with "
+    "loose threads, a white thorny brush-stroke print sweeping across the crown, a small black woven rectangular patch on the front with "
+    "an ecru thorny emblem (an abstract spiky shape, no letters), adjustable back strap with a metal buckle, placed at a three-quarter angle",
+    "portrait framing from the chest up: worn forwards and low over the bleached platinum wolf cut with dark roots, over a boxy washed "
+    "black heavy hoodie with silver pyramid studs on the shoulders, a fine-line tattooed forearm raised as one hand adjusts the brim; "
+    "looking sideways at the camera",
+    kind="accessory", fit="Ajustable")
 
 add("talisman-charm-set", "Talisman Charm Set", "accesorios", 22, "vera", ("Silver / Lime", "silver-lime", "#BFC2C6"),
     "Set de cuatro charms con mosquetón para la trabilla o la mochila: calavera, corazón alado, cruz y un candado verde tóxico. Combínalos como quieras o cuélgalos todos a la vez.",
@@ -710,17 +831,18 @@ add("talisman-charm-set", "Talisman Charm Set", "accesorios", 22, "vera", ("Silv
     "with a black pyramid-studded belt and a fitted black long-sleeve top, fingers with black nail polish flicking the charms",
     kind="accessory", fit="Talla única")
 
-add("scorch-trucker", "Scorch Trucker", "accesorios", 32, "yara", ("Washed Black", "washed-black", "#2B2A2D"),
+add("scorch-trucker", "Scorch Trucker", "accesorios", 32, "rizo", ("Washed Black", "washed-black", "#2B2A2D"),
     "Gorra trucker con frontal de espuma negro lavado, rejilla trasera y llamas rojo sangre bordadas alrededor de una cruz pequeña. Para llevar hacia atrás, por supuesto.",
     ["Frontal de espuma", "Rejilla trasera transpirable", "Bordado de llamas y cruz", "Cierre trasero de presión"],
     "Frontal 100% poliéster. Rejilla 100% nylon",
     "a trucker cap with a high washed black foam front panel, black mesh back, curved black brim and snapback closure; on the front a "
     "small embroidered ecru cross surrounded by blood red and ecru flames, no text, placed at a three-quarter angle",
-    "portrait framing from the chest up: worn slightly tilted with bleached curls with dark roots poking out, over a washed black zip "
-    "hoodie with silver pyramid studs on the shoulders, layered silver chains, a tattooed hand pinching the brim; squinting at the camera",
+    "portrait framing from the chest up: worn forwards and slightly tilted with dark brown curls bursting out at the sides, over a "
+    "black acid-wash heavy hoodie, a barbed silver chain, one hand pinching the brim so the embroidered front stays visible; squinting "
+    "at the camera with a crooked grin",
     kind="accessory", fit="Ajustable")
 
-add("fat-tongue-skate", "Fat Tongue Skate", "accesorios", 99, "bruno", ("Black Suede", "black-suede", "#141414"),
+add("fat-tongue-skate", "Fat Tongue Skate", "accesorios", 99, "rizo", ("Black Suede", "black-suede", "#141414"),
     "Zapatilla de skate inflada en ante negro con lengüeta gorda acolchada, suela blanca gruesa y pespunte crudo. La silueta de los 2000 vuelve a mandar en el parque.",
     ["Ante y lona", "Lengüeta y cuello acolchados XL", "Suela de goma gruesa", "Cordones planos anchos", "Sin logotipos"],
     "Exterior ante y lona. Suela de caucho",
@@ -731,7 +853,7 @@ add("fat-tongue-skate", "Fat Tongue Skate", "accesorios", 99, "bruno", ("Black S
     "is visible, one foot resting on a scuffed skateboard on the concrete floor",
     kind="accessory", sizes=SHOES, fit="Horma amplia: pide tu talla habitual", badge="Nuevo")
 
-# ================================= JOYERÍA =================================
+# ================================= JOYERÍA (6) =================================
 add("filigree-cross", "Filigree Cross", "joyeria", 59, "vera", SILVER,
     "Colgante de cruz en plata de ley 925 con bordes de filigrana y pequeñas espinas en las puntas, con cadena fina. La pieza que no te vas a quitar ni para dormir.",
     [STERLING, "Cruz de filigrana de 4 cm", "Relieves oxidados", "Cadena forzada fina incluida"],
@@ -742,54 +864,34 @@ add("filigree-cross", "Filigree Cross", "joyeria", 59, "vera", SILVER,
     "and septum ring visible at the top of the frame, a hand with silver rings lifting the chain slightly",
     kind="jewellery", sizes=["50 cm", "60 cm"], fit="Plata 925", featured=True)
 
-add("barb-chain", "Barb Chain", "joyeria", 69, "yara", SILVER,
+add("barb-chain", "Barb Chain", "joyeria", 69, "lux", SILVER,
     "Collar de plata 925 con eslabones de alambre de espino retorcido. Duro de aspecto y ligero de llevar.",
     [STERLING, "Eslabones de espino retorcido", "Cierre de mosquetón", "Grosor de 5 mm"],
     STERLING,
     "a sterling silver chain necklace made of twisted barbed-wire style links with small sharp barbs every few centimetres, polished with "
     "slightly oxidized recesses, lobster clasp, laid in a loose oval",
     "close-up of the neck and collarbones: worn layered with a thinner silver chain over a white ribbed tank under the open collar of a "
-    "black leather jacket, a small neck tattoo visible, bleached curls with dark roots at the edge of the frame",
+    "black leather jacket, the tips of the bleached platinum wolf cut at the edge of the frame",
     kind="jewellery", sizes=["45 cm", "50 cm", "55 cm"], fit="Plata 925", badge="Nuevo")
 
-add("spike-ring", "Spike Ring", "joyeria", 39, "bruno", SILVER,
+add("spike-ring", "Spike Ring", "joyeria", 39, "rizo", SILVER,
     "Anillo de plata 925 con una fila de pinchos cónicos alrededor de la banda. Pequeño, punki y mucho más cómodo de lo que parece.",
     [STERLING, "Pinchos cónicos de 3 mm", "Banda de 5 mm", "Pulido espejo"],
     STERLING,
     "a sterling silver band ring with a single row of small polished cone spikes all around it, mirror finish, standing upright",
-    "close-up of a hand wearing the spike ring on the index finger, hooked in the front pocket of washed black ultra-wide baggy jeans with "
-    "white topstitching, a chunky silver curb bracelet on the wrist",
+    "close-up of a pale hand wearing the spike ring on the index finger, hooked in the front pocket of washed black ultra-wide baggy jeans "
+    "with white topstitching, a chunky silver curb bracelet on the wrist",
     kind="jewellery", sizes=RING, fit="Plata 925", badge="Top")
 
-add("fallen-wing-ring", "Fallen Wing Ring", "joyeria", 45, "kio", SILVER,
+add("fallen-wing-ring", "Fallen Wing Ring", "joyeria", 45, "sombra", SILVER,
     "Anillo de plata 925 con forma de ala que envuelve el dedo. Cada pluma está detallada y oxidada para que el relieve destaque.",
     [STERLING, "Ala de plumas envolvente", "Relieve oxidado", "Bordes pulidos"],
     STERLING,
     "a sterling silver ring shaped like a single feathered wing that wraps around the finger, each feather finely detailed with dark "
     "oxidized grooves, polished edges, standing upright",
-    "close-up of a pale hand with chipped black nail polish wearing the wing ring on the middle finger, brushing the long black fringe "
-    "away from the face, the cuff of a black and white striped long-sleeve at the wrist",
+    "close-up of a pale hand with chipped black nail polish wearing the wing ring on the middle finger, brushing the long jet-black emo "
+    "fringe away from one eye, the cuff of a black and white striped long-sleeve at the wrist",
     kind="jewellery", sizes=RING, fit="Plata 925")
-
-add("pinprick-earring", "Pinprick Earring", "joyeria", 22, "yara", SILVER,
-    "Pendiente imperdible de plata 925 con una crucecita colgando. Se vende por unidad, porque los pares están sobrevalorados.",
-    [STERLING, "Imperdible de 25 mm", "Cruz colgante", "Se vende por unidad"],
-    STERLING,
-    "a single sterling silver safety-pin earring about 25 mm long with a tiny polished silver cross dangling from the coil, placed "
-    "diagonally",
-    "close-up profile of the ear wearing the safety-pin earring, short bleached curls with dark roots tucked behind the ear, the collar of "
-    "a black zip hoodie at the bottom of the frame",
-    kind="jewellery", sizes=["Unidad"], fit="Plata 925")
-
-add("knuckle-curb-bracelet", "Knuckle Curb Bracelet", "joyeria", 65, "bruno", SILVER,
-    "Pulsera de plata 925 de eslabón barbado grueso con cierre de caja. Pesa lo justo para que la notes cada vez que empujas.",
-    [STERLING, "Eslabón barbado de 9 mm", "Cierre de caja con seguro", "Pulido espejo"],
-    STERLING,
-    "a chunky sterling silver curb chain bracelet with wide flat 9 mm links and a box clasp, polished mirror finish, laid in a loose "
-    "circle",
-    "close-up of a wrist and hand wearing the curb bracelet, gripping the nose of a skateboard, the cuff of a black zip hoodie pushed up "
-    "the forearm",
-    kind="jewellery", sizes=["18 cm", "20 cm", "22 cm"], fit="Plata 925")
 
 add("wingheart-choker", "Wingheart Choker", "joyeria", 49, "vera", SILVER,
     "Gargantilla de plata 925 de cadena serpiente con un corazón alado colgando en el centro. Corta, ceñida y muy 2003.",
@@ -798,25 +900,23 @@ add("wingheart-choker", "Wingheart Choker", "joyeria", 49, "vera", SILVER,
     "a sterling silver snake chain choker necklace with a small polished heart charm with tiny feathered wings hanging at the centre, "
     "lobster clasp with a short extender chain, laid in a circle",
     "close-up of the neck and chin: worn snug at the base of the neck above the collar of a fitted baby pink baby tee, black blunt fringe, "
-    "septum ring and dark lipstick visible, chin slightly raised",
+    "the septum ring and dark lipstick visible, chin slightly raised",
     kind="jewellery", sizes=["35 cm", "40 cm"], fit="Plata 925")
 
-add("crosshang-hoops", "Crosshang Hoops", "joyeria", 35, "kio", SILVER,
+add("crosshang-hoops", "Crosshang Hoops", "joyeria", 35, "sombra", SILVER,
     "Pareja de aros pequeños de plata 925 con una cruz colgando de cada uno. Para llevarlos dobles, en el cartílago o donde te dé la gana.",
     [STERLING, "Aros de 12 mm", "Cruces colgantes de 1 cm", "Se venden por pareja"],
     STERLING,
     "a pair of small sterling silver hoop earrings about 12 mm wide with a slim polished cross dangling from each, placed side by side",
-    "close-up three-quarter profile of the ear wearing a cross hoop, long black fringe swept to the side, wired headphones around the "
-    "neck, the collar of a sheer black mesh shirt",
+    "close-up three-quarter profile of the ear wearing a cross hoop, the layered jet-black hair swept behind the ear, wired headphones "
+    "around the neck, the collar of a sheer black mesh shirt",
     kind="jewellery", sizes=["Par"], fit="Plata 925")
 
 # ---------------------------------------------------------------------------
-# Batches A–D: the i-th product of each category goes to batch "ABCD"[i % 4],
-# so every batch holds 2 pieces of each category (16 per batch, mixed).
-_seen = Counter()
-for p in P:
-    p["batch"] = "ABCD"[_seen[p["category"]] % 4]
-    _seen[p["category"]] += 1
+# Batches A–D: one counter running through the whole catalogue in order, so the
+# 72 products split 18/18/18/18 and every batch mixes all categories.
+for i, p in enumerate(P):
+    p["batch"] = "ABCD"[i % 4]
 
 data = dict(
     categories=[dict(slug=s, name=n) for s, n in CATEGORIES],
@@ -827,29 +927,31 @@ data = dict(
 
 # ------------------------------- validation --------------------------------
 BANNED = ["jnco", "affliction", "ed hardy", "chrome hearts", "westwood", "misfits", "sonic youth", "kangaroo",
-          "nike", "adidas", "vans", "converse", "dr. martens", "supreme", "bape", "balenciaga", "rick owens"]
+          "nike", "adidas", "vans", "converse", "dr. martens", "supreme", "bape", "balenciaga", "rick owens",
+          "metallica", "slayer", "{{marca}}"]
 slugs = [p["slug"] for p in P]
 names = [p["name"] for p in P]
-assert len(P) == 64, len(P)
-assert len(set(slugs)) == 64, "duplicate slugs"
-assert len(set(names)) == 64, "duplicate names"
+assert len(P) == 72, len(P)
+assert len(set(slugs)) == 72, "duplicate slugs"
+assert len(set(names)) == 72, "duplicate names"
 cats = Counter(p["category"] for p in P)
-assert set(cats) == {s for s, _ in CATEGORIES} and all(v == 8 for v in cats.values()), cats
+assert dict(cats) == EXPECTED, cats
+assert [s for s, _ in CATEGORIES] == list(EXPECTED)
 batches = Counter(p["batch"] for p in P)
-assert all(batches[b] == 16 for b in "ABCD"), batches
+assert all(batches[b] == 18 for b in "ABCD"), batches
 models = Counter(p["model"] for p in P)
 assert set(models) == set(MODELS), models
 assert sum(p["featured"] for p in P) == 12
 for p in P:
     assert len(p["colors"]) == 1 and len(p["colors"][0]["images"]) == 2, p["slug"]
     assert p["colors"][0]["variant"] is None
-    assert 4 <= len(p["details"]) <= 5 or p["slug"] == "lurk-beanie", (p["slug"], len(p["details"]))
+    assert 4 <= len(p["details"]) <= 5, (p["slug"], len(p["details"]))
     n_sent = len(re.findall(r"[.!?](?:\s|$)", p["description"]))
     assert n_sent == 2, (p["slug"], n_sent)
     assert p["kind"] in ("garment", "accessory", "jewellery")
     blob = json.dumps(p, ensure_ascii=False).lower()
     for w in BANNED:
-        assert not re.search(r"\b" + re.escape(w) + r"\b", blob), (p["slug"], w)
+        assert not re.search(r"(?<!\w)" + re.escape(w) + r"(?!\w)", blob), (p["slug"], w)
     if p["category"] == "vaqueros":
         assert p["fit"] == "Ultra baggy" and p["sizes"] == JEANS
         assert any(d.startswith("Bajo de") for d in p["details"]) and "Tiro medio-bajo" in p["details"], p["slug"]

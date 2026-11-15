@@ -1,8 +1,12 @@
-# streetwear-store — plantilla de tienda + brand book
+# ÓRBITA — tienda + brand book
+
+> Marca configurada desde la plantilla `streetwear-store`: ÓRBITA, streetwear unisex de la carrera espacial de los sesenta (Madrid). Brief en [`BRIEF.md`](./BRIEF.md). Sin fotos de campaña: el hero es tipográfico y banners/lookbook usan fotos de producto (`src/data/campaign.json`).
+
+## Plantilla de origen
 
 Plantilla reutilizable nacida de la web de **MUSKETEER** (`musketeer/`): tienda online de ropa high-end (catálogo con filtros, ficha con galería flat lay → modelo → espalda → detalle, cesta, checkout en modo demostración, lookbook, ayuda) y **Brand Book** online imprimible en PDF. Next.js 15 (App Router), JavaScript, CSS Modules, sin dependencias extra.
 
-Marca neutra de ejemplo: **BRAND** · *Your tagline* · 8 productos de muestra sin fotos (la web muestra placeholders hasta que existan).
+Configurada como **ÓRBITA** · *Fuera de órbita* · 64 productos (la web muestra placeholders si falta alguna foto).
 
 ## Arrancar
 

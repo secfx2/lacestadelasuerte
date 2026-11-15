@@ -1,12 +1,12 @@
 {
-  "name": "streetwear-store",
+  "name": "malafama",
   "version": "1.0.0",
   "private": true,
-  "description": "Reusable Next.js template for a streetwear brand store + online brand book (born from MUSKETEER).",
+  "description": "MALA FAMA — tienda online de conjuntos de chándal Y2K + brand book online (plantilla streetwear-store).",
   "scripts": {
-    "dev": "next dev -p 3100",
+    "dev": "next dev -p 3300",
     "build": "next build",
-    "start": "next start -p 3100",
+    "start": "next start -p 3300",
     "lint": "next lint",
     "logos": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-logo-data.mjs",
     "logos:placeholder": "python3 scripts/placeholder-logos.py && npm run logos",

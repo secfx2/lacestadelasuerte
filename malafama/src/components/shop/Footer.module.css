@@ -1,4 +1,17 @@
-.footer { margin-top: clamp(64px, 9vw, 140px); border-top: 1px solid var(--line); background: var(--paper); }
+/* MALA FAMA: the footer is the night block — tokens flipped locally (Crudo on Asfalto). */
+.footer {
+  --ink: #ede6da;
+  --paper: #111111;
+  --accent: #c7c9cc;
+  --alert: #8fa6e0;
+  --fog: #1c1c1c;
+  --line: rgba(237, 230, 218, 0.16);
+  --line-strong: rgba(237, 230, 218, 0.9);
+  --text-muted: rgba(237, 230, 218, 0.58);
+  margin-top: clamp(64px, 9vw, 140px);
+  background: var(--paper);
+  color: var(--ink);
+}
 .minimal { margin-top: 0; border-top: 0; }
 .minimal .bottom { margin-top: 0; }
 .top {
@@ -32,7 +45,7 @@
   text-transform: uppercase;
 }
 .copy { margin: 0; }
-.copy em { font-family: var(--font-serif); font-size: 14px; letter-spacing: 0; text-transform: none; }
+.copy em { font-family: var(--font-serif); font-size: 19px; letter-spacing: 0; text-transform: none; }
 .dot { margin: 0 6px; }
 .payments { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .payments li { padding: 4px 7px 3px; border: 1px solid var(--line); font-size: 9px; letter-spacing: 0.1em; line-height: 1.2; }

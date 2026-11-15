@@ -217,6 +217,7 @@
   .split { grid-template-columns: 1fr; }
   .silverImg { aspect-ratio: 4 / 5; }
   .wide { min-height: 0; padding-top: 22px; }
+  .wideMeta span:last-child { display: none; }
   .wideEmblem { top: 48px; width: 84px; }
   .wideTitle { margin-top: 64px; }
   .looks { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; padding-bottom: 40px; }

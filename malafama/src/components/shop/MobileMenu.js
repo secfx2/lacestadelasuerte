@@ -33,7 +33,7 @@ export default function MobileMenu({ open, onClose, onSearch }) {
             <IconClose size={18} />
           </button>
           <Link href="/" className={styles.logo} onClick={onClose} aria-label={`${brand.name} — inicio`}>
-            <Logo variant="wordmark" title={brand.name} style={{ height: 18, width: "auto", maxWidth: 160 }} />
+            <Logo variant="wordmark" title={brand.name} style={{ height: 26, width: "auto", maxWidth: 170 }} />
           </Link>
           <button type="button" className={styles.icon} onClick={onSearch} aria-label="Buscar">
             <IconSearch />

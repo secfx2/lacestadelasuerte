@@ -44,10 +44,10 @@
   align-items: flex-start;
   gap: 6px;
   font-size: 22px;
-  font-stretch: 125%;
-  font-weight: 500;
+  font-stretch: var(--head-stretch);
+  font-weight: var(--head-weight);
   text-transform: uppercase;
-  letter-spacing: -0.005em;
+  letter-spacing: 0.005em;
   line-height: 1.12;
 }
 .cat sup { font-size: 9px; font-weight: 400; letter-spacing: 0.04em; color: var(--text-muted); margin-top: 2px; }
@@ -55,7 +55,7 @@
 .links { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; font-size: var(--fs-xs); letter-spacing: var(--track-caps); text-transform: uppercase; }
 .links a { display: inline-block; }
 .motto { margin: 36px 0 0; max-width: 260px; font-size: var(--fs-body); line-height: 1.5; color: var(--text-muted); }
-.motto em { font-family: var(--font-serif); font-size: 17px; color: var(--ink); }
+.motto em { font-family: var(--font-serif); font-size: 22px; color: var(--accent); }
 
 .feature { display: block; position: relative; }
 .featureImg { aspect-ratio: 4 / 5; max-height: 360px; width: 100%; }

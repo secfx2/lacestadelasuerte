@@ -1,7 +1,7 @@
 .marquee {
   overflow: hidden;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
+  background: var(--ink);
+  color: var(--bone);
   padding: clamp(14px, 2vw, 26px) 0;
   user-select: none;
 }
@@ -12,20 +12,21 @@
   display: inline-flex;
   align-items: center;
   white-space: nowrap;
-  font-size: clamp(44px, 8.5vw, 132px);
-  font-stretch: 125%;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: -0.02em;
-  line-height: 0.95;
+  font-family: var(--font-display);
+  font-size: clamp(46px, 8.5vw, 132px);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.05;
 }
-.marquee[data-size="md"] .item { font-size: clamp(28px, 4.5vw, 64px); }
-.item:nth-child(even) { font-family: var(--font-serif); font-style: italic; font-weight: 400; font-stretch: 100%; text-transform: none; letter-spacing: -0.01em; }
+.marquee[data-size="md"] .item { font-size: clamp(30px, 4.6vw, 66px); }
+.item:nth-child(even) { font-family: var(--font-serif); font-weight: 400; font-size: 1.08em; text-transform: none; letter-spacing: 0; color: var(--steel); }
+.item:nth-child(even) .sep { font-size: 0.92em; }
 .sep {
-  width: 0.36em;
+  width: 0.44em;
   height: 0.48em;
-  margin: 0 0.42em;
-  background: var(--ink);
+  margin: 0 0.5em;
+  background: var(--accent);
   -webkit-mask: url("/brand/emblem-black.svg") center / contain no-repeat;
   mask: url("/brand/emblem-black.svg") center / contain no-repeat;
 }

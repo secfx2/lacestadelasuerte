@@ -2653,3 +2653,9 @@
 .taBoxTape { right: 8%; width: 7%; }
 .taBoxSeal { right: 4.5%; bottom: 12%; width: 14%; }
 .taStickers { background: var(--fog); }
+@media (max-width: 900px) {
+  .swatchName, .prodName { font-size: 13px; }
+  .sansSample { max-width: none; font-size: 20px; }
+  .retype { font-size: 18px; }
+  .taBoxMeta { font-size: 2.2cqw; }
+}

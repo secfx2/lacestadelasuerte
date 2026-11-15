@@ -16,8 +16,8 @@
 .look:hover .img img { transform: scale(1.02); }
 .caption { padding-top: 16px; }
 .capHead { display: flex; align-items: baseline; gap: 14px; }
-.num { font-size: 22px; font-stretch: 125%; font-weight: 600; letter-spacing: -0.01em; }
-.title { font-family: var(--font-serif); font-style: italic; font-size: 20px; }
+.num { font-size: 22px; font-stretch: var(--head-stretch); font-weight: var(--head-weight); letter-spacing: 0.005em; }
+.title { font-family: var(--font-serif); font-size: 27px; line-height: 1; }
 .inLook { margin: 14px 0 8px; font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }
 .pieces { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); max-width: 460px; }
 .piece {
@@ -36,10 +36,10 @@
   margin: 0;
   text-align: center;
   font-family: var(--font-serif);
-  font-style: italic;
-  font-size: clamp(56px, 10vw, 168px);
-  line-height: 0.9;
-  letter-spacing: -0.02em;
+  font-size: clamp(56px, 9.5vw, 160px);
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--accent);
 }
 .marquee { margin-top: clamp(72px, 9vw, 140px); }
 .cta { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; padding: 40px var(--page-pad) 0; }

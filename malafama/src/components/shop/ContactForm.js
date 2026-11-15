@@ -22,7 +22,7 @@ export default function ContactForm() {
       <div role="status" style={{ padding: "20px 0" }}>
         <p className="caps" style={{ margin: 0, fontWeight: 500 }}>Mensaje recibido.</p>
         <p className="muted" style={{ margin: "8px 0 0", fontSize: 13 }}>
-          Te responderemos en un plazo de 24–48 h laborables. <em className="serif" style={{ fontSize: 16, color: "var(--ink)" }}>{brand.motto}.</em>
+          Te responderemos en un plazo de 24–48 h laborables. <em className="serif" style={{ fontSize: 21, color: "var(--accent)" }}>{brand.motto}.</em>
         </p>
       </div>
     );

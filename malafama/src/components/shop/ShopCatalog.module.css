@@ -98,7 +98,7 @@
 .grid[data-density="large"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
 .empty { padding: 96px var(--page-pad) 40px; text-align: center; }
-.emptyTitle { margin: 0; font-size: 22px; font-stretch: 125%; font-weight: 600; text-transform: uppercase; }
+.emptyTitle { margin: 0; font-size: 22px; font-stretch: var(--head-stretch); font-weight: var(--head-weight); text-transform: uppercase; }
 .emptyText { margin: 10px 0 28px; font-size: var(--fs-body); color: var(--text-muted); }
 .emptyActions { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
 

@@ -1,0 +1,38 @@
+[
+  {
+    "slug": "musketeer",
+    "name": "MUSKETEER",
+    "tagline": "Tous pour un",
+    "concept": "Ropa unisex high-end de corte boxy inspirada en los mosqueteros: punto pesado, chaquetas con capa y joyería de plata 925.",
+    "hero": "campaign/hero.jpg",
+    "heroPosition": "46% 30%",
+    "accent": "#1F2B4D"
+  },
+  {
+    "slug": "orbita",
+    "name": "ÓRBITA",
+    "tagline": "Fuera de órbita",
+    "concept": "Moda retro space-age de los años 60: chaquetas de vuelo naranja seguridad, plata metalizada y siluetas de cápsula.",
+    "hero": "products/capsule-flight-jacket/safety-orange-2.jpg",
+    "heroPosition": "50% 18%",
+    "accent": "#FF5A1F"
+  },
+  {
+    "slug": "malafama",
+    "name": "MALA FAMA",
+    "tagline": "Que hablen",
+    "concept": "Conjuntos Y2K de chándal lavado con paneles tribales y tonos desgastados, para quien no pide permiso.",
+    "hero": "products/tribal-panel-set/burdeos-lavado-2.jpg",
+    "heroPosition": "50% 18%",
+    "accent": "#7B2D3A"
+  },
+  {
+    "slug": "pecado",
+    "name": "PECADO",
+    "tagline": "Y2K grunge · mall goth",
+    "concept": "Grunge Y2K y estética mall goth: vaqueros ultra baggy con bordados, negro lavado y herrajes plateados.",
+    "hero": "campaign/hero.jpg",
+    "heroPosition": "50% 30%",
+    "accent": "#5E2B7E"
+  }
+]

@@ -9,8 +9,8 @@
 .eyebrow { margin: 6px 0 0; font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }
 .manifestoText { max-width: 760px; font-size: 15px; line-height: 1.7; color: #2b2b2b; }
 .manifestoText p { margin: 0 0 18px; }
-.lead { font-family: var(--font-serif); font-size: clamp(28px, 3.4vw, 48px) !important; line-height: 1.08 !important; color: var(--ink); margin-bottom: 32px !important; letter-spacing: -0.01em; }
-.sign em { font-family: var(--font-serif); font-size: 24px; color: var(--ink); }
+.lead { font-family: var(--font-serif); font-size: clamp(34px, 4vw, 58px) !important; line-height: 1.12 !important; color: var(--ink); margin-bottom: 32px !important; letter-spacing: 0; }
+.sign em { font-family: var(--font-serif); font-size: 34px; color: var(--accent); }
 
 .values {
   display: grid;
@@ -19,19 +19,19 @@
   margin: clamp(64px, 8vw, 128px) var(--page-pad) 0;
 }
 .value { padding: 28px 24px 32px; background: var(--fog); min-height: 280px; display: flex; flex-direction: column; }
-.valueN { font-family: var(--font-serif); font-size: 28px; font-style: italic; }
-.valueTitle { margin: auto 0 0; padding-top: 40px; font-size: 20px; font-stretch: 125%; font-weight: 600; text-transform: uppercase; letter-spacing: -0.01em; }
+.valueN { font-family: var(--font-display); font-size: 36px; line-height: 1; color: var(--accent); }
+.valueTitle { margin: auto 0 0; padding-top: 40px; font-size: 20px; font-stretch: var(--head-stretch); font-weight: var(--head-weight); text-transform: uppercase; letter-spacing: 0.005em; }
 .valueText { margin: 10px 0 0; font-size: var(--fs-body); line-height: 1.6; color: #4a4a4a; }
 
 .seal { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; padding: clamp(64px, 8vw, 128px) var(--page-pad) 0; }
 .sealLogo { width: clamp(110px, 12vw, 160px); height: auto; color: var(--ink); }
-.sealText { margin: 0; max-width: 34ch; font-family: var(--font-serif); font-style: italic; font-size: clamp(20px, 2vw, 26px); line-height: 1.2; }
+.sealText { margin: 0; max-width: 30ch; font-family: var(--font-serif); font-size: clamp(26px, 2.6vw, 34px); line-height: 1.15; }
 
 .links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: clamp(64px, 8vw, 128px) var(--page-pad) 0; }
 .linkCard { display: flex; flex-direction: column; gap: 8px; padding: 28px; border: 1px solid var(--line); min-height: 240px; transition: border-color var(--dur-fast), background-color var(--dur-fast); }
 .linkCard:hover { border-color: var(--ink); }
 .linkEyebrow { font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }
-.linkTitle { font-size: 24px; font-stretch: 125%; font-weight: 600; text-transform: uppercase; letter-spacing: -0.01em; }
+.linkTitle { font-size: 24px; font-stretch: var(--head-stretch); font-weight: var(--head-weight); text-transform: uppercase; letter-spacing: 0.005em; }
 .linkText { font-size: var(--fs-body); color: var(--text-muted); line-height: 1.55; }
 .linkCta { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-xs); letter-spacing: var(--track-caps); text-transform: uppercase; }
 
