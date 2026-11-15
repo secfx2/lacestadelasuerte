@@ -61,6 +61,17 @@ const HERO =
   PRODUCTS.find((p) => p.kind === "garment" && (p.colors?.[0]?.images || []).length >= 4) ||
   PRODUCTS[0];
 const HERO_IMAGES = HERO?.colors?.[0]?.images || [];
+/** Short sequences (2 shots: flat lay + on model): show the sequence of several products side by side. */
+const SEQ_SHOTS =
+  PHOTO.sequence.length >= 4
+    ? PHOTO.sequence.map((p, i) => ({ ...p, product: HERO, src: HERO_IMAGES[i] }))
+    : (PHOTO.pairSlugs || [HERO?.slug])
+        .map((slug) => PRODUCTS.find((p) => p.slug === slug))
+        .filter(Boolean)
+        .flatMap((prod) => PHOTO.sequence.map((p, i) => ({ ...p, product: prod, src: prod.colors?.[0]?.images?.[i] })))
+        .slice(0, 4);
+/** With no photographic mockups, chapter 08 draws typographic applications with the logo SVGs. */
+const TYPO_APPS = APPLICATIONS.typographic || [];
 const capitalize = (k) => k.charAt(0).toUpperCase() + k.slice(1);
 /** Fixed casting = the `models` map of catalog.json (key → name shown in the book). */
 const CASTING = Object.entries(catalog.models || {}).map(([key, m]) => ({ key, name: m.name || capitalize(key) }));
@@ -101,6 +112,103 @@ function MockFigure({ m, ratio, className = "" }) {
       <figcaption className={s.caption}>
         <strong>{m.t}</strong>
         <span>{m.v}</span>
+      </figcaption>
+    </figure>
+  );
+}
+
+/** Typographic application drawn with the logo SVGs (used while there are no photographic mockups). */
+function TypoApp({ a, ratio, className = "" }) {
+  if (!a) return null;
+  const art = {
+    box: (
+      <div className={s.taBox}>
+        <div className={s.taBoxLid}>
+          <div className={s.taBoxLogo}><Logo variant="wordmark" className={s.fit} title={brand.name} /></div>
+          <span className={s.taBoxMeta}>{brand.tagline} · {brand.city}</span>
+          <span className={s.taBoxTape} />
+          <div className={s.taBoxSeal}><Logo variant="seal" className={s.fit} title="Sello" /></div>
+        </div>
+      </div>
+    ),
+    woven: (
+      <div className={s.taWoven}>
+        <div className={s.taWovenLabel}>
+          <div className={s.taWovenMark}><Logo variant="monogram" className={s.fit} title={brand.shortName} /></div>
+        </div>
+        <div className={s.taSize}>M</div>
+      </div>
+    ),
+    hangtag: (
+      <div className={s.taTagWrap}>
+        <span className={s.taString} />
+        <div className={s.taTag}>
+          <span className={s.taHole} />
+          <div className={s.taTagLogo}><Logo variant="wordmark" className={s.fit} title={brand.name} /></div>
+          <dl className={s.taTagData}>
+            <div><dt>Pieza</dt><dd>{HERO?.name}</dd></div>
+            <div><dt>Ref.</dt><dd>{brand.skuPrefix}-001</dd></div>
+            <div><dt>Color</dt><dd>{HERO?.colors?.[0]?.name}</dd></div>
+            <div><dt>Talla</dt><dd>M</dd></div>
+          </dl>
+          <span className={s.taTagPrice}>{formatPrice(HERO?.price || 0)}</span>
+          <div className={s.taTagEmblem}><Logo variant="emblem" className={s.fit} title="" /></div>
+        </div>
+      </div>
+    ),
+    patch: (
+      <div className={s.taPatchWrap}>
+        <div className={s.taPatch}>
+          <div className={s.taPatchSeal}><Logo variant="seal" className={s.fit} title="Parche" /></div>
+        </div>
+      </div>
+    ),
+    graphic: (
+      <div className={s.taGraphic}>
+        <span className={s.taGraphicMeta}>Espalda · serigrafía a una tinta</span>
+        <div className={s.taGraphicMark}><Logo variant="graphic" className={s.fit} title="Marca en arco" /></div>
+        <span className={s.taGraphicMeta}>{brand.city} · {brand.year}</span>
+      </div>
+    ),
+    tape: (
+      <div className={s.taTapeWrap}>
+        {[0, 1, 2].map((r) => (
+          <div key={r} className={s.taTape}>
+            {Array.from({ length: 6 }).map((_, i) => (
+              <span key={i} className={s.taTapeItem}>
+                <span className={s.taTapeLogo}><Logo variant="wordmark" className={s.fit} title="" /></span>
+                <span className={s.taTapeEmblem}><Logo variant="emblem" className={s.fit} title="" /></span>
+              </span>
+            ))}
+          </div>
+        ))}
+      </div>
+    ),
+    jewel: (
+      <div className={s.taJewelWrap}>
+        <div className={s.taJewel}>
+          <div className={s.taJewelMark}><Logo variant="monogram" className={s.fit} title={brand.shortName} /></div>
+          <span className={s.taJewelMeta}>Plata 925</span>
+        </div>
+      </div>
+    ),
+    stickers: (
+      <div className={s.taStickers}>
+        <div className={`${s.taSticker} ${s.taStickerSeal}`}><Logo variant="seal" className={s.fit} title="" /></div>
+        <div className={`${s.taSticker} ${s.taStickerEmblem}`}><Logo variant="emblem" className={s.fit} title="" /></div>
+        <div className={`${s.taSticker} ${s.taStickerMono}`}><Logo variant="monogram" className={s.fit} title="" /></div>
+        <div className={`${s.taSticker} ${s.taStickerWord}`}><Logo variant="wordmark" className={s.fit} title="" /></div>
+      </div>
+    ),
+  };
+  return (
+    <figure className={`${s.mock} ${className}`}>
+      <div className={`${s.mockFrame} ${s.taFrame}`} style={{ aspectRatio: ratio || a.ratio }}>
+        {art[a.kind] || null}
+      </div>
+      <figcaption className={s.caption}>
+        <strong>{a.t}</strong>
+        <span>{a.v}</span>
       </figcaption>
     </figure>
   );
@@ -164,7 +272,7 @@ export default function BrandBook() {
       <main className={s.main}>
         {/* 00 ─ PORTADA ───────────────────────────────────────────────── */}
         <Chapter c={C.portada}>
-          <Sheet chapter={C.portada} bare className={s.cover}>
+          <Sheet chapter={C.portada} bare tone="ink" className={s.cover}>
             <div className={s.coverTop}>
               <span>Brand Book</span>
               <span>Manual de identidad</span>
@@ -565,9 +673,43 @@ export default function BrandBook() {
 
         {/* 05 ─ TIPOGRAFÍA ────────────────────────────────────────────── */}
         <Chapter c={C.tipografia}>
+          {FONTS.display && (
+            <Sheet chapter={C.tipografia} label={FONTS.display.family} className={s.displaySheet}>
+              <div className={s.typeLeft}>
+                <ChapterHead chapter={C.tipografia} />
+                <p className={s.bigAaDisplay} aria-hidden="true">
+                  Aa
+                </p>
+              </div>
+              <div className={s.typeRight}>
+                <div>
+                  <h3 className={s.fontNameDisplay}>{FONTS.display.family}</h3>
+                  <p className={s.small}>
+                    {FONTS.display.source} · {FONTS.display.axes}. {FONTS.display.role}
+                  </p>
+                </div>
+                <p className={s.displaySample}>
+                  {(TYPE.displaySample || [brand.tagline]).map((l, i) => (
+                    <span key={l}>
+                      {i > 0 && <br />}
+                      {l}
+                    </span>
+                  ))}
+                </p>
+                <p className={s.glyphsDisplay}>
+                  ABCDEFGHIJKLMNOPQRSTUVWXYZ
+                  <br />
+                  abcdefghijklmnñopqrstuvwxyz
+                  <br />
+                  0123456789 &amp;
+                </p>
+              </div>
+            </Sheet>
+          )}
+
           <Sheet chapter={C.tipografia} label={FONTS.sans.family} className={s.typeSheet}>
             <div className={s.typeLeft}>
-              <ChapterHead chapter={C.tipografia} />
+              {FONTS.display ? <span className={s.label}>Interfaz y cuerpo</span> : <ChapterHead chapter={C.tipografia} />}
               <p className={s.bigAa} aria-hidden="true">
                 Aa
               </p>
@@ -581,7 +723,7 @@ export default function BrandBook() {
               </div>
               <div className={s.ramp}>
                 {(sansWidths.length ? sansWidths : [100]).map((w) => {
-                  const use = w === 100 ? "Normal" : w === 125 ? "Expanded" : null;
+                  const use = FONTS.sans.widthUse?.[w] ?? (w === 100 ? "Normal" : w === 125 ? "Expanded" : null);
                   return (
                     <div key={w} className={`${s.rampRow} ${use ? s.rampUse : ""}`}>
                       <span className={s.rampLabel}>wdth {String(w).replace(".", ",")}</span>
@@ -671,23 +813,19 @@ export default function BrandBook() {
             <div className={s.photoHead}>
               <ChapterHead chapter={C.fotografia} lead={PHOTO.lead} />
               <p className={s.photoCredit}>
-                {HERO?.name} · {HERO?.colors?.[0]?.name}
+                {[...new Set(SEQ_SHOTS.map((x) => x.product?.name))].join(" · ")}
               </p>
             </div>
             <div className={s.seq}>
-              {PHOTO_SEQUENCE.map((p, i) => (
-                <figure key={p.k} className={s.seqItem}>
+              {SEQ_SHOTS.map((p, i) => (
+                <figure key={`${p.product?.slug}-${p.k}`} className={s.seqItem}>
                   <div className={s.frame45}>
-                    <SafeImage
-                      src={HERO_IMAGES[i]}
-                      alt={`${HERO?.name} — ${p.t}`}
-                      label={`${p.k} · ${p.t}`}
-                    />
+                    <SafeImage src={p.src} alt={`${p.product?.name} — ${p.t}`} label={`${p.k} · ${p.t}`} />
                   </div>
                   <figcaption className={s.caption}>
                     <span className={s.seqNum}>{p.k}</span>
                     <strong>{p.t}</strong>
-                    <span>{p.v}</span>
+                    <span>{PHOTO_SEQUENCE.length >= 4 || i < PHOTO_SEQUENCE.length ? p.v : p.product?.name}</span>
                   </figcaption>
                 </figure>
               ))}
@@ -849,7 +987,7 @@ export default function BrandBook() {
                 ))}
               </dl>
             </div>
-            <MockFigure m={MOCKUPS[0]} className={s.appHeroImg} />
+            {MOCKUPS.length ? <MockFigure m={MOCKUPS[0]} className={s.appHeroImg} /> : <TypoApp a={TYPO_APPS[0]} className={s.appHeroImg} />}
           </Sheet>
 
           <Sheet chapter={C.aplicaciones} label="Etiquetado" className={s.appRow4}>
@@ -857,9 +995,9 @@ export default function BrandBook() {
               <h3 className={s.h3}>{APPLICATIONS.labelling.title}</h3>
               <p className={s.small}>{APPLICATIONS.labelling.text}</p>
             </div>
-            {MOCKUPS.slice(1, 5).map((m) => (
-              <MockFigure key={m.file} m={m} />
-            ))}
+            {MOCKUPS.length
+              ? MOCKUPS.slice(1, 5).map((m) => <MockFigure key={m.file} m={m} />)
+              : TYPO_APPS.slice(1, 5).map((a) => <TypoApp key={a.kind} a={a} />)}
           </Sheet>
 
           <Sheet chapter={C.aplicaciones} label="Packaging" className={s.appRow3}>
@@ -867,9 +1005,11 @@ export default function BrandBook() {
               <h3 className={s.h3}>{APPLICATIONS.packaging.title}</h3>
               <p className={s.small}>{APPLICATIONS.packaging.text}</p>
             </div>
-            {MOCKUPS.slice(5, 8).map((m, i) => (
-              <MockFigure key={m.file} m={m} ratio={i === 0 ? "8 / 5" : undefined} className={i === 0 ? s.appWide : ""} />
-            ))}
+            {MOCKUPS.length
+              ? MOCKUPS.slice(5, 8).map((m, i) => (
+                  <MockFigure key={m.file} m={m} ratio={i === 0 ? "8 / 5" : undefined} className={i === 0 ? s.appWide : ""} />
+                ))
+              : TYPO_APPS.slice(5, 8).map((a, i) => <TypoApp key={a.kind} a={a} ratio={i === 0 ? "8 / 5" : undefined} className={i === 0 ? s.appWide : ""} />)}
           </Sheet>
         </Chapter>
 

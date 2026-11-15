@@ -1,4 +1,33 @@
 .hero { padding: 0; }
+/* MALA FAMA: the crew strip (four faces, one set each) replaces the 21:9 campaign image */
+.crew { padding: 0 var(--page-pad); }
+.crewHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 0 0 12px;
+  font-size: var(--fs-micro);
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.crewTitle { font-family: var(--font-display); font-size: 30px; letter-spacing: 0; text-transform: none; color: var(--ink); }
+.crewGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
+.crewItem { display: block; }
+.crewImg { aspect-ratio: 4 / 5; }
+.crewImg img { transition: transform 1.4s var(--ease), opacity 0.7s var(--ease) !important; }
+.crewItem:hover .crewImg img { transform: scale(1.03); }
+.crewCaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+  font-size: var(--fs-micro);
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+}
+.crewCaption span + span { color: var(--text-muted); text-align: right; }
 .heroImg { aspect-ratio: 21 / 9; }
 .manifesto {
   display: grid;
@@ -36,6 +65,8 @@
 .linkCta { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-xs); letter-spacing: var(--track-caps); text-transform: uppercase; }
 
 @media (max-width: 1023px) {
+  .crewGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .crewHead { flex-direction: column; gap: 4px; }
   .values { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .links { grid-template-columns: 1fr; }
 }

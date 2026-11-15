@@ -33,6 +33,9 @@
   white-space: nowrap;
 }
 .navLink.active, .navLink[aria-current="page"] { background-size: 100% 1px; }
+.navFeatured { font-weight: 700; }
+@media (max-width: 1240px) { .navList { gap: 20px; } }
+@media (max-width: 1140px) { .navAbout { display: none; } }
 .logo { display: flex; align-items: center; color: inherit; justify-self: center; }
 /* Sized by height: the slot accepts a wide horizontal wordmark (auto width). */
 .wordmark { height: 32px; width: auto; max-width: 240px; }

@@ -121,6 +121,17 @@ export default function Header() {
               <IconSearch />
             </button>
             <ul className={styles.navList}>
+              {brand.nav.featured && (
+                <li onMouseEnter={closeMenu}>
+                  <Link
+                    href={brand.nav.featured.href}
+                    className={`${styles.navLink} ${styles.navFeatured} mk-link`}
+                    aria-current={pathname === brand.nav.featured.href ? "page" : undefined}
+                  >
+                    {brand.nav.featured.label}
+                  </Link>
+                </li>
+              )}
               {MENUS.map((m) => (
                 <li key={m.id} onMouseEnter={() => openMenu(m.id)}>
                   <button
@@ -146,7 +157,7 @@ export default function Header() {
                   {brand.nav.lookbook}
                 </Link>
               </li>
-              <li onMouseEnter={closeMenu}>
+              <li onMouseEnter={closeMenu} className={styles.navAbout}>
                 <Link href={brand.routes.about} className={`${styles.navLink} mk-link`} aria-current={pathname === brand.routes.about ? "page" : undefined}>
                   {brand.nav.about}
                 </Link>

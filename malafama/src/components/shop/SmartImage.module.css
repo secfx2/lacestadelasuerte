@@ -28,11 +28,11 @@
 
 .emblem {
   display: block;
-  width: clamp(16px, 9%, 34px);
-  aspect-ratio: 1;
-  background: #cdcdc9;
+  width: clamp(18px, 10%, 40px);
+  aspect-ratio: 0.906;
+  background: #d3d0ca;
   -webkit-mask: url("/brand/emblem-black.svg") center / contain no-repeat;
   mask: url("/brand/emblem-black.svg") center / contain no-repeat;
 }
 .placeholder[data-tone="dark"] .emblem { background: #2e2e2e; }
-.placeholder[data-tone="bone"] .emblem { background: #cfc9bf; }
+.placeholder[data-tone="bone"] .emblem { background: #d2c8b8; }

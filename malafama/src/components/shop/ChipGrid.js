@@ -38,7 +38,7 @@ export default function ChipGrid({ id, title, kicker, sets, cols = 5 }) {
       </div>
       <div className={styles.more}>
         <Link href={set.href || "/tienda"} className="mk-btn mk-btn--ghost">
-          {set.id === sets[0].id ? "Ver todo" : `Ver ${set.label.toLowerCase()}`}
+          {set.more || (set.id === sets[0].id ? "Ver todo" : `Ver ${set.label.toLowerCase()}`)}
         </Link>
       </div>
     </section>

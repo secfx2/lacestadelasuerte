@@ -312,6 +312,11 @@ Antes de entregar: capturas a **1440 px y 390 px** de `/`, `/tienda`, una ficha 
 
 **Vercel:** proyecto nuevo importando el repo, **Root Directory = la carpeta de la marca** (p. ej. `nuevamarca/`), framework Next.js, comandos por defecto. Variable `NEXT_PUBLIC_SITE_URL=https://<dominio>` (canonical/OG). `next.config.mjs` ya fija `outputFileTracingRoot` y `postcss.config.mjs` vacío para no heredar la config del repo padre.
 
+**Portal multi-marca (`hub/`):** todas las propuestas se sirven también desde **un solo proyecto de Vercel** — portal en `/` y cada tienda en `/<marca>` — como export estático con `basePath` (`NEXT_OUTPUT=export NEXT_PUBLIC_BASE_PATH=/<marca>`, ver [`hub/README.md`](../../hub/README.md)). La plantilla ya lo soporta; sin esas variables el build es el normal. Al tocar código:
+- Toda URL a un archivo de `/public` que **no** pase por `next/link` / `router.push` va envuelta en `asset()` de `src/lib/asset.js` (`<img>`, `src` de `next/image`, `<a href>` a PDF/SVG, iconos de metadata). En CSS, `url("/…")` no lleva el prefijo: usa una variable CSS que fije el layout raíz (como `--mk-emblem-url`).
+- Nada que necesite servidor: sin route handlers, middleware, `headers()`/`cookies()`, server actions ni redirects en `next.config`; rutas dinámicas con `generateStaticParams` + `dynamicParams = false`; `useSearchParams` dentro de `<Suspense>`.
+- Cambia `storageKey` en `brand.js`: en el portal todas las marcas comparten dominio y `localStorage`.
+
 La tienda **nunca cobra**: el checkout valida todo y termina en el aviso de `brand.checkout` (modo demostración). Conectar pagos reales (Stripe, Shopify…) es un proyecto aparte.
 
 ---

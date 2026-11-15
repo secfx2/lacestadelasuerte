@@ -35,7 +35,7 @@ export default function LookbookPage() {
           <div key={l.image} className={styles.unit}>
             {LB.quotes?.[i] && <p className={styles.quote}>{LB.quotes[i]}</p>}
             <figure id={`look-${l.n}`} className={styles.look} data-pos={i % 4}>
-              <SmartImage src={l.image} alt={`${l.caption} — ${l.title}`} sizes="(min-width: 1024px) 50vw, 100vw" className={styles.img} tone="bone" priority={i < 2} />
+              <SmartImage src={l.image} alt={`${l.caption} — ${l.title}`} sizes="(min-width: 1024px) 50vw, 100vw" className={styles.img} tone="bone" blend priority={i < 2} />
               <figcaption className={styles.caption}>
                 <div className={styles.capHead}>
                   <span className={styles.num}>{l.n}</span>

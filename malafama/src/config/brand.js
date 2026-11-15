@@ -130,6 +130,8 @@ const brand = {
       role: "La voz de la calle: interfaz, precios, cuerpo y titulares cortos. Los titulares van en condensada negra (anchura 70, peso 800) y en mayúsculas.",
       /** Anchuras (eje wdth) que se muestran en el Brand Book. */
       widths: [62.5, 70, 87.5, 100, 125],
+      /** Etiqueta de uso de cada anchura en el Brand Book. */
+      widthUse: { 70: "Titulares", 100: "Cuerpo" },
       weights: [400, 500, 600, 700, 800],
     },
     serif: {
@@ -283,6 +285,7 @@ const brand = {
         { id: "nylon-lona", label: "Nylon y lona", slugs: ["flame-track-set", "rust-canvas-set"] },
       ],
       href: "/categoria/conjuntos",
+      more: "Ver todos los conjuntos",
     },
     /** slugs: [] → se deriva del catálogo (badge "Nuevo" o línea actual). */
     newIn: {

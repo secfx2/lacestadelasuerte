@@ -20,8 +20,9 @@
   line-height: 1.05;
 }
 .marquee[data-size="md"] .item { font-size: clamp(30px, 4.6vw, 66px); }
-.item:nth-child(even) { font-family: var(--font-serif); font-weight: 400; font-size: 1.08em; text-transform: none; letter-spacing: 0; color: var(--steel); }
-.item:nth-child(even) .sep { font-size: 0.92em; }
+.item:nth-child(even) { font-family: var(--font-serif); font-weight: 400; font-size: clamp(50px, 9.2vw, 142px); text-transform: none; letter-spacing: 0; color: var(--steel); }
+.marquee[data-size="md"] .item:nth-child(even) { font-size: clamp(32px, 5vw, 72px); }
+.item:nth-child(even) .sep { margin-left: 0.6em; }
 .sep {
   width: 0.44em;
   height: 0.48em;
