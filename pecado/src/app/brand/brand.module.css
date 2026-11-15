@@ -2454,7 +2454,8 @@
 .closeMotto { font-size: 5.6cqw; line-height: 1; }
 .closeMotto em { font-style: normal; }
 .closeEmblem { width: 15cqw; height: 15cqw; color: var(--ink); }
-.roman { font-size: 3cqw; }
+/* Roman numerals in the gothic: in fraktur an I reads as a J */
+.roman { font-family: var(--font-display); font-weight: 700; font-size: 3cqw; }
 .runfootMotto { font-style: normal; font-size: 1.15cqw; }
 .retype { font-family: var(--font-display); font-style: normal; font-weight: 800; font-stretch: 100%; font-size: 2.4cqw; }
 

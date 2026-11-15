@@ -35,7 +35,7 @@
 .navLink.active, .navLink[aria-current="page"] { background-size: 100% 1px; }
 .logo { display: flex; align-items: center; color: inherit; justify-self: center; }
 /* Sized by height: the slot accepts a wide horizontal wordmark (auto width). */
-.wordmark { height: 22px; width: auto; max-width: 240px; }
+.wordmark { height: 27px; width: auto; max-width: 240px; }
 
 .iconBtn { position: relative; width: 38px; height: 38px; display: grid; place-items: center; color: inherit; }
 .iconBtn:hover svg { transform: translateY(-1px); }
@@ -79,7 +79,7 @@
   .mobileOnly { display: grid !important; }
   .left { gap: 2px; margin-left: -8px; }
   .right { gap: 2px; }
-  .wordmark { height: 18px; max-width: 160px; }
+  .wordmark { height: 22px; max-width: 160px; }
   .checkout .navLink { font-size: var(--fs-micro); }
   .checkout .secure { display: none; }
   .checkout .left { margin-left: 0; }
