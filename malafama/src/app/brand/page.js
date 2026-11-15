@@ -723,7 +723,7 @@ export default function BrandBook() {
               </div>
               <div className={s.ramp}>
                 {(sansWidths.length ? sansWidths : [100]).map((w) => {
-                  const use = FONTS.sans.widthUse?.[w] ?? (w === 100 ? "Normal" : w === 125 ? "Expanded" : null);
+                  const use = FONTS.sans.widthUse ? FONTS.sans.widthUse[w] || null : w === 100 ? "Normal" : w === 125 ? "Expanded" : null;
                   return (
                     <div key={w} className={`${s.rampRow} ${use ? s.rampUse : ""}`}>
                       <span className={s.rampLabel}>wdth {String(w).replace(".", ",")}</span>

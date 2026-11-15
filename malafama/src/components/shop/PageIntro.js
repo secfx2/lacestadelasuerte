@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./PageIntro.module.css";
 
-/** Page title block: breadcrumb, expanded display title, optional serif aside. */
+/** Page title block: breadcrumb, display title (MALA FAMA: blackletter), optional aside. */
 export default function PageIntro({ crumbs = [], title, aside, children, compact = false }) {
   return (
     <header className={styles.intro} data-compact={compact || undefined}>

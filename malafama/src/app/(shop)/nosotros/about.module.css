@@ -48,7 +48,7 @@
   margin: clamp(64px, 8vw, 128px) var(--page-pad) 0;
 }
 .value { padding: 28px 24px 32px; background: var(--fog); min-height: 280px; display: flex; flex-direction: column; }
-.valueN { font-family: var(--font-display); font-size: 36px; line-height: 1; color: var(--accent); }
+.valueN { font-size: 30px; font-stretch: var(--head-stretch); font-weight: var(--head-weight); line-height: 1; color: var(--accent); }
 .valueTitle { margin: auto 0 0; padding-top: 40px; font-size: 20px; font-stretch: var(--head-stretch); font-weight: var(--head-weight); text-transform: uppercase; letter-spacing: 0.005em; }
 .valueText { margin: 10px 0 0; font-size: var(--fs-body); line-height: 1.6; color: #4a4a4a; }
 

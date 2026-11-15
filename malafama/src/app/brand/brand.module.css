@@ -2388,7 +2388,7 @@
   font-size: 3.8cqw;
   line-height: 1;
 }
-.roman { font-family: var(--font-display); font-style: normal; color: var(--acc); }
+.roman { font-family: var(--font-sans); font-style: normal; font-stretch: var(--head-stretch); font-weight: var(--head-weight); color: var(--acc); }
 .runfootMotto { font-style: normal; font-size: max(15px, 1.45cqw); line-height: 1; letter-spacing: 0; }
 
 /* Cover: Asfalto field, script wordmark in Crudo, tagline in blackletter Cromo */
@@ -2406,7 +2406,7 @@
 .serifBig { font-style: normal; font-size: 9.6cqw; line-height: 1.02; }
 .serifBig em { font-style: normal; color: var(--accent); }
 .fontNameSerif { font-style: normal; font-size: 3.6cqw; line-height: 1.1; }
-.glyphsSerif { font-style: normal; font-size: 2.3cqw; line-height: 1.4; }
+.glyphsSerif { font-style: normal; font-size: 1.6cqw; line-height: 1.5; overflow-wrap: anywhere; min-width: 0; }
 .glyphsSerif em { font-style: normal; }
 .pairingQuote { font-style: normal; font-size: 2.7cqw; line-height: 1.15; }
 .frenchWords { font-style: normal; font-size: 2.6cqw; line-height: 1.15; color: var(--accent); }
@@ -2581,7 +2581,7 @@
   .glyphsDisplay { font-size: 15px; }
   .serifBig { font-size: 44px; }
   .fontNameSerif { font-size: 30px; }
-  .glyphsSerif { font-size: 18px; }
+  .glyphsSerif { font-size: 15px; }
   .pairingQuote { font-size: 22px; }
   .frenchWords { font-size: 22px; }
   .symbolAlias { font-size: 18px; }

@@ -9,7 +9,8 @@
            wordmark, monogram, graphic, emblem, seal. Any other <name>.svg
            (not ending in -black / -white) becomes an extra variant.
    Output  - public/brand/<variant>.svg        normalized: ONE <path>, fill="currentColor"
-           - public/brand/<variant>-black.svg  fill = brand.palette.ink
+           - public/brand/<variant>-black.svg  fill = brand.logoInk (dark ink for light
+                                               grounds; falls back to brand.palette.ink)
            - public/brand/<variant>-white.svg  fill = #FFFFFF
            - src/components/brand/logoData.js  { variant: { viewBox, inner } } for <Logo/>
 
@@ -25,12 +26,14 @@ const BRAND_DIR = path.join(ROOT, "public", "brand");
 const OUT = path.join(ROOT, "src", "components", "brand", "logoData.js");
 const EXPECTED = ["wordmark", "monogram", "graphic", "emblem", "seal"];
 
-/* Ink colour for the -black files: brand.palette.ink (falls back to #0A0A0A). */
+/* Ink colour for the -black files: brand.logoInk, else brand.palette.ink (falls back to #0A0A0A).
+   PECADO's site is dark (palette.ink is the light text colour), so brand.logoInk keeps
+   the -black files black for favicons, masks and print. */
 let INK = "#0A0A0A";
 let BRAND_NAME = "BRAND";
 try {
   const mod = await import(pathToFileURL(path.join(ROOT, "src", "config", "brand.js")).href);
-  INK = mod.default?.palette?.ink?.hex || INK;
+  INK = mod.default?.logoInk || mod.default?.palette?.ink?.hex || INK;
   BRAND_NAME = mod.default?.name || BRAND_NAME;
 } catch (e) {
   console.warn(`! Could not read src/config/brand.js (${e.message}); using ${INK} for -black files.`);

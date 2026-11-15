@@ -619,7 +619,7 @@ const brand = {
       { id: "fotografia", num: "06", title: "Fotografía", short: "Fotografía", desc: `Flat lay y modelo sobre blanco, el casting y la línea ${LINE}.` },
       { id: "voz", num: "07", title: "Tono de voz", short: "Voz", desc: "Cómo hablamos y cómo no." },
       { id: "aplicaciones", num: "08", title: "Aplicaciones", short: "Aplicaciones", desc: "Etiquetas, packaging, parches y pegatinas." },
-      { id: "web", num: "09", title: "Web / UI", short: "Web / UI", desc: "Componentes, retícula, tipo en pantalla." },
+      { id: "web", num: "09", title: "La web", short: "Web / UI", desc: "Componentes, retícula, tipo en pantalla." },
       { id: "contacto", num: "10", title: "Contacto", short: "Contacto", desc: "Archivos maestros y aprobaciones." },
     ],
 
@@ -721,7 +721,7 @@ const brand = {
       {
         variant: "seal",
         name: "Sello",
-        alias: `${NAME} · ${CITY} · ${YEAR}`,
+        alias: `${DISPLAY} · ${CITY} · ${YEAR}`,
         when: "Pegatina de cierre, packaging, parche, certificado de joyería. Firma el origen.",
         never: "Nunca por debajo del tamaño en el que el texto deja de leerse. Nunca recompuesto.",
         min: "64 px · 20 mm",
