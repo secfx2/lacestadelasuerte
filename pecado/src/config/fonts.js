@@ -1,17 +1,21 @@
 /* ==========================================================================
-   Fuentes de la marca (Google Fonts vía next/font).
+   Fuentes de la marca PECADO (Google Fonts vía next/font).
    next/font exige argumentos literales, así que este archivo se edita a mano
-   cuando cambian las fuentes. Mantén los nombres de variable CSS:
-     --font-brand-sans  → var(--font-sans)  en globals.css
-     --font-brand-serif → var(--font-serif) en globals.css
-   Describe las fuentes elegidas en brand.fonts (src/config/brand.js) para que
+   cuando cambian las fuentes. Variables CSS:
+     --font-brand-display → var(--font-display) en globals.css  (Grenze Gotisch: titulares)
+     --font-brand-sans    → var(--font-sans)    en globals.css  (Archivo: UI y cuerpo)
+     --font-brand-serif   → var(--font-serif)   en globals.css  (UnifrakturMaguntia: lemas)
+   El nombre «serif» se conserva de la plantilla: en PECADO es la fraktur del
+   logotipo. Describe las fuentes en brand.fonts (src/config/brand.js) para que
    el Brand Book las muestre bien.
-
-   Para cambiar: importa otra familia de "next/font/google" (p. ej. Inter,
-   Space_Grotesk, Playfair_Display) y sustituye las llamadas. Si la sans nueva
-   no tiene eje de anchura, quita `axes: ["wdth"]` y deja brand.fonts.sans.widths = [].
    ========================================================================== */
-import { Archivo, Instrument_Serif } from "next/font/google";
+import { Archivo, Grenze_Gotisch, UnifrakturMaguntia } from "next/font/google";
+
+export const display = Grenze_Gotisch({
+  subsets: ["latin"],
+  variable: "--font-brand-display",
+  display: "swap",
+});
 
 export const sans = Archivo({
   subsets: ["latin"],
@@ -20,10 +24,9 @@ export const sans = Archivo({
   display: "swap",
 });
 
-export const serif = Instrument_Serif({
+export const serif = UnifrakturMaguntia({
   subsets: ["latin"],
   weight: "400",
-  style: ["normal", "italic"],
   variable: "--font-brand-serif",
   display: "swap",
 });

@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
+import { asset } from "@/lib/asset";
 import styles from "./SmartImage.module.css";
 
 /** Fog placeholder with a small grey emblem. tone: "fog" | "bone" | "dark" */
@@ -51,7 +52,7 @@ export default function SmartImage({
     >
       {!isError && (
         <Image
-          src={src}
+          src={asset(src)}
           alt={alt}
           fill
           sizes={sizes}

@@ -2,6 +2,7 @@
 import { getImageProps } from "next/image";
 import { useState } from "react";
 import { ImagePlaceholder } from "./SmartImage";
+import { asset } from "@/lib/asset";
 import styles from "./HeroImage.module.css";
 
 /** Art-directed full-bleed image (desktop / mobile sources) with graceful fallback. */
@@ -9,18 +10,19 @@ export default function HeroImage({ desktop, mobile, alt, priority = true, tone 
   const [state, setState] = useState("loading");
   const common = { alt, fill: true, sizes: "100vw", priority };
   const {
-    props: { srcSet: mobileSet },
-  } = getImageProps({ ...common, src: mobile || desktop });
+    props: { srcSet: mobileSet, src: mobileSrc },
+  } = getImageProps({ ...common, src: asset(mobile || desktop) });
   const {
     props: { srcSet: desktopSet, ...rest },
-  } = getImageProps({ ...common, src: desktop });
+  } = getImageProps({ ...common, src: asset(desktop) });
 
   return (
     <div className={styles.frame} data-tone={tone}>
       {state !== "error" && (
         <picture>
-          <source media={`(max-width: ${breakpoint}px)`} srcSet={mobileSet} />
-          <source media={`(min-width: ${breakpoint + 1}px)`} srcSet={desktopSet} />
+          {/* Unoptimized images (static export) have no srcSet: fall back to the plain file */}
+          <source media={`(max-width: ${breakpoint}px)`} srcSet={mobileSet || mobileSrc} />
+          <source media={`(min-width: ${breakpoint + 1}px)`} srcSet={desktopSet || rest.src} />
           {/* eslint-disable-next-line jsx-a11y/alt-text */}
           <img
             {...rest}

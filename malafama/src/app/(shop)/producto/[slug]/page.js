@@ -6,6 +6,7 @@ import { products } from "@/lib/catalog";
 import { getSlimProduct, relatedProducts } from "@/lib/shop-server";
 import { categoryName } from "@/lib/shop";
 import brand from "@/config/brand";
+import { asset } from "@/lib/asset";
 import styles from "./page.module.css";
 
 export const dynamicParams = false;
@@ -38,7 +39,7 @@ export default async function ProductPage({ params }) {
     "@type": "Product",
     name: product.name,
     description: product.description,
-    image: product.colors[0].images,
+    image: product.colors[0].images.map(asset),
     brand: { "@type": "Brand", name: brand.name },
     category: categoryName(product.category),
     offers: { "@type": "Offer", price: product.price, priceCurrency: brand.locale.currency, availability: "https://schema.org/InStock" },

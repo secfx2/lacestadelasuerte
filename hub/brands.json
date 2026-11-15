@@ -4,7 +4,10 @@
     "name": "MUSKETEER",
     "tagline": "Tous pour un",
     "concept": "Ropa unisex high-end de corte boxy inspirada en los mosqueteros: punto pesado, chaquetas con capa y joyería de plata 925.",
-    "hero": ["campaign/hero-mobile.jpg", "campaign/hero.jpg"],
+    "hero": [
+      "campaign/hero-mobile.jpg",
+      "campaign/hero.jpg"
+    ],
     "heroPosition": "50% 40%",
     "accent": "#1F2B4D"
   },
@@ -29,10 +32,13 @@
   {
     "slug": "pecado",
     "name": "PECADO",
-    "tagline": "Y2K grunge · mall goth",
-    "concept": "Grunge Y2K y estética mall goth: vaqueros ultra baggy con bordados, negro lavado y herrajes plateados.",
-    "hero": "campaign/hero.jpg",
-    "heroPosition": "50% 30%",
-    "accent": "#5E2B7E"
+    "tagline": "Sin perdón",
+    "concept": "Grunge Y2K y estética mall goth: vaqueros ultra baggy bordados, sudaderas pesadas deshiladas con esqueletos, rayos y espinos, y plata 925.",
+    "hero": [
+      "products/blood-vine-hoodie/washed-black-oxblood-2.jpg",
+      "campaign/hero.jpg"
+    ],
+    "heroPosition": "50% 20%",
+    "accent": "#5A1A1F"
   }
 ]

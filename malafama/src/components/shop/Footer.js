@@ -4,6 +4,7 @@ import FooterNewsletter from "./FooterNewsletter";
 import RouteGate from "./RouteGate";
 import { CATEGORIES } from "@/lib/shop";
 import { publicFileExists } from "@/lib/shop-server";
+import { asset } from "@/lib/asset";
 import brand from "@/config/brand";
 import styles from "./Footer.module.css";
 
@@ -14,7 +15,7 @@ const visible = (links) => links.filter((l) => !l.file || publicFileExists(l.hre
 
 function FooterLink({ l }) {
   return l.file || /^https?:/.test(l.href) ? (
-    <a href={l.href} className="mk-link">{l.label}</a>
+    <a href={asset(l.href)} className="mk-link">{l.label}</a>
   ) : (
     <Link href={l.href} className="mk-link">{l.label}</Link>
   );
