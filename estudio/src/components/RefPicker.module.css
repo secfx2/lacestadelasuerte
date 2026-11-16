@@ -1,0 +1,24 @@
+.zone { border: 1px dashed var(--line-2); padding: 12px; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.2s var(--ease), background-color 0.2s var(--ease); }
+.zone[data-drag] { border-color: var(--text); background: var(--panel-2); }
+.thumbs { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.thumb { position: relative; width: 76px; aspect-ratio: 4 / 5; background: var(--panel-2); }
+.thumb img { width: 100%; height: 100%; object-fit: cover; }
+.loading { display: grid; place-items: center; color: var(--muted); }
+.num { position: absolute; left: 0; top: 0; min-width: 20px; height: 20px; padding: 0 5px; display: grid; place-items: center; background: var(--bg); font-size: 11px; font-weight: 700; }
+.remove { position: absolute; right: -8px; top: -8px; width: 32px; height: 32px; display: grid; place-items: center; }
+.remove span { position: relative; width: 22px; height: 22px; border-radius: 50%; background: var(--text); }
+.remove span::before, .remove span::after { content: ""; position: absolute; left: 6px; top: 10px; width: 10px; height: 2px; background: var(--bg); }
+.remove span::before { transform: rotate(45deg); }
+.remove span::after { transform: rotate(-45deg); }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.dropHint { font-size: 12px; color: var(--muted); margin-left: 4px; }
+@media (hover: hover) and (pointer: fine) {
+  .camOnly { display: none; }
+}
+
+.pickGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 6px; }
+.pickItem { position: relative; aspect-ratio: 4 / 5; background: #f2f2f2; outline-offset: -2px; }
+.pickItem img { width: 100%; height: 100%; object-fit: contain; }
+.pickItem[aria-pressed="true"] { outline: 3px solid var(--text); }
+.pickMeta { position: absolute; left: 0; bottom: 0; right: 0; padding: 3px 6px; background: rgba(11, 11, 11, 0.7); font-size: 9px; font-weight: 700; letter-spacing: 0.1em; text-align: left; }
+.pickCheck { position: absolute; right: 6px; top: 6px; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--text); color: var(--bg); font-size: 12px; font-weight: 800; }
