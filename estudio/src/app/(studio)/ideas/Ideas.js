@@ -7,42 +7,14 @@ import ErrorNote from "@/components/ErrorNote";
 import JobResults from "@/components/JobResults";
 import { useStudio } from "@/components/Studio";
 import { usePersisted } from "@/components/usePersisted";
-import { api, emitUsage, store } from "@/lib/client";
+import { api, emitUsage } from "@/lib/client";
+import { modelShotAction } from "@/components/modelShot";
 import { BRANDS, IDEA_CATEGORIES, kindForCategory } from "@/config/brands";
 import { flatLayPrompt } from "@/config/prompts";
 import styles from "./ideas.module.css";
 
 let seq = 0;
 const cid = () => `c${Date.now().toString(36)}${(seq++).toString(36)}`;
-
-export function modelShotAction(router) {
-  return function ModelShot(job, out, close) {
-    if (job.meta?.shot === "model" || job.role?.startsWith("logo")) return null;
-    return (
-      <button
-        type="button"
-        className="btn btn--ghost"
-        onClick={() => {
-          store.set("prenda.prefill", {
-            base: { url: out.url, jobId: out.hfJobId || null },
-            text: job.meta?.description || "",
-            garment: job.meta?.garment || "",
-            pose: job.meta?.pose || "",
-            name: job.meta?.title || "",
-            category: job.meta?.category || "",
-            kind: job.meta?.kind || "garment",
-            price: job.meta?.price || null,
-            details: job.meta?.details || [],
-          });
-          close?.();
-          router.push("/prenda");
-        }}
-      >
-        Foto con modelo
-      </button>
-    );
-  };
-}
 
 function Card({ card, brand, onChange, onRemove, onUseRef, extra }) {
   const b = BRANDS[brand];

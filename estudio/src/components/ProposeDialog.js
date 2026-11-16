@@ -33,6 +33,7 @@ export default function ProposeDialog({ open, onClose, initial }) {
       notes: initial?.notes || "",
       prompt: initial?.prompt || null,
       kind: initial?.kind || kindForCategory(category),
+      casting: initial?.casting || null,
     });
     setErr(null);
   }, [open, initial, globalBrand]);

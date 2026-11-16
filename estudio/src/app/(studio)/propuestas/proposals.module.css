@@ -1,0 +1,12 @@
+.filters { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 18px; }
+.grid { display: grid; grid-template-columns: 1fr; gap: 8px; }
+@media (min-width: 760px) { .grid { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 1300px) { .grid { grid-template-columns: 1fr 1fr 1fr; } }
+.card { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 14px; padding: 12px; background: var(--panel); border: 1px solid var(--line); }
+.card[data-status="aprobada"] { border-color: rgba(156, 207, 148, 0.5); }
+.card[data-status="descartada"] { opacity: 0.55; }
+.imgs { display: flex; flex-direction: column; gap: 4px; }
+.imgs img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: #f2f2f2; }
+.body { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.name { margin: 0; font-weight: 800; font-stretch: 72%; font-size: 26px; line-height: 0.95; text-transform: uppercase; overflow-wrap: anywhere; }
+.empty { margin: 0; padding: 48px 16px; border: 1px dashed var(--line-2); text-align: center; color: var(--muted); font-family: var(--serif); font-style: italic; font-size: 20px; }

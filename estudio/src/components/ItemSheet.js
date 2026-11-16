@@ -24,6 +24,7 @@ export function previewFrom(job, output) {
     details: job.meta?.details || [],
     images: imgs,
     kind: job.meta?.kind || null,
+    casting: job.casting || null,
     prompt: job.meta?.garment ? { garment: job.meta.garment, pose: job.meta.pose || "" } : null,
   };
 }

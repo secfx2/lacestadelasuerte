@@ -3,7 +3,7 @@ import { requireAdmin } from "@/lib/auth";
 import { getSettings, saveSettings } from "@/lib/settings";
 import { providerSummary, providerFor } from "@/lib/hf";
 import { hasApiKeys } from "@/lib/env";
-import { ROLES, ROLE_IDS, MCP_MODELS, API_MODELS, API_ROLE_CANDIDATES, buildApiBody, apiModel } from "@/config/models";
+import { ROLES, ROLE_IDS, MCP_MODELS, API_MODELS, buildApiBody, apiModel } from "@/config/models";
 
 export const runtime = "nodejs";
 export const maxDuration = 120;
@@ -24,7 +24,7 @@ export const POST = handler(async (request) => {
 
   if (prov.active === "mcp" || prov.active === "mock") {
     const p = await providerFor(prov.active, settings);
-    out.mcp = { provider: prov.active, roles: {}, models: {} };
+    out.mcp = { provider: prov.active, roles: {}, models: {}, at: out.at };
     await p.session(async (client) => {
       for (const id of ROLE_IDS) {
         try {
@@ -61,7 +61,7 @@ export const POST = handler(async (request) => {
         }
       })
     );
-    out.api = { results, candidates: API_ROLE_CANDIDATES };
+    out.api = { results, at: out.at };
   }
 
   await saveSettings((cur) => ({ ...cur, checks: { mcp: out.mcp || cur.checks?.mcp || null, api: out.api || cur.checks?.api || null } }));

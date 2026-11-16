@@ -56,6 +56,7 @@ export function cleanProposal(b, base = {}) {
   if (b.fit != null) out.fit = s(b.fit, 60);
   if (b.badge != null) out.badge = s(b.badge, 30);
   if (b.prompt != null) out.prompt = { garment: s(b.prompt.garment, 1500), pose: s(b.prompt.pose, 800) };
+  if (b.casting != null) out.casting = /^[a-z]{2,20}$/.test(String(b.casting)) ? String(b.casting) : null;
   if (b.kind != null) out.kind = ["garment", "accessory", "jewellery"].includes(b.kind) ? b.kind : "garment";
   if (b.status != null) {
     if (!STATUSES.includes(b.status)) throw new UserError("Estado no válido.");
