@@ -45,7 +45,7 @@ function Header({ brand, name, mobile }) {
   const cats = brand.categories.slice(0, 5);
   return (
     <>
-      <div className={s.announce}>Envío gratuito desde {brand.freeFrom} € · Devoluciones en 30 días</div>
+      <div className={s.announce}>Envío gratuito desde {brand.freeFrom} €{mobile ? "" : " · Devoluciones en 30 días"}</div>
       <header className={s.header}>
         {mobile ? (
           <span className={s.hIcon}><Icon d={ICONS.menu} /></span>

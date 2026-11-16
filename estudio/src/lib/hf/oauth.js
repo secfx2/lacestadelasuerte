@@ -184,7 +184,10 @@ async function refresh(force = false) {
   const { rec } = await loadRecord();
   if (!rec.tokens) throw new UserError("Higgsfield no está conectado. El propietario debe conectarlo en Ajustes.", { status: 409, code: "hf_not_connected" });
   if (!force && rec.tokens.expires_at - Date.now() > 90 * 1000) return rec.tokens.access_token;
-  if (!rec.tokens.refresh_token) throw new UserError("La sesión de Higgsfield ha caducado. Vuelve a conectarla en Ajustes.", { status: 409, code: "hf_expired" });
+  if (!rec.tokens.refresh_token || !rec.meta?.token_endpoint || !rec.client?.client_id) {
+    if (force) await saveRecord((cur) => ({ ...cur, tokens: null, expired_at: new Date().toISOString() }));
+    throw new UserError("La sesión de Higgsfield ha caducado. Vuelve a conectarla en Ajustes.", { status: 409, code: "hf_expired" });
+  }
   const usedRefresh = rec.tokens.refresh_token;
   try {
     const j = await tokenRequest(rec.meta, rec.client, { grant_type: "refresh_token", refresh_token: usedRefresh });

@@ -152,7 +152,7 @@ export default function Settings() {
                   <div key={id} className={styles.role}>
                     <div className="row-between">
                       <h3 className="h3">{registry.roles[id].label}</h3>
-                      {c && (c.ok ? <Ok ok>{fmt(c.credits)} créditos</Ok> : <Ok ok={false}>error</Ok>)}
+                      {c && (c.ok ? <Ok ok>{fmt(c.credits)} {c.credits === 1 ? "crédito" : "créditos"}</Ok> : <Ok ok={false}>error</Ok>)}
                     </div>
                     <p className="tiny muted" style={{ margin: 0 }}>{registry.roles[id].help} Aspecto {registry.roles[id].aspect}.</p>
                     <div className={styles.roleRow}>

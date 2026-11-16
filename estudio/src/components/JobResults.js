@@ -105,7 +105,10 @@ export default function JobResults({ jobs, setJobs, onUseRef, extraActions, comp
           <section key={job.id} className={styles.job} data-testid="job" data-status={job.status}>
             {!compact && (
               <header className={styles.jobHead}>
-                <span className="caps">{job.meta?.title || job.meta?.label || "Generación"}</span>
+                <span className="caps">
+                  {job.meta?.title || job.meta?.label || "Generación"}
+                  {job.meta?.shot && <span className="muted"> · {job.meta.shot === "model" ? "Con modelo" : "Flat lay"}</span>}
+                </span>
                 <span className={`badge ${job.status === "completed" ? "badge--ok" : failedAll ? "badge--err" : job.status === "partial" ? "badge--warn" : ""}`}>
                   {!isTerminal(job.status) && <span className="spin" style={{ width: 10, height: 10, borderWidth: 1.5 }} />}
                   {STATUS[job.status] || job.status}

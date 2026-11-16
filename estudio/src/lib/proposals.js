@@ -6,7 +6,7 @@ import { UserError } from "./errors";
 import { BRANDS } from "@/config/brands";
 
 const p = (id) => {
-  if (!/^[0-9TZ]+_[a-z0-9]+$/.test(id)) throw new Error("Id de propuesta no válido");
+  if (!/^[0-9TZ]+_[a-z0-9]+$/.test(String(id))) throw new UserError("Esa propuesta no existe.", { status: 404 });
   return `proposals/${id}.json`;
 };
 

@@ -22,7 +22,7 @@ function pick(hint = {}, n = 0) {
   }
   const samples = BRANDS[brandId].samples;
   const s = samples[n % samples.length];
-  return hint.shot === "model" || hint.role === "garmentRef" ? s.img[1] : s.img[0];
+  return hint.shot === "model" || (hint.role === "garmentRef" && hint.shot !== "flat") ? s.img[1] : s.img[0];
 }
 
 let counter = 0;

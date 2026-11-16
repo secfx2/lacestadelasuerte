@@ -48,7 +48,7 @@ function ProposalCard({ p, onChange, onDelete }) {
             </div>
           </div>
         )}
-        <div className="seg" role="radiogroup" aria-label="Estado">
+        <div className={`seg seg--block ${styles.status}`} role="radiogroup" aria-label="Estado">
           {STATUS.map(([id, l]) => <button key={id} type="button" role="radio" aria-checked={p.status === id} onClick={() => save({ status: id })}>{l}</button>)}
         </div>
         <textarea className="textarea" defaultValue={p.notes || ""} placeholder="Notas" style={{ minHeight: 60 }} onBlur={(e) => e.target.value !== (p.notes || "") && save({ notes: e.target.value })} aria-label="Notas" />

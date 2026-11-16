@@ -26,13 +26,15 @@ export async function getProvider(settings) {
     if (!status.connected) throw notConnected();
     return providerFor("mock", settings);
   }
-  if (status.connected) return providerFor("mcp", settings);
+  if (status.connected && !status.mock) return providerFor("mcp", settings);
   if (hasApiKeys()) return providerFor("api", settings);
   throw notConnected();
 }
 
 export async function providerSummary() {
   const status = await connectionStatus();
-  const active = isMock() ? (status.connected ? "mock" : null) : status.connected ? "mcp" : hasApiKeys() ? "api" : null;
-  return { active, connection: status, apiKeys: hasApiKeys(), mock: isMock() };
+  // Fuera de MOCK_MODE, una conexión simulada guardada no cuenta.
+  const connection = !isMock() && status.mock ? { ...status, connected: false } : status;
+  const active = isMock() ? (status.connected ? "mock" : null) : connection.connected ? "mcp" : hasApiKeys() ? "api" : null;
+  return { active, connection, apiKeys: hasApiKeys(), mock: isMock() };
 }

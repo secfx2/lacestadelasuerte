@@ -253,17 +253,16 @@ async function doPoll(id) {
 
   const stale = Date.now() - new Date(job.createdAt).getTime() > STALE_MS;
   let results;
-  if (stale) {
-    results = pending.map((r) => ({ index: r.index, jobId: r.jobId, status: "failed", resultUrl: null, error: "Sin respuesta tras 3 horas" }));
-  } else {
-    const settings = await getSettings();
-    const provider = await providerFor(job.provider, settings);
-    try {
-      results = await provider.session((client) => provider.wait(pending.slice(0, 12).map((r) => ({ index: r.index, jobId: r.jobId, hint: { role: job.role, brand: job.brand, shot: job.meta?.shot } })), { timeout: 10 }, client));
-    } catch (e) {
-      return { ...job, pollError: e.message };
-    }
+  const settings = await getSettings();
+  const provider = await providerFor(job.provider, settings);
+  try {
+    results = await provider.session((client) => provider.wait(pending.slice(0, 12).map((r) => ({ index: r.index, jobId: r.jobId, hint: { role: job.role, brand: job.brand, shot: job.meta?.shot } })), { timeout: stale ? 0 : 10 }, client));
+  } catch (e) {
+    if (!stale) return { ...job, pollError: e.message };
+    results = pending.map((r) => ({ index: r.index, jobId: r.jobId, status: "in_progress", resultUrl: null, error: null }));
   }
+  // Si tras 3 horas Higgsfield sigue sin terminarlo, se da por perdido (y se devuelve).
+  if (stale) results = results.map((r) => (REQ_TERMINAL.has(r.status) ? r : { ...r, status: "failed", error: "Sin respuesta de Higgsfield tras 3 horas" }));
 
   // Copia de resultados (las URLs de Higgsfield caducan a los 7 días).
   const copies = {};

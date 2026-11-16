@@ -2,9 +2,10 @@
 import "server-only";
 import { readJSON, updateJSON, writeJSON, list, deletePath } from "./storage";
 import { compactTs, randomId } from "./time";
+import { UserError } from "./errors";
 
 const jobPath = (id) => {
-  if (!/^[0-9TZ]+_[a-z]+_[a-z0-9]+$/.test(id)) throw new Error("Id de trabajo no válido");
+  if (!/^[0-9TZ]+_[a-z]+_[a-z0-9]+$/.test(String(id))) throw new UserError("Ese trabajo no existe.", { status: 404 });
   return `jobs/${id}.json`;
 };
 
