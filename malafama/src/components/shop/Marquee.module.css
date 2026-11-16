@@ -1,0 +1,34 @@
+.marquee {
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--bone);
+  padding: clamp(14px, 2vw, 26px) 0;
+  user-select: none;
+}
+.track { display: flex; width: max-content; animation: scroll 60s linear infinite; }
+.track[data-reverse] { animation-direction: reverse; }
+.run { display: flex; flex: none; }
+.item {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  font-family: var(--font-display);
+  font-size: clamp(46px, 8.5vw, 132px);
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.05;
+}
+.marquee[data-size="md"] .item { font-size: clamp(30px, 4.6vw, 66px); }
+.item:nth-child(even) { font-family: var(--font-serif); font-weight: 400; font-size: clamp(50px, 9.2vw, 142px); text-transform: none; letter-spacing: 0; color: var(--steel); }
+.marquee[data-size="md"] .item:nth-child(even) { font-size: clamp(32px, 5vw, 72px); }
+.item:nth-child(even) .sep { margin-left: 0.6em; }
+.sep {
+  width: 0.44em;
+  height: 0.48em;
+  margin: 0 0.5em;
+  background: var(--accent);
+  -webkit-mask: var(--mk-emblem-url, url("/brand/emblem-black.svg")) center / contain no-repeat;
+  mask: var(--mk-emblem-url, url("/brand/emblem-black.svg")) center / contain no-repeat;
+}
+@keyframes scroll { to { transform: translateX(-50%); } }

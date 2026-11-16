@@ -1,0 +1,16 @@
+{
+  "name": "musketeer",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3100",
+    "build": "next build",
+    "start": "next start -p 3100",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "^15.5.29",
+    "react": "^19.1.10",
+    "react-dom": "^19.1.10"
+  }
+}

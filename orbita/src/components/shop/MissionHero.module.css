@@ -1,0 +1,166 @@
+/* ---------- Mission hero (home) — header sits transparent over it ---------- */
+.hero {
+  position: relative;
+  margin-top: calc(var(--header-h) * -1);
+  min-height: calc(100svh - var(--announce-h));
+  overflow: hidden;
+  background: var(--ink);
+  color: var(--paper);
+  isolation: isolate;
+}
+.inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100svh - var(--announce-h));
+  padding: calc(var(--header-h) + clamp(14px, 2vw, 28px)) var(--page-pad) clamp(20px, 2.4vw, 32px);
+}
+
+/* Orbit motif */
+.orbit { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.ring { fill: none; stroke: rgba(255, 255, 255, 0.2); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.ringFaint { fill: none; stroke: rgba(255, 255, 255, 0.09); stroke-width: 1; stroke-dasharray: 2 7; vector-effect: non-scaling-stroke; }
+.sat { fill: var(--accent); }
+.star { fill: rgba(255, 255, 255, 0.55); }
+@media (prefers-reduced-motion: reduce) { .sat { display: none; } }
+
+/* Telemetry row */
+.telemetry {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--font-serif);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+.telemetryRight { text-align: right; }
+
+/* Wordmark */
+.mark {
+  margin-top: clamp(22px, 4vh, 56px);
+  color: var(--accent);
+  animation: rise 1.2s var(--ease) both 0.1s;
+}
+.wordmark { width: 100%; height: auto; }
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } }
+
+/* Countdown + CTAs */
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px 32px;
+  flex-wrap: wrap;
+  margin-top: clamp(18px, 3vh, 36px);
+}
+.countdown {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  margin: 0;
+  font-family: var(--font-serif);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  min-width: 0;
+}
+.t {
+  font-size: clamp(22px, 2.2vw, 32px);
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+.tLabel { font-size: 12px; color: rgba(255, 255, 255, 0.85); }
+.tLabel[data-liftoff] { color: var(--accent); }
+.ctas { display: flex; align-items: center; gap: 24px; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 180px;
+  height: 46px;
+  padding: 0 30px;
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  color: var(--ink);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+  transition: background-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+.btn:hover { background: transparent; color: var(--accent); }
+.textLink { font-size: var(--fs-xs); letter-spacing: var(--track-caps); text-transform: uppercase; }
+
+/* Crew monitors */
+.monitors { margin-top: auto; padding-top: clamp(24px, 4vh, 48px); }
+.stripLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px;
+  font-family: var(--font-serif);
+  font-size: var(--fs-micro);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+.rec { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: blink 1.6s steps(2, start) infinite; }
+@keyframes blink { to { visibility: hidden; } }
+.stripCount { margin-left: auto; }
+.strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cell { min-width: 0; }
+.tile { display: block; border: 1px solid rgba(255, 255, 255, 0.16); transition: border-color var(--dur-fast) var(--ease); }
+.tile:hover { border-color: var(--accent); }
+.tileHead, .tileFoot {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 7px 10px;
+  font-family: var(--font-serif);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  white-space: nowrap;
+}
+.tileFoot { color: var(--paper); font-family: var(--font-sans); font-size: 10.5px; letter-spacing: var(--track-caps); }
+.tileName { overflow: hidden; text-overflow: ellipsis; }
+.tileImg { aspect-ratio: 4 / 5; background: var(--paper); }
+.tileImg img { transition: transform 1.2s var(--ease), opacity 0.7s var(--ease) !important; }
+.tile:hover .tileImg img { transform: scale(1.03); }
+
+@media (max-width: 1023px) {
+  .strip {
+    display: flex;
+    gap: 8px;
+    margin: 0 calc(var(--page-pad) * -1);
+    padding: 0 var(--page-pad);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+  .strip::-webkit-scrollbar { display: none; }
+  .cell { flex: 0 0 min(44vw, 260px); scroll-snap-align: start; }
+}
+@media (max-width: 767px) {
+  .hero, .inner { min-height: 0; }
+  .monitors { margin-top: 36px; padding-top: 0; }
+  .telemetry { flex-direction: column; gap: 4px; }
+  .telemetryRight { text-align: left; }
+  .mark { margin-top: 28px; }
+  .row { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .ctas { width: 100%; gap: 18px; }
+  .btn { flex: 1; min-width: 0; }
+  .cell { flex-basis: 46vw; }
+}

@@ -1,0 +1,3033 @@
+{
+  "categories": [
+    {
+      "slug": "chaquetas",
+      "name": "Chaquetas"
+    },
+    {
+      "slug": "punto",
+      "name": "Punto"
+    },
+    {
+      "slug": "sudaderas",
+      "name": "Sudaderas"
+    },
+    {
+      "slug": "camisetas",
+      "name": "Camisetas"
+    },
+    {
+      "slug": "camisas",
+      "name": "Camisas"
+    },
+    {
+      "slug": "pantalones",
+      "name": "Pantalones"
+    },
+    {
+      "slug": "accesorios",
+      "name": "Accesorios"
+    },
+    {
+      "slug": "joyeria",
+      "name": "Joyería"
+    }
+  ],
+  "models": {
+    "astrid": {
+      "job_id": "945b9dd0-e875-437a-8455-400d10532130",
+      "desc": "young Scandinavian woman, platinum blunt bob"
+    },
+    "rohan": {
+      "job_id": "30239f71-1ec1-40fe-9531-663152dd5b71",
+      "desc": "young South Asian man, wavy hair, thin moustache"
+    },
+    "ama": {
+      "job_id": "e3f55365-6fb4-4ff8-a4f1-87bcf465de97",
+      "desc": "young Black woman, bleach blonde crop"
+    },
+    "kai": {
+      "job_id": "cb5e765a-1b51-4fd8-b81a-3967144ec081",
+      "desc": "young East Asian-Latino man, shoulder-length hair"
+    }
+  },
+  "products": [
+    {
+      "slug": "capsule-flight-jacket",
+      "name": "Capsule Flight Jacket",
+      "category": "chaquetas",
+      "price": 290,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "astrid",
+      "description": "La chaqueta del piloto de cápsula: nylon naranja de seguridad, bolsillos de bolígrafo en las mangas y paneles de parche lisos para tus propias misiones.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Nylon técnico mate",
+        "Bolsillos de bolígrafo en las mangas",
+        "Paneles de velcro para parches",
+        "Cuello de punto y cremallera plateada"
+      ],
+      "composition": "100% nylon",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a cropped boxy flight jacket in safety orange matte nylon inspired by 1960s astronaut flight suits, ribbed knit collar, silver zip, zipped pen pockets on both upper sleeves, two blank rectangular velcro patch panels on the chest, short square body ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn zipped with wide metallic silver trousers and chunky white padded boots, a thin silver chain; heroic stance, chin up"
+      },
+      "colors": [
+        {
+          "name": "Safety Orange",
+          "slug": "safety-orange",
+          "hex": "#FF5A1F",
+          "variant": null,
+          "images": [
+            "/products/capsule-flight-jacket/safety-orange-1.jpg",
+            "/products/capsule-flight-jacket/safety-orange-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "moonwalk-puffer",
+      "name": "Moonwalk Puffer",
+      "category": "chaquetas",
+      "price": 320,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rohan",
+      "description": "Plumífero corto en blanco mate con acolchado de fuelle en codos y hombros, como las articulaciones de un traje espacial, y anillas plateadas en los puños.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Acolchado de fuelle articulado",
+        "Anillas metálicas en los puños",
+        "Cuello alto"
+      ],
+      "composition": "100% nylon. Relleno 100% poliéster reciclado",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a cropped boxy puffer jacket in matte off-white nylon quilted like a spacesuit, with accordion bellows quilting at the elbows and shoulders, polished silver metal rings at both cuffs like spacesuit glove rings, high funnel collar, short body ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn zipped with midnight navy wide flight trousers with zip pockets, metallic silver sneakers, mirrored shield sunglasses pushed up on the head; walking slow-motion stride"
+      },
+      "colors": [
+        {
+          "name": "Suit White",
+          "slug": "suit-white",
+          "hex": "#F4F2EC",
+          "variant": null,
+          "images": [
+            "/products/moonwalk-puffer/suit-white-1.jpg",
+            "/products/moonwalk-puffer/suit-white-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "mission-control-blouson",
+      "name": "Mission Control Blouson",
+      "category": "chaquetas",
+      "price": 260,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "ama",
+      "description": "Blusón corto en lana azul noche con una hilera de pequeños pilotos bordados en el pecho, como la consola de una sala de control de los 60.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Lana fría",
+        "Pilotos de consola bordados en el pecho",
+        "Cuello camisero y botones de presión"
+      ],
+      "composition": "80% lana, 20% poliamida",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a cropped boxy blouson jacket in midnight navy wool, point collar, snap front, a horizontal panel on the chest embroidered with rows of small round console lights in orange, yellow, red and green like a 1960s mission control desk, short body ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn open over a white short-sleeve shirt with a skinny black tie, cream pleated wide trousers, black leather loafers with white socks, thick black-framed glasses; engineer pose holding a clipboard"
+      },
+      "colors": [
+        {
+          "name": "Midnight",
+          "slug": "midnight",
+          "hex": "#0E1A3A",
+          "variant": null,
+          "images": [
+            "/products/mission-control-blouson/midnight-1.jpg",
+            "/products/mission-control-blouson/midnight-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "heat-shield-bomber",
+      "name": "Heat Shield Bomber",
+      "category": "chaquetas",
+      "price": 280,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kai",
+      "description": "Bomber corta acolchada en losetas hexagonales grafito con brillo metálico, como el escudo térmico de una cápsula.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Acolchado en losetas hexagonales",
+        "Acabado grafito metalizado",
+        "Rib naranja en contraste"
+      ],
+      "composition": "100% poliéster. Relleno 100% poliéster",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a cropped boxy bomber jacket in graphite grey nylon with a subtle metallic sheen, quilted all over in hexagonal tiles like a spacecraft heat shield, safety orange rib-knit collar, cuffs and hem, silver zip, short body ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn over a safety orange chunky knit, black cargo trousers with reflective tape, black chunky boots, silver ear cuff; arms crossed"
+      },
+      "colors": [
+        {
+          "name": "Graphite",
+          "slug": "graphite",
+          "hex": "#3A3C40",
+          "variant": null,
+          "images": [
+            "/products/heat-shield-bomber/graphite-1.jpg",
+            "/products/heat-shield-bomber/graphite-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "re-entry-anorak",
+      "name": "Re-Entry Anorak",
+      "category": "chaquetas",
+      "price": 240,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "astrid",
+      "description": "Anorak corto de media cremallera en tejido plata reflectante con el interior de la capucha naranja.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Tejido plata reflectante",
+        "Capucha forrada en naranja",
+        "Bolsillo canguro con cremallera"
+      ],
+      "composition": "100% poliéster con recubrimiento reflectante",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a cropped boxy half-zip anorak in reflective silver coated fabric, hood lined in safety orange, kangaroo pocket with zip, elastic cuffs, short body ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn hood up framing the face with midnight navy flared trousers with a white side stripe and white leather platform boots; hands in the kangaroo pocket"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C3C7CC",
+          "variant": null,
+          "images": [
+            "/products/re-entry-anorak/silver-1.jpg",
+            "/products/re-entry-anorak/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tether-utility-vest",
+      "name": "Tether Utility Vest",
+      "category": "chaquetas",
+      "price": 180,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rohan",
+      "description": "Chaleco utilitario corto en ripstop blanco con cintas naranjas de anclaje y mosquetones, como los de los paseos espaciales.",
+      "details": [
+        "Corte cuadrado a la cintura",
+        "Ripstop técnico",
+        "Cintas de anclaje con anillas D",
+        "Bolsillos múltiples"
+      ],
+      "composition": "100% nylon",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a cropped boxy utility vest in white ripstop nylon with safety orange tether webbing straps across the chest ending in silver D-rings and a carabiner, several flap pockets, high collar, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn over a midnight navy fine turtleneck, wide white trousers, safety orange socks and black loafers, silver rings; one hand holding the carabiner"
+      },
+      "colors": [
+        {
+          "name": "Suit White",
+          "slug": "suit-white",
+          "hex": "#F4F2EC",
+          "variant": null,
+          "images": [
+            "/products/tether-utility-vest/suit-white-1.jpg",
+            "/products/tether-utility-vest/suit-white-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "orbit-varsity",
+      "name": "Orbit Varsity",
+      "category": "chaquetas",
+      "price": 320,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "ama",
+      "description": "Varsity corta en lana azul noche con mangas de piel blanca y un parche de chenilla con un planeta anillado.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Lana cocida y mangas de piel",
+        "Parche de chenilla del planeta anillado",
+        "Estrellas bordadas"
+      ],
+      "composition": "Cuerpo 80% lana, 20% poliamida. Mangas 100% piel",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a cropped boxy varsity jacket with a midnight navy boiled wool body and white leather sleeves, navy and orange striped rib collar, cuffs and hem, white snaps, a large cream chenille patch of a ringed planet on the left chest and three small embroidered stars on the right",
+        "back": "",
+        "detail": "",
+        "pose": "worn open over a mustard knit polo, cherry red wide pleated trousers, white leather loafers, thin silver chain; leaning back confidently"
+      },
+      "colors": [
+        {
+          "name": "Midnight",
+          "slug": "midnight",
+          "hex": "#0E1A3A",
+          "variant": null,
+          "images": [
+            "/products/orbit-varsity/midnight-1.jpg",
+            "/products/orbit-varsity/midnight-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lunar-suede-trucker",
+      "name": "Lunar Suede Trucker",
+      "category": "chaquetas",
+      "price": 420,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kai",
+      "description": "Cazadora corta en ante gris lunar con relieve de cráteres grabado en los paneles del pecho.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Ante de cordero",
+        "Relieve de cráteres grabado",
+        "Botones de metal pulido"
+      ],
+      "composition": "100% piel de ante",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a cropped boxy trucker jacket in pale lunar grey suede with a debossed moon crater texture on the chest panels, polished silver shank buttons, two flap pockets, short body ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn over a white ribbed tank, safety orange flight trousers with zip pockets, grey suede boots, a rocket pendant on a ball chain; three-quarter stance"
+      },
+      "colors": [
+        {
+          "name": "Lunar Grey",
+          "slug": "lunar-grey",
+          "hex": "#9EA1A5",
+          "variant": null,
+          "images": [
+            "/products/lunar-suede-trucker/lunar-grey-1.jpg",
+            "/products/lunar-suede-trucker/lunar-grey-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "starfield-knit",
+      "name": "Starfield Knit",
+      "category": "punto",
+      "price": 160,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "astrid",
+      "description": "Jersey corto en punto azul noche con estrellas blancas en intarsia y un cometa cruzando el hombro.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Lana merino",
+        "Intarsia de estrellas y cometa"
+      ],
+      "composition": "100% lana merino",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a cropped boxy crewneck sweater in midnight navy merino with scattered white intarsia stars of different sizes and a small white comet with a trail across the left shoulder, ribbed hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn with metallic silver straight trousers, white chunky sneakers with orange laces, silver hoop earrings; hands in pockets"
+      },
+      "colors": [
+        {
+          "name": "Midnight",
+          "slug": "midnight",
+          "hex": "#0E1A3A",
+          "variant": null,
+          "images": [
+            "/products/starfield-knit/midnight-1.jpg",
+            "/products/starfield-knit/midnight-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "saturn-cardigan",
+      "name": "Saturn Cardigan",
+      "category": "punto",
+      "price": 170,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rohan",
+      "description": "Cárdigan corto en mostaza con un Saturno en intarsia y botones de plata con forma de planeta.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Punto de algodón",
+        "Intarsia de Saturno",
+        "Botones planeta en plata"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a cropped boxy V-neck cardigan in mustard cotton knit with a ringed Saturn intarsia in cream and orange on the left front, five silver buttons shaped like tiny ringed planets, ribbed hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn buttoned with a short midnight navy pleated skirt, white knee socks and black patent loafers, small silver planet earrings; playful pose"
+      },
+      "colors": [
+        {
+          "name": "Mustard",
+          "slug": "mustard",
+          "hex": "#E2A72E",
+          "variant": null,
+          "images": [
+            "/products/saturn-cardigan/mustard-1.jpg",
+            "/products/saturn-cardigan/mustard-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "stage-stripe-knit-polo",
+      "name": "Stage Stripe Knit Polo",
+      "category": "punto",
+      "price": 130,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "ama",
+      "description": "Polo de punto corto con franjas de colores como las etapas de un cohete: blanco, naranja y azul noche.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Punto fino de algodón",
+        "Franjas de etapa de cohete",
+        "Cuello de polo"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a cropped boxy short-sleeve knit polo with wide horizontal colour bands like rocket stages: white top band, safety orange middle band, midnight navy lower band, white collar with navy tipping, three silver buttons, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn with cream pleated wide trousers, brown leather loafers with orange socks, round sunglasses; relaxed hands in pockets"
+      },
+      "colors": [
+        {
+          "name": "Stage Stripe",
+          "slug": "stage-stripe",
+          "hex": "#FF5A1F",
+          "variant": null,
+          "images": [
+            "/products/stage-stripe-knit-polo/stage-stripe-1.jpg",
+            "/products/stage-stripe-knit-polo/stage-stripe-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "eva-rib-knit",
+      "name": "EVA Rib Knit",
+      "category": "punto",
+      "price": 180,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kai",
+      "description": "Jersey corto de canalé grueso blanco con fuelles de punto en los codos, como las juntas del traje de paseo espacial, y cuello naranja.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Canalé grueso",
+        "Fuelles de punto en los codos",
+        "Cuello alto naranja"
+      ],
+      "composition": "80% lana, 20% poliamida",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a cropped boxy chunky ribbed sweater in off-white wool with accordion-pleated knit bellows at both elbows like spacesuit joints, a safety orange ribbed high neck, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn with midnight navy straight trousers with a white side stripe, white padded boots, silver chain; slow-motion astronaut walk"
+      },
+      "colors": [
+        {
+          "name": "Suit White",
+          "slug": "suit-white",
+          "hex": "#F4F2EC",
+          "variant": null,
+          "images": [
+            "/products/eva-rib-knit/suit-white-1.jpg",
+            "/products/eva-rib-knit/suit-white-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lunar-mohair-knit",
+      "name": "Lunar Mohair Knit",
+      "category": "punto",
+      "price": 190,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "astrid",
+      "description": "Jersey corto de mohair gris con una textura de cráteres en relieve, como la superficie de la Luna.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Mohair cepillado",
+        "Relieve de cráteres"
+      ],
+      "composition": "50% mohair, 30% poliamida, 20% lana",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a cropped boxy crewneck sweater in fuzzy pale grey mohair with a raised knitted texture of moon craters of different sizes, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn with safety orange wide trousers, white leather mules with grey socks, silver comet ear cuff; serene gaze upward"
+      },
+      "colors": [
+        {
+          "name": "Lunar Grey",
+          "slug": "lunar-grey",
+          "hex": "#9EA1A5",
+          "variant": null,
+          "images": [
+            "/products/lunar-mohair-knit/lunar-grey-1.jpg",
+            "/products/lunar-mohair-knit/lunar-grey-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "telemetry-knit-vest",
+      "name": "Telemetry Knit Vest",
+      "category": "punto",
+      "price": 120,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rohan",
+      "description": "Chaleco de punto corto azul noche con un jacquard naranja de ondas de telemetría.",
+      "details": [
+        "Corte cuadrado a la cintura",
+        "Jacquard de ondas",
+        "Cuello de pico"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a cropped boxy V-neck knit vest in midnight navy with a safety orange jacquard of oscilloscope waveform lines running across, ribbed armholes and hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn over a white oxford shirt with sleeves rolled, olive cargo trousers with reflective tape, black derbies; hands behind back"
+      },
+      "colors": [
+        {
+          "name": "Midnight",
+          "slug": "midnight",
+          "hex": "#0E1A3A",
+          "variant": null,
+          "images": [
+            "/products/telemetry-knit-vest/midnight-1.jpg",
+            "/products/telemetry-knit-vest/midnight-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "comet-turtleneck",
+      "name": "Comet Turtleneck",
+      "category": "punto",
+      "price": 140,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "ama",
+      "description": "Jersey fino de cuello alto en rojo cósmico con la estela de un cometa blanco cruzando el hombro.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Punto fino merino",
+        "Intarsia de cometa",
+        "Cuello vuelto"
+      ],
+      "composition": "100% lana merino",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a cropped boxy fine-gauge turtleneck sweater in cosmic red merino with a white intarsia comet whose long trail sweeps across the right shoulder and down the sleeve, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn with white wide flared trousers, white platform boots, silver rings; one hand on hip"
+      },
+      "colors": [
+        {
+          "name": "Cosmic Red",
+          "slug": "cosmic-red",
+          "hex": "#D7263D",
+          "variant": null,
+          "images": [
+            "/products/comet-turtleneck/cosmic-red-1.jpg",
+            "/products/comet-turtleneck/cosmic-red-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "constellation-cardigan",
+      "name": "Constellation Cardigan",
+      "category": "punto",
+      "price": 190,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kai",
+      "description": "Cárdigan corto azul noche con constelaciones bordadas con pequeñas cuentas plateadas unidas por hilo blanco.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Lana merino",
+        "Constelaciones de cuentas plateadas",
+        "Botones de nácar"
+      ],
+      "composition": "100% lana merino",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "A",
+      "prompt": {
+        "garment": "a cropped boxy crewneck cardigan in midnight navy merino embroidered with constellations made of tiny silver beads connected by fine white thread lines, mother-of-pearl buttons, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn buttoned with metallic silver wide trousers, black pointed boots, silver star chain; looking over the shoulder"
+      },
+      "colors": [
+        {
+          "name": "Midnight",
+          "slug": "midnight",
+          "hex": "#0E1A3A",
+          "variant": null,
+          "images": [
+            "/products/constellation-cardigan/midnight-1.jpg",
+            "/products/constellation-cardigan/midnight-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "mission-patch-hoodie",
+      "name": "Mission Patch Hoodie",
+      "category": "sudaderas",
+      "price": 140,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "astrid",
+      "description": "Sudadera corta blanca con un gran parche de misión bordado: un cohete y tres estrellas dentro de un escudo redondo.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Felpa 450 g/m²",
+        "Parche de misión bordado",
+        "Capucha doble"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a cropped boxy hoodie in off-white heavyweight fleece with a large round embroidered mission patch on the chest: a rocket rising through an orbit ring with three stars, in navy, orange and red, no lettering, kangaroo pocket, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn hood down with safety orange wide flight trousers, white chunky boots, mirrored sunglasses; thumbs up pose"
+      },
+      "colors": [
+        {
+          "name": "Suit White",
+          "slug": "suit-white",
+          "hex": "#F4F2EC",
+          "variant": null,
+          "images": [
+            "/products/mission-patch-hoodie/suit-white-1.jpg",
+            "/products/mission-patch-hoodie/suit-white-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "launchpad-zip-hoodie",
+      "name": "Launchpad Zip Hoodie",
+      "category": "sudaderas",
+      "price": 150,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rohan",
+      "description": "Sudadera de cremallera corta en naranja de seguridad con cinta reflectante plateada en las mangas.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Felpa 450 g/m²",
+        "Cinta reflectante en mangas",
+        "Cremallera plateada"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a cropped boxy full-zip hoodie in safety orange heavyweight fleece with two bands of reflective silver tape around each sleeve, silver zip, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn half-zipped over a white tank with midnight navy straight trousers and silver sneakers, a carabiner keychain on the belt loop; dynamic lean"
+      },
+      "colors": [
+        {
+          "name": "Safety Orange",
+          "slug": "safety-orange",
+          "hex": "#FF5A1F",
+          "variant": null,
+          "images": [
+            "/products/launchpad-zip-hoodie/safety-orange-1.jpg",
+            "/products/launchpad-zip-hoodie/safety-orange-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "moon-phase-crewneck",
+      "name": "Moon Phase Crewneck",
+      "category": "sudaderas",
+      "price": 125,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "ama",
+      "description": "Sudadera corta azul noche con las fases de la Luna estampadas en relieve puff a lo ancho del pecho.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Felpa 450 g/m²",
+        "Estampado puff de fases lunares"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a cropped boxy crewneck sweatshirt in midnight navy fleece with a horizontal row of eight raised cream puff-print moon phases across the chest, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn with mustard corduroy wide trousers, white leather loafers with navy socks, silver moon earrings; seated-on-air relaxed pose"
+      },
+      "colors": [
+        {
+          "name": "Midnight",
+          "slug": "midnight",
+          "hex": "#0E1A3A",
+          "variant": null,
+          "images": [
+            "/products/moon-phase-crewneck/midnight-1.jpg",
+            "/products/moon-phase-crewneck/midnight-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ground-crew-hoodie",
+      "name": "Ground Crew Hoodie",
+      "category": "sudaderas",
+      "price": 145,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kai",
+      "description": "Sudadera de equipo de tierra en gris con paneles naranja y bolsillo utilitario con cremallera en la manga.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Felpa 450 g/m²",
+        "Paneles en contraste",
+        "Bolsillo de manga con cremallera"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a cropped boxy pullover hoodie in heather grey fleece with safety orange contrast panels on the shoulders and hood lining, a zipped utility pocket on the left sleeve, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn with olive cargo trousers, black chunky boots, orange beanie, silver tag chain; hands in the sleeve pockets"
+      },
+      "colors": [
+        {
+          "name": "Ground Grey",
+          "slug": "ground-grey",
+          "hex": "#8A8D91",
+          "variant": null,
+          "images": [
+            "/products/ground-crew-hoodie/ground-grey-1.jpg",
+            "/products/ground-crew-hoodie/ground-grey-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "zero-g-crewneck",
+      "name": "Zero-G Crewneck",
+      "category": "sudaderas",
+      "price": 125,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "astrid",
+      "description": "Sudadera corta mostaza con objetos flotando en gravedad cero estampados en puff: un bolígrafo, un guante, una cuchara y una tuerca.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Felpa 450 g/m²",
+        "Estampado puff de objetos flotando"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a cropped boxy crewneck sweatshirt in mustard fleece with raised puff-print illustrations of objects floating in zero gravity scattered across the front: a pen, an astronaut glove, a spoon and a hex nut, in white and navy, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn with midnight navy flared trousers, white platform sneakers, silver rings; floating pose with one leg lifted"
+      },
+      "colors": [
+        {
+          "name": "Mustard",
+          "slug": "mustard",
+          "hex": "#E2A72E",
+          "variant": null,
+          "images": [
+            "/products/zero-g-crewneck/mustard-1.jpg",
+            "/products/zero-g-crewneck/mustard-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "orbit-track-top",
+      "name": "Orbit Track Top",
+      "category": "sudaderas",
+      "price": 140,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rohan",
+      "description": "Chaqueta de chándal corta en tricot azul cielo con un vivo blanco que dibuja una órbita alrededor del hombro.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Tricot brillante",
+        "Vivo en órbita",
+        "Cremallera plateada"
+      ],
+      "composition": "100% poliéster reciclado",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a cropped boxy zip track jacket in sky blue tricot with a white piping line that loops around the shoulder and upper arm like an orbit ellipse, stand collar, silver zip, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn zipped with white track pants with sky blue side stripes, white leather sneakers with sky socks, silver hoops; mid-jump"
+      },
+      "colors": [
+        {
+          "name": "Sky",
+          "slug": "sky",
+          "hex": "#A9C6E8",
+          "variant": null,
+          "images": [
+            "/products/orbit-track-top/sky-1.jpg",
+            "/products/orbit-track-top/sky-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "radar-hoodie",
+      "name": "Radar Hoodie",
+      "category": "sudaderas",
+      "price": 145,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "ama",
+      "description": "Sudadera corta negra con una pantalla de radar verde fósforo estampada: círculos, cruz y barrido.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Felpa 450 g/m²",
+        "Estampado de radar verde fósforo"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a cropped boxy hoodie in black fleece with a large phosphor green screen-print of a circular radar display on the chest: concentric rings, crosshair and a sweeping beam with a few blips, kangaroo pocket, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn hood up with metallic silver wide trousers and black boots, green-tinted visor sunglasses; mysterious frontal stance"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#111111",
+          "variant": null,
+          "images": [
+            "/products/radar-hoodie/black-1.jpg",
+            "/products/radar-hoodie/black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "cosmonaut-quarter-zip",
+      "name": "Cosmonaut Quarter Zip",
+      "category": "sudaderas",
+      "price": 135,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kai",
+      "description": "Sudadera de media cremallera en forro polar rojo cósmico con una franja blanca en el pecho.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Forro polar",
+        "Franja en contraste",
+        "Cuello alto"
+      ],
+      "composition": "100% poliéster reciclado",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a cropped boxy quarter-zip pullover in cosmic red fleece with a wide white horizontal band across the chest and a high collar, silver zip, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn with cream wide trousers, brown suede boots, a white beanie; hands in pockets, wind in the hair"
+      },
+      "colors": [
+        {
+          "name": "Cosmic Red",
+          "slug": "cosmic-red",
+          "hex": "#D7263D",
+          "variant": null,
+          "images": [
+            "/products/cosmonaut-quarter-zip/cosmic-red-1.jpg",
+            "/products/cosmonaut-quarter-zip/cosmic-red-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "orbit-ringer-tee",
+      "name": "Orbit Ringer Tee",
+      "category": "camisetas",
+      "price": 55,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "astrid",
+      "description": "Camiseta ringer boxy blanca con ribetes azul noche y un planeta anillado bordado en el pecho.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Algodón 280 g/m²",
+        "Ribetes en contraste",
+        "Planeta bordado"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a cropped boxy ringer t-shirt in white cotton with midnight navy collar and sleeve bands and a small embroidered ringed planet in orange on the left chest, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn tucked into safety orange wide trousers with a white belt, white leather loafers, silver chain; relaxed stance"
+      },
+      "colors": [
+        {
+          "name": "White Navy",
+          "slug": "white-navy",
+          "hex": "#F4F2EC",
+          "variant": null,
+          "images": [
+            "/products/orbit-ringer-tee/white-navy-1.jpg",
+            "/products/orbit-ringer-tee/white-navy-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "blueprint-tee",
+      "name": "Blueprint Tee",
+      "category": "camisetas",
+      "price": 60,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rohan",
+      "description": "Camiseta boxy azul con el plano técnico de un cohete estampado en líneas blancas.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Algodón 280 g/m²",
+        "Estampado de plano técnico"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a cropped boxy heavyweight t-shirt in blueprint blue cotton with a white line-drawing technical blueprint of a vertical rocket with dimension lines and section views, no text or numbers, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn with white wide trousers, white sneakers with blue socks, a pencil behind the ear and silver rings; engineer pose"
+      },
+      "colors": [
+        {
+          "name": "Blueprint",
+          "slug": "blueprint",
+          "hex": "#1E4FA0",
+          "variant": null,
+          "images": [
+            "/products/blueprint-tee/blueprint-1.jpg",
+            "/products/blueprint-tee/blueprint-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "lunar-footprint-tee",
+      "name": "Lunar Footprint Tee",
+      "category": "camisetas",
+      "price": 60,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "ama",
+      "description": "Camiseta boxy gris con una huella de bota sobre polvo lunar estampada en tono fotográfico.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Algodón 280 g/m²",
+        "Estampado fotográfico"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a cropped boxy heavyweight t-shirt in pale grey cotton with a large photographic grayscale print of a single astronaut boot footprint in lunar dust on the chest, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn with midnight navy pleated wide trousers, black loafers with white socks, silver rocket pendant; hands in pockets"
+      },
+      "colors": [
+        {
+          "name": "Lunar Grey",
+          "slug": "lunar-grey",
+          "hex": "#9EA1A5",
+          "variant": null,
+          "images": [
+            "/products/lunar-footprint-tee/lunar-grey-1.jpg",
+            "/products/lunar-footprint-tee/lunar-grey-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "star-map-longsleeve",
+      "name": "Star Map Longsleeve",
+      "category": "camisetas",
+      "price": 75,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kai",
+      "description": "Manga larga boxy blanca con un mapa estelar estampado a lo largo de las dos mangas.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Algodón 260 g/m²",
+        "Mapa estelar en las mangas"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a cropped boxy long-sleeve t-shirt in white cotton with a navy star chart print of dots and constellation lines running down both sleeves, plain front, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn with metallic silver straight trousers, navy suede sneakers, silver ear cuff; arms slightly raised to show the sleeves"
+      },
+      "colors": [
+        {
+          "name": "Suit White",
+          "slug": "suit-white",
+          "hex": "#F4F2EC",
+          "variant": null,
+          "images": [
+            "/products/star-map-longsleeve/suit-white-1.jpg",
+            "/products/star-map-longsleeve/suit-white-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "rocket-stage-tee",
+      "name": "Rocket Stage Tee",
+      "category": "camisetas",
+      "price": 55,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "astrid",
+      "description": "Camiseta boxy con franjas horizontales de etapa de cohete: naranja, blanco y azul noche.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Algodón 280 g/m²",
+        "Franjas tejidas"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a cropped boxy heavyweight t-shirt with wide horizontal woven stripes: safety orange top, white middle, midnight navy bottom, thick ribbed collar, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn with cream bermuda shorts, white knee socks and brown loafers, round sunglasses; casual lean"
+      },
+      "colors": [
+        {
+          "name": "Stage Stripe",
+          "slug": "stage-stripe",
+          "hex": "#FF5A1F",
+          "variant": null,
+          "images": [
+            "/products/rocket-stage-tee/stage-stripe-1.jpg",
+            "/products/rocket-stage-tee/stage-stripe-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "crew-stars-tee",
+      "name": "Crew Stars Tee",
+      "category": "camisetas",
+      "price": 55,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rohan",
+      "description": "Camiseta boxy negra con cuatro estrellas bordadas unidas por una línea de órbita: la tripulación.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Algodón 280 g/m²",
+        "Bordado de estrellas y órbita"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a cropped boxy heavyweight t-shirt in black cotton with four small white embroidered stars connected by a thin curved silver orbit line across the chest, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn with safety orange flight trousers with zip pockets, black chunky boots, silver star chain; confident stance"
+      },
+      "colors": [
+        {
+          "name": "Black",
+          "slug": "black",
+          "hex": "#111111",
+          "variant": null,
+          "images": [
+            "/products/crew-stars-tee/black-1.jpg",
+            "/products/crew-stars-tee/black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "splashdown-tee",
+      "name": "Splashdown Tee",
+      "category": "camisetas",
+      "price": 60,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "ama",
+      "description": "Camiseta boxy azul cielo con una cápsula amerizando entre olas estampada al estilo de los carteles de los 60.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Algodón 280 g/m²",
+        "Estampado retro a tres tintas"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a cropped boxy heavyweight t-shirt in sky blue cotton with a three-colour 1960s poster-style print of a space capsule with parachutes splashing down into stylised ocean waves, no text, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn with white pleated shorts, sky blue socks and white leather loafers, silver hoop; sunny pose"
+      },
+      "colors": [
+        {
+          "name": "Sky",
+          "slug": "sky",
+          "hex": "#A9C6E8",
+          "variant": null,
+          "images": [
+            "/products/splashdown-tee/sky-1.jpg",
+            "/products/splashdown-tee/sky-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "satellite-raglan",
+      "name": "Satellite Raglan",
+      "category": "camisetas",
+      "price": 70,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kai",
+      "description": "Raglán boxy de manga tres cuartos con cuerpo blanco, mangas naranjas y un satélite bordado.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Algodón 260 g/m²",
+        "Mangas raglán en contraste",
+        "Satélite bordado"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "B",
+      "prompt": {
+        "garment": "a cropped boxy raglan t-shirt with three-quarter sleeves, white body and safety orange raglan sleeves, a small embroidered satellite with solar panels in navy on the chest, hem ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn with midnight navy barrel jeans, white sneakers with orange laces, silver orbit earring; hands in back pockets"
+      },
+      "colors": [
+        {
+          "name": "White Orange",
+          "slug": "white-orange",
+          "hex": "#FF5A1F",
+          "variant": null,
+          "images": [
+            "/products/satellite-raglan/white-orange-1.jpg",
+            "/products/satellite-raglan/white-orange-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "engineer-shirt",
+      "name": "Engineer Shirt",
+      "category": "camisas",
+      "price": 110,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "astrid",
+      "description": "La camisa del ingeniero de 1969: popelín blanco de manga corta, ribete azul noche y un protector de bolsillo con bolígrafos.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Popelín de algodón",
+        "Protector de bolsillo desmontable",
+        "Ribete en contraste"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a cropped boxy short-sleeve shirt in crisp white cotton poplin with thin midnight navy piping on the collar and pocket, a clear pocket protector holding two pens and a pencil in the chest pocket, square body ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn buttoned with a skinny black tie, midnight navy flared trousers, black loafers with white socks, black-framed glasses and a wristwatch; engineer pose"
+      },
+      "colors": [
+        {
+          "name": "Suit White",
+          "slug": "suit-white",
+          "hex": "#F4F2EC",
+          "variant": null,
+          "images": [
+            "/products/engineer-shirt/suit-white-1.jpg",
+            "/products/engineer-shirt/suit-white-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "control-room-camp-shirt",
+      "name": "Control Room Camp Shirt",
+      "category": "camisas",
+      "price": 120,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rohan",
+      "description": "Camisa de cuello abierto con estampado integral de botones, diales y pilotos de una consola de los 60.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Viscosa",
+        "Estampado integral de consola",
+        "Cuello camp"
+      ],
+      "composition": "100% viscosa",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a cropped boxy short-sleeve camp collar shirt with an all-over print of 1960s control console buttons, dials, toggle switches and indicator lights in orange, red, mustard and navy on a cream background, no text, square body ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn open over a white tank with cream wide trousers, brown leather loafers, silver chain and round sunglasses; leaning on one leg"
+      },
+      "colors": [
+        {
+          "name": "Console Cream",
+          "slug": "console-cream",
+          "hex": "#EFE6D2",
+          "variant": null,
+          "images": [
+            "/products/control-room-camp-shirt/console-cream-1.jpg",
+            "/products/control-room-camp-shirt/console-cream-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "silver-overshirt",
+      "name": "Silver Overshirt",
+      "category": "camisas",
+      "price": 160,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "ama",
+      "description": "Sobrecamisa corta en sarga plateada metalizada con bolsillos de parche y botones de presión.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Sarga metalizada",
+        "Bolsillos de parche",
+        "Automáticos"
+      ],
+      "composition": "70% algodón, 30% poliéster metalizado",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a cropped boxy overshirt in metallic silver cotton twill with a soft sheen, point collar, two chest patch pockets with flaps, snap buttons, square body ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn open over a safety orange turtleneck, black straight trousers, white platform boots; futuristic stance with hands on hips"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C3C7CC",
+          "variant": null,
+          "images": [
+            "/products/silver-overshirt/silver-1.jpg",
+            "/products/silver-overshirt/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "orbital-stripe-shirt",
+      "name": "Orbital Stripe Shirt",
+      "category": "camisas",
+      "price": 120,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kai",
+      "description": "Camisa corta con un estampado de rayas curvas concéntricas, como órbitas, en naranja y crema.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Popelín de algodón",
+        "Estampado de órbitas concéntricas"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a cropped boxy long-sleeve shirt with a bold print of curved concentric elliptical stripes like planetary orbits in safety orange and cream, point collar, square body ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn tucked into midnight navy wide trousers with a white belt, white leather loafers, silver orbit earrings; arms open"
+      },
+      "colors": [
+        {
+          "name": "Orbit Orange",
+          "slug": "orbit-orange",
+          "hex": "#FF5A1F",
+          "variant": null,
+          "images": [
+            "/products/orbital-stripe-shirt/orbit-orange-1.jpg",
+            "/products/orbital-stripe-shirt/orbit-orange-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "comet-satin-shirt",
+      "name": "Comet Satin Shirt",
+      "category": "camisas",
+      "price": 130,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "astrid",
+      "description": "Camisa de bolos corta en satén azul noche con un cometa blanco bordado en la espalda.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Satén de viscosa",
+        "Cuello camp",
+        "Cometa bordado en la espalda"
+      ],
+      "composition": "100% viscosa",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a cropped boxy short-sleeve bowling shirt in midnight navy satin with a white embroidered comet with a long trail across the back and a tiny comet on the chest, cream contrast piping, camp collar, square body ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn open over a white tank with cosmic red wide trousers, black loafers with red socks, silver chain; turning to show the back"
+      },
+      "colors": [
+        {
+          "name": "Midnight",
+          "slug": "midnight",
+          "hex": "#0E1A3A",
+          "variant": null,
+          "images": [
+            "/products/comet-satin-shirt/midnight-1.jpg",
+            "/products/comet-satin-shirt/midnight-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "flight-zip-shirt",
+      "name": "Flight Zip Shirt",
+      "category": "camisas",
+      "price": 130,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "rohan",
+      "description": "Camisa de vuelo corta con cremallera en sarga verde oliva, bolsillos de parche y cinta naranja en las mangas.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Sarga de algodón",
+        "Cierre de cremallera",
+        "Bolsillos de parche",
+        "Cinta en las mangas"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a cropped boxy long-sleeve flight shirt in olive green cotton twill with a front zip, two chest patch pockets, a thin safety orange tape band on each upper sleeve, point collar, square body ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn with cream pleated trousers, brown suede desert boots, aviator sunglasses; hands on belt"
+      },
+      "colors": [
+        {
+          "name": "Flight Olive",
+          "slug": "flight-olive",
+          "hex": "#6B7148",
+          "variant": null,
+          "images": [
+            "/products/flight-zip-shirt/flight-olive-1.jpg",
+            "/products/flight-zip-shirt/flight-olive-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "crater-linen-shirt",
+      "name": "Crater Linen Shirt",
+      "category": "camisas",
+      "price": 140,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "ama",
+      "description": "Camisa corta de lino crema con cráteres lunares bordados tono sobre tono.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Lino",
+        "Bordado de cráteres tono sobre tono"
+      ],
+      "composition": "100% lino",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a cropped boxy long-sleeve shirt in cream linen with tone-on-tone cream embroidered moon craters of different sizes scattered across the front, mother-of-pearl buttons, square body ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn half open with safety orange wide trousers, white mules with orange socks, silver moon earrings; calm pose"
+      },
+      "colors": [
+        {
+          "name": "Crater Cream",
+          "slug": "crater-cream",
+          "hex": "#EFE6D2",
+          "variant": null,
+          "images": [
+            "/products/crater-linen-shirt/crater-cream-1.jpg",
+            "/products/crater-linen-shirt/crater-cream-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "rocket-stripe-shirt",
+      "name": "Rocket Stripe Shirt",
+      "category": "camisas",
+      "price": 115,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "kai",
+      "description": "Camisa corta de rayas rojas y blancas con un pequeño cohete bordado en el puño.",
+      "details": [
+        "Corte boxy recortado: termina en la cintura",
+        "Popelín de algodón",
+        "Rayas caramelo",
+        "Cohete bordado en el puño"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "a cropped boxy long-sleeve shirt in cosmic red and white candy stripes, point collar, a tiny embroidered navy rocket on the left cuff, square body ending at the waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn with midnight navy bermuda shorts, white knee socks and black loafers, silver tag chain; playful stance"
+      },
+      "colors": [
+        {
+          "name": "Red Stripe",
+          "slug": "red-stripe",
+          "hex": "#D7263D",
+          "variant": null,
+          "images": [
+            "/products/rocket-stripe-shirt/red-stripe-1.jpg",
+            "/products/rocket-stripe-shirt/red-stripe-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "flight-suit-trouser",
+      "name": "Flight Suit Trouser",
+      "category": "pantalones",
+      "price": 150,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "model": "astrid",
+      "description": "Pantalón ancho en nylon naranja de seguridad con bolsillos de cremallera en los muslos y cremalleras en el tobillo.",
+      "details": [
+        "Pierna ancha recta",
+        "Nylon técnico",
+        "Bolsillos con cremallera en los muslos",
+        "Cremalleras en el tobillo"
+      ],
+      "composition": "100% nylon",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "wide straight-leg trousers in safety orange matte nylon inspired by astronaut flight suits, zipped pockets on both thighs, ankle zips, elastic back waist with a white webbing belt and silver buckle, clean full-length hem",
+        "back": "",
+        "detail": "",
+        "pose": "worn with a white cropped mission patch hoodie, white chunky padded boots, mirrored sunglasses; heroic stance"
+      },
+      "colors": [
+        {
+          "name": "Safety Orange",
+          "slug": "safety-orange",
+          "hex": "#FF5A1F",
+          "variant": null,
+          "images": [
+            "/products/flight-suit-trouser/safety-orange-1.jpg",
+            "/products/flight-suit-trouser/safety-orange-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "silver-moon-trouser",
+      "name": "Silver Moon Trouser",
+      "category": "pantalones",
+      "price": 160,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "model": "rohan",
+      "description": "Pantalón ancho de pinzas en tejido plata metalizado. El protagonista de cualquier look.",
+      "details": [
+        "Pierna ancha",
+        "Pinzas dobles",
+        "Tejido metalizado"
+      ],
+      "composition": "70% poliéster, 30% poliéster metalizado",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "wide double-pleated trousers in liquid metallic silver fabric, high rise, sharp crease, belt loops, clean full-length hem",
+        "back": "",
+        "detail": "",
+        "pose": "worn with a midnight navy starfield knit sweater, white platform boots, silver rings; strong stance with feet apart"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C3C7CC",
+          "variant": null,
+          "images": [
+            "/products/silver-moon-trouser/silver-1.jpg",
+            "/products/silver-moon-trouser/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "eva-quilted-trouser",
+      "name": "EVA Quilted Trouser",
+      "category": "pantalones",
+      "price": 170,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "model": "ama",
+      "description": "Pantalón recto blanco acolchado con fuelles en las rodillas, como las juntas de un traje espacial.",
+      "details": [
+        "Pierna recta",
+        "Acolchado ligero",
+        "Fuelles en las rodillas",
+        "Cintura con cordón"
+      ],
+      "composition": "100% nylon. Relleno 100% poliéster",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "straight-leg trousers in matte off-white padded nylon with accordion bellows quilting at both knees like spacesuit joints, elastic waist with orange drawcord, clean full-length hem",
+        "back": "",
+        "detail": "",
+        "pose": "worn with a safety orange cropped hoodie, silver sneakers, a carabiner on the belt loop; slow-motion moonwalk"
+      },
+      "colors": [
+        {
+          "name": "Suit White",
+          "slug": "suit-white",
+          "hex": "#F4F2EC",
+          "variant": null,
+          "images": [
+            "/products/eva-quilted-trouser/suit-white-1.jpg",
+            "/products/eva-quilted-trouser/suit-white-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ground-crew-cargo",
+      "name": "Ground Crew Cargo",
+      "category": "pantalones",
+      "price": 140,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "model": "kai",
+      "description": "Cargo recto en sarga verde oliva con cinta reflectante plateada bajo las rodillas.",
+      "details": [
+        "Pierna recta",
+        "Sarga de algodón",
+        "Bolsillos cargo",
+        "Cinta reflectante"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "straight-leg cargo trousers in olive cotton twill with bellows cargo pockets and a band of reflective silver tape below each knee, clean full-length hem",
+        "back": "",
+        "detail": "",
+        "pose": "worn with a grey hoodie with orange panels, black chunky boots, an orange beanie and a silver tag chain; walking"
+      },
+      "colors": [
+        {
+          "name": "Flight Olive",
+          "slug": "flight-olive",
+          "hex": "#6B7148",
+          "variant": null,
+          "images": [
+            "/products/ground-crew-cargo/flight-olive-1.jpg",
+            "/products/ground-crew-cargo/flight-olive-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "orbit-barrel-denim",
+      "name": "Orbit Barrel Denim",
+      "category": "pantalones",
+      "price": 150,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "model": "astrid",
+      "description": "Vaquero barril en lavado azul medio con una órbita bordada en blanco en el bolsillo trasero.",
+      "details": [
+        "Pierna barril",
+        "Denim 13 oz",
+        "Órbita bordada en el bolsillo trasero"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "curved barrel-leg jeans in mid-blue vintage wash, wide through the knee tapering slightly to a clean hem, five pockets, a small white embroidered ringed planet near the right back pocket",
+        "back": "",
+        "detail": "",
+        "pose": "worn with a cropped white ringer tee, safety orange socks and white leather loafers, silver star chain; hands in pockets"
+      },
+      "colors": [
+        {
+          "name": "Mid Blue",
+          "slug": "mid-blue",
+          "hex": "#5F7FA6",
+          "variant": null,
+          "images": [
+            "/products/orbit-barrel-denim/mid-blue-1.jpg",
+            "/products/orbit-barrel-denim/mid-blue-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "space-age-flare",
+      "name": "Space Age Flare",
+      "category": "pantalones",
+      "price": 145,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "model": "rohan",
+      "description": "Pantalón acampanado de los 60 en azul noche con una banda blanca lateral.",
+      "details": [
+        "Pierna acampanada",
+        "Banda lateral en contraste",
+        "Tiro alto"
+      ],
+      "composition": "65% poliéster, 35% viscosa",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "high-rise flared trousers in midnight navy with a white stripe down each side seam, clean flared hem",
+        "back": "",
+        "detail": "",
+        "pose": "worn with a cropped cosmic red comet turtleneck, white platform boots, silver hoop earrings; 60s go-go pose"
+      },
+      "colors": [
+        {
+          "name": "Midnight",
+          "slug": "midnight",
+          "hex": "#0E1A3A",
+          "variant": null,
+          "images": [
+            "/products/space-age-flare/midnight-1.jpg",
+            "/products/space-age-flare/midnight-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "launch-shorts",
+      "name": "Launch Shorts",
+      "category": "pantalones",
+      "price": 90,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "model": "ama",
+      "description": "Pantalón corto amplio en nylon naranja con vivos blancos y bolsillos con cremallera.",
+      "details": [
+        "Largo por encima de la rodilla",
+        "Nylon técnico",
+        "Vivos en contraste",
+        "Bolsillos con cremallera"
+      ],
+      "composition": "100% nylon",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "wide boxy shorts above the knee in safety orange nylon with white piping along the side seams and zipped side pockets, elastic waist",
+        "back": "",
+        "detail": "",
+        "pose": "worn with a cropped white star map longsleeve, white knee socks with orange stripes and white chunky sneakers; sporty stance"
+      },
+      "colors": [
+        {
+          "name": "Safety Orange",
+          "slug": "safety-orange",
+          "hex": "#FF5A1F",
+          "variant": null,
+          "images": [
+            "/products/launch-shorts/safety-orange-1.jpg",
+            "/products/launch-shorts/safety-orange-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "mission-pleated-trouser",
+      "name": "Mission Pleated Trouser",
+      "category": "pantalones",
+      "price": 160,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "model": "kai",
+      "description": "Pantalón de pinzas ancho en lana crema con trabillas naranjas y hebilla plateada en la cintura.",
+      "details": [
+        "Pierna ancha",
+        "Pinzas dobles",
+        "Trabillas en contraste",
+        "Hebilla plateada"
+      ],
+      "composition": "70% lana, 30% poliéster",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "garment",
+      "line": "2026",
+      "batch": "C",
+      "prompt": {
+        "garment": "wide double-pleated trousers in cream wool with safety orange belt loops and a small silver side buckle adjuster at the waist, sharp crease, clean full-length hem",
+        "back": "",
+        "detail": "",
+        "pose": "worn with a midnight navy mission control blouson over a white shirt, black loafers with white socks, black-framed glasses; engineer pose"
+      },
+      "colors": [
+        {
+          "name": "Crater Cream",
+          "slug": "crater-cream",
+          "hex": "#EFE6D2",
+          "variant": null,
+          "images": [
+            "/products/mission-pleated-trouser/crater-cream-1.jpg",
+            "/products/mission-pleated-trouser/crater-cream-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "crater-boot",
+      "name": "Crater Boot",
+      "category": "accesorios",
+      "price": 180,
+      "sizes": [
+        "36",
+        "37",
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "43",
+        "44",
+        "45"
+      ],
+      "model": "astrid",
+      "description": "Bota acolchada blanca con suela naranja dentada como la de las botas de paseo lunar.",
+      "details": [
+        "Nylon acolchado",
+        "Suela de goma dentada",
+        "Cordones con tensor"
+      ],
+      "composition": "Exterior 100% nylon. Suela de caucho",
+      "fit": "Calzado",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": false,
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a pair of chunky padded mid-calf boots in matte off-white nylon with a thick safety orange lug rubber sole, lace-up front with a toggle lock, no logos, placed side by side",
+        "back": "",
+        "detail": "",
+        "pose": "close-up of legs from the knee down wearing the padded boots with metallic silver trousers tucked in"
+      },
+      "colors": [
+        {
+          "name": "Suit White",
+          "slug": "suit-white",
+          "hex": "#F4F2EC",
+          "variant": null,
+          "images": [
+            "/products/crater-boot/suit-white-1.jpg",
+            "/products/crater-boot/suit-white-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "helmet-bag",
+      "name": "Helmet Bag",
+      "category": "accesorios",
+      "price": 160,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "rohan",
+      "description": "Bolso redondo con forma de casco espacial y visera de espejo plateada.",
+      "details": [
+        "Nylon acolchado",
+        "Visera de espejo",
+        "Asa y correa larga"
+      ],
+      "composition": "100% nylon",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": true,
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a small round handbag shaped like a 1960s astronaut helmet in white padded nylon with a mirrored silver visor panel on the front, a top handle and a long detachable strap, no logos",
+        "back": "",
+        "detail": "",
+        "pose": "upper body holding the helmet bag by its handle next to the face, wearing a safety orange flight jacket"
+      },
+      "colors": [
+        {
+          "name": "Suit White",
+          "slug": "suit-white",
+          "hex": "#F4F2EC",
+          "variant": null,
+          "images": [
+            "/products/helmet-bag/suit-white-1.jpg",
+            "/products/helmet-bag/suit-white-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "tether-belt",
+      "name": "Tether Belt",
+      "category": "accesorios",
+      "price": 70,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "ama",
+      "description": "Cinturón de cinta naranja con hebilla de mosquetón plateado, como los cables de anclaje de los astronautas.",
+      "details": [
+        "Cinta de nylon",
+        "Hebilla de mosquetón metálico"
+      ],
+      "composition": "100% nylon. Hebilla de aluminio",
+      "fit": "Ajustable",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a safety orange nylon webbing belt with a polished silver carabiner-style buckle, coiled loosely",
+        "back": "",
+        "detail": "",
+        "pose": "close-up of the waist wearing the belt through midnight navy flared trousers with a tucked-in white tee"
+      },
+      "colors": [
+        {
+          "name": "Safety Orange",
+          "slug": "safety-orange",
+          "hex": "#FF5A1F",
+          "variant": null,
+          "images": [
+            "/products/tether-belt/safety-orange-1.jpg",
+            "/products/tether-belt/safety-orange-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "visor-shield-sunglasses",
+      "name": "Visor Shield Sunglasses",
+      "category": "accesorios",
+      "price": 120,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "kai",
+      "description": "Gafas de sol envolventes de una sola lente de espejo plateado, como la visera de un casco.",
+      "details": [
+        "Montura envolvente",
+        "Lente única de espejo plateado",
+        "Protección UV400"
+      ],
+      "composition": "Acetato y policarbonato",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a pair of wraparound shield sunglasses with a single curved mirrored silver lens and a slim white frame, no logos, placed on a surface",
+        "back": "",
+        "detail": "",
+        "pose": "close-up portrait from the chest up wearing the mirrored shield sunglasses, safety orange collar visible"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C3C7CC",
+          "variant": null,
+          "images": [
+            "/products/visor-shield-sunglasses/silver-1.jpg",
+            "/products/visor-shield-sunglasses/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "planet-cap",
+      "name": "Planet Cap",
+      "category": "accesorios",
+      "price": 50,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "astrid",
+      "description": "Gorra de seis paneles azul noche con un planeta anillado bordado en naranja.",
+      "details": [
+        "Algodón lavado",
+        "Seis paneles",
+        "Planeta bordado",
+        "Cierre de hebilla"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "an unstructured six-panel cap in midnight navy washed cotton with a safety orange embroidered ringed planet on the front, curved brim, no text",
+        "back": "",
+        "detail": "",
+        "pose": "close-up portrait from the chest up wearing the cap, white ringer tee"
+      },
+      "colors": [
+        {
+          "name": "Midnight",
+          "slug": "midnight",
+          "hex": "#0E1A3A",
+          "variant": null,
+          "images": [
+            "/products/planet-cap/midnight-1.jpg",
+            "/products/planet-cap/midnight-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "starfield-socks",
+      "name": "Starfield Socks",
+      "category": "accesorios",
+      "price": 18,
+      "sizes": [
+        "36-40",
+        "41-46"
+      ],
+      "model": "rohan",
+      "description": "Calcetines de canalé azul noche con estrellas blancas en jacquard.",
+      "details": [
+        "Algodón peinado",
+        "Jacquard de estrellas"
+      ],
+      "composition": "80% algodón, 17% poliamida, 3% elastano",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a pair of ribbed crew socks in midnight navy with a white jacquard pattern of small stars, laid flat side by side",
+        "back": "",
+        "detail": "",
+        "pose": "close-up of legs from the knee down wearing the star socks with white leather loafers and cream shorts"
+      },
+      "colors": [
+        {
+          "name": "Midnight",
+          "slug": "midnight",
+          "hex": "#0E1A3A",
+          "variant": null,
+          "images": [
+            "/products/starfield-socks/midnight-1.jpg",
+            "/products/starfield-socks/midnight-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "astro-gloves",
+      "name": "Astro Gloves",
+      "category": "accesorios",
+      "price": 85,
+      "sizes": [
+        "S",
+        "M",
+        "L"
+      ],
+      "model": "ama",
+      "description": "Guantes acolchados blancos con puños naranja y anillas metálicas en la muñeca.",
+      "details": [
+        "Nylon acolchado",
+        "Puño en contraste",
+        "Anilla metálica en la muñeca"
+      ],
+      "composition": "100% nylon",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a pair of padded white nylon gloves inspired by spacesuit gloves with safety orange gauntlet cuffs and a polished silver ring at each wrist, placed side by side",
+        "back": "",
+        "detail": "",
+        "pose": "close-up of hands wearing the padded astro gloves raised in front of a safety orange jacket"
+      },
+      "colors": [
+        {
+          "name": "Suit White",
+          "slug": "suit-white",
+          "hex": "#F4F2EC",
+          "variant": null,
+          "images": [
+            "/products/astro-gloves/suit-white-1.jpg",
+            "/products/astro-gloves/suit-white-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "ration-pouch-bag",
+      "name": "Ration Pouch Bag",
+      "category": "accesorios",
+      "price": 110,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "kai",
+      "description": "Bolso bandolera pequeño con forma de bolsa de comida espacial, en tejido plata efecto aluminio.",
+      "details": [
+        "Tejido efecto aluminio",
+        "Cierre de cremallera",
+        "Correa ajustable"
+      ],
+      "composition": "100% poliéster metalizado",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "accessory",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a small crossbody bag shaped like a 1960s space food ration pouch in crinkled silver foil-effect fabric with a zip top, a little tear-notch detail and a thin orange strap, no text",
+        "back": "",
+        "detail": "",
+        "pose": "upper body wearing the ration pouch bag across the chest over a midnight navy blouson"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C3C7CC",
+          "variant": null,
+          "images": [
+            "/products/ration-pouch-bag/silver-1.jpg",
+            "/products/ration-pouch-bag/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "saturn-spinner-ring",
+      "name": "Saturn Spinner Ring",
+      "category": "joyeria",
+      "price": 120,
+      "sizes": [
+        "10",
+        "12",
+        "14",
+        "16",
+        "18",
+        "20"
+      ],
+      "model": "astrid",
+      "description": "Anillo de plata 925 con un aro que gira alrededor de la banda, como los anillos de Saturno.",
+      "details": [
+        "Plata de ley 925",
+        "Aro giratorio",
+        "Pulido espejo"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": null,
+      "featured": true,
+      "kind": "jewellery",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a sterling silver spinner ring with a polished domed band and a thin free-rotating outer ring tilted around it like Saturn's rings",
+        "back": "",
+        "detail": "",
+        "pose": "close-up of a hand wearing the spinner ring on the middle finger, spinning the ring with the thumb"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/saturn-spinner-ring/silver-1.jpg",
+            "/products/saturn-spinner-ring/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "orbit-hoop-earring",
+      "name": "Orbit Hoop Earring",
+      "category": "joyeria",
+      "price": 75,
+      "sizes": [
+        "Unidad"
+      ],
+      "model": "rohan",
+      "description": "Pendiente de aro de plata 925 con un pequeño planeta que orbita a lo largo del aro. Se vende por unidad.",
+      "details": [
+        "Plata de ley 925",
+        "Planeta deslizante",
+        "Se vende por unidad"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "jewellery",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a single sterling silver hoop earring with a tiny polished silver sphere planet sliding along the hoop",
+        "back": "",
+        "detail": "",
+        "pose": "close-up profile of an ear wearing the orbit hoop earring, platinum hair tucked back"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/orbit-hoop-earring/silver-1.jpg",
+            "/products/orbit-hoop-earring/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "capsule-pendant",
+      "name": "Capsule Pendant",
+      "category": "joyeria",
+      "price": 130,
+      "sizes": [
+        "50 cm",
+        "60 cm"
+      ],
+      "model": "ama",
+      "description": "Colgante de plata 925 con forma de cápsula de reentrada de los 60, en cadena de bolas.",
+      "details": [
+        "Plata de ley 925",
+        "Cadena de bolas",
+        "Detalle de escotilla grabado"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "jewellery",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a sterling silver pendant shaped like a 1960s re-entry space capsule with an engraved hatch and tiny windows, on a silver ball chain",
+        "back": "",
+        "detail": "",
+        "pose": "close-up of the chest wearing the capsule pendant over a white ribbed tank"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/capsule-pendant/silver-1.jpg",
+            "/products/capsule-pendant/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "star-chart-tag",
+      "name": "Star Chart Tag",
+      "category": "joyeria",
+      "price": 110,
+      "sizes": [
+        "55 cm"
+      ],
+      "model": "kai",
+      "description": "Placa de identificación de plata 925 con un mapa estelar grabado, en cadena de bolas.",
+      "details": [
+        "Plata de ley 925",
+        "Mapa estelar grabado",
+        "Cadena de bolas"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "jewellery",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a sterling silver military-style tag pendant engraved with a star chart of dots and constellation lines, no text, on a silver ball chain",
+        "back": "",
+        "detail": "",
+        "pose": "close-up of the neck wearing the star chart tag over a black crewneck"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/star-chart-tag/silver-1.jpg",
+            "/products/star-chart-tag/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "star-link-chain",
+      "name": "Star Link Chain",
+      "category": "joyeria",
+      "price": 160,
+      "sizes": [
+        "50 cm",
+        "60 cm"
+      ],
+      "model": "astrid",
+      "description": "Cadena de plata 925 con eslabones en forma de estrella de cuatro puntas.",
+      "details": [
+        "Plata de ley 925",
+        "Eslabones estrella",
+        "Cierre de mosquetón"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "jewellery",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a sterling silver chain necklace made of interlocking links shaped like four-point stars, lobster clasp, laid in a loose oval",
+        "back": "",
+        "detail": "",
+        "pose": "close-up of the collarbone wearing the star link chain with an open white shirt"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/star-link-chain/silver-1.jpg",
+            "/products/star-link-chain/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "meteorite-signet",
+      "name": "Meteorite Signet",
+      "category": "joyeria",
+      "price": 150,
+      "sizes": [
+        "10",
+        "12",
+        "14",
+        "16",
+        "18",
+        "20"
+      ],
+      "model": "rohan",
+      "description": "Sello de plata 925 con la cara martilleada y oxidada como la superficie de un meteorito.",
+      "details": [
+        "Plata de ley 925",
+        "Cara martilleada y oxidada",
+        "Banda pulida"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "jewellery",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a chunky sterling silver signet ring with a hammered, pitted, dark oxidized face like the surface of a meteorite and a polished band",
+        "back": "",
+        "detail": "",
+        "pose": "close-up of a hand wearing the meteorite signet on the index finger, resting on a silver metallic trouser leg"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/meteorite-signet/silver-1.jpg",
+            "/products/meteorite-signet/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "comet-ear-cuff",
+      "name": "Comet Ear Cuff",
+      "category": "joyeria",
+      "price": 90,
+      "sizes": [
+        "Unidad"
+      ],
+      "model": "ama",
+      "description": "Ear cuff de plata 925 con forma de cometa cuya estela recorre la oreja. Sin agujero.",
+      "details": [
+        "Plata de ley 925",
+        "Sin necesidad de agujero",
+        "Pulido espejo"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "jewellery",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a sterling silver ear cuff shaped like a comet: a small polished sphere with a long tapering trail that curves along the ear",
+        "back": "",
+        "detail": "",
+        "pose": "close-up profile of an ear wearing the comet ear cuff, short bleach blonde hair"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/comet-ear-cuff/silver-1.jpg",
+            "/products/comet-ear-cuff/silver-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "rocket-pendant",
+      "name": "Rocket Pendant",
+      "category": "joyeria",
+      "price": 120,
+      "sizes": [
+        "50 cm",
+        "60 cm"
+      ],
+      "model": "kai",
+      "description": "Colgante de plata 925 con forma de cohete de los 60, en cadena de bolas.",
+      "details": [
+        "Plata de ley 925",
+        "Cohete con aletas",
+        "Cadena de bolas"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": null,
+      "featured": false,
+      "kind": "jewellery",
+      "line": "2026",
+      "batch": "D",
+      "prompt": {
+        "garment": "a sterling silver pendant shaped like a sleek 1960s rocket with three fins and a pointed nose cone, polished with oxidized lines, on a silver ball chain",
+        "back": "",
+        "detail": "",
+        "pose": "close-up of the chest wearing the rocket pendant over a safety orange turtleneck"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/rocket-pendant/silver-1.jpg",
+            "/products/rocket-pendant/silver-2.jpg"
+          ]
+        }
+      ]
+    }
+  ]
+}

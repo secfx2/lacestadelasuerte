@@ -1,0 +1,492 @@
+{
+  "categories": [
+    {
+      "slug": "chaquetas",
+      "name": "Chaquetas"
+    },
+    {
+      "slug": "punto",
+      "name": "Punto"
+    },
+    {
+      "slug": "sudaderas",
+      "name": "Sudaderas"
+    },
+    {
+      "slug": "camisetas",
+      "name": "Camisetas"
+    },
+    {
+      "slug": "camisas",
+      "name": "Camisas"
+    },
+    {
+      "slug": "pantalones",
+      "name": "Pantalones"
+    },
+    {
+      "slug": "accesorios",
+      "name": "Accesorios"
+    },
+    {
+      "slug": "joyeria",
+      "name": "Joyería"
+    }
+  ],
+  "models": {
+    "alex": {
+      "job_id": "",
+      "desc": "young Mediterranean man, short dark hair"
+    },
+    "mei": {
+      "job_id": "",
+      "desc": "young East Asian woman, shoulder-length straight hair"
+    },
+    "noa": {
+      "job_id": "",
+      "desc": "young mixed-race woman, short curly hair"
+    },
+    "sami": {
+      "job_id": "",
+      "desc": "young Black man, close-cropped hair"
+    }
+  },
+  "products": [
+    {
+      "slug": "boxy-work-jacket",
+      "name": "Boxy Work Jacket",
+      "category": "chaquetas",
+      "price": 240,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "alex",
+      "description": "Chaqueta de trabajo en lona de algodón pesada, teñida en prenda y lavada. Corte boxy recortado que termina en la cintura, hombro estructurado y cuello de pana.",
+      "details": [
+        "Lona de algodón 14 oz teñida en prenda",
+        "Corte boxy recortado: termina en la cintura",
+        "Cuello de pana",
+        "Botones metálicos de presión",
+        "Logotipo bordado en la espalda"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "featured": true,
+      "kind": "garment",
+      "line": "2026",
+      "prompt": {
+        "garment": "a boxy cropped heavyweight cotton canvas work jacket in washed black, short square body ending exactly at the waist, structured shoulders, full-length sleeves, black corduroy point collar, four metal snap buttons, two chest flap pockets, tonal triple stitching",
+        "back": "the back of the cropped jacket, clean yoke seam and a small tonal embroidered logo centered below the collar",
+        "detail": "",
+        "pose": "standing straight, jacket open over a plain white tee, straight-leg black trousers with a clean break"
+      },
+      "colors": [
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2A2A2A",
+          "variant": null,
+          "images": [
+            "/products/boxy-work-jacket/washed-black-1.jpg",
+            "/products/boxy-work-jacket/washed-black-2.jpg",
+            "/products/boxy-work-jacket/washed-black-3.jpg"
+          ]
+        },
+        {
+          "name": "Sand",
+          "slug": "sand",
+          "hex": "#CFC6B5",
+          "variant": "the same cropped work jacket in sand beige washed canvas with a matching corduroy collar",
+          "images": [
+            "/products/boxy-work-jacket/sand-1.jpg",
+            "/products/boxy-work-jacket/sand-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "heavy-knit-crewneck",
+      "name": "Heavy Knit Crewneck",
+      "category": "punto",
+      "price": 180,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "mei",
+      "description": "Jersey de cuello redondo en punto grueso de algodón y lana. Volumen boxy, canalé ancho en puños y bajo, tacto denso.",
+      "details": [
+        "Punto de galga gruesa",
+        "Canalé ancho en cuello, puños y bajo",
+        "Corte boxy",
+        "Hombro ligeramente caído"
+      ],
+      "composition": "70% algodón, 30% lana",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "a chunky heavyweight knit crewneck sweater in ecru, boxy relaxed body, slightly dropped shoulders, wide ribbed collar, cuffs and hem, visible dense knit texture",
+        "back": "the back of the sweater laid flat, plain chunky knit, ribbed hem",
+        "detail": "macro close-up of the chunky knit stitches and the wide ribbed cuff",
+        "pose": "standing with hands relaxed by the sides, sweater over straight-leg grey trousers"
+      },
+      "colors": [
+        {
+          "name": "Ecru",
+          "slug": "ecru",
+          "hex": "#EFE6D2",
+          "variant": null,
+          "images": [
+            "/products/heavy-knit-crewneck/ecru-1.jpg",
+            "/products/heavy-knit-crewneck/ecru-2.jpg",
+            "/products/heavy-knit-crewneck/ecru-3.jpg",
+            "/products/heavy-knit-crewneck/ecru-4.jpg"
+          ]
+        },
+        {
+          "name": "Charcoal",
+          "slug": "charcoal",
+          "hex": "#3A3A3C",
+          "variant": "the same chunky knit crewneck in charcoal grey",
+          "images": [
+            "/products/heavy-knit-crewneck/charcoal-1.jpg",
+            "/products/heavy-knit-crewneck/charcoal-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "logo-hoodie",
+      "name": "Logo Hoodie",
+      "category": "sudaderas",
+      "price": 130,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "noa",
+      "description": "Sudadera con capucha en felpa gruesa de 500 g/m², lavado vintage y logotipo bordado en el pecho. La base del uniforme.",
+      "details": [
+        "Felpa de algodón 500 g/m²",
+        "Lavado vintage",
+        "Logotipo bordado en el pecho",
+        "Capucha doble sin cordón",
+        "Bolsillo canguro"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Best seller",
+      "featured": true,
+      "kind": "garment",
+      "prompt": {
+        "garment": "a heavyweight cotton fleece pullover hoodie in vintage washed black, boxy fit, double-layer hood without drawcords, kangaroo pocket, ribbed cuffs and hem, a small tonal embroidered logo on the left chest",
+        "back": "the back of the hoodie laid flat with the hood spread open, plain back",
+        "detail": "macro close-up of the tonal chest embroidery and the washed fleece texture",
+        "pose": "standing relaxed with hands in the kangaroo pocket, straight-leg washed denim"
+      },
+      "colors": [
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2B2B2B",
+          "variant": null,
+          "images": [
+            "/products/logo-hoodie/washed-black-1.jpg",
+            "/products/logo-hoodie/washed-black-2.jpg",
+            "/products/logo-hoodie/washed-black-3.jpg",
+            "/products/logo-hoodie/washed-black-4.jpg"
+          ]
+        },
+        {
+          "name": "Heather Grey",
+          "slug": "heather-grey",
+          "hex": "#9C9C9C",
+          "variant": "the same hoodie in heather grey melange fleece with a tonal grey embroidered logo",
+          "images": [
+            "/products/logo-hoodie/heather-grey-1.jpg",
+            "/products/logo-hoodie/heather-grey-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "boxy-tee",
+      "name": "Boxy Tee",
+      "category": "camisetas",
+      "price": 55,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "sami",
+      "description": "Camiseta de algodón de gramaje alto con corte boxy recortado: cuerpo cuadrado que termina en la cintura y manga al codo.",
+      "details": [
+        "Punto jersey 260 g/m²",
+        "Corte boxy recortado",
+        "Cuello de canalé grueso",
+        "Sin estampado"
+      ],
+      "composition": "100% algodón",
+      "fit": "Boxy",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "prompt": {
+        "garment": "a heavyweight cotton boxy t-shirt in optic white, short square body ending exactly at the waist, wide body, sleeves to the elbow, thick ribbed crew neck, no print",
+        "back": "the back of the boxy tee laid flat, plain",
+        "detail": "",
+        "pose": "standing straight, one hand in trouser pocket, tee over olive straight-leg trousers with a clean break"
+      },
+      "colors": [
+        {
+          "name": "Optic White",
+          "slug": "optic-white",
+          "hex": "#F4F2EC",
+          "variant": null,
+          "images": [
+            "/products/boxy-tee/optic-white-1.jpg",
+            "/products/boxy-tee/optic-white-2.jpg",
+            "/products/boxy-tee/optic-white-3.jpg"
+          ]
+        },
+        {
+          "name": "Olive",
+          "slug": "olive",
+          "hex": "#5B5E3A",
+          "variant": "the same boxy tee in olive green heavyweight cotton",
+          "images": [
+            "/products/boxy-tee/olive-1.jpg",
+            "/products/boxy-tee/olive-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "oxford-overshirt",
+      "name": "Oxford Overshirt",
+      "category": "camisas",
+      "price": 120,
+      "sizes": [
+        "XS",
+        "S",
+        "M",
+        "L",
+        "XL",
+        "XXL"
+      ],
+      "model": "alex",
+      "description": "Sobrecamisa en oxford grueso de algodón, corte amplio y recto, dos bolsillos de pecho con solapa. Se lleva abierta o cerrada.",
+      "details": [
+        "Oxford de algodón grueso",
+        "Corte recto y amplio",
+        "Dos bolsillos de pecho con solapa",
+        "Botones de corozo"
+      ],
+      "composition": "100% algodón",
+      "fit": "Relajado",
+      "unisex": true,
+      "badge": null,
+      "kind": "garment",
+      "prompt": {
+        "garment": "a heavy cotton oxford overshirt in light blue, relaxed straight boxy cut, point collar, two chest flap pockets, natural corozo buttons, long sleeves with button cuffs",
+        "back": "the back of the overshirt laid flat with a box pleat at the yoke",
+        "detail": "macro close-up of the oxford weave and a corozo button on the chest pocket flap",
+        "pose": "standing with the overshirt open over a white tee, straight-leg ecru trousers"
+      },
+      "colors": [
+        {
+          "name": "Light Blue",
+          "slug": "light-blue",
+          "hex": "#A9C6E8",
+          "variant": null,
+          "images": [
+            "/products/oxford-overshirt/light-blue-1.jpg",
+            "/products/oxford-overshirt/light-blue-2.jpg",
+            "/products/oxford-overshirt/light-blue-3.jpg",
+            "/products/oxford-overshirt/light-blue-4.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "straight-denim",
+      "name": "Straight Denim",
+      "category": "pantalones",
+      "price": 140,
+      "sizes": [
+        "28",
+        "30",
+        "32",
+        "34",
+        "36"
+      ],
+      "model": "mei",
+      "description": "Vaquero de pierna recta en denim rígido de 14 oz con lavado medio. Tiro medio y caída limpia sobre el zapato.",
+      "details": [
+        "Denim rígido 14 oz",
+        "Pierna recta",
+        "Tiro medio",
+        "Cinco bolsillos",
+        "Remaches metálicos"
+      ],
+      "composition": "100% algodón",
+      "fit": "Recto",
+      "unisex": true,
+      "badge": "Nuevo",
+      "kind": "garment",
+      "line": "2026",
+      "prompt": {
+        "garment": "a pair of straight-leg rigid 14 oz denim jeans in mid blue wash, mid rise, five pockets, metal rivets, clean straight legs laid fully extended",
+        "back": "the back of the jeans laid flat showing the back pockets and the leather patch without text",
+        "detail": "",
+        "pose": "standing straight, jeans with a clean break on white sneakers, plain white tee tucked in"
+      },
+      "colors": [
+        {
+          "name": "Mid Blue",
+          "slug": "mid-blue",
+          "hex": "#4A6FA5",
+          "variant": null,
+          "images": [
+            "/products/straight-denim/mid-blue-1.jpg",
+            "/products/straight-denim/mid-blue-2.jpg",
+            "/products/straight-denim/mid-blue-3.jpg"
+          ]
+        },
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2A2A2A",
+          "variant": "the same straight-leg jeans in washed black denim",
+          "images": [
+            "/products/straight-denim/washed-black-1.jpg",
+            "/products/straight-denim/washed-black-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "six-panel-cap",
+      "name": "Six-Panel Cap",
+      "category": "accesorios",
+      "price": 45,
+      "sizes": [
+        "Talla única"
+      ],
+      "model": "noa",
+      "description": "Gorra de seis paneles en algodón lavado, sin estructura, con el símbolo bordado en el frontal y cierre metálico ajustable.",
+      "details": [
+        "Algodón lavado",
+        "Seis paneles sin estructura",
+        "Símbolo bordado",
+        "Cierre trasero metálico"
+      ],
+      "composition": "100% algodón",
+      "fit": "Ajustable",
+      "unisex": true,
+      "badge": null,
+      "kind": "accessory",
+      "prompt": {
+        "garment": "an unstructured six-panel cap in washed black cotton with a curved brim, a small white embroidered geometric star symbol on the front panel, an adjustable back strap with a metal buckle",
+        "back": "the cap seen from the back showing the strap with the metal buckle",
+        "detail": "macro close-up of the white embroidered star symbol on washed black cotton",
+        "pose": "close-up portrait from the chest up wearing the cap, plain white tee"
+      },
+      "colors": [
+        {
+          "name": "Washed Black",
+          "slug": "washed-black",
+          "hex": "#2B2B2B",
+          "variant": null,
+          "images": [
+            "/products/six-panel-cap/washed-black-1.jpg",
+            "/products/six-panel-cap/washed-black-2.jpg",
+            "/products/six-panel-cap/washed-black-3.jpg",
+            "/products/six-panel-cap/washed-black-4.jpg"
+          ]
+        },
+        {
+          "name": "Stone",
+          "slug": "stone",
+          "hex": "#CFC6B5",
+          "variant": "the same cap in stone beige washed cotton with a black embroidered symbol",
+          "images": [
+            "/products/six-panel-cap/stone-1.jpg",
+            "/products/six-panel-cap/stone-2.jpg"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "signet-ring",
+      "name": "Signet Ring",
+      "category": "joyeria",
+      "price": 95,
+      "sizes": [
+        "10",
+        "12",
+        "14",
+        "16",
+        "18",
+        "20"
+      ],
+      "model": "sami",
+      "description": "Sello macizo de plata de ley 925 con el símbolo grabado en profundidad y oxidado. Pulido a mano.",
+      "details": [
+        "Plata de ley 925",
+        "Grabado profundo oxidado",
+        "Pulido a mano",
+        "Peso aprox. 14 g"
+      ],
+      "composition": "Plata de ley 925",
+      "fit": "Plata 925",
+      "unisex": true,
+      "badge": null,
+      "featured": true,
+      "kind": "jewellery",
+      "prompt": {
+        "garment": "a chunky polished sterling silver signet ring with a deeply engraved geometric four-pointed star symbol on the flat face, oxidized dark recesses",
+        "back": "the ring seen from the side showing the thick band profile and a 925 hallmark",
+        "detail": "extreme macro of the engraved star symbol on the signet face",
+        "pose": "close-up of a hand wearing the signet ring on the index finger, relaxed hand against a black sleeve"
+      },
+      "colors": [
+        {
+          "name": "Silver",
+          "slug": "silver",
+          "hex": "#C0C0C0",
+          "variant": null,
+          "images": [
+            "/products/signet-ring/silver-1.jpg",
+            "/products/signet-ring/silver-2.jpg",
+            "/products/signet-ring/silver-3.jpg",
+            "/products/signet-ring/silver-4.jpg"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+.kpis { display: grid; grid-template-columns: 1fr; gap: 8px; }
+@media (min-width: 760px) { .kpis { grid-template-columns: repeat(3, 1fr); } }
+.kpi { display: flex; flex-direction: column; gap: 8px; padding: 18px; background: var(--panel); border: 1px solid var(--line); }
+.big { font-weight: 800; font-stretch: 70%; font-size: 52px; line-height: 0.9; font-variant-numeric: tabular-nums; }
+.big small { font-size: 24px; color: var(--muted); font-weight: 700; }
+.bar { display: block; height: 4px; background: var(--line); }
+.bar span { display: block; height: 100%; background: var(--text); }
+.bar span[data-high] { background: var(--warn); }
+.days { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.days li { display: grid; grid-template-columns: 96px minmax(0, 1fr) 56px 72px; align-items: center; gap: 12px; min-height: 40px; border-bottom: 1px solid var(--line); font-size: 13px; }
+.day { color: var(--soft); text-transform: capitalize; }
+.dayBar { height: 8px; background: var(--panel-2); }
+.dayBar span { display: block; height: 100%; background: var(--text); min-width: 1px; }
+.dayNum { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+.dayUsd { text-align: right; font-size: 11px; color: var(--muted); font-variant-numeric: tabular-nums; }

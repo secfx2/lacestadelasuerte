@@ -1,0 +1,43 @@
+.bar {
+  position: relative;
+  height: var(--announce-h);
+  background: var(--accent);
+  color: var(--bone);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  font-size: var(--fs-micro);
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+}
+.track {
+  display: flex;
+  width: max-content;
+  animation: marquee 48s linear infinite;
+}
+.bar:hover .track { animation-play-state: paused; }
+.run { display: flex; margin: 0; padding: 0; list-style: none; }
+.item { display: flex; align-items: center; white-space: nowrap; }
+.sep {
+  width: 10px;
+  height: 11px;
+  margin: 0 44px;
+  background: var(--bone);
+  -webkit-mask: var(--mk-emblem-url, url("/brand/emblem-black.svg")) center / contain no-repeat;
+  mask: var(--mk-emblem-url, url("/brand/emblem-black.svg")) center / contain no-repeat;
+}
+.serif {
+  font-family: var(--font-serif);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 18px;
+  line-height: 1;
+}
+.static { display: none; margin: 0 auto; }
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .track { display: none; }
+  .static { display: block; }
+}

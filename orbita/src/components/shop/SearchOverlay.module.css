@@ -1,0 +1,130 @@
+.root { position: fixed; inset: 0; z-index: var(--z-overlay); }
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.25);
+  opacity: 0;
+  transition: opacity var(--dur) var(--ease);
+}
+.root[data-visible] .backdrop { opacity: 1; }
+.panel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  transform: translateY(-16px);
+  opacity: 0;
+  transition: transform var(--dur) var(--ease), opacity var(--dur-fast) var(--ease);
+}
+.root[data-visible] .panel { transform: none; opacity: 1; }
+.bar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 84px;
+  padding: 0 var(--page-pad);
+  border-bottom: 1px solid var(--line);
+}
+.barIcon { flex: none; }
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-size: clamp(18px, 2.4vw, 28px);
+  font-family: var(--font-display); font-stretch: 125%;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+}
+.input::placeholder { color: #c4c4c0; }
+.input::-webkit-search-cancel-button { display: none; }
+.clear { font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }
+.clear:hover { color: var(--ink); }
+.close { width: 40px; height: 40px; display: grid; place-items: center; margin-right: -10px; }
+
+.body { overflow-y: auto; padding: 28px var(--page-pad) 40px; }
+.heading { margin: 0 0 14px; font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }
+.suggest { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.chip {
+  height: 34px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+  transition: border-color var(--dur-fast), background-color var(--dur-fast), color var(--dur-fast);
+}
+.chip:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.catList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  columns: 2;
+  column-gap: 24px;
+  font-size: var(--fs-xs);
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+}
+.catList li { padding: 5px 0; break-inside: avoid; }
+
+.resultsHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 18px;
+  font-size: var(--fs-xs);
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.resultsHead em { font-family: var(--font-serif); font-size: 13px; text-transform: none; letter-spacing: 0; color: var(--ink); }
+.seeAll { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); }
+.results {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 12px 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.result { min-width: 0; }
+.resultLink { display: block; }
+.resultImg { aspect-ratio: 4 / 5; }
+.result[data-active] .resultImg { outline: 1px solid var(--ink); outline-offset: -1px; }
+.resultName {
+  display: block;
+  margin-top: 8px;
+  font-size: var(--fs-micro);
+  font-weight: 500;
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+  line-height: 1.35;
+}
+.result[data-active] .resultName { text-decoration: underline; text-underline-offset: 3px; }
+.resultMeta { display: block; margin-top: 2px; font-size: var(--fs-micro); color: var(--text-muted); letter-spacing: 0.02em; }
+
+.empty { padding: 12px 0 8px; }
+.empty p { margin: 0 0 8px; font-size: var(--fs-body); }
+.empty em { font-family: var(--font-serif); font-size: 14px; }
+.emptyHint { color: var(--text-muted); margin-bottom: 20px !important; }
+
+@media (max-width: 1023px) {
+  .results { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .panel { bottom: 0; }
+  .bar { height: 64px; gap: 12px; }
+  .suggest { grid-template-columns: 1fr; gap: 28px; }
+  .results { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 8px; }
+  .resultsHead { flex-direction: column; gap: 8px; }
+}

@@ -1,0 +1,6 @@
+.count { margin: 0; padding: 0 var(--page-pad) 16px; font-size: var(--fs-xs); letter-spacing: var(--track-caps); text-transform: uppercase; color: var(--text-muted); border-bottom: 1px solid var(--line); }
+.grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.empty { padding: 8px var(--page-pad) 40px; max-width: 640px; }
+.emptyTitle { margin: 0; font-size: clamp(30px, 3.2vw, 44px); font-family: var(--font-display); font-weight: 700; letter-spacing: 0; }
+.emptyText { margin: 10px 0 24px; color: var(--text-muted); font-size: var(--fs-body); }
+@media (max-width: 1023px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

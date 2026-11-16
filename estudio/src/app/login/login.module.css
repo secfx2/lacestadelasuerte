@@ -1,0 +1,5 @@
+.wrap { min-height: 100vh; display: grid; align-items: end; padding: var(--gutter); }
+@media (min-width: 760px) { .wrap { align-items: center; justify-items: center; } }
+.card { width: 100%; max-width: 440px; padding-bottom: 8vh; }
+.title { margin: 8px 0 0; font-weight: 800; font-stretch: 62%; font-size: clamp(96px, 30vw, 168px); line-height: 0.8; text-transform: uppercase; letter-spacing: -0.015em; margin-left: -0.04em; }
+.lede { margin: 18px 0 0; font-family: var(--serif); font-style: italic; font-size: 22px; line-height: 1.2; color: var(--soft); max-width: 30ch; }

@@ -1,0 +1,79 @@
+.hero { padding: 0; }
+.crew { padding: 0 var(--page-pad); }
+.crewHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 0 0 12px;
+  font-size: var(--fs-micro);
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.crewHead span:first-child { font-family: var(--font-serif); font-size: 26px; letter-spacing: 0; text-transform: none; color: var(--ink); }
+.crewGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2px; margin: 0; padding: 0; list-style: none; }
+.crewItem { display: block; }
+.crewImg { aspect-ratio: 4 / 5; }
+.crewImg img { transition: transform 1.4s var(--ease), opacity 0.7s var(--ease) !important; }
+.crewItem:hover .crewImg img { transform: scale(1.03); }
+.crewCaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 0 2px;
+  font-size: var(--fs-micro);
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+}
+.crewCaption span + span { color: var(--text-muted); text-align: right; }
+.heroImg { aspect-ratio: 21 / 9; }
+.manifesto {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  padding: clamp(56px, 8vw, 128px) var(--page-pad) 0;
+}
+.eyebrow { margin: 6px 0 0; font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }
+.manifestoText { max-width: 760px; font-size: 15px; line-height: 1.7; color: var(--text-soft); }
+.manifestoText p { margin: 0 0 18px; }
+.lead { font-family: var(--font-display); font-weight: 600; font-size: clamp(30px, 3.6vw, 52px) !important; line-height: 1.08 !important; color: var(--ink); margin-bottom: 32px !important; letter-spacing: 0; }
+.sign em { font-family: var(--font-serif); font-size: 30px; color: var(--ink); }
+
+.values {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: clamp(64px, 8vw, 128px) var(--page-pad) 0;
+}
+.value { padding: 28px 24px 32px; background: var(--fog); min-height: 280px; display: flex; flex-direction: column; }
+.valueN { font-family: var(--font-display); font-weight: 700; font-size: 34px; line-height: 1; }
+.valueTitle { margin: auto 0 0; padding-top: 40px; font-size: 30px; font-family: var(--font-display); font-weight: 700; letter-spacing: 0; }
+.valueText { margin: 10px 0 0; font-size: var(--fs-body); line-height: 1.6; color: var(--text-soft); }
+
+.seal { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 20px; padding: clamp(64px, 8vw, 128px) var(--page-pad) 0; }
+.sealLogo { width: clamp(110px, 12vw, 160px); height: auto; color: var(--ink); }
+.sealText { margin: 0; max-width: 34ch; font-family: var(--font-display); font-weight: 500; font-size: clamp(22px, 2.2vw, 30px); line-height: 1.15; }
+
+.links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: clamp(64px, 8vw, 128px) var(--page-pad) 0; }
+.linkCard { display: flex; flex-direction: column; gap: 8px; padding: 28px; border: 1px solid var(--line); min-height: 240px; transition: border-color var(--dur-fast), background-color var(--dur-fast); }
+.linkCard:hover { border-color: var(--ink); }
+.linkEyebrow { font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }
+.linkTitle { font-size: 32px; font-family: var(--font-display); font-weight: 700; letter-spacing: 0; line-height: 1; }
+.linkText { font-size: var(--fs-body); color: var(--text-muted); line-height: 1.55; }
+.linkCta { margin-top: auto; display: inline-flex; align-items: center; gap: 8px; font-size: var(--fs-xs); letter-spacing: var(--track-caps); text-transform: uppercase; }
+
+@media (max-width: 1023px) {
+  .values { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .links { grid-template-columns: 1fr; }
+}
+@media (max-width: 767px) {
+  .heroImg { aspect-ratio: 4 / 3; }
+  .manifesto { grid-template-columns: 1fr; gap: 16px; }
+  .values { grid-template-columns: 1fr; }
+  .value { min-height: 0; }
+  .valueTitle { padding-top: 24px; }
+  .crewGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .crewHead { flex-direction: column; gap: 4px; }
+}

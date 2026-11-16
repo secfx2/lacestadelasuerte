@@ -1,0 +1,21 @@
+{
+  "name": "estudio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -p 3600",
+    "build": "next build",
+    "start": "next start -p 3600",
+    "mock": "MOCK_MODE=1 next dev -p 3600"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.9.0",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@vercel/blob": "^2.9.0",
+    "next": "^15.5.29",
+    "react": "^19.1.10",
+    "react-dom": "^19.1.10",
+    "server-only": "^0.0.1",
+    "zod": "^4.6.7"
+  }
+}

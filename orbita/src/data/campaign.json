@@ -1,0 +1,198 @@
+{
+  "_note": "ÓRBITA no tiene fotos de campaña: el hero es tipográfico y todo lo demás usa las fotos de producto con modelo (-2.jpg) de catalog.json. Para pasar a fotos de campaña, añade hero.desktop / hero.mobile y cambia las rutas de banners y looks.",
+  "hero": {
+    "type": "typographic",
+    "strip": [
+      "orbit-varsity",
+      "moonwalk-puffer",
+      "capsule-flight-jacket",
+      "cosmonaut-quarter-zip",
+      "mission-patch-hoodie"
+    ],
+    "alt": "La tripulación de ÓRBITA con la línea 2026"
+  },
+  "banners": [
+    {
+      "id": "chaquetas",
+      "image": "/products/capsule-flight-jacket/safety-orange-2.jpg",
+      "ratio": "4:5",
+      "title": "Chaquetas",
+      "kicker": "Nylon técnico, corte de piloto",
+      "href": "/categoria/chaquetas",
+      "tone": "ink"
+    },
+    {
+      "id": "punto",
+      "image": "/products/starfield-knit/midnight-2.jpg",
+      "ratio": "4:5",
+      "title": "Punto",
+      "kicker": "Constelaciones en intarsia",
+      "href": "/categoria/punto",
+      "tone": "bone"
+    },
+    {
+      "id": "camisas",
+      "image": "/products/orbital-stripe-shirt/orbit-orange-2.jpg",
+      "ratio": "4:5",
+      "title": "Camisas",
+      "kicker": "Rayas en órbita, satén cometa",
+      "href": "/categoria/camisas",
+      "tone": "ink"
+    },
+    {
+      "id": "pantalones",
+      "image": "/products/eva-quilted-trouser/suit-white-2.jpg",
+      "ratio": "4:5",
+      "title": "Pantalones",
+      "kicker": "Acolchado EVA, caída limpia",
+      "href": "/categoria/pantalones",
+      "tone": "mustard"
+    },
+    {
+      "id": "sudaderas",
+      "image": "/products/orbit-track-top/sky-2.jpg",
+      "ratio": "4:5",
+      "title": "Sudaderas",
+      "kicker": "Felpa y tricot en gravedad cero",
+      "href": "/categoria/sudaderas",
+      "tone": "accent"
+    },
+    {
+      "id": "accesorios",
+      "image": "/products/helmet-bag/suit-white-2.jpg",
+      "ratio": "4:5",
+      "title": "Accesorios",
+      "kicker": "Equipo de misión",
+      "href": "/categoria/accesorios",
+      "tone": "mustard"
+    },
+    {
+      "id": "joyeria",
+      "image": "/products/saturn-spinner-ring/silver-2.jpg",
+      "ratio": "4:5",
+      "title": "Plata 925",
+      "kicker": "Joyería en órbita",
+      "href": "/categoria/joyeria",
+      "tone": "steel"
+    },
+    {
+      "id": "wide",
+      "image": null,
+      "ratio": "21:9",
+      "title": "Misión permanente",
+      "kicker": "Catálogo permanente. Sin drops.",
+      "href": "/tienda",
+      "tone": "accent"
+    }
+  ],
+  "lookbook": [
+    {
+      "image": "/products/mission-control-blouson/midnight-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 01",
+      "title": "Sala de control",
+      "pieces": [
+        "mission-control-blouson",
+        "engineer-shirt",
+        "mission-pleated-trouser"
+      ]
+    },
+    {
+      "image": "/products/engineer-shirt/suit-white-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 02",
+      "title": "Ingeniería de vuelo",
+      "pieces": [
+        "engineer-shirt",
+        "space-age-flare"
+      ]
+    },
+    {
+      "image": "/products/orbit-track-top/sky-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 03",
+      "title": "Gravedad cero",
+      "pieces": [
+        "orbit-track-top",
+        "orbit-hoop-earring"
+      ]
+    },
+    {
+      "image": "/products/constellation-cardigan/midnight-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 04",
+      "title": "Constelación",
+      "pieces": [
+        "constellation-cardigan",
+        "silver-moon-trouser",
+        "star-link-chain"
+      ]
+    },
+    {
+      "image": "/products/capsule-flight-jacket/safety-orange-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 05",
+      "title": "Despegue",
+      "pieces": [
+        "capsule-flight-jacket",
+        "silver-moon-trouser",
+        "crater-boot",
+        "star-link-chain"
+      ]
+    },
+    {
+      "image": "/products/eva-quilted-trouser/suit-white-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 06",
+      "title": "Paseo lunar",
+      "pieces": [
+        "eva-quilted-trouser",
+        "launchpad-zip-hoodie",
+        "tether-belt"
+      ]
+    },
+    {
+      "image": "/products/lunar-suede-trucker/lunar-grey-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 07",
+      "title": "Superficie lunar",
+      "pieces": [
+        "lunar-suede-trucker",
+        "flight-suit-trouser",
+        "rocket-pendant"
+      ]
+    },
+    {
+      "image": "/products/space-age-flare/midnight-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 08",
+      "title": "Go-go 1969",
+      "pieces": [
+        "space-age-flare",
+        "comet-turtleneck",
+        "orbit-hoop-earring"
+      ]
+    }
+  ],
+  "maison": {
+    "crew": [
+      {
+        "name": "Astrid",
+        "slug": "re-entry-anorak"
+      },
+      {
+        "name": "Rohan",
+        "slug": "saturn-cardigan"
+      },
+      {
+        "name": "Ama",
+        "slug": "comet-turtleneck"
+      },
+      {
+        "name": "Kai",
+        "slug": "heat-shield-bomber"
+      }
+    ],
+    "alt": "La tripulación de ÓRBITA: Astrid, Rohan, Ama y Kai"
+  }
+}

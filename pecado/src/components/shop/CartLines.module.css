@@ -1,0 +1,44 @@
+.ship { }
+.shipText { margin: 0 0 10px; font-size: var(--fs-xs); letter-spacing: 0.02em; }
+.shipText strong { font-weight: 600; }
+.track { position: relative; height: 2px; background: rgba(233, 226, 211, 0.12); overflow: hidden; }
+.fill { position: absolute; inset: 0; background: var(--ink); transform-origin: left; transition: transform 0.7s var(--ease); }
+
+.list { margin: 0; padding: 0; list-style: none; }
+.line {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+.line:first-child { padding-top: 0; }
+.list[data-variant="page"] .line { grid-template-columns: 132px 1fr; gap: 24px; padding: 24px 0; }
+.list[data-variant="page"] .line:first-child { padding-top: 24px; border-top: 1px solid var(--line); }
+.line[data-fresh] { animation: fresh 1.2s var(--ease); }
+@keyframes fresh { from { background: var(--fog); } }
+.thumb { display: block; }
+.thumbImg { aspect-ratio: 4 / 5; }
+.meta { display: flex; flex-direction: column; min-width: 0; }
+.row { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.name {
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+  line-height: 1.35;
+}
+.name:hover { text-decoration: underline; text-underline-offset: 3px; }
+.total { font-size: var(--fs-xs); letter-spacing: 0.04em; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.variant { margin: 6px 0 0; font-size: 12px; color: var(--text-muted); }
+.unit { white-space: nowrap; }
+.actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 14px; }
+.remove { font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); border-bottom: 1px solid transparent; transition: color var(--dur-fast), border-color var(--dur-fast); }
+.remove:hover { color: var(--ink); border-color: var(--ink); }
+
+.qty { display: inline-flex; align-items: center; border: 1px solid var(--line); height: 36px; }
+.qty[data-size="sm"] { height: 30px; }
+.qty button { width: 32px; height: 100%; display: grid; place-items: center; transition: background-color var(--dur-fast); }
+.qty button:hover:not(:disabled) { background: var(--fog); }
+.qty button:disabled { opacity: 0.3; cursor: not-allowed; }
+.qty span { min-width: 24px; text-align: center; font-size: var(--fs-xs); font-variant-numeric: tabular-nums; }

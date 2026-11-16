@@ -1,0 +1,167 @@
+--- a/next.config.mjs
++++ b/next.config.mjs
+@@ -3,2 +3,7 @@
+ 
++// Multi-brand hub (hub/build.sh): NEXT_OUTPUT=export NEXT_PUBLIC_BASE_PATH=/<slug> builds a static
++// export served under /<slug>. Without these env vars this is the normal Next.js build.
++const isExport = process.env.NEXT_OUTPUT === "export";
++const basePath = (process.env.NEXT_PUBLIC_BASE_PATH || "").replace(/\/+$/, "");
++
+ /** @type {import('next').NextConfig} */
+@@ -12,3 +17,7 @@
+     formats: ["image/avif", "image/webp"],
++    // No image optimisation server in a static export: files are served as they are in /public.
++    ...(isExport ? { unoptimized: true } : null),
+   },
++  ...(isExport ? { output: "export" } : null),
++  ...(basePath ? { basePath } : null),
+ };
+--- a/src/components/shop/SmartImage.js
++++ b/src/components/shop/SmartImage.js
+@@ -3,2 +3,3 @@
+ import { useState } from "react";
++import { asset } from "@/lib/asset";
+ import styles from "./SmartImage.module.css";
+@@ -53,3 +54,3 @@
+         <Image
+-          src={src}
++          src={asset(src)}
+           alt={alt}
+--- a/src/components/shop/Lightbox.js
++++ b/src/components/shop/Lightbox.js
+@@ -6,2 +6,3 @@
+ import { ImagePlaceholder } from "./SmartImage";
++import { asset } from "@/lib/asset";
+ import styles from "./Lightbox.module.css";
+@@ -71,3 +72,3 @@
+             key={src}
+-            src={src}
++            src={asset(src)}
+             alt={`${label} — imagen ${index + 1}`}
+@@ -94,3 +95,3 @@
+               <button key={im} type="button" className={styles.thumb} aria-current={i === index || undefined} onClick={() => onIndex(i)} aria-label={`Ver imagen ${i + 1}`}>
+-                {!failed[im] && <Image src={im} alt="" fill sizes="64px" className={styles.thumbImg} onError={() => setFailed((f) => ({ ...f, [im]: true }))} />}
++                {!failed[im] && <Image src={asset(im)} alt="" fill sizes="64px" className={styles.thumbImg} onError={() => setFailed((f) => ({ ...f, [im]: true }))} />}
+               </button>
+--- a/src/components/shop/HeroImage.js
++++ b/src/components/shop/HeroImage.js
+@@ -4,2 +4,3 @@
+ import { ImagePlaceholder } from "./SmartImage";
++import { asset } from "@/lib/asset";
+ import styles from "./HeroImage.module.css";
+@@ -11,7 +12,7 @@
+   const {
+-    props: { srcSet: mobileSet },
+-  } = getImageProps({ ...common, src: mobile || desktop });
++    props: { srcSet: mobileSet, src: mobileSrc },
++  } = getImageProps({ ...common, src: asset(mobile || desktop) });
+   const {
+     props: { srcSet: desktopSet, ...rest },
+-  } = getImageProps({ ...common, src: desktop });
++  } = getImageProps({ ...common, src: asset(desktop) });
+ 
+@@ -21,4 +22,5 @@
+         <picture>
+-          <source media={`(max-width: ${breakpoint}px)`} srcSet={mobileSet} />
+-          <source media={`(min-width: ${breakpoint + 1}px)`} srcSet={desktopSet} />
++          {/* Unoptimized images (static export) have no srcSet: fall back to the plain file */}
++          <source media={`(max-width: ${breakpoint}px)`} srcSet={mobileSet || mobileSrc} />
++          <source media={`(min-width: ${breakpoint + 1}px)`} srcSet={desktopSet || rest.src} />
+           {/* eslint-disable-next-line jsx-a11y/alt-text */}
+--- a/src/app/brand/components/SafeImage.js
++++ b/src/app/brand/components/SafeImage.js
+@@ -2,2 +2,3 @@
+ import { useEffect, useRef, useState } from "react";
++import { asset } from "@/lib/asset";
+ import s from "../brand.module.css";
+@@ -35,3 +36,3 @@
+       ref={ref}
+-      src={src}
++      src={asset(src)}
+       alt={alt}
+--- a/src/app/brand/components/ChapterNav.js
++++ b/src/app/brand/components/ChapterNav.js
+@@ -3,2 +3,3 @@
+ import Logo from "@/components/brand/Logo";
++import { asset } from "@/lib/asset";
+ import brand from "@/config/brand";
+@@ -72,3 +73,3 @@
+       {pdfHref && (
+-        <a href={pdfHref} className={s.navPdf} download>
++        <a href={asset(pdfHref)} className={s.navPdf} download>
+           PDF
+--- a/src/components/shop/Footer.js
++++ b/src/components/shop/Footer.js
+@@ -6,2 +6,3 @@
+ import { publicFileExists } from "@/lib/shop-server";
++import { asset } from "@/lib/asset";
+ import brand from "@/config/brand";
+@@ -16,3 +17,3 @@
+   return l.file || /^https?:/.test(l.href) ? (
+-    <a href={l.href} className="mk-link">{l.label}</a>
++    <a href={asset(l.href)} className="mk-link">{l.label}</a>
+   ) : (
+--- a/src/app/layout.js
++++ b/src/app/layout.js
+@@ -2,2 +2,3 @@
+ import { sans, serif } from "@/config/fonts";
++import { asset, assetCssVars } from "@/lib/asset";
+ import "./globals.css";
+@@ -7,3 +8,3 @@
+   description: brand.seo.description,
+-  icons: { icon: "/brand/emblem-black.svg" },
++  icons: { icon: asset("/brand/emblem-black.svg") },
+ };
+@@ -16,2 +17,3 @@
+   "--tile": brand.tile,
++  ...assetCssVars,
+ };
+--- a/src/app/(shop)/layout.js
++++ b/src/app/(shop)/layout.js
+@@ -2,5 +2,7 @@
+ import brand from "@/config/brand";
++import { BASE_PATH } from "@/lib/asset";
+ 
+ export const metadata = {
+-  metadataBase: new URL(brand.siteUrl),
++  // Base path included so relative canonical / OG image URLs resolve under /<slug> in the hub export
++  metadataBase: new URL(`${brand.siteUrl.replace(/\/+$/, "")}${BASE_PATH}`),
+   openGraph: { siteName: brand.name, locale: brand.locale.ogLocale, type: "website" },
+--- a/src/app/(shop)/producto/[slug]/page.js
++++ b/src/app/(shop)/producto/[slug]/page.js
+@@ -8,2 +8,3 @@
+ import brand from "@/config/brand";
++import { asset } from "@/lib/asset";
+ import styles from "./page.module.css";
+@@ -40,3 +41,3 @@
+     description: product.description,
+-    image: product.colors[0].images,
++    image: product.colors[0].images.map(asset),
+     brand: { "@type": "Brand", name: brand.name },
+--- /dev/null
++++ b/src/lib/asset.js
+@@ -0,0 +1,24 @@
++/*
++ * Base path for the multi-brand hub (hub/build.sh builds each brand as a static export
++ * under /<slug>, e.g. NEXT_PUBLIC_BASE_PATH=/musketeer). Empty in a normal deploy.
++ *
++ * Next.js prefixes the base path itself on next/link, router.push/replace, next/font and
++ * /_next assets — never wrap those. It does NOT prefix plain URLs to files in /public:
++ * next/image string `src` (export uses unoptimized images), <img>, <a href> to files,
++ * CSS url(), metadata icons. Wrap those with asset().
++ */
++export const BASE_PATH = (process.env.NEXT_PUBLIC_BASE_PATH || "").replace(/\/+$/, "");
++
++/** "/products/x.jpg" → "/musketeer/products/x.jpg". No-op without base path, for external/data URLs and already-prefixed paths. */
++export function asset(src) {
++  if (!BASE_PATH || typeof src !== "string" || !src.startsWith("/") || src.startsWith("//")) return src;
++  if (src === BASE_PATH || src.startsWith(`${BASE_PATH}/`)) return src;
++  return `${BASE_PATH}${src}`;
++}
++
++/**
++ * CSS-module masks use `var(--mk-emblem-url, url("/brand/emblem-black.svg"))`; under a
++ * base path the root layout sets the variable to the prefixed URL (`style` on <html>).
++ * undefined without base path, so the normal build renders exactly as before.
++ */
++export const assetCssVars = BASE_PATH ? { "--mk-emblem-url": `url("${asset("/brand/emblem-black.svg")}")` } : undefined;

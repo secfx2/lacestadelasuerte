@@ -1,0 +1,27 @@
+.accordion { border-top: 1px solid var(--line); }
+.item { border-bottom: 1px solid var(--line); }
+.heading { margin: 0; font: inherit; }
+.trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 17px 0;
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: var(--track-caps);
+  text-transform: uppercase;
+  text-align: left;
+}
+.icon { position: relative; width: 10px; height: 10px; flex: none; }
+.icon::before, .icon::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: currentColor; transition: transform var(--dur) var(--ease); }
+.icon::after { transform: rotate(90deg); }
+.item[data-open] .icon::after { transform: rotate(0deg); }
+.panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows var(--dur) var(--ease); }
+.item[data-open] .panel { grid-template-rows: 1fr; }
+.inner { overflow: hidden; }
+.content { padding: 0 0 20px; font-size: var(--fs-body); line-height: 1.65; color: var(--text-soft); }
+.content p { margin: 0 0 10px; }
+.content p:last-child { margin-bottom: 0; }
+.content ul { margin: 0; padding-left: 16px; }
+.content li { margin: 3px 0; }

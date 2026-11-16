@@ -1,0 +1,15 @@
+.intro { padding: clamp(28px, 4vw, 56px) var(--page-pad) clamp(20px, 2.6vw, 32px); }
+.crumbs ol { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 18px; padding: 0; list-style: none; font-size: var(--fs-micro); letter-spacing: var(--track-wide); text-transform: uppercase; color: var(--text-muted); }
+.crumbs li + li::before { content: "/"; margin-right: 8px; color: rgba(233, 226, 211, 0.3); }
+.crumbs [aria-current] { color: var(--ink); }
+.row { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px 48px; flex-wrap: wrap; }
+.title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(48px, 7.4vw, 120px);
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 0.88;
+}
+.intro[data-compact] .title { font-size: clamp(42px, 6.4vw, 96px); }
+.aside { margin: 0; max-width: 38ch; font-family: var(--font-display); font-weight: 500; font-size: clamp(18px, 1.7vw, 24px); line-height: 1.2; color: var(--text-soft); }

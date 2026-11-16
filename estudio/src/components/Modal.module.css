@@ -1,0 +1,19 @@
+.backdrop { position: fixed; inset: 0; z-index: 120; display: flex; align-items: flex-end; justify-content: center; background: rgba(0, 0, 0, 0.7); animation: fade 0.2s ease; }
+@keyframes fade { from { opacity: 0; } }
+.dialog { position: relative; display: flex; flex-direction: column; width: 100%; max-height: 92vh; background: var(--panel); border-top: 1px solid var(--line-2); animation: up 0.3s var(--ease); outline: none; }
+@keyframes up { from { transform: translateY(24px); opacity: 0; } }
+.head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 18px var(--gutter) 14px; border-bottom: 1px solid var(--line); }
+.title { margin: 4px 0 0; font-weight: 800; font-stretch: 70%; font-size: 26px; line-height: 1; text-transform: uppercase; }
+.close { position: relative; flex: none; width: 48px; height: 48px; margin: -8px -12px 0 0; }
+.close span::before, .close span::after { content: ""; position: absolute; left: 13px; top: 23px; width: 22px; height: 2px; background: var(--text); }
+.close span::before { transform: rotate(45deg); }
+.close span::after { transform: rotate(-45deg); }
+.body { padding: 18px var(--gutter) 22px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+.foot { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; padding: 12px var(--gutter) calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--line); }
+@media (min-width: 760px) {
+  .backdrop { align-items: center; padding: 24px; }
+  .dialog { width: min(640px, 100%); border: 1px solid var(--line-2); max-height: 88vh; }
+  .dialog[data-size="lg"] { width: min(1040px, 100%); }
+  .dialog[data-size="xl"] { width: min(1280px, 100%); }
+  .head, .body, .foot { padding-left: 24px; padding-right: 24px; }
+}

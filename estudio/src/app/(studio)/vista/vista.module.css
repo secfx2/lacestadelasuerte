@@ -1,0 +1,8 @@
+.wrap { display: grid; grid-template-columns: minmax(0, 1fr); gap: 28px; }
+.wrap > * { min-width: 0; }
+@media (min-width: 1100px) { .wrap { grid-template-columns: minmax(300px, 360px) minmax(0, 1fr); align-items: start; } .editor { position: sticky; top: 24px; } }
+.imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.imgSlot { display: flex; flex-direction: column; gap: 6px; }
+.imgSlot img, .imgSlot > span { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: #f2f2f2; display: grid; place-items: center; }
+.imgSlot > span { background: var(--panel-2); border: 1px dashed var(--line-2); }
+@media (max-width: 1099px) { .wrap > :last-child { order: -1; } }

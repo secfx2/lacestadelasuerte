@@ -1,0 +1,21 @@
+{
+  "name": "streetwear-store",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reusable Next.js template for a streetwear brand store + online brand book (born from MUSKETEER).",
+  "scripts": {
+    "dev": "next dev -p 3100",
+    "build": "next build",
+    "start": "next start -p 3100",
+    "lint": "next lint",
+    "logos": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/build-logo-data.mjs",
+    "logos:placeholder": "python3 scripts/placeholder-logos.py && npm run logos",
+    "images:status": "node scripts/images-status.mjs",
+    "brandbook:pdf": "node scripts/export-brandbook-pdf.mjs"
+  },
+  "dependencies": {
+    "next": "^15.5.29",
+    "react": "^19.1.10",
+    "react-dom": "^19.1.10"
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "_note": "PECADO no tiene fotos de campaña: el hero es una pared de fotos con modelo (-2.jpg, pared de hormigón) de catalog.json y banners y lookbook usan esas mismas fotos. Si falta una foto con modelo, la web enseña su flat lay. Para pasar a fotos de campaña, añade hero.desktop / hero.mobile y cambia las rutas de banners y looks.",
+  "hero": {
+    "type": "wall",
+    "wall": ["seraph-baggy", "x-ray-storm-hoodie", "blood-vine-hoodie", "frost-thorn-hoodie"],
+    "mobileSlug": "blood-vine-hoodie",
+    "alt": "Rizo, Sombra, Vera y Lux contra la pared de hormigón con vaqueros ultra baggy y sudaderas lavadas de PECADO"
+  },
+  "banners": [
+    {
+      "id": "vaqueros",
+      "image": "/products/wingspan-jean/midnight-indigo-2.jpg",
+      "ratio": "4:5",
+      "title": "Vaqueros",
+      "kicker": "Ultra baggy. Se comen la zapatilla.",
+      "href": "/categoria/vaqueros"
+    },
+    {
+      "id": "sudaderas",
+      "image": "/products/spine-hoodie/washed-charcoal-2.jpg",
+      "ratio": "4:5",
+      "title": "Sudaderas",
+      "kicker": "450 g/m² y el bajo deshilachado.",
+      "href": "/categoria/sudaderas"
+    },
+    {
+      "id": "chandal",
+      "image": "/products/flame-wash-hoodie/mineral-grey-2.jpg",
+      "ratio": "4:5",
+      "title": "Chándal",
+      "kicker": "El conjunto, del mismo lavado.",
+      "href": "/categoria/chandal"
+    },
+    {
+      "id": "chaquetas",
+      "image": "/products/sinner-biker/black-2.jpg",
+      "ratio": "4:5",
+      "title": "Chaquetas",
+      "kicker": "Cuero gastado y tachas.",
+      "href": "/categoria/chaquetas"
+    },
+    {
+      "id": "camisetas",
+      "image": "/products/halo-foil-tee/black-2.jpg",
+      "ratio": "4:5",
+      "title": "Camisetas",
+      "kicker": "Foil, malla y una encima de otra.",
+      "href": "/categoria/camisetas"
+    },
+    {
+      "id": "joyeria",
+      "image": "/products/filigree-cross/silver-2.jpg",
+      "ratio": "4:5",
+      "title": "Joyería",
+      "kicker": "Plata 925, oxidada.",
+      "href": "/categoria/joyeria"
+    },
+    {
+      "id": "wide",
+      "image": null,
+      "ratio": "21:9",
+      "title": "Todos los santos tienen pasado",
+      "kicker": "Catálogo, no drops.",
+      "href": "/tienda"
+    }
+  ],
+  "lookbook": [
+    {
+      "image": "/products/seraph-baggy/washed-black-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 01",
+      "title": "La pared",
+      "pieces": ["seraph-baggy", "bone-pyramid-belt", "grave-chain", "lurk-beanie", "fat-tongue-skate"]
+    },
+    {
+      "image": "/products/phantom-full-zip/black-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 02",
+      "title": "Sin cara",
+      "pieces": ["phantom-full-zip", "seraph-baggy", "grave-chain", "fat-tongue-skate"]
+    },
+    {
+      "image": "/products/blood-vine-hoodie/washed-black-oxblood-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 03",
+      "title": "Vigilia",
+      "pieces": ["blood-vine-hoodie", "pyre-baggy", "bone-pyramid-belt", "filigree-cross"]
+    },
+    {
+      "image": "/products/frost-thorn-hoodie/ice-fade-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 04",
+      "title": "Escarcha",
+      "pieces": ["frost-thorn-hoodie", "frost-thorn-sweatpant", "barb-chain"]
+    },
+    {
+      "image": "/products/x-ray-storm-hoodie/black-acid-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 05",
+      "title": "Tormenta",
+      "pieces": ["x-ray-storm-hoodie", "x-ray-storm-jogger", "barb-chain"]
+    },
+    {
+      "image": "/products/relic-denim-jacket/washed-black-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 06",
+      "title": "Reliquia",
+      "pieces": ["relic-denim-jacket", "thorn-vine-jean", "grave-chain", "lurk-beanie"]
+    },
+    {
+      "image": "/products/sinner-biker/black-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 07",
+      "title": "Pecadora",
+      "pieces": ["sinner-biker", "seraph-baggy", "spike-ring"]
+    },
+    {
+      "image": "/products/cathedral-hoodie/washed-black-2.jpg",
+      "ratio": "4:5",
+      "caption": "Look 08",
+      "title": "Catedral",
+      "pieces": ["cathedral-hoodie", "limbo-jean", "crosshang-hoops", "lurk-beanie"]
+    }
+  ],
+  "maison": {
+    "alt": "Rizo, Sombra, Vera y Lux, el casting fijo de PECADO",
+    "crew": [
+      { "name": "Rizo", "slug": "spine-hoodie" },
+      { "name": "Sombra", "slug": "phantom-full-zip" },
+      { "name": "Vera", "slug": "cathedral-hoodie" },
+      { "name": "Lux", "slug": "bleach-wing-hoodie" }
+    ]
+  }
+}
