@@ -1,5 +1,9 @@
-node_modules/
-.next*/
-.mockdata/
-.env*
+/node_modules
+/.next/
+/out/
+/.mockdata/
+.env
+.env*.local
 .vercel
+*.log
+.DS_Store
