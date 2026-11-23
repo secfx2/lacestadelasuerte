@@ -512,7 +512,7 @@ function SuppsTile({ ctx, day }) {
             style={taken[x.key] ? { background: 'var(--violet)', color: '#120a26' } : undefined}
           >
             {taken[x.key] ? '✓ ' : ''}
-            {x.name.split(' (')[0].replace('Proteína whey', 'Whey').replace(' monohidrato', '').replace(' básico', '')} <span style={{ opacity: 0.65, fontWeight: 500 }}>{x.dose.split(' (')[0]}</span>
+            {x.name.split(' (')[0].replace('Proteína whey', 'Whey').replace(' monohidrato', '').replace(' básico', '').replace(' completo', '').replace(' concentrado', '').replace(' aislada', '')} <span style={{ opacity: 0.65, fontWeight: 500 }}>{x.dose.split(' (')[0]}</span>
           </button>
         ))}
       </div>

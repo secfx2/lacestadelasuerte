@@ -257,6 +257,11 @@ export default function PlanPage() {
                 </span>
               </div>
               <p className="small muted" style={{ marginTop: 8 }}>{x.why}</p>
+              {x.buy && (
+                <p className="small" style={{ marginTop: 8 }}>
+                  🛒 {x.buy}
+                </p>
+              )}
             </div>
           ))}
           <div className="card" style={{ borderColor: 'rgba(255,93,93,0.25)' }}>
@@ -267,7 +272,7 @@ export default function PlanPage() {
               ))}
             </ul>
           </div>
-          <p className="tiny faint">Presupuesto: creatina + whey + vitamina D + multi + magnesio + psyllium ≈ 45-55 €/mes. Si tomas medicación o tienes algún problema de salud, coméntalo con tu médico.</p>
+          <p className="tiny faint">Todo en un pedido en HSN (hsnstore.com), eligiendo calidad: ≈ 70-90 €/mes con la citrulina (orientativo; mira el precio del día). La whey es lo que más gasta. Si tomas medicación o tienes algún problema de salud, coméntalo con tu médico.</p>
         </div>
       </section>
 

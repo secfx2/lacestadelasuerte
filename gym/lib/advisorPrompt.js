@@ -64,7 +64,7 @@ function menuText() {
 }
 
 function suppsText() {
-  const yes = SUPPLEMENTS.map((x) => `- ${x.name}: ${x.dose}. ${x.when} ${x.why}${x.optional ? ' (opcional)' : ''}`).join('\n');
+  const yes = SUPPLEMENTS.map((x) => `- ${x.name}: ${x.dose}. ${x.when} ${x.why}${x.optional ? ' (opcional)' : ''}${x.buy ? ` Qué comprar: ${x.buy}` : ''}`).join('\n');
   const no = NO_SUPPLEMENTS.map((t) => `- ${t}`).join('\n');
   return `Recomendados:\n${yes}\nNo recomendados:\n${no}`;
 }

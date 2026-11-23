@@ -59,7 +59,7 @@ export const STORE_HINTS = {
   lentejas: 'Bote de cristal de lentejas cocidas',
   frijoles: 'Bote de alubias negras cocidas (o rojas)',
   espinacaCong: 'Congelados: espinacas en porciones (bolitas)',
-  whey: 'Online (HSN Evowhey, MyProtein Impact Whey…): sabor chocolate o vainilla',
+  whey: 'Online en HSN: Evolate 2.0 (aislado, bajo en lactosa), sabor chocolate o galleta',
   leCoco: 'Lata de leche de coco (si no la hay light, pon la mitad)',
   merluza: 'Lomos de merluza (congelados valen y salen más baratos)',
   salmon: 'Lomos de salmón (congelados valen)',
