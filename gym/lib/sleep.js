@@ -107,7 +107,7 @@ export function sleepAdvice(state, iso, { rest = false } = {}) {
       title: `Dormiste ${h} h`,
       text: rest
         ? `Algo justo. Hoy aprovecha para recuperar: acuéstate sobre las ${tonight}.`
-        : `Entreno normal pero sin buscar récords hoy. Dormir poco da más hambre: si aprieta, tira de queso batido o gazpacho. Esta noche, a la cama sobre las ${tonight}.`,
+        : `Entreno normal pero sin buscar récords hoy. Dormir poco da más hambre: si aprieta, tira de queso batido o crema de verdura. Esta noche, a la cama sobre las ${tonight}.`,
     };
   }
   return { level: 'ok', title: `Has dormido ${h} h`, text: 'Bien descansado: hoy es buen día para intentar subir peso o reps.' };

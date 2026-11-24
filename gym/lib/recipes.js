@@ -1,9 +1,12 @@
 import { foodMacros, sumMacros, roundMacros } from './foods.js';
 
 // Recetas. Las cantidades son por 1 ración (para ti). Los macros se calculan solos a partir de lib/foods.js.
-// Regla de la casa: nada de verdura "slimy" ni crujiente. La verdura va TRITURADA en salsas,
-// en crema/gazpacho/salmorejo o escondida en batidos. Sin fruta suelta, aguacate ni crema de cacahuete: la fibra viene de
-// avena, legumbre, pan integral, patata y cremas; las vitaminas, de tomate/sofrito, cremas y el multivitamínico.
+// Regla de la casa: nada de verdura "slimy" ni crujiente. La verdura va TRITURADA en salsas, en cremas lisas
+// (calabaza, calabacín con quesito) o escondida en batidos (espinaca). Sin fruta suelta, aguacate ni crema de cacahuete.
+// Sin tomate salvo el triturado de bote (salsas, pizza) y un poco de tomate frito; sin pimiento; sin lentejas ni guisos
+// de legumbre. Pan (integral o de barra) en casi todas las comidas y cenas.
+// La fibra (≈20-25 g/día) viene de avena, pan integral, patata, cacao y cremas; por eso el psyllium es recomendado.
+// Las vitaminas, de las cremas, la espinaca escondida, el tomate triturado y el multivitamínico.
 // steps[].timer = segundos (sale un botón de temporizador en el modo paso a paso).
 
 export const RECIPES = [
@@ -29,18 +32,18 @@ export const RECIPES = [
   },
   {
     id: 'tostadas-pavo-huevo',
-    name: 'Tostadas con tomate, pavo y huevos revueltos',
+    name: 'Tostadas con aceite, pavo y huevos revueltos',
     slot: 'desayuno',
     time: 10,
     tags: ['salado', 'clásico español'],
     ingredients: [
-      ['pan', 90], ['tomate', 80], ['aove', 5], ['huevo', 120], ['claras', 100], ['pavo', 50],
+      ['pan', 90], ['aove', 5], ['batido0', 40], ['huevo', 120], ['claras', 100], ['pavo', 50],
     ],
     steps: [
-      { t: 'Tuesta el pan. Mientras, ralla el tomate (queda en crema lisa, sin trozos) con una pizca de sal.' },
+      { t: 'Tuesta el pan. Riégalo con el aceite y una pizca de sal (o úntalo con el queso batido si lo prefieres cremoso).' },
       { t: 'Bate los 2 huevos con las claras y una pizca de sal.' },
       { t: 'Sartén a fuego medio-bajo con 2-3 gotas de aceite. Echa el huevo y remueve despacio con espátula 2-3 min hasta que cuaje cremoso.', timer: 150 },
-      { t: 'Unta el tomate en el pan, el resto del aceite por encima, pon el pavo y el revuelto encima.' },
+      { t: 'Pon el pavo sobre las tostadas y el revuelto encima. Orégano o pimienta al gusto.' },
     ],
     tip: 'Si te sobra hambre por la mañana, sube a 3 huevos.',
   },
@@ -93,17 +96,17 @@ export const RECIPES = [
   },
   {
     id: 'bocadillo-atun',
-    name: 'Bocadillo de atún con tomate',
+    name: 'Bocadillo de atún con tomate frito',
     slot: 'media',
     time: 4,
     tags: ['para llevar', 'salado'],
-    ingredients: [['pan', 60], ['atun', 110], ['tomate', 40], ['aove', 3]],
+    ingredients: [['pan', 60], ['atun', 110], ['tomateFrito', 40]],
     steps: [
-      { t: 'Abre el pan y unta el tomate rallado con el aceite y una pizca de sal.' },
-      { t: 'Escurre bien el atún (2 latas) y repártelo. Pimienta u orégano al gusto.' },
+      { t: 'Escurre bien el atún (2 latas) y mézclalo en un bol con el tomate frito. Orégano al gusto.' },
+      { t: 'Abre el pan y rellénalo con la mezcla.' },
       { t: 'Cierra y envuelve en papel de aluminio si te lo llevas.' },
     ],
-    tip: 'Si te gusta, una loncha de queso light le va genial (+50 kcal).',
+    tip: 'El clásico atún con tomate de toda la vida. Una loncha de queso light le va genial (+50 kcal).',
   },
   {
     id: 'batido-whey-avena',
@@ -134,12 +137,12 @@ export const RECIPES = [
   // ───────────── COMIDAS ─────────────
   {
     id: 'pollo-curry',
-    name: 'Pollo al curry suave con arroz basmati',
+    name: 'Pollo al curry suave con arroz basmati y pan',
     slot: 'comida',
     time: 25,
     tags: ['meal prep', 'verdura escondida'],
     ingredients: [
-      ['pollo', 180], ['arroz', 80], ['leCoco', 80], ['tomateTriturado', 100], ['cebolla', 50], ['zanahoria', 50], ['aove', 5],
+      ['pollo', 180], ['arroz', 55], ['leCoco', 80], ['tomateTriturado', 100], ['cebolla', 50], ['zanahoria', 50], ['aove', 5], ['pan', 30],
       ['especias', 0, '1 cdta curry + 1/2 cúrcuma + ajo en polvo + sal'],
     ],
     steps: [
@@ -148,28 +151,27 @@ export const RECIPES = [
       { t: 'Añade el curry, la cúrcuma y el ajo, 30 segundos. Luego el tomate triturado y la leche de coco. 5 min a fuego suave.', timer: 300 },
       { t: 'TRITURA la salsa con la batidora hasta que quede lisa y cremosa. No vas a notar ni la cebolla ni la zanahoria.' },
       { t: 'Corta el pollo en dados, dóralo en otra sartén 5 min y échalo a la salsa. 5 min más juntos.', timer: 300 },
-      { t: 'Sirve con el arroz.' },
+      { t: 'Sirve con el arroz y el pan para mojar la salsa.' },
     ],
     tip: 'Haz 3-4 raciones de golpe: aguanta 4 días en nevera y se congela perfecto.',
   },
   {
-    id: 'lentejas-pollo',
-    name: 'Lentejas "sin tropezones" con pollo',
+    id: 'ternera-patatas',
+    name: 'Filete de ternera con patatas al horno, crema de calabaza y pan',
     slot: 'comida',
-    time: 25,
-    tags: ['meal prep', 'verdura escondida', 'fibra'],
+    time: 30,
+    tags: ['plancha', 'verdura en crema'],
     ingredients: [
-      ['lentejas', 250], ['pollo', 130], ['cebolla', 50], ['zanahoria', 50], ['pimientoRojo', 30], ['tomateTriturado', 60],
-      ['aove', 8], ['caldo', 250], ['pan', 30], ['especias', 0, '1 cdta pimentón dulce + comino + laurel'],
+      ['ternera', 180], ['patata', 200], ['aove', 6], ['cremaCalabaza', 200], ['pan', 50],
+      ['especias', 0, 'sal, pimienta, ajo en polvo, romero'],
     ],
     steps: [
-      { t: 'Pica cebolla, zanahoria y pimiento. Sofríe con el aceite a fuego medio 8 min.', timer: 480 },
-      { t: 'Añade el pimentón (fuera del fuego 10 s para que no se queme) y el tomate. 2 min.', timer: 120 },
-      { t: 'Echa un chorro de caldo y TRITURA el sofrito hasta que sea una crema. Este es el truco: sabor de lenteja de la abuela sin verdura a la vista.' },
-      { t: 'Añade las lentejas escurridas y lavadas, el pollo en dados, el laurel y el resto del caldo. 12-15 min a fuego suave.', timer: 840 },
-      { t: 'Rectifica de sal y sirve con el pan.' },
+      { t: 'Horno a 200 °C (o airfryer). Patatas en gajos con la mitad del aceite, sal, ajo y romero: 25 min (airfryer 18 min), moviéndolas a mitad.', timer: 1500 },
+      { t: 'Calienta la crema de calabaza (micro 1-2 min) y tómatela de primero.', timer: 90 },
+      { t: 'Sartén o plancha muy caliente con el resto del aceite. Filete con sal y pimienta: 1,5-2 min por lado (más si lo quieres hecho).', timer: 210 },
+      { t: 'Deja reposar el filete 1 min y sírvelo con las patatas y el pan.', timer: 60 },
     ],
-    tip: 'Con lentejas de bote está lista en 25 min. Si te gustan más espesas, aplasta unas pocas con el tenedor.',
+    tip: 'Pide en la carnicería tapa, babilla o contra en filetes finos: magros y tiernos. Con pechuga de pollo también vale.',
   },
   {
     id: 'bolonesa',
@@ -178,8 +180,8 @@ export const RECIPES = [
     time: 25,
     tags: ['meal prep', 'verdura escondida'],
     ingredients: [
-      ['pasta', 80], ['ternera5', 150], ['tomateTriturado', 150], ['zanahoria', 40], ['calabacin', 60], ['cebolla', 40],
-      ['aove', 5], ['parmesano', 5], ['especias', 0, 'orégano + ajo en polvo + sal + pimienta'],
+      ['pasta', 60], ['ternera5', 150], ['tomateTriturado', 150], ['zanahoria', 40], ['calabacin', 60], ['cebolla', 40],
+      ['aove', 5], ['parmesano', 5], ['pan', 30], ['especias', 0, 'orégano + ajo en polvo + sal + pimienta'],
     ],
     steps: [
       { t: 'Pon agua a hervir para la pasta.' },
@@ -187,28 +189,28 @@ export const RECIPES = [
       { t: 'Añade el tomate triturado y cocina 5 min. TRITURA para que la salsa quede lisa.', timer: 300 },
       { t: 'En otra sartén dora la carne picada 5-6 min, deshaciéndola bien. Échala a la salsa con el orégano. 5 min.', timer: 300 },
       { t: 'Cuece la pasta según el paquete (≈9-10 min), escurre y mezcla con la salsa.', timer: 570 },
-      { t: 'Parmesano rallado por encima.' },
+      { t: 'Parmesano rallado por encima y el pan para rebañar.' },
     ],
     tip: 'La salsa se congela en raciones. Pasta al dente = más saciante.',
   },
   {
     id: 'burrito-bowl',
-    name: 'Burrito bowl de pollo con salsa de yogur y lima',
+    name: 'Burrito bowl de pollo con salsa de yogur y tortilla tostada',
     slot: 'comida',
     time: 20,
     tags: ['estilo mexicano'],
     ingredients: [
-      ['arroz', 65], ['pollo', 170], ['frijoles', 100], ['yogurNat', 60], ['aove', 8], ['tomateTriturado', 60], ['quesoRallado', 20],
-      ['especias', 0, 'especias fajita (comino, pimentón, ajo) + lima + sal'],
+      ['arroz', 55], ['pollo', 180], ['wrap', 40], ['yogurNat', 60], ['aove', 8], ['tomateTriturado', 60], ['quesoRallado', 15],
+      ['especias', 0, 'comino, ajo en polvo, orégano, lima y sal'],
     ],
     steps: [
       { t: 'Cuece el arroz 11-12 min (o usa arroz de vasito para ir rápido).', timer: 720 },
       { t: 'Corta el pollo en tiras, mézclalo con las especias y el aceite y hazlo a la plancha 6-7 min.', timer: 420 },
-      { t: 'Salsa: yogur + unas gotas de lima + comino + sal. Queda cremosa y fresquita.' },
-      { t: 'Calienta las alubias 1 min en el micro con el tomate triturado y una pizca de comino (salsa suave).', timer: 60 },
-      { t: 'Monta el bowl: arroz, pollo, alubias con salsa, el queso rallado y la salsa de yogur por encima.' },
+      { t: 'Salsa de yogur: yogur + unas gotas de lima + comino + sal. Salsa roja: tomate triturado con sal, comino y ajo, 1 min al micro.', timer: 60 },
+      { t: 'Corta la tortilla en triángulos y tuéstala en la sartén sin aceite 1-2 min (o airfryer 3 min): quedan tipo nachos.', timer: 120 },
+      { t: 'Monta el bowl: arroz, pollo, salsa roja, queso rallado, salsa de yogur y los triángulos de tortilla al lado.' },
     ],
-    tip: 'Si las alubias te dan textura rara, pásalas por la batidora con el tomate: queda tipo "frijoles refritos".',
+    tip: 'Moja los triángulos de tortilla en las salsas: es tu "pan" de este plato.',
   },
   {
     id: 'salmon-patatas',
@@ -217,7 +219,7 @@ export const RECIPES = [
     time: 30,
     tags: ['omega-3', 'horno'],
     ingredients: [
-      ['salmon', 150], ['patata', 250], ['aove', 5], ['yogurNat', 80], ['cremaCalabaza', 200],
+      ['salmon', 150], ['patata', 120], ['aove', 3], ['yogurNat', 80], ['cremaCalabaza', 200], ['pan', 35],
       ['especias', 0, 'eneldo o perejil + limón + ajo en polvo + sal'],
     ],
     steps: [
@@ -225,7 +227,7 @@ export const RECIPES = [
       { t: 'Saca la bandeja, pon el salmón con sal y limón al lado de las patatas y hornea 12 min más.', timer: 720 },
       { t: 'Salsa: yogur + eneldo + unas gotas de limón + sal. Remueve.' },
       { t: 'Calienta la crema de calabaza (micro 1-2 min) y tómatela de primero.', timer: 90 },
-      { t: 'Sirve el salmón con las patatas y la salsa por encima.' },
+      { t: 'Sirve el salmón con las patatas, la salsa por encima y el pan.' },
     ],
     tip: 'Con airfryer: patatas 12 min a 200 °C, añade el salmón y 8 min más.',
   },
@@ -255,15 +257,15 @@ export const RECIPES = [
     time: 35,
     tags: ['domingo', 'verdura escondida'],
     ingredients: [
-      ['arroz', 75], ['pollo', 180], ['tomateTriturado', 60], ['pimientoRojo', 30], ['aove', 8], ['caldo', 300],
-      ['especias', 0, 'pimentón + azafrán o colorante + ajo + sal'],
+      ['arroz', 55], ['pollo', 180], ['tomateTriturado', 60], ['cebolla', 40], ['aove', 8], ['caldo', 300], ['pan', 25],
+      ['especias', 0, 'azafrán o colorante + ajo + romero + sal'],
     ],
     steps: [
       { t: 'Dora el pollo en dados con el aceite en una paellera o sartén amplia 5 min. Reserva.', timer: 300 },
-      { t: 'En el mismo aceite, sofríe el pimiento picado 4 min, añade el tomate y el pimentón 2 min. TRITURA el sofrito.', timer: 360 },
+      { t: 'En el mismo aceite, sofríe la cebolla picada 4 min, añade el tomate triturado y el ajo 2 min. TRITURA el sofrito.', timer: 360 },
       { t: 'Vuelve a echar el pollo y el sofrito, añade el arroz y rehoga 1 min.' },
-      { t: 'Añade el caldo caliente con el azafrán/colorante. Fuego fuerte 8 min y luego suave 8-10 min sin remover.', timer: 1080 },
-      { t: 'Reposa 5 min tapado con un paño antes de comer.', timer: 300 },
+      { t: 'Añade el caldo caliente con el azafrán/colorante y el romero. Fuego fuerte 8 min y luego suave 8-10 min sin remover.', timer: 1080 },
+      { t: 'Reposa 5 min tapado con un paño antes de comer. Con su pan, como manda la tradición.', timer: 300 },
     ],
     tip: 'Comida de domingo sin culpa. Si te gusta el socarrat, sube el fuego el último minuto.',
   },
@@ -274,17 +276,17 @@ export const RECIPES = [
     time: 25,
     tags: ['cena "libre" controlada', 'finde'],
     ingredients: [
-      ['panBurger', 70], ['ternera5', 170], ['quesoLight', 20], ['ketchup', 15], ['patata', 250], ['aove', 5],
-      ['especias', 0, 'sal, pimienta, ajo en polvo, pimentón (patatas)'],
+      ['panBurger', 70], ['ternera5', 170], ['quesoLight', 20], ['batido0', 30], ['patata', 220], ['aove', 5],
+      ['especias', 0, 'sal, pimienta, ajo en polvo, mostaza'],
     ],
     steps: [
-      { t: 'Corta las patatas en bastones, sécalas con papel y mézclalas con el aceite y las especias.' },
+      { t: 'Corta las patatas en bastones, sécalas con papel y mézclalas con el aceite, sal y ajo en polvo.' },
       { t: 'Airfryer 200 °C 18-20 min, agitando a mitad (u horno 220 °C 25 min).', timer: 1140 },
       { t: 'Forma la burger con la carne salpimentada (aplástala más que el pan, encoge). Plancha muy caliente 3 min por lado.', timer: 360 },
       { t: 'Último minuto: loncha de queso encima y tapa para que se funda. Tuesta el pan.', timer: 60 },
-      { t: 'Monta con ketchup y mostaza. A disfrutar.' },
+      { t: 'Salsa burger: queso batido + 1 cdta de mostaza + pizca de sal. Monta y a disfrutar.' },
     ],
-    tip: 'Esta es tu "comida trampa" de la semana pero controlada: ~700 kcal en vez de 1.500 de un burger de cadena.',
+    tip: 'Esta es tu "comida trampa" de la semana pero controlada: ~700 kcal en vez de 1.500 de un burger de cadena. Si te apetece, 1 cda de tomate frito en vez de la salsa.',
   },
 
   // ───────────── MERIENDA / PRE-ENTRENO ─────────────
@@ -310,7 +312,7 @@ export const RECIPES = [
     tags: ['pre-entreno', 'para llevar'],
     ingredients: [['pan', 70], ['pavo', 80], ['batido0', 30], ['quesoLight', 20]],
     steps: [
-      { t: 'Unta el pan con el queso batido (o tomate rallado) y rellena con el pavo y la loncha de queso.' },
+      { t: 'Unta el pan con el queso batido y rellena con el pavo y la loncha de queso.' },
       { t: 'Envuélvelo y cómetelo 60-90 min antes de entrenar.' },
     ],
     tip: 'Si entrenas justo al salir del curro, cómetelo a media tarde y bebe agua de camino al gym.',
@@ -344,36 +346,36 @@ export const RECIPES = [
 
   // ───────────── CENAS ─────────────
   {
-    id: 'merluza-salmorejo',
-    name: 'Merluza al horno con patatas panadera + salmorejo',
+    id: 'merluza-crema',
+    name: 'Merluza al horno con patatas panadera, crema de calabaza y pan',
     slot: 'cena',
     time: 30,
     tags: ['ligera', 'verdura en crema'],
     ingredients: [
-      ['merluza', 220], ['patata', 200], ['aove', 6], ['salmorejo', 120], ['especias', 0, 'ajo, perejil, limón, sal'],
+      ['merluza', 220], ['patata', 120], ['aove', 6], ['cremaCalabaza', 200], ['pan', 40], ['especias', 0, 'ajo, perejil, limón, sal'],
     ],
     steps: [
       { t: 'Horno a 200 °C. Patatas en rodajas finas con la mitad del aceite y sal: 20 min.', timer: 1200 },
       { t: 'Pon la merluza encima de las patatas con ajo, perejil, sal y el resto del aceite. 10-12 min más.', timer: 690 },
-      { t: 'Sirve el salmorejo bien frío en un bol de primero (es tomate triturado: verdura sin enterarte).' },
+      { t: 'Calienta la crema de calabaza (micro 1-2 min) y tómatela de primero, con el pan.', timer: 90 },
     ],
-    tip: 'Si te sabe a poco el pescado blanco, pon pimentón de la Vera por encima.',
+    tip: 'Si te sabe a poco el pescado blanco, un chorrito de limón y ajo frito por encima.',
   },
   {
-    id: 'tortilla-pavo-gazpacho',
-    name: 'Tortilla francesa de pavo y queso + pan con tomate + gazpacho',
+    id: 'tortilla-pavo-pan',
+    name: 'Tortilla francesa de pavo y queso con pan tostado y crema de calabaza',
     slot: 'cena',
     time: 10,
     tags: ['rápida', 'verdura en crema'],
     ingredients: [
-      ['huevo', 120], ['claras', 100], ['pavo', 50], ['quesoLight', 20], ['pan', 40], ['tomate', 40], ['aove', 3], ['gazpacho', 150],
+      ['huevo', 120], ['claras', 100], ['pavo', 50], ['quesoLight', 20], ['pan', 50], ['aove', 3], ['cremaCalabaza', 200],
     ],
     steps: [
       { t: 'Bate los 2 huevos con las claras y sal.' },
       { t: 'Sartén antiadherente fuego medio. Echa el huevo; cuando empiece a cuajar pon el pavo y el queso en una mitad.', timer: 90 },
       { t: 'Dobla la tortilla y deja 1 min más para que se funda el queso.', timer: 60 },
-      { t: 'Pan tostado con tomate rallado y el aceite.' },
-      { t: 'Un vaso de gazpacho frío de acompañante.' },
+      { t: 'Pan tostado con el aceite y una pizca de sal.' },
+      { t: 'Calienta la crema de calabaza 1-2 min en el micro y tómatela de primero.', timer: 90 },
     ],
     tip: 'La cena de 10 minutos para cuando llegas reventado del gym.',
   },
@@ -401,14 +403,14 @@ export const RECIPES = [
     time: 25,
     tags: ['verdura en crema', 'comfort food'],
     ingredients: [
-      ['pollo', 200], ['patata', 200], ['leche', 50], ['aove', 5], ['calabacin', 200], ['quesito', 16], ['caldo', 150],
+      ['pollo', 200], ['patata', 110], ['leche', 50], ['aove', 5], ['calabacin', 200], ['quesito', 16], ['caldo', 150], ['pan', 40],
       ['especias', 0, 'sal, pimienta, nuez moscada'],
     ],
     steps: [
       { t: 'Crema: calabacín (pelado si quieres) troceado + caldo, cuece 10 min. Tritura con el quesito hasta que esté muy lisa.', timer: 600 },
       { t: 'Puré: patata pelada en dados cocida 15 min (o 8 min en el micro tapada). Aplasta con la leche, sal y nuez moscada.', timer: 900 },
       { t: 'Pechuga fileteada fina a la plancha con el aceite, 3 min por lado.', timer: 360 },
-      { t: 'Sirve la crema de primero y la pechuga con el puré de segundo.' },
+      { t: 'Sirve la crema de primero y la pechuga con el puré y el pan de segundo.' },
     ],
     tip: 'La crema de calabacín con quesito no tiene nada de "slimy": queda como un velouté.',
   },
@@ -419,7 +421,7 @@ export const RECIPES = [
     time: 15,
     tags: ['rápida'],
     ingredients: [
-      ['wrap', 80], ['pollo', 160], ['yogurNat', 60], ['quesoRallado', 25], ['aove', 5], ['especias', 0, 'pimentón, ajo, comino, sal, lima'],
+      ['wrap', 80], ['pollo', 160], ['yogurNat', 60], ['quesoRallado', 25], ['aove', 5], ['especias', 0, 'ajo, comino, orégano, sal, lima'],
     ],
     steps: [
       { t: 'Pollo en tiras con las especias y el aceite a la plancha 6-7 min.', timer: 420 },
@@ -431,18 +433,18 @@ export const RECIPES = [
   },
   {
     id: 'revuelto-gambas',
-    name: 'Revuelto de gambas con patatas al micro',
+    name: 'Revuelto de gambas con patatas al micro y pan',
     slot: 'cena',
     time: 15,
     tags: ['marisco', 'rápida'],
     ingredients: [
-      ['huevo', 120], ['claras', 100], ['gambas', 150], ['patata', 200], ['aove', 5], ['especias', 0, 'ajo, perejil, sal'],
+      ['huevo', 120], ['claras', 100], ['gambas', 150], ['patata', 100], ['aove', 5], ['pan', 40], ['especias', 0, 'ajo, perejil, sal'],
     ],
     steps: [
       { t: 'Patata en dados en un bol con un poco de agua, tapada, 6-7 min al micro (o airfryer 12 min).', timer: 420 },
       { t: 'Sartén con el aceite y ajo picado. Saltea las gambas 2 min.', timer: 120 },
       { t: 'Añade las patatas y luego los huevos batidos con las claras. Remueve suave hasta que cuaje jugoso.', timer: 120 },
-      { t: 'Perejil y sal al final.' },
+      { t: 'Perejil y sal al final. Con el pan tostado al lado.' },
     ],
     tip: 'Gambas congeladas peladas = cena de 15 min y mucha proteína.',
   },
@@ -466,9 +468,9 @@ export const SLOT_BY_KEY = Object.fromEntries(SLOTS.map((s) => [s.key, s]));
 
 // Menú semanal: índice 0 = lunes … 6 = domingo
 export const WEEK_MENU = [
-  { desayuno: 'tortitas-avena-cacao', media: 'yogur-cacao-tortitas', comida: 'pollo-curry', merienda: 'pre-tortitas-miel', cena: 'merluza-salmorejo' },
-  { desayuno: 'tostadas-pavo-huevo', media: 'bocadillo-atun', comida: 'lentejas-pollo', merienda: 'pre-yogur-avena', cena: 'pizza-wrap' },
-  { desayuno: 'bol-batido-cacao', media: 'batido-whey-avena', comida: 'bolonesa', merienda: 'pre-bocadillo-pavo', cena: 'tortilla-pavo-gazpacho' },
+  { desayuno: 'tortitas-avena-cacao', media: 'yogur-cacao-tortitas', comida: 'pollo-curry', merienda: 'pre-tortitas-miel', cena: 'merluza-crema' },
+  { desayuno: 'tostadas-pavo-huevo', media: 'bocadillo-atun', comida: 'ternera-patatas', merienda: 'pre-yogur-avena', cena: 'pizza-wrap' },
+  { desayuno: 'bol-batido-cacao', media: 'batido-whey-avena', comida: 'bolonesa', merienda: 'pre-bocadillo-pavo', cena: 'tortilla-pavo-pan' },
   { desayuno: 'batido-choco-avena', media: 'tortitas-pavo-queso', comida: 'burrito-bowl', merienda: 'pre-tortitas-miel', cena: 'pechuga-pure' },
   { desayuno: 'tortitas-avena-cacao', media: 'yogur-cacao-tortitas', comida: 'salmon-patatas', merienda: 'pre-yogur-avena', cena: 'revuelto-gambas' },
   { desayuno: 'tostadas-pavo-huevo', media: 'batido-whey-avena', comida: 'ternera-teriyaki', merienda: 'pre-bocadillo-pavo', cena: 'hamburguesa-casera' },

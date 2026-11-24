@@ -21,7 +21,7 @@ export const CATEGORY_EMOJI = {
 // Dónde comprarlo. La idea: TODO en Mercadona en un solo viaje; la proteína en polvo, online.
 export const STORE_PLAN = {
   main: 'Mercadona',
-  why: 'Tiene todo el menú en un solo viaje: yogures +Proteínas, queso fresco batido 0%, claras en brick, pavo 90%, gazpacho y salmorejo de nevera, legumbre cocida en bote, cacao puro y chocolate 85%.',
+  why: 'Tiene todo el menú en un solo viaje: yogures +Proteínas, queso fresco batido 0%, claras en brick, pavo 90%, cremas de verdura de nevera, tomate triturado y frito, buen pan, cacao puro y chocolate 85%.',
   alternatives: [
     { name: 'Lidl', text: 'Vale casi para todo (gama High Protein de Milbona, claras, pavo). El queso batido 0% y las cremas de verdura van por temporadas.' },
     { name: 'Carrefour', text: 'Lo tiene todo, algo más caro de media. Útil si te pilla al lado.' },
@@ -49,15 +49,14 @@ export const STORE_HINTS = {
   yogurPro: 'Yogur +Proteínas natural Hacendado (pack de 6)',
   claras: 'Claras de huevo pasteurizadas (brick, en la nevera de huevos)',
   pavo: 'Pechuga de pavo de 90% o más de carne (lonchas finas)',
-  salmorejo: 'Nevera: salmorejo Hacendado o Alvalle',
-  gazpacho: 'Nevera: gazpacho Hacendado o Alvalle',
   cremaCalabaza: 'Nevera: crema de calabaza Hacendado (o haz la tuya y congela)',
   cacao: 'Cacao puro en polvo desgrasado 0% azúcar (Hacendado, junto al Cola Cao)',
   chocolate85: 'Chocolate negro 85% (tableta; 1-2 onzas por toma)',
   tortitaArroz: 'Tortitas de maíz o arroz (las de maíz con sal tienen más sabor)',
   wrap: 'Tortillas de trigo integral (paquete de 8)',
-  lentejas: 'Bote de cristal de lentejas cocidas',
-  frijoles: 'Bote de alubias negras cocidas (o rojas)',
+  tomateFrito: 'Tomate frito en brick o bote (el de siempre; mira que no lleve pimiento)',
+  tomateTriturado: 'Tomate triturado natural en bote (sin trozos)',
+  pan: 'Pan integral de molde o barra (la del día: congela en raciones)',
   espinacaCong: 'Congelados: espinacas en porciones (bolitas)',
   whey: 'Online en HSN: Evolate 2.0 (aislado, bajo en lactosa), sabor chocolate o galleta',
   leCoco: 'Lata de leche de coco (si no la hay light, pon la mitad)',
@@ -111,7 +110,7 @@ export function buildShoppingList(state = null, mondayIso = null) {
 }
 
 export const PANTRY_NOTE =
-  'Despensa básica: sal, pimienta, ajo en polvo, pimentón dulce, curry, cúrcuma, comino, orégano, canela, levadura química, laurel, azafrán/colorante, jengibre en polvo, lima/limón, mostaza.';
+  'Despensa básica: sal, pimienta, ajo en polvo, curry, cúrcuma, comino, orégano, canela, levadura química, laurel, azafrán/colorante, jengibre en polvo, lima/limón, mostaza.';
 
 // Texto plano para copiar/compartir (WhatsApp, notas…)
 export function shoppingText(groups, checked = {}, { onlyPending = true } = {}) {

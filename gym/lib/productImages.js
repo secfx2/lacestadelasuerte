@@ -43,6 +43,8 @@ export const PRODUCT_IMAGES = {
   panBurger: 'https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261105_110316_5543888c-20a5-4b56-9d3f-6a8079d63b75.png',
   caldo: 'https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261105_110320_cbe50b96-f457-44e6-b2a4-464fc9706d70.png',
   tomateTriturado: 'https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261105_110319_4a74556b-c528-4686-aacb-58c6c4269520.png',
+  // Sin foto propia todavía (límite diario de generación): usa la del tomate triturado
+  tomateFrito: 'https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261105_110319_4a74556b-c528-4686-aacb-58c6c4269520.png',
   arroz: 'https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261105_110322_5558d9ae-e3d9-4a78-aa3a-462fa7cd2764.png',
   avena: 'https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261105_110320_afc2538b-dd0e-4d1e-983f-04413d482145.png',
   lentejas: 'https://d8j0ntlcm91z4.cloudfront.net/user_2wxauV6GMeROg6twq5pzSRd9O3O/hf_20261105_110320_2bf8a932-6ef9-4e90-90cb-d04285f2268d.png',

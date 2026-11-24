@@ -303,25 +303,25 @@ function Rules() {
         <h3>🥷 Verdura escondida (sin texturas raras)</h3>
         <ul className="ul" style={{ marginTop: 10 }}>
           <li>
-            <b>Sofrito triturado:</b> cebolla, zanahoria y pimiento pochados y pasados por la batidora en curry, lentejas y boloñesa. Sabor sí, tropezones no.
+            <b>Sofrito triturado:</b> cebolla y zanahoria pochadas y pasadas por la batidora con el tomate triturado en el curry, la boloñesa y el arroz. Sabor sí, tropezones no (y nada de pimiento).
           </li>
           <li>
             <b>Cremas lisas tipo velouté:</b> calabaza, calabacín con quesito, zanahoria. Nada de trozos.
           </li>
           <li>
-            <b>Gazpacho y salmorejo</b> (los de la nevera del súper): un vaso = 1-2 raciones de verdura.
-          </li>
-          <li>
             <b>Espinaca congelada en batidos:</b> con whey de chocolate, cacao y avena no se nota nada.
           </li>
           <li>
-            <b>Tomate rallado</b> en tostadas y bocadillos.
+            <b>Tomate, solo el triturado de bote</b> (salsas, pizza, curry) y un poco de tomate frito (con el atún). Nada de tomate natural, gazpacho ni salmorejo.
           </li>
           <li>
-            <b>Sin fruta suelta:</b> como no te gusta, las vitaminas vienen del gazpacho, el salmorejo, las cremas y la espinaca escondida. La fibra, de la avena, las legumbres, el cacao puro y el pan integral. No hace falta forzarte. Si algún día te apetece: un vaso pequeño (200 ml) de zumo de naranja o piña natural sin pulpa, una manzana o melocotón en su jugo (no en almíbar).
+            <b>Pan en casi todas las comidas:</b> 30-60 g de pan integral o de barra para mojar o acompañar. Ya está contado en las calorías (por eso las raciones de arroz, pasta y patata son algo más pequeñas).
           </li>
           <li>
-            <b>Seguro:</b> multivitamínico + psyllium si vas mal al baño (ver Suplementos).
+            <b>Sin fruta suelta:</b> como no te gusta, las vitaminas vienen de las cremas, la espinaca escondida, el tomate triturado y el multivitamínico. La fibra, de la avena, el pan integral, la patata y el cacao puro (sin legumbre ni fruta te quedas algo corto: de ahí el psyllium). No hace falta forzarte. Si algún día te apetece: un vaso pequeño (200 ml) de zumo de naranja o piña natural sin pulpa, una manzana o melocotón en su jugo (no en almíbar).
+          </li>
+          <li>
+            <b>Seguro:</b> multivitamínico + psyllium cada día (ver Suplementos).
           </li>
         </ul>
       </div>
@@ -346,7 +346,7 @@ function Rules() {
         <h3>🍽️ Comer fuera</h3>
         <ul className="ul" style={{ marginTop: 10 }}>
           <li>Plato a la plancha (pollo, ternera, pescado) + patata/arroz. Salsas aparte.</li>
-          <li>Menú del día: primero de crema/gazpacho/legumbre, segundo plancha, postre yogur o café.</li>
+          <li>Menú del día: primero de crema o sopa (o pasta/arroz sin pimiento), segundo plancha con pan, postre yogur o café.</li>
           <li>Hamburguesería: burger sencilla sin bacon ni salsas, y patatas compartidas.</li>
           <li>Alcohol: si bebes, cerveza 0,0 o 1-2 copas máximo. El alcohol frena la quema de grasa e hincha la cara.</li>
         </ul>
@@ -356,7 +356,7 @@ function Rules() {
         <ul className="ul" style={{ marginTop: 10 }}>
           <li>Agua con gas, café solo o té antes de picar.</li>
           <li>Queso batido 0% con canela: 100 kcal y llena muchísimo.</li>
-          <li>Más gazpacho o crema de calabaza: mucho volumen, pocas calorías.</li>
+          <li>Más crema de calabaza o calabacín: mucho volumen, pocas calorías.</li>
           <li>Duerme más: dormir poco dispara el hambre al día siguiente.</li>
           <li>Hambre leve a media tarde es normal en definición. Hambre brutal todo el día = avisa a la app (pesos) y subimos calorías.</li>
         </ul>

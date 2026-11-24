@@ -52,6 +52,7 @@ export const FOODS = {
   // Verdura (siempre triturada, rallada fina o en crema)
   tomate: { name: 'Tomate (para rallar)', kcal: 18, p: 0.9, c: 3.9, f: 0.2, fib: 1.2, cat: 'Fruta y verdura' },
   tomateTriturado: { name: 'Tomate triturado (bote)', kcal: 30, p: 1.3, c: 5, f: 0.2, fib: 1.5, cat: 'Despensa' },
+  tomateFrito: { name: 'Tomate frito (bote o brick)', kcal: 75, p: 1.5, c: 9, f: 3.5, fib: 1.5, cat: 'Despensa' },
   cebolla: { name: 'Cebolla', kcal: 40, p: 1.1, c: 9.3, f: 0.1, fib: 1.7, cat: 'Fruta y verdura' },
   zanahoria: { name: 'Zanahoria', kcal: 41, p: 0.9, c: 9.6, f: 0.2, fib: 2.8, cat: 'Fruta y verdura' },
   calabacin: { name: 'Calabacín', kcal: 17, p: 1.2, c: 3.1, f: 0.3, fib: 1, cat: 'Fruta y verdura' },
@@ -72,7 +73,7 @@ export const FOODS = {
   sesamo: { name: 'Sésamo tostado', kcal: 570, p: 18, c: 12, f: 50, fib: 12, cat: 'Despensa' },
   ketchup: { name: 'Ketchup (o sin azúcar)', kcal: 100, p: 1.2, c: 24, f: 0.2, fib: 0.3, cat: 'Despensa' },
   caldo: { name: 'Caldo de pollo (brick)', kcal: 5, p: 0.5, c: 0.5, f: 0.1, fib: 0, cat: 'Despensa', unit: 'ml' },
-  especias: { name: 'Especias (curry, pimentón, comino, orégano, canela, ajo en polvo)', kcal: 0, p: 0, c: 0, f: 0, fib: 0, cat: 'Despensa', noShop: false },
+  especias: { name: 'Especias (curry, comino, orégano, canela, ajo en polvo)', kcal: 0, p: 0, c: 0, f: 0, fib: 0, cat: 'Despensa', noShop: false },
 };
 
 // Macros de una cantidad de un alimento

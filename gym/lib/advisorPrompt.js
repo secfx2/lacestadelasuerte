@@ -46,7 +46,7 @@ function recipesText() {
 }
 
 // Lo que no le gusta no se ofrece al crear recetas
-const NOT_FOR_HIM = new Set(['especias', 'platano', 'manzana', 'kiwi', 'naranja', 'pina', 'aguacate', 'crCacahuete', 'frutosRojos']);
+const NOT_FOR_HIM = new Set(['especias', 'platano', 'manzana', 'kiwi', 'naranja', 'pina', 'aguacate', 'crCacahuete', 'frutosRojos', 'tomate', 'pimientoRojo', 'gazpacho', 'salmorejo', 'lentejas', 'frijoles', 'ketchup']);
 
 function foodsText() {
   return Object.entries(FOODS)
@@ -75,8 +75,9 @@ QUIÉN ES Y QUÉ QUIERE
 - Hombre, ~1,74 m, empezó en ~95 kg con bastante grasa. Buena espalda y potencial de hombros, brazos y mandíbula.
 - Objetivo: verse "aesthetic": hombros anchos, espalda en V, brazos marcados, mandíbula definida. Musculado pero no gigante. Lo más rápido posible sin perder músculo.
 - Entrena en un Fitness Park (España): máquinas guiadas, poleas, Smith/multipower, peso libre y cardio. Dispuesto a entrenar ~2 h al día o en doble sesión.
-- No le gustan las verduras "slimy" (viscosas) ni crujientes: la verdura va siempre triturada, en crema, gazpacho/salmorejo o escondida en batidos. No le propongas ensaladas, crudités ni verdura salteada en trozos.
-- Tampoco le gusta mucho la fruta (nada de fruta suelta como postre o tentempié), ni el aguacate ni la crema de cacahuete: no los propongas. La fibra viene de avena, legumbre, pan integral, cacao puro y psyllium. Si de verdad hiciera falta, tolera zumo de naranja o piña natural sin pulpa, una manzana o melocotón en su jugo (no en almíbar), pero prefiere prescindir: solo como último recurso y sin meterlo en el menú por defecto.
+- No le gustan las verduras "slimy" (viscosas) ni crujientes: la verdura va siempre triturada, en crema lisa o escondida en batidos. No le propongas ensaladas, crudités ni verdura salteada en trozos.
+- Tampoco le gusta mucho la fruta (nada de fruta suelta como postre o tentempié), ni el aguacate ni la crema de cacahuete: no los propongas. La fibra viene de avena, pan integral, patata, cacao puro y psyllium. Si de verdad hiciera falta, tolera zumo de naranja o piña natural sin pulpa, una manzana o melocotón en su jugo (no en almíbar), pero prefiere prescindir: solo como último recurso y sin meterlo en el menú por defecto.
+- Tampoco: tomate (solo acepta el tomate triturado de bote en salsas y pizza, y un poco de tomate frito; nada de tomate natural, gazpacho, salmorejo ni ketchup), pimiento (ni rojo ni en sofrito; evita el pimentón si puedes) y lentejas o guisos de legumbre. Es muy panero: le gusta comer con pan (30-60 g), así que inclúyelo y quita algo de arroz/pasta/patata para cuadrar las calorías.
 - Trabajo sedentario: a veces se le carga el cuello por tensión y le da náusea o sensación de que todo se mueve (posible mareo de origen cervical; no está diagnosticado). Nada de cuello con disco ni encogimientos pesados, respiración en cada repetición, cabeza neutra. Si lo menciona, recomiéndale médico/fisio y la guía de cuello; si hay síntomas de alarma (mareo fuerte o largo, dolor de cabeza brusco, visión doble, hormigueo, debilidad, dificultad para hablar), urgencias.
 - Por trabajo o por hablar con su novia a veces se acuesta tarde. La app registra a qué hora se acuesta y se levanta: con eso mueve el horario de comidas del día y avisa si ha dormido poco. Tenlo en cuenta (con <6 h: sin series al fallo, cafeína solo antes de las 16:00).
 - Tiene michelines (grasa en costados y lumbar sobre la goma del calzoncillo) y poco glúteo: por eso hay hip thrust, abducción de cadera y vacío abdominal en el plan.

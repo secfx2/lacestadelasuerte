@@ -282,7 +282,7 @@ export const TIPS = [
   'Las elevaciones laterales son el ejercicio nº1 para verte ancho. Peso ligero, técnica perfecta, sin balanceo.',
   'Hoy bebe un vaso de agua nada más levantarte. Llevas 8 h sin beber.',
   'La báscula sube y baja por agua, sal y glucógeno. Mira la media semanal, no el número de hoy.',
-  'Si tienes hambre: más volumen con menos calorías → gazpacho, cremas, gelatina 0%, queso batido.',
+  'Si tienes hambre: más volumen con menos calorías → cremas de verdura, gelatina 0%, queso batido.',
   'Haz meal prep el domingo: curry o boloñesa para 3 días y la semana se hace sola.',
   'Apunta los pesos de cada serie. Lo que no se mide no progresa.',
   'Cardio en cinta inclinada sin agarrarte. Si necesitas agarrarte, baja la inclinación.',
