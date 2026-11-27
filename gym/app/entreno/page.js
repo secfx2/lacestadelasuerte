@@ -194,6 +194,9 @@ function Entreno() {
         <RestDay ctx={ctx} day={day} iso={iso} />
       ) : (
         <>
+          <Link href={`/sesion?${new URLSearchParams({ ...(isToday ? {} : { fecha: iso }), ...(workout.key !== ctx.workout.key ? { d: workout.key } : {}) }).toString()}`} className="btn sm" style={{ marginBottom: 10, alignSelf: 'flex-start' }}>
+            <Icon name="book" size={15} /> Ver todos los ejercicios en una página
+          </Link>
           <div className="row wrap" style={{ gap: 6, marginBottom: 12 }}>
             <span className="pill">~{mins} min</span>
             <span className="pill lime">RIR {ctx.phase.rir}</span>
