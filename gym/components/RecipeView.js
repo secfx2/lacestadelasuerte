@@ -9,6 +9,8 @@ import { BackLink, Check, PageSkeleton, useToast } from './ui';
 import { SLOT_BY_KEY, SLOTS } from '../lib/recipes';
 import { recipeFor, recipeMacrosFor, foodFor, mealIdFor } from '../lib/plan';
 import { slotsFor } from '../lib/sleep';
+import SuppChips from './SuppChips';
+import { workoutForDay } from '../lib/coach';
 import { qtyLabel } from '../lib/foods';
 import { useAppState, useHydrated, updateDay } from '../lib/store';
 import { todayISO, fmtClock } from '../lib/dates';
@@ -92,6 +94,8 @@ function RecipeBody({ id, r, s, hydrated }) {
           </div>
         ))}
       </div>
+
+      {slot && hydrated && <SuppChips s={s} iso={iso} slot={slot.key} rest={!!workoutForDay(s, iso).rest} style={{ marginTop: 14 }} />}
 
       <button className="btn primary block" style={{ marginTop: 16, height: 54, fontSize: 16 }} onClick={() => setStepMode(true)}>
         <Icon name="play" size={15} fill="currentColor" /> Cocinar paso a paso

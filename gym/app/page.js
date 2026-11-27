@@ -21,6 +21,7 @@ import { useSyncStatus } from '../lib/sync';
 import { buildShoppingList, shoppingText, STORE_PLAN, CATEGORY_EMOJI } from '../lib/shopping';
 import ProductImg from '../components/ProductImg';
 import KegelTrainer from '../components/KegelTrainer';
+import SuppChips from '../components/SuppChips';
 import { kegelLevel, KEGEL_SESSIONS_PER_DAY, sessionSeconds } from '../lib/kegel';
 
 export default function HomePage() {
@@ -213,6 +214,7 @@ function MealTile({ s, now, iso, showToast }) {
         <div className="small" style={{ color: 'rgba(255,255,255,0.78)' }}>
           <b className="num">{m.kcal}</b> kcal · <b style={{ color: 'var(--lime)' }}>{m.p} g</b> proteína · {nm.recipe.time} min
         </div>
+        <SuppChips s={s} iso={nm.iso} slot={nm.slot.key} rest={!!workoutForDay(s, nm.iso).rest} dark />
         <div className="row" style={{ marginTop: 6 }}>
           <Link href={href} className="btn primary sm">
             <Icon name="play" size={13} fill="currentColor" /> Receta paso a paso

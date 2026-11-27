@@ -467,3 +467,9 @@ a.tile:hover { border-color: var(--line-2); }
 .kegel-word { font-weight: 700; font-size: 17px; }
 .kegel-num { font-size: 52px; font-weight: 800; line-height: 1; }
 .kegel-orb.hold .kegel-word { color: var(--cyan); }
+
+/* Suplementos de cada comida */
+.supp-chips { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.supp-chip { height: 28px; padding: 0 10px; border-radius: 99px; font-size: 12.5px; font-weight: 600; border: 1px solid rgba(167, 139, 250, 0.35); background: rgba(167, 139, 250, 0.1); color: #c4b5fd; }
+.supp-chip.on { background: var(--violet); color: #120a26; border-color: transparent; }
+.supp-chips.dark .supp-chip:not(.on) { background: rgba(0, 0, 0, 0.45); }

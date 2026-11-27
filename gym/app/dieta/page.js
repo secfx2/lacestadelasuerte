@@ -11,6 +11,8 @@ import { useAppState, useHydrated, update } from '../../lib/store';
 import { NIGHT_SNACK } from '../../lib/recipes';
 import { mealFor, recipeMacrosFor, dayMacrosFor, mealChange } from '../../lib/plan';
 import { slotsFor } from '../../lib/sleep';
+import SuppChips from '../../components/SuppChips';
+import { workoutForDay } from '../../lib/coach';
 import { buildShoppingList, shoppingText, STORE_PLAN, CATEGORY_EMOJI, PANTRY_NOTE } from '../../lib/shopping';
 import { DAY_NAMES, DAY_SHORT, todayISO, weekdayIdx, mondayOf, addDays } from '../../lib/dates';
 import { DAILY_TARGETS } from '../../lib/program';
@@ -71,6 +73,7 @@ function Menu({ dayIdx, todayIdx, onDay }) {
   const isToday = dayIdx === todayIdx;
   const eaten = s.days[iso]?.meals || {};
   const slots = slotsFor(s, iso);
+  const rest = !!workoutForDay(s, iso).rest;
   return (
     <>
       <div className="chips" style={{ marginBottom: 14 }}>
@@ -106,7 +109,8 @@ function Menu({ dayIdx, todayIdx, onDay }) {
           const m = recipeMacrosFor(r);
           const changed = mealChange(s, iso, sl.key);
           return (
-            <Link key={sl.key} href={`/receta/${r.id}?slot=${sl.key}&d=${iso}`} className="card flush row" style={{ gap: 0, alignItems: 'stretch' }}>
+            <div key={sl.key} className="stack" style={{ gap: 6 }}>
+            <Link href={`/receta/${r.id}?slot=${sl.key}&d=${iso}`} className="card flush row" style={{ gap: 0, alignItems: 'stretch' }}>
               <FoodImg recipe={r} style={{ width: 108, minHeight: 108, flex: 'none' }} sizes="120px" />
               <div className="grow" style={{ padding: '12px 14px' }}>
                 <div className="spread">
@@ -122,8 +126,13 @@ function Menu({ dayIdx, todayIdx, onDay }) {
                 </div>
               </div>
             </Link>
+            <SuppChips s={s} iso={iso} slot={sl.key} rest={rest} style={{ padding: '0 4px' }} />
+            </div>
           );
         })}
+        <div className="card" style={{ padding: '10px 12px' }}>
+          <SuppChips s={s} iso={iso} slot="noche" label="Al acostarte" />
+        </div>
       </div>
 
       {dayIdx === 5 && (
