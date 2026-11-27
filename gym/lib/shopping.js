@@ -63,7 +63,8 @@ export const STORE_HINTS = {
   merluza: 'Lomos de merluza (congelados valen y salen más baratos)',
   salmon: 'Lomos de salmón (congelados valen)',
   gambas: 'Gambas peladas congeladas',
-  ternera5: 'Carne picada de vacuno 5% grasa (o "burger meat" magra)',
+  ternera5: 'Carne picada de vacuno/añojo 100 % carne (5-10 g de grasa por 100 g). NO el "burger meat": es preparado con agua y fibra y lleva el doble de grasa. Mejor aún: pide que te piquen tapa o babilla en la carnicería',
+  ternera: 'Filetes de añojo o ternera de tapa, babilla, contra o cadera (los magros). Si no hay: lomo de cerdo o pechuga de pavo en filetes',
   quesoLight: 'Lonchas de queso light / havarti light',
   mozzaLight: 'Mozzarella rallada light',
 };
