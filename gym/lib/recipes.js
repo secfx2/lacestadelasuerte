@@ -189,7 +189,7 @@ export const RECIPES = [
       { t: 'Añade el tomate triturado y cocina 5 min. TRITURA para que la salsa quede lisa.', timer: 300 },
       { t: 'En otra sartén dora la carne picada 5-6 min, deshaciéndola bien. Échala a la salsa con el orégano. 5 min.', timer: 300 },
       { t: 'Cuece la pasta según el paquete (≈9-10 min), escurre y mezcla con la salsa.', timer: 570 },
-      { t: 'Parmesano rallado por encima y el pan para rebañar.' },
+      { t: 'Grana Padano rallado por encima y el pan para rebañar.' },
     ],
     tip: 'La salsa se congela en raciones. Pasta al dente = más saciante.',
   },
@@ -200,7 +200,7 @@ export const RECIPES = [
     time: 20,
     tags: ['estilo mexicano'],
     ingredients: [
-      ['arroz', 55], ['pollo', 180], ['wrap', 40], ['yogurNat', 60], ['aove', 8], ['tomateTriturado', 60], ['quesoRallado', 15],
+      ['arroz', 55], ['pollo', 180], ['wrap', 40], ['yogurNat', 60], ['aove', 8], ['tomateTriturado', 60], ['parmesano', 6],
       ['especias', 0, 'comino, ajo en polvo, orégano, lima y sal'],
     ],
     steps: [
@@ -208,7 +208,7 @@ export const RECIPES = [
       { t: 'Corta el pollo en tiras, mézclalo con las especias y el aceite y hazlo a la plancha 6-7 min.', timer: 420 },
       { t: 'Salsa de yogur: yogur + unas gotas de lima + comino + sal. Salsa roja: tomate triturado con sal, comino y ajo, 1 min al micro.', timer: 60 },
       { t: 'Corta la tortilla en triángulos y tuéstala en la sartén sin aceite 1-2 min (o airfryer 3 min): quedan tipo nachos.', timer: 120 },
-      { t: 'Monta el bowl: arroz, pollo, salsa roja, queso rallado, salsa de yogur y los triángulos de tortilla al lado.' },
+      { t: 'Monta el bowl: arroz, pollo, salsa roja, el Grana Padano rallado, salsa de yogur y los triángulos de tortilla al lado.' },
     ],
     tip: 'Moja los triángulos de tortilla en las salsas: es tu "pan" de este plato.',
   },
@@ -386,12 +386,12 @@ export const RECIPES = [
     time: 12,
     tags: ['antojo', 'horno/airfryer'],
     ingredients: [
-      ['wrap', 80], ['tomateTriturado', 80], ['mozzaLight', 70], ['pavo', 100], ['especias', 0, 'orégano'],
+      ['wrap', 80], ['tomateTriturado', 80], ['quesoLight', 20], ['parmesano', 20], ['pavo', 110], ['especias', 0, 'orégano'],
     ],
     steps: [
       { t: 'Horno a 220 °C (o airfryer 190 °C).' },
       { t: 'Extiende el tomate triturado (con sal y orégano) sobre las 2 tortillas.' },
-      { t: 'Reparte el pavo (o pollo) troceado y la mozzarella.' },
+      { t: 'Reparte el pavo (o pollo) troceado, la loncha de queso light en trozos y el Grana Padano rallado por encima.' },
       { t: 'Hornea 7-8 min hasta que el borde esté crujiente y el queso gratinado.', timer: 450 },
     ],
     tip: 'Pizza de ~550 kcal con 50 g de proteína. Puedes usar pollo desmigado o atún.',
@@ -421,13 +421,13 @@ export const RECIPES = [
     time: 15,
     tags: ['rápida'],
     ingredients: [
-      ['wrap', 80], ['pollo', 160], ['yogurNat', 60], ['quesoRallado', 25], ['aove', 5], ['especias', 0, 'ajo, comino, orégano, sal, lima'],
+      ['wrap', 80], ['pollo', 160], ['yogurNat', 60], ['parmesano', 10], ['aove', 5], ['especias', 0, 'ajo, comino, orégano, sal, lima'],
     ],
     steps: [
       { t: 'Pollo en tiras con las especias y el aceite a la plancha 6-7 min.', timer: 420 },
       { t: 'Salsa: yogur con ajo en polvo, unas gotas de lima y sal.' },
       { t: 'Calienta las tortillas 20 s en la sartén.', timer: 20 },
-      { t: 'Rellena: pollo, queso rallado y salsa de yogur. Enrolla bien apretado y, si quieres, 1 min en la sartén para que se funda el queso.' },
+      { t: 'Rellena: pollo, el Grana Padano rallado y salsa de yogur. Enrolla bien apretado y, si quieres, 1 min en la sartén para que se funda el queso.' },
     ],
     tip: 'Si las tortillas se rompen, caliéntalas antes: se vuelven flexibles.',
   },

@@ -24,7 +24,7 @@ export const FOODS = {
   mozzaLight: { name: 'Mozzarella light rallada', kcal: 165, p: 20, c: 1, f: 9, fib: 0, cat: 'Huevos y lácteos' },
   quesoLight: { name: 'Queso en lonchas light', kcal: 270, p: 28, c: 1, f: 17, fib: 0, cat: 'Huevos y lácteos', per: 20, perLabel: 'loncha' },
   quesoRallado: { name: 'Queso rallado light', kcal: 165, p: 20, c: 1, f: 9, fib: 0, cat: 'Huevos y lácteos' },
-  parmesano: { name: 'Parmesano', kcal: 390, p: 33, c: 0, f: 28, fib: 0, cat: 'Huevos y lácteos' },
+  parmesano: { name: 'Grana Padano rallado (o parmesano)', kcal: 390, p: 33, c: 0, f: 28, fib: 0, cat: 'Huevos y lácteos' },
   quesito: { name: 'Quesito light (porción)', kcal: 180, p: 12, c: 6, f: 12, fib: 0, cat: 'Huevos y lácteos', per: 16, perLabel: 'porción' },
 
   // Hidratos

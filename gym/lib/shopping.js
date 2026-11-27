@@ -67,6 +67,7 @@ export const STORE_HINTS = {
   ternera: 'Filetes de añojo o ternera de tapa, babilla, contra o cadera (los magros). Si no hay: lomo de cerdo o pechuga de pavo en filetes',
   quesoLight: 'Lonchas de queso light / havarti light',
   mozzaLight: 'Mozzarella rallada light',
+  parmesano: 'Grana Padano rallado Hacendado (bolsa, no escamas). Con 10 g tienes sabor de sobra: no hace falta mozzarella',
 };
 
 export function niceQty(key, grams) {
