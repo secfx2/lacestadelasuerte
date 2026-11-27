@@ -327,10 +327,10 @@ function Rules() {
             <b>Pan en casi todas las comidas:</b> 30-60 g de pan integral o de barra para mojar o acompañar. Ya está contado en las calorías (por eso las raciones de arroz, pasta y patata son algo más pequeñas).
           </li>
           <li>
-            <b>Sin fruta suelta:</b> como no te gusta, las vitaminas vienen de las cremas, la espinaca escondida, el tomate triturado y el multivitamínico. La fibra, de la avena, el pan integral, la patata y el cacao puro (sin legumbre ni fruta te quedas algo corto: de ahí el psyllium). No hace falta forzarte. Si algún día te apetece: un vaso pequeño (200 ml) de zumo de naranja o piña natural sin pulpa, una manzana o melocotón en su jugo (no en almíbar).
+            <b>Sin fruta suelta:</b> como no te gusta, las vitaminas vienen de las cremas, la espinaca escondida, el tomate triturado y la vitamina C. La fibra, de la avena, el pan integral, la patata y el cacao puro (sin legumbre ni fruta te quedas algo corto: de ahí el psyllium). No hace falta forzarte. Si algún día te apetece: un vaso pequeño (200 ml) de zumo de naranja o piña natural sin pulpa, una manzana o melocotón en su jugo (no en almíbar).
           </li>
           <li>
-            <b>Seguro:</b> multivitamínico + psyllium cada día (ver Suplementos).
+            <b>Seguro:</b> vitamina C + psyllium cada día (ver Suplementos).
           </li>
         </ul>
       </div>

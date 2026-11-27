@@ -6,7 +6,7 @@ import { foodMacros, sumMacros, roundMacros } from './foods.js';
 // Sin tomate salvo el triturado de bote (salsas, pizza) y un poco de tomate frito; sin pimiento; sin lentejas ni guisos
 // de legumbre. Pan (integral o de barra) en casi todas las comidas y cenas.
 // La fibra (≈20-25 g/día) viene de avena, pan integral, patata, cacao y cremas; por eso el psyllium es recomendado.
-// Las vitaminas, de las cremas, la espinaca escondida, el tomate triturado y el multivitamínico.
+// Las vitaminas, de las cremas, la espinaca escondida, el tomate triturado y la vitamina C.
 // steps[].timer = segundos (sale un botón de temporizador en el modo paso a paso).
 
 export const RECIPES = [
