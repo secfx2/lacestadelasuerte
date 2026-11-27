@@ -5,7 +5,7 @@
 import { EXERCISES, getExercise } from './exercises.js';
 import { FOODS } from './foods.js';
 import { SLOTS, WEEK_MENU, getRecipe } from './recipes.js';
-import { WORKOUT_BY_KEY } from './program.js';
+import { WORKOUT_BY_KEY, HOME_ITEMS } from './program.js';
 import { applyOps, newId } from './planOps.js';
 import { recipeMacrosFor } from './plan.js';
 import { addDays, weekdayIdx } from './dates.js';
@@ -89,7 +89,7 @@ export const TOOL_DEFS = [
   },
   {
     name: 'actualizar_perfil',
-    description: 'Cambia datos del perfil cuando el usuario lo pida: peso objetivo, hora del gym, hora a la que suele levantarse, altura, edad o doble sesión. Pon null en lo que no cambie.',
+    description: 'Cambia datos del perfil cuando el usuario lo pida: peso objetivo, hora del gym, hora a la que suele levantarse, altura, edad, doble sesión o el tipo de gym (completo con máquinas y poleas, o básico con multipower, banco y mancuernas: cambia la rutina entera). Pon null en lo que no cambie.',
     input_schema: obj({
       goal_kg: nul({ type: 'number' }),
       gym_time: nul({ type: 'string', description: 'HH:MM' }),
@@ -97,6 +97,7 @@ export const TOOL_DEFS = [
       height_cm: nul({ type: 'number' }),
       age: nul({ type: 'integer' }),
       double_session: nul({ type: 'boolean' }),
+      gym: nul({ type: 'string', enum: ['completo', 'basico'], description: 'completo = máquinas y poleas; basico = multipower, banco y mancuernas.' }),
     }),
   },
   {
@@ -235,11 +236,13 @@ function toolEditarEntreno(input, work) {
   keysOnly(input, ['workout', 'action', 'exercise_id', 'new_exercise_id', 'sets', 'rep_min', 'rep_max', 'rest_seconds', 'note', 'position']);
   const w = WORKOUT_BY_KEY[input.workout];
   if (!w || w.rest) fail('workout no válido');
-  const current = (work.custom?.workouts?.[w.key] || w.items).map((it) => [...it]);
+  // Rutina base según el gym del usuario (completo o básico)
+  const baseItems = work.profile?.gym === 'basico' && HOME_ITEMS[w.key] ? HOME_ITEMS[w.key] : w.items;
+  const current = (work.custom?.workouts?.[w.key] || baseItems).map((it) => [...it]);
   const { action } = input;
   if (action === 'restaurar') {
     commit(work, { op: 'workout', key: w.key, items: null }, `${w.name}: rutina original`);
-    return `Hecho. ${w.name} vuelve a la rutina original:\n${w.items.map(itemText).join('\n')}`;
+    return `Hecho. ${w.name} vuelve a la rutina original:\n${baseItems.map(itemText).join('\n')}`;
   }
   const num = (v, name, lo, hi) => {
     if (v == null) return null;
@@ -298,7 +301,7 @@ function toolEditarEntreno(input, work) {
 }
 
 function toolActualizarPerfil(input, work) {
-  keysOnly(input, ['goal_kg', 'gym_time', 'wake_time', 'height_cm', 'age', 'double_session']);
+  keysOnly(input, ['goal_kg', 'gym_time', 'wake_time', 'height_cm', 'age', 'double_session', 'gym']);
   const patch = {};
   const parts = [];
   if (input.goal_kg != null) {
@@ -330,6 +333,11 @@ function toolActualizarPerfil(input, work) {
     if (typeof input.double_session !== 'boolean') fail('double_session debe ser true o false');
     patch.doubleSession = input.double_session;
     parts.push(input.double_session ? 'doble sesión activada' : 'doble sesión desactivada');
+  }
+  if (input.gym != null) {
+    if (input.gym !== 'completo' && input.gym !== 'basico') fail('gym debe ser completo o basico');
+    patch.gym = input.gym;
+    parts.push(input.gym === 'basico' ? 'gym básico (multipower, banco y mancuernas)' : 'gym completo (máquinas y poleas)');
   }
   if (!parts.length) fail('No hay nada que cambiar');
   commit(work, { op: 'profile', patch }, `Perfil: ${parts.join(', ')}`);

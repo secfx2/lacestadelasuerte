@@ -25,6 +25,11 @@ export function buildAdvisorContext(s, now = new Date()) {
     `PERFIL: ${p.age} años · ${p.heightCm} cm · peso inicial ${n1(p.startKg)} kg · objetivo ${n1(p.goalKg)} kg · inicio del plan ${p.startDate || 'sin configurar'} · suele entrenar a las ${p.gymTime || '—'}`
   );
   lines.push(
+    p.gym === 'basico'
+      ? 'GYM: básico (multipower/Smith, banco y mancuernas hasta 25 kg). Usa la RUTINA PARA GYM BÁSICO.'
+      : 'GYM: completo (Fitness Park: máquinas, poleas, Smith y peso libre). Usa la rutina principal.'
+  );
+  lines.push(
     `HOY: semana ${ctx.week} del plan · fase ${ctx.phase.name} (RIR ${ctx.phase.rir}, cardio ${ctx.phase.cardioMin} min, ${ctx.phase.steps} pasos) · entreno ${ctx.workout.name}${ctx.workout.rest ? '' : ` (${ctx.items.map((it) => `${getExercise(it.id)?.name} ${it.sets}×${it.lo}-${it.hi}`).join('; ')})`} · cardio: ${ctx.cardio.title} · ${ctx.isWeigh ? 'hoy toca pesarse' : 'hoy no toca pesarse'}${ctx.isMeasure ? ' · hoy tocan medidas y fotos' : ''}`
   );
 

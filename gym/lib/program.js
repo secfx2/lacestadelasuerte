@@ -123,9 +123,79 @@ export const WORKOUTS = [
 
 export const WORKOUT_BY_KEY = Object.fromEntries(WORKOUTS.map((w) => [w.key, w]));
 
+// ───────── Gym básico: multipower (Smith) + banco + mancuernas hasta 25 kg ─────────
+// Mismos días, mismos grupos musculares y misma lógica; solo cambian los ejercicios.
+const noteOf = (key, id) => WORKOUT_BY_KEY[key].items.find((it) => it[0] === id)?.[5];
+
+export const HOME_ITEMS = {
+  empuje: [
+    ['press-inclinado-mancuernas', 3, 8, 10, 120],
+    ['press-hombro-mancuernas', 3, 8, 10, 120],
+    ['elevacion-lateral-mancuerna', 4, 12, 15, 60, 'Última serie: drop set (baja 30% el peso y sigue hasta el fallo).'],
+    ['aperturas-mancuernas', 3, 12, 15, 75],
+    ['press-cerrado-smith', 3, 8, 10, 90],
+    ['triceps-mancuerna-cabeza', 2, 12, 15, 60],
+  ],
+  tiron: [
+    ['remo-invertido-smith', 4, 8, 12, 120, 'Barra a la altura de la cadera. Cuanto más vertical estés, más fácil; más horizontal, más difícil.'],
+    ['remo-mancuerna', 3, 10, 12, 75, 'Reps por brazo.'],
+    ['pullover-mancuerna', 3, 12, 15, 60],
+    ['remo-smith', 3, 8, 10, 90],
+    ['pajaros-mancuerna', 3, 15, 20, 60],
+    ['curl-mancuernas', 3, 8, 12, 75],
+    ['curl-martillo', 2, 10, 12, 60],
+  ],
+  piernaA: [
+    ['sentadilla-hack', 3, 8, 10, 150, 'En el multipower.'],
+    ['sentadilla-goblet', 3, 10, 12, 90, 'Con la de 25 kg. Si se queda corta, pausa de 2 s abajo.'],
+    ['hip-thrust', 3, 8, 12, 120, 'En el multipower con la espalda apoyada en el banco. Pausa 1 s arriba.'],
+    ['subida-banco', 2, 10, 12, 75, 'Reps por pierna.'],
+    ['abduccion-tumbado', 3, 15, 20, 45, 'Reps por lado.'],
+    ['elevacion-piernas-banco', 3, 10, 15, 60],
+  ],
+  hombroBrazo: [
+    ['press-hombro-mancuernas', 3, 8, 10, 120],
+    ['elevacion-lateral-mancuerna', 4, 12, 15, 60, noteOf('hombroBrazo', 'elevacion-lateral-maquina')],
+    ['pajaros-mancuerna', 3, 15, 20, 60],
+    ['curl-inclinado', 3, 10, 12, 75, 'Superserie con el press francés.'],
+    ['press-frances-mancuernas', 3, 10, 12, 75],
+    ['curl-martillo', 2, 12, 15, 60],
+    ['fondos-banco', 2, 10, 15, 60],
+    ['cuello-isometricos', 3, 1, 1, 30, noteOf('hombroBrazo', 'cuello-isometricos')],
+  ],
+  torso: [
+    ['remo-invertido-smith', 3, 6, 10, 120, 'Sustituye a las dominadas. Barra a la altura de la cadera.'],
+    ['press-banca-mancuernas', 3, 8, 10, 120],
+    ['remo-mancuerna', 3, 10, 12, 75, 'Reps por brazo.'],
+    ['press-inclinado-smith', 3, 8, 10, 120],
+    ['pullover-mancuerna', 2, 12, 15, 60],
+    ['elevacion-lateral-mancuerna', 3, 12, 15, 60, 'Última serie: drop set.'],
+    ['curl-mancuernas', 2, 12, 15, 60, 'Superserie con el tríceps.'],
+    ['triceps-mancuerna-cabeza', 2, 12, 15, 60],
+  ],
+  piernaB: [
+    ['peso-muerto-rumano', 3, 8, 10, 150, 'Con las mancuernas de 25 kg, o en el multipower si se te quedan cortas.'],
+    ['hip-thrust', 3, 8, 12, 120, 'Pausa 1 s arriba. Es tu ejercicio clave para el glúteo.'],
+    ['sentadilla-bulgara', 2, 10, 12, 90, 'Reps por pierna. Torso algo inclinado y paso largo = más glúteo.'],
+    ['puente-una-pierna', 2, 12, 15, 60, 'Reps por pierna. Sustituye al curl femoral.'],
+    ['abduccion-tumbado', 3, 15, 20, 45, 'Reps por lado.'],
+    ['gemelo-de-pie', 3, 12, 15, 60, 'En el multipower, con la punta de los pies sobre un step o un disco.'],
+    ['elevacion-lateral-mancuerna', 3, 12, 15, 45],
+    ['elevacion-piernas-banco', 3, 10, 15, 60],
+  ],
+};
+
+export const GYM_HOME_NOTE =
+  'Mancuernas hasta 25 kg: cuando se te queden cortas, no pasa nada. Sube repeticiones (hasta 20), baja en 3-4 s, haz una pausa de 1-2 s en la parte difícil o pasa el ejercicio al multipower, donde puedes cargar discos.';
+
+export const GYM_OPTIONS = [
+  { key: 'completo', label: 'Gym completo', sub: 'máquinas y poleas' },
+  { key: 'basico', label: 'Gym básico', sub: 'multipower, banco y mancuernas' },
+];
+
 export const WARMUP = [
-  '5 min de bici o cinta suave (que empieces a sudar).',
-  'Movilidad de hombro: 10 rotaciones con banda o polea ligera + 10 face pulls muy suaves.',
+  '5 min de bici, cinta o escaleras suaves (que empieces a sudar).',
+  'Movilidad de hombro: 10 rotaciones con banda, polea ligera o una mancuerna ligera de 2-4 kg + 10 face pulls o pájaros muy suaves.',
   '2 series de aproximación del primer ejercicio: 10 reps al 50% y 5 reps al 75% del peso de trabajo.',
 ];
 
@@ -155,6 +225,15 @@ export function cardioForDay(workout, phase) {
     return { title: 'Paseo largo', detail: '45-60 min a paso ligero (o 12.000 pasos). Al aire libre si puedes.', minutes: 50, exerciseId: null };
   }
   const legDay = workout.key === 'piernaA' || workout.key === 'piernaB';
+  if (workout.home) {
+    const min = legDay ? Math.max(15, phase.cardioMin - 10) : phase.cardioMin;
+    return {
+      title: `${min}' paseo rápido o escaleras`,
+      detail: 'Si el gym del edificio tiene cinta o bici, úsala. Si no: camina rápido fuera (que te cueste un poco hablar) o sube y baja escaleras a ritmo suave.',
+      minutes: min,
+      exerciseId: null,
+    };
+  }
   if (legDay) {
     return {
       title: `${Math.max(15, phase.cardioMin - 10)}' bici suave`,

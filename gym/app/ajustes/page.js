@@ -9,7 +9,7 @@ import { getState, replaceState, resetState, update, useAppState, useHydrated } 
 import { todayISO } from '../../lib/dates';
 import { weeksToGoal } from '../../lib/coach';
 import { customOf, notesOf, recipeFor } from '../../lib/plan';
-import { WORKOUT_BY_KEY } from '../../lib/program';
+import { WORKOUT_BY_KEY, GYM_OPTIONS } from '../../lib/program';
 import { SLOTS } from '../../lib/recipes';
 import { DAY_NAMES } from '../../lib/dates';
 import Link from 'next/link';
@@ -78,6 +78,16 @@ export default function AjustesPage() {
           <div className="field">
             <label htmlFor="a-gym">Hora de gym</label>
             <input id="a-gym" className="input" type="time" value={p.gymTime || ''} onChange={setP('gymTime')} />
+          </div>
+          <div className="field" style={{ gridColumn: '1 / -1' }}>
+            <label htmlFor="a-gymtype">Mi gym</label>
+            <select id="a-gymtype" className="input" value={p.gym || 'completo'} onChange={setP('gym')}>
+              {GYM_OPTIONS.map((g) => (
+                <option key={g.key} value={g.key}>
+                  {g.label}: {g.sub}
+                </option>
+              ))}
+            </select>
           </div>
           <div className="field">
             <label htmlFor="a-wake">Me suelo levantar a las</label>

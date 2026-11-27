@@ -160,7 +160,7 @@ export default function PlanPage() {
 
       {/* ───── Semana tipo ───── */}
       <section id="semana" className="section" style={{ scrollMarginTop: 16 }}>
-        <div className="section-title">Semana tipo (Fitness Park)</div>
+        <div className="section-title">Semana tipo ({s.profile.gym === 'basico' ? 'gym básico' : 'Fitness Park'})</div>
         <div className="stack">
           {workoutsFor(s).map((w, i) => (
             <details key={w.key} className="card" open={i === ctx.dayIdx}>

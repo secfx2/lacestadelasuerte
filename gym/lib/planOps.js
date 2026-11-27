@@ -4,12 +4,12 @@
 // { op: 'meal', keys: ['0.cena', '2026-11-06.cena'], scope: 'semana' | 'dia', recipeId: string | null }   null = volver al plan
 // { op: 'recipe', recipe }                         receta nueva (o la reemplaza si ya existe ese id)
 // { op: 'workout', key, items: [...] | null }      null = volver a la rutina original
-// { op: 'profile', patch: { goalKg, gymTime, wakeTime, heightCm, age, doubleSession } }
+// { op: 'profile', patch: { goalKg, gymTime, wakeTime, heightCm, age, doubleSession, gym } }
 // { op: 'note', id, text: string | null }          null = borrar la nota
 // { op: 'reset', what: 'menu' | 'entrenos' | 'recetas' | 'notas' | 'todo' }
 
 const clone = (v) => (v == null ? v : JSON.parse(JSON.stringify(v)));
-const PROFILE_KEYS = new Set(['goalKg', 'gymTime', 'wakeTime', 'heightCm', 'age', 'doubleSession']);
+const PROFILE_KEYS = new Set(['goalKg', 'gymTime', 'wakeTime', 'heightCm', 'age', 'doubleSession', 'gym']);
 const MAX_DAY_MENU_AGE_DAYS = 45;
 
 function pruneDayMenu(dayMenu, todayIso) {

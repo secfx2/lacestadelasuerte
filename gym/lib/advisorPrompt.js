@@ -1,7 +1,7 @@
 // Prompt de sistema del asesor IA (solo servidor). Se construye una vez a partir de los datos del plan:
 // es texto determinista (sin fechas ni aleatorios) para que el prompt caching funcione.
 
-import { WORKOUTS, PHASES, SUPPLEMENTS, NO_SUPPLEMENTS, RULES, JAWLINE, LOVE_HANDLES, NECK_CARE, DAILY_TARGETS, WEIGH_HOWTO, DOUBLE_SESSION, WARMUP } from './program.js';
+import { WORKOUTS, PHASES, SUPPLEMENTS, NO_SUPPLEMENTS, RULES, JAWLINE, LOVE_HANDLES, NECK_CARE, DAILY_TARGETS, WEIGH_HOWTO, DOUBLE_SESSION, WARMUP, HOME_ITEMS, GYM_HOME_NOTE } from './program.js';
 import { EXERCISES, getExercise, MUSCLE_LABELS } from './exercises.js';
 import { RECIPES, WEEK_MENU, SLOTS, recipeMacros, dayMacros, getRecipe, NIGHT_SNACK } from './recipes.js';
 import { PELVIC, KEGEL_LEVELS } from './kegel.js';
@@ -18,6 +18,18 @@ function workoutsText() {
       .join('\n');
     return `${DAYS[i]} — ${w.name} [workout: ${w.key}] (${w.subtitle}). ${w.focus}\n${items}`;
   }).join('\n\n');
+}
+
+function homeWorkoutsText() {
+  return WORKOUTS.filter((w) => !w.rest && HOME_ITEMS[w.key])
+    .map((w) => {
+      const i = WORKOUTS.indexOf(w);
+      const items = HOME_ITEMS[w.key]
+        .map(([id, sets, lo, hi, rest, note]) => `  · ${getExercise(id)?.name} [${id}]: ${sets}×${lo}-${hi}, descanso ${rest}s${note ? ` (${note})` : ''}`)
+        .join('\n');
+      return `${DAYS[i]} — ${w.name} [workout: ${w.key}]\n${items}`;
+    })
+    .join('\n\n');
 }
 
 function phasesText() {
@@ -116,6 +128,11 @@ ENTRENAMIENTO (6 días + domingo descanso activo). Cada sesión: calentamiento 8
 Calentamiento: ${WARMUP.join(' ')}
 
 ${workoutsText()}
+
+RUTINA PARA GYM BÁSICO (multipower/Smith, banco y mancuernas hasta 25 kg). Misma estructura y días; es la que usa si en sus datos pone "GYM: básico". Usa siempre la rutina que corresponda a su gym, también al proponer cambios con editar_entreno. Cardio en gym básico: cinta o bici si las hay; si no, paseo rápido o escaleras.
+${GYM_HOME_NOTE}
+
+${homeWorkoutsText()}
 
 FASES (por semana desde el inicio)
 ${phasesText()}

@@ -6,9 +6,9 @@ import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'rea
 import Icon from '../../components/Icon';
 import ExerciseDetail from '../../components/ExerciseDetail';
 import { Check, PageSkeleton, Ring, Sheet, useToast } from '../../components/ui';
-import { useAppState, useHydrated, updateDay, getState } from '../../lib/store';
+import { useAppState, useHydrated, updateDay, getState, update } from '../../lib/store';
 import { dayContext, planItems, setProgress, lastPerformance, overloadHint, fmtKg, sessionVolume, personalRecords, e1rm } from '../../lib/coach';
-import { WORKOUTS, WORKOUT_BY_KEY, WARMUP, cardioForDay, DOUBLE_SESSION } from '../../lib/program';
+import { WORKOUTS, WORKOUT_BY_KEY, WARMUP, cardioForDay, DOUBLE_SESSION, GYM_OPTIONS, GYM_HOME_NOTE } from '../../lib/program';
 import { getExercise } from '../../lib/exercises';
 import { DAY_SHORT, fmtClock, fmtRest, todayISO, prettyDate } from '../../lib/dates';
 import { workoutWithCustom } from '../../lib/plan';
@@ -130,6 +130,36 @@ function Entreno() {
           <span>
             Estás en <b>{relLabel(iso).toLowerCase()}</b> ({prettyDate(iso).toLowerCase()}). Las series que marques se guardan en ese día.
           </span>
+        </div>
+      )}
+      <div className="tabs" style={{ marginBottom: 10 }} role="group" aria-label="Mi gym">
+        {GYM_OPTIONS.map((g) => {
+          const on = (s.profile.gym || 'completo') === g.key;
+          return (
+            <button
+              key={g.key}
+              className={`tab${on ? ' on' : ''}`}
+              aria-pressed={on}
+              style={{ height: 'auto', padding: '6px 6px', lineHeight: 1.15 }}
+              onClick={() => {
+                if (on) return;
+                setOpen(null);
+                update((d) => {
+                  d.profile.gym = g.key;
+                });
+                showToast(g.key === 'basico' ? 'Rutina para multipower, banco y mancuernas' : 'Rutina para gym completo');
+              }}
+            >
+              {g.label}
+              <span className="tiny muted" style={{ display: 'block', fontWeight: 500 }}>{g.sub}</span>
+            </button>
+          );
+        })}
+      </div>
+      {s.profile.gym === 'basico' && (
+        <div className="hint" style={{ marginBottom: 12 }}>
+          <Icon name="dumbbell" size={18} />
+          <span>{GYM_HOME_NOTE}</span>
         </div>
       )}
       <div className="chips" style={{ marginBottom: 14 }}>

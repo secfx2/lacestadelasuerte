@@ -11,7 +11,7 @@
 
 import { WEEK_MENU, SLOTS, getRecipe } from './recipes.js';
 import { FOODS, sumMacros, roundMacros } from './foods.js';
-import { WORKOUTS } from './program.js';
+import { WORKOUTS, HOME_ITEMS } from './program.js';
 import { addDays, weekdayIdx } from './dates.js';
 
 export const SLOT_KEYS = SLOTS.map((s) => s.key);
@@ -81,10 +81,14 @@ export const weekDates = (mondayIso) => Array.from({ length: 7 }, (_, i) => addD
 
 // ───────── Entreno ─────────
 
+// Gym básico (multipower + banco + mancuernas): misma rutina con otros ejercicios
+export const isBasicGym = (s) => s?.profile?.gym === 'basico';
+
 export function workoutWithCustom(s, w) {
   if (!w || w.rest) return w;
+  const base = isBasicGym(s) && HOME_ITEMS[w.key] ? { ...w, items: HOME_ITEMS[w.key], home: true } : w;
   const items = customOf(s).workouts?.[w.key];
-  return Array.isArray(items) && items.length ? { ...w, items, customized: true } : w;
+  return Array.isArray(items) && items.length ? { ...base, items, customized: true } : base;
 }
 
 export const workoutsFor = (s) => WORKOUTS.map((w) => workoutWithCustom(s, w));
