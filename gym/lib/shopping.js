@@ -48,7 +48,7 @@ export const STORE_HINTS = {
   batido0: 'Queso fresco batido 0% Hacendado (tarrina 500 g)',
   yogurPro: 'Yogur +Proteínas natural Hacendado (pack de 6)',
   claras: 'Claras de huevo pasteurizadas (brick, en la nevera de huevos)',
-  pavo: 'Pechuga de pavo de 90% o más de carne (lonchas finas)',
+  pavo: 'Fiambre de pechuga de pavo en lonchas finas, 90 % o más de carne (en la nevera de embutidos). La "pechuga de pavo adobada" en filetes gruesos también vale, pero lleva menos proteína (~15 g/100 g): pon un 25 % más',
   cremaCalabaza: 'Nevera: crema de calabaza Hacendado (o haz la tuya y congela)',
   cacao: 'Cacao puro en polvo desgrasado 0% azúcar (Hacendado, junto al Cola Cao)',
   chocolate85: 'Chocolate negro 85% (tableta; 1-2 onzas por toma)',
