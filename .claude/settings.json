@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Vercel__get_deployment"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "mcp__Supabase__execute_sql|mcp__Vercel__create_deployment",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/guard.py\"",
+            "timeout": 10,
+            "statusMessage": "Revisando la consulta"
+          }
+        ]
+      }
+    ]
+  }
+}
