@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { Suspense, useMemo, useState } from 'react';
+import { Suspense, useEffect, useMemo, useRef, useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Icon from '../components/Icon';
 import FoodImg from '../components/FoodImg';
 import { Bar, Check, PageSkeleton, Ring, Sheet, useToast } from '../components/ui';
@@ -437,16 +438,31 @@ function MacrosTile({ s, iso }) {
 }
 
 // Suelo pélvico: 3 sesiones guiadas al día
+// Enlace directo: /?kegel=1 abre la sesión guiada (si quedan sesiones hoy)
 function KegelTile({ s, day, iso, showToast }) {
   const [open, setOpen] = useState(false);
   const level = kegelLevel(s);
   const n = Math.min(KEGEL_SESSIONS_PER_DAY, Number(day.kegel) || 0);
+  const params = useSearchParams();
+  const router = useRouter();
+  const ref = useRef(null);
+  const auto = params.get('kegel') === '1';
+  useEffect(() => {
+    if (!auto) return;
+    ref.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    if (n < KEGEL_SESSIONS_PER_DAY) setOpen(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [auto]);
+  const close = () => {
+    setOpen(false);
+    if (auto) router.replace('/', { scroll: false });
+  };
   const add = (delta) =>
     updateDay(iso, (d) => {
       d.kegel = Math.max(0, Math.min(KEGEL_SESSIONS_PER_DAY, (Number(d.kegel) || 0) + delta));
     });
   return (
-    <div className="tile w2 accent-cyan">
+    <div ref={ref} id="suelo" className="tile w2 accent-cyan">
       <div className="spread">
         <span className="tile-label" style={{ color: 'var(--cyan)' }}>
           <Icon name="heart" size={14} /> Suelo pélvico · {n}/{KEGEL_SESSIONS_PER_DAY}
@@ -476,7 +492,7 @@ function KegelTile({ s, day, iso, showToast }) {
       </div>
       <KegelTrainer
         open={open}
-        onClose={() => setOpen(false)}
+        onClose={close}
         level={level}
         onDone={() => {
           add(1);
