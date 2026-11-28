@@ -11,7 +11,7 @@
 
 import { WEEK_MENU, SLOTS, getRecipe } from './recipes.js';
 import { FOODS, sumMacros, roundMacros } from './foods.js';
-import { WORKOUTS, HOME_ITEMS } from './program.js';
+import { HOME_ITEMS, weekWorkouts } from './program.js';
 import { addDays, weekdayIdx } from './dates.js';
 
 export const SLOT_KEYS = SLOTS.map((s) => s.key);
@@ -91,7 +91,9 @@ export function workoutWithCustom(s, w) {
   return Array.isArray(items) && items.length ? { ...base, items, customized: true } : base;
 }
 
-export const workoutsFor = (s) => WORKOUTS.map((w) => workoutWithCustom(s, w));
+// Semana de entreno del usuario (5 o 6 días), lunes → domingo
+export const weekPlanFor = (s) => weekWorkouts(s?.profile?.trainDays);
+export const workoutsFor = (s) => weekPlanFor(s).map((w) => workoutWithCustom(s, w));
 
 // ───────── Notas ─────────
 

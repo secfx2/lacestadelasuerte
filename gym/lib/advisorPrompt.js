@@ -1,7 +1,7 @@
 // Prompt de sistema del asesor IA (solo servidor). Se construye una vez a partir de los datos del plan:
 // es texto determinista (sin fechas ni aleatorios) para que el prompt caching funcione.
 
-import { WORKOUTS, PHASES, SUPPLEMENTS, NO_SUPPLEMENTS, RULES, JAWLINE, LOVE_HANDLES, NECK_CARE, DAILY_TARGETS, WEIGH_HOWTO, DOUBLE_SESSION, WARMUP, HOME_ITEMS, GYM_HOME_NOTE } from './program.js';
+import { WORKOUTS, WORKOUTS_5, PHASES, SUPPLEMENTS, NO_SUPPLEMENTS, RULES, JAWLINE, LOVE_HANDLES, NECK_CARE, DAILY_TARGETS, WEIGH_HOWTO, DOUBLE_SESSION, WARMUP, HOME_ITEMS, GYM_HOME_NOTE } from './program.js';
 import { EXERCISES, getExercise, MUSCLE_LABELS } from './exercises.js';
 import { RECIPES, WEEK_MENU, SLOTS, recipeMacros, dayMacros, getRecipe, NIGHT_SNACK } from './recipes.js';
 import { PELVIC, KEGEL_LEVELS } from './kegel.js';
@@ -18,6 +18,15 @@ function workoutsText() {
       .join('\n');
     return `${DAYS[i]} — ${w.name} [workout: ${w.key}] (${w.subtitle}). ${w.focus}\n${items}`;
   }).join('\n\n');
+}
+
+// Plan de 5 días: solo cambian el miércoles y el viernes (y el sábado pasa a descanso)
+function fiveDayText() {
+  const fmt = (items) => items.map(([id, sets, lo, hi, rest, note]) => `  · ${getExercise(id)?.name} [${id}]: ${sets}×${lo}-${hi}, descanso ${rest}s${note ? ` (${note})` : ''}`).join('\n');
+  return WORKOUTS_5.map((w, i) => ({ w, i }))
+    .filter(({ w, i }) => !w.rest && WORKOUTS[i].key !== w.key)
+    .map(({ w, i }) => `${DAYS[i]} — ${w.name} [workout: ${w.key}] (${w.subtitle}). ${w.focus}\n${fmt(w.items)}${HOME_ITEMS[w.key] ? `\n  Versión gym básico:\n${fmt(HOME_ITEMS[w.key])}` : ''}`)
+    .join('\n\n');
 }
 
 function homeWorkoutsText() {
@@ -124,7 +133,7 @@ CAMBIAR EL PLAN (herramientas)
 
 ═══════════ EL PLAN COMPLETO ═══════════
 
-ENTRENAMIENTO (6 días + domingo descanso activo). Cada sesión: calentamiento 8 min + pesas ~60 min + cardio.
+ENTRENAMIENTO (6 días + domingo descanso activo, o 5 días: ver PLAN DE 5 DÍAS). Cada sesión: calentamiento 8 min + pesas ~60 min + cardio.
 Calentamiento: ${WARMUP.join(' ')}
 
 ${workoutsText()}
@@ -133,6 +142,9 @@ RUTINA PARA GYM BÁSICO (multipower/Smith, banco y mancuernas hasta 25 kg). Mism
 ${GYM_HOME_NOTE}
 
 ${homeWorkoutsText()}
+
+PLAN DE 5 DÍAS (lunes a viernes). Es el que usa si en sus datos pone "DÍAS DE ENTRENO: 5". Lunes, martes y jueves igual que arriba; el miércoles y el viernes cambian así para no perder lo del sábado (femoral, glúteo, gemelo, laterales y abdomen); sábado y domingo, descanso activo (paseo largo). Con editar_entreno usa la clave del día que corresponda (pierna, torsoGluteo).
+${fiveDayText()}
 
 FASES (por semana desde el inicio)
 ${phasesText()}

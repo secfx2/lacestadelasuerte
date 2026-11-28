@@ -89,7 +89,7 @@ export const TOOL_DEFS = [
   },
   {
     name: 'actualizar_perfil',
-    description: 'Cambia datos del perfil cuando el usuario lo pida: peso objetivo, hora del gym, hora a la que suele levantarse, altura, edad, doble sesión o el tipo de gym (completo con máquinas y poleas, o básico con multipower, banco y mancuernas: cambia la rutina entera). Pon null en lo que no cambie.',
+    description: 'Cambia datos del perfil cuando el usuario lo pida: peso objetivo, hora del gym, hora a la que suele levantarse, altura, edad, doble sesión, el tipo de gym (completo con máquinas y poleas, o básico con multipower, banco y mancuernas: cambia la rutina entera) o los días de entreno (5 = lunes a viernes; 6 = lunes a sábado). Pon null en lo que no cambie.',
     input_schema: obj({
       goal_kg: nul({ type: 'number' }),
       gym_time: nul({ type: 'string', description: 'HH:MM' }),
@@ -98,6 +98,7 @@ export const TOOL_DEFS = [
       age: nul({ type: 'integer' }),
       double_session: nul({ type: 'boolean' }),
       gym: nul({ type: 'string', enum: ['completo', 'basico'], description: 'completo = máquinas y poleas; basico = multipower, banco y mancuernas.' }),
+      train_days: nul({ type: 'integer', enum: [5, 6], description: '5 = lunes a viernes (fin de semana, paseo); 6 = lunes a sábado (domingo, paseo).' }),
     }),
   },
   {
@@ -301,7 +302,7 @@ function toolEditarEntreno(input, work) {
 }
 
 function toolActualizarPerfil(input, work) {
-  keysOnly(input, ['goal_kg', 'gym_time', 'wake_time', 'height_cm', 'age', 'double_session', 'gym']);
+  keysOnly(input, ['goal_kg', 'gym_time', 'wake_time', 'height_cm', 'age', 'double_session', 'gym', 'train_days']);
   const patch = {};
   const parts = [];
   if (input.goal_kg != null) {
@@ -338,6 +339,11 @@ function toolActualizarPerfil(input, work) {
     if (input.gym !== 'completo' && input.gym !== 'basico') fail('gym debe ser completo o basico');
     patch.gym = input.gym;
     parts.push(input.gym === 'basico' ? 'gym básico (multipower, banco y mancuernas)' : 'gym completo (máquinas y poleas)');
+  }
+  if (input.train_days != null) {
+    if (input.train_days !== 5 && input.train_days !== 6) fail('train_days debe ser 5 o 6');
+    patch.trainDays = input.train_days;
+    parts.push(input.train_days === 5 ? 'entreno de lunes a viernes' : 'entreno de lunes a sábado');
   }
   if (!parts.length) fail('No hay nada que cambiar');
   commit(work, { op: 'profile', patch }, `Perfil: ${parts.join(', ')}`);

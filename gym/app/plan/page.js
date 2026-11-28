@@ -5,7 +5,7 @@ import Icon from '../../components/Icon';
 import { PageSkeleton, useHashScroll } from '../../components/ui';
 import { useAppState, useHydrated } from '../../lib/store';
 import { dayContext, projection, weeksToGoal, fmtKg } from '../../lib/coach';
-import { WORKOUTS, PHASES, SUPPLEMENTS, NO_SUPPLEMENTS, JAWLINE, LOVE_HANDLES, NECK_CARE, RULES, DOUBLE_SESSION } from '../../lib/program';
+import { PHASES, SUPPLEMENTS, NO_SUPPLEMENTS, JAWLINE, LOVE_HANDLES, NECK_CARE, RULES, DOUBLE_SESSION } from '../../lib/program';
 import { getExercise } from '../../lib/exercises';
 import { workoutsFor } from '../../lib/plan';
 import { PELVIC, KEGEL_LEVELS } from '../../lib/kegel';
@@ -160,10 +160,10 @@ export default function PlanPage() {
 
       {/* ───── Semana tipo ───── */}
       <section id="semana" className="section" style={{ scrollMarginTop: 16 }}>
-        <div className="section-title">Semana tipo ({s.profile.gym === 'basico' ? 'gym básico' : 'Fitness Park'})</div>
+        <div className="section-title">Semana tipo ({Number(s.profile.trainDays) === 5 ? '5 días' : '6 días'} · {s.profile.gym === 'basico' ? 'gym básico' : 'gym completo'})</div>
         <div className="stack">
           {workoutsFor(s).map((w, i) => (
-            <details key={w.key} className="card" open={i === ctx.dayIdx}>
+            <details key={`${i}-${w.key}`} className="card" open={i === ctx.dayIdx}>
               <summary className="row" style={{ cursor: 'pointer', listStyle: 'none' }}>
                 <span style={{ fontSize: 26 }}>{w.emoji}</span>
                 <div className="grow">

@@ -1,6 +1,7 @@
 // Programa de entrenamiento "V-taper": especialización hombro (deltoide lateral), espalda (dorsal) y brazos,
 // en déficit calórico para definir lo más rápido posible sin perder músculo.
-// 6 días/semana + domingo de descanso activo. Cada sesión: 8' calentamiento + ~60' pesas + cardio.
+// 6 días/semana + domingo de descanso activo (o 5 días, de lunes a viernes: perfil trainDays = 5).
+// Cada sesión: 8' calentamiento + ~60' pesas + cardio.
 
 // item: [exerciseId, sets, repsLow, repsHigh, restSec, nota?]
 export const WORKOUTS = [
@@ -121,7 +122,62 @@ export const WORKOUTS = [
   },
 ];
 
-export const WORKOUT_BY_KEY = Object.fromEntries(WORKOUTS.map((w) => [w.key, w]));
+// ───────── Plan de 5 días (lunes a viernes) ─────────
+// Sin sábado: lo de Pierna B (femoral, glúteo, gemelo, laterales y abdomen) se reparte entre el miércoles
+// (pierna completa) y el viernes (torso + glúteo). El glúteo sigue 2 veces por semana y los laterales, 3.
+const PIERNA_5 = {
+  key: 'pierna',
+  weekday: 2,
+  name: 'Pierna completa',
+  subtitle: 'Cuádriceps · Femoral · Glúteo · Gemelo',
+  emoji: '🦵',
+  focus: 'Toda la pierna en un día: cuádriceps, cadena posterior y glúteo (tu punto a mejorar). Mucho gasto calórico.',
+  items: [
+    ['sentadilla-hack', 3, 8, 10, 150],
+    ['peso-muerto-rumano', 3, 8, 10, 150],
+    ['hip-thrust', 3, 8, 12, 120, 'Pausa 1 s arriba apretando el glúteo. Es tu ejercicio clave para el glúteo.'],
+    ['prensa', 2, 10, 12, 120, 'Pies altos y algo abiertos en la plataforma: más glúteo.'],
+    ['curl-femoral-sentado', 3, 10, 12, 75],
+    ['abduccion-cadera', 3, 15, 20, 60, 'Inclínate un poco hacia delante: trabaja la parte alta del glúteo.'],
+    ['gemelo-sentado', 2, 12, 15, 60],
+    ['elevacion-piernas', 3, 10, 15, 60],
+  ],
+};
+
+const TORSO_5 = {
+  key: 'torsoGluteo',
+  weekday: 4,
+  name: 'Torso + Glúteo',
+  subtitle: 'Espalda · Pecho · Lateral · Glúteo',
+  emoji: '🛡️',
+  focus: 'Segunda dosis de espalda y pecho para crecer más rápido, más la segunda sesión de glúteo de la semana.',
+  items: [
+    ['dominadas-asistidas', 3, 6, 10, 120],
+    ['press-pecho-maquina', 3, 8, 10, 120],
+    ['remo-mancuerna', 3, 10, 12, 75, 'Reps por brazo.'],
+    ['press-inclinado-smith', 2, 8, 10, 120],
+    ['elevacion-lateral-mancuerna', 3, 12, 15, 60, 'Última serie: drop set.'],
+    ['sentadilla-bulgara', 2, 10, 12, 90, 'Reps por pierna. Torso algo inclinado y paso largo = más glúteo.'],
+    ['abduccion-cadera', 2, 15, 20, 60, 'Última serie: aguanta 10 s abierto al final.'],
+    ['rueda-abdominal', 3, 8, 12, 60, 'Si no puedes con la rueda: plancha 3 × 30-45 s.'],
+  ],
+};
+
+const REST_DAY = WORKOUTS.find((w) => w.rest);
+const BY_KEY_6 = Object.fromEntries(WORKOUTS.map((w) => [w.key, w]));
+
+// Lunes → domingo con 5 días de entreno: sábado y domingo, descanso activo (paseo largo)
+export const WORKOUTS_5 = [BY_KEY_6.empuje, BY_KEY_6.tiron, PIERNA_5, BY_KEY_6.hombroBrazo, TORSO_5, REST_DAY, REST_DAY];
+
+export const TRAIN_DAYS_OPTIONS = [
+  { key: 5, label: '5 días', sub: 'lunes a viernes; fin de semana, paseo' },
+  { key: 6, label: '6 días', sub: 'lunes a sábado; domingo, paseo' },
+];
+
+// Semana de entreno según el perfil (5 o 6 días; por defecto 6)
+export const weekWorkouts = (trainDays) => (Number(trainDays) === 5 ? WORKOUTS_5 : WORKOUTS);
+
+export const WORKOUT_BY_KEY = Object.fromEntries([...WORKOUTS, PIERNA_5, TORSO_5].map((w) => [w.key, w]));
 
 // ───────── Gym básico: multipower (Smith) + banco + mancuernas hasta 25 kg ─────────
 // Mismos días, mismos grupos musculares y misma lógica; solo cambian los ejercicios.
@@ -172,6 +228,26 @@ export const HOME_ITEMS = {
     ['elevacion-lateral-mancuerna', 3, 12, 15, 60, 'Última serie: drop set.'],
     ['curl-mancuernas', 2, 12, 15, 60, 'Superserie con el tríceps.'],
     ['triceps-mancuerna-cabeza', 2, 12, 15, 60],
+  ],
+  pierna: [
+    ['sentadilla-hack', 3, 8, 10, 150, 'En el multipower.'],
+    ['peso-muerto-rumano', 3, 8, 10, 150, 'Con las mancuernas de 25 kg, o en el multipower si se te quedan cortas.'],
+    ['hip-thrust', 3, 8, 12, 120, 'En el multipower con la espalda apoyada en el banco. Pausa 1 s arriba.'],
+    ['sentadilla-goblet', 2, 10, 12, 90, 'Con la de 25 kg. Si se queda corta, pausa de 2 s abajo.'],
+    ['puente-una-pierna', 2, 12, 15, 60, 'Reps por pierna. Sustituye al curl femoral.'],
+    ['abduccion-tumbado', 3, 15, 20, 45, 'Reps por lado.'],
+    ['gemelo-de-pie', 2, 12, 15, 60, 'En el multipower, con la punta de los pies sobre un step o un disco.'],
+    ['elevacion-piernas-banco', 3, 10, 15, 60],
+  ],
+  torsoGluteo: [
+    ['remo-invertido-smith', 3, 6, 10, 120, 'Sustituye a las dominadas. Barra a la altura de la cadera.'],
+    ['press-banca-mancuernas', 3, 8, 10, 120],
+    ['remo-mancuerna', 3, 10, 12, 75, 'Reps por brazo.'],
+    ['press-inclinado-smith', 2, 8, 10, 120],
+    ['elevacion-lateral-mancuerna', 3, 12, 15, 60, 'Última serie: drop set.'],
+    ['sentadilla-bulgara', 2, 10, 12, 90, 'Reps por pierna. Torso algo inclinado y paso largo = más glúteo.'],
+    ['abduccion-tumbado', 2, 15, 20, 45, 'Reps por lado.'],
+    ['elevacion-piernas-banco', 3, 10, 15, 60],
   ],
   piernaB: [
     ['peso-muerto-rumano', 3, 8, 10, 150, 'Con las mancuernas de 25 kg, o en el multipower si se te quedan cortas.'],
@@ -224,7 +300,7 @@ export function cardioForDay(workout, phase) {
   if (workout.rest) {
     return { title: 'Paseo largo', detail: '45-60 min a paso ligero (o 12.000 pasos). Al aire libre si puedes.', minutes: 50, exerciseId: null };
   }
-  const legDay = workout.key === 'piernaA' || workout.key === 'piernaB';
+  const legDay = workout.key === 'piernaA' || workout.key === 'piernaB' || workout.key === 'pierna';
   if (workout.home) {
     const min = legDay ? Math.max(15, phase.cardioMin - 10) : phase.cardioMin;
     return {

@@ -8,10 +8,10 @@ import ExerciseDetail from '../../components/ExerciseDetail';
 import { Check, PageSkeleton, Ring, Sheet, useToast } from '../../components/ui';
 import { useAppState, useHydrated, updateDay, getState, update } from '../../lib/store';
 import { dayContext, planItems, setProgress, lastPerformance, overloadHint, fmtKg, sessionVolume, personalRecords, e1rm } from '../../lib/coach';
-import { WORKOUTS, WORKOUT_BY_KEY, WARMUP, cardioForDay, DOUBLE_SESSION, GYM_OPTIONS, GYM_HOME_NOTE } from '../../lib/program';
+import { WORKOUT_BY_KEY, WARMUP, cardioForDay, DOUBLE_SESSION, GYM_OPTIONS, GYM_HOME_NOTE } from '../../lib/program';
 import { getExercise } from '../../lib/exercises';
 import { DAY_SHORT, fmtClock, fmtRest, todayISO, prettyDate } from '../../lib/dates';
-import { workoutWithCustom } from '../../lib/plan';
+import { workoutWithCustom, weekPlanFor } from '../../lib/plan';
 import { sleepAdvice } from '../../lib/sleep';
 import DateNav, { useViewDate, relLabel } from '../../components/DateNav';
 import { beep, unlockAudio } from '../../lib/sound';
@@ -163,9 +163,9 @@ function Entreno() {
         </div>
       )}
       <div className="chips" style={{ marginBottom: 14 }}>
-        {WORKOUTS.map((w, i) => (
+        {weekPlanFor(s).map((w, i) => (
           <button
-            key={w.key}
+            key={`${i}-${w.key}`}
             className={`chip${w.key === workout.key ? ' on' : ''}${i === ctx.dayIdx ? ' today' : ''}`}
             onClick={() => {
               setOpen(null);

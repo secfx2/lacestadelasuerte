@@ -1,15 +1,15 @@
 // "Cerebro" de la app: qué toca hoy, progresión de cargas, estadísticas de peso y proyecciones.
 
-import { WORKOUTS, WORKOUT_BY_KEY, phaseForWeek, setsForPhase, cardioForDay, isWeighDay, isMeasureDay } from './program.js';
+import { WORKOUT_BY_KEY, phaseForWeek, setsForPhase, cardioForDay, isWeighDay, isMeasureDay } from './program.js';
 import { SLOTS } from './recipes.js';
-import { menuFor, mealFor, recipeMacrosFor, dayMacrosFor, workoutWithCustom } from './plan.js';
+import { menuFor, mealFor, recipeMacrosFor, dayMacrosFor, workoutWithCustom, weekPlanFor } from './plan.js';
 import { slotsFor } from './sleep.js';
 import { todayISO, weekdayIdx, programWeek, minutesNow, addDays, daysBetween, mondayOf } from './dates.js';
 
 export function workoutForDay(state, iso) {
   const override = state.days[iso]?.workoutKey;
   if (override && WORKOUT_BY_KEY[override]) return workoutWithCustom(state, WORKOUT_BY_KEY[override]);
-  return workoutWithCustom(state, WORKOUTS[weekdayIdx(iso)]);
+  return workoutWithCustom(state, weekPlanFor(state)[weekdayIdx(iso)]);
 }
 
 export function planItems(workout, phase) {

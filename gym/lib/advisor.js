@@ -30,6 +30,11 @@ export function buildAdvisorContext(s, now = new Date()) {
       : 'GYM: completo (Fitness Park: máquinas, poleas, Smith y peso libre). Usa la rutina principal.'
   );
   lines.push(
+    Number(p.trainDays) === 5
+      ? 'DÍAS DE ENTRENO: 5 (lunes a viernes). Usa el PLAN DE 5 DÍAS: miércoles pierna completa, viernes torso + glúteo; sábado y domingo, descanso activo (paseo).'
+      : 'DÍAS DE ENTRENO: 6 (lunes a sábado). Domingo, descanso activo.'
+  );
+  lines.push(
     `HOY: semana ${ctx.week} del plan · fase ${ctx.phase.name} (RIR ${ctx.phase.rir}, cardio ${ctx.phase.cardioMin} min, ${ctx.phase.steps} pasos) · entreno ${ctx.workout.name}${ctx.workout.rest ? '' : ` (${ctx.items.map((it) => `${getExercise(it.id)?.name} ${it.sets}×${it.lo}-${it.hi}`).join('; ')})`} · cardio: ${ctx.cardio.title} · ${ctx.isWeigh ? 'hoy toca pesarse' : 'hoy no toca pesarse'}${ctx.isMeasure ? ' · hoy tocan medidas y fotos' : ''}`
   );
 

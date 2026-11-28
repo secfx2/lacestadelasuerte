@@ -9,7 +9,7 @@ import { getState, replaceState, resetState, update, useAppState, useHydrated } 
 import { todayISO } from '../../lib/dates';
 import { weeksToGoal } from '../../lib/coach';
 import { customOf, notesOf, recipeFor } from '../../lib/plan';
-import { WORKOUT_BY_KEY, GYM_OPTIONS } from '../../lib/program';
+import { WORKOUT_BY_KEY, GYM_OPTIONS, TRAIN_DAYS_OPTIONS } from '../../lib/program';
 import { SLOTS } from '../../lib/recipes';
 import { DAY_NAMES } from '../../lib/dates';
 import Link from 'next/link';
@@ -85,6 +85,16 @@ export default function AjustesPage() {
               {GYM_OPTIONS.map((g) => (
                 <option key={g.key} value={g.key}>
                   {g.label}: {g.sub}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="field" style={{ gridColumn: '1 / -1' }}>
+            <label htmlFor="a-days">Días de entreno</label>
+            <select id="a-days" className="input" value={String(p.trainDays || 6)} onChange={setP('trainDays', true)}>
+              {TRAIN_DAYS_OPTIONS.map((o) => (
+                <option key={o.key} value={o.key}>
+                  {o.label}: {o.sub}
                 </option>
               ))}
             </select>

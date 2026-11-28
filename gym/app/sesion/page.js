@@ -10,7 +10,7 @@ import { useSearchParams } from 'next/navigation';
 import Icon from '../../components/Icon';
 import { BackLink, PageSkeleton } from '../../components/ui';
 import { getExercise, MUSCLE_LABELS } from '../../lib/exercises';
-import { WORKOUT_BY_KEY, WORKOUTS, HOME_ITEMS } from '../../lib/program';
+import { WORKOUT_BY_KEY, HOME_ITEMS } from '../../lib/program';
 import { fmtRest } from '../../lib/dates';
 import { dayContext, planItems } from '../../lib/coach';
 import { workoutWithCustom } from '../../lib/plan';
@@ -38,7 +38,7 @@ function Sesion() {
   if (idsParam) {
     // Series/reps/descanso: los que tiene ese ejercicio en tu rutina (gym completo o básico), ajustados a tu fase
     const known = {};
-    for (const it of [...WORKOUTS.flatMap((w) => w.items), ...Object.values(HOME_ITEMS).flat()]) if (!known[it[0]]) known[it[0]] = it;
+    for (const it of [...Object.values(WORKOUT_BY_KEY).flatMap((w) => w.items), ...Object.values(HOME_ITEMS).flat()]) if (!known[it[0]]) known[it[0]] = it;
     const tuples = idsParam
       .split(',')
       .map((id) => id.trim())
